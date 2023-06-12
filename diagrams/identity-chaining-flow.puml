@@ -1,0 +1,21 @@
+@startuml "identity-chaining-flow"
+hide footbox
+skinparam {
+    sequenceParticipantBorderThickness 0
+}
+
+participant ASa as "Authorization\nServer\nDomain A"
+participant client as "Client\nDomain A"
+participant ASb as "Authorization\nServer\nDomain B"
+
+client -> client: (A) discover\nAuthorization Server\nDomain B
+
+client -> ASa: (B) exchange token\n[RFC 8693]
+return (C) <authorization grant>
+
+client -> ASb: (D) perform asseration\n[RFC 7521]
+return (E) <access token>
+
+client -> client: (F) use access token
+
+@enduml
