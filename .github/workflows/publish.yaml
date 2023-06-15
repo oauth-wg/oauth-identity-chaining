@@ -37,8 +37,8 @@ jobs:
           path: |
             identity-chaining-draft.html
             identity-chaining-draft.xml
-  gpublish-to-pages:
-    if: github.branch == 'add_gh_action'
+  publish-to-pages:
+    if: github.ref == 'refs/heads/add_gh_action'
     needs: [build-rfc]
     runs-on: ubuntu-latest
     permissions:
