@@ -48,6 +48,15 @@ jobs:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
+      - name: Download a single artifact
+        uses: actions/download-artifact@v3
+        with:
+          name: output
+      - name: Upload pages artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: pages
+          path: identity-chaining-draft.html
       - name: Deploy to GitHub Pages
-        id: output
+        id: deployment
         uses: actions/deploy-pages@v2
