@@ -25,15 +25,15 @@ jobs:
       - name: Install xml2rfc
         run: pip install xml2rfc
       - name: Convert to rfc xml
-        run: kramdown-rfc draft-ietf-identity-chaining.md > draft-ietf-identity-chaining.xml
+        run: kramdown-rfc identity-chaining-draft.md > identity-chaining-draft.xml
       - name: Render HTML
-        run: xml2rfc draft-ietf-identity-chaining.xml --html
+        run: xml2rfc identity-chaining-draft.xml --html
       - name: Render Text
-        run: xml2rfc draft-ietf-identity-chaining.xml --text
+        run: xml2rfc identity-chaining-draft.xml --text
       - name: Deploy to gh-pages
         uses: actions/upload-artifact@v2
         with:
-          name: draft-ietf-identity-chaining
+          name: draft
           path: |
-            draft-ietf-identity-chaining.html
-            draft-ietf-identity-chaining.xml
+            identity-chaining-draft.html
+            identity-chaining-draft.xml
