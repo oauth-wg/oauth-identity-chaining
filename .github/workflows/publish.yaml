@@ -33,7 +33,25 @@ jobs:
       - name: Deploy to gh-pages
         uses: actions/upload-artifact@v2
         with:
-          name: draft
+          name: output
           path: |
             identity-chaining-draft.html
             identity-chaining-draft.xml
+  gpublish-to-pages:
+    if: github.branch == 'add_gh_action'
+    needs: [build-rfc]
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Download a single artifact
+        uses: actions/download-artifact@v3
+        with:
+          name: output
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v2
