@@ -7,7 +7,7 @@ on:
     branches: [ main ]
 
 jobs:
-  test:
+  build-rfc:
 
     runs-on: ubuntu-latest
 
@@ -24,3 +24,16 @@ jobs:
         run: gem install kramdown-rfc
       - name: Install xml2rfc
         run: pip install xml2rfc
+      - name: Convert to rfc xml
+        run: kramdown-rfc draft-ietf-identity-chaining.md > draft-ietf-identity-chaining.xml
+      - name: Render HTML
+        run: xml2rfc draft-ietf-identity-chaining.xml --html
+      - name: Render Text
+        run: xml2rfc draft-ietf-identity-chaining.xml --text
+      - name: Deploy to gh-pages
+        uses: actions/upload-artifact@v2
+        with:
+          name: draft-ietf-identity-chaining
+          path: |
+            draft-ietf-identity-chaining.html
+            draft-ietf-identity-chaining.xml
