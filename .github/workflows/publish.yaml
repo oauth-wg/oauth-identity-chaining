@@ -2,7 +2,7 @@ name: publish
 
 on:
   push:
-    branches: [ add_gh_action ]
+    branches: [ main ]
   pull_request:
     branches: [ main ]
 
@@ -38,7 +38,7 @@ jobs:
             index.html
             identity-chaining-draft.xml
   publish-to-pages:
-    if: github.ref == 'refs/heads/add_gh_action'
+    if: github.ref == 'refs/heads/main'
     needs: [build-rfc]
     runs-on: ubuntu-latest
     permissions:
