@@ -81,57 +81,54 @@ A client requests an authorization grant from its own authorization server via a
 The Identity Chaining flow outlined below describes how these specification are used and work together. Two examples in the suffix give more concrete examples. One where a resource server acts as the client and one where an authorization server acts as the client.
 
 ~~~~
-     ┌─────────────┐                                      ┌─────────────┐
-     │Authorization│              ┌────────┐              │Authorization│
-     │Server       │              │Client  │              │Server       │
-     │Domain A     │              │Domain A│              │Domain B     │
-     └──────┬──────┘              └───┬────┘              └──────┬──────┘
-            │                         │────┐                     │       
-            │                         │    │ (A) discover        │       
-            │                         │<───┘ Authorization Server│       
-            │                         │      Domain B            │       
-            │                         │                          │       
-            │                         │                          │       
-            │   (B) exchange token    │                          │       
-            │   [RFC 8693]            │                          │       
-            │<─────────────────────────                          │       
-            │                         │                          │       
-            │(C) <authorization grant>│                          │       
-            │ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ >                          │       
-            │                         │                          │       
-            │                         │  (D) perform asseration  │       
-            │                         │  [RFC 7521]              │       
-            │                         │ ────────────────────────>│       
-            │                         │                          │       
-            │                         │    (E) <access token>    │       
-            │                         │ <─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ │       
-            │                         │                          │       
-            │                         │────┐                     │       
-            │                         │    │ (F) use access token│       
-            │                         │<───┘                     │       
-            │                         │                          │       
-            │                         │                          │             
+┌─────────────┐                                    ┌─────────────┐  ┌─────────┐
+│Authorization│              ┌────────┐            │Authorization│  │Protected│
+│Server       │              │Client  │            │Server       │  │Resource │
+│Domain A     │              │Domain A│            │Domain B     │  │Domain B │
+└──────┬──────┘              └───┬────┘            └──────┬──────┘  └────┬────┘
+       │                         │────┐                   │              │     
+       │                         │    │ (A) discover      │              │     
+       │                         │<───┘ Authorization     │              │     
+       │                         │      Server            │              │     
+       │                         │      Domain B          │              │     
+       │                         │                        │              │     
+       │                         │                        │              │     
+       │   (B) exchange token    │                        │              │     
+       │   [RFC 8693]            │                        │              │     
+       │<─────────────────────────                        │              │     
+       │                         │                        │              │     
+       │(C) <authorization grant>│                        │              │     
+       │ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ >                        │              │     
+       │                         │                        │              │     
+       │                         │ (D) perform asseration │              │     
+       │                         │ [RFC 7521]             │              │     
+       │                         │ ──────────────────────>│              │     
+       │                         │                        │              │     
+       │                         │   (E) <access token>   │              │     
+       │                         │ <─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ │              │     
+       │                         │                        │              │     
+       │                         │                  (F) access           │     
+       │                         │ ─────────────────────────────────────>│     
+       │                         │                        │              │     
+       │                         │                        │              │               
 ~~~~
 {: title='Identity Chaining Flow'}
 
-{:vspace}
-(A) discover Authorization Server Domain B
-: The client of Domain A discovers the authorization server of Domain B. See [Discover Authorization Server](#discover-authorization-server)
+The flow illustrated in Figure 1 shows the step the client needs to perform to access a protected resource in a different trust domain. It includes the following steps:
 
-(B) exchange token
-: The client exchanges its token to a authorization grant at the authorization server of its own domain.
+* (Pre) A client of Domain A needs to access a protected resource of Domain B.
 
-(C) authorization grant
-: Authorization server of Domain A returns an authorization grant dedicated for Domain B.
+* (A) The client of Domain A needs discovers the authorization server of Domain B. See [Discover Authorization Server](#discover-authorization-server).
 
-(D) perform asseration
-: The client uses receive authorization grant to perform an asseration of the authorization server of Domain B. 
+* (B) The client exchanges its token to an authorization grant at the authorization server of its own domain. See [Token Exchange](#token-exchange).
 
-(E) access token
-: Authorization server of Domain B returns an access token
+* (C) Authorization server of Domain A processes the request and, if federation with Domain B is allowed returns an authorization grant.
 
-(F) access resource
-: The client is able to use the access token to access a protected resource of Domain B.
+* (D) The client uses receive authorization grant to perform an asseration at the authorization server of Domain B. See [Assertion](#assertion).
+
+* (E) Authorization server of Domain B validates the authorization grant and returns an access token.
+
+* (F) The client now possesses an access token to access the protected resource in Domain B.
 
 ## Discover Authorization Server
 
@@ -147,7 +144,7 @@ The parameters described in section 2.1 of {{RFC8693}} apply here with the follo
 
 {:vspace}
 subject_token
-: REQUIRED Access token of the subject that will be used to call protected resource X in trust boundary B
+: REQUIRED Access token of the subject that will be used to call the protected resource in domain B
 
 requested_token_type
 : OPTIONAL according to {{RFC8693}}. In the context of this specification this parameter SHOULD NOT be used. See [Authorization grant type](#authorization-grant-type).
@@ -272,6 +269,133 @@ To be added.
 To be added.
 
 --- back
+
+# Examples
+
+This section contains 2 examples, both are show-casing this specifiction in different environments with specific requirements: 
+
+## Resource server acting as client
+
+Resources servers may act as clients if the following is true:
+- Authorization Server B is reachable by the resource server by network and is able to perform the appropiate client authentication (if required).
+- The resource server has the ability to determine the authorization server of the protected resource outside its trust domain.
+
+The flow would look like this:
+
+~~~
+┌─────────────┐              ┌────────┐            ┌─────────────┐ ┌─────────┐
+│Authorization│              │Resource│            │Authorization│ │Protected│
+│Server       │              │Server  │            │Server       │ │Resource │
+│Domain A     │              │Domain A│            │Domain B     │ │Domain B │
+└──────┬──────┘              └───┬────┘            └──────┬──────┘ └────┬────┘
+       │                         │                        │             │     
+       │                         │     (A) access (unauthenticated)     │     
+       │                         │ ────────────────────────────────────>│     
+       │                         │                        │             │     
+       │                         │      (B) <WWW-Authenticate header>   │     
+       │                         │ <─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ── ─ ─│     
+       │                         │                        │             │     
+       │   (C) exchange token    │                        │             │     
+       │   [RFC 8693]            │                        │             │     
+       │<─────────────────────────                        │             │     
+       │                         │                        │             │     
+       │(D) <authorization grant>│                        │             │     
+       │ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ >                        │             │     
+       │                         │                        │             │     
+       │                         │ (E) perform asseration │             │     
+       │                         │ [RFC 7521]             │             │     
+       │                         │ ──────────────────────>│             │     
+       │                         │                        │             │     
+       │                         │   (F) <access token>   │             │     
+       │                         │ <─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ │             │     
+       │                         │                        │             │     
+       │                         │                  (G) access          │     
+       │                         │ ────────────────────────────────────>│     
+       │                         │                        │             │     
+       │                         │                        │             │     
+~~~
+{: title='Resource server acting as client'}
+
+The flow contains the following steps:
+
+(A) Resource server of domain A needs to access protected resource in Domain B. It requires an access token to do so which it does not posses. To receive information about the authorization server which protected the resource in domain B it calls the resource unauthenticated.
+
+(B) The protected resource returns the WWW-Authenticate header to indicate its authorization server.
+
+(C) Now, after the resource server has identified the targeting authorization server it request an authorization grant for it at its own authorization server (Domain A). This happens via the token exchange protocol.
+
+(D) If successful, the authorization server returns the authorization grant to the resource server.
+
+(E) The resource server uses received authorization grant to perform an asseration at the authorization server of Domain B.
+
+(F) Authorization server of Domain A uses claims of authorization grant to identify the user and its access. If access is granted an access token is returned.
+
+(G) The resource server uses the access token to access the protected resource at Domain B.
+
+## Authorization server acting as client
+
+Authorization servers may act as clients too. This can be necessary because of following reasons:
+- Resource servers MAY not have knowledge of other authorization servers or are MAY not be allowed to posses that knowledge.
+- Resource server MAY not have network access to other authorization server
+- A strict access control on resources outside the trust domain is required and enforced by authorization servers.
+- Authorization servers requires client authentication and managing clients for resource servers outside of the trust domain is not intended.
+
+The flow when authorization servers act as client would look like this:
+
+~~~
+┌────────┐          ┌─────────────┐              ┌─────────────┐ ┌─────────┐
+│Resource│          │Authorization│              │Authorization│ │Protected│
+│Server  │          │Server       │              │Server       │ │Resource │
+│Domain A│          │Domain A     │              │Domain B     │ │Domain B │
+└───┬────┘          └──────┬──────┘              └──────┬──────┘ └────┬────┘
+    │ (A) request token for│                            │             │     
+    │ protected resource   │                            │             │     
+    │ in domain B.         │                            │             │     
+    │ ─────────────────────>                            │             │     
+    │                      │                            │             │     
+    │                      │────┐                       │             │     
+    │                      │    │ (B) determine                       │     
+    │                      │<───┘ authorization server B              │     
+    │                      │                                          │     
+    │                      │                                          │     
+    │                      │────┐                                     │     
+    │                      │    │ (C) issue                           │     
+    │                      │<───┘ authorization grant                 │     
+    │                      │      ("internal token exchange")         │     
+    │                      │                                          │     
+    │                      │                            │             │     
+    │                      │     (D) perform asseration │             │     
+    │                      │     [RFC 7521]             │             │     
+    │                      │ ──────────────────────────>              │     
+    │                      │                            │             │     
+    │                      │       (E) <access token>   │             │     
+    │                      │ <─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─               │     
+    │                      │                            │             │     
+    │  (F) <access token>  │                            │             │     
+    │ <─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─                            │             │     
+    │                      │                            │             │     
+    │                      │           (G) access       │             │     
+    │ ───────────────────────────────────────────────────────────────>     
+    │                      │                            │             │     
+    │                      │                            │             │     
+~~~
+{: title='Authorization server acting as client'}
+
+The flow contains the following steps:
+
+(A) Resource server of Domain A request a token for protected resource in Domain B. This specifiction does not cover this step in particular. A profile of Token Exchange {{RFC8693}} may be used.
+
+(B) The authorization server (of Domain A) determines the authorization server (of Domain B). This could have been passed by the client, is statically maintained or dynamically resolved.
+
+(C) Once the authorization server is determined an authorization grant is issued internally. This reflects to [Token exchange](#token-exchange) of this specification and can be seen as an "internal token exchange".
+
+(D) The issued authorization grant is used to perform an asseration at the authorization server of Domain B. This asseration happens between the authorization servers and authorization server A may be required to provide client authentication too while doing so.
+
+(E) Authorization server of Domain B returns an access token to access the protected resource.
+
+(F) Authorization server of Domain A returns that access token to the resource server.
+
+(G) The resource server uses received access token to access the protected resource.
 
 # Acknowledgements {#Acknowledgements}
 {: numbered="false"}

@@ -1,0 +1,25 @@
+@startuml "example-rs"
+hide footbox
+skinparam {
+    sequenceParticipantBorderThickness 0
+}
+
+participant ASa as "Authorization\nServer\nDomain A"
+participant client as "Resource\nServer\nDomain A"
+participant ASb as "Authorization\nServer\nDomain B"
+participant pr as "Protected\nResource\nDomain B"
+
+client -> pr: (A) access (unauthenticated)
+return (B) <WWW-Authenticate>
+
+client -> ASa: (C) exchange token\n[RFC 8693]
+return (D) <authorization grant>
+
+client -> ASb: (E) perform asseration\n[RFC 7521]
+return (F) <access token>
+
+client -> pr: (G) access
+
+
+
+@enduml

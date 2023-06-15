@@ -1,0 +1,26 @@
+@startuml "example-as"
+hide footbox
+skinparam {
+    sequenceParticipantBorderThickness 0
+}
+
+participant RSa as "Resource\nServer\nDomain A"
+participant ASa as "Authorization\nServer\nDomain A"
+participant ASb as "Authorization\nServer\nDomain B"
+participant PRb as "Protected\nResource\nDomain B"
+
+RSa -> ASa: (A) request token for\nprotected resource\nin domain B.
+
+ASa -> ASa: (B) determine\nauthorization server B
+
+ASa -> ASa: (C) issue\nauthorization grant\n("internal token exchange")
+
+ASa -> ASb: (D) perform asseration\n[RFC 7521]
+return (E) <access token>
+
+RSa <-- ASa: (F) <access token>
+
+RSa -> PRb: (G) access
+
+
+@enduml
