@@ -30,10 +30,10 @@ jobs:
         run: xml2rfc identity-chaining-draft.xml --html
       - name: Render Text
         run: xml2rfc identity-chaining-draft.xml --text
-      - name: Deploy to gh-pages
+      - name: Upload artifact
         uses: actions/upload-artifact@v2
         with:
-          name: output
+          name: github-pages
           path: |
             identity-chaining-draft.html
             identity-chaining-draft.xml
@@ -48,15 +48,6 @@ jobs:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
-      - name: Download a single artifact
-        uses: actions/download-artifact@v3
-        with:
-          name: output
-      - name: Upload pages artifact
-        uses: actions/upload-artifact@v2
-        with:
-          name: pages
-          path: identity-chaining-draft.html
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v2
