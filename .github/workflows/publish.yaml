@@ -27,7 +27,7 @@ jobs:
       - name: Convert to rfc xml
         run: kramdown-rfc identity-chaining-draft.md > identity-chaining-draft.xml
       - name: Render HTML
-        run: xml2rfc identity-chaining-draft.xml --html
+        run: xml2rfc identity-chaining-draft.xml --html -o index.html
       - name: Render Text
         run: xml2rfc identity-chaining-draft.xml --text
       - name: Upload artifact
@@ -35,7 +35,7 @@ jobs:
         with:
           name: github-pages
           path: |
-            identity-chaining-draft.html
+            index.html
             identity-chaining-draft.xml
   publish-to-pages:
     if: github.ref == 'refs/heads/add_gh_action'
@@ -50,4 +50,4 @@ jobs:
     steps:
       - name: Deploy to GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@v2
+        uses: actions/deploy-pages@v1
