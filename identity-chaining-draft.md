@@ -21,6 +21,8 @@ author:
   org: Microsoft
   email: pieter.kasselman@microsoft.com
 - name: Kelley Burgin
+  org: MITRE
+  email: kburgin@mitre.org
 contributor:
 - name: Atul Tulshibagwale
   org: SGNL
@@ -143,29 +145,21 @@ Once the authorization server is identified the client performs a token exchange
 The parameters described in section 2.1 of {{RFC8693}} apply here with the following restrictions:
 
 {:vspace}
-subject_token
-: REQUIRED Access token of the subject that will be used to call the protected resource in domain B
-
 requested_token_type
 : OPTIONAL according to {{RFC8693}}. In the context of this specification this parameter SHOULD NOT be used. See [Authorization grant type](#authorization-grant-type).
-
-resource
-: OPTIONAL. URI of authorization server of targeting domain (domain B). REQUIRED if audience is not set.
-
-audience
-: OPTIONAL. Well known/logical name of authorization server of targeting domain (domain B). REQUIRED if resource is not set.
 
 scope
 : OPTIONAL. Additional scopes to indicate scopes included in returned authorization grant. See [Transcribing claims](#transcribing-claims).
 
-### Resource and audience
+resource
+: REQUIRED if audience is not set. URI of authorization server of targeting domain (domain B).
 
-Either one of resource or audience is required to indicate for what authorization server the authorization grant should be audienced. The authorization server MUST deny the request if neither is set. An authorization server SHOULD deny the request on an unknown resource/audience. In cases where federation to any authorization server is deliberate unknown resource or scope identifiers MAY be allowed.
-
-<!-- reference on whats the difference? -->
+audience
+: REQUIRED if resource is not set. Well known/logical name of authorization server of targeting domain (domain B).
 
 ### Processing rules
 
+* An authorization server SHOULD deny the request on an unknown resource or audience. In cases where federation to any authorization server is deliberate unknown resource or audience identifiers MAY be allowed.
 * The authorization server MAY deny the request due to policy. For instance if federation to the requested domain/authorization server is not permitted. 
 <!-- add specific response code -->
 * The authorization server MAY add, remove or change claims. See [Transcribing claims](#transcribing-claims).
