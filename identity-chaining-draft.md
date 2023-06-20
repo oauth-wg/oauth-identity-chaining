@@ -277,8 +277,9 @@ This section contains 2 examples, both are show-casing this specifiction in diff
 ## Resource server acting as client
 
 Resources servers may act as clients if the following is true:
-- Authorization Server B is reachable by the resource server by network and is able to perform the appropiate client authentication (if required).
-- The resource server has the ability to determine the authorization server of the protected resource outside its trust domain.
+
+* Authorization Server B is reachable by the resource server by network and is able to perform the appropiate client authentication (if required).
+* The resource server has the ability to determine the authorization server of the protected resource outside its trust domain.
 
 The flow would look like this:
 
@@ -335,10 +336,11 @@ The flow contains the following steps:
 ## Authorization server acting as client
 
 Authorization servers may act as clients too. This can be necessary because of following reasons:
-- Resource servers MAY not have knowledge of other authorization servers or are MAY not be allowed to posses that knowledge.
-- Resource server MAY not have network access to other authorization server
-- A strict access control on resources outside the trust domain is required and enforced by authorization servers.
-- Authorization servers requires client authentication and managing clients for resource servers outside of the trust domain is not intended.
+
+* Resource servers MAY not have knowledge of other authorization servers or are MAY not be allowed to posses that knowledge.
+* Resource server MAY not have network access to other authorization server
+* A strict access control on resources outside the trust domain is required and enforced by authorization servers.
+* Authorization servers requires client authentication and managing clients for resource servers outside of the trust domain is not intended.
 
 The flow when authorization servers act as client would look like this:
 
