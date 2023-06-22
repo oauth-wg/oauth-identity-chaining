@@ -116,9 +116,7 @@ The Identity Chaining flow outlined below describes how these specification are 
 ~~~~
 {: title='Identity Chaining Flow'}
 
-The flow illustrated in Figure 1 shows the step the client needs to perform to access a protected resource in a different trust domain. It includes the following steps:
-
-* (Pre) A client of Domain A needs to access a protected resource of Domain B.
+The flow illustrated in Figure 1 shows the step the client in trust domain A needs to perform to access a protected resource in trust domain B. It includes the following steps:
 
 * (A) The client of Domain A needs discovers the authorization server of Domain B. See [Discover Authorization Server](#discover-authorization-server).
 
