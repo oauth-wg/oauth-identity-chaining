@@ -132,13 +132,11 @@ The flow illustrated in Figure 1 shows the step the client needs to perform to a
 
 * (F) The client now possesses an access token to access the protected resource in Domain B.
 
-## Discover Authorization Server
-
-The first step is the discovery of authorization server of domain B (the external authorization server). This specification does not cover the details of such but a client MAY contact the resource unauthenticated and leverage the WWW-Authentication response (see section 3 of {{RFC6750}}), maintain a static mapping or use other means to identify the authorization server.
+## Authorization Server Discovery
+This specification does not define authorization server discovery. A client MAY contact the resource and leverage the WWW-Authentication response (see section 3 of {{RFC6750}}), maintain a static mapping or use other means to identify the authorization server.
 
 ## Token Exchange
-
-Once the authorization server is identified the client performs a token exchange {{RFC8693}} at its own authorization server in order to receive an authorization grant as specified in section 1.3 of {{RFC6749}}.
+Once the authorization server is identified the client performs token exchange as defined in {{RFC8693}} with its own authorization server in order to obtain an authorization grant as specified in section 1.3 of {{RFC6749}}.
 
 ### Request
 
@@ -170,7 +168,7 @@ audience
 
 The authorization grant format and content is part of a contract between the authorization servers. To achieve a maintainable and flexible systems clients SHOULD NOT request a specific `requested_token_type` during the token exchange and SHOULD NOT require a certain format or parse the authorization grant (for instance in caes of JWT). The `issued_token_type` parameter in the response indicates the type and SHOULD be passed into the asseration request. This allows flexibility for authorization servers to change format and content.
 
-Authorization servers MAY pick an existing grant type such us `urn:ietf:params:oauth:grant-type:jwt-bearer` to indicate a JWT or `urn:ietf:params:oauth:grant-type:saml2-bearer` to indicate SAML. Other grant types MAY be used to indicate other formats.
+Authorization servers MAY use an existing grant type such us `urn:ietf:params:oauth:grant-type:jwt-bearer` to indicate a JWT or `urn:ietf:params:oauth:grant-type:saml2-bearer` to indicate SAML. Other grant types MAY be used to indicate other formats.
 
 ### Transcribing claims
 
@@ -188,7 +186,7 @@ Clients MAY use the scope parameter to control transcribed claims and thus the c
 
 ### Response 
 
-All of section 2.2 of {{RFC8693}} applies. In context of this specification the following applies in addtion:
+All of section 2.2 of {{RFC8693}} applies. In addition, the following applies to specification that conform to this specification. 
 
 * Returned authorization grant MUST be audienced to the requested authorization server. This corresponds with [RFC 7523 Section 3, Point 3](https://datatracker.ietf.org/doc/html/rfc7523#section-3) and is there to reduce missuse and to prevent clients from presenting their (for other use cases intented) access tokens as asseration.
 
@@ -196,7 +194,7 @@ All of section 2.2 of {{RFC8693}} applies. In context of this specification the 
 
 ### Example
 
-The example belows shows a command the client invokes to perform token exchange at authorization server of domain A (https://a.org/auth) to receive an authorization grant for authorization server of domain B (https://b.org/auth).
+The example belows shows the message invoked by the client in trust domain A to perform token exchange with the authorization server in domain A (https://a.org/auth) to receive an authorization grant for the authorization server in trust domain B (https://b.org/auth).
 
 ~~~
 curl --location 'https://a.org/auth/token' \
@@ -212,7 +210,7 @@ The client uses the received authorization grant from steps B and C as an assera
 
 ### Request
 
-Everything in {{RFC7521}} (Section 4.1 in specific) applies. In case of JWT authorization grant all of {{RFC7523}} applies in addition. For the purpose of this specification the following descriptions apply:
+If the authorization grant is in the form of a JWT bearer token, the client SHOULD use the "JSON Web Token (JWT) Profile for OAuth 2.0 Client Authentication and Authorization Grants" as defined in {{RFC7521}}. Otherwise, the client SHOULD request a access token using the "Assertion Framework for OAuth 2.0 Client Authentication and Auhorization Grants" as defined in {{RFC7521}} (Section 4.1). For the purpose of this specification the following descriptions apply:
 
 {:vspace}
 grant_type
@@ -242,11 +240,11 @@ The specifics (such as the format) of returned access token is not part of this 
 
 ### Response
 
-The authorization server response with an access token as described in section 5.1 of {{RFC6749}}.
+The authorization server responds with an access token as described in section 5.1 of {{RFC6749}}.
 
 ### Example
 
-The example belows shows a command the client invokes to present an authorization grant to authorization server (https://b.org/auth) to receive an access token for a protected resource.
+The example belows shows how the client in trust domain A presents an authorization grant to the authorization server in trust domain B (https://b.org/auth) to receive an access token for a protected resource in trust domain B.
 
 ~~~
 curl --location --request GET 'https://b.org/auth/token' \
