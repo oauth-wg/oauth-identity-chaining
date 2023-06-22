@@ -55,19 +55,12 @@ informative:
 
 --- abstract
 
-This specification defines a protocol for Authorization Servers and Resource Servers by defining how to receive access tokens from different domains in context of the user or the client.
+This specification defines a mechanism to preserve identity and call chain information across trust domains that use the OAuth 2.0 Framework. 
 
 --- middle
 
 # Introduction
-
-Since the introduction of the OAuth 2.0 Authorization Framework {{RFC6749}} in 2012 it has found brought adoption in the industry and is still popular today.
-
-Whilst clients, resource servers, resources and the authorization server are all part of one trust domain, developers are often faced with the situation that a protected resource is located in a different trust domain and thus protected by a different authorization server. A request can even take multiple hops across various trust domains until it finds its destination at a resource.
-
-All protected resources along the way are challenged to correctly authorizing the end user and may require its claims from the previous trust domains to achieve that.
-
-This situation is referred to as `Identity Chaining` in this memo.
+Applications often require access to resources that are distributed across multiple trust domains where each trust domain has its own OAuth 2.0 authorization server. As a result, developers are often faced with the situation that a protected resource is located in a different trust domain and thus protected by a different authorization server. A request may transverse multiple resource servers in multiple trust domains before completing. All protected resources involved in such a request need to know on whose behalf the request was originally initiated (i.e. the user), what authorization was granted and optionally which other resource servers were called prior to making an authorization decision. This information needs to be preserved, even when a request crosses one or more trust domains. Preserving this information is referred to as identity chaining. This document defines a mechanism for preserving identity chaining information across trust domains using a combination of OAuth 2.0 Token Exchange {{RFC8693}} and Assertion Framework for OAuth 2.0 Client Authentication and Authorization Grants {{RFC7521}}
 
 ## Requirements Language
 
@@ -75,8 +68,9 @@ This situation is referred to as `Identity Chaining` in this memo.
 
 # Identity Chaining Flow
 
-This specification describes a combination of OAuth 2.0 Token Exchange {{RFC8693}} and Assertion Framework for OAuth 2.0 Client Authentication and Authorization Grants {{RFC7521}} to achieve `Identity Chaining`.
-A client requests an authorization grant from its own authorization server via a token exchange. Received grant is then presented as an asseration to the authorization server of the protected resource.
+This specification describes a combination of OAuth 2.0 Token Exchange {{RFC8693}} and Assertion Framework for OAuth 2.0 Client Authentication and Authorization Grants {{RFC7521}} to achieve identity chaining across trust domains.
+
+A client in trust domain A that needs to access a resource server in trust domain B requests an authorization grant from the authorization server for trust domain A via a token exchange. The client in trust domain A presents the received grant as an asseration to the authorization server in domain B in order to obtain an access token for the protected resource in domain B. The client in domain A may be a resource server, or it may be the authroization server itself. A client in trust domain A that needs to access a resource server in trust domain B requests an authorization grant from the authorization server for trust domain A via a token exchange. The client in trust domain A presents the received grant as an asseration to the authorization server in domain B in order to obtain an access token for the protected resource in domain B.  The client in domain A may be a resource server, or it may be the authroization server itself. 
 
 ## Overview 
 
