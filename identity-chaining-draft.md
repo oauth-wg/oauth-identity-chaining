@@ -97,10 +97,10 @@ The Identity Chaining flow outlined below describes how these specification are 
        │                         │                        │              │     
        │   (B) exchange token    │                        │              │     
        │   [RFC 8693]            │                        │              │     
-       │<─────────────────────────                        │              │     
+       │<────────────────────────│                       │              │     
        │                         │                        │              │     
        │(C) <authorization grant>│                        │              │     
-       │ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ >                        │              │     
+       │ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ > │                        │              │     
        │                         │                        │              │     
        │                         │ (D) perform asseration │              │     
        │                         │ [RFC 7521]             │              │     
