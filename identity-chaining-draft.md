@@ -112,7 +112,7 @@ The Identity Chaining flow outlined below describes how these specification are 
 
 The flow illustrated in Figure 1 shows the step the client in trust domain A needs to perform to access a protected resource in trust domain B. It includes the following steps:
 
-* (A) The client of Domain A needs discovers the authorization server of Domain B. See [Discover Authorization Server](#discover-authorization-server).
+* (A) The client of Domain A needs discovers the authorization server of Domain B. See [Authorization Server Discovery](#authorization-server-discovery).
 
 * (B) The client exchanges its token to an authorization grant at the authorization server of its own domain. See [Token Exchange](#token-exchange).
 
