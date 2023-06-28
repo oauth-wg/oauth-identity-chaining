@@ -68,9 +68,24 @@ Applications often require access to resources that are distributed across multi
 
 # Identity Chaining Flow
 
-This specification describes a combination of OAuth 2.0 Token Exchange {{RFC8693}} and Assertion Framework for OAuth 2.0 Client Authentication and Authorization Grants {{RFC7521}} to achieve identity chaining across trust domains.
+This specification describes a combination of OAuth 2.0 Token Exchange {{RFC8693}} with Assertion Framework for OAuth 2.0 Client Authentication and Authorization Grants {{RFC7521}} to achieve identity chaining across trust domains.
 
 A client in trust domain A that needs to access a resource server in trust domain B requests an authorization grant from the authorization server for trust domain A via a token exchange. The client in trust domain A presents the received grant as an asseration to the authorization server in domain B in order to obtain an access token for the protected resource in domain B. The client in domain A may be a resource server, or it may be the authroization server itself. A client in trust domain A that needs to access a resource server in trust domain B requests an authorization grant from the authorization server for trust domain A via a token exchange. The client in trust domain A presents the received grant as an asseration to the authorization server in domain B in order to obtain an access token for the protected resource in domain B.  The client in domain A may be a resource server, or it may be the authroization server itself. 
+
+## Use Cases
+The following use cases requires a form of identity chaing across trust domains.
+
+### Cross jusrisdiction identity chaining
+A US state official in State A needs to access the database of State B to retrieve information about a customer who is a citizen of State B. The official first gains access to the State A gateway by logging in and authenticating to their local front-end system. The gateway then passes the official’s request and identity to a central information sharing system that all states use to share data. Finally, the central system obtains credentials to access the State B gateway and routes both the request from and identity of the official to the State B gateway to access the citizen's information in the State B database.
+
+### Cross-domain identity based authroization decisions
+A home devices company provides a “Camera API” to enable access to home cameras. Partner companies use this Camera API to integrate the camera feeds into their security dashboards. Using 2-legged OAuth between the partner and the Camera API, a partner can request the feed from a home camera to be displayed in their dashboard. The user has an account with the camera provider. The user may be logged in to view the partner provided dashboard, or they may authorize emergency access to the camera.  A security mechanism is required such that the home devices company is able to independently verify that the request originated and was authorized by a user who is authorized to view the feed of the requested home camera.
+
+### Preserve User Context across Trust Domains
+A user attempts to access a service that is implemented as a number of on-prem and cloud based microservices. Both the on-premise and cloud based services are segmented by multiple trust boundaries that span one or more on-premise or cloud service environments. Every microservice must apply an authorization policy that takes the context of the user into account, irrespective of where the microservices are running and even when a microservice in one trust domain calls a service in another trust domain.
+
+### Report Building in a Federated Environment
+A client requests a report from a resource server that incorporates data from one or more sources. Each source is in a separate trust domain. Trust domains have a federated identity framework (e.g. PKI) and authorization framework, but may have varied and asymmetric specific trust relationships. Trust relationships are established between authorization servers in each trust domain, and exercised through messages passed between the authorisation servers that assert identity and authorization claims. The identity of requesters is chained throughout these requests, but authorization claims are limited or down scoped to what is necessary to each request.
 
 ## Overview 
 
