@@ -150,8 +150,7 @@ audience
 ### Processing rules
 
 * An authorization server SHOULD deny the request on an unknown resource or audience. In cases where federation to any authorization server is deliberate unknown resource or audience identifiers MAY be allowed.
-* The authorization server MAY deny the request due to policy. For instance if federation to the requested domain/authorization server is not permitted. 
-<!-- add specific response code -->
+* The authorization server MAY deny the request due to policy. For instance if federation to the requested domain/authorization server is not permitted.
 * The authorization server MAY add, remove or change claims. See [Transcribing claims](#transcribing-claims).
 
 <!-- add more? -->
@@ -178,11 +177,19 @@ Clients MAY use the scope parameter to control transcribed claims and thus the c
 
 ### Response 
 
+#### Successful response
+
 All of section 2.2 of {{RFC8693}} applies. In addition, the following applies to specification that conform to this specification. 
 
 * Returned authorization grant MUST be audienced to the requested authorization server. This corresponds with [RFC 7523 Section 3, Point 3](https://datatracker.ietf.org/doc/html/rfc7523#section-3) and is there to reduce missuse and to prevent clients from presenting their (for other use cases intented) access tokens as asseration.
 
 * Response authorization grant MAY be audienced to multiple Authorization Servers if federation happens to multiple trust boundaries. The authors of this specification reccomended that only one audience is used to prevent Authorization Server B to abuse and present the token to Authorization Server C.
+
+#### Error response
+
+In case of an error authorization servers MUST respond according to [Section 5.2](https://www.rfc-editor.org/rfc/rfc6749.html#section-5.2) of {{RFC6749}}.
+
+When the authorization  server chooses to deny the request due to policy 
 
 ### Example
 
