@@ -239,7 +239,7 @@ curl --location --request GET 'https://b.org/auth/token' \
 --form 'asseration="ey..."'
 ~~~
 
-## Claims transcriptions
+## Claims transcription
 
 Authorization servers MAY transcribe claims when either producing authorization grant at the token exchange flow or access tokens at the asseration flow.
 
