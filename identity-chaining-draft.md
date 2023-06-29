@@ -21,8 +21,6 @@ author:
   org: Microsoft
   email: pieter.kasselman@microsoft.com
 - name: Kelley Burgin
-  org: MITRE
-  email: kburgin@mitre.org
 contributor:
 - name: Atul Tulshibagwale
   org: SGNL
