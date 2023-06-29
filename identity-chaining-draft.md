@@ -110,7 +110,7 @@ The Identity Chaining flow outlined below describes how these specification are 
        │                         │                        │              │     
        │   (B) exchange token    │                        │              │     
        │   [RFC 8693]            │                        │              │     
-       │<────────────────────────│                       │              │     
+       │<────────────────────────│                        │              │     
        │                         │                        │              │     
        │(C) <authorization grant>│                        │              │     
        │ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ > │                        │              │     
@@ -241,7 +241,7 @@ All of {{RFC7521}} (Section 5.2 in specific) applies. In context of this specifi
 
 ### Transcribing claims
 
-The authorization server MAY leverage claims from the present authorization grant for claim population of the access token. The populated claims SHOULD be namespaced or validated to prevent the injection of invalid claims.
+The authorization server performing the asseration flow MAY leverage claims from the presented authorization grant for claim population of the access token. The populated claims SHOULD be namespaced or validated to prevent the injection of invalid claims.
 
 The specifics (such as the format) of returned access token is not part of this specification.
 
