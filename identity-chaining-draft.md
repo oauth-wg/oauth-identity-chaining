@@ -288,10 +288,10 @@ The flow would look like this:
        │                         │                        │             │     
        │   (C) exchange token    │                        │             │     
        │   [RFC 8693]            │                        │             │     
-       │<─────────────────────────                        │             │     
+       │<────────────────────────|                        │             │     
        │                         │                        │             │     
        │(D) <authorization grant>│                        │             │     
-       │ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ >                        │             │     
+       │ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─>|                        │             │     
        │                         │                        │             │     
        │                         │ (E) perform asseration │             │     
        │                         │ [RFC 7521]             │             │     
@@ -343,7 +343,7 @@ The flow when authorization servers act as client would look like this:
     │ (A) request token for│                            │             │     
     │ protected resource   │                            │             │     
     │ in domain B.         │                            │             │     
-    │ ─────────────────────>                            │             │     
+    │ ────────────────────>|                            │             │     
     │                      │                            │             │     
     │                      │────┐                       │             │     
     │                      │    │ (B) determine                       │     
@@ -358,16 +358,16 @@ The flow when authorization servers act as client would look like this:
     │                      │                            │             │     
     │                      │     (D) perform asseration │             │     
     │                      │     [RFC 7521]             │             │     
-    │                      │ ──────────────────────────>              │     
+    │                      │ ──────────────────────────>|             │     
     │                      │                            │             │     
     │                      │       (E) <access token>   │             │     
-    │                      │ <─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─               │     
+    │                      │ <─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ |             │     
     │                      │                            │             │     
     │  (F) <access token>  │                            │             │     
-    │ <─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─                            │             │     
+    │ <─ ─ ─ ─ ─ ─ ─ ─ ─ ─ |                            │             │     
     │                      │                            │             │     
     │                      │           (G) access       │             │     
-    │ ───────────────────────────────────────────────────────────────>     
+    │ ───────────────────────────────────────────────────────────────>|  
     │                      │                            │             │     
     │                      │                            │             │     
 ~~~
