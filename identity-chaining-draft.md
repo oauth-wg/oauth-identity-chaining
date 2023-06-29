@@ -110,7 +110,7 @@ The Identity Chaining flow outlined below describes how these specification are 
        │                         │                        │              │     
        │   (B) exchange token    │                        │              │     
        │   [RFC 8693]            │                        │              │     
-       │<────────────────────────│                       │              │     
+       │<────────────────────────│                        │              │     
        │                         │                        │              │     
        │(C) <authorization grant>│                        │              │     
        │ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ > │                        │              │     
@@ -158,7 +158,7 @@ requested_token_type
 : OPTIONAL according to {{RFC8693}}. In the context of this specification this parameter SHOULD NOT be used. See [Authorization grant type](#authorization-grant-type).
 
 scope
-: OPTIONAL. Additional scopes to indicate scopes included in returned authorization grant. See [Transcribing claims](#transcribing-claims).
+: OPTIONAL. Additional scopes to indicate scopes included in returned authorization grant. See [](#claims-transcription).
 
 resource
 : REQUIRED if audience is not set. URI of authorization server of targeting domain (domain B).
@@ -169,27 +169,13 @@ audience
 ### Processing rules
 
 * If the request itself is not valid or if the given resource or audience are unknown, or are unacceptable based on policy, the authorization server MUST deny the request.
-* The authorization server MAY add, remove or change claims. See [Transcribing claims](#transcribing-claims).
+* The authorization server MAY add, remove or change claims. See [](#claims-transcription).
 
 ### Authorization grant type
 
 The authorization grant format and content is part of a contract between the authorization servers. To achieve a maintainable and flexible systems clients SHOULD NOT request a specific `requested_token_type` during the token exchange and SHOULD NOT require a certain format or parse the authorization grant (for instance in caes of JWT). The `issued_token_type` parameter in the response indicates the type and SHOULD be passed into the asseration request. This allows flexibility for authorization servers to change format and content.
 
 Authorization servers MAY use an existing grant type such us `urn:ietf:params:oauth:grant-type:jwt-bearer` to indicate a JWT or `urn:ietf:params:oauth:grant-type:saml2-bearer` to indicate SAML. Other grant types MAY be used to indicate other formats.
-
-### Transcribing claims
-
-Authorization servers MAY choose to:
-
-* Remove or hide certain claims in the authorization grant. This could be due to privacy requirements or reduced trust towards domain B. To hide and enclose claims {{SD-JWT}} MAY be used.
-
-* Change existing claims. This MAY be necessary to help domain B to identify the subject. For instance: A user has different identifiers in domain A (johndoe@a.org) and domain B (doe.john). Domain A maintains the mapping and thus needs to replace the subject to allow domain B to correctly identify the subject.
-
-<!-- is reducing scope a valid scenario? Can AS A request "scopes" via grant? -->
-
-* Add additional claims. The peer authorization server of domain B may require additional claims to find the correct subject or to transfer it to the access token for the protected resource.
-
-Clients MAY use the scope parameter to control transcribed claims and thus the claims exposed to domain B. Authorization Servers SHOULD verify that requested scopes are not higher priveleged than the scopes of presented subject_token.
 
 ### Response 
 
@@ -239,12 +225,6 @@ All of {{RFC7521}} (Section 5.2 in specific) applies. In context of this specifi
 * The authorization server SHOULD deny the request if it is not able to identify the subject
 * Due to policy the request MAY be denied (for instance if the federation from domain A is not allowed)
 
-### Transcribing claims
-
-The authorization server MAY leverage claims from the present authorization grant for claim population of the access token. The populated claims SHOULD be namespaced or validated to prevent the injection of invalid claims.
-
-The specifics (such as the format) of returned access token is not part of this specification.
-
 ### Response
 
 The authorization server responds with an access token as described in section 5.1 of {{RFC6749}}.
@@ -258,6 +238,17 @@ curl --location --request GET 'https://b.org/auth/token' \
 --form 'grant_type="urn:ietf:params:oauth:grant-type:jwt-bearer"' \
 --form 'asseration="ey..."'
 ~~~
+
+## Claims transcription
+
+Authorization servers MAY transcribe claims when either producing authorization grant at the token exchange flow or access tokens at the asseration flow.
+
+* **Transcribing subject identifier**: Subject identifier can differ between the parties involved. For instance: A user is known at domain A by "johndoe@a.org" but in domain B by "doe.john". The mapping from one identifier to the other MAY either happen in the token exchange step and updated identifer is reflected in returned authorization grant or in the asseration step where the updated identifier would be reflected in the access token. To support this both authorization servers MAY add, change or remove claims as described above.
+* **Selective disclosure**: Authorization servers MAY remove or hide certain due to privacy requirements or reduced trust towards the targeting trust domain. To hide and enclose claims {{SD-JWT}} MAY be used.
+* **Controlling scope**: Clients MAY use the scope parameter to control transcribed claims (e.g. downscoping). Authorization Servers SHOULD verify that requested scopes are not higher priveleged than the scopes of presented subject_token.
+* **Including authorization grant claims**: The authorization server performing the asseration flow MAY leverage claims from the presented authorization grant and include it in the access token. The populated claims SHOULD be namespaced or validated to prevent the injection of invalid claims.
+
+The representation of transcribed claims and their format is not defined in this specification.
 
 # IANA Considerations {#IANA}
 
@@ -297,10 +288,10 @@ The flow would look like this:
        │                         │                        │             │     
        │   (C) exchange token    │                        │             │     
        │   [RFC 8693]            │                        │             │     
-       │<─────────────────────────                        │             │     
+       │<────────────────────────|                        │             │     
        │                         │                        │             │     
        │(D) <authorization grant>│                        │             │     
-       │ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ >                        │             │     
+       │ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─>|                        │             │     
        │                         │                        │             │     
        │                         │ (E) perform asseration │             │     
        │                         │ [RFC 7521]             │             │     
@@ -352,7 +343,7 @@ The flow when authorization servers act as client would look like this:
     │ (A) request token for│                            │             │     
     │ protected resource   │                            │             │     
     │ in domain B.         │                            │             │     
-    │ ─────────────────────>                            │             │     
+    │ ────────────────────>|                            │             │     
     │                      │                            │             │     
     │                      │────┐                       │             │     
     │                      │    │ (B) determine                       │     
@@ -367,16 +358,16 @@ The flow when authorization servers act as client would look like this:
     │                      │                            │             │     
     │                      │     (D) perform asseration │             │     
     │                      │     [RFC 7521]             │             │     
-    │                      │ ──────────────────────────>              │     
+    │                      │ ──────────────────────────>|             │     
     │                      │                            │             │     
     │                      │       (E) <access token>   │             │     
-    │                      │ <─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─               │     
+    │                      │ <─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ |             │     
     │                      │                            │             │     
     │  (F) <access token>  │                            │             │     
-    │ <─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─                            │             │     
+    │ <─ ─ ─ ─ ─ ─ ─ ─ ─ ─ |                            │             │     
     │                      │                            │             │     
     │                      │           (G) access       │             │     
-    │ ───────────────────────────────────────────────────────────────>     
+    │ ───────────────────────────────────────────────────────────────>|  
     │                      │                            │             │     
     │                      │                            │             │     
 ~~~
