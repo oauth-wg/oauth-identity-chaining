@@ -158,7 +158,7 @@ requested_token_type
 : OPTIONAL according to {{RFC8693}}. In the context of this specification this parameter SHOULD NOT be used. See [Authorization grant type](#authorization-grant-type).
 
 scope
-: OPTIONAL. Additional scopes to indicate scopes included in returned authorization grant. See [Transcribing claims](#transcribing-claims).
+: OPTIONAL. Additional scopes to indicate scopes included in returned authorization grant. See [](#claims-transcription).
 
 resource
 : REQUIRED if audience is not set. URI of authorization server of targeting domain (domain B).
@@ -169,7 +169,7 @@ audience
 ### Processing rules
 
 * If the request itself is not valid or if the given resource or audience are unknown, or are unacceptable based on policy, the authorization server MUST deny the request.
-* The authorization server MAY add, remove or change claims. See [Transcribing claims](#transcribing-claims).
+* The authorization server MAY add, remove or change claims. See [](#claims-transcription).
 
 ### Authorization grant type
 
@@ -233,7 +233,13 @@ The authorization server responds with an access token as described in section 5
 
 The example belows shows how the client in trust domain A presents an authorization grant to the authorization server in trust domain B (https://b.org/auth) to receive an access token for a protected resource in trust domain B.
 
-## Token format and claims transcriptions
+~~~
+curl --location --request GET 'https://b.org/auth/token' \
+--form 'grant_type="urn:ietf:params:oauth:grant-type:jwt-bearer"' \
+--form 'asseration="ey..."'
+~~~
+
+## Claims transcriptions
 
 Authorization servers MAY transcribe claims when either producing authorization grant at the token exchange flow or access tokens at the asseration flow.
 
@@ -243,17 +249,11 @@ Authorization servers MAY remove or hide certain due to privacy requirements or 
 
 Clients MAY use the scope parameter to control transcribed claims. Authorization Servers SHOULD verify that requested scopes are not higher priveleged than the scopes of presented subject_token.
 
-### Transcribing claims
+The authorization server performing the asseration flow MAY leverage claims from the presented authorization grant for additional claim population of the access token. The populated claims SHOULD be namespaced or validated to prevent the injection of invalid claims.
 
-The authorization server performing the asseration flow MAY leverage claims from the presented authorization grant for claim population of the access token. The populated claims SHOULD be namespaced or validated to prevent the injection of invalid claims.
+## Token format
 
 The specifics (such as the format) of returned access token is not part of this specification.
-
-~~~
-curl --location --request GET 'https://b.org/auth/token' \
---form 'grant_type="urn:ietf:params:oauth:grant-type:jwt-bearer"' \
---form 'asseration="ey..."'
-~~~
 
 # IANA Considerations {#IANA}
 
