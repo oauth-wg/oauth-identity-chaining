@@ -177,20 +177,6 @@ The authorization grant format and content is part of a contract between the aut
 
 Authorization servers MAY use an existing grant type such us `urn:ietf:params:oauth:grant-type:jwt-bearer` to indicate a JWT or `urn:ietf:params:oauth:grant-type:saml2-bearer` to indicate SAML. Other grant types MAY be used to indicate other formats.
 
-### Transcribing claims
-
-Authorization servers MAY choose to:
-
-* Remove or hide certain claims in the authorization grant. This could be due to privacy requirements or reduced trust towards domain B. To hide and enclose claims {{SD-JWT}} MAY be used.
-
-* Change existing claims. This MAY be necessary to help domain B to identify the subject. For instance: A user has different identifiers in domain A (johndoe@a.org) and domain B (doe.john). Domain A maintains the mapping and thus needs to replace the subject to allow domain B to correctly identify the subject.
-
-<!-- is reducing scope a valid scenario? Can AS A request "scopes" via grant? -->
-
-* Add additional claims. The peer authorization server of domain B may require additional claims to find the correct subject or to transfer it to the access token for the protected resource.
-
-Clients MAY use the scope parameter to control transcribed claims and thus the claims exposed to domain B. Authorization Servers SHOULD verify that requested scopes are not higher priveleged than the scopes of presented subject_token.
-
 ### Response 
 
 All of section 2.2 of {{RFC8693}} applies. In addition, the following applies to specification that conform to this specification. 
@@ -239,12 +225,6 @@ All of {{RFC7521}} (Section 5.2 in specific) applies. In context of this specifi
 * The authorization server SHOULD deny the request if it is not able to identify the subject
 * Due to policy the request MAY be denied (for instance if the federation from domain A is not allowed)
 
-### Transcribing claims
-
-The authorization server performing the asseration flow MAY leverage claims from the presented authorization grant for claim population of the access token. The populated claims SHOULD be namespaced or validated to prevent the injection of invalid claims.
-
-The specifics (such as the format) of returned access token is not part of this specification.
-
 ### Response
 
 The authorization server responds with an access token as described in section 5.1 of {{RFC6749}}.
@@ -252,6 +232,22 @@ The authorization server responds with an access token as described in section 5
 ### Example
 
 The example belows shows how the client in trust domain A presents an authorization grant to the authorization server in trust domain B (https://b.org/auth) to receive an access token for a protected resource in trust domain B.
+
+## Token format and claims transcriptions
+
+Authorization servers MAY transcribe claims when either producing authorization grant at the token exchange flow or access tokens at the asseration flow.
+
+Subject identifier can differ between the parties involved. For instance: A user is known at domain A by "johndoe@a.org" but in domain B by "doe.john". The mapping from one identifier to the other MAY either happen in the token exchange step and updated identifer is reflected in returned authorization grant or in the asseration step where the updated identifier would be reflected in the access token. To support this both authorization servers MAY add, change or remove claims as described above.
+
+Authorization servers MAY remove or hide certain due to privacy requirements or reduced trust towards the targeting trust domain. To hide and enclose claims {{SD-JWT}} MAY be used.
+
+Clients MAY use the scope parameter to control transcribed claims. Authorization Servers SHOULD verify that requested scopes are not higher priveleged than the scopes of presented subject_token.
+
+### Transcribing claims
+
+The authorization server performing the asseration flow MAY leverage claims from the presented authorization grant for claim population of the access token. The populated claims SHOULD be namespaced or validated to prevent the injection of invalid claims.
+
+The specifics (such as the format) of returned access token is not part of this specification.
 
 ~~~
 curl --location --request GET 'https://b.org/auth/token' \
