@@ -30,6 +30,11 @@ contributor:
 - name: George Fletcher
   org: Capital One
   email: george.fletcher@capitalone.com
+- name: Mike Jenkins
+  org: NSA
+- name: Rifaat Shekh-Yusef
+  org: EY
+- name: Hannes Tschofenig
 
 normative:
   RFC6749: # OAuth 2.0 Authorization Framework
