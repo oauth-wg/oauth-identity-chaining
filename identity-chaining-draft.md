@@ -163,12 +163,8 @@ audience
 
 ### Processing rules
 
-* An authorization server SHOULD deny the request on an unknown resource or audience. In cases where federation to any authorization server is deliberate unknown resource or audience identifiers MAY be allowed.
-* The authorization server MAY deny the request due to policy. For instance if federation to the requested domain/authorization server is not permitted. 
-<!-- add specific response code -->
+* If the request itself is not valid or if the given resource or audience are unknown, or are unacceptable based on policy, the authorization server MUST deny the request.
 * The authorization server MAY add, remove or change claims. See [Transcribing claims](#transcribing-claims).
-
-<!-- add more? -->
 
 ### Authorization grant type
 
