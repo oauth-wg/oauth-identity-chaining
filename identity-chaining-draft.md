@@ -243,10 +243,10 @@ curl --location --request GET 'https://b.org/auth/token' \
 
 Authorization servers MAY transcribe claims when either producing authorization grant at the token exchange flow or access tokens at the asseration flow.
 
-* Transcribing subject identifier. Subject identifier can differ between the parties involved. For instance: A user is known at domain A by "johndoe@a.org" but in domain B by "doe.john". The mapping from one identifier to the other MAY either happen in the token exchange step and updated identifer is reflected in returned authorization grant or in the asseration step where the updated identifier would be reflected in the access token. To support this both authorization servers MAY add, change or remove claims as described above.
-* Selective disclosure: Authorization servers MAY remove or hide certain due to privacy requirements or reduced trust towards the targeting trust domain. To hide and enclose claims {{SD-JWT}} MAY be used.
-* Controlling scope: Clients MAY use the scope parameter to control transcribed claims (e.g. downscoping). Authorization Servers SHOULD verify that requested scopes are not higher priveleged than the scopes of presented subject_token.
-* Including authorization grant claims: The authorization server performing the asseration flow MAY leverage claims from the presented authorization grant and include it in the access token. The populated claims SHOULD be namespaced or validated to prevent the injection of invalid claims.
+* **Transcribing subject identifier**: Subject identifier can differ between the parties involved. For instance: A user is known at domain A by "johndoe@a.org" but in domain B by "doe.john". The mapping from one identifier to the other MAY either happen in the token exchange step and updated identifer is reflected in returned authorization grant or in the asseration step where the updated identifier would be reflected in the access token. To support this both authorization servers MAY add, change or remove claims as described above.
+* **Selective disclosure**: Authorization servers MAY remove or hide certain due to privacy requirements or reduced trust towards the targeting trust domain. To hide and enclose claims {{SD-JWT}} MAY be used.
+* **Controlling scope**: Clients MAY use the scope parameter to control transcribed claims (e.g. downscoping). Authorization Servers SHOULD verify that requested scopes are not higher priveleged than the scopes of presented subject_token.
+* **Including authorization grant claims**: The authorization server performing the asseration flow MAY leverage claims from the presented authorization grant and include it in the access token. The populated claims SHOULD be namespaced or validated to prevent the injection of invalid claims.
 
 The representation of transcribed claims and their format is not defined in this specification.
 
