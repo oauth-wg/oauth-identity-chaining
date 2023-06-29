@@ -31,13 +31,13 @@ contributor:
   org: Capital One
   email: george.fletcher@capitalone.com
 
-
 normative:
   RFC6749: # OAuth 2.0 Authorization Framework
   RFC6750: # The OAuth 2.0 Authorization Framework: Bearer Token Usage
   RFC8693: # OAuth 2.0 Token Exchange
   RFC7521: # Assertion Framework for OAuth 2.0 Client Authentication and Authorization Grants
   RFC7523: # JSON Web Token (JWT) Profile for OAuth 2.0 Client Authentication and Authorization Grants
+  RFC8707: # Resource Indicators for OAuth 2.0
 
 informative:
 
@@ -214,7 +214,7 @@ asseration
 scope
 : OPTIONAL.
 
-<!-- TODO: How does a client indicate the resource it wants to access? -->
+The client MAY indicate the audience it is trying to access through the `scope` parameter or the `resource` parameter defined in {{RFC8707}}.
 
 ### Processing rules
 
@@ -385,9 +385,3 @@ The flow contains the following steps:
 
 # Acknowledgements {#Acknowledgements}
 {: numbered="false"}
-
-<!-- 
-OPEN TOPICS:
-- P1: How does a client indicate the protected resource to AS B?
-
--->
