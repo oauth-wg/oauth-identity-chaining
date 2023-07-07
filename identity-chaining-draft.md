@@ -21,6 +21,8 @@ author:
   org: Microsoft
   email: pieter.kasselman@microsoft.com
 - name: Kelley Burgin
+- name: Mike Jenkins
+  org: NSA-CCSS
 contributor:
 - name: Atul Tulshibagwale
   org: SGNL
@@ -28,11 +30,11 @@ contributor:
 - name: George Fletcher
   org: Capital One
   email: george.fletcher@capitalone.com
-- name: Mike Jenkins
-  org: NSA
 - name: Rifaat Shekh-Yusef
   org: EY
+  email: rifaat.shekh-yusef@ca.ey.com
 - name: Hannes Tschofenig
+  email: hannes.tschofenig@gmx.net
 
 normative:
   RFC6749: # OAuth 2.0 Authorization Framework
@@ -387,3 +389,5 @@ The flow contains the following steps:
 
 # Acknowledgements {#Acknowledgements}
 {: numbered="false"}
+
+{{{Joe Jubinski}}}, {{{Justin Richer}}}
