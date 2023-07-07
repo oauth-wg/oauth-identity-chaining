@@ -260,7 +260,7 @@ To be added.
 
 # Examples
 
-This section contains 2 examples, both are show-casing this specifiction in different environments with specific requirements: 
+This section contains 2 examples, demonstrating how this specification may be used in different environments with specific requirements. In the first it shows the resource server acting as the client and in the second it shows the authorization server acting as the client.
 
 ## Resource server acting as client
 
@@ -291,8 +291,9 @@ The flow would look like this:
        │(D) <authorization grant>│                        │             │     
        │ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─>|                        │             │     
        │                         │                        │             │     
-       │                         │ (E) perform asseration │             │     
-       │                         │ [RFC 7521]             │             │     
+       │                         │ (E) present            │             │
+       │                         │    authorization grant │             │     
+       │                         │    [RFC 7521]          │             │     
        │                         │ ──────────────────────>│             │     
        │                         │                        │             │     
        │                         │   (F) <access token>   │             │     
@@ -315,9 +316,9 @@ The flow contains the following steps:
 
 (D) If successful, the authorization server returns the authorization grant to the resource server.
 
-(E) The resource server uses received authorization grant to perform an asseration at the authorization server of Domain B.
+(E) The resource server presents the authorization grant to the authorization server of Domain B.
 
-(F) Authorization server of Domain A uses claims of authorization grant to identify the user and its access. If access is granted an access token is returned.
+(F) Authorization server of Domain B uses claims of authorization grant to identify the user and its access. If access is granted an access token is returned.
 
 (G) The resource server uses the access token to access the protected resource at Domain B.
 
@@ -344,18 +345,19 @@ The flow when authorization servers act as client would look like this:
     │ ────────────────────>|                            │             │     
     │                      │                            │             │     
     │                      │────┐                       │             │     
-    │                      │    │ (B) determine                       │     
-    │                      │<───┘ authorization server B              │     
-    │                      │                                          │     
-    │                      │                                          │     
-    │                      │────┐                                     │     
-    │                      │    │ (C) issue                           │     
-    │                      │<───┘ authorization grant                 │     
-    │                      │      ("internal token exchange")         │     
-    │                      │                                          │     
+    │                      │    │ (B) determine         │             │     
+    │                      │<───┘ authorization server B│             │     
     │                      │                            │             │     
-    │                      │     (D) perform asseration │             │     
-    │                      │     [RFC 7521]             │             │     
+    │                      │                            │             │     
+    │                      │────┐                       │             │     
+    │                      │    │ (C) issue             │             │     
+    │                      │<───┘ authorization grant   │             │     
+    │                      │ ("internal token exchange")│             │     
+    │                      │                            │             │     
+    │                      │                            │             │
+    │                      │ (D) present                │             │
+    │                      │    authorization grant     │             │     
+    │                      │    [RFC 7521]              │             │     
     │                      │ ──────────────────────────>|             │     
     │                      │                            │             │     
     │                      │       (E) <access token>   │             │     
@@ -379,7 +381,7 @@ The flow contains the following steps:
 
 (C) Once the authorization server is determined an authorization grant is issued internally. This reflects to [Token exchange](#token-exchange) of this specification and can be seen as an "internal token exchange".
 
-(D) The issued authorization grant is used to perform an asseration at the authorization server of Domain B. This asseration happens between the authorization servers and authorization server A may be required to provide client authentication too while doing so.
+(D) The issued authorization grant is presented to the authorization server of Domain B. This presentation happens between the authorization servers and authorization server A may be required to provide client authentication too while doing so.
 
 (E) Authorization server of Domain B returns an access token to access the protected resource.
 
