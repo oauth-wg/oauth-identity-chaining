@@ -21,6 +21,8 @@ author:
   org: Microsoft
   email: pieter.kasselman@microsoft.com
 - name: Kelley Burgin
+- name: Mike Jenkins
+  org: NSA-CCSS
 contributor:
 - name: Atul Tulshibagwale
   org: SGNL
@@ -28,11 +30,11 @@ contributor:
 - name: George Fletcher
   org: Capital One
   email: george.fletcher@capitalone.com
-- name: Mike Jenkins
-  org: NSA
 - name: Rifaat Shekh-Yusef
   org: EY
+  email: rifaat.shekh-yusef@ca.ey.com
 - name: Hannes Tschofenig
+  email: hannes.tschofenig@gmx.net
 
 normative:
   RFC6749: # OAuth 2.0 Authorization Framework
@@ -215,7 +217,7 @@ The client MAY indicate the audience it is trying to access through the `scope` 
 
 All of {{RFC7521}} (Section 5.2 in specific) applies, along with the following processing rules:
 
-* The request MUST be denied presented authorization grant is not audiencd to the authorization server that processes the request
+* The request MUST be denied presented authorization grant is not audienced to the authorization server that processes the request
 * The authorization server SHOULD deny the request if it is not able to identify the subject
 * Due to policy the request MAY be denied (for instance if the federation from domain A is not allowed)
 
@@ -387,3 +389,5 @@ The flow contains the following steps:
 
 # Acknowledgements {#Acknowledgements}
 {: numbered="false"}
+
+{{{Joe Jubinski}}}, {{{Justin Richer}}}
