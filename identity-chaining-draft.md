@@ -73,7 +73,7 @@ Applications often require access to resources that are distributed across multi
 
 This specification describes a combination of OAuth 2.0 Token Exchange {{RFC8693}} and Assertion Framework for OAuth 2.0 Client Authentication and Authorization Grants {{RFC7521}} to achieve identity chaining across trust domains.
 
-A client in trust domain A that needs to access a resource server in trust domain B requests an authorization grant from the authorization server for trust domain A via a token exchange. The client in trust domain A presents the received grant as an asseration to the authorization server in domain B in order to obtain an access token for the protected resource in domain B. The client in domain A may be a resource server, or it may be the authroization server itself. A client in trust domain A that needs to access a resource server in trust domain B requests an authorization grant from the authorization server for trust domain A via a token exchange. The client in trust domain A presents the received grant as an asseration to the authorization server in domain B in order to obtain an access token for the protected resource in domain B.  The client in domain A may be a resource server, or it may be the authroization server itself. 
+A client in trust domain A that needs to access a resource server in trust domain B requests an authorization grant from the authorization server for trust domain A via a token exchange. The client in trust domain A presents the received grant as an assertion to the authorization server in domain B in order to obtain an access token for the protected resource in domain B. The client in domain A may be a resource server, or it may be the authorization server itself. A client in trust domain A that needs to access a resource server in trust domain B requests an authorization grant from the authorization server for trust domain A via a token exchange. The client in trust domain A presents the received grant as an assertion to the authorization server in domain B in order to obtain an access token for the protected resource in domain B.  The client in domain A may be a resource server, or it may be the authorization server itself. 
 
 ## Use Cases
 
@@ -113,7 +113,7 @@ The Identity Chaining flow outlined below describes how these specification are 
        │(C) <authorization grant>│                        │              │     
        │ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ > │                        │              │     
        │                         │                        │              │     
-       │                         │ (D) perform asseration │              │     
+       │                         │ (D) perform assertion  │              │     
        │                         │ [RFC 7521]             │              │     
        │                         │ ──────────────────────>│              │     
        │                         │                        │              │     
@@ -135,7 +135,7 @@ The flow illustrated in Figure 1 shows the step the client in trust domain A nee
 
 * (C) Authorization server of Domain A processes the request and, if federation with Domain B is allowed returns an authorization grant.
 
-* (D) The client uses receive authorization grant to perform an asseration at the authorization server of Domain B. See [Assertion](#assertion).
+* (D) The client uses receive authorization grant to perform an assertion at the authorization server of Domain B. See [Assertion](#assertion).
 
 * (E) Authorization server of Domain B validates the authorization grant and returns an access token.
 
@@ -145,7 +145,7 @@ The flow illustrated in Figure 1 shows the step the client in trust domain A nee
 This specification does not define authorization server discovery. A client MAY contact the resource and leverage the WWW-Authentication response (see section 3 of {{RFC6750}}), maintain a static mapping or use other means to identify the authorization server.
 
 ## Token Exchange
-The client performs token exchange as defined in {{RFC8693}} with the authorization server for its own domain (e.g. Domain A), in order to obtain an authorization grant that can be used with the authroization server of a different domain (e.g. Domain B) as specified in section 1.3 of {{RFC6749}}.
+The client performs token exchange as defined in {{RFC8693}} with the authorization server for its own domain (e.g. Domain A), in order to obtain an authorization grant that can be used with the authorization server of a different domain (e.g. Domain B) as specified in section 1.3 of {{RFC6749}}.
 
 ### Request
 
@@ -171,7 +171,7 @@ audience
 
 ### Authorization grant type
 
-The authorization grant format and content is part of a contract between the authorization servers. To achieve a maintainable and flexible systems clients SHOULD NOT request a specific `requested_token_type` during the token exchange and SHOULD NOT require a certain format or parse the authorization grant (for instance in caes of JWT). The `issued_token_type` parameter in the response indicates the type and SHOULD be passed into the asseration request. This allows flexibility for authorization servers to change format and content.
+The authorization grant format and content is part of a contract between the authorization servers. To achieve a maintainable and flexible systems clients SHOULD NOT request a specific `requested_token_type` during the token exchange and SHOULD NOT require a certain format or parse the authorization grant (for instance in caes of JWT). The `issued_token_type` parameter in the response indicates the type and SHOULD be passed into the assertion request. This allows flexibility for authorization servers to change format and content.
 
 Authorization servers MAY use an existing grant type such us `urn:ietf:params:oauth:grant-type:jwt-bearer` to indicate a JWT or `urn:ietf:params:oauth:grant-type:saml2-bearer` to indicate SAML. Other grant types MAY be used to indicate other formats.
 
@@ -234,17 +234,17 @@ The example belows shows how the client in trust domain A presents an authorizat
 ~~~
 curl --location --request GET 'https://b.org/auth/token' \
 --form 'grant_type="urn:ietf:params:oauth:grant-type:jwt-bearer"' \
---form 'asseration="ey..."'
+--form 'assertion="ey..."'
 ~~~
 
 ## Claims transcription
 
-Authorization servers MAY transcribe claims when either producing authorization grant at the token exchange flow or access tokens at the asseration flow.
+Authorization servers MAY transcribe claims when either producing authorization grant at the token exchange flow or access tokens at the assertion flow.
 
-* **Transcribing the subject identifier**: Subject identifier can differ between the parties involved. For instance: A user is known at domain A by "johndoe@a.org" but in domain B by "doe.john". The mapping from one identifier to the other MAY either happen in the token exchange step and updated identifer is reflected in returned authorization grant or in the asseration step where the updated identifier would be reflected in the access token. To support this both authorization servers MAY add, change or remove claims as described above.
+* **Transcribing the subject identifier**: Subject identifier can differ between the parties involved. For instance: A user is known at domain A by "johndoe@a.org" but in domain B by "doe.john". The mapping from one identifier to the other MAY either happen in the token exchange step and updated identifer is reflected in returned authorization grant or in the assertion step where the updated identifier would be reflected in the access token. To support this both authorization servers MAY add, change or remove claims as described above.
 * **Selective disclosure**: Authorization servers MAY remove or hide certain due to privacy requirements or reduced trust towards the targeting trust domain. To hide and enclose claims {{SD-JWT}} MAY be used.
 * **Controlling scope**: Clients MAY use the scope parameter to control transcribed claims (e.g. downscoping). Authorization Servers SHOULD verify that requested scopes are not higher priveleged than the scopes of presented subject_token.
-* **Including authorization grant claims**: The authorization server performing the asseration flow MAY leverage claims from the presented authorization grant and include it in the access token. The populated claims SHOULD be namespaced or validated to prevent the injection of invalid claims.
+* **Including authorization grant claims**: The authorization server performing the assertion flow MAY leverage claims from the presented authorization grant and include it in the access token. The populated claims SHOULD be namespaced or validated to prevent the injection of invalid claims.
 
 The representation of transcribed claims and their format is not defined in this specification.
 
@@ -291,7 +291,7 @@ The flow would look like this:
        │(D) <authorization grant>│                        │             │     
        │ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─>|                        │             │     
        │                         │                        │             │     
-       │                         │ (E) perform asseration │             │     
+       │                         │ (E) perform assertion  │             │     
        │                         │ [RFC 7521]             │             │     
        │                         │ ──────────────────────>│             │     
        │                         │                        │             │     
@@ -315,7 +315,7 @@ The flow contains the following steps:
 
 (D) If successful, the authorization server returns the authorization grant to the resource server.
 
-(E) The resource server uses received authorization grant to perform an asseration at the authorization server of Domain B.
+(E) The resource server uses received authorization grant to perform an assertion at the authorization server of Domain B.
 
 (F) Authorization server of Domain A uses claims of authorization grant to identify the user and its access. If access is granted an access token is returned.
 
@@ -354,7 +354,7 @@ The flow when authorization servers act as client would look like this:
     │                      │      ("internal token exchange")         │     
     │                      │                                          │     
     │                      │                            │             │     
-    │                      │     (D) perform asseration │             │     
+    │                      │     (D) perform assertion  │             │     
     │                      │     [RFC 7521]             │             │     
     │                      │ ──────────────────────────>|             │     
     │                      │                            │             │     
@@ -379,7 +379,7 @@ The flow contains the following steps:
 
 (C) Once the authorization server is determined an authorization grant is issued internally. This reflects to [Token exchange](#token-exchange) of this specification and can be seen as an "internal token exchange".
 
-(D) The issued authorization grant is used to perform an asseration at the authorization server of Domain B. This asseration happens between the authorization servers and authorization server A may be required to provide client authentication too while doing so.
+(D) The issued authorization grant is used to perform an assertion at the authorization server of Domain B. This assertion happens between the authorization servers and authorization server A may be required to provide client authentication too while doing so.
 
 (E) Authorization server of Domain B returns an access token to access the protected resource.
 
