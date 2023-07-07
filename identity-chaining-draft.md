@@ -63,7 +63,7 @@ This specification defines a mechanism to preserve identity and call chain infor
 --- middle
 
 # Introduction
-Applications often require access to resources that are distributed across multiple trust domains where each trust domain has its own OAuth 2.0 authorization server. As a result, developers are often faced with the situation that a protected resource is located in a different trust domain and thus protected by a different authorization server. A request may transverse multiple resource servers in multiple trust domains before completing. All protected resources involved in such a request need to know on whose behalf the request was originally initiated (i.e. the user), what authorization was granted and optionally which other resource servers were called prior to making an authorization decision. This information needs to be preserved, even when a request crosses one or more trust domains. Preserving this information is referred to as identity chaining. This document defines a mechanism for preserving identity chaining information across trust domains using a combination of OAuth 2.0 Token Exchange {{RFC8693}} and Assertion Framework for OAuth 2.0 Client Authentication and Authorization Grants {{RFC7521}}
+Applications often require access to resources that are distributed across multiple trust domains where each trust domain has its own OAuth 2.0 authorization server. As a result, developers are often faced with the situation that a protected resource is located in a different trust domain and thus protected by a different authorization server. A request may transverse multiple resource servers in multiple trust domains before completing. All protected resources involved in such a request need to know on whose behalf the request was originally initiated (i.e. the user), what authorization was granted and optionally which other resource servers were called prior to making an authorization decision. This information needs to be preserved, even when a request crosses one or more trust domains. Preserving this information is referred to as identity chaining. This document defines a mechanism for preserving identity chaining information across trust domains using a combination of OAuth 2.0 Token Exchange {{RFC8693}} and Assertion Framework for OAuth 2.0 Client Authentication and Authorization Grants {{RFC7521}}.
 
 ## Requirements Language
 
@@ -113,7 +113,8 @@ The Identity Chaining flow outlined below describes how these specification are 
        │(C) <authorization grant>│                        │              │     
        │ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ > │                        │              │     
        │                         │                        │              │     
-       │                         │ (D) perform asseration │              │     
+       │                         │ (D) present            │              │
+       │                         │ authroization grant    │              │     
        │                         │ [RFC 7521]             │              │     
        │                         │ ──────────────────────>│              │     
        │                         │                        │              │     
@@ -127,15 +128,15 @@ The Identity Chaining flow outlined below describes how these specification are 
 ~~~~
 {: title='Identity Chaining Flow'}
 
-The flow illustrated in Figure 1 shows the step the client in trust domain A needs to perform to access a protected resource in trust domain B. It includes the following steps:
+The flow illustrated in Figure 1 shows the steps the client in trust domain A needs to perform to access a protected resource in trust domain B. In this flow, the client has a way to discover the authroization server in Domain B and a trust relationship exists between Domain A and Domain B (e.g. through federation). It includes the following:
 
-* (A) The client of Domain A needs discovers the authorization server of Domain B. See [Authorization Server Discovery](#authorization-server-discovery).
+* (A) The client of Domain A needs to discovers the authorization server of Domain B. See [Authorization Server Discovery](#authorization-server-discovery).
 
-* (B) The client exchanges its token to an authorization grant at the authorization server of its own domain. See [Token Exchange](#token-exchange).
+* (B) The client exchanges its token at the authorization server of its own domain (Domain A) for an authorization grant that can be used with the authorization server in Domain B. See [Token Exchange](#token-exchange).
 
-* (C) Authorization server of Domain A processes the request and, if federation with Domain B is allowed returns an authorization grant.
+* (C) The authorization server of Domain A processes the request and returns an authorization grant that the client can use with Domain B. This requires a trust relationship between Domain A and Domain B (e.g. through federation).
 
-* (D) The client uses receive authorization grant to perform an asseration at the authorization server of Domain B. See [Assertion](#assertion).
+* (D) The client presents the authorization grant to the authorization server of Domain B. See [Assertion](#assertion).
 
 * (E) Authorization server of Domain B validates the authorization grant and returns an access token.
 
