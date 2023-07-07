@@ -76,7 +76,7 @@ This specification describes a combination of OAuth 2.0 Token Exchange {{RFC8693
 A client in trust domain A that needs to access a resource server in trust domain B requests an authorization grant from the authorization server for trust domain A via a token exchange. The client in trust domain A presents the received grant as an asseration to the authorization server in domain B in order to obtain an access token for the protected resource in domain B. The client in domain A may be a resource server, or it may be the authroization server itself. A client in trust domain A that needs to access a resource server in trust domain B requests an authorization grant from the authorization server for trust domain A via a token exchange. The client in trust domain A presents the received grant as an asseration to the authorization server in domain B in order to obtain an access token for the protected resource in domain B.  The client in domain A may be a resource server, or it may be the authroization server itself. 
 
 ## Use Case
-This section describes the primary use case adressed in this specification.
+This section describes the primary use case addressed in this specification.
 
 ### Preserve User Context across Multi-cloud, Multi-Hybrid environments
 A user attempts to access a service that is implemented as a number of on-premise and cloud-based microservices. Both the on-premise and cloud-based services are segmented by multiple trust boundaries that span one or more on-premise or cloud service environments. Every microservice can apply an authorization policy that takes the context of the original user, as well as intermediary microservices into account, irrespective of where the microservices are running and even when a microservice in one trust domain calls another service in another trust domain.
@@ -86,7 +86,7 @@ A home devices company provides a “Camera API” to enable access to home came
 
 ## Overview 
 
-The Identity Chaining flow outlined below describes how these specifications are used to adress the use cases identified. The appendix include two additional examples that describe how this flow is used when the resource server acts as the client an another that describes what happens when the authorization server acts as the client.
+The Identity Chaining flow outlined below describes how these specifications are used to address the use cases identified. The appendix include two additional examples that describe how this flow is used when the resource server acts as the client an another that describes what happens when the authorization server acts as the client.
 
 ~~~~
 ┌─────────────┐                                    ┌─────────────┐  ┌─────────┐
