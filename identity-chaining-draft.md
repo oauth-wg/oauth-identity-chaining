@@ -73,7 +73,7 @@ Applications often require access to resources that are distributed across multi
 
 This specification describes a combination of OAuth 2.0 Token Exchange {{RFC8693}} and Assertion Framework for OAuth 2.0 Client Authentication and Authorization Grants {{RFC7521}} to achieve identity chaining across trust domains.
 
-A client in trust domain A that needs to access a resource server in trust domain B requests an authorization grant from the authorization server for trust domain A via a token exchange. The client in trust domain A presents the received grant as an asseration to the authorization server in domain B in order to obtain an access token for the protected resource in domain B. The client in domain A may be a resource server, or it may be the authroization server itself. A client in trust domain A that needs to access a resource server in trust domain B requests an authorization grant from the authorization server for trust domain A via a token exchange. The client in trust domain A presents the received grant as an asseration to the authorization server in domain B in order to obtain an access token for the protected resource in domain B.  The client in domain A may be a resource server, or it may be the authroization server itself. 
+A client in trust domain A that needs to access a resource server in trust domain B requests an authorization grant from the authorization server for trust domain A via a token exchange. The client in trust domain A presents the received grant as an asseration to the authorization server in domain B in order to obtain an access token for the protected resource in domain B. The client in domain A may be a resource server, or it may be the authorization server itself. A client in trust domain A that needs to access a resource server in trust domain B requests an authorization grant from the authorization server for trust domain A via a token exchange. The client in trust domain A presents the received grant as an asseration to the authorization server in domain B in order to obtain an access token for the protected resource in domain B.  The client in domain A may be a resource server, or it may be the authorization server itself. 
 
 ## Use Cases
 
@@ -114,7 +114,7 @@ The Identity Chaining flow outlined below describes how these specification are 
        │ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ > │                        │              │     
        │                         │                        │              │     
        │                         │ (D) present            │              │
-       │                         │ authroization grant    │              │     
+       │                         │ authorization grant    │              │     
        │                         │ [RFC 7521]             │              │     
        │                         │ ──────────────────────>│              │     
        │                         │                        │              │     
@@ -136,7 +136,7 @@ The flow illustrated in Figure 1 shows the steps the client in trust domain A ne
 
 * (C) The authorization server of Domain A processes the request and returns an authorization grant that the client can use with Domain B. This requires a trust relationship between Domain A and Domain B (e.g. through federation).
 
-* (D) The client presents the authorization grant to the authorization server of Domain B. See [Assertion](#assertion).
+* (D) The client presents the authorization grant to the authorization server of Domain B. See [Present Authorization Grant](#present-authorization-grant).
 
 * (E) Authorization server of Domain B validates the authorization grant and returns an access token.
 
@@ -196,7 +196,7 @@ curl --location 'https://a.org/auth/token' \
 --form 'resource="https://b.org/auth"'
 ~~~
 
-## Assertion
+## Present Authorization Grant
 
 The client uses the received authorization grant from steps B and C as an asseration towards authorization server of domain B.
 
