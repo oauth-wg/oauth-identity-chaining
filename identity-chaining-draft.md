@@ -215,7 +215,7 @@ The client MAY indicate the audience it is trying to access through the `scope` 
 
 All of {{RFC7521}} (Section 5.2 in specific) applies, along with the following processing rules:
 
-* The request MUST be denied presented authorization grant is not audiencd to the authorization server that processes the request
+* The request MUST be denied presented authorization grant is not audienced to the authorization server that processes the request
 * The authorization server SHOULD deny the request if it is not able to identify the subject
 * Due to policy the request MAY be denied (for instance if the federation from domain A is not allowed)
 
