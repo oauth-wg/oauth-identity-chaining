@@ -179,9 +179,9 @@ Authorization servers MAY use an existing grant type such us `urn:ietf:params:oa
 
 All of section 2.2 of {{RFC8693}} applies. In addition, the following applies to specification that conform to this specification. 
 
-* Returned authorization grant MUST be audienced to the requested authorization server. This corresponds with [RFC 7523 Section 3, Point 3](https://datatracker.ietf.org/doc/html/rfc7523#section-3) and is there to reduce missuse and to prevent clients from presenting their access tokens as an authroization grant to an authorization server in a different domain.
+* Returned authorization grant MUST be audienced to the requested authorization server. This corresponds with [RFC 7523 Section 3, Point 3](https://datatracker.ietf.org/doc/html/rfc7523#section-3) and is there to reduce missuse and to prevent clients from presenting their access tokens as an authorization grant to an authorization server in a different domain.
 
-* The returned authorization grant MAY be audienced to multiple authorization servers, provided that trust relationships exist with them (e.g. through federation). It is RECOMMENDED that only one audience is used to prevent an authroization server in one domain from presenting the client's authorization grant to another authroization in another trust domain. For example, this will prevent the authorization server in Domain B from presenting the authorization grant it received from the client in Domain A to the authorization server for Domain C.
+* The returned authorization grant MAY be audienced to multiple authorization servers, provided that trust relationships exist with them (e.g. through federation). It is RECOMMENDED that only one audience is used to prevent an authorization server in one domain from presenting the client's authorization grant to another authorization in another trust domain. For example, this will prevent the authorization server in Domain B from presenting the authorization grant it received from the client in Domain A to the authorization server for Domain C.
 
 ### Example
 
@@ -195,13 +195,13 @@ curl --location 'https://a.org/auth/token' \
 --form 'resource="https://b.org/auth"'
 ~~~
 
-## Present Authorization Grant
+## Assertion
 
 The client presents the authorization grant it received from the authorization server in its own domain and presents it to the authorization server in the domain of the resources server it wants to access as defined in the "Assertion Framework for OAuth 2.0 Client Authentication and Auhorization Grants" {{RFC7521}}.
 
 ### Request
 
-If the authorization grant is in the form of a JWT bearer token, the client SHOULD use the "JSON Web Token (JWT) Profile for OAuth 2.0 Client Authentication and Authorization Grants" as defined in {{RFC7521}}. Otherwise, the client SHOULD request an authorization grant using the "Assertion Framework for OAuth 2.0 Client Authentication and Auhorization Grants" as defined in {{RFC7521}} (Section 4.1). For the purpose of this specification the following descriptions apply:
+If the authorization grant is in the form of a JWT bearer token, the client SHOULD use the "JSON Web Token (JWT) Profile for OAuth 2.0 Client Authentication and Authorization Grants" as defined in {{RFC7521}}. Otherwise, the client SHOULD request an access token using the "Assertion Framework for OAuth 2.0 Client Authentication and Authorization Grants" as defined in {{RFC7521}} (Section 4.1). For the purpose of this specification the following descriptions apply:
 
 {:vspace}
 grant_type
