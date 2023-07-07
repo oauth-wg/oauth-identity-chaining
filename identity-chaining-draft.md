@@ -145,7 +145,7 @@ The flow illustrated in Figure 1 shows the step the client in trust domain A nee
 This specification does not define authorization server discovery. A client MAY contact the resource and leverage the WWW-Authentication response (see section 3 of {{RFC6750}}), maintain a static mapping or use other means to identify the authorization server.
 
 ## Token Exchange
-Once the authorization server is identified the client performs token exchange as defined in {{RFC8693}} with its own authorization server in order to obtain an authorization grant as specified in section 1.3 of {{RFC6749}}.
+The client performs token exchange as defined in {{RFC8693}} with the authorization server for its own domain (e.g. Domain A), in order to obtain an authorization grant that can be used with the authroization server of a different domain (e.g. Domain B) as specified in section 1.3 of {{RFC6749}}.
 
 ### Request
 
@@ -167,7 +167,7 @@ audience
 ### Processing rules
 
 * If the request itself is not valid or if the given resource or audience are unknown, or are unacceptable based on policy, the authorization server MUST deny the request.
-* The authorization server MAY add, remove or change claims. See [](#claims-transcription).
+* The authorization server MAY add, remove or change claims. See [Claims transcription](#claims-transcription).
 
 ### Authorization grant type
 
@@ -179,9 +179,9 @@ Authorization servers MAY use an existing grant type such us `urn:ietf:params:oa
 
 All of section 2.2 of {{RFC8693}} applies. In addition, the following applies to specification that conform to this specification. 
 
-* Returned authorization grant MUST be audienced to the requested authorization server. This corresponds with [RFC 7523 Section 3, Point 3](https://datatracker.ietf.org/doc/html/rfc7523#section-3) and is there to reduce missuse and to prevent clients from presenting their (for other use cases intented) access tokens as asseration.
+* Returned authorization grant MUST be audienced to the requested authorization server. This corresponds with [RFC 7523 Section 3, Point 3](https://datatracker.ietf.org/doc/html/rfc7523#section-3) and is there to reduce missuse and to prevent clients from presenting their access tokens as an authroization grant to an authorization server in a different domain.
 
-* Response authorization grant MAY be audienced to multiple Authorization Servers if federation happens to multiple trust boundaries. The authors of this specification reccomended that only one audience is used to prevent Authorization Server B to abuse and present the token to Authorization Server C.
+* The returned authorization grant MAY be audienced to multiple authorization servers, provided that trust relationships exist with them (e.g. through federation). It is RECOMMENDED that only one audience is used to prevent an authroization server in one domain from presenting the client's authorization grant to another authroization in another trust domain. For example, this will prevent the authorization server in Domain B from presenting the authorization grant it received from the client in Domain A to the authorization server for Domain C.
 
 ### Example
 
@@ -195,19 +195,19 @@ curl --location 'https://a.org/auth/token' \
 --form 'resource="https://b.org/auth"'
 ~~~
 
-## Assertion
+## Present Authorization Grant
 
-The client uses the received authorization grant from steps B and C as an asseration towards authorization server of domain B.
+The client presents the authorization grant it received from the authorization server in its own domain and presents it to the authorization server in the domain of the resources server it wants to access as defined in the "Assertion Framework for OAuth 2.0 Client Authentication and Auhorization Grants" {{RFC7521}}.
 
 ### Request
 
-If the authorization grant is in the form of a JWT bearer token, the client SHOULD use the "JSON Web Token (JWT) Profile for OAuth 2.0 Client Authentication and Authorization Grants" as defined in {{RFC7521}}. Otherwise, the client SHOULD request a access token using the "Assertion Framework for OAuth 2.0 Client Authentication and Auhorization Grants" as defined in {{RFC7521}} (Section 4.1). For the purpose of this specification the following descriptions apply:
+If the authorization grant is in the form of a JWT bearer token, the client SHOULD use the "JSON Web Token (JWT) Profile for OAuth 2.0 Client Authentication and Authorization Grants" as defined in {{RFC7521}}. Otherwise, the client SHOULD request an authorization grant using the "Assertion Framework for OAuth 2.0 Client Authentication and Auhorization Grants" as defined in {{RFC7521}} (Section 4.1). For the purpose of this specification the following descriptions apply:
 
 {:vspace}
 grant_type
 : REQUIRED. In context of this specification clients SHOULD use the type identifer returned by the token exchange (`issued_token_type` response). See [authorization grant type](#authorization-grant-type) for more details.
 
-asseration
+assertion
 : REQUIRED. Authorization grant returned by the token exchange (`access_token` response).
 
 scope
@@ -217,7 +217,7 @@ The client MAY indicate the audience it is trying to access through the `scope` 
 
 ### Processing rules
 
-All of {{RFC7521}} (Section 5.2 in specific) applies. In context of this specification the following rules apply in addition:
+All of {{RFC7521}} (Section 5.2 in specific) applies, along with the following processing rules:
 
 * The request MUST be denied presented authorization grant is not audiencd to the authorization server that processes the request
 * The authorization server SHOULD deny the request if it is not able to identify the subject
@@ -241,7 +241,7 @@ curl --location --request GET 'https://b.org/auth/token' \
 
 Authorization servers MAY transcribe claims when either producing authorization grant at the token exchange flow or access tokens at the asseration flow.
 
-* **Transcribing subject identifier**: Subject identifier can differ between the parties involved. For instance: A user is known at domain A by "johndoe@a.org" but in domain B by "doe.john". The mapping from one identifier to the other MAY either happen in the token exchange step and updated identifer is reflected in returned authorization grant or in the asseration step where the updated identifier would be reflected in the access token. To support this both authorization servers MAY add, change or remove claims as described above.
+* **Transcribing the subject identifier**: Subject identifier can differ between the parties involved. For instance: A user is known at domain A by "johndoe@a.org" but in domain B by "doe.john". The mapping from one identifier to the other MAY either happen in the token exchange step and updated identifer is reflected in returned authorization grant or in the asseration step where the updated identifier would be reflected in the access token. To support this both authorization servers MAY add, change or remove claims as described above.
 * **Selective disclosure**: Authorization servers MAY remove or hide certain due to privacy requirements or reduced trust towards the targeting trust domain. To hide and enclose claims {{SD-JWT}} MAY be used.
 * **Controlling scope**: Clients MAY use the scope parameter to control transcribed claims (e.g. downscoping). Authorization Servers SHOULD verify that requested scopes are not higher priveleged than the scopes of presented subject_token.
 * **Including authorization grant claims**: The authorization server performing the asseration flow MAY leverage claims from the presented authorization grant and include it in the access token. The populated claims SHOULD be namespaced or validated to prevent the injection of invalid claims.
