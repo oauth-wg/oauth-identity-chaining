@@ -69,29 +69,24 @@ Applications often require access to resources that are distributed across multi
 
 {::boilerplate bcp14-tagged}
 
-# Identity Chaining Flow
+# Identity Chaining Across Trust Domains
 
 This specification describes a combination of OAuth 2.0 Token Exchange {{RFC8693}} and Assertion Framework for OAuth 2.0 Client Authentication and Authorization Grants {{RFC7521}} to achieve identity chaining across trust domains.
 
 A client in trust domain A that needs to access a resource server in trust domain B requests an authorization grant from the authorization server for trust domain A via a token exchange. The client in trust domain A presents the received grant as an asseration to the authorization server in domain B in order to obtain an access token for the protected resource in domain B. The client in domain A may be a resource server, or it may be the authroization server itself. A client in trust domain A that needs to access a resource server in trust domain B requests an authorization grant from the authorization server for trust domain A via a token exchange. The client in trust domain A presents the received grant as an asseration to the authorization server in domain B in order to obtain an access token for the protected resource in domain B.  The client in domain A may be a resource server, or it may be the authroization server itself. 
 
-## Use Cases
-
-### Cross-Jusrisdiction Customer Data Access
-A US state official in State A needs to access the database of State B to retrieve information about a customer who is a citizen of State B. The official first gains access to the State A gateway by logging in and authenticating to their local front-end system. The gateway then passes the official’s request and identity to a central information sharing system that all states use to share data. Finally, the central system obtains credentials to access the State B gateway and routes  the request from the official, along with the officials identity, to the State B gateway to access the customer’s information in the State B database.
-
-### API Security Use Case
-A home devices company provides a “Camera API” to enable access to home cameras. Partner companies use this Camera API to integrate the camera feeds into their security dashboards. Using 2-legged OAuth between the partner and the Camera API, a partner can request the feed from a home camera to be displayed in their dashboard. The user has an account with the camera provider. The user may be logged in to view the partner provided dashboard, or they may authorize emergency access to the camera.  The home devices company must be able to independently verify that the request originated and was authorized by a user who is authorized to view the feed of the requested home camera.
+## Use Case
+This section describes the primary use case addressed in this specification.
 
 ### Preserve User Context across Multi-cloud, Multi-Hybrid environments
-A user attempts to access a service that is implemented as a number of on-prem and cloud-based microservices. Both the on-premise and cloud-based services are segmented by multiple trust boundaries that span one or more on-premise or cloud service environments. Every microservice can apply an authorization policy that takes the context of the original user, as well as intermediary microservices into account, irrespective of where the microservices are running and even when a microservice in one trust domain calls another service in another trust domain.
+A user attempts to access a service that is implemented as a number of on-premise and cloud-based microservices. Both the on-premise and cloud-based services are segmented by multiple trust boundaries that span one or more on-premise or cloud service environments. Every microservice can apply an authorization policy that takes the context of the original user, as well as intermediary microservices into account, irrespective of where the microservices are running and even when a microservice in one trust domain calls another service in another trust domain.
 
-### Report Building in a Federated Environment
-A client requests a report from a "local" resource that incorporates data from one or more associated sources. Each source is in a separate trust domain. Trust domains have a federated identity framework (e.g. PKI) and authorization framework, but may have varied and asymmetric specific trust relationships (e.g. transitive trust is not guaranteed). Trust relationships are established between authorization servers in each trust domain, and exercised through messages passed between the authorization servers that assert identity and authorization claims. The identity of requesters is chained throughout, but authorization claims are limited to what is necessary to each request.
+### API Security Use Case
+A home devices company provides a “Camera API” to enable access to home cameras. Partner companies use this Camera API to integrate the camera feeds into their security dashboards. Using 2-legged OAuth between the partner and the Camera API, a partner can request the feed from a home camera to be displayed in their dashboard. The user has an account with the camera provider. The user may be logged in to view the partner provided dashboard, or they may authorize emergency access to the camera. The home devices company must be able to independently verify that the request originated and was authorized by a user who is authorized to view the feed of the requested home camera.
 
 ## Overview 
 
-The Identity Chaining flow outlined below describes how these specification are used and work together. Two examples in the suffix give more concrete examples. One where a resource server acts as the client and one where an authorization server acts as the client.
+The Identity Chaining flow outlined below describes how these specifications are used to address the use cases identified. The appendix include two additional examples that describe how this flow is used when the resource server acts as the client an another that describes what happens when the authorization server acts as the client.
 
 ~~~~
 ┌─────────────┐                                    ┌─────────────┐  ┌─────────┐
