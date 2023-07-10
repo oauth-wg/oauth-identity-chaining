@@ -57,6 +57,18 @@ informative:
     - name: Brian Campbell
       org: Ping Identity
 
+  OAUTH2-BCP:
+    title: OAuth 2.0 Security Best Current Practice
+    target: https://datatracker.ietf.org/doc/html/draft-ietf-oauth-security-topics
+    author:
+    - name: T. Lodderstedt
+      org: yes.com
+    - name: J. Bradley
+      org: Yubico
+    - name: A. Labunets
+      org: Independent Researcher
+    - name: D. Fett
+      org: Authlete
 
 --- abstract
 
@@ -252,7 +264,8 @@ To be added.
 
 # Security Considerations {#Security}
 
-To be added.
+## Client Authentication
+Authorization Servers SHOULD follow the OAuth 2.0 Security Best Current Practice {{OAUTH2-BCP}} for client authentication.
 
 --- back
 
