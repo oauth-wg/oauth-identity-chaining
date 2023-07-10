@@ -253,7 +253,7 @@ To be added.
 # Security Considerations {#Security}
 
 ## Client Authentication
-All entities that act as clients SHOULD authenticate when interacting with authorization servers or resources servers. In cases where an authorization server in one domain acts as a client to an authorization server in a another domain as described in [Authorization server acting as client](#authorization-server-acting-as-client), the authorization server acting as a client MUST authenticate to the authorization server in a different domain. The client authentication methods that should be used is determined by the policy agreed between the operators of the two trust domains.
+Whether or not client authentication is needed, as well as what types of client are supported, are policy decisions at the discretion of the authorization server.
 
 --- back
 
