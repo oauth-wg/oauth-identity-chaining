@@ -57,6 +57,18 @@ informative:
     - name: Brian Campbell
       org: Ping Identity
 
+  OAUTH2-BCP:
+    title: OAuth 2.0 Security Best Current Practice
+    target: https://datatracker.ietf.org/doc/html/draft-ietf-oauth-security-topics
+    author:
+    - name: T. Lodderstedt
+      org: yes.com
+    - name: J. Bradley
+      org: Yubico
+    - name: A. Labunets
+      org: Independent Researcher
+    - name: D. Fett
+      org: Authlete
 
 --- abstract
 
@@ -84,7 +96,7 @@ This section describes two use cases addressed in this specification.
 A user attempts to access a service that is implemented as a number of on-premise and cloud-based microservices. Both the on-premise and cloud-based services are segmented by multiple trust boundaries that span one or more on-premise or cloud service environments. Every microservice can apply an authorization policy that takes the context of the original user, as well as intermediary microservices into account, irrespective of where the microservices are running and even when a microservice in one trust domain calls another service in another trust domain.
 
 ### API Security Use Case
-A home devices company provides a “Camera API” to enable access to home cameras. Partner companies use this Camera API to integrate the camera feeds into their security dashboards. Using 2-legged OAuth between the partner and the Camera API, a partner can request the feed from a home camera to be displayed in their dashboard. The user has an account with the camera provider. The user may be logged in to view the partner provided dashboard, or they may authorize emergency access to the camera. The home devices company must be able to independently verify that the request originated and was authorized by a user who is authorized to view the feed of the requested home camera.
+A home devices company provides a “Camera API” to enable access to home cameras. Partner companies use this Camera API to integrate the camera feeds into their security dashboards. Using OAuth between the partner and the Camera API, a partner can request the feed from a home camera to be displayed in their dashboard. The user has an account with the camera provider. The user may be logged in to view the partner provided dashboard, or they may authorize emergency access to the camera. The home devices company must be able to independently verify that the request originated and was authorized by a user who is authorized to view the feed of the requested home camera.
 
 ## Overview 
 
@@ -252,7 +264,8 @@ To be added.
 
 # Security Considerations {#Security}
 
-To be added.
+## Client Authentication
+Authorization Servers SHOULD follow the OAuth 2.0 Security Best Current Practice {{OAUTH2-BCP}} for client authentication.
 
 --- back
 
@@ -379,7 +392,7 @@ The flow contains the following steps:
 
 (C) Once the authorization server is determined an authorization grant is issued internally. This reflects to [Token exchange](#token-exchange) of this specification and can be seen as an "internal token exchange".
 
-(D) The issued authorization grant is presented to the authorization server of Domain B. This presentation happens between the authorization servers and authorization server A may be required to provide client authentication too while doing so.
+(D) The issued authorization grant is presented to the authorization server of Domain B. This presentation happens between the authorization servers and authorization server A may be required to perform client authentication while doing so.
 
 (E) The authorization server of Domain B returns an access token for access to the protected resource in Domain B to the authorization server in Domain A.
 
