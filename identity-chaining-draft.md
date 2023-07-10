@@ -306,7 +306,7 @@ The flow would look like this:
 
 The flow contains the following steps:
 
-(A) Resource server of domain A needs to access protected resource in Domain B. It requires an access token to do so which it does not posses. To receive information about the authorization server which protected the resource in domain B it calls the resource unauthenticated.
+(A) Resource server of domain A needs to access protected resource in Domain B. It requires an access token to do so which it does not possess. To receive information about the authorization server which protected the resource in domain B it calls the resource unauthenticated.
 
 (B) The protected resource returns the WWW-Authenticate header to indicate its authorization server.
 
@@ -379,7 +379,7 @@ The flow contains the following steps:
 
 (C) Once the authorization server is determined an authorization grant is issued internally. This reflects to [Token exchange](#token-exchange) of this specification and can be seen as an "internal token exchange".
 
-(D) The issued authorization grant is presented to the authorization server of Domain B. This presentation happens between the authorization servers and authorization server A may be required to provide client authentication too while doing so.
+(D) The issued authorization grant is presented to the authorization server of Domain B. This presentation happens between the authorization servers and authorization server A may be required to perform client authentication while doing so.
 
 (E) Authorization server of Domain B returns an access token to access the protected resource.
 
