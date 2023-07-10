@@ -265,7 +265,7 @@ To be added.
 # Security Considerations {#Security}
 
 ## Client Authentication
-Authorization Servers SHOULD follow the {{OAUTH2-BCP}} for client authentication.
+Authorization Servers SHOULD follow the OAuth 2.0 Security Best Current Practice {{OAUTH2-BCP}} for client authentication.
 
 --- back
 
