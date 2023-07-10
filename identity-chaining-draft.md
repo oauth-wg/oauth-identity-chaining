@@ -166,7 +166,7 @@ requested_token_type
 : OPTIONAL according to {{RFC8693}}. In the context of this specification this parameter SHOULD NOT be used. See [Authorization grant type](#authorization-grant-type).
 
 scope
-: OPTIONAL. Additional scopes to indicate scopes included in returned authorization grant. See [](#claims-transcription).
+: OPTIONAL. Additional scopes to indicate scopes included in returned authorization grant. See [Claims transcription](#claims-transcription).
 
 resource
 : REQUIRED if audience is not set. URI of authorization server of targeting domain (domain B).
@@ -189,9 +189,9 @@ Authorization servers MAY use an existing grant type such us `urn:ietf:params:oa
 
 All of section 2.2 of {{RFC8693}} applies. In addition, the following applies to implementations that conform to this specification. 
 
-* Returned authorization grants MUST be audienced to the requested authorization server. This corresponds with [RFC 7523 Section 3, Point 3](https://datatracker.ietf.org/doc/html/rfc7523#section-3) and is there to reduce missuse and to prevent clients from presenting access tokens as an authorization grant to an authorization server in a different domain.
+* The "aud" claim in the returned authorization grant MUST identify the requested authorization server. This corresponds with [RFC 7523 Section 3, Point 3](https://datatracker.ietf.org/doc/html/rfc7523#section-3) and is there to reduce missuse and to prevent clients from presenting access tokens as an authorization grant to an authorization server in a different domain.
 
-* The returned authorization grant MAY be audienced to multiple authorization servers, provided that trust relationships exist with them (e.g. through federation). It is RECOMMENDED that only one audience is used to prevent an authorization server in one domain from presenting the client's authorization grant to an authorization server in a different trust domain. For example, this will prevent the authorization server in Domain B from presenting the authorization grant it received from the client in Domain A to the authorization server for Domain C.
+* The "aud" claim included in the returned authorization grant MAY identify multiple authorization servers, provided that trust relationships exist with them (e.g. through federation). It is RECOMMENDED that the "aud" claim is restricted to a single authorization server to prevent an authorization server in one domain from presenting the client's authorization grant to an authorization server in a different trust domain. For example, this will prevent the authorization server in Domain B from presenting the authorization grant it received from the client in Domain A to the authorization server for Domain C.
 
 ### Example
 
@@ -229,9 +229,9 @@ The client MAY indicate the audience it is trying to access through the `scope` 
 
 All of {{RFC7521}} (Section 5.2 in specific) applies, along with the following processing rules:
 
-* The request MUST be denied if the presented authorization grant is not audienced to the authorization server that processes the request
-* The authorization server SHOULD deny the request if it is not able to identify the subject
-* Due to policy the request MAY be denied (for instance if the federation from domain A is not allowed)
+* The request MUST be denied if the presented authorization grant does not include an "aud" claim identifying the authorization server that processes the request.
+* The authorization server SHOULD deny the request if it is not able to identify the subject.
+* Due to policy the request MAY be denied (for instance if the federation from domain A is not allowed).
 
 ### Response
 
