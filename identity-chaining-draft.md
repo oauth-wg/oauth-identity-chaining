@@ -199,15 +199,35 @@ All of section 2.2 of {{RFC8693}} applies. In addition, the following applies to
 
 ### Example
 
-The example belows shows the message invoked by the client in trust domain A to perform token exchange with the authorization server in domain A (https://a.org/auth) to receive an authorization grant for the authorization server in trust domain B (https://b.org/auth).
+The example belows shows the message invoked by the client in trust domain A to perform token exchange with the authorization server in domain A (https://as.a.org/auth) to receive an authorization grant for the authorization server in trust domain B (https://as.b.org/auth).
 
 ~~~
-curl --location 'https://a.org/auth/token' \
---form 'grant_type="urn:ietf:params:oauth:grant-type:token-exchange"' \
---form 'subject_token="ey.."' \
---form 'subject_token_type="urn:ietf:params:oauth:token-type:access_token"' \
---form 'resource="https://b.org/auth"'
+POST /auth/token HTTP/1.1
+ Host: as.a.org
+ Content-Type: application/x-www-form-urlencoded
+
+ grant_type=urn%3Aietf%3Aparams%3Aoauth%3Agrant-type%3Atoken-exchange
+ &resource=https%3A%2F%2Fas.b.org%2Fauth
+ &subject_token=ey...
+ &subject_token_type=urn%3Aietf%3Aparams%3Aoauth%3Atoken-type%3Aaccess_token
 ~~~
+{: title='Token exchange request'}
+
+~~~
+HTTP/1.1 200 OK
+Content-Type: application/json
+Cache-Control: no-cache, no-store
+
+{
+  "access_token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJo
+  dHRwczovL2FzLmEub3JnL2F1dGgiLCJleHAiOjE2OTUyODQwOTIsImlhdCI6MTY5N
+  TI4NzY5Miwic3ViIjoiam9obl9kb2VAYS5vcmciLCJhdWQiOiJodHRwczovL2FzLm
+  Iub3JnL2F1dGgifQ.304Pv9e6PnzcQPzz14z-k2ZyZvDtP5WIRkYPScwdHW4",
+  "token_type":"Bearer",
+  "expires_in":60
+}
+~~~
+{: title='Token exchange response'}
 
 ## Authorization Grant
 
@@ -243,13 +263,33 @@ The authorization server responds with an access token as described in section 5
 
 ### Example
 
-The example belows shows how the client in trust domain A presents an authorization grant to the authorization server in trust domain B (https://b.org/auth) to receive an access token for a protected resource in trust domain B.
+The example belows shows how the client in trust domain A presents an authorization grant to the authorization server in trust domain B (https://as.b.org/auth) to receive an access token for a protected resource in trust domain B.
 
 ~~~
-curl --location --request GET 'https://b.org/auth/token' \
---form 'grant_type="urn:ietf:params:oauth:grant-type:jwt-bearer"' \
---form 'assertion="ey..."'
+POST /auth/token HTTP/1.1
+ Host: as.b.org
+ Content-Type: application/x-www-form-urlencoded
+
+ grant_type=urn%3Aietf%3Aparams%3Aoauth%3Agrant-type%3Ajwt-bearer
+ &assertion=ey...
 ~~~
+{: title='Assertion request'}
+
+~~~
+HTTP/1.1 200 OK
+Content-Type: application/json
+Cache-Control: no-cache, no-store
+
+{
+  "access_token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJo
+  dHRwczovL2FzLmIub3JnL2F1dGgiLCJleHAiOjE2OTUyODQwOTIsImlhdCI6MTY5N
+  TI4NzY5Miwic3ViIjoiam9obi5kb2UuMTIzIiwiYXVkIjoiaHR0cHM6Ly9iLm9yZy
+  9hcGkifQ.CJBuv6sr6Snj9in5T8f7g1uB61Ql8btJiR0IXv5oeJg",
+  "token_type":"Bearer",
+  "expires_in":60
+}
+~~~
+{: title='Assertion response'}
 
 ## Claims transcription
 
