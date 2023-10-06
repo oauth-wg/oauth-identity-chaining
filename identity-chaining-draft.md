@@ -25,6 +25,9 @@ author:
 - name: Mike Jenkins
   org: NSA-CCSS
   email: mjjenki@cyber.nsa.gov
+- name: Brian Campbell
+  org: Ping Identity
+  email: bcampbell@pingidentity.com
 contributor:
 - name: Atul Tulshibagwale
   org: SGNL
