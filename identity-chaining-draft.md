@@ -267,11 +267,11 @@ The example belows shows how the client in trust domain A presents an authorizat
 
 ~~~
 POST /auth/token HTTP/1.1
- Host: as.b.org
- Content-Type: application/x-www-form-urlencoded
+Host: as.b.org
+Content-Type: application/x-www-form-urlencoded
 
- grant_type=urn%3Aietf%3Aparams%3Aoauth%3Agrant-type%3Ajwt-bearer
- &assertion=ey...
+grant_type=urn%3Aietf%3Aparams%3Aoauth%3Agrant-type%3Ajwt-bearer
+&assertion=ey...
 ~~~
 {: title='Assertion request'}
 
