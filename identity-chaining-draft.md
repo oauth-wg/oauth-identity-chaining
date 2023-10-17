@@ -203,13 +203,13 @@ The example belows shows the message invoked by the client in trust domain A to 
 
 ~~~
 POST /auth/token HTTP/1.1
- Host: as.a.org
- Content-Type: application/x-www-form-urlencoded
+Host: as.a.org
+Content-Type: application/x-www-form-urlencoded
 
- grant_type=urn%3Aietf%3Aparams%3Aoauth%3Agrant-type%3Atoken-exchange
- &resource=https%3A%2F%2Fas.b.org%2Fauth
- &subject_token=ey...
- &subject_token_type=urn%3Aietf%3Aparams%3Aoauth%3Atoken-type%3Aaccess_token
+grant_type=urn%3Aietf%3Aparams%3Aoauth%3Agrant-type%3Atoken-exchange
+&resource=https%3A%2F%2Fas.b.org%2Fauth
+&subject_token=ey...
+&subject_token_type=urn%3Aietf%3Aparams%3Aoauth%3Atoken-type%3Aaccess_token
 ~~~
 {: title='Token exchange request'}
 
