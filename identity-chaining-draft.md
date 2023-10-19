@@ -48,6 +48,7 @@ normative:
   RFC7521: # Assertion Framework for OAuth 2.0 Client Authentication and Authorization Grants
   RFC7523: # JSON Web Token (JWT) Profile for OAuth 2.0 Client Authentication and Authorization Grants
   RFC8707: # Resource Indicators for OAuth 2.0
+  RFC8414: # OAuth 2.0 Authorization Server Metadata
 
 informative:
 
@@ -256,7 +257,7 @@ The client MAY indicate the audience it is trying to access through the `scope` 
 
 All of Section 5.2 {{RFC7521}} applies, in addition to the following processing rules:
 
-* The "aud" claim value MUST be either the token endpoint identifier as described Section 3 {{RFC7523}} or the Authorization Server issuer idetifier as defined in Section 5.2 of {{RFC7521}}. 
+* The "aud" claim MUST identify either the token endpoint or the authorization server. To avoid ambiguity, the issuer identifier as defined in {{RFC8414}} SHOULD be used as the value of the "aud" claim.
 * The authorization server SHOULD deny the request if it is not able to identify the subject.
 * Due to policy the request MAY be denied (for instance if the federation from domain A is not allowed).
 
