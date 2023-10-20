@@ -43,7 +43,6 @@ contributor:
 
 normative:
   RFC6749: # OAuth 2.0 Authorization Framework
-  RFC6750: # The OAuth 2.0 Authorization Framework: Bearer Token Usage
   RFC8693: # OAuth 2.0 Token Exchange
   RFC7521: # Assertion Framework for OAuth 2.0 Client Authentication and Authorization Grants
   RFC7523: # JSON Web Token (JWT) Profile for OAuth 2.0 Client Authentication and Authorization Grants
@@ -74,6 +73,18 @@ informative:
       org: Independent Researcher
     - name: D. Fett
       org: Authlete
+
+  OAUTH2-PROTECTED-RESOURCE-METADATA:
+    title: OAuth 2.0 Protected Resource Metadata
+    target: https://datatracker.ietf.org/doc/html/draft-ietf-oauth-resource-metadata-00\
+    author:
+    - name: M.B. Jones
+      org: Self-Issued Consulting
+    - name: P. Hunt
+      org: Independent Identity, Inc.
+    - name: Aaron Parecki
+      org: Okta
+
 
 --- abstract
 
@@ -159,7 +170,7 @@ The flow illustrated in Figure 1 shows the steps the client in trust Domain A ne
 * (F) The client now possesses an access token to access the protected resource in Domain B.
 
 ## Authorization Server Discovery
-This specification does not define authorization server discovery. A client MAY contact the resource server and leverage the WWW-Authentication response (see section 3 of {{RFC6750}}), maintain a static mapping or use other means to identify the authorization server.
+This specification does not define authorization server discovery. A client MAY maintain a static mapping or use other means to identify the authorization server. The `authorization_servers` property in {{OAUTH2-PROTECTED-RESOURCE-METADATA}} MAY be used.
 
 ## Token Exchange
 The client performs token exchange as defined in {{RFC8693}} with the authorization server for its own domain (e.g., Domain A) in order to obtain an authorization grant that can be used with the authorization server of a different domain (e.g., Domain B) as specified in section 1.3 of {{RFC6749}}.
@@ -336,10 +347,9 @@ The flow would look like this:
 |Domain A     |          |Domain A|         |Domain B     | |Domain B |
 +-------------+          +--------+         +-------------+ +---------+
        |                     |                     |             |     
-       |                     |   (A) access (unauthenticated)    |     
+       |                     |   (A) request protected resource  |     
+       |                     |      metadata                     |     
        |                     | --------------------------------->|     
-       |                     |                     |             |     
-       |                     |   (B) <WWW-Authenticate header>   |     
        |                     | <- - - - - - - - - - - - - - - - -|     
        |                     |                     |             |     
        | (C) exchange token  |                     |             |     
@@ -367,19 +377,17 @@ The flow would look like this:
 
 The flow contains the following steps:
 
-(A) The resource server of domain A needs to access protected resource in Domain B. It requires an access token to do so which it does not possess. To receive information about the authorization server which protecs the resource in domain B it calls the resource unauthenticated.
+(A) The resource server of domain A needs to access protected resource in Domain B. It requires an access token to do so which it does not possess. In this example {{OAUTH2-PROTECTED-RESOURCE-METADATA}} is used to receive information about the authorization server which protecs the resource in domain B. Step A and B MAY be skipped if discovery is not needed and other means of discovery MAY be used. The protected resource returns its metadata along with the authorization server information.
 
-(B) The protected resource returns the WWW-Authenticate header to indicate its authorization server.
+(B) Now, after the resource server has identified the authorization server for Domain B, the resource server requests an authorization grant for the authorization server in Domain B from its own authorization server (Domain A). This happens via the token exchange protocol.
 
-(C) Now, after the resource server has identified the authorization server for Domain B, the resource server requests an authorization grant for the authorization server in Domain B from its own authorization server (Domain A). This happens via the token exchange protocol.
+(C) If successful, the authorization server returns an authorization grant to the resource server.
 
-(D) If successful, the authorization server returns an authorization grant to the resource server.
+(D) The resource server presents the authorization grant to the authorization server of Domain B.
 
-(E) The resource server presents the authorization grant to the authorization server of Domain B.
+(E) The authorization server of Domain B uses claims from the authorization grant to identify the user and its access. If access is granted an access token is returned.
 
-(F) The authorization server of Domain B uses claims from the authorization grant to identify the user and its access. If access is granted an access token is returned.
-
-(G) The resource server uses the access token to access the protected resource at Domain B.
+(F) The resource server uses the access token to access the protected resource at Domain B.
 
 ## Authorization server acting as client
 
