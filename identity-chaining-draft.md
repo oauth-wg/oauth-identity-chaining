@@ -399,7 +399,8 @@ The flow when authorization servers act as client would look like this:
 |Domain A|          |Domain A     |         |Domain B     | |Domain B |
 +--------+          +-------------+         +-------------+ +---------+
     |                      |                       |             |     
-    | (A) request token for|                       |             |     
+    | (A) request or       |                       |             |  
+    | exchange token for   |                       |             |     
     | protected resource   |                       |             |     
     | in domain B.         |                       |             |     
     | -------------------->|                       |             |     
