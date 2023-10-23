@@ -257,7 +257,7 @@ The client MAY indicate the audience it is trying to access through the `scope` 
 
 All of Section 5.2 {{RFC7521}} applies, in addition to the following processing rules:
 
-* The "aud" claim MUST identify either the token endpoint or the authorization server. To avoid ambiguity, the issuer identifier as defined in {{RFC8414}} SHOULD be used as the value of the "aud" claim.
+* The "aud" claim MUST identify the Authorization Server as a valid intended audience of the assertion using either the token endpoint as described Section 3 {{RFC7523}} or the issuer identifier as defined in Section 2 of {{RFC8414}}.
 * The authorization server SHOULD deny the request if it is not able to identify the subject.
 * Due to policy the request MAY be denied (for instance if the federation from domain A is not allowed).
 
