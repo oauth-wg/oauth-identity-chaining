@@ -74,16 +74,7 @@ informative:
     - name: D. Fett
       org: Authlete
 
-  OAUTH2-PROTECTED-RESOURCE-METADATA:
-    title: OAuth 2.0 Protected Resource Metadata
-    target: https://datatracker.ietf.org/doc/html/draft-ietf-oauth-resource-metadata-00\
-    author:
-    - name: M.B. Jones
-      org: Self-Issued Consulting
-    - name: P. Hunt
-      org: Independent Identity, Inc.
-    - name: Aaron Parecki
-      org: Okta
+  I-D.ietf-oauth-resource-metadata:
 
 
 --- abstract
@@ -170,7 +161,7 @@ The flow illustrated in Figure 1 shows the steps the client in trust Domain A ne
 * (F) The client now possesses an access token to access the protected resource in Domain B.
 
 ## Authorization Server Discovery
-This specification does not define authorization server discovery. A client MAY maintain a static mapping or use other means to identify the authorization server. The `authorization_servers` property in {{OAUTH2-PROTECTED-RESOURCE-METADATA}} MAY be used.
+This specification does not define authorization server discovery. A client MAY maintain a static mapping or use other means to identify the authorization server. The `authorization_servers` property in {{I-D.ietf-oauth-resource-metadata}} MAY be used.
 
 ## Token Exchange
 The client performs token exchange as defined in {{RFC8693}} with the authorization server for its own domain (e.g., Domain A) in order to obtain an authorization grant that can be used with the authorization server of a different domain (e.g., Domain B) as specified in section 1.3 of {{RFC6749}}.
@@ -377,7 +368,7 @@ The flow would look like this:
 
 The flow contains the following steps:
 
-(A) The resource server of domain A needs to access protected resource in Domain B. It requires an access token to do so which it does not possess. In this example {{OAUTH2-PROTECTED-RESOURCE-METADATA}} is used to receive information about the authorization server which protects the resource in domain B. This step MAY be skipped if discovery is not needed and other means of discovery MAY be used. The protected resource returns its metadata along with the authorization server information.
+(A) The resource server of domain A needs to access protected resource in Domain B. It requires an access token to do so which it does not possess. In this example {{I-D.ietf-oauth-resource-metadata}} is used to receive information about the authorization server which protects the resource in domain B. This step MAY be skipped if discovery is not needed and other means of discovery MAY be used. The protected resource returns its metadata along with the authorization server information.
 
 (B) Now, after the resource server has identified the authorization server for Domain B, the resource server requests an authorization grant for the authorization server in Domain B from its own authorization server (Domain A). This happens via the token exchange protocol.
 
