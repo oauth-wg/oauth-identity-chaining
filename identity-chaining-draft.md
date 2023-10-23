@@ -50,30 +50,8 @@ normative:
 
 informative:
 
-  SD-JWT:
-    title: Selective Disclosure for JWTs (SD-JWT)
-    target: https://datatracker.ietf.org/doc/html/draft-ietf-oauth-selective-disclosure-jwt-04
-    author:
-    - name: Daniel Fett
-      org: yes.com
-    - name: Kristina Yasuda
-      org: Microsoft
-    - name: Brian Campbell
-      org: Ping Identity
-
-  OAUTH2-BCP:
-    title: OAuth 2.0 Security Best Current Practice
-    target: https://datatracker.ietf.org/doc/html/draft-ietf-oauth-security-topics
-    author:
-    - name: T. Lodderstedt
-      org: yes.com
-    - name: J. Bradley
-      org: Yubico
-    - name: A. Labunets
-      org: Independent Researcher
-    - name: D. Fett
-      org: Authlete
-
+  I-D.ietf-selective-disclosure-jwt:
+  I-D.ietf-oauth-security-topics:
   I-D.ietf-oauth-resource-metadata:
 
 
@@ -301,7 +279,7 @@ Cache-Control: no-cache, no-store
 Authorization servers MAY transcribe claims when either producing authorization grants in the token exchange flow or access tokens in the assertion flow.
 
 * **Transcribing the subject identifier**: Subject identifier can differ between the parties involved. For instance: A user is known at domain A by "johndoe@a.org" but in domain B by "doe.john@b.org". The mapping from one identifier to the other MAY either happen in the token exchange step and the updated identifer is reflected in returned authorization grant or in the assertion step where the updated identifier would be reflected in the access token. To support this both authorization servers MAY add, change or remove claims as described above.
-* **Selective disclosure**: Authorization servers MAY remove or hide certain due to privacy requirements or reduced trust towards the targeting trust domain. To hide and enclose claims {{SD-JWT}} MAY be used.
+* **Selective disclosure**: Authorization servers MAY remove or hide certain due to privacy requirements or reduced trust towards the targeting trust domain. To hide and enclose claims {{I-D.ietf-selective-disclosure-jwt}} MAY be used.
 * **Controlling scope**: Clients MAY use the scope parameter to control transcribed claims (e.g. downscoping). Authorization Servers SHOULD verify that requested scopes are not higher priveleged than the scopes of presented subject_token.
 * **Including authorization grant claims**: The authorization server performing the assertion flow MAY leverage claims from the presented authorization grant and include them in the returned access token. The populated claims SHOULD be namespaced or validated to prevent the injection of invalid claims.
 
@@ -314,7 +292,7 @@ To be added.
 # Security Considerations {#Security}
 
 ## Client Authentication
-Authorization Servers SHOULD follow the OAuth 2.0 Security Best Current Practice {{OAUTH2-BCP}} for client authentication.
+Authorization Servers SHOULD follow the OAuth 2.0 Security Best Current Practice {{I-D.ietf-oauth-security-topics}} for client authentication.
 
 --- back
 
