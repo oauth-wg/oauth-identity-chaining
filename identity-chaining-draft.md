@@ -21,7 +21,8 @@ author:
   org: Microsoft
   email: pieter.kasselman@microsoft.com
 - name: Kelley Burgin
-  email: kelley.burgin@gmail.com
+  org: MITRE
+  email: kburgin@mitre.org
 - name: Mike Jenkins
   org: NSA-CCSS
   email: mjjenki@cyber.nsa.gov
