@@ -6,7 +6,7 @@ submissiontype: IETF
 area: sec
 wg: oauth
 
-docname: draft-oauth-identity-chaining-00
+docname: draft-ietf-oauth-identity-chaining-00
 
 title: Identity Chaining across Trust Domains
 abbrev:
