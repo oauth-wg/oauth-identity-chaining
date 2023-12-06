@@ -59,7 +59,7 @@ informative:
 
 --- abstract
 
-This specification defines a mechanism to preserve identity and call chain information across trust domains that use the OAuth 2.0 Framework. 
+This specification defines a mechanism to preserve identity and call chain information across trust domains that use the OAuth 2.0 Framework.
 
 --- middle
 
@@ -85,7 +85,7 @@ A user attempts to access a service that is implemented as a number of on-premis
 ### API Security Use Case
 A home devices company provides a “Camera API” to enable access to home cameras. Partner companies use this Camera API to integrate the camera feeds into their security dashboards. Using OAuth between the partner and the Camera API, a partner can request the feed from a home camera to be displayed in their dashboard. The user has an account with the camera provider. The user may be logged in to view the partner provided dashboard, or they may authorize emergency access to the camera. The home devices company must be able to independently verify that the request originated and was authorized by a user who is authorized to view the feed of the requested home camera.
 
-## Overview 
+## Overview
 
 The Identity Chaining flow outlined below describes how a combination of OAuth 2.0 Token Exchange {{RFC8693}} and Assertion Framework for OAuth 2.0 Client Authentication and Authorization Grants {{RFC7521}} are used to address the use cases identified. The appendix include two additional examples that describe how this flow is used. In one example, the resource server acts as the client and in the other, the authorization server acts as the client.
 
@@ -95,34 +95,34 @@ The Identity Chaining flow outlined below describes how a combination of OAuth 2
 |Server       |         |Client  |         |Server       | |Resource |
 |Domain A     |         |Domain A|         |Domain B     | |Domain B |
 +-------------+         +--------+         +-------------+ +---------+
-       |                    |                     |             |     
-       |                    |----+                |             |     
-       |                    |    | (A) discover   |             |     
-       |                    |<---+ Authorization  |             |     
-       |                    |      Server         |             |     
-       |                    |      Domain B       |             |     
-       |                    |                     |             |     
-       |                    |                     |             |     
-       | (B) exchange token |                     |             |     
-       |   [RFC 8693]       |                     |             |     
-       |<-------------------|                     |             |     
-       |                    |                     |             |     
-       | (C) <authorization |                     |             |     
-       |       grant>       |                     |             |     
-       | - - - - - - - - - >|                     |             |     
-       |                    |                     |             |     
-       |                    | (D) present         |             |     
-       |                    | authorization grant |             |     
-       |                    | [RFC 7521]          |             |     
-       |                    | ------------------->|             |     
-       |                    |                     |             |     
-       |                    | (E) <access token>  |             |     
-       |                    | <- - - - - - - - - -|             |     
-       |                    |                     |             |     
-       |                    |               (F) access          |     
-       |                    | --------------------------------->|     
-       |                    |                     |             |     
-       |                    |                     |             |                
+       |                    |                     |             |
+       |                    |----+                |             |
+       |                    |    | (A) discover   |             |
+       |                    |<---+ Authorization  |             |
+       |                    |      Server         |             |
+       |                    |      Domain B       |             |
+       |                    |                     |             |
+       |                    |                     |             |
+       | (B) exchange token |                     |             |
+       |   [RFC 8693]       |                     |             |
+       |<-------------------|                     |             |
+       |                    |                     |             |
+       | (C) <authorization |                     |             |
+       |       grant>       |                     |             |
+       | - - - - - - - - - >|                     |             |
+       |                    |                     |             |
+       |                    | (D) present         |             |
+       |                    | authorization grant |             |
+       |                    | [RFC 7521]          |             |
+       |                    | ------------------->|             |
+       |                    |                     |             |
+       |                    | (E) <access token>  |             |
+       |                    | <- - - - - - - - - -|             |
+       |                    |                     |             |
+       |                    |               (F) access          |
+       |                    | --------------------------------->|
+       |                    |                     |             |
+       |                    |                     |             |
 ~~~~
 {: title='Identity Chaining Flow'}
 
@@ -174,9 +174,9 @@ The authorization grant format and content is part of a contract between the aut
 
 Authorization servers MAY use an existing grant type such us `urn:ietf:params:oauth:grant-type:jwt-bearer` to indicate a JWT or `urn:ietf:params:oauth:grant-type:saml2-bearer` to indicate SAML. Other grant types MAY be used to indicate other formats.
 
-### Response 
+### Response
 
-All of section 2.2 of {{RFC8693}} applies. In addition, the following applies to implementations that conform to this specification. 
+All of section 2.2 of {{RFC8693}} applies. In addition, the following applies to implementations that conform to this specification.
 
 * The "aud" claim in the returned authorization grant MUST identify the requested authorization server. This corresponds with [RFC 7523 Section 3, Point 3](https://datatracker.ietf.org/doc/html/rfc7523#section-3) and is there to reduce missuse and to prevent clients from presenting access tokens as an authorization grant to an authorization server in a different domain.
 
@@ -317,32 +317,32 @@ The flow would look like this:
 |Server       |          |Server  |         |Server       | |Resource |
 |Domain A     |          |Domain A|         |Domain B     | |Domain B |
 +-------------+          +--------+         +-------------+ +---------+
-       |                     |                     |             |     
-       |                     |   (A) request protected resource  |     
-       |                     |      metadata                     |     
-       |                     | --------------------------------->|     
-       |                     | <- - - - - - - - - - - - - - - - -|     
-       |                     |                     |             |     
-       | (C) exchange token  |                     |             |     
-       |   [RFC 8693]        |                     |             |     
-       |<--------------------|                     |             |     
-       |                     |                     |             |     
-       | (D) <authorization  |                     |             |     
-       |        grant>       |                     |             |     
-       | - - - - - - - - - ->|                     |             |     
-       |                     |                     |             |     
-       |                     | (E) present         |             |     
-       |                     |  authorization      |             |     
-       |                     |  grant [RFC 7521]   |             |     
-       |                     | ------------------->|             |     
-       |                     |                     |             |     
-       |                     | (F) <access token>  |             |     
-       |                     | <- - - - - - - - - -|             |     
-       |                     |                     |             |     
-       |                     |               (G) access          |     
-       |                     | --------------------------------->|     
-       |                     |                     |             |     
-       |                     |                     |             |     
+       |                     |                     |             |
+       |                     |   (A) request protected resource  |
+       |                     |      metadata                     |
+       |                     | --------------------------------->|
+       |                     | <- - - - - - - - - - - - - - - - -|
+       |                     |                     |             |
+       | (C) exchange token  |                     |             |
+       |   [RFC 8693]        |                     |             |
+       |<--------------------|                     |             |
+       |                     |                     |             |
+       | (D) <authorization  |                     |             |
+       |        grant>       |                     |             |
+       | - - - - - - - - - ->|                     |             |
+       |                     |                     |             |
+       |                     | (E) present         |             |
+       |                     |  authorization      |             |
+       |                     |  grant [RFC 7521]   |             |
+       |                     | ------------------->|             |
+       |                     |                     |             |
+       |                     | (F) <access token>  |             |
+       |                     | <- - - - - - - - - -|             |
+       |                     |                     |             |
+       |                     |               (G) access          |
+       |                     | --------------------------------->|
+       |                     |                     |             |
+       |                     |                     |             |
 ~~~
 {: title='Resource server acting as client'}
 
@@ -377,41 +377,41 @@ The flow when authorization servers act as client would look like this:
 |Server  |          |Server       |         |Server       | |Resource |
 |Domain A|          |Domain A     |         |Domain B     | |Domain B |
 +--------+          +-------------+         +-------------+ +---------+
-    |                      |                       |             |     
-    | (A) request or       |                       |             |  
-    | exchange token for   |                       |             |     
-    | protected resource   |                       |             |     
-    | in domain B.         |                       |             |     
-    | -------------------->|                       |             |     
-    |                      |                       |             |     
-    |                      |----+                  |             |     
-    |                      |    | (B) determine    |             |     
-    |                      |<---+ authorization    |             |     
-    |                      |      server B         |             |     
-    |                      |                       |             |     
-    |                      |                       |             |     
-    |                      |----+                  |             |     
-    |                      |    | (C) issue        |             |     
-    |                      |<---+ authorization    |             |     
-    |                      |      grant ("internal |             |     
-    |                      |      token exchange") |             |     
-    |                      |                       |             |     
-    |                      |                       |             |     
-    |                      | (D) present           |             |     
-    |                      |   authorization grant |             |     
-    |                      |   [RFC 7521]          |             |     
-    |                      | --------------------->|             |     
-    |                      |                       |             |     
-    |                      | (E) <access token>    |             |     
-    |                      | <- - - - - - - - - - -|             |     
-    |                      |                       |             |     
-    |  (F) <access token>  |                       |             |     
-    | <- - - - - - - - - - |                       |             |     
-    |                      |                       |             |     
-    |                      |           (G) access  |             |     
-    | ---------------------------------------------------------->|     
-    |                      |                       |             |     
-    |                      |                       |             |     
+    |                      |                       |             |
+    | (A) request or       |                       |             |
+    | exchange token for   |                       |             |
+    | protected resource   |                       |             |
+    | in domain B.         |                       |             |
+    | -------------------->|                       |             |
+    |                      |                       |             |
+    |                      |----+                  |             |
+    |                      |    | (B) determine    |             |
+    |                      |<---+ authorization    |             |
+    |                      |      server B         |             |
+    |                      |                       |             |
+    |                      |                       |             |
+    |                      |----+                  |             |
+    |                      |    | (C) issue        |             |
+    |                      |<---+ authorization    |             |
+    |                      |      grant ("internal |             |
+    |                      |      token exchange") |             |
+    |                      |                       |             |
+    |                      |                       |             |
+    |                      | (D) present           |             |
+    |                      |   authorization grant |             |
+    |                      |   [RFC 7521]          |             |
+    |                      | --------------------->|             |
+    |                      |                       |             |
+    |                      | (E) <access token>    |             |
+    |                      | <- - - - - - - - - - -|             |
+    |                      |                       |             |
+    |  (F) <access token>  |                       |             |
+    | <- - - - - - - - - - |                       |             |
+    |                      |                       |             |
+    |                      |           (G) access  |             |
+    | ---------------------------------------------------------->|
+    |                      |                       |             |
+    |                      |                       |             |
 ~~~
 {: title='Authorization server acting as client'}
 
