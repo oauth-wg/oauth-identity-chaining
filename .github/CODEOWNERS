@@ -1,0 +1,3 @@
+# Automatically generated CODEOWNERS
+# Regenerate with `make update-codeowners`
+draft-ietf-oauth-identity-chaining.md arndts@microsoft.com pieter.kasselman@microsoft.com kburgin@mitre.org mjjenki@cyber.nsa.gov bcampbell@pingidentity.com
