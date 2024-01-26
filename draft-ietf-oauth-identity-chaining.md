@@ -432,6 +432,12 @@ The flow contains the following steps:
 (G) The resource server in Domain A uses the received access token to access the protected resource in Domain B.
 
 # Acknowledgements {#Acknowledgements}
-{: numbered="false"}
+The editors would like to thank Joe Jubinski, Justin Richer, Aaron Parecki  and others (please let us know, if you've been mistakenly omitted) for their valuable input, feedback and general support of this work.
 
-{{{Joe Jubinski}}}, {{{Justin Richer}}}
+# Document History
+
+   [[ To be removed from the final specification ]]
+
+   -latest
+
+   * Added Aaron Parecki as a contributor.
