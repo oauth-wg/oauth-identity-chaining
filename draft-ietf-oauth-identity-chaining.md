@@ -426,12 +426,9 @@ The flow contains the following steps:
 (G) The resource server in Domain A uses the received access token to access the protected resource in Domain B.
 
 # Acknowledgements {#Acknowledgements}
-{: numbered="false"}
-
-{{{Joe Jubinski}}}, {{{Justin Richer}}}
+The editors would like to thank Joe Jubinski, Justin Richer, Aaron Parecki  and others (please let us know, if you've been mistakenly omitted) for their valuable input, feedback and general support of this work.
 
 # Document History
-{: numbered="false"}
 
 \[\[ To be removed from the final specification ]]
 
@@ -440,6 +437,7 @@ The flow contains the following steps:
 * limit the authorization grant format to RFC7523 JWT
 * minor example fixes
 * editorial fixes
+* added Aaron Parecki to acknowledgements
 
 -00
 
