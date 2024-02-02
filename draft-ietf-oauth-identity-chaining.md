@@ -438,6 +438,6 @@ The editors would like to thank Joe Jubinski, Justin Richer, Aaron Parecki  and 
 
    [[ To be removed from the final specification ]]
 
-   -latest
+   -01
 
    * Added Aaron Parecki as a contributor.
