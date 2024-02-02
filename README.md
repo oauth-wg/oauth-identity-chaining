@@ -3,7 +3,7 @@
 This is the working area for the IETF [OAUTH Working Group](https://datatracker.ietf.org/wg/oauth/documents/) Internet-Draft, "Identity Chaining across Trust Domains".
 
 * [Editor's Copy](https://drafts.oauth.net/oauth-identity-chaining/draft-ietf-oauth-identity-chaining.html)
-* [Datatracker Page](https://drafts.oauth.net/doc/draft-ietf-oauth-identity-chaining)
+* [Datatracker Page](https://datatracker.ietf.org/doc/draft-ietf-oauth-identity-chaining)
 * [Working Group Draft](https://datatracker.ietf.org/doc/html/draft-ietf-oauth-identity-chaining)
 
 
