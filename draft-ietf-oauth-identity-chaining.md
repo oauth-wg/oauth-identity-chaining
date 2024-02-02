@@ -438,6 +438,7 @@ The editors would like to thank Joe Jubinski, Justin Richer, Aaron Parecki  and 
 * minor example fixes
 * editorial fixes
 * added Aaron Parecki to acknowledgements
+* renamed section headers to be more explicit
 
 -00
 
