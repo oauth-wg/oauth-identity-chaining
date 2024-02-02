@@ -133,11 +133,7 @@ The flow illustrated in Figure 1 shows the steps the client in trust Domain A ne
 
 * (C) The authorization server of Domain A processes the request and returns a JWT authorization grant that the client can use with the authorization server of Domain B. This requires a trust relationship between Domain A and Domain B (e.g., through federation).
 
-<<<<<<< HEAD
 * (D) The client presents the authorization grant to the authorization server of Domain B. See [Access Token Request](#access-token-request).
-=======
-* (D) The client presents the JWT authorization grant to the authorization server of Domain B. See [Authorization Grant](#authorization-grant).
->>>>>>> bc43920 (use more specific term "JWT authorization grant")
 
 * (E) Authorization server of Domain B validates the JWT authorization grant and returns an access token.
 
