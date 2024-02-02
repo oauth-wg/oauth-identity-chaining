@@ -133,7 +133,7 @@ The flow illustrated in Figure 1 shows the steps the client in trust Domain A ne
 
 * (C) The authorization server of Domain A processes the request and returns an authorization grant that the client can use with the authorization server of Domain B. This requires a trust relationship between Domain A and Domain B (e.g., through federation).
 
-* (D) The client presents the authorization grant to the authorization server of Domain B. See [Authorization Grant](#authorization-grant).
+* (D) The client presents the authorization grant to the authorization server of Domain B. See [Access Token Request](#access-token-request).
 
 * (E) Authorization server of Domain B validates the authorization grant and returns an access token.
 
@@ -145,7 +145,7 @@ This specification does not define authorization server discovery. A client MAY 
 ## Token Exchange
 The client performs token exchange as defined in {{RFC8693}} with the authorization server for its own domain (e.g., Domain A) in order to obtain an authorization grant that can be used with the authorization server of a different domain (e.g., Domain B) as specified in section 1.3 of {{RFC6749}}.
 
-### Request
+### Token Exchange Request
 
 The parameters described in section 2.1 of {{RFC8693}} apply here with the following restrictions:
 
@@ -167,7 +167,7 @@ audience
 * If the request itself is not valid or if the given resource or audience are unknown, or are unacceptable based on policy, the authorization server MUST deny the request.
 * The authorization server MAY add, remove or change claims. See [Claims transcription](#claims-transcription).
 
-### Response
+### Token Exchange Response
 
 All of section 2.2 of {{RFC8693}} applies. In addition, the following applies to implementations that conform to this specification.
 
@@ -208,11 +208,11 @@ Cache-Control: no-cache, no-store
 ~~~
 {: title='Token exchange response'}
 
-## Authorization Grant
+## JWT Authorization Grant
 
 The client presents the token it received from the authorization server in its own domain as an authorization grant to the authorization server in the domain of the resource server it wants to access as defined in {{RFC7523}}.
 
-### Request
+### Access Token Request
 
 The authorization grant is a JWT bearer token, which the client uses to request an access token as described in the JWT Profile for OAuth 2.0 Client Authentication and Authorization Grants {{RFC7523}}. For the purpose of this specification the following descriptions apply:
 
@@ -236,7 +236,7 @@ The authorization server MUST validate the JWT authorization grant as specified 
 * The authorization server SHOULD deny the request if it is not able to identify the subject.
 * Due to policy the request MAY be denied (for instance if the federation from domain A is not allowed).
 
-### Response
+### Access Token Response
 
 The authorization server responds with an access token as described in section 5.1 of {{RFC6749}}.
 
@@ -438,6 +438,7 @@ The editors would like to thank Joe Jubinski, Justin Richer, Aaron Parecki  and 
 * minor example fixes
 * editorial fixes
 * added Aaron Parecki to acknowledgements
+* renamed section headers to be more explicit
 
 -00
 
