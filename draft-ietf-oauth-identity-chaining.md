@@ -133,7 +133,7 @@ The flow illustrated in Figure 1 shows the steps the client in trust Domain A ne
 
 * (C) The authorization server of Domain A processes the request and returns an authorization grant that the client can use with the authorization server of Domain B. This requires a trust relationship between Domain A and Domain B (e.g., through federation).
 
-* (D) The client presents the authorization grant to the authorization server of Domain B. See [Authorization Grant](#authorization-grant).
+* (D) The client presents the authorization grant to the authorization server of Domain B. See [Access Token Request](#access-token-request).
 
 * (E) Authorization server of Domain B validates the authorization grant and returns an access token.
 
@@ -208,7 +208,7 @@ Cache-Control: no-cache, no-store
 ~~~
 {: title='Token exchange response'}
 
-## Authorization Grant
+## Access Token Request
 
 The client presents the token it received from the authorization server in its own domain as an authorization grant to the authorization server in the domain of the resource server it wants to access as defined in {{RFC7523}}.
 
