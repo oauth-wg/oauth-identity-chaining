@@ -45,7 +45,6 @@ contributor:
 normative:
   RFC6749: # OAuth 2.0 Authorization Framework
   RFC8693: # OAuth 2.0 Token Exchange
-  RFC7521: # Assertion Framework for OAuth 2.0 Client Authentication and Authorization Grants
   RFC7523: # JSON Web Token (JWT) Profile for OAuth 2.0 Client Authentication and Authorization Grants
   RFC8707: # Resource Indicators for OAuth 2.0
   RFC8414: # OAuth 2.0 Authorization Server Metadata
@@ -64,7 +63,7 @@ This specification defines a mechanism to preserve identity and call chain infor
 --- middle
 
 # Introduction
-Applications often require access to resources that are distributed across multiple trust domains where each trust domain has its own OAuth 2.0 authorization server. As a result, developers are often faced with the situation that a protected resource is located in a different trust domain and thus protected by a different authorization server. A request may transverse multiple resource servers in multiple trust domains before completing. All protected resources involved in such a request need to know on whose behalf the request was originally initiated (i.e. the user), what authorization was granted and optionally which other resource servers were called prior to making an authorization decision. This information needs to be preserved, even when a request crosses one or more trust domains. Preserving this information is referred to as identity chaining. This document defines a mechanism for preserving identity chaining information across trust domains using a combination of OAuth 2.0 Token Exchange {{RFC8693}} and Assertion Framework for OAuth 2.0 Client Authentication and Authorization Grants {{RFC7521}}.
+Applications often require access to resources that are distributed across multiple trust domains where each trust domain has its own OAuth 2.0 authorization server. As a result, developers are often faced with the situation that a protected resource is located in a different trust domain and thus protected by a different authorization server. A request may transverse multiple resource servers in multiple trust domains before completing. All protected resources involved in such a request need to know on whose behalf the request was originally initiated (i.e. the user), what authorization was granted and optionally which other resource servers were called prior to making an authorization decision. This information needs to be preserved, even when a request crosses one or more trust domains. Preserving this information is referred to as identity chaining. This document defines a mechanism for preserving identity chaining information across trust domains using a combination of OAuth 2.0 Token Exchange {{RFC8693}} and JSON Web Token (JWT) Profile for OAuth 2.0 Client Authentication and Authorization Grants {{RFC7523}}.
 
 ## Requirements Language
 
@@ -72,7 +71,7 @@ Applications often require access to resources that are distributed across multi
 
 # Identity Chaining Across Trust Domains
 
-This specification describes a combination of OAuth 2.0 Token Exchange {{RFC8693}} and Assertion Framework for OAuth 2.0 Client Authentication and Authorization Grants {{RFC7521}} to achieve identity chaining across trust domains.
+This specification describes a combination of OAuth 2.0 Token Exchange {{RFC8693}} and JWT Profile for OAuth 2.0 Client Authentication and Authorization Grants {{RFC7523}} to achieve identity chaining across trust domains.
 
 A client in trust domain A that needs to access a resource server in trust domain B requests an authorization grant from the authorization server for trust domain A via a token exchange. The client in trust domain A presents the received grant as an assertion to the authorization server in domain B in order to obtain an access token for the protected resource in domain B. The client in domain A may be a resource server, or it may be the authorization server itself.
 
@@ -87,7 +86,7 @@ A home devices company provides a "Camera API" to enable access to home cameras.
 
 ## Overview
 
-The Identity Chaining flow outlined below describes how a combination of OAuth 2.0 Token Exchange {{RFC8693}} and Assertion Framework for OAuth 2.0 Client Authentication and Authorization Grants {{RFC7521}} are used to address the use cases identified. The appendix include two additional examples that describe how this flow is used. In one example, the resource server acts as the client and in the other, the authorization server acts as the client.
+The Identity Chaining flow outlined below describes how a combination of OAuth 2.0 Token Exchange {{RFC8693}} and JWT Profile for OAuth 2.0 Client Authentication and Authorization Grants {{RFC7523}} are used to address the use cases identified. The appendix include two additional examples that describe how this flow is used. In one example, the resource server acts as the client and in the other, the authorization server acts as the client.
 
 ~~~~
 +-------------+                            +-------------+ +---------+
@@ -113,7 +112,7 @@ The Identity Chaining flow outlined below describes how a combination of OAuth 2
        |                    |                     |             |
        |                    | (D) present         |             |
        |                    | authorization grant |             |
-       |                    | [RFC 7521]          |             |
+       |                    | [RFC 7523]          |             |
        |                    | ------------------->|             |
        |                    |                     |             |
        |                    | (E) <access token>  |             |
@@ -152,7 +151,7 @@ The parameters described in section 2.1 of {{RFC8693}} apply here with the follo
 
 {:vspace}
 requested_token_type
-: OPTIONAL according to {{RFC8693}}. In the context of this specification this parameter SHOULD NOT be used. See [Authorization grant type](#authorization-grant-type).
+: OPTIONAL according to {{RFC8693}}. In the context of this specification this parameter SHOULD NOT be used.
 
 scope
 : OPTIONAL. Additional scopes to indicate scopes included in returned authorization grant. See [Claims transcription](#claims-transcription).
@@ -167,12 +166,6 @@ audience
 
 * If the request itself is not valid or if the given resource or audience are unknown, or are unacceptable based on policy, the authorization server MUST deny the request.
 * The authorization server MAY add, remove or change claims. See [Claims transcription](#claims-transcription).
-
-### Authorization grant type
-
-The authorization grant format and content is part of a contract between the authorization servers. To achieve a maintainable and flexible systems clients SHOULD NOT request a specific `requested_token_type` during the token exchange and SHOULD NOT require a certain format or parse the authorization grant (e.g., if the token is encoded as a JWT). The `issued_token_type` parameter in the response indicates the type and SHOULD be passed into the assertion request. This allows flexibility for authorization servers to change format and content.
-
-Authorization servers MAY use an existing grant type such us `urn:ietf:params:oauth:grant-type:jwt-bearer` to indicate a JWT or `urn:ietf:params:oauth:grant-type:saml2-bearer` to indicate SAML. Other grant types MAY be used to indicate other formats.
 
 ### Response
 
@@ -208,7 +201,8 @@ Cache-Control: no-cache, no-store
   dHRwczovL2FzLmEub3JnL2F1dGgiLCJleHAiOjE2OTUyODQwOTIsImlhdCI6MTY5N
   TI4NzY5Miwic3ViIjoiam9obl9kb2VAYS5vcmciLCJhdWQiOiJodHRwczovL2FzLm
   Iub3JnL2F1dGgifQ.304Pv9e6PnzcQPzz14z-k2ZyZvDtP5WIRkYPScwdHW4",
-  "token_type":"Bearer",
+  "token_type":"N_A",
+  "issued_token_type": "urn:ietf:params:oauth:token-type:jwt",
   "expires_in":60
 }
 ~~~
@@ -216,15 +210,15 @@ Cache-Control: no-cache, no-store
 
 ## Authorization Grant
 
-The client presents the authorization grant it received from the authorization server in its own domain and presents it to the authorization server in the domain of the resources server it wants to access as defined in the "Assertion Framework for OAuth 2.0 Client Authentication and Authorization Grants" {{RFC7521}}.
+The client presents the token it received from the authorization server in its own domain as an authorization grant to the authorization server in the domain of the resource server it wants to access as defined in {{RFC7523}}.
 
 ### Request
 
-If the authorization grant is in the form of a JWT bearer token, the client SHOULD use the "JSON Web Token (JWT) Profile for OAuth 2.0 Client Authentication and Authorization Grants" as defined in {{RFC7523}}. Otherwise, the client SHOULD request an access token using the "Assertion Framework for OAuth 2.0 Client Authentication and Authorization Grants" as defined in {{RFC7521}} (Section 4.1). For the purpose of this specification the following descriptions apply:
+The authorization grant is a JWT bearer token, which the client uses to request an access token as described in the JWT Profile for OAuth 2.0 Client Authentication and Authorization Grants {{RFC7523}}. For the purpose of this specification the following descriptions apply:
 
 {:vspace}
 grant_type
-: REQUIRED. In context of this specification clients SHOULD use the type identifier returned by the token exchange (`issued_token_type` response). See [authorization grant type](#authorization-grant-type) for more details.
+: REQUIRED. As defined in Section 2.1 of {{RFC7523}} the value `urn:ietf:params:oauth:grant-type:jwt-bearer` indicates the request is a JWT bearer assertion authorization grant.
 
 assertion
 : REQUIRED. Authorization grant returned by the token exchange (`access_token` response).
@@ -236,7 +230,7 @@ The client MAY indicate the audience it is trying to access through the `scope` 
 
 ### Processing rules
 
-All of Section 5.2 {{RFC7521}} applies, in addition to the following processing rules:
+The authorization server MUST validate the JWT authorization grant as specified in Sections 3 and 3.1 of {{RFC7523}}. The following processing rules also apply:
 
 * The "aud" claim MUST identify the Authorization Server as a valid intended audience of the assertion using either the token endpoint as described Section 3 {{RFC7523}} or the issuer identifier as defined in Section 2 of {{RFC8414}}.
 * The authorization server SHOULD deny the request if it is not able to identify the subject.
@@ -280,7 +274,7 @@ Cache-Control: no-cache, no-store
 
 Authorization servers MAY transcribe claims when either producing authorization grants in the token exchange flow or access tokens in the assertion flow.
 
-* **Transcribing the subject identifier**: Subject identifier can differ between the parties involved. For instance: A user is known at domain A by "johndoe@a.org" but in domain B by "doe.john@b.org". The mapping from one identifier to the other MAY either happen in the token exchange step and the updated identifer is reflected in returned authorization grant or in the assertion step where the updated identifier would be reflected in the access token. To support this both authorization servers MAY add, change or remove claims as described above.
+* **Transcribing the subject identifier**: Subject identifier can differ between the parties involved. For instance: A user is known at domain A by "johndoe@a.org" but in domain B by "doe.john@b.org". The mapping from one identifier to the other MAY either happen in the token exchange step and the updated identifier is reflected in returned authorization grant or in the assertion step where the updated identifier would be reflected in the access token. To support this both authorization servers MAY add, change or remove claims as described above.
 * **Selective disclosure**: Authorization servers MAY remove or hide certain claims due to privacy requirements or reduced trust towards the targeting trust domain. To hide and enclose claims {{I-D.ietf-oauth-selective-disclosure-jwt}} MAY be used.
 * **Controlling scope**: Clients MAY use the scope parameter to control transcribed claims (e.g. downscoping). Authorization Servers SHOULD verify that requested scopes are not higher priveleged than the scopes of presented subject_token.
 * **Including authorization grant claims**: The authorization server performing the assertion flow MAY leverage claims from the presented authorization grant and include them in the returned access token. The populated claims SHOULD be namespaced or validated to prevent the injection of invalid claims.
@@ -333,7 +327,7 @@ The flow would look like this:
        |                     |                     |             |
        |                     | (E) present         |             |
        |                     |  authorization      |             |
-       |                     |  grant [RFC 7521]   |             |
+       |                     |  grant [RFC 7523]   |             |
        |                     | ------------------->|             |
        |                     |                     |             |
        |                     | (F) <access token>  |             |
@@ -399,7 +393,7 @@ The flow when authorization servers act as client would look like this:
     |                      |                       |             |
     |                      | (D) present           |             |
     |                      |   authorization grant |             |
-    |                      |   [RFC 7521]          |             |
+    |                      |   [RFC 7523]          |             |
     |                      | --------------------->|             |
     |                      |                       |             |
     |                      | (E) <access token>    |             |
@@ -436,8 +430,15 @@ The editors would like to thank Joe Jubinski, Justin Richer, Aaron Parecki  and 
 
 # Document History
 
-   [[ To be removed from the final specification ]]
+\[\[ To be removed from the final specification ]]
 
-   -01
+-01
 
-   * Added Aaron Parecki as a contributor.
+* limit the authorization grant format to RFC7523 JWT
+* minor example fixes
+* editorial fixes
+* added Aaron Parecki to acknowledgements
+
+-00
+
+* initial working group version (previously draft-schwenkschuster-oauth-identity-chaining)
