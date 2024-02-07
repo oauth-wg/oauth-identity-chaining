@@ -8,7 +8,7 @@ wg: oauth
 
 docname: draft-ietf-oauth-identity-chaining-latest
 
-title: Identity Chaining across Trust Domains
+title: OAuth Identity and Authorization Chaining Across Domains
 abbrev:
 lang: en
 kw: []
@@ -58,7 +58,7 @@ informative:
 
 --- abstract
 
-This specification defines a mechanism to preserve identity and call chain information across trust domains that use the OAuth 2.0 Framework.
+This specification defines a mechanism to preserve identity information and federate authorization across trust domains that use the OAuth 2.0 Framework.
 
 --- middle
 
@@ -69,9 +69,9 @@ Applications often require access to resources that are distributed across multi
 
 {::boilerplate bcp14-tagged}
 
-# Identity Chaining Across Trust Domains
+# Identity and Authorization Chaining Across Domains
 
-This specification describes a combination of OAuth 2.0 Token Exchange {{RFC8693}} and JWT Profile for OAuth 2.0 Client Authentication and Authorization Grants {{RFC7523}} to achieve identity chaining across trust domains.
+This specification describes a combination of OAuth 2.0 Token Exchange {{RFC8693}} and JWT Profile for OAuth 2.0 Client Authentication and Authorization Grants {{RFC7523}} to achieve identity and authorization chaining across domains.
 
 A client in trust domain A that needs to access a resource server in trust domain B requests a JWT authorization grant from the authorization server for trust domain A via a token exchange. The client in trust domain A presents the received grant as an assertion to the authorization server in domain B in order to obtain an access token for the protected resource in domain B. The client in domain A may be a resource server, or it may be the authorization server itself.
 
@@ -86,7 +86,7 @@ A home devices company provides a "Camera API" to enable access to home cameras.
 
 ## Overview
 
-The Identity Chaining flow outlined below describes how a combination of OAuth 2.0 Token Exchange {{RFC8693}} and JWT Profile for OAuth 2.0 Client Authentication and Authorization Grants {{RFC7523}} are used to address the use cases identified. The appendix include two additional examples that describe how this flow is used. In one example, the resource server acts as the client and in the other, the authorization server acts as the client.
+The Identity and Authorization Chaining flow outlined below describes how a combination of OAuth 2.0 Token Exchange {{RFC8693}} and JWT Profile for OAuth 2.0 Client Authentication and Authorization Grants {{RFC7523}} are used to address the use cases identified. The appendix include two additional examples that describe how this flow is used. In one example, the resource server acts as the client and in the other, the authorization server acts as the client.
 
 ~~~~
 +-------------+                            +-------------+ +---------+
@@ -123,7 +123,7 @@ The Identity Chaining flow outlined below describes how a combination of OAuth 2
        |                    |                     |             |
        |                    |                     |             |
 ~~~~
-{: title='Identity Chaining Flow'}
+{: title='Identity and Authorization Chaining Flow'}
 
 The flow illustrated in Figure 1 shows the steps the client in trust Domain A needs to perform to access a protected resource in trust domain B. In this flow, the client has a way to discover the authorization server in Domain B and a trust relationship exists between Domain A and Domain B (e.g., through federation). It includes the following:
 
@@ -441,6 +441,7 @@ The editors would like to thank Joe Jubinski, Justin Richer, Aaron Parecki  and 
 * added Aaron Parecki to acknowledgements
 * renamed section headers to be more explicit
 * use more specific term "JWT authorization grant"
+* changed name to "OAuth Identity and Authorization Chaining Across Domains"
 
 -00
 
