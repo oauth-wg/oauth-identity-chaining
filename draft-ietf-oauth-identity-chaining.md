@@ -203,7 +203,7 @@ Cache-Control: no-cache, no-store
   TI4NzY5Miwic3ViIjoiam9obl9kb2VAYS5vcmciLCJhdWQiOiJodHRwczovL2FzLm
   Iub3JnL2F1dGgifQ.304Pv9e6PnzcQPzz14z-k2ZyZvDtP5WIRkYPScwdHW4",
   "token_type":"N_A",
-  "issued_token_type": "urn:ietf:params:oauth:token-type:jwt",
+  "issued_token_type":"urn:ietf:params:oauth:token-type:jwt",
   "expires_in":60
 }
 ~~~
