@@ -198,13 +198,13 @@ Content-Type: application/json
 Cache-Control: no-cache, no-store
 
 {
-  "access_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJo
+  "access_token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJo
   dHRwczovL2FzLmEub3JnL2F1dGgiLCJleHAiOjE2OTUyODQwOTIsImlhdCI6MTY5N
   TI4NzY5Miwic3ViIjoiam9obl9kb2VAYS5vcmciLCJhdWQiOiJodHRwczovL2FzLm
   Iub3JnL2F1dGgifQ.304Pv9e6PnzcQPzz14z-k2ZyZvDtP5WIRkYPScwdHW4",
-  "token_type": "N_A",
-  "issued_token_type": "urn:ietf:params:oauth:token-type:jwt",
-  "expires_in": 60
+  "token_type":"N_A",
+  "issued_token_type":"urn:ietf:params:oauth:token-type:jwt",
+  "expires_in":60
 }
 ~~~
 {: title='Token exchange response'}
@@ -261,12 +261,12 @@ Content-Type: application/json
 Cache-Control: no-cache, no-store
 
 {
-  "access_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJo
+  "access_token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJo
   dHRwczovL2FzLmIub3JnL2F1dGgiLCJleHAiOjE2OTUyODQwOTIsImlhdCI6MTY5N
   TI4NzY5Miwic3ViIjoiam9obi5kb2UuMTIzIiwiYXVkIjoiaHR0cHM6Ly9iLm9yZy
   9hcGkifQ.CJBuv6sr6Snj9in5T8f7g1uB61Ql8btJiR0IXv5oeJg",
-  "token_type": "Bearer",
-  "expires_in": 60
+  "token_type":"Bearer",
+  "expires_in":60
 }
 ~~~
 {: title='Assertion response'}
