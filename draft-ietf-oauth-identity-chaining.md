@@ -286,7 +286,7 @@ Authorization Servers SHOULD follow the OAuth 2.0 Security Best Current Practice
 
 # Use cases
 
-This sections outlines some use cases the authors have identified where identity chaining as described in this document should be used. This section is not complete and other use cases not mentioned here are also valid.
+This sections outlines some use cases where the identity and authorization chaining described in this document can be applied. This section is not complete and other use cases not mentioned here are also valid.
 
 ## Preserve User Context across Multi-cloud, Multi-Hybrid environments
 A user attempts to access a service that is implemented as a number of on-premise and cloud-based microservices. Both the on-premise and cloud-based services are segmented by multiple trust boundaries that span one or more on-premise or cloud service environments. Every microservice can apply an authorization policy that takes the context of the original user, as well as intermediary microservices into account, irrespective of where the microservices are running and even when a microservice in one trust domain calls another service in another trust domain.
