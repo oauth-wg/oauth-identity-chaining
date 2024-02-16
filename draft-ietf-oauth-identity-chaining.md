@@ -75,15 +75,6 @@ This specification describes a combination of OAuth 2.0 Token Exchange {{RFC8693
 
 A client in trust domain A that needs to access a resource server in trust domain B requests a JWT authorization grant from the authorization server for trust domain A via a token exchange. The client in trust domain A presents the received grant as an assertion to the authorization server in domain B in order to obtain an access token for the protected resource in domain B. The client in domain A may be a resource server, or it may be the authorization server itself.
 
-## Use Case
-This section describes two use cases addressed in this specification.
-
-### Preserve User Context across Multi-cloud, Multi-Hybrid environments
-A user attempts to access a service that is implemented as a number of on-premise and cloud-based microservices. Both the on-premise and cloud-based services are segmented by multiple trust boundaries that span one or more on-premise or cloud service environments. Every microservice can apply an authorization policy that takes the context of the original user, as well as intermediary microservices into account, irrespective of where the microservices are running and even when a microservice in one trust domain calls another service in another trust domain.
-
-### API Security Use Case
-A home devices company provides a "Camera API" to enable access to home cameras. Partner companies use this Camera API to integrate the camera feeds into their security dashboards. Using OAuth between the partner and the Camera API, a partner can request the feed from a home camera to be displayed in their dashboard. The user has an account with the camera provider. The user may be logged in to view the partner provided dashboard, or they may authorize emergency access to the camera. The home devices company must be able to independently verify that the request originated and was authorized by a user who is authorized to view the feed of the requested home camera.
-
 ## Overview
 
 The Identity Chaining flow outlined below describes how a combination of OAuth 2.0 Token Exchange {{RFC8693}} and JWT Profile for OAuth 2.0 Client Authentication and Authorization Grants {{RFC7523}} are used to address the use cases identified. The appendix include two additional examples that describe how this flow is used. In one example, the resource server acts as the client and in the other, the authorization server acts as the client.
@@ -293,6 +284,19 @@ Authorization Servers SHOULD follow the OAuth 2.0 Security Best Current Practice
 
 --- back
 
+# Use cases
+
+This sections outlines some use cases where the identity and authorization chaining described in this document can be applied. This section is not complete and other use cases not mentioned here are also valid.
+
+## Preserve User Context across Multi-cloud, Multi-Hybrid environments
+A user attempts to access a service that is implemented as a number of on-premise and cloud-based microservices. Both the on-premise and cloud-based services are segmented by multiple trust boundaries that span one or more on-premise or cloud service environments. Every microservice can apply an authorization policy that takes the context of the original user, as well as intermediary microservices into account, irrespective of where the microservices are running and even when a microservice in one trust domain calls another service in another trust domain.
+
+## Continuous Integration Accessing External Resources
+A continuous integration system needs to access external resources, for example to upload an artifact or to run tests. These resources are protected by different authorization servers. The identity information of the build, for example metadata such as commit hashes or repository, should be preserved and carried across the domain boundary. This not just prevents maintaining credentials it also allows fined grained access control at the resource.
+
+## API Security Use Case
+A home devices company provides a "Camera API" to enable access to home cameras. Partner companies use this Camera API to integrate the camera feeds into their security dashboards. Using OAuth between the partner and the Camera API, a partner can request the feed from a home camera to be displayed in their dashboard. The user has an account with the camera provider. The user may be logged in to view the partner provided dashboard, or they may authorize emergency access to the camera. The home devices company must be able to independently verify that the request originated and was authorized by a user who is authorized to view the feed of the requested home camera.
+
 # Examples
 
 This section contains two examples, demonstrating how this specification may be used in different environments with specific requirements. The first example shows the resource server acting as the client and the second example shows the authorization server acting as the client.
@@ -441,6 +445,7 @@ The editors would like to thank Joe Jubinski, Justin Richer, Aaron Parecki  and 
 * added Aaron Parecki to acknowledgements
 * renamed section headers to be more explicit
 * use more specific term "JWT authorization grant"
+* move use cases to appendix and add continuous integration use case
 
 -00
 
