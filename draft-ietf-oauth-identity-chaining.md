@@ -142,9 +142,6 @@ The client performs token exchange as defined in {{RFC8693}} with the authorizat
 The parameters described in section 2.1 of {{RFC8693}} apply here with the following restrictions:
 
 {:vspace}
-requested_token_type
-: OPTIONAL according to {{RFC8693}}. In the context of this specification this parameter SHOULD NOT be used.
-
 scope
 : OPTIONAL. Additional scopes to indicate scopes included in the returned JWT authorization grant. See [Claims transcription](#claims-transcription).
 
@@ -436,6 +433,10 @@ The editors would like to thank Joe Jubinski, Justin Richer, Aaron Parecki  and 
 # Document History
 
 \[\[ To be removed from the final specification ]]
+
+-02
+
+* remove recommendation to not use RFC8693's requested_token_type
 
 -01
 
