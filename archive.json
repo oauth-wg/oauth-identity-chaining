@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2024-03-05T00:58:09.971079+00:00",
+  "timestamp": "2024-03-07T00:49:02.227003+00:00",
   "repo": "oauth-wg/oauth-identity-chaining",
   "labels": [
     {
@@ -923,6 +923,46 @@
           "body": "In my own defense - RFC 7523 was published _several years_ before RFC8725...\r\n\r\nAnyway, such a recommendation (and maybe even definition of one) seems reasonable as long as it doesn't suggest or imply that plain vanilla RFC 7523 implementations/deployments (new or existing) can't function as-is or are problematic security-wise or otherwise somehow deficient. ",
           "createdAt": "2024-03-01T22:17:31Z",
           "updatedAt": "2024-03-01T22:17:45Z"
+        }
+      ]
+    },
+    {
+      "number": 86,
+      "id": "I_kwDOJubJxM6BV2kE",
+      "title": "Add sender constraining mechanisms",
+      "url": "https://github.com/oauth-wg/oauth-identity-chaining/issues/86",
+      "state": "OPEN",
+      "author": "kburgin3",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "Add mTLS and DPoP",
+      "createdAt": "2024-03-05T19:24:43Z",
+      "updatedAt": "2024-03-05T19:24:43Z",
+      "closedAt": null,
+      "comments": []
+    },
+    {
+      "number": 88,
+      "id": "I_kwDOJubJxM6BfNut",
+      "title": "Figure 6 step naming misalignment (off-by-one error)",
+      "url": "https://github.com/oauth-wg/oauth-identity-chaining/issues/88",
+      "state": "OPEN",
+      "author": "dhs-aws",
+      "authorAssociation": "NONE",
+      "assignees": [],
+      "labels": [],
+      "body": "Figure 6 in Appendix B.1 skips from step A to step C.  I believe a correct rendering of the diagram would takes steps C through G and translate them to steps B through F to correspond with the text.",
+      "createdAt": "2024-03-06T21:18:16Z",
+      "updatedAt": "2024-03-06T21:48:42Z",
+      "closedAt": null,
+      "comments": [
+        {
+          "author": "bc-pi",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "Thanks Dean, I believe you are correct here. ",
+          "createdAt": "2024-03-06T21:48:40Z",
+          "updatedAt": "2024-03-06T21:48:40Z"
         }
       ]
     }
@@ -3714,7 +3754,7 @@
       "labels": [],
       "body": "remove recommendation to not use RFC8693's requested_token_type (fix issue #82)\r\n\r\npreview of editor's copy https://drafts.oauth.net/oauth-identity-chaining/relax-should-not-request-token-type/draft-ietf-oauth-identity-chaining.html ",
       "createdAt": "2024-02-23T19:52:55Z",
-      "updatedAt": "2024-02-28T17:44:54Z",
+      "updatedAt": "2024-03-06T17:28:15Z",
       "baseRepository": "oauth-wg/oauth-identity-chaining",
       "baseRefName": "main",
       "baseRefOid": "d05faa5891a52783b35fe7623abcc54e1e2f7998",
@@ -3725,7 +3765,15 @@
       "mergedAt": null,
       "mergedBy": null,
       "mergeCommit": null,
-      "comments": [],
+      "comments": [
+        {
+          "author": "gffletch",
+          "authorAssociation": "NONE",
+          "body": "I\u2019m good with this as well as it will close issue #84 :)",
+          "createdAt": "2024-03-06T17:27:54Z",
+          "updatedAt": "2024-03-06T17:27:54Z"
+        }
+      ],
       "reviews": [
         {
           "id": "PRR_kwDOJubJxM5xqNZU",
@@ -3738,6 +3786,72 @@
           "body": "I have no problems with this",
           "createdAt": "2024-02-28T17:44:54Z",
           "updatedAt": "2024-02-28T17:44:54Z",
+          "comments": []
+        },
+        {
+          "id": "PRR_kwDOJubJxM5ydtWI",
+          "commit": {
+            "abbreviatedOid": "db22609"
+          },
+          "author": "gffletch",
+          "authorAssociation": "NONE",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2024-03-06T17:28:15Z",
+          "updatedAt": "2024-03-06T17:28:15Z",
+          "comments": []
+        }
+      ]
+    },
+    {
+      "number": 87,
+      "id": "PR_kwDOJubJxM5o41N5",
+      "title": "Nitpick - referrers -> refers in the intro",
+      "url": "https://github.com/oauth-wg/oauth-identity-chaining/pull/87",
+      "state": "OPEN",
+      "author": "dhs-aws",
+      "authorAssociation": "NONE",
+      "assignees": [],
+      "labels": [],
+      "body": "Fix a minor spelling mistake.",
+      "createdAt": "2024-03-06T20:51:41Z",
+      "updatedAt": "2024-03-06T21:42:43Z",
+      "baseRepository": "oauth-wg/oauth-identity-chaining",
+      "baseRefName": "main",
+      "baseRefOid": "d05faa5891a52783b35fe7623abcc54e1e2f7998",
+      "headRepository": "dhs-aws/oauth-identity-chaining",
+      "headRefName": "patch-1",
+      "headRefOid": "d8deecf626c8d52a2d953e2727072f8bb47561ff",
+      "closedAt": null,
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [],
+      "reviews": [
+        {
+          "id": "PRR_kwDOJubJxM5yfRy2",
+          "commit": {
+            "abbreviatedOid": "d8deecf"
+          },
+          "author": "kburgin3",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2024-03-06T20:57:00Z",
+          "updatedAt": "2024-03-06T20:57:00Z",
+          "comments": []
+        },
+        {
+          "id": "PRR_kwDOJubJxM5yfmXB",
+          "commit": {
+            "abbreviatedOid": "d8deecf"
+          },
+          "author": "bc-pi",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2024-03-06T21:42:43Z",
+          "updatedAt": "2024-03-06T21:42:43Z",
           "comments": []
         }
       ]
