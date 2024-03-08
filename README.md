@@ -1,6 +1,6 @@
-# Identity Chaining across Trust Domains
+# OAuth Identity and Authorization Chaining Across Domains
 
-This is the working area for the IETF [OAUTH Working Group](https://datatracker.ietf.org/wg/oauth/documents/) Internet-Draft, "Identity Chaining across Trust Domains".
+This is the working area for the IETF [OAUTH Working Group](https://datatracker.ietf.org/wg/oauth/documents/) Internet-Draft, "OAuth Identity and Authorization Chaining Across Domains".
 
 * [Editor's Copy](https://drafts.oauth.net/oauth-identity-chaining/draft-ietf-oauth-identity-chaining.html)
 * [Datatracker Page](https://datatracker.ietf.org/doc/draft-ietf-oauth-identity-chaining)
