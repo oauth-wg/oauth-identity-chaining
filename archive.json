@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2024-03-07T00:49:02.227003+00:00",
+  "timestamp": "2024-03-10T01:02:23.170393+00:00",
   "repo": "oauth-wg/oauth-identity-chaining",
   "labels": [
     {
@@ -3699,24 +3699,26 @@
       "id": "PR_kwDOJubJxM5nFCTz",
       "title": "Add CODEOWNERS file",
       "url": "https://github.com/oauth-wg/oauth-identity-chaining/pull/81",
-      "state": "OPEN",
+      "state": "MERGED",
       "author": "arndt-s",
       "authorAssociation": "CONTRIBUTOR",
       "assignees": [],
       "labels": [],
       "body": "Adds a CODEOWNERS file with the authors of this draft.",
       "createdAt": "2024-02-16T11:53:17Z",
-      "updatedAt": "2024-02-16T22:18:04Z",
+      "updatedAt": "2024-03-08T14:54:23Z",
       "baseRepository": "oauth-wg/oauth-identity-chaining",
       "baseRefName": "main",
       "baseRefOid": "2e30a3d1dbb9d093a23a0c3f99821e0e5dd1a08d",
       "headRepository": "oauth-wg/oauth-identity-chaining",
       "headRefName": "arndt-s/add_codeowners",
-      "headRefOid": "71505aa848349690e51643da27b583bc446d5146",
-      "closedAt": null,
-      "mergedAt": null,
-      "mergedBy": null,
-      "mergeCommit": null,
+      "headRefOid": "385eeddb9aa78300ac4e854bb7a1acdd6d6539a3",
+      "closedAt": "2024-03-08T14:54:22Z",
+      "mergedAt": "2024-03-08T14:54:22Z",
+      "mergedBy": "aaronpk",
+      "mergeCommit": {
+        "oid": "8854b16fb25dfeaa0026ba4927ba26336f573f54"
+      },
       "comments": [
         {
           "author": "arndt-s",
@@ -3738,9 +3740,30 @@
           "body": "There's also already a [CODEOWNERS](https://github.com/oauth-wg/oauth-identity-chaining/blob/main/.github/CODEOWNERS) file (that has errors) in the [.github/](https://github.com/oauth-wg/oauth-identity-chaining/tree/main/.github) directory that the I-D template repo setup process put there. We should probably get that one fixed up with the right people/accounts rather than add a new one? ",
           "createdAt": "2024-02-16T22:07:09Z",
           "updatedAt": "2024-02-16T22:18:04Z"
+        },
+        {
+          "author": "arndt-s",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "@aaronpk @bc-pi I updated the PR with the github handles we have available.",
+          "createdAt": "2024-03-08T11:58:25Z",
+          "updatedAt": "2024-03-08T11:58:25Z"
         }
       ],
-      "reviews": []
+      "reviews": [
+        {
+          "id": "PRR_kwDOJubJxM5yvex6",
+          "commit": {
+            "abbreviatedOid": "385eedd"
+          },
+          "author": "bc-pi",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2024-03-08T14:50:42Z",
+          "updatedAt": "2024-03-08T14:50:42Z",
+          "comments": []
+        }
+      ]
     },
     {
       "number": 83,
@@ -3754,7 +3777,7 @@
       "labels": [],
       "body": "remove recommendation to not use RFC8693's requested_token_type (fix issue #82)\r\n\r\npreview of editor's copy https://drafts.oauth.net/oauth-identity-chaining/relax-should-not-request-token-type/draft-ietf-oauth-identity-chaining.html ",
       "createdAt": "2024-02-23T19:52:55Z",
-      "updatedAt": "2024-03-06T17:28:15Z",
+      "updatedAt": "2024-03-08T11:50:48Z",
       "baseRepository": "oauth-wg/oauth-identity-chaining",
       "baseRefName": "main",
       "baseRefOid": "d05faa5891a52783b35fe7623abcc54e1e2f7998",
@@ -3800,6 +3823,19 @@
           "createdAt": "2024-03-06T17:28:15Z",
           "updatedAt": "2024-03-06T17:28:15Z",
           "comments": []
+        },
+        {
+          "id": "PRR_kwDOJubJxM5yuNwq",
+          "commit": {
+            "abbreviatedOid": "db22609"
+          },
+          "author": "arndt-s",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2024-03-08T11:50:48Z",
+          "updatedAt": "2024-03-08T11:50:48Z",
+          "comments": []
         }
       ]
     },
@@ -3815,7 +3851,7 @@
       "labels": [],
       "body": "Fix a minor spelling mistake.",
       "createdAt": "2024-03-06T20:51:41Z",
-      "updatedAt": "2024-03-06T21:42:43Z",
+      "updatedAt": "2024-03-08T11:50:08Z",
       "baseRepository": "oauth-wg/oauth-identity-chaining",
       "baseRefName": "main",
       "baseRefOid": "d05faa5891a52783b35fe7623abcc54e1e2f7998",
@@ -3852,6 +3888,19 @@
           "body": "",
           "createdAt": "2024-03-06T21:42:43Z",
           "updatedAt": "2024-03-06T21:42:43Z",
+          "comments": []
+        },
+        {
+          "id": "PRR_kwDOJubJxM5yuNc2",
+          "commit": {
+            "abbreviatedOid": "d8deecf"
+          },
+          "author": "arndt-s",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2024-03-08T11:50:08Z",
+          "updatedAt": "2024-03-08T11:50:08Z",
           "comments": []
         }
       ]
