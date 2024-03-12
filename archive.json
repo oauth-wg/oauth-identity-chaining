@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2024-03-10T01:02:23.170393+00:00",
+  "timestamp": "2024-03-12T00:14:37.855410+00:00",
   "repo": "oauth-wg/oauth-identity-chaining",
   "labels": [
     {
@@ -155,14 +155,14 @@
         },
         {
           "author": "arndt-s",
-          "authorAssociation": "CONTRIBUTOR",
+          "authorAssociation": "MEMBER",
           "body": "Keeping it open to add reference to transaction token draft",
           "createdAt": "2023-07-07T14:41:05Z",
           "updatedAt": "2023-07-07T14:41:05Z"
         },
         {
           "author": "arndt-s",
-          "authorAssociation": "CONTRIBUTOR",
+          "authorAssociation": "MEMBER",
           "body": "Discussed offline, we'll leave claim transcription out of scope but will also mention this at IETF 118 in Prague",
           "createdAt": "2023-10-20T11:46:15Z",
           "updatedAt": "2023-10-20T11:46:15Z"
@@ -200,7 +200,7 @@
         },
         {
           "author": "arndt-s",
-          "authorAssociation": "CONTRIBUTOR",
+          "authorAssociation": "MEMBER",
           "body": "Resolved with #23 ",
           "createdAt": "2023-07-07T14:35:00Z",
           "updatedAt": "2023-07-07T14:35:00Z"
@@ -240,7 +240,7 @@
       "comments": [
         {
           "author": "arndt-s",
-          "authorAssociation": "CONTRIBUTOR",
+          "authorAssociation": "MEMBER",
           "body": "Already done inline",
           "createdAt": "2023-07-07T14:38:16Z",
           "updatedAt": "2023-07-07T14:38:16Z"
@@ -280,7 +280,7 @@
       "comments": [
         {
           "author": "arndt-s",
-          "authorAssociation": "CONTRIBUTOR",
+          "authorAssociation": "MEMBER",
           "body": "discussed offline",
           "createdAt": "2023-07-07T14:35:37Z",
           "updatedAt": "2023-07-07T14:35:37Z"
@@ -414,7 +414,7 @@
       "comments": [
         {
           "author": "arndt-s",
-          "authorAssociation": "CONTRIBUTOR",
+          "authorAssociation": "MEMBER",
           "body": "doc name updated",
           "createdAt": "2023-10-17T10:04:17Z",
           "updatedAt": "2023-10-17T10:04:17Z"
@@ -589,7 +589,7 @@
         },
         {
           "author": "arndt-s",
-          "authorAssociation": "CONTRIBUTOR",
+          "authorAssociation": "MEMBER",
           "body": "Discussed with Pieter, will update flow and rename step A to `request or exchange token ..` - in the description RFC8693 is linked. ",
           "createdAt": "2023-10-17T09:44:33Z",
           "updatedAt": "2023-10-17T09:44:33Z"
@@ -788,7 +788,7 @@
       "comments": [
         {
           "author": "arndt-s",
-          "authorAssociation": "CONTRIBUTOR",
+          "authorAssociation": "MEMBER",
           "body": "I agree that the text is not clear here.\r\n\r\nA few questions arise to me when thinking about it:\r\n- Does it make sense to limit the subject_token to access tokens? Are there reasons to allow id or refresh tokens?\r\n- Should we further specify the other parameters, in particular \"actor_token\" and \"actor_token_type\"? Allowing everyone to exchange access_tokens to an authorization_grant of another domain can be critical and I believe the spec would benefit of making the actor parameters required in this case.",
           "createdAt": "2024-02-16T11:34:15Z",
           "updatedAt": "2024-02-16T11:34:15Z"
@@ -823,7 +823,7 @@
       "url": "https://github.com/oauth-wg/oauth-identity-chaining/issues/79",
       "state": "OPEN",
       "author": "arndt-s",
-      "authorAssociation": "CONTRIBUTOR",
+      "authorAssociation": "MEMBER",
       "assignees": [],
       "labels": [],
       "body": "If the user's token is a sender constraint token \"DPoP\", can it be exchanged by the client to an authorization grant for another domain? Does the authorization server verify proof of possession?",
@@ -975,7 +975,7 @@
       "url": "https://github.com/oauth-wg/oauth-identity-chaining/pull/1",
       "state": "MERGED",
       "author": "arndt-s",
-      "authorAssociation": "CONTRIBUTOR",
+      "authorAssociation": "MEMBER",
       "assignees": [],
       "labels": [],
       "body": "Adds github action that deploys rendered html to github pages.",
@@ -1003,7 +1003,7 @@
       "url": "https://github.com/oauth-wg/oauth-identity-chaining/pull/2",
       "state": "MERGED",
       "author": "arndt-s",
-      "authorAssociation": "CONTRIBUTOR",
+      "authorAssociation": "MEMBER",
       "assignees": [],
       "labels": [],
       "body": "",
@@ -1031,7 +1031,7 @@
       "url": "https://github.com/oauth-wg/oauth-identity-chaining/pull/3",
       "state": "MERGED",
       "author": "arndt-s",
-      "authorAssociation": "CONTRIBUTOR",
+      "authorAssociation": "MEMBER",
       "assignees": [],
       "labels": [],
       "body": "- `subject_token` parameter removed from token exchange request section as this is already specified in RFC8693\r\n- Resource/audience section merged into request section.\r\n- added more author details",
@@ -1085,7 +1085,7 @@
             "abbreviatedOid": "a1cd2ae"
           },
           "author": "arndt-s",
-          "authorAssociation": "CONTRIBUTOR",
+          "authorAssociation": "MEMBER",
           "state": "APPROVED",
           "body": "",
           "createdAt": "2023-06-23T10:15:01Z",
@@ -1127,7 +1127,7 @@
             "abbreviatedOid": "fc03064"
           },
           "author": "arndt-s",
-          "authorAssociation": "CONTRIBUTOR",
+          "authorAssociation": "MEMBER",
           "state": "APPROVED",
           "body": "",
           "createdAt": "2023-06-23T10:26:08Z",
@@ -1169,7 +1169,7 @@
             "abbreviatedOid": "3de0d00"
           },
           "author": "arndt-s",
-          "authorAssociation": "CONTRIBUTOR",
+          "authorAssociation": "MEMBER",
           "state": "APPROVED",
           "body": "",
           "createdAt": "2023-06-23T10:25:07Z",
@@ -1211,7 +1211,7 @@
             "abbreviatedOid": "ebffe9d"
           },
           "author": "arndt-s",
-          "authorAssociation": "CONTRIBUTOR",
+          "authorAssociation": "MEMBER",
           "state": "APPROVED",
           "body": "",
           "createdAt": "2023-06-23T10:17:28Z",
@@ -1227,7 +1227,7 @@
       "url": "https://github.com/oauth-wg/oauth-identity-chaining/pull/13",
       "state": "MERGED",
       "author": "arndt-s",
-      "authorAssociation": "CONTRIBUTOR",
+      "authorAssociation": "MEMBER",
       "assignees": [],
       "labels": [],
       "body": "",
@@ -1255,7 +1255,7 @@
       "url": "https://github.com/oauth-wg/oauth-identity-chaining/pull/14",
       "state": "MERGED",
       "author": "arndt-s",
-      "authorAssociation": "CONTRIBUTOR",
+      "authorAssociation": "MEMBER",
       "assignees": [],
       "labels": [],
       "body": "",
@@ -1359,7 +1359,7 @@
       "url": "https://github.com/oauth-wg/oauth-identity-chaining/pull/18",
       "state": "MERGED",
       "author": "arndt-s",
-      "authorAssociation": "CONTRIBUTOR",
+      "authorAssociation": "MEMBER",
       "assignees": [],
       "labels": [],
       "body": "",
@@ -1387,7 +1387,7 @@
       "url": "https://github.com/oauth-wg/oauth-identity-chaining/pull/19",
       "state": "MERGED",
       "author": "arndt-s",
-      "authorAssociation": "CONTRIBUTOR",
+      "authorAssociation": "MEMBER",
       "assignees": [],
       "labels": [],
       "body": "",
@@ -1415,7 +1415,7 @@
       "url": "https://github.com/oauth-wg/oauth-identity-chaining/pull/20",
       "state": "MERGED",
       "author": "arndt-s",
-      "authorAssociation": "CONTRIBUTOR",
+      "authorAssociation": "MEMBER",
       "assignees": [],
       "labels": [],
       "body": "- fixes diagram line (missing whitespace)\r\n- moves claims transcription and token format into own section",
@@ -1483,7 +1483,7 @@
             "abbreviatedOid": "b0b4a8d"
           },
           "author": "arndt-s",
-          "authorAssociation": "CONTRIBUTOR",
+          "authorAssociation": "MEMBER",
           "state": "APPROVED",
           "body": "",
           "createdAt": "2023-07-07T14:07:53Z",
@@ -1525,7 +1525,7 @@
             "abbreviatedOid": "442f135"
           },
           "author": "arndt-s",
-          "authorAssociation": "CONTRIBUTOR",
+          "authorAssociation": "MEMBER",
           "state": "APPROVED",
           "body": "",
           "createdAt": "2023-07-07T14:12:22Z",
@@ -1567,7 +1567,7 @@
             "abbreviatedOid": "2d03880"
           },
           "author": "arndt-s",
-          "authorAssociation": "CONTRIBUTOR",
+          "authorAssociation": "MEMBER",
           "state": "APPROVED",
           "body": "",
           "createdAt": "2023-07-07T14:28:13Z",
@@ -1609,7 +1609,7 @@
             "abbreviatedOid": "f45ea26"
           },
           "author": "arndt-s",
-          "authorAssociation": "CONTRIBUTOR",
+          "authorAssociation": "MEMBER",
           "state": "APPROVED",
           "body": "",
           "createdAt": "2023-07-07T14:31:59Z",
@@ -1625,7 +1625,7 @@
       "url": "https://github.com/oauth-wg/oauth-identity-chaining/pull/28",
       "state": "MERGED",
       "author": "arndt-s",
-      "authorAssociation": "CONTRIBUTOR",
+      "authorAssociation": "MEMBER",
       "assignees": [],
       "labels": [],
       "body": "",
@@ -1693,7 +1693,7 @@
             "abbreviatedOid": "297863b"
           },
           "author": "arndt-s",
-          "authorAssociation": "CONTRIBUTOR",
+          "authorAssociation": "MEMBER",
           "state": "APPROVED",
           "body": "",
           "createdAt": "2023-07-10T13:12:43Z",
@@ -1735,7 +1735,7 @@
             "abbreviatedOid": "7464bf9"
           },
           "author": "arndt-s",
-          "authorAssociation": "CONTRIBUTOR",
+          "authorAssociation": "MEMBER",
           "state": "APPROVED",
           "body": "",
           "createdAt": "2023-07-10T13:18:12Z",
@@ -1777,7 +1777,7 @@
             "abbreviatedOid": "7cb3241"
           },
           "author": "arndt-s",
-          "authorAssociation": "CONTRIBUTOR",
+          "authorAssociation": "MEMBER",
           "state": "APPROVED",
           "body": "",
           "createdAt": "2023-07-10T13:24:36Z",
@@ -1790,7 +1790,7 @@
             "abbreviatedOid": "3e44173"
           },
           "author": "arndt-s",
-          "authorAssociation": "CONTRIBUTOR",
+          "authorAssociation": "MEMBER",
           "state": "APPROVED",
           "body": "",
           "createdAt": "2023-07-10T13:26:51Z",
@@ -1832,7 +1832,7 @@
             "abbreviatedOid": "b8aab84"
           },
           "author": "arndt-s",
-          "authorAssociation": "CONTRIBUTOR",
+          "authorAssociation": "MEMBER",
           "state": "APPROVED",
           "body": "",
           "createdAt": "2023-07-10T13:31:55Z",
@@ -1848,7 +1848,7 @@
       "url": "https://github.com/oauth-wg/oauth-identity-chaining/pull/38",
       "state": "CLOSED",
       "author": "arndt-s",
-      "authorAssociation": "CONTRIBUTOR",
+      "authorAssociation": "MEMBER",
       "assignees": [],
       "labels": [],
       "body": "",
@@ -1867,7 +1867,7 @@
       "comments": [
         {
           "author": "arndt-s",
-          "authorAssociation": "CONTRIBUTOR",
+          "authorAssociation": "MEMBER",
           "body": "Duplicate to #37",
           "createdAt": "2023-07-10T13:32:30Z",
           "updatedAt": "2023-07-10T13:32:30Z"
@@ -1908,7 +1908,7 @@
             "abbreviatedOid": "895472a"
           },
           "author": "arndt-s",
-          "authorAssociation": "CONTRIBUTOR",
+          "authorAssociation": "MEMBER",
           "state": "APPROVED",
           "body": "",
           "createdAt": "2023-07-10T13:36:31Z",
@@ -1921,7 +1921,7 @@
             "abbreviatedOid": "73b4fc5"
           },
           "author": "arndt-s",
-          "authorAssociation": "CONTRIBUTOR",
+          "authorAssociation": "MEMBER",
           "state": "APPROVED",
           "body": "",
           "createdAt": "2023-07-10T13:41:24Z",
@@ -1934,7 +1934,7 @@
             "abbreviatedOid": "12223fa"
           },
           "author": "arndt-s",
-          "authorAssociation": "CONTRIBUTOR",
+          "authorAssociation": "MEMBER",
           "state": "APPROVED",
           "body": "",
           "createdAt": "2023-07-10T13:43:24Z",
@@ -1950,7 +1950,7 @@
       "url": "https://github.com/oauth-wg/oauth-identity-chaining/pull/40",
       "state": "MERGED",
       "author": "arndt-s",
-      "authorAssociation": "CONTRIBUTOR",
+      "authorAssociation": "MEMBER",
       "assignees": [],
       "labels": [],
       "body": "Only use ASCII",
@@ -1992,7 +1992,7 @@
       "url": "https://github.com/oauth-wg/oauth-identity-chaining/pull/41",
       "state": "MERGED",
       "author": "arndt-s",
-      "authorAssociation": "CONTRIBUTOR",
+      "authorAssociation": "MEMBER",
       "assignees": [],
       "labels": [],
       "body": "",
@@ -2034,7 +2034,7 @@
       "url": "https://github.com/oauth-wg/oauth-identity-chaining/pull/43",
       "state": "MERGED",
       "author": "arndt-s",
-      "authorAssociation": "CONTRIBUTOR",
+      "authorAssociation": "MEMBER",
       "assignees": [],
       "labels": [],
       "body": "Update doc name to adhere convention",
@@ -2076,7 +2076,7 @@
       "url": "https://github.com/oauth-wg/oauth-identity-chaining/pull/52",
       "state": "MERGED",
       "author": "arndt-s",
-      "authorAssociation": "CONTRIBUTOR",
+      "authorAssociation": "MEMBER",
       "assignees": [],
       "labels": [],
       "body": "Removes a duplicated section from the introduction",
@@ -2118,7 +2118,7 @@
       "url": "https://github.com/oauth-wg/oauth-identity-chaining/pull/53",
       "state": "MERGED",
       "author": "arndt-s",
-      "authorAssociation": "CONTRIBUTOR",
+      "authorAssociation": "MEMBER",
       "assignees": [],
       "labels": [],
       "body": "Replaces examples and add response examples",
@@ -2186,7 +2186,7 @@
       "url": "https://github.com/oauth-wg/oauth-identity-chaining/pull/54",
       "state": "MERGED",
       "author": "arndt-s",
-      "authorAssociation": "CONTRIBUTOR",
+      "authorAssociation": "MEMBER",
       "assignees": [],
       "labels": [],
       "body": "Fixes RFC7523 reference (was RFC7521)",
@@ -2262,7 +2262,7 @@
             "abbreviatedOid": "200ef98"
           },
           "author": "arndt-s",
-          "authorAssociation": "CONTRIBUTOR",
+          "authorAssociation": "MEMBER",
           "state": "APPROVED",
           "body": "",
           "createdAt": "2023-10-03T09:23:23Z",
@@ -2457,7 +2457,7 @@
             "abbreviatedOid": "a9ad12d"
           },
           "author": "arndt-s",
-          "authorAssociation": "CONTRIBUTOR",
+          "authorAssociation": "MEMBER",
           "state": "APPROVED",
           "body": "",
           "createdAt": "2023-10-23T12:16:06Z",
@@ -2473,7 +2473,7 @@
       "url": "https://github.com/oauth-wg/oauth-identity-chaining/pull/57",
       "state": "MERGED",
       "author": "arndt-s",
-      "authorAssociation": "CONTRIBUTOR",
+      "authorAssociation": "MEMBER",
       "assignees": [],
       "labels": [],
       "body": "Based on Kelly's feedback changing a label in the diagram in the appendix to indicate that also token exchange may be used. This is at the step when the client request a token for a protected resource in a different domain from its own authorization server. ",
@@ -2515,7 +2515,7 @@
       "url": "https://github.com/oauth-wg/oauth-identity-chaining/pull/58",
       "state": "MERGED",
       "author": "arndt-s",
-      "authorAssociation": "CONTRIBUTOR",
+      "authorAssociation": "MEMBER",
       "assignees": [],
       "labels": [],
       "body": "Based on Brians feedback WWW-Authenticate cannot be used as it does not contain authorization server information.\r\nHe suggested to use https://datatracker.ietf.org/doc/html/[draft-ietf-oauth-resource-metadata-00](https://datatracker.ietf.org/doc/html/draft-ietf-oauth-resource-metadata-00) instead.\r\n\r\nThis PR is removing WWW-Authenticate from the draft and suggest the reader to use protected resource metadata instead when authorization server discovery is needed.",
@@ -2649,7 +2649,7 @@
             "abbreviatedOid": "8abc746"
           },
           "author": "arndt-s",
-          "authorAssociation": "CONTRIBUTOR",
+          "authorAssociation": "MEMBER",
           "state": "COMMENTED",
           "body": "",
           "createdAt": "2023-10-23T11:42:56Z",
@@ -2669,7 +2669,7 @@
             "abbreviatedOid": "8abc746"
           },
           "author": "arndt-s",
-          "authorAssociation": "CONTRIBUTOR",
+          "authorAssociation": "MEMBER",
           "state": "COMMENTED",
           "body": "",
           "createdAt": "2023-10-23T12:10:07Z",
@@ -2731,7 +2731,7 @@
             "abbreviatedOid": "190a021"
           },
           "author": "arndt-s",
-          "authorAssociation": "CONTRIBUTOR",
+          "authorAssociation": "MEMBER",
           "state": "APPROVED",
           "body": "",
           "createdAt": "2023-10-23T12:15:16Z",
@@ -2773,7 +2773,7 @@
             "abbreviatedOid": "43a1e5c"
           },
           "author": "arndt-s",
-          "authorAssociation": "CONTRIBUTOR",
+          "authorAssociation": "MEMBER",
           "state": "APPROVED",
           "body": "",
           "createdAt": "2023-11-30T08:13:48Z",
@@ -2789,7 +2789,7 @@
       "url": "https://github.com/oauth-wg/oauth-identity-chaining/pull/63",
       "state": "MERGED",
       "author": "arndt-s",
-      "authorAssociation": "CONTRIBUTOR",
+      "authorAssociation": "MEMBER",
       "assignees": [],
       "labels": [],
       "body": "removing schwenkschuster from docname to indicate it has been WG-adopted",
@@ -2857,7 +2857,7 @@
             "abbreviatedOid": "c644b27"
           },
           "author": "arndt-s",
-          "authorAssociation": "CONTRIBUTOR",
+          "authorAssociation": "MEMBER",
           "state": "APPROVED",
           "body": "",
           "createdAt": "2023-12-01T13:16:42Z",
@@ -3006,7 +3006,7 @@
             "abbreviatedOid": "9f6da23"
           },
           "author": "arndt-s",
-          "authorAssociation": "CONTRIBUTOR",
+          "authorAssociation": "MEMBER",
           "state": "APPROVED",
           "body": "",
           "createdAt": "2024-01-26T17:08:24Z",
@@ -3351,7 +3351,7 @@
             "abbreviatedOid": "8cded4f"
           },
           "author": "arndt-s",
-          "authorAssociation": "CONTRIBUTOR",
+          "authorAssociation": "MEMBER",
           "state": "APPROVED",
           "body": "LGTM, feel free to just close my comment and merge if you disagree.",
           "createdAt": "2024-02-09T11:56:04Z",
@@ -3536,7 +3536,7 @@
       "url": "https://github.com/oauth-wg/oauth-identity-chaining/pull/78",
       "state": "MERGED",
       "author": "arndt-s",
-      "authorAssociation": "CONTRIBUTOR",
+      "authorAssociation": "MEMBER",
       "assignees": [],
       "labels": [],
       "body": "* Moves use cases to the appendix\r\n* Adds new continuous integration use case\r\n\r\nLet me know what you think!",
@@ -3646,7 +3646,7 @@
       "url": "https://github.com/oauth-wg/oauth-identity-chaining/pull/80",
       "state": "MERGED",
       "author": "arndt-s",
-      "authorAssociation": "CONTRIBUTOR",
+      "authorAssociation": "MEMBER",
       "assignees": [],
       "labels": [],
       "body": "Fixes some typos ",
@@ -3701,7 +3701,7 @@
       "url": "https://github.com/oauth-wg/oauth-identity-chaining/pull/81",
       "state": "MERGED",
       "author": "arndt-s",
-      "authorAssociation": "CONTRIBUTOR",
+      "authorAssociation": "MEMBER",
       "assignees": [],
       "labels": [],
       "body": "Adds a CODEOWNERS file with the authors of this draft.",
@@ -3722,7 +3722,7 @@
       "comments": [
         {
           "author": "arndt-s",
-          "authorAssociation": "CONTRIBUTOR",
+          "authorAssociation": "MEMBER",
           "body": "@aaronpk can you please add Kelly and Pieter into the identity-chaining team?",
           "createdAt": "2024-02-16T11:54:44Z",
           "updatedAt": "2024-02-16T11:54:44Z"
@@ -3743,7 +3743,7 @@
         },
         {
           "author": "arndt-s",
-          "authorAssociation": "CONTRIBUTOR",
+          "authorAssociation": "MEMBER",
           "body": "@aaronpk @bc-pi I updated the PR with the github handles we have available.",
           "createdAt": "2024-03-08T11:58:25Z",
           "updatedAt": "2024-03-08T11:58:25Z"
@@ -3830,7 +3830,7 @@
             "abbreviatedOid": "db22609"
           },
           "author": "arndt-s",
-          "authorAssociation": "CONTRIBUTOR",
+          "authorAssociation": "MEMBER",
           "state": "APPROVED",
           "body": "",
           "createdAt": "2024-03-08T11:50:48Z",
@@ -3896,7 +3896,7 @@
             "abbreviatedOid": "d8deecf"
           },
           "author": "arndt-s",
-          "authorAssociation": "CONTRIBUTOR",
+          "authorAssociation": "MEMBER",
           "state": "APPROVED",
           "body": "",
           "createdAt": "2024-03-08T11:50:08Z",
