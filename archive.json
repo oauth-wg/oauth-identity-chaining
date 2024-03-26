@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2024-03-24T00:16:56.666339+00:00",
+  "timestamp": "2024-03-26T00:14:41.959818+00:00",
   "repo": "oauth-wg/oauth-identity-chaining",
   "labels": [
     {
@@ -971,16 +971,24 @@
       "id": "I_kwDOJubJxM6DTt3J",
       "title": "JWT Authorization Grant allows broadening the scope",
       "url": "https://github.com/oauth-wg/oauth-identity-chaining/issues/89",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "obfuscoder",
       "authorAssociation": "NONE",
       "assignees": [],
       "labels": [],
       "body": "I followed the presentation at the IETF 119 for this topic. The profile describes how an ID Token is used to get a JWT Authorization Grant and then to get an Access Token for that JWT Authorization Grant. The scope can be defined by the client when requesting the access token.\r\n\r\nAs the JWT Authorization Grant profile is designed to allow interop across several domains, each AS in the participating domain will support creating authorization grant JWTs as well as accepting authorization grant JWTs to issue access tokens.\r\n\r\nUsually a client receives an access token alongside the ID Token and the client can use Token Exchange to get additional access tokens with equal or narrowed down scope.\r\n\r\nThe ID Token does not contain any scope. So even if a client only received an Access Token with a specific narrow scope, the client could abuse this grant by asking AS of domain A for an authorization grant JWT based on the Id Token and then use this authz grant JWT at the AS of domain A again to obtain a new access token with arbitrary scope (up to what is allowed for the client as per policy).\r\n\r\nAlthough this could be prohibited by the AS not accepting authorization grant JWTs it issued itself, the client could request the authorization grant JWT from the AS of domain B with just a couple more steps.\r\n\r\nGranted, this may not be relevant for the enterprise environment the JWT authorization grant profile is meant for as the End-User is usually not asked for giving consent to the scope requested by clients and instead the allowed scope in defined by policies within the AS configs. However, I'd like to ask if this is something worth to consider.\r\n",
       "createdAt": "2024-03-22T17:33:36Z",
-      "updatedAt": "2024-03-22T17:33:36Z",
-      "closedAt": null,
-      "comments": []
+      "updatedAt": "2024-03-25T07:25:54Z",
+      "closedAt": "2024-03-25T07:25:54Z",
+      "comments": [
+        {
+          "author": "obfuscoder",
+          "authorAssociation": "NONE",
+          "body": "Just realized that the Identity Assertion Authz Grant profile has its own github issue tracker. Closing this one.",
+          "createdAt": "2024-03-25T07:25:54Z",
+          "updatedAt": "2024-03-25T07:25:54Z"
+        }
+      ]
     }
   ],
   "pulls": [
