@@ -1376,24 +1376,19 @@ appear in all capitals, as shown here.<a href="#section-1.1-1" class="pilcrow">�
           </h4>
 <p id="section-2.3.1-1">The parameters described in section 2.1 of <span>[<a href="#RFC8693" class="cite xref">RFC8693</a>]</span> apply here with the following restrictions:<a href="#section-2.3.1-1" class="pilcrow">¶</a></p>
 <span class="break"></span><dl class="dlNewline" id="section-2.3.1-2">
-            <dt id="section-2.3.1-2.1">requested_token_type</dt>
+            <dt id="section-2.3.1-2.1">scope</dt>
             <dd style="margin-left: 1.5em" id="section-2.3.1-2.2">
-              <p id="section-2.3.1-2.2.1"><span class="bcp14">OPTIONAL</span> according to <span>[<a href="#RFC8693" class="cite xref">RFC8693</a>]</span>. In the context of this specification this parameter <span class="bcp14">SHOULD NOT</span> be used.<a href="#section-2.3.1-2.2.1" class="pilcrow">¶</a></p>
+              <p id="section-2.3.1-2.2.1"><span class="bcp14">OPTIONAL</span>. Additional scopes to indicate scopes included in the returned JWT authorization grant. See <span><a href="#claims-transcription" class="internal xref">Claims transcription</a> (<a href="#claims-transcription" class="auto internal xref">Section 2.5</a>)</span>.<a href="#section-2.3.1-2.2.1" class="pilcrow">¶</a></p>
 </dd>
             <dd class="break"></dd>
-<dt id="section-2.3.1-2.3">scope</dt>
+<dt id="section-2.3.1-2.3">resource</dt>
             <dd style="margin-left: 1.5em" id="section-2.3.1-2.4">
-              <p id="section-2.3.1-2.4.1"><span class="bcp14">OPTIONAL</span>. Additional scopes to indicate scopes included in the returned JWT authorization grant. See <span><a href="#claims-transcription" class="internal xref">Claims transcription</a> (<a href="#claims-transcription" class="auto internal xref">Section 2.5</a>)</span>.<a href="#section-2.3.1-2.4.1" class="pilcrow">¶</a></p>
+              <p id="section-2.3.1-2.4.1"><span class="bcp14">REQUIRED</span> if audience is not set. URI of authorization server of targeting domain (domain B).<a href="#section-2.3.1-2.4.1" class="pilcrow">¶</a></p>
 </dd>
             <dd class="break"></dd>
-<dt id="section-2.3.1-2.5">resource</dt>
+<dt id="section-2.3.1-2.5">audience</dt>
             <dd style="margin-left: 1.5em" id="section-2.3.1-2.6">
-              <p id="section-2.3.1-2.6.1"><span class="bcp14">REQUIRED</span> if audience is not set. URI of authorization server of targeting domain (domain B).<a href="#section-2.3.1-2.6.1" class="pilcrow">¶</a></p>
-</dd>
-            <dd class="break"></dd>
-<dt id="section-2.3.1-2.7">audience</dt>
-            <dd style="margin-left: 1.5em" id="section-2.3.1-2.8">
-              <p id="section-2.3.1-2.8.1"><span class="bcp14">REQUIRED</span> if resource is not set. Well known/logical name of authorization server of targeting domain (domain B).<a href="#section-2.3.1-2.8.1" class="pilcrow">¶</a></p>
+              <p id="section-2.3.1-2.6.1"><span class="bcp14">REQUIRED</span> if resource is not set. Well known/logical name of authorization server of targeting domain (domain B).<a href="#section-2.3.1-2.6.1" class="pilcrow">¶</a></p>
 </dd>
           <dd class="break"></dd>
 </dl>
@@ -1887,37 +1882,43 @@ Cache-Control: no-cache, no-store
 <a href="#appendix-D" class="section-number selfRef">Appendix D. </a><a href="#name-document-history" class="section-name selfRef">Document History</a>
       </h2>
 <p id="appendix-D-1">[[ To be removed from the final specification ]]<a href="#appendix-D-1" class="pilcrow">¶</a></p>
-<p id="appendix-D-2">-01<a href="#appendix-D-2" class="pilcrow">¶</a></p>
+<p id="appendix-D-2">-02<a href="#appendix-D-2" class="pilcrow">¶</a></p>
 <ul class="normal">
 <li class="normal" id="appendix-D-3.1">
-          <p id="appendix-D-3.1.1">limit the authorization grant format to RFC7523 JWT<a href="#appendix-D-3.1.1" class="pilcrow">¶</a></p>
-</li>
-        <li class="normal" id="appendix-D-3.2">
-          <p id="appendix-D-3.2.1">minor example fixes<a href="#appendix-D-3.2.1" class="pilcrow">¶</a></p>
-</li>
-        <li class="normal" id="appendix-D-3.3">
-          <p id="appendix-D-3.3.1">editorial fixes<a href="#appendix-D-3.3.1" class="pilcrow">¶</a></p>
-</li>
-        <li class="normal" id="appendix-D-3.4">
-          <p id="appendix-D-3.4.1">added Aaron Parecki to acknowledgements<a href="#appendix-D-3.4.1" class="pilcrow">¶</a></p>
-</li>
-        <li class="normal" id="appendix-D-3.5">
-          <p id="appendix-D-3.5.1">renamed section headers to be more explicit<a href="#appendix-D-3.5.1" class="pilcrow">¶</a></p>
-</li>
-        <li class="normal" id="appendix-D-3.6">
-          <p id="appendix-D-3.6.1">use more specific term "JWT authorization grant"<a href="#appendix-D-3.6.1" class="pilcrow">¶</a></p>
-</li>
-        <li class="normal" id="appendix-D-3.7">
-          <p id="appendix-D-3.7.1">changed name to "OAuth Identity and Authorization Chaining Across Domains"<a href="#appendix-D-3.7.1" class="pilcrow">¶</a></p>
-</li>
-        <li class="normal" id="appendix-D-3.8">
-          <p id="appendix-D-3.8.1">move use cases to appendix and add continuous integration use case<a href="#appendix-D-3.8.1" class="pilcrow">¶</a></p>
+          <p id="appendix-D-3.1.1">remove recommendation to not use RFC8693's requested_token_type<a href="#appendix-D-3.1.1" class="pilcrow">¶</a></p>
 </li>
       </ul>
-<p id="appendix-D-4">-00<a href="#appendix-D-4" class="pilcrow">¶</a></p>
+<p id="appendix-D-4">-01<a href="#appendix-D-4" class="pilcrow">¶</a></p>
 <ul class="normal">
 <li class="normal" id="appendix-D-5.1">
-          <p id="appendix-D-5.1.1">initial working group version (previously draft-schwenkschuster-oauth-identity-chaining)<a href="#appendix-D-5.1.1" class="pilcrow">¶</a></p>
+          <p id="appendix-D-5.1.1">limit the authorization grant format to RFC7523 JWT<a href="#appendix-D-5.1.1" class="pilcrow">¶</a></p>
+</li>
+        <li class="normal" id="appendix-D-5.2">
+          <p id="appendix-D-5.2.1">minor example fixes<a href="#appendix-D-5.2.1" class="pilcrow">¶</a></p>
+</li>
+        <li class="normal" id="appendix-D-5.3">
+          <p id="appendix-D-5.3.1">editorial fixes<a href="#appendix-D-5.3.1" class="pilcrow">¶</a></p>
+</li>
+        <li class="normal" id="appendix-D-5.4">
+          <p id="appendix-D-5.4.1">added Aaron Parecki to acknowledgements<a href="#appendix-D-5.4.1" class="pilcrow">¶</a></p>
+</li>
+        <li class="normal" id="appendix-D-5.5">
+          <p id="appendix-D-5.5.1">renamed section headers to be more explicit<a href="#appendix-D-5.5.1" class="pilcrow">¶</a></p>
+</li>
+        <li class="normal" id="appendix-D-5.6">
+          <p id="appendix-D-5.6.1">use more specific term "JWT authorization grant"<a href="#appendix-D-5.6.1" class="pilcrow">¶</a></p>
+</li>
+        <li class="normal" id="appendix-D-5.7">
+          <p id="appendix-D-5.7.1">changed name to "OAuth Identity and Authorization Chaining Across Domains"<a href="#appendix-D-5.7.1" class="pilcrow">¶</a></p>
+</li>
+        <li class="normal" id="appendix-D-5.8">
+          <p id="appendix-D-5.8.1">move use cases to appendix and add continuous integration use case<a href="#appendix-D-5.8.1" class="pilcrow">¶</a></p>
+</li>
+      </ul>
+<p id="appendix-D-6">-00<a href="#appendix-D-6" class="pilcrow">¶</a></p>
+<ul class="normal">
+<li class="normal" id="appendix-D-7.1">
+          <p id="appendix-D-7.1.1">initial working group version (previously draft-schwenkschuster-oauth-identity-chaining)<a href="#appendix-D-7.1.1" class="pilcrow">¶</a></p>
 </li>
       </ul>
 </section>
