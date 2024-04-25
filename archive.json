@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2024-04-23T00:15:40.547619+00:00",
+  "timestamp": "2024-04-25T00:17:02.776711+00:00",
   "repo": "oauth-wg/oauth-identity-chaining",
   "labels": [
     {
@@ -852,15 +852,15 @@
       "id": "I_kwDOJubJxM5_3cD7",
       "title": "relax recommendation against requested_token_type use",
       "url": "https://github.com/oauth-wg/oauth-identity-chaining/issues/82",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "bc-pi",
       "authorAssociation": "CONTRIBUTOR",
       "assignees": [],
       "labels": [],
       "body": "Placeholder issue noting that @aaronpk's use case utilizes `requested_token_type` while the the current text https://www.ietf.org/archive/id/draft-ietf-oauth-identity-chaining-01.html#section-2.3.1-1 has a `SHOULD NOT`.  With the recent change to limit token types to JWTs https://github.com/oauth-wg/oauth-identity-chaining/issues/45 that `SHOULD NOT` isn't as meaningful/useful. Suggestion (from me) is to remove mention/treatment of the parameter from 2.3.1 https://www.ietf.org/archive/id/draft-ietf-oauth-identity-chaining-01.html#name-token-exchange-request",
       "createdAt": "2024-02-20T20:42:27Z",
-      "updatedAt": "2024-02-23T17:20:34Z",
-      "closedAt": null,
+      "updatedAt": "2024-04-24T19:04:54Z",
+      "closedAt": "2024-04-24T19:04:53Z",
       "comments": [
         {
           "author": "aaronpk",
@@ -876,15 +876,15 @@
       "id": "I_kwDOJubJxM6Ai2BR",
       "title": "How does the AS know it should generate a JWT Authorization Grant formatted token?",
       "url": "https://github.com/oauth-wg/oauth-identity-chaining/issues/84",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "gffletch",
       "authorAssociation": "NONE",
       "assignees": [],
       "labels": [],
       "body": "In reading through section 2.3.1 it's unclear to me how the AS knows it should be generating a token for the purposes of chaining to a new domain other than the specification of the audience/resource. \n\nAre we sure that this is sufficient given the other profiles of token exchange that exist? Could there be cases where the AS is generating a token for the AS in domain B and the desired response token is NOT a JWT Authorization Grant formatted token?",
       "createdAt": "2024-02-27T13:37:29Z",
-      "updatedAt": "2024-02-27T23:40:56Z",
-      "closedAt": null,
+      "updatedAt": "2024-04-24T19:05:49Z",
+      "closedAt": "2024-04-24T19:05:49Z",
       "comments": [
         {
           "author": "bc-pi",
@@ -899,6 +899,13 @@
           "body": "We had the same problem with our implementation, and are using the `requested_token_type` parameter to indicate that this is a cross-domain authorization JWT instead of other uses of token exchange.",
           "createdAt": "2024-02-27T23:36:21Z",
           "updatedAt": "2024-02-27T23:36:21Z"
+        },
+        {
+          "author": "bc-pi",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "https://github.com/oauth-wg/oauth-identity-chaining/pull/83 was merged  ",
+          "createdAt": "2024-04-24T19:05:49Z",
+          "updatedAt": "2024-04-24T19:05:49Z"
         }
       ]
     },
@@ -949,7 +956,7 @@
       "url": "https://github.com/oauth-wg/oauth-identity-chaining/issues/88",
       "state": "OPEN",
       "author": "dhs-aws",
-      "authorAssociation": "NONE",
+      "authorAssociation": "CONTRIBUTOR",
       "assignees": [],
       "labels": [],
       "body": "Figure 6 in Appendix B.1 skips from step A to step C.  I believe a correct rendering of the diagram would takes steps C through G and translate them to steps B through F to correspond with the text.",
@@ -3794,24 +3801,26 @@
       "id": "PR_kwDOJubJxM5nyfXf",
       "title": "remove recommendation to not use requested_token_type",
       "url": "https://github.com/oauth-wg/oauth-identity-chaining/pull/83",
-      "state": "OPEN",
+      "state": "MERGED",
       "author": "bc-pi",
       "authorAssociation": "CONTRIBUTOR",
       "assignees": [],
       "labels": [],
       "body": "remove recommendation to not use RFC8693's requested_token_type (fix issue #82)\r\n\r\npreview of editor's copy https://drafts.oauth.net/oauth-identity-chaining/relax-should-not-request-token-type/draft-ietf-oauth-identity-chaining.html ",
       "createdAt": "2024-02-23T19:52:55Z",
-      "updatedAt": "2024-03-08T11:50:48Z",
+      "updatedAt": "2024-04-24T19:04:53Z",
       "baseRepository": "oauth-wg/oauth-identity-chaining",
       "baseRefName": "main",
       "baseRefOid": "d05faa5891a52783b35fe7623abcc54e1e2f7998",
       "headRepository": "oauth-wg/oauth-identity-chaining",
       "headRefName": "relax-should-not-request-token-type",
       "headRefOid": "db226093158a4a79613788efc2a92b39c074af48",
-      "closedAt": null,
-      "mergedAt": null,
-      "mergedBy": null,
-      "mergeCommit": null,
+      "closedAt": "2024-04-24T19:04:53Z",
+      "mergedAt": "2024-04-24T19:04:52Z",
+      "mergedBy": "bc-pi",
+      "mergeCommit": {
+        "oid": "781eeea1760504477fd37b0e7a666650775f8346"
+      },
       "comments": [
         {
           "author": "gffletch",
@@ -3868,24 +3877,26 @@
       "id": "PR_kwDOJubJxM5o41N5",
       "title": "Nitpick - referrers -> refers in the intro",
       "url": "https://github.com/oauth-wg/oauth-identity-chaining/pull/87",
-      "state": "OPEN",
+      "state": "MERGED",
       "author": "dhs-aws",
-      "authorAssociation": "NONE",
+      "authorAssociation": "CONTRIBUTOR",
       "assignees": [],
       "labels": [],
       "body": "Fix a minor spelling mistake.",
       "createdAt": "2024-03-06T20:51:41Z",
-      "updatedAt": "2024-03-08T11:50:08Z",
+      "updatedAt": "2024-04-24T19:04:27Z",
       "baseRepository": "oauth-wg/oauth-identity-chaining",
       "baseRefName": "main",
       "baseRefOid": "d05faa5891a52783b35fe7623abcc54e1e2f7998",
       "headRepository": "dhs-aws/oauth-identity-chaining",
       "headRefName": "patch-1",
       "headRefOid": "d8deecf626c8d52a2d953e2727072f8bb47561ff",
-      "closedAt": null,
-      "mergedAt": null,
-      "mergedBy": null,
-      "mergeCommit": null,
+      "closedAt": "2024-04-24T19:04:27Z",
+      "mergedAt": "2024-04-24T19:04:27Z",
+      "mergedBy": "bc-pi",
+      "mergeCommit": {
+        "oid": "9c5e06622ed6a3c29fe08591045de2ba2a4c6244"
+      },
       "comments": [],
       "reviews": [
         {
