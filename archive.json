@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2024-04-25T00:17:02.776711+00:00",
+  "timestamp": "2024-04-28T00:17:07.307577+00:00",
   "repo": "oauth-wg/oauth-identity-chaining",
   "labels": [
     {
@@ -828,7 +828,7 @@
       "labels": [],
       "body": "If the user's token is a sender constraint token \"DPoP\", can it be exchanged by the client to an authorization grant for another domain? Does the authorization server verify proof of possession?",
       "createdAt": "2024-02-16T11:36:39Z",
-      "updatedAt": "2024-03-01T15:18:04Z",
+      "updatedAt": "2024-04-26T16:52:43Z",
       "closedAt": null,
       "comments": [
         {
@@ -844,6 +844,13 @@
           "body": "I'd like mTLS sender constrained tokens. Can we consider adding sender constraining mechanisms to the draft?",
           "createdAt": "2024-03-01T15:18:03Z",
           "updatedAt": "2024-03-01T15:18:03Z"
+        },
+        {
+          "author": "bc-pi",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "some more related discussion in \"Add sender constraining mechanisms #86\" ",
+          "createdAt": "2024-04-26T16:52:41Z",
+          "updatedAt": "2024-04-26T16:52:41Z"
         }
       ]
     },
@@ -945,9 +952,17 @@
       "labels": [],
       "body": "Add mTLS and DPoP",
       "createdAt": "2024-03-05T19:24:43Z",
-      "updatedAt": "2024-03-05T19:24:43Z",
+      "updatedAt": "2024-04-25T19:10:42Z",
       "closedAt": null,
-      "comments": []
+      "comments": [
+        {
+          "author": "bc-pi",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "A rough sketch of things that likely need to be accounted for or a least considered in this effort:\r\n\r\n* checking the binding on inbound token of [Token Exchange](https://www.ietf.org/archive/id/draft-ietf-oauth-identity-chaining-01.html#name-token-exchange) request. No standard defined here. Might not even be feasible or make sense depending on deployment (i.e. the RS acting as the client doesn't have access to the bound key)\r\n* binding the token returned from Token Exchange. The request could be MTLS or have a DPoP header, which is kinda implied per standards. And the returned JWT could be bound with the respective `cnf` claim and method, which is maybe implied by standards but not explicitly written down anywhere (that I know of).\r\n* checking the binding on inbound token/assertion of the [Access Token Request](https://www.ietf.org/archive/id/draft-ietf-oauth-identity-chaining-01.html#name-access-token-request). The request could be MTLS or have a DPoP header, which is kinda implied per standards but kinda leaves much to the imagination, and checked against the `cnf` claim of the JWT authz grant. The presence of the `cnf` claim might be sufficient to say the thing is bound and suggest/require checking it (implementations I know about would just ignore it, however). But maybe a new grant type would make sense to clearly convey the intent (also using `urn:ietf:params:oauth:grant-type:jwt-bearer` for a non-bearer thing is awkward). \r\n* binding the resultant access token. The request could be MTLS or have a DPoP header and I think this is covered/implied by the existing specs to say that the issued access token should/could be bound a la [DPoP Access Token Request](https://www.rfc-editor.org/rfc/rfc9449.html#name-dpop-access-token-request) and [Mutual-TLS Client Certificate-Bound Access Tokens](https://www.rfc-editor.org/rfc/rfc8705.html#name-mutual-tls-client-certifica). \r\n\r\nThe [Authorization server acting as client](https://www.ietf.org/archive/id/draft-ietf-oauth-identity-chaining-01.html#name-authorization-server-acting) flips around nearly all of the pieces above to make them unworkable. I guess it'd need separate treatment with the definition of something like a proxied \"trust me\" this is the cnf I need in the final access token. IIRC Kelley had some prior work toward this end somewhere but I can't seem to find it at the moment. Or maybe sender constraining is just out of scope in the AS as client proxy case. \r\n\r\n\r\n",
+          "createdAt": "2024-04-25T19:10:41Z",
+          "updatedAt": "2024-04-25T19:10:41Z"
+        }
+      ]
     },
     {
       "number": 88,
