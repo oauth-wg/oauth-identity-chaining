@@ -12,7 +12,7 @@ title: OAuth Identity and Authorization Chaining Across Domains
 abbrev:
 lang: en
 kw: []
-# date: 2022-02-02 -- date is filled in automatically by xml2rfc if not given
+# date: 2024-07-01 -- date is filled in automatically by xml2rfc if not given
 author:
 - name: Arndt Schwenkschuster
   org: Microsoft
@@ -46,9 +46,10 @@ normative:
   RFC6749: # OAuth 2.0 Authorization Framework
   RFC8693: # OAuth 2.0 Token Exchange
   RFC7523: # JSON Web Token (JWT) Profile for OAuth 2.0 Client Authentication and Authorization Grants
+  RFC8705: # mTLS
   RFC8707: # Resource Indicators for OAuth 2.0
   RFC8414: # OAuth 2.0 Authorization Server Metadata
-
+  RFC9449: # DPoP
 informative:
 
   I-D.ietf-oauth-selective-disclosure-jwt:
@@ -77,7 +78,7 @@ A client in trust domain A that needs to access a resource server in trust domai
 
 ## Overview
 
-The identity and authorization chaining flow outlined below describes how a combination of OAuth 2.0 Token Exchange {{RFC8693}} and JWT Profile for OAuth 2.0 Client Authentication and Authorization Grants {{RFC7523}} are used to address the use cases identified. The appendix include two additional examples that describe how this flow is used. In one example, the resource server acts as the client and in the other, the authorization server acts as the client.
+The identity and authorization chaining flow outlined below describes how a combination of OAuth 2.0 Token Exchange {{RFC8693}} and JWT Profile for OAuth 2.0 Client Authentication and Authorization Grants {{RFC7523}} are used to address the use cases identified. Section [Examples](#examples) includes two additional examples that describe how this flow is used. In one example, the resource server acts as the client and in the other, the authorization server acts as the client.
 
 ~~~~
 +-------------+                            +-------------+ +---------+
@@ -131,7 +132,14 @@ The flow illustrated in Figure 1 shows the steps the client in trust Domain A ne
 * (F) The client now possesses an access token to access the protected resource in Domain B.
 
 ## Authorization Server Discovery
+
 This specification does not define authorization server discovery. A client MAY maintain a static mapping or use other means to identify the authorization server. The `authorization_servers` property in {{I-D.ietf-oauth-resource-metadata}} MAY be used.
+
+## Sender Constrained Tokens
+
+The authorization server MAY issue sender constrained tokens. There are currently two options for sender constrained tokens: Mutually Authenticated TLS (mTLS) {{RFC8705}} and Demonstrating Proof of Possessions (DPoP) {{RFC9449}}. 
+
+Additionally, there are two examples of identity and authorization chaining: resource server acting as the client and the authorization server acting as the client. Additional details of the examples are in [Examples](#examples). 
 
 ## Token Exchange
 
@@ -142,19 +150,23 @@ The client performs token exchange as defined in {{RFC8693}} with the authorizat
 The parameters described in section 2.1 of {{RFC8693}} apply here with the following restrictions:
 
 {:vspace}
-scope
+"scope"
 : OPTIONAL. Additional scopes to indicate scopes included in the returned JWT authorization grant. See [Claims transcription](#claims-transcription).
 
-resource
+"resource"
 : REQUIRED if audience is not set. URI of authorization server of targeting domain (domain B).
 
-audience
+"audience"
 : REQUIRED if resource is not set. Well known/logical name of authorization server of targeting domain (domain B).
+
+"chained_id"
+: REQUIRED if the authorization server issues sender constrained tokens. The chained_id claim contains as a sub-claim the "cnf" value from the inbound token that was presented during token exchange. 
 
 ### Processing rules
 
 * If the request itself is not valid or if the given resource or audience are unknown, or are unacceptable based on policy, the authorization server MUST deny the request.
 * The authorization server MAY add, remove or change claims. See [Claims transcription](#claims-transcription).
+* If the inbound token is sender constrained, the authorization server MUST check the binding on the inbound token.
 
 ### Token Exchange Response
 
@@ -163,6 +175,8 @@ All of section 2.2 of {{RFC8693}} applies. In addition, the following applies to
 * The "aud" claim in the returned JWT authorization grant MUST identify the requested authorization server. This corresponds with [RFC 7523 Section 3, Point 3](https://datatracker.ietf.org/doc/html/rfc7523#section-3) and is there to reduce misuse and to prevent clients from presenting access tokens as an authorization grant to an authorization server in a different domain.
 
 * The "aud" claim included in the returned JWT authorization grant MAY identify multiple authorization servers, provided that trust relationships exist with them (e.g. through federation). It is RECOMMENDED that the "aud" claim is restricted to a single authorization server to prevent an authorization server in one domain from presenting the client's authorization grant to an authorization server in a different trust domain. For example, this will prevent the authorization server in Domain B from presenting the authorization grant it received from the client in Domain A to the authorization server for Domain C.
+
+* If the authorization server issues sender constrained tokens, the authorization server MUST include the "cnf" sub-claim from the "chained_id" claim from the issued JWT assertion.
 
 ### Example
 
@@ -206,16 +220,16 @@ The client presents the JWT authorization grant it received from the authorizati
 The authorization grant is a JWT bearer token, which the client uses to request an access token as described in the JWT Profile for OAuth 2.0 Client Authentication and Authorization Grants {{RFC7523}}. For the purpose of this specification the following descriptions apply:
 
 {:vspace}
-grant_type
+"grant_type"
 : REQUIRED. As defined in Section 2.1 of {{RFC7523}} the value `urn:ietf:params:oauth:grant-type:jwt-bearer` indicates the request is a JWT bearer assertion authorization grant.
 
-assertion
+"assertion"
 : REQUIRED. Authorization grant returned by the token exchange (`access_token` response).
 
-scope
+"scope"
 : OPTIONAL.
 
-The client MAY indicate the audience it is trying to access through the `scope` parameter or the `resource` parameter defined in {{RFC8707}}.
+The client MAY indicate the audience it is trying to access through the "scope" parameter or the "resource" parameter defined in {{RFC8707}}.
 
 ### Processing rules
 
@@ -224,6 +238,7 @@ The authorization server MUST validate the JWT authorization grant as specified 
 * The "aud" claim MUST identify the Authorization Server as a valid intended audience of the assertion using either the token endpoint as described Section 3 {{RFC7523}} or the issuer identifier as defined in Section 2 of {{RFC8414}}.
 * The authorization server SHOULD deny the request if it is not able to identify the subject.
 * Due to policy the request MAY be denied (for instance if the federation from domain A is not allowed).
+* If the authorization server issues sender constrained tokens, the authorization server MUST check the binding on inbound assertion of the Access Token Request. Additionally, the authorization server MUST verify the "cnf" claim. 
 
 ### Access Token Response
 
@@ -433,6 +448,10 @@ The editors would like to thank Joe Jubinski, Justin Richer, Aaron Parecki  and 
 # Document History
 
 \[\[ To be removed from the final specification ]]
+
+-03 
+
+* add sender constrained tokens
 
 -02
 
