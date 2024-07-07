@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2024-07-04T00:16:23.440080+00:00",
+  "timestamp": "2024-07-07T00:18:22.617785+00:00",
   "repo": "oauth-wg/oauth-identity-chaining",
   "labels": [
     {
@@ -3952,6 +3952,199 @@
           "createdAt": "2024-03-08T11:50:08Z",
           "updatedAt": "2024-03-08T11:50:08Z",
           "comments": []
+        }
+      ]
+    },
+    {
+      "number": 90,
+      "id": "PR_kwDOJubJxM50cPEi",
+      "title": "[Kelley] add sender constraints",
+      "url": "https://github.com/oauth-wg/oauth-identity-chaining/pull/90",
+      "state": "OPEN",
+      "author": "arndt-s",
+      "authorAssociation": "MEMBER",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2024-07-04T12:35:23Z",
+      "updatedAt": "2024-07-06T17:53:54Z",
+      "baseRepository": "oauth-wg/oauth-identity-chaining",
+      "baseRefName": "main",
+      "baseRefOid": "781eeea1760504477fd37b0e7a666650775f8346",
+      "headRepository": "oauth-wg/oauth-identity-chaining",
+      "headRefName": "kelley/add-sender-constraints",
+      "headRefOid": "43fc5d65d9e7868c5880e0df856536907fd095c8",
+      "closedAt": null,
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [],
+      "reviews": [
+        {
+          "id": "PRR_kwDOJubJxM6AsiaD",
+          "commit": {
+            "abbreviatedOid": "43fc5d6"
+          },
+          "author": "PieterKas",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2024-07-04T15:23:46Z",
+          "updatedAt": "2024-07-04T15:23:46Z",
+          "comments": []
+        },
+        {
+          "id": "PRR_kwDOJubJxM6AsjfV",
+          "commit": {
+            "abbreviatedOid": "43fc5d6"
+          },
+          "author": "PieterKas",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "CHANGES_REQUESTED",
+          "body": "There appears to be issues on lines 140,142 163 and 241 (I suspect trailing whitespaces). @arndt-s can you update the PR with these changes (I don't seem to be able to edit it).",
+          "createdAt": "2024-07-04T15:26:42Z",
+          "updatedAt": "2024-07-04T15:26:42Z",
+          "comments": []
+        },
+        {
+          "id": "PRR_kwDOJubJxM6AxDeo",
+          "commit": {
+            "abbreviatedOid": "43fc5d6"
+          },
+          "author": "arndt-s",
+          "authorAssociation": "MEMBER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-07-05T09:30:49Z",
+          "updatedAt": "2024-07-05T09:30:50Z",
+          "comments": [
+            {
+              "originalPosition": 39,
+              "body": "Is this in regards to authorization server in Domain A or B or both? ",
+              "createdAt": "2024-07-05T09:30:50Z",
+              "updatedAt": "2024-07-05T09:30:50Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJubJxM6AyUnL",
+          "commit": {
+            "abbreviatedOid": "43fc5d6"
+          },
+          "author": "arndt-s",
+          "authorAssociation": "MEMBER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-07-05T12:57:33Z",
+          "updatedAt": "2024-07-05T12:57:34Z",
+          "comments": [
+            {
+              "originalPosition": 62,
+              "body": "RFC8693 does not specify a `chained_in` parameter. Do I understand correctly that this is rather a claim within the JWT assertion used to transfer cnf information from Authorization Server in domain A to Authorization Server in domain B?",
+              "createdAt": "2024-07-05T12:57:33Z",
+              "updatedAt": "2024-07-05T12:57:34Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJubJxM6AyU4O",
+          "commit": {
+            "abbreviatedOid": "43fc5d6"
+          },
+          "author": "arndt-s",
+          "authorAssociation": "MEMBER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-07-05T12:58:12Z",
+          "updatedAt": "2024-07-05T12:58:12Z",
+          "comments": [
+            {
+              "originalPosition": 41,
+              "body": "This seems duplicated. In the overview section we already have \r\n\r\n> Section [Examples](#examples) includes two additional examples that describe how this flow is used. In one example, the resource server acts as the client and in the other, the authorization server acts as the client.",
+              "createdAt": "2024-07-05T12:58:12Z",
+              "updatedAt": "2024-07-05T12:58:21Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJubJxM6AyWH5",
+          "commit": {
+            "abbreviatedOid": "43fc5d6"
+          },
+          "author": "arndt-s",
+          "authorAssociation": "MEMBER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-07-05T13:01:11Z",
+          "updatedAt": "2024-07-05T13:01:11Z",
+          "comments": [
+            {
+              "originalPosition": 107,
+              "body": "Does this work if the resource server acts as a client? Thinking out loud:\r\n\r\n```\r\nT0: AS1 issues AT to Alice.\r\nT1: Alice presents AT to R1. R1 needs to call R2 (in domain 2).\r\nT2: performs token exchange to AS1 (fails as AT is bound).\r\n```",
+              "createdAt": "2024-07-05T13:01:11Z",
+              "updatedAt": "2024-07-05T13:01:11Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJubJxM6A1sTs",
+          "commit": {
+            "abbreviatedOid": "43fc5d6"
+          },
+          "author": "kburgin3",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-07-06T17:49:52Z",
+          "updatedAt": "2024-07-06T17:49:52Z",
+          "comments": [
+            {
+              "originalPosition": 39,
+              "body": "Both",
+              "createdAt": "2024-07-06T17:49:52Z",
+              "updatedAt": "2024-07-06T17:49:52Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJubJxM6A1sWx",
+          "commit": {
+            "abbreviatedOid": "43fc5d6"
+          },
+          "author": "kburgin3",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-07-06T17:52:08Z",
+          "updatedAt": "2024-07-06T17:52:08Z",
+          "comments": [
+            {
+              "originalPosition": 41,
+              "body": "Suggest deleting this",
+              "createdAt": "2024-07-06T17:52:08Z",
+              "updatedAt": "2024-07-06T17:52:08Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJubJxM6A1sZQ",
+          "commit": {
+            "abbreviatedOid": "43fc5d6"
+          },
+          "author": "kburgin3",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-07-06T17:53:54Z",
+          "updatedAt": "2024-07-06T17:53:54Z",
+          "comments": [
+            {
+              "originalPosition": 62,
+              "body": "I invented \"chained_id\" to carry the \"cnf\" claim. And yes, you understand correctly",
+              "createdAt": "2024-07-06T17:53:54Z",
+              "updatedAt": "2024-07-06T17:53:54Z"
+            }
+          ]
         }
       ]
     }
