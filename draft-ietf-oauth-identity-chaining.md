@@ -447,7 +447,7 @@ The editors would like to thank Joe Jubinski, Justin Richer, Aaron Parecki  and 
 
 \[\[ To be removed from the final specification ]]
 
--03 
+-03
 
 * add sender constrained tokens
 
