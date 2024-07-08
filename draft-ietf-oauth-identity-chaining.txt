@@ -5,13 +5,13 @@
 oauth                                                 A. Schwenkschuster
 Internet-Draft                                             P. Kasselmann
 Intended status: Informational                                 Microsoft
-Expires: 26 October 2024                                       K. Burgin
+Expires: 9 January 2025                                        K. Burgin
                                                                    MITRE
                                                               M. Jenkins
                                                                 NSA-CCSS
                                                              B. Campbell
                                                            Ping Identity
-                                                           24 April 2024
+                                                             8 July 2024
 
 
         OAuth Identity and Authorization Chaining Across Domains
@@ -49,7 +49,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 26 October 2024.
+   This Internet-Draft will expire on 9 January 2025.
 
 Copyright Notice
 
@@ -495,24 +495,24 @@ grant_type=urn%3Aietf%3Aparams%3Aoauth%3Agrant-type%3Atoken-exchange
    [I-D.ietf-oauth-selective-disclosure-jwt]
               Fett, D., Yasuda, K., and B. Campbell, "Selective
               Disclosure for JWTs (SD-JWT)", Work in Progress, Internet-
-              Draft, draft-ietf-oauth-selective-disclosure-jwt-08, 4
-              March 2024, <https://datatracker.ietf.org/doc/html/draft-
-              ietf-oauth-selective-disclosure-jwt-08>.
+              Draft, draft-ietf-oauth-selective-disclosure-jwt-10, 8
+              July 2024, <https://datatracker.ietf.org/doc/html/draft-
+              ietf-oauth-selective-disclosure-jwt-10>.
 
    [I-D.ietf-oauth-security-topics]
               Lodderstedt, T., Bradley, J., Labunets, A., and D. Fett,
               "OAuth 2.0 Security Best Current Practice", Work in
               Progress, Internet-Draft, draft-ietf-oauth-security-
-              topics-26, 21 April 2024,
+              topics-29, 3 June 2024,
               <https://datatracker.ietf.org/doc/html/draft-ietf-oauth-
-              security-topics-26>.
+              security-topics-29>.
 
    [I-D.ietf-oauth-resource-metadata]
               Jones, M. B., Hunt, P., and A. Parecki, "OAuth 2.0
               Protected Resource Metadata", Work in Progress, Internet-
-              Draft, draft-ietf-oauth-resource-metadata-03, 1 February
-              2024, <https://datatracker.ietf.org/doc/html/draft-ietf-
-              oauth-resource-metadata-03>.
+              Draft, draft-ietf-oauth-resource-metadata-06, 8 July 2024,
+              <https://datatracker.ietf.org/doc/html/draft-ietf-oauth-
+              resource-metadata-06>.
 
 Appendix A.  Use cases
 
@@ -590,23 +590,23 @@ B.1.  Resource server acting as client
         |                     | --------------------------------->|
         |                     | <- - - - - - - - - - - - - - - - -|
         |                     |                     |             |
-        | (C) exchange token  |                     |             |
+        | (B) exchange token  |                     |             |
         |   [RFC 8693]        |                     |             |
         |<--------------------|                     |             |
         |                     |                     |             |
-        | (D) <authorization  |                     |             |
+        | (C) <authorization  |                     |             |
         |        grant>       |                     |             |
         | - - - - - - - - - ->|                     |             |
         |                     |                     |             |
-        |                     | (E) present         |             |
+        |                     | (D) present         |             |
         |                     |  authorization      |             |
         |                     |  grant [RFC 7523]   |             |
         |                     | ------------------->|             |
         |                     |                     |             |
-        |                     | (F) <access token>  |             |
+        |                     | (E) <access token>  |             |
         |                     | <- - - - - - - - - -|             |
         |                     |                     |             |
-        |                     |               (G) access          |
+        |                     |               (F) access          |
         |                     | --------------------------------->|
         |                     |                     |             |
         |                     |                     |             |
@@ -740,13 +740,18 @@ B.2.  Authorization server acting as client
 Appendix C.  Acknowledgements
 
    The editors would like to thank Joe Jubinski, Justin Richer, Aaron
-   Parecki and others (please let us know, if you've been mistakenly
-   omitted) for their valuable input, feedback and general support of
-   this work.
+   Parecki, Dean H.  Saxe, and others (please let us know, if you've
+   been mistakenly omitted) for their valuable input, feedback and
+   general support of this work.
 
 Appendix D.  Document History
 
    [[ To be removed from the final specification ]]
+
+   -03
+
+   *  Corrected discrepancy between alphabetic numbering of the diagram
+      and text in the resource acting as client example
 
    -02
 
