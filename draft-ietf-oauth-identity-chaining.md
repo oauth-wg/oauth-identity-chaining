@@ -434,13 +434,11 @@ The editors would like to thank Joe Jubinski, Justin Richer, Aaron Parecki, Dean
 
 \[\[ To be removed from the final specification ]]
 
--03
-
-* Corrected discrepancy between alphabetic numbering of the diagram and text in the resource acting as client example
-
 -02
 
 * remove recommendation to not use RFC8693's requested_token_type
+* Corrected discrepancy between alphabetic numbering of the diagram and text in the resource acting as client example
+
 
 -01
 
