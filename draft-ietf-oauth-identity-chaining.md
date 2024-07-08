@@ -319,23 +319,23 @@ The flow would look like this:
        |                     | --------------------------------->|
        |                     | <- - - - - - - - - - - - - - - - -|
        |                     |                     |             |
-       | (C) exchange token  |                     |             |
+       | (B) exchange token  |                     |             |
        |   [RFC 8693]        |                     |             |
        |<--------------------|                     |             |
        |                     |                     |             |
-       | (D) <authorization  |                     |             |
+       | (C) <authorization  |                     |             |
        |        grant>       |                     |             |
        | - - - - - - - - - ->|                     |             |
        |                     |                     |             |
-       |                     | (E) present         |             |
+       |                     | (D) present         |             |
        |                     |  authorization      |             |
        |                     |  grant [RFC 7523]   |             |
        |                     | ------------------->|             |
        |                     |                     |             |
-       |                     | (F) <access token>  |             |
+       |                     | (E) <access token>  |             |
        |                     | <- - - - - - - - - -|             |
        |                     |                     |             |
-       |                     |               (G) access          |
+       |                     |               (F) access          |
        |                     | --------------------------------->|
        |                     |                     |             |
        |                     |                     |             |
@@ -428,11 +428,15 @@ The flow contains the following steps:
 (G) The resource server in Domain A uses the received access token to access the protected resource in Domain B.
 
 # Acknowledgements {#Acknowledgements}
-The editors would like to thank Joe Jubinski, Justin Richer, Aaron Parecki  and others (please let us know, if you've been mistakenly omitted) for their valuable input, feedback and general support of this work.
+The editors would like to thank Joe Jubinski, Justin Richer, Aaron Parecki, Dean H. Saxe, and others (please let us know, if you've been mistakenly omitted) for their valuable input, feedback and general support of this work.
 
 # Document History
 
 \[\[ To be removed from the final specification ]]
+
+-03
+
+* Corrected discrepancy between alphabetic numbering of the diagram and text in the resource acting as client example
 
 -02
 
