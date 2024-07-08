@@ -137,9 +137,7 @@ This specification does not define authorization server discovery. A client MAY 
 
 ## Sender Constrained Tokens
 
-The authorization server MAY issue sender constrained tokens. There are currently two options for sender constrained tokens: Mutually Authenticated TLS (mTLS) {{RFC8705}} and Demonstrating Proof of Possessions (DPoP) {{RFC9449}}. 
-
-Additionally, there are two examples of identity and authorization chaining: resource server acting as the client and the authorization server acting as the client. Additional details of the examples are in [Examples](#examples). 
+The authorization server MAY issue sender constrained tokens. There are currently two options for sender constrained tokens: Mutually Authenticated TLS (mTLS) {{RFC8705}} and Demonstrating Proof of Possessions (DPoP) {{RFC9449}}.
 
 ## Token Exchange
 
@@ -160,7 +158,7 @@ The parameters described in section 2.1 of {{RFC8693}} apply here with the follo
 : REQUIRED if resource is not set. Well known/logical name of authorization server of targeting domain (domain B).
 
 "chained_id"
-: REQUIRED if the authorization server issues sender constrained tokens. The chained_id claim contains as a sub-claim the "cnf" value from the inbound token that was presented during token exchange. 
+: REQUIRED if the authorization server issues sender constrained tokens. The chained_id claim contains as a sub-claim the "cnf" value from the inbound token that was presented during token exchange.
 
 ### Processing rules
 
@@ -238,7 +236,7 @@ The authorization server MUST validate the JWT authorization grant as specified 
 * The "aud" claim MUST identify the Authorization Server as a valid intended audience of the assertion using either the token endpoint as described Section 3 {{RFC7523}} or the issuer identifier as defined in Section 2 of {{RFC8414}}.
 * The authorization server SHOULD deny the request if it is not able to identify the subject.
 * Due to policy the request MAY be denied (for instance if the federation from domain A is not allowed).
-* If the authorization server issues sender constrained tokens, the authorization server MUST check the binding on inbound assertion of the Access Token Request. Additionally, the authorization server MUST verify the "cnf" claim. 
+* If the authorization server issues sender constrained tokens, the authorization server MUST check the binding on inbound assertion of the Access Token Request. Additionally, the authorization server MUST verify the "cnf" claim.
 
 ### Access Token Response
 
