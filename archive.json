@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2024-07-07T00:18:22.617785+00:00",
+  "timestamp": "2024-07-09T00:16:33.837453+00:00",
   "repo": "oauth-wg/oauth-identity-chaining",
   "labels": [
     {
@@ -969,15 +969,17 @@
       "id": "I_kwDOJubJxM6BfNut",
       "title": "Figure 6 step naming misalignment (off-by-one error)",
       "url": "https://github.com/oauth-wg/oauth-identity-chaining/issues/88",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "dhs-aws",
       "authorAssociation": "CONTRIBUTOR",
-      "assignees": [],
+      "assignees": [
+        "bc-pi"
+      ],
       "labels": [],
       "body": "Figure 6 in Appendix B.1 skips from step A to step C.  I believe a correct rendering of the diagram would takes steps C through G and translate them to steps B through F to correspond with the text.",
       "createdAt": "2024-03-06T21:18:16Z",
-      "updatedAt": "2024-03-06T21:48:42Z",
-      "closedAt": null,
+      "updatedAt": "2024-07-08T19:07:35Z",
+      "closedAt": "2024-07-08T19:07:35Z",
       "comments": [
         {
           "author": "bc-pi",
@@ -3967,13 +3969,13 @@
       "labels": [],
       "body": "",
       "createdAt": "2024-07-04T12:35:23Z",
-      "updatedAt": "2024-07-06T17:53:54Z",
+      "updatedAt": "2024-07-08T16:54:48Z",
       "baseRepository": "oauth-wg/oauth-identity-chaining",
       "baseRefName": "main",
       "baseRefOid": "781eeea1760504477fd37b0e7a666650775f8346",
       "headRepository": "oauth-wg/oauth-identity-chaining",
       "headRefName": "kelley/add-sender-constraints",
-      "headRefOid": "43fc5d65d9e7868c5880e0df856536907fd095c8",
+      "headRefOid": "565530b7ad394734b48152918b858069766f5790",
       "closedAt": null,
       "mergedAt": null,
       "mergedBy": null,
@@ -4145,8 +4147,89 @@
               "updatedAt": "2024-07-06T17:53:54Z"
             }
           ]
+        },
+        {
+          "id": "PRR_kwDOJubJxM6A-eYn",
+          "commit": {
+            "abbreviatedOid": "565530b"
+          },
+          "author": "bc-pi",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-07-08T16:45:10Z",
+          "updatedAt": "2024-07-08T16:45:10Z",
+          "comments": [
+            {
+              "originalPosition": 62,
+              "body": "I think I don't understand. This is in a list of token request parameters but is supposed to be a JWT claim? ",
+              "createdAt": "2024-07-08T16:45:10Z",
+              "updatedAt": "2024-07-08T16:53:10Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJubJxM6A-hz8",
+          "commit": {
+            "abbreviatedOid": "565530b"
+          },
+          "author": "bc-pi",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "CHANGES_REQUESTED",
+          "body": "In the related issue #86 I'd left [a comment](https://github.com/oauth-wg/oauth-identity-chaining/issues/86#issuecomment-2077999207) with a number of things that'd need to be accounted for or a least considered in adding support for sender constraining to this draft, which I don't believe have been addressed in this PR.  That aforementioned comment copied below for ease of access. \r\n\r\n> A rough sketch of things that likely need to be accounted for or a least considered in this effort:\r\n>\r\n> * checking the binding on inbound token of [Token Exchange](https://www.ietf.org/archive/id/draft-ietf-oauth-identity-chaining-01.html#name-token-exchange) request. No standard defined here. Might not even be feasible or make sense depending on deployment (i.e. the RS acting as the client doesn't have access to the bound key)\r\n> * binding the token returned from Token Exchange. The request could be MTLS or have a DPoP header, which is kinda implied per standards. And the returned JWT could be bound with the respective `cnf` claim and method, which is maybe implied by standards but not explicitly written down anywhere (that I know of).\r\n> * checking the binding on inbound token/assertion of the [Access Token Request](https://www.ietf.org/archive/id/draft-ietf-oauth-identity-chaining-01.html#name-access-token-request). The request could be MTLS or have a DPoP header, which is kinda implied per standards but kinda leaves much to the imagination, and checked against the `cnf` claim of the JWT authz grant. The presence of the `cnf` claim might be sufficient to say the thing is bound and suggest/require checking it (implementations I know about would just ignore it, however). But maybe a new grant type would make sense to clearly convey the intent (also using `urn:ietf:params:oauth:grant-type:jwt-bearer` for a non-bearer thing is awkward). \r\n> * binding the resultant access token. The request could be MTLS or have a DPoP header and I think this is covered/implied by the existing specs to say that the issued access token should/could be bound a la [DPoP Access Token Request](https://www.rfc-editor.org/rfc/rfc9449.html#name-dpop-access-token-request) and [Mutual-TLS Client Certificate-Bound Access Tokens](https://www.rfc-editor.org/rfc/rfc8705.html#name-mutual-tls-client-certifica). \r\n>\r\n> The [Authorization server acting as client](https://www.ietf.org/archive/id/draft-ietf-oauth-identity-chaining-01.html#name-authorization-server-acting) flips around nearly all of the pieces above to make them unworkable. I guess it'd need separate treatment with the definition of something like a proxied \"trust me\" this is the cnf I need in the final access token. IIRC Kelley had some prior work toward this end somewhere but I can't seem to find it at the moment. Or maybe sender constraining is just out of scope in the AS as client proxy case. \r\n\r\n\r\n",
+          "createdAt": "2024-07-08T16:52:21Z",
+          "updatedAt": "2024-07-08T16:52:21Z",
+          "comments": []
+        },
+        {
+          "id": "PRR_kwDOJubJxM6A-i77",
+          "commit": {
+            "abbreviatedOid": "565530b"
+          },
+          "author": "bc-pi",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-07-08T16:54:48Z",
+          "updatedAt": "2024-07-08T16:54:48Z",
+          "comments": [
+            {
+              "originalPosition": 67,
+              "body": "I think this would preclude the RS acting as the client case ",
+              "createdAt": "2024-07-08T16:54:48Z",
+              "updatedAt": "2024-07-08T16:54:48Z"
+            }
+          ]
         }
       ]
+    },
+    {
+      "number": 91,
+      "id": "PR_kwDOJubJxM50u8Mj",
+      "title": "fix discrepancy between alphabetic numbering of the diagram and text in the resource acting as client example",
+      "url": "https://github.com/oauth-wg/oauth-identity-chaining/pull/91",
+      "state": "MERGED",
+      "author": "bc-pi",
+      "authorAssociation": "CONTRIBUTOR",
+      "assignees": [],
+      "labels": [],
+      "body": "fix #88 Figure 6 step naming misalignment ",
+      "createdAt": "2024-07-08T19:01:58Z",
+      "updatedAt": "2024-07-08T19:07:35Z",
+      "baseRepository": "oauth-wg/oauth-identity-chaining",
+      "baseRefName": "main",
+      "baseRefOid": "781eeea1760504477fd37b0e7a666650775f8346",
+      "headRepository": "oauth-wg/oauth-identity-chaining",
+      "headRefName": "fix-off-by-one-88",
+      "headRefOid": "a7a7d61b6a8ec269b6ccc5a3c09bc7020835cb87",
+      "closedAt": "2024-07-08T19:07:34Z",
+      "mergedAt": "2024-07-08T19:07:34Z",
+      "mergedBy": "bc-pi",
+      "mergeCommit": {
+        "oid": "01a562ffb53f91db9781c282477275007c930b68"
+      },
+      "comments": [],
+      "reviews": []
     }
   ]
 }
