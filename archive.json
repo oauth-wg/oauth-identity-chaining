@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2024-07-28T00:19:04.304471+00:00",
+  "timestamp": "2024-07-30T00:17:03.216469+00:00",
   "repo": "oauth-wg/oauth-identity-chaining",
   "labels": [
     {
@@ -1013,6 +1013,22 @@
           "updatedAt": "2024-03-25T07:25:54Z"
         }
       ]
+    },
+    {
+      "number": 92,
+      "id": "I_kwDOJubJxM6RI1ff",
+      "title": "Single hop federation",
+      "url": "https://github.com/oauth-wg/oauth-identity-chaining/issues/92",
+      "state": "OPEN",
+      "author": "arndt-s",
+      "authorAssociation": "MEMBER",
+      "assignees": [],
+      "labels": [],
+      "body": "Deployment may want to do federation in a single hop. Currently, the document describes a 2 hop federation (First get assertion grant, then present assertion to domain B).\r\n\r\nDo we have specific warnings, drawbacks, etc. for this use case? Do we want to describe it?\r\n\r\nJust writing down what comes into my head:\r\n\r\nDrawbacks\r\n- AS of domain A loses control \r\n- Domain B does not know if federation is intended\r\n- Presented assertion may have been stolen (if not key bound)\r\n\r\nHowever:\r\n- federation is more resilient (AS of domain A does not need to be available)\r\n- COGS of AS in Domain A can go down significantly (if federation is primary use case for example)\r\n- Privacy?! AS of domain A does not know what clients federate to",
+      "createdAt": "2024-07-29T10:12:55Z",
+      "updatedAt": "2024-07-29T10:13:04Z",
+      "closedAt": null,
+      "comments": []
     }
   ],
   "pulls": [
