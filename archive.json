@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2024-08-01T00:19:14.710079+00:00",
+  "timestamp": "2024-08-04T00:18:43.221626+00:00",
   "repo": "oauth-wg/oauth-identity-chaining",
   "labels": [
     {
@@ -1022,11 +1022,29 @@
       "state": "OPEN",
       "author": "arndt-s",
       "authorAssociation": "MEMBER",
-      "assignees": [],
+      "assignees": [
+        "arndt-s"
+      ],
       "labels": [],
       "body": "Deployment may want to do federation in a single hop. Currently, the document describes a 2 hop federation (First get assertion grant, then present assertion to domain B).\r\n\r\nDo we have specific warnings, drawbacks, etc. for this use case? Do we want to describe it?\r\n\r\nJust writing down what comes into my head:\r\n\r\nDrawbacks\r\n- AS of domain A loses control \r\n- Domain B does not know if federation is intended\r\n- Presented assertion may have been stolen (if not key bound)\r\n\r\nHowever:\r\n- federation is more resilient (AS of domain A does not need to be available)\r\n- COGS of AS in Domain A can go down significantly (if federation is primary use case for example)\r\n- Privacy?! AS of domain A does not know what clients federate to",
       "createdAt": "2024-07-29T10:12:55Z",
-      "updatedAt": "2024-07-29T10:13:04Z",
+      "updatedAt": "2024-08-02T14:53:37Z",
+      "closedAt": null,
+      "comments": []
+    },
+    {
+      "number": 93,
+      "id": "I_kwDOJubJxM6RvScj",
+      "title": "Security consideration for id_chaining",
+      "url": "https://github.com/oauth-wg/oauth-identity-chaining/issues/93",
+      "state": "OPEN",
+      "author": "PieterKas",
+      "authorAssociation": "CONTRIBUTOR",
+      "assignees": [],
+      "labels": [],
+      "body": ">* If the authorization server issues sender constrained tokens, the authorization server MUST include the \"cnf\" sub-claim from the \"chained_id\" claim from the issued JWT assertion.\r\n\r\nAdd security considerations for why the authorization server MUST include the \"cnf\" claim.",
+      "createdAt": "2024-08-02T14:33:00Z",
+      "updatedAt": "2024-08-02T14:33:00Z",
       "closedAt": null,
       "comments": []
     }
