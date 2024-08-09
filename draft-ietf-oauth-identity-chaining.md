@@ -295,9 +295,9 @@ A continuous integration system needs to access external resources, for example 
 A home devices company provides a "Camera API" to enable access to home cameras. Partner companies use this Camera API to integrate the camera feeds into their security dashboards. Using OAuth between the partner and the Camera API, a partner can request the feed from a home camera to be displayed in their dashboard. The user has an account with the camera provider. The user may be logged in to view the partner provided dashboard, or they may authorize emergency access to the camera. The home devices company must be able to independently verify that the request originated and was authorized by a user who is authorized to view the feed of the requested home camera.
 
 ## Extend Single-Sign-On to API Access
-A user that authenticated to an enterprise Identity Provider (IdP) do not have to sign-in to multiple SaaS applications if the SaaS applications are configured to trust the enteprise IdP. This SSO relationship is extended to API access. As a result SaaS servers that trust the enterprise IdP do not require the user to complete an interactive delegated OAuth 2.0 flow to obtain an access token to access the SaaS provider's APIs. 
+A user that authenticated to an enterprise Identity Provider (IdP) do not have to sign-in to multiple SaaS applications if the SaaS applications are configured to trust the enteprise IdP. This SSO relationship is extended to API access. As a result SaaS servers that trust the enterprise IdP do not require the user to complete an interactive delegated OAuth 2.0 flow to obtain an access token to access the SaaS provider's APIs.
 
-## Cross-domain API authorization 
+## Cross-domain API authorization
 An e-mail client can be used with arbitrary email servers, without require pre-established relationships between each email client and each email server. When the e-mail client needs access to a separate API, such as a third-party calendaring application, the email client obtain an access token for the third-party calendaring application without any user interaction.
 
 # Examples
