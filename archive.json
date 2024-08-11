@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2024-08-08T00:17:03.500090+00:00",
+  "timestamp": "2024-08-11T00:19:05.863453+00:00",
   "repo": "oauth-wg/oauth-identity-chaining",
   "labels": [
     {
@@ -4264,6 +4264,81 @@
       },
       "comments": [],
       "reviews": []
+    },
+    {
+      "number": 94,
+      "id": "PR_kwDOJubJxM539sdT",
+      "title": "Added use cases",
+      "url": "https://github.com/oauth-wg/oauth-identity-chaining/pull/94",
+      "state": "OPEN",
+      "author": "PieterKas",
+      "authorAssociation": "CONTRIBUTOR",
+      "assignees": [],
+      "labels": [],
+      "body": "Added uses cases to the appendix (see issue #68 )",
+      "createdAt": "2024-08-09T15:53:32Z",
+      "updatedAt": "2024-08-09T18:59:38Z",
+      "baseRepository": "oauth-wg/oauth-identity-chaining",
+      "baseRefName": "main",
+      "baseRefOid": "13e44f9936b1db71b591f91526f4bd7be5898dd3",
+      "headRepository": "PieterKas/ietf-identity-chaining",
+      "headRefName": "patch-7",
+      "headRefOid": "8aa30cd3754808b2ef5f01dc32da5fc99bdea731",
+      "closedAt": null,
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [
+        {
+          "author": "PieterKas",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "@aaronpk please review this PR - I added the use cases relevant to your draft.",
+          "createdAt": "2024-08-09T15:54:22Z",
+          "updatedAt": "2024-08-09T15:54:22Z"
+        }
+      ],
+      "reviews": [
+        {
+          "id": "PRR_kwDOJubJxM6E97t8",
+          "commit": {
+            "abbreviatedOid": "8aa30cd"
+          },
+          "author": "bc-pi",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-08-09T18:31:06Z",
+          "updatedAt": "2024-08-09T18:31:07Z",
+          "comments": [
+            {
+              "originalPosition": 8,
+              "body": "I must admit that it's not obvious to me how the use-case described is facilitated by the functionality in the document. ",
+              "createdAt": "2024-08-09T18:31:06Z",
+              "updatedAt": "2024-08-09T18:31:07Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJubJxM6E-FTQ",
+          "commit": {
+            "abbreviatedOid": "8aa30cd"
+          },
+          "author": "PieterKas",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-08-09T18:59:38Z",
+          "updatedAt": "2024-08-09T18:59:38Z",
+          "comments": [
+            {
+              "originalPosition": 8,
+              "body": "Yeah. I went back and forth about how much the use case had to be focused on the scenarios as opposed to describing how the mechanism enables it. I decided to be consistent with the other use cases (which actually pre-dated the spec).\r\n\r\nPerhaps this section needs to be expanded to explain how the spec address the use cases as well (and that needs to be done for all the use cases I think). \r\n\r\nWhat do you think?",
+              "createdAt": "2024-08-09T18:59:38Z",
+              "updatedAt": "2024-08-09T18:59:38Z"
+            }
+          ]
+        }
+      ]
     }
   ]
 }
