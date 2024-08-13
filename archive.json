@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2024-08-11T00:19:05.863453+00:00",
+  "timestamp": "2024-08-13T00:17:56.494921+00:00",
   "repo": "oauth-wg/oauth-identity-chaining",
   "labels": [
     {
@@ -4277,7 +4277,7 @@
       "labels": [],
       "body": "Added uses cases to the appendix (see issue #68 )",
       "createdAt": "2024-08-09T15:53:32Z",
-      "updatedAt": "2024-08-09T18:59:38Z",
+      "updatedAt": "2024-08-12T18:55:30Z",
       "baseRepository": "oauth-wg/oauth-identity-chaining",
       "baseRefName": "main",
       "baseRefOid": "13e44f9936b1db71b591f91526f4bd7be5898dd3",
@@ -4335,6 +4335,26 @@
               "body": "Yeah. I went back and forth about how much the use case had to be focused on the scenarios as opposed to describing how the mechanism enables it. I decided to be consistent with the other use cases (which actually pre-dated the spec).\r\n\r\nPerhaps this section needs to be expanded to explain how the spec address the use cases as well (and that needs to be done for all the use cases I think). \r\n\r\nWhat do you think?",
               "createdAt": "2024-08-09T18:59:38Z",
               "updatedAt": "2024-08-09T18:59:38Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJubJxM6FJRkN",
+          "commit": {
+            "abbreviatedOid": "8aa30cd"
+          },
+          "author": "bc-pi",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-08-12T18:55:29Z",
+          "updatedAt": "2024-08-12T18:55:30Z",
+          "comments": [
+            {
+              "originalPosition": 8,
+              "body": "To be honest, my comment was made in the context of reading/reviewing this PR in isolation. I could not clearly make the mental connection myself between the described use case and the details of the spec. I don't recall encountering the same thing previously when reading the other use cases. ",
+              "createdAt": "2024-08-12T18:55:30Z",
+              "updatedAt": "2024-08-12T18:55:30Z"
             }
           ]
         }
