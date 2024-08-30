@@ -48,6 +48,8 @@ normative:
   RFC7523: # JSON Web Token (JWT) Profile for OAuth 2.0 Client Authentication and Authorization Grants
   RFC8707: # Resource Indicators for OAuth 2.0
   RFC8414: # OAuth 2.0 Authorization Server Metadata
+  RFC8705: # mTLS
+  RFC9449: # DPoP
 
 informative:
 
@@ -77,7 +79,7 @@ A client in trust domain A that needs to access a resource server in trust domai
 
 ## Overview
 
-The identity and authorization chaining flow outlined below describes how a combination of OAuth 2.0 Token Exchange {{RFC8693}} and JWT Profile for OAuth 2.0 Client Authentication and Authorization Grants {{RFC7523}} are used to address the use cases identified. The appendix include two additional examples that describe how this flow is used. In one example, the resource server acts as the client and in the other, the authorization server acts as the client.
+The identity and authorization chaining flow outlined below describes how a combination of OAuth 2.0 Token Exchange {{RFC8693}} and JWT Profile for OAuth 2.0 Client Authentication and Authorization Grants {{RFC7523}} are used to address the use cases identified. Section [Examples](#examples) include two additional examples that describe how this flow is used. In one example, the resource server acts as the client and in the other, the authorization server acts as the client.
 
 ~~~~
 +-------------+                            +-------------+ +---------+
@@ -133,6 +135,9 @@ The flow illustrated in Figure 1 shows the steps the client in trust Domain A ne
 ## Authorization Server Discovery
 This specification does not define authorization server discovery. A client MAY maintain a static mapping or use other means to identify the authorization server. The `authorization_servers` property in {{I-D.ietf-oauth-resource-metadata}} MAY be used.
 
+## Sender Constrained Tokens
+Either authorization server MAY issue sender constrained tokens. There are currently two options for sender constrained tokens: Mutually Authenticated TLS (mTLS) {{RFC8705}} and Demonstrating Proof of Possessions (DPoP) {{RFC9449}}.
+
 ## Token Exchange
 
 The client performs token exchange as defined in {{RFC8693}} with the authorization server for its own domain (e.g., Domain A) in order to obtain a JWT authorization grant that can be used with the authorization server of a different domain (e.g., Domain B) as specified in section 1.3 of {{RFC6749}}.
@@ -155,6 +160,7 @@ audience
 
 * If the request itself is not valid or if the given resource or audience are unknown, or are unacceptable based on policy, the authorization server MUST deny the request.
 * The authorization server MAY add, remove or change claims. See [Claims transcription](#claims-transcription).
+* If the inbound token is sender constrained and the resource server is acting as the Client, the Client MUST provide proof of possesssion of a private key, using either mTLS or DPoP, in the token exchange request to AS-A in Step (B). This is not applicable to the authorization server acting as the Client since it performs an "internal token exchange".
 
 ### Token Exchange Response
 
@@ -163,6 +169,12 @@ All of section 2.2 of {{RFC8693}} applies. In addition, the following applies to
 * The "aud" claim in the returned JWT authorization grant MUST identify the requested authorization server. This corresponds with [RFC 7523 Section 3, Point 3](https://datatracker.ietf.org/doc/html/rfc7523#section-3) and is there to reduce misuse and to prevent clients from presenting access tokens as an authorization grant to an authorization server in a different domain.
 
 * The "aud" claim included in the returned JWT authorization grant MAY identify multiple authorization servers, provided that trust relationships exist with them (e.g. through federation). It is RECOMMENDED that the "aud" claim is restricted to a single authorization server to prevent an authorization server in one domain from presenting the client's authorization grant to an authorization server in a different trust domain. For example, this will prevent the authorization server in Domain B from presenting the authorization grant it received from the client in Domain A to the authorization server for Domain C.
+
+* If the token exchange request in (B) contains a proof of possession of a private key, the following apply.
+  * AS-A MUST verify the proof of possession for the token in the request (the initial inbound token)
+  * AS-A MUST verify the proof of possession in the token exchange request. 
+  * AS-A MUST include the “cnf” claim from the “requested_cnf” claim in the token exchange request in the returned authorization grant.
+
 
 ### Example
 
@@ -229,6 +241,10 @@ The authorization server MUST validate the JWT authorization grant as specified 
 
 The authorization server responds with an access token as described in section 5.1 of {{RFC6749}}.
 
+The following process rule applies:
+
+* If the JWT authorization grant in the access token request contains a "requested_cnf" claim, the authorization server MUST include the "cnf" claim from the "requested_cnf" claim in the returned token.
+
 ### Example
 
 The example belows shows how the client in trust domain A presents an authorization grant to the authorization server in trust domain B (https://as.b.org/auth) to receive an access token for a protected resource in trust domain B.
@@ -275,6 +291,9 @@ The representation of transcribed claims and their format is not defined in this
 To be added.
 
 # Security Considerations {#Security}
+
+## Sender Constrained Tokens
+When the authorization server in Domain B issues sender constrained tokens, the client in Domain A performs token exchange with the authorization server in Domain A. This results in an extra step to obtain the assertion grant from the authorization server in Domain A. The benefit of this extra step is that only the authorization in Domain A is required to have a trust relationship with the authorization server in Domain B. Otherwise, if the client in Domain A sends the inbound token directly to the authorization server in Domain B, then all the resource servers in Domain A would need to have the same level of trust relationship with the Authorization server in Domain B.
 
 ## Client Authentication
 Authorization Servers SHOULD follow the OAuth 2.0 Security Best Current Practice {{I-D.ietf-oauth-security-topics}} for client authentication.
@@ -434,6 +453,10 @@ The editors would like to thank Joe Jubinski, Justin Richer, Aaron Parecki, Dean
 
 \[\[ To be removed from the final specification ]]
 
+-03
+
+* add sender contrained/proof of possession tokens
+  
 -02
 
 * remove recommendation to not use RFC8693's requested_token_type
