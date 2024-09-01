@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2024-08-29T00:17:54.159426+00:00",
+  "timestamp": "2024-09-01T00:22:07.838914+00:00",
   "repo": "oauth-wg/oauth-identity-chaining",
   "labels": [
     {
@@ -4359,6 +4359,32 @@
           ]
         }
       ]
+    },
+    {
+      "number": 95,
+      "id": "PR_kwDOJubJxM55-M2s",
+      "title": "Add sender constrained tokens (redo)",
+      "url": "https://github.com/oauth-wg/oauth-identity-chaining/pull/95",
+      "state": "OPEN",
+      "author": "kburgin3",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "Add sender constrained/proof of possession tokens if the initial inbound token had a proof of possession ",
+      "createdAt": "2024-08-30T12:55:36Z",
+      "updatedAt": "2024-08-30T12:55:37Z",
+      "baseRepository": "oauth-wg/oauth-identity-chaining",
+      "baseRefName": "main",
+      "baseRefOid": "13e44f9936b1db71b591f91526f4bd7be5898dd3",
+      "headRepository": "oauth-wg/oauth-identity-chaining",
+      "headRefName": "add-sender-constrained-tokens",
+      "headRefOid": "60a0379a6e97b2a329abb87bd5d5878b45184189",
+      "closedAt": null,
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [],
+      "reviews": []
     }
   ]
 }
