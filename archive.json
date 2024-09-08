@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2024-09-05T00:18:10.860245+00:00",
+  "timestamp": "2024-09-08T00:20:21.209523+00:00",
   "repo": "oauth-wg/oauth-identity-chaining",
   "labels": [
     {
@@ -4372,7 +4372,7 @@
       "labels": [],
       "body": "Add sender constrained/proof of possession tokens if the initial inbound token had a proof of possession ",
       "createdAt": "2024-08-30T12:55:36Z",
-      "updatedAt": "2024-08-30T12:55:37Z",
+      "updatedAt": "2024-09-06T15:04:57Z",
       "baseRepository": "oauth-wg/oauth-identity-chaining",
       "baseRefName": "main",
       "baseRefOid": "13e44f9936b1db71b591f91526f4bd7be5898dd3",
@@ -4384,7 +4384,72 @@
       "mergedBy": null,
       "mergeCommit": null,
       "comments": [],
-      "reviews": []
+      "reviews": [
+        {
+          "id": "PRR_kwDOJubJxM6IR5PY",
+          "commit": {
+            "abbreviatedOid": "60a0379"
+          },
+          "author": "arndt-s",
+          "authorAssociation": "MEMBER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-09-06T14:14:01Z",
+          "updatedAt": "2024-09-06T14:43:16Z",
+          "comments": [
+            {
+              "originalPosition": 23,
+              "body": "Readers may think this includes the assertion token. I believe limiting this to access tokens makes it more clear.\r\n```suggestion\r\nEither authorization server MAY issue sender constrained access tokens. There are currently two options for sender constrained tokens: Mutually Authenticated TLS (mTLS) {{RFC8705}} and Demonstrating Proof of Possessions (DPoP) {{RFC9449}}.\r\n```",
+              "createdAt": "2024-09-06T14:14:01Z",
+              "updatedAt": "2024-09-06T14:43:16Z"
+            },
+            {
+              "originalPosition": 41,
+              "body": "I'm not sure how AS-A would be able to verify the proof of possession:\r\n- If mTLS is used the connecting peer of AS-A is RS-A, which key would differ to the one present in the cnf claim (\"clients\" key in \"cnf\" vs \"RS\" key in mTLS)\r\n- If DPoP the proof could be \"forwarded\" but how would AS-A know what audience, htm, htu to expect? And they'll differ to the endpoint and method used during token exchange.",
+              "createdAt": "2024-09-06T14:28:28Z",
+              "updatedAt": "2024-09-06T14:43:16Z"
+            },
+            {
+              "originalPosition": 55,
+              "body": "If AS of domain B does not support sender constraining tokens it should still be able to issue an access token (but without 'cnf'). Otherwise, chaining from sender constraint domain to non-constraint domain won't be possible.",
+              "createdAt": "2024-09-06T14:41:49Z",
+              "updatedAt": "2024-09-06T14:43:16Z"
+            },
+            {
+              "originalPosition": 55,
+              "body": "Pieter suggested to add a metadata field to authorization server metadata that indicates if sender constraint tokens are supported or not. \r\n\r\n@PieterKas would that field be general about \"cnf\" is supported or should it rather be \"assertion with requested_cnf is supported\"?\r\n\r\nUpdate (discussed during the call): It should be the latter. Maybe \r\n```\r\n{\r\n   \"requested_cnf_supported\": true\r\n}\r\n```\r\n?",
+              "createdAt": "2024-09-06T14:43:02Z",
+              "updatedAt": "2024-09-06T15:06:37Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJubJxM6ISM-E",
+          "commit": {
+            "abbreviatedOid": "60a0379"
+          },
+          "author": "arndt-s",
+          "authorAssociation": "MEMBER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-09-06T14:49:56Z",
+          "updatedAt": "2024-09-06T15:04:57Z",
+          "comments": [
+            {
+              "originalPosition": 55,
+              "body": "If domain A doesn't sent `requested_cnf` but domain B requires it we should fail (and I guess state that rule in the draft)",
+              "createdAt": "2024-09-06T14:49:56Z",
+              "updatedAt": "2024-09-06T15:04:57Z"
+            },
+            {
+              "originalPosition": 41,
+              "body": "I only realized during the meeting that the `cnf` key of the resulting access token will not be the same as the `cnf` key of the incoming access tokens.\r\nMaybe it would be good to mention this in the draft. E.g. \r\n\r\n```\r\n* If the JWT authorization grant in the access token request contains a \"requested_cnf\" claim **with the key of the client performing the token exchange. This will bind the access token for domain B to the client planning to use it.**\r\n```",
+              "createdAt": "2024-09-06T15:04:40Z",
+              "updatedAt": "2024-09-06T15:04:57Z"
+            }
+          ]
+        }
+      ]
     }
   ]
 }
