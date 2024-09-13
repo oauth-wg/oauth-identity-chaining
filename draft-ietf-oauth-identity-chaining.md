@@ -138,6 +138,14 @@ This specification does not define authorization server discovery. A client MAY 
 ## Sender Constrained Tokens
 Either authorization server MAY issue sender constrained tokens. There are currently two options for sender constrained tokens: Mutually Authenticated TLS (mTLS) {{RFC8705}} and Demonstrating Proof of Possessions (DPoP) {{RFC9449}}.
 
+The following authorization server metadata value is used by this specification when the authorization server is acting as the Client.
+
+{
+   "requested_conf_supported": true
+}
+
+When the authorization server is acting as the Client, the Client MAY check whether AS-B supports sender constrained tokens by obtaining the authorization server metadata and verifying "requested_conf_supported" is set to true.
+
 ## Token Exchange
 
 The client performs token exchange as defined in {{RFC8693}} with the authorization server for its own domain (e.g., Domain A) in order to obtain a JWT authorization grant that can be used with the authorization server of a different domain (e.g., Domain B) as specified in section 1.3 of {{RFC6749}}.
@@ -160,7 +168,7 @@ audience
 
 * If the request itself is not valid or if the given resource or audience are unknown, or are unacceptable based on policy, the authorization server MUST deny the request.
 * The authorization server MAY add, remove or change claims. See [Claims transcription](#claims-transcription).
-* If the inbound token is sender constrained and the resource server is acting as the Client, the Client MUST provide proof of possesssion of a private key, using either mTLS or DPoP, in the token exchange request to AS-A in Step (B). This is not applicable to the authorization server acting as the Client since it performs an "internal token exchange".
+* If the inbound token is sender constrained and the resource server is acting as the Client, the Client MUST provide proof of possession of a private key, using either mTLS or DPoP, in the token exchange request to AS-A in Step (B). This is not applicable to the authorization server acting as the Client since it performs an "internal token exchange".
 
 ### Token Exchange Response
 
@@ -174,7 +182,6 @@ All of section 2.2 of {{RFC8693}} applies. In addition, the following applies to
   * AS-A MUST verify the proof of possession for the token in the request (the initial inbound token)
   * AS-A MUST verify the proof of possession in the token exchange request. 
   * AS-A MUST include the “cnf” claim from the “requested_cnf” claim in the token exchange request in the returned authorization grant.
-
 
 ### Example
 
@@ -229,6 +236,8 @@ scope
 
 The client MAY indicate the audience it is trying to access through the `scope` parameter or the `resource` parameter defined in {{RFC8707}}.
 
+If the authorization server is acting as the Client, the Client MUST include the “cnf” claim from the token exchange request in a “requested_cnf” claim in the returned authorization grant. This does not apply when the resource server is acting as the Client.
+
 ### Processing rules
 
 The authorization server MUST validate the JWT authorization grant as specified in Sections 3 and 3.1 of {{RFC7523}}. The following processing rules also apply:
@@ -244,6 +253,12 @@ The authorization server responds with an access token as described in section 5
 The following process rule applies:
 
 * If the JWT authorization grant in the access token request contains a "requested_cnf" claim, the authorization server MUST include the "cnf" claim from the "requested_cnf" claim in the returned token.
+* If Domain B does not support sender constrained tokens and the request is sender constrained, AS-B MAY issue access tokens that are not sender constrained.
+* If Domain B supports sender constrained tokens and the request is not sender constrained, AS-B MUST reject the request and return an error response per Section 5.2 of {{RFC6749}} with invalid_pop as the value of the error parameter.
+
+The following process rule applies when the authorization server is acting as the Client
+
+* If Domain B supports sender constrained tokens and the JWT authorization grant in the access token request contains a "requested_cnf" claim, the authorization server MUST include the "cnf" claim from the "requested_cnf" claim in the returned token.
 
 ### Example
 
