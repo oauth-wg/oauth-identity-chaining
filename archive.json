@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2024-09-12T00:18:37.664145+00:00",
+  "timestamp": "2024-09-15T00:20:43.634869+00:00",
   "repo": "oauth-wg/oauth-identity-chaining",
   "labels": [
     {
@@ -4372,13 +4372,13 @@
       "labels": [],
       "body": "Add sender constrained/proof of possession tokens if the initial inbound token had a proof of possession ",
       "createdAt": "2024-08-30T12:55:36Z",
-      "updatedAt": "2024-09-06T15:04:57Z",
+      "updatedAt": "2024-09-14T18:26:17Z",
       "baseRepository": "oauth-wg/oauth-identity-chaining",
       "baseRefName": "main",
       "baseRefOid": "13e44f9936b1db71b591f91526f4bd7be5898dd3",
       "headRepository": "oauth-wg/oauth-identity-chaining",
       "headRefName": "add-sender-constrained-tokens",
-      "headRefOid": "60a0379a6e97b2a329abb87bd5d5878b45184189",
+      "headRefOid": "bca89c68e13c7c77a5facaf3bdfbaf4c2f4b4f65",
       "closedAt": null,
       "mergedAt": null,
       "mergedBy": null,
@@ -4446,6 +4446,86 @@
               "body": "I only realized during the meeting that the `cnf` key of the resulting access token will not be the same as the `cnf` key of the incoming access tokens.\r\nMaybe it would be good to mention this in the draft. E.g. \r\n\r\n```\r\n* If the JWT authorization grant in the access token request contains a \"requested_cnf\" claim **with the key of the client performing the token exchange. This will bind the access token for domain B to the client planning to use it.**\r\n```",
               "createdAt": "2024-09-06T15:04:40Z",
               "updatedAt": "2024-09-06T15:04:57Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJubJxM6JSMnH",
+          "commit": {
+            "abbreviatedOid": "822d6d7"
+          },
+          "author": "kburgin3",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-09-13T14:10:26Z",
+          "updatedAt": "2024-09-13T14:10:26Z",
+          "comments": [
+            {
+              "originalPosition": 28,
+              "body": "requested_cnf_supported_dpop\r\nrequested_cnf_supported_mtls",
+              "createdAt": "2024-09-13T14:10:26Z",
+              "updatedAt": "2024-09-13T14:10:26Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJubJxM6JSQid",
+          "commit": {
+            "abbreviatedOid": "822d6d7"
+          },
+          "author": "kburgin3",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-09-13T14:17:25Z",
+          "updatedAt": "2024-09-13T14:17:25Z",
+          "comments": [
+            {
+              "originalPosition": 40,
+              "body": "\"of its private key..\"\r\nAdd to security considerations: why?: for consistency of end-to-end sender constrained tokens\r\n\"Step (B)\" to maintain the practice of sender constraining tokens throughout, or something like that",
+              "createdAt": "2024-09-13T14:17:25Z",
+              "updatedAt": "2024-09-13T14:17:25Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJubJxM6JSWZQ",
+          "commit": {
+            "abbreviatedOid": "822d6d7"
+          },
+          "author": "kburgin3",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-09-13T14:27:21Z",
+          "updatedAt": "2024-09-13T14:27:21Z",
+          "comments": [
+            {
+              "originalPosition": 73,
+              "body": "supports -> requires",
+              "createdAt": "2024-09-13T14:27:21Z",
+              "updatedAt": "2024-09-13T14:27:21Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJubJxM6JSY4q",
+          "commit": {
+            "abbreviatedOid": "822d6d7"
+          },
+          "author": "kburgin3",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-09-13T14:31:53Z",
+          "updatedAt": "2024-09-13T14:31:54Z",
+          "comments": [
+            {
+              "originalPosition": 77,
+              "body": "AS MUST verify the pop for the private key corresponding to the cnf claim",
+              "createdAt": "2024-09-13T14:31:53Z",
+              "updatedAt": "2024-09-13T14:31:54Z"
             }
           ]
         }
