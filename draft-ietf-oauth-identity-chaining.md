@@ -283,7 +283,7 @@ Authorization Servers SHOULD follow the OAuth 2.0 Security Best Current Practice
 
 # Use cases
 
-This sections outlines some use cases where the identity and authorization chaining described in this document can be applied. This section is not complete and other use cases not mentioned here are also valid.
+This sections outlines some use cases where the identity and authorization chaining described in this document can be applied. The use cases described are not exhaustive, but are representative of the type of use cases enabled by this specification. Other use cases may also be supported by this specification.
 
 ## Preserve User Context across Multi-cloud, Multi-Hybrid environments
 A user attempts to access a service that is implemented as a number of on-premise and cloud-based microservices. Both the on-premise and cloud-based services are segmented by multiple trust boundaries that span one or more on-premise or cloud service environments. Every microservice can apply an authorization policy that takes the context of the original user, as well as intermediary microservices into account, irrespective of where the microservices are running and even when a microservice in one trust domain calls another service in another trust domain.
@@ -295,10 +295,10 @@ A continuous integration system needs to access external resources, for example 
 A home devices company provides a "Camera API" to enable access to home cameras. Partner companies use this Camera API to integrate the camera feeds into their security dashboards. Using OAuth between the partner and the Camera API, a partner can request the feed from a home camera to be displayed in their dashboard. The user has an account with the camera provider. The user may be logged in to view the partner provided dashboard, or they may authorize emergency access to the camera. The home devices company must be able to independently verify that the request originated and was authorized by a user who is authorized to view the feed of the requested home camera.
 
 ## Extend Single-Sign-On to API Access
-A user that authenticated to an enterprise Identity Provider (IdP) do not have to sign-in to multiple SaaS applications if the SaaS applications are configured to trust the enteprise IdP. This SSO relationship is extended to API access. As a result SaaS servers that trust the enterprise IdP do not require the user to complete an interactive delegated OAuth 2.0 flow to obtain an access token to access the SaaS provider's APIs.
+A user that authenticated to an enterprise Identity Provider (IdP) do not have to sign-in to multiple SaaS applications if the SaaS applications are configured to trust the enteprise IdP. It is possible to extend this SSO relationship to API access by allowing the Client to contact the enterprise IdP and exhange the identity assertion (ID Token or SAML Token) that it previously received from the enteprise IdP for an authorization grant. The authorization grant can be used to obtain an access token from the SaaS application's authorization server, provided that a trust relationship has been established between the enterprise IdP which issues the authorization grant and the SaaS authorization server. As a result SaaS servers that trust the enterprise IdP do not require the user to complete an interactive delegated OAuth 2.0 flow to obtain an access token to access the SaaS provider's APIs.
 
 ## Cross-domain API authorization
-An e-mail client can be used with arbitrary email servers, without require pre-established relationships between each email client and each email server. When the e-mail client needs access to a separate API, such as a third-party calendaring application, the email client obtain an access token for the third-party calendaring application without any user interaction.
+An e-mail client can be used with arbitrary email servers, without requiring pre-established relationships between each email client and each email server. An e-mail client obtains an identity assertion (ID Token or SAML token) from an IdP. When the e-mail client needs access to a separate API, such as a third-party calendaring application, the email client exchange the identity assertion for an authorization grant and use this authorization grant to obtain an access token for the third-party calendaring application from the authroization server trusted by the third-party calendaring application. If the authorization server trusts the issuer of the authorization grant, the e-mail client obtains an access token without any additional user interaction.
 
 # Examples
 
@@ -439,6 +439,8 @@ The editors would like to thank Joe Jubinski, Justin Richer, Aaron Parecki, Dean
 # Document History
 
 \[\[ To be removed from the final specification ]]
+-latest
+* Added two more use cases
 
 -02
 
