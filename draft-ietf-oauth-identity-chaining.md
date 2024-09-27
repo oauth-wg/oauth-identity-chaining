@@ -185,7 +185,7 @@ All of section 2.2 of {{RFC8693}} applies. In addition, the following applies to
 * The "aud" claim included in the returned JWT authorization grant MAY identify multiple authorization servers, provided that trust relationships exist with them (e.g. through federation). It is RECOMMENDED that the "aud" claim is restricted to a single authorization server to prevent an authorization server in one domain from presenting the client's authorization grant to an authorization server in a different trust domain. For example, this will prevent the authorization server in Domain B from presenting the authorization grant it received from the client in Domain A to the authorization server for Domain C.
 
 * If the token exchange request in (B) contains a proof of possession of the Client's private key, the following apply.
-  * AS-A MUST verify the proof of possession in the token exchange request. 
+  * AS-A MUST verify the proof of possession in the token exchange request.
   * AS-A MUST include the “cnf” claim from the “requested_cnf” claim in the token exchange request in the returned authorization grant.
 
 ### Example
