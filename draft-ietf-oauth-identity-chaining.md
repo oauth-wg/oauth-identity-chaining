@@ -482,7 +482,7 @@ The editors would like to thank Joe Jubinski, Justin Richer, Aaron Parecki, Dean
 -03
 
 * add sender contrained/proof of possession tokens
-  
+
 -02
 
 * remove recommendation to not use RFC8693's requested_token_type
