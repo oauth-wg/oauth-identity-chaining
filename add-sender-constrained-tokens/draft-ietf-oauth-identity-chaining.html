@@ -13,21 +13,21 @@
 <meta content="
        This specification defines a mechanism to preserve identity information and federate authorization across trust domains that use the OAuth 2.0 Framework. 
     " name="description">
-<meta content="xml2rfc 3.22.0" name="generator">
+<meta content="xml2rfc 3.23.1" name="generator">
 <meta content="draft-ietf-oauth-identity-chaining-latest" name="ietf.draft">
 <!-- Generator version information:
-  xml2rfc 3.22.0
-    Python 3.12.3
+  xml2rfc 3.23.1
+    Python 3.12.6
     ConfigArgParse 1.7
-    google-i18n-address 3.1.0
+    google-i18n-address 3.1.1
     intervaltree 3.1.0
     Jinja2 3.1.4
     lxml 4.9.4
-    platformdirs 4.2.2
+    platformdirs 4.3.6
     pycountry 22.3.5
     PyYAML 6.0.1
     requests 2.32.3
-    setuptools 69.5.1
+    setuptools 70.3.0
     wcwidth 0.2.13
 -->
 <link href="draft-ietf-oauth-identity-chaining.xml" rel="alternate" type="application/rfc+xml">
@@ -1027,11 +1027,11 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <thead><tr>
 <td class="left">Internet-Draft</td>
 <td class="center">OAuth Identity and Authorization Chainin</td>
-<td class="right">July 2024</td>
+<td class="right">September 2024</td>
 </tr></thead>
 <tfoot><tr>
 <td class="left">Schwenkschuster, et al.</td>
-<td class="center">Expires 9 January 2025</td>
+<td class="center">Expires 31 March 2025</td>
 <td class="right">[Page]</td>
 </tr></tfoot>
 </table>
@@ -1044,12 +1044,12 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <dd class="internet-draft">draft-ietf-oauth-identity-chaining-latest</dd>
 <dt class="label-published">Published:</dt>
 <dd class="published">
-<time datetime="2024-07-08" class="published">8 July 2024</time>
+<time datetime="2024-09-27" class="published">27 September 2024</time>
     </dd>
 <dt class="label-intended-status">Intended Status:</dt>
 <dd class="intended-status">Informational</dd>
 <dt class="label-expires">Expires:</dt>
-<dd class="expires"><time datetime="2025-01-09">9 January 2025</time></dd>
+<dd class="expires"><time datetime="2025-03-31">31 March 2025</time></dd>
 <dt class="label-authors">Authors:</dt>
 <dd class="authors">
 <div class="author">
@@ -1110,7 +1110,7 @@ svg :is([fill="white"], [fill^="#fff"]) {
         time. It is inappropriate to use Internet-Drafts as reference
         material or to cite them other than as "work in progress."<a href="#section-boilerplate.1-3" class="pilcrow">¶</a></p>
 <p id="section-boilerplate.1-4">
-        This Internet-Draft will expire on 9 January 2025.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
+        This Internet-Draft will expire on 31 March 2025.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="copyright">
@@ -1205,7 +1205,10 @@ svg :is([fill="white"], [fill^="#fff"]) {
             <p id="section-toc.1-1.4.1"><a href="#section-4" class="auto internal xref">4</a>.  <a href="#name-security-considerations" class="internal xref">Security Considerations</a></p>
 <ul class="compact toc ulBare ulEmpty">
 <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4.2.1">
-                <p id="section-toc.1-1.4.2.1.1"><a href="#section-4.1" class="auto internal xref">4.1</a>.  <a href="#name-client-authentication" class="internal xref">Client Authentication</a></p>
+                <p id="section-toc.1-1.4.2.1.1"><a href="#section-4.1" class="auto internal xref">4.1</a>.  <a href="#name-sender-constrained-tokens-2" class="internal xref">Sender Constrained Tokens</a></p>
+</li>
+              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4.2.2">
+                <p id="section-toc.1-1.4.2.2.1"><a href="#section-4.2" class="auto internal xref">4.2</a>.  <a href="#name-client-authentication" class="internal xref">Client Authentication</a></p>
 </li>
             </ul>
 </li>
@@ -1292,7 +1295,7 @@ appear in all capitals, as shown here.<a href="#section-1.1-1" class="pilcrow">�
         <h3 id="name-overview">
 <a href="#section-2.1" class="section-number selfRef">2.1. </a><a href="#name-overview" class="section-name selfRef">Overview</a>
         </h3>
-<p id="section-2.1-1">The identity and authorization chaining flow outlined below describes how a combination of OAuth 2.0 Token Exchange <span>[<a href="#RFC8693" class="cite xref">RFC8693</a>]</span> and JWT Profile for OAuth 2.0 Client Authentication and Authorization Grants <span>[<a href="#RFC7523" class="cite xref">RFC7523</a>]</span> are used to address the use cases identified. Section <a href="#examples" class="auto internal xref">Appendix B</a> includes two additional examples that describe how this flow is used. In one example, the resource server acts as the client and in the other, the authorization server acts as the client.<a href="#section-2.1-1" class="pilcrow">¶</a></p>
+<p id="section-2.1-1">The identity and authorization chaining flow outlined below describes how a combination of OAuth 2.0 Token Exchange <span>[<a href="#RFC8693" class="cite xref">RFC8693</a>]</span> and JWT Profile for OAuth 2.0 Client Authentication and Authorization Grants <span>[<a href="#RFC7523" class="cite xref">RFC7523</a>]</span> are used to address the use cases identified. Section <a href="#examples" class="auto internal xref">Appendix B</a> include two additional examples that describe how this flow is used. In one example, the resource server acts as the client and in the other, the authorization server acts as the client.<a href="#section-2.1-1" class="pilcrow">¶</a></p>
 <span id="name-identity-and-authorization-c"></span><figure id="figure-1">
           <div class="alignLeft art-text artwork" id="section-2.1-2.1">
 <pre>
@@ -1370,7 +1373,24 @@ appear in all capitals, as shown here.<a href="#section-1.1-1" class="pilcrow">�
         <h3 id="name-sender-constrained-tokens">
 <a href="#section-2.3" class="section-number selfRef">2.3. </a><a href="#name-sender-constrained-tokens" class="section-name selfRef">Sender Constrained Tokens</a>
         </h3>
-<p id="section-2.3-1">The authorization server <span class="bcp14">MAY</span> issue sender constrained tokens. There are currently two options for sender constrained tokens: Mutually Authenticated TLS (mTLS) <span>[<a href="#RFC8705" class="cite xref">RFC8705</a>]</span> and Demonstrating Proof of Possessions (DPoP) <span>[<a href="#RFC9449" class="cite xref">RFC9449</a>]</span>.<a href="#section-2.3-1" class="pilcrow">¶</a></p>
+<p id="section-2.3-1">Either authorization server <span class="bcp14">MAY</span> issue sender constrained tokens. There are currently two options for sender constrained tokens: Mutually Authenticated TLS (mTLS) <span>[<a href="#RFC8705" class="cite xref">RFC8705</a>]</span> and Demonstrating Proof of Possessions (DPoP) <span>[<a href="#RFC9449" class="cite xref">RFC9449</a>]</span>.<a href="#section-2.3-1" class="pilcrow">¶</a></p>
+<p id="section-2.3-2">This document introduces the following authorization server metadata values to indicate the authorization server's support for DPoP or mTLS sender constrained tokens.<a href="#section-2.3-2" class="pilcrow">¶</a></p>
+<span class="break"></span><dl class="dlParallel" id="section-2.3-3">
+          <dt id="section-2.3-3.1">requested_cnf_supported_dpop</dt>
+          <dd style="margin-left: 1.5em" id="section-2.3-3.2">
+            <p id="section-2.3-3.2.1"><span class="bcp14">OPTIONAL</span>. Boolean indicator of whether the authorization server supports DPoP sender constrained tokens.
+When the authorization server is acting as the Client, the Client <span class="bcp14">MAY</span> check whether AS-B supports sender constrained tokens by obtaining the authorization server metadata and verifying "requested_conf_supported" is set to true.<a href="#section-2.3-3.2.1" class="pilcrow">¶</a></p>
+</dd>
+          <dd class="break"></dd>
+<dt id="section-2.3-3.3">requested_cnf_supported_mtls</dt>
+          <dd style="margin-left: 1.5em" id="section-2.3-3.4">
+            <p id="section-2.3-3.4.1"><span class="bcp14">OPTIONAL</span>. Boolean indicator of whether the authorization server supports mTLS sender constrained tokens.
+When the authorization server is acting as the Client, the Client <span class="bcp14">MAY</span> check whether AS-B supports sender constrained tokens by obtaining the authorization server metadata and verifying the appropriate sender constrained token method is set to true.<a href="#section-2.3-3.4.1" class="pilcrow">¶</a></p>
+</dd>
+        <dd class="break"></dd>
+</dl>
+<p id="section-2.3-4">When the authorization server is acting as the Client, the Client <span class="bcp14">MAY</span> check whether AS-B supports sender constrained tokens by obtaining the authorization server metadata and verifying the appropriate sender constrained token method is set to true.<a href="#section-2.3-4" class="pilcrow">¶</a></p>
+<p id="section-2.3-5">If the inbound token is sender constrained, RS-A <span class="bcp14">MUST</span> verify the proof of possession for the inbound token before proceeding to the Token Exchange Request.<a href="#section-2.3-5" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="token-exchange">
@@ -1386,24 +1406,19 @@ appear in all capitals, as shown here.<a href="#section-1.1-1" class="pilcrow">�
           </h4>
 <p id="section-2.4.1-1">The parameters described in section 2.1 of <span>[<a href="#RFC8693" class="cite xref">RFC8693</a>]</span> apply here with the following restrictions:<a href="#section-2.4.1-1" class="pilcrow">¶</a></p>
 <span class="break"></span><dl class="dlNewline" id="section-2.4.1-2">
-            <dt id="section-2.4.1-2.1">"scope"</dt>
+            <dt id="section-2.4.1-2.1">scope</dt>
             <dd style="margin-left: 1.5em" id="section-2.4.1-2.2">
               <p id="section-2.4.1-2.2.1"><span class="bcp14">OPTIONAL</span>. Additional scopes to indicate scopes included in the returned JWT authorization grant. See <span><a href="#claims-transcription" class="internal xref">Claims transcription</a> (<a href="#claims-transcription" class="auto internal xref">Section 2.6</a>)</span>.<a href="#section-2.4.1-2.2.1" class="pilcrow">¶</a></p>
 </dd>
             <dd class="break"></dd>
-<dt id="section-2.4.1-2.3">"resource"</dt>
+<dt id="section-2.4.1-2.3">resource</dt>
             <dd style="margin-left: 1.5em" id="section-2.4.1-2.4">
               <p id="section-2.4.1-2.4.1"><span class="bcp14">REQUIRED</span> if audience is not set. URI of authorization server of targeting domain (domain B).<a href="#section-2.4.1-2.4.1" class="pilcrow">¶</a></p>
 </dd>
             <dd class="break"></dd>
-<dt id="section-2.4.1-2.5">"audience"</dt>
+<dt id="section-2.4.1-2.5">audience</dt>
             <dd style="margin-left: 1.5em" id="section-2.4.1-2.6">
               <p id="section-2.4.1-2.6.1"><span class="bcp14">REQUIRED</span> if resource is not set. Well known/logical name of authorization server of targeting domain (domain B).<a href="#section-2.4.1-2.6.1" class="pilcrow">¶</a></p>
-</dd>
-            <dd class="break"></dd>
-<dt id="section-2.4.1-2.7">"chained_id"</dt>
-            <dd style="margin-left: 1.5em" id="section-2.4.1-2.8">
-              <p id="section-2.4.1-2.8.1"><span class="bcp14">REQUIRED</span> if the authorization server issues sender constrained tokens. The chained_id claim contains as a sub-claim the "cnf" value from the inbound token that was presented during token exchange.<a href="#section-2.4.1-2.8.1" class="pilcrow">¶</a></p>
 </dd>
           <dd class="break"></dd>
 </dl>
@@ -1422,7 +1437,7 @@ appear in all capitals, as shown here.<a href="#section-1.1-1" class="pilcrow">�
               <p id="section-2.4.2-1.2.1">The authorization server <span class="bcp14">MAY</span> add, remove or change claims. See <span><a href="#claims-transcription" class="internal xref">Claims transcription</a> (<a href="#claims-transcription" class="auto internal xref">Section 2.6</a>)</span>.<a href="#section-2.4.2-1.2.1" class="pilcrow">¶</a></p>
 </li>
             <li class="normal" id="section-2.4.2-1.3">
-              <p id="section-2.4.2-1.3.1">If the inbound token is sender constrained, the authorization server <span class="bcp14">MUST</span> check the binding on the inbound token.<a href="#section-2.4.2-1.3.1" class="pilcrow">¶</a></p>
+              <p id="section-2.4.2-1.3.1">If the inbound token is sender constrained and the resource server is acting as the Client, the Client <span class="bcp14">MUST</span> provide proof of possession of its private key, using either mTLS or DPoP, in the token exchange request to AS-A in Step (B). This is not applicable to the authorization server acting as the Client since it performs an "internal token exchange".<a href="#section-2.4.2-1.3.1" class="pilcrow">¶</a></p>
 </li>
           </ul>
 </section>
@@ -1441,7 +1456,15 @@ appear in all capitals, as shown here.<a href="#section-1.1-1" class="pilcrow">�
               <p id="section-2.4.3-2.2.1">The "aud" claim included in the returned JWT authorization grant <span class="bcp14">MAY</span> identify multiple authorization servers, provided that trust relationships exist with them (e.g. through federation). It is <span class="bcp14">RECOMMENDED</span> that the "aud" claim is restricted to a single authorization server to prevent an authorization server in one domain from presenting the client's authorization grant to an authorization server in a different trust domain. For example, this will prevent the authorization server in Domain B from presenting the authorization grant it received from the client in Domain A to the authorization server for Domain C.<a href="#section-2.4.3-2.2.1" class="pilcrow">¶</a></p>
 </li>
             <li class="normal" id="section-2.4.3-2.3">
-              <p id="section-2.4.3-2.3.1">If the authorization server issues sender constrained tokens, the authorization server <span class="bcp14">MUST</span> include the "cnf" sub-claim from the "chained_id" claim from the issued JWT assertion.<a href="#section-2.4.3-2.3.1" class="pilcrow">¶</a></p>
+              <p id="section-2.4.3-2.3.1">If the token exchange request in (B) contains a proof of possession of the Client's private key, the following apply.<a href="#section-2.4.3-2.3.1" class="pilcrow">¶</a></p>
+<ul class="normal">
+<li class="normal" id="section-2.4.3-2.3.2.1">
+                  <p id="section-2.4.3-2.3.2.1.1">AS-A <span class="bcp14">MUST</span> verify the proof of possession in the token exchange request.<a href="#section-2.4.3-2.3.2.1.1" class="pilcrow">¶</a></p>
+</li>
+                <li class="normal" id="section-2.4.3-2.3.2.2">
+                  <p id="section-2.4.3-2.3.2.2.1">AS-A <span class="bcp14">MUST</span> include the “cnf” claim from the “requested_cnf” claim in the token exchange request in the returned authorization grant.<a href="#section-2.4.3-2.3.2.2.1" class="pilcrow">¶</a></p>
+</li>
+              </ul>
 </li>
           </ul>
 </section>
@@ -1506,23 +1529,24 @@ Cache-Control: no-cache, no-store
           </h4>
 <p id="section-2.5.1-1">The authorization grant is a JWT bearer token, which the client uses to request an access token as described in the JWT Profile for OAuth 2.0 Client Authentication and Authorization Grants <span>[<a href="#RFC7523" class="cite xref">RFC7523</a>]</span>. For the purpose of this specification the following descriptions apply:<a href="#section-2.5.1-1" class="pilcrow">¶</a></p>
 <span class="break"></span><dl class="dlNewline" id="section-2.5.1-2">
-            <dt id="section-2.5.1-2.1">"grant_type"</dt>
+            <dt id="section-2.5.1-2.1">grant_type</dt>
             <dd style="margin-left: 1.5em" id="section-2.5.1-2.2">
               <p id="section-2.5.1-2.2.1"><span class="bcp14">REQUIRED</span>. As defined in Section 2.1 of <span>[<a href="#RFC7523" class="cite xref">RFC7523</a>]</span> the value <code>urn:ietf:params:oauth:grant-type:jwt-bearer</code> indicates the request is a JWT bearer assertion authorization grant.<a href="#section-2.5.1-2.2.1" class="pilcrow">¶</a></p>
 </dd>
             <dd class="break"></dd>
-<dt id="section-2.5.1-2.3">"assertion"</dt>
+<dt id="section-2.5.1-2.3">assertion</dt>
             <dd style="margin-left: 1.5em" id="section-2.5.1-2.4">
               <p id="section-2.5.1-2.4.1"><span class="bcp14">REQUIRED</span>. Authorization grant returned by the token exchange (<code>access_token</code> response).<a href="#section-2.5.1-2.4.1" class="pilcrow">¶</a></p>
 </dd>
             <dd class="break"></dd>
-<dt id="section-2.5.1-2.5">"scope"</dt>
+<dt id="section-2.5.1-2.5">scope</dt>
             <dd style="margin-left: 1.5em" id="section-2.5.1-2.6">
               <p id="section-2.5.1-2.6.1"><span class="bcp14">OPTIONAL</span>.<a href="#section-2.5.1-2.6.1" class="pilcrow">¶</a></p>
 </dd>
           <dd class="break"></dd>
 </dl>
-<p id="section-2.5.1-3">The client <span class="bcp14">MAY</span> indicate the audience it is trying to access through the "scope" parameter or the "resource" parameter defined in <span>[<a href="#RFC8707" class="cite xref">RFC8707</a>]</span>.<a href="#section-2.5.1-3" class="pilcrow">¶</a></p>
+<p id="section-2.5.1-3">The client <span class="bcp14">MAY</span> indicate the audience it is trying to access through the <code>scope</code> parameter or the <code>resource</code> parameter defined in <span>[<a href="#RFC8707" class="cite xref">RFC8707</a>]</span>.<a href="#section-2.5.1-3" class="pilcrow">¶</a></p>
+<p id="section-2.5.1-4">If the authorization server is acting as the Client, the Client <span class="bcp14">MUST</span> include the “cnf” claim from the token exchange request in a “requested_cnf” claim in the returned authorization grant. This does not apply when the resource server is acting as the Client.<a href="#section-2.5.1-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="processing-rules-1">
@@ -1541,9 +1565,6 @@ Cache-Control: no-cache, no-store
             <li class="normal" id="section-2.5.2-2.3">
               <p id="section-2.5.2-2.3.1">Due to policy the request <span class="bcp14">MAY</span> be denied (for instance if the federation from domain A is not allowed).<a href="#section-2.5.2-2.3.1" class="pilcrow">¶</a></p>
 </li>
-            <li class="normal" id="section-2.5.2-2.4">
-              <p id="section-2.5.2-2.4.1">If the authorization server issues sender constrained tokens, the authorization server <span class="bcp14">MUST</span> check the binding on inbound assertion of the Access Token Request. Additionally, the authorization server <span class="bcp14">MUST</span> verify the "cnf" claim.<a href="#section-2.5.2-2.4.1" class="pilcrow">¶</a></p>
-</li>
           </ul>
 </section>
 </div>
@@ -1553,6 +1574,33 @@ Cache-Control: no-cache, no-store
 <a href="#section-2.5.3" class="section-number selfRef">2.5.3. </a><a href="#name-access-token-response" class="section-name selfRef">Access Token Response</a>
           </h4>
 <p id="section-2.5.3-1">The authorization server responds with an access token as described in section 5.1 of <span>[<a href="#RFC6749" class="cite xref">RFC6749</a>]</span>.<a href="#section-2.5.3-1" class="pilcrow">¶</a></p>
+<p id="section-2.5.3-2">The following processing rules applies:<a href="#section-2.5.3-2" class="pilcrow">¶</a></p>
+<ul class="normal">
+<li class="normal" id="section-2.5.3-3.1">
+              <p id="section-2.5.3-3.1.1">If the JWT authorization grant in the Access Token Request contains a "requested_cnf" claim:<a href="#section-2.5.3-3.1.1" class="pilcrow">¶</a></p>
+<ul class="normal">
+<li class="normal" id="section-2.5.3-3.1.2.1">
+                  <p id="section-2.5.3-3.1.2.1.1">The authorization server in Domain B <span class="bcp14">MUST</span> verify the proof of possession for the private key corresponding to the top level "cnf" claim.<a href="#section-2.5.3-3.1.2.1.1" class="pilcrow">¶</a></p>
+</li>
+                <li class="normal" id="section-2.5.3-3.1.2.2">
+                  <p id="section-2.5.3-3.1.2.2.1">The authorization server <span class="bcp14">MUST</span> include the "cnf" value from the "requested_cnf" claim in the returned token.<a href="#section-2.5.3-3.1.2.2.1" class="pilcrow">¶</a></p>
+</li>
+              </ul>
+</li>
+            <li class="normal" id="section-2.5.3-3.2">
+              <p id="section-2.5.3-3.2.1">If Domain B does not support sender constrained tokens and the rAccess Token Request is sender constrained, AS-B <span class="bcp14">MAY</span> issue access tokens that are not sender constrained.<a href="#section-2.5.3-3.2.1" class="pilcrow">¶</a></p>
+</li>
+            <li class="normal" id="section-2.5.3-3.3">
+              <p id="section-2.5.3-3.3.1">If Domain B requires constrained tokens and the Token Exchange Rquest is not sender constrained, AS-B <span class="bcp14">MUST</span> reject the request and return an error response per Section 5.2 of <span>[<a href="#RFC6749" class="cite xref">RFC6749</a>]</span> with invalid_pop as the value of the error parameter.<a href="#section-2.5.3-3.3.1" class="pilcrow">¶</a></p>
+</li>
+          </ul>
+<p id="section-2.5.3-4">The following processing rule applies when the authorization server is acting as the Client<a href="#section-2.5.3-4" class="pilcrow">¶</a></p>
+<ul class="normal">
+<li class="normal" id="section-2.5.3-5.1">
+              <p id="section-2.5.3-5.1.1">If Domain B requires sender constrained tokens and the JWT authorization grant in the access token request contains a "requested_cnf" claim, the authorization server in Domain B <span class="bcp14">MUST</span> include the "cnf" claim from the Access Token request "requested_cnf" claim in the returned token.<a href="#section-2.5.3-5.1.1" class="pilcrow">¶</a></p>
+</li>
+          </ul>
+<p id="section-2.5.3-6">Note that when the authorization server is acting as the Client, the "cnf" value in the the Access Token Request corresponds to the private key of the Client, whereas the "cnf" claim from the "requested_cnf" claim corresponds the the resource server in Domain A.<a href="#section-2.5.3-6" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="example-1">
@@ -1560,7 +1608,7 @@ Cache-Control: no-cache, no-store
           <h4 id="name-example-2">
 <a href="#section-2.5.4" class="section-number selfRef">2.5.4. </a><a href="#name-example-2" class="section-name selfRef">Example</a>
           </h4>
-<p id="section-2.5.4-1">The example belows shows how the client in trust domain A presents an authorization grant to the authorization server in trust domain B (https://as.b.org/auth) to receive an access token for a protected resource in trust domain B.<a href="#section-2.5.4-1" class="pilcrow">¶</a></p>
+<p id="section-2.5.4-1">The example below shows how the client in trust domain A presents an authorization grant to the authorization server in trust domain B (https://as.b.org/auth) to receive an access token for a protected resource in trust domain B.<a href="#section-2.5.4-1" class="pilcrow">¶</a></p>
 <span id="name-assertion-request"></span><figure id="figure-4">
             <div class="alignLeft art-text artwork" id="section-2.5.4-2.1">
 <pre>
@@ -1637,16 +1685,26 @@ Cache-Control: no-cache, no-store
       <h2 id="name-security-considerations">
 <a href="#section-4" class="section-number selfRef">4. </a><a href="#name-security-considerations" class="section-name selfRef">Security Considerations</a>
       </h2>
-<div id="client-authentication">
+<div id="sender-constrained-tokens-1">
 <section id="section-4.1">
-        <h3 id="name-client-authentication">
-<a href="#section-4.1" class="section-number selfRef">4.1. </a><a href="#name-client-authentication" class="section-name selfRef">Client Authentication</a>
+        <h3 id="name-sender-constrained-tokens-2">
+<a href="#section-4.1" class="section-number selfRef">4.1. </a><a href="#name-sender-constrained-tokens-2" class="section-name selfRef">Sender Constrained Tokens</a>
         </h3>
-<p id="section-4.1-1">Authorization Servers <span class="bcp14">SHOULD</span> follow the OAuth 2.0 Security Best Current Practice <span>[<a href="#I-D.ietf-oauth-security-topics" class="cite xref">I-D.ietf-oauth-security-topics</a>]</span> for client authentication.<a href="#section-4.1-1" class="pilcrow">¶</a></p>
+<p id="section-4.1-1">When the authorization server in Domain B issues sender constrained tokens, the client in Domain A performs token exchange with the authorization server in Domain A. This results in an extra step to obtain the assertion grant from the authorization server in Domain A. The benefit of this extra step is that only the authorization in Domain A is required to have a trust relationship with the authorization server in Domain B. Otherwise, if the client in Domain A sends the inbound token directly to the authorization server in Domain B, then all the resource servers in Domain A would need to have the same level of trust relationship with the Authorization server in Domain B.<a href="#section-4.1-1" class="pilcrow">¶</a></p>
+<p id="section-4.1-2">If the inbound token is sender constrained and the resource server is acting as the Client, the Client is required to provide proof of possession of its private key in the Toke Exchange Request in Step (B). This is for consistency and to maintain the practice of sender constraining tokens throughout.<a href="#section-4.1-2" class="pilcrow">¶</a></p>
+</section>
+</div>
+<div id="client-authentication">
+<section id="section-4.2">
+        <h3 id="name-client-authentication">
+<a href="#section-4.2" class="section-number selfRef">4.2. </a><a href="#name-client-authentication" class="section-name selfRef">Client Authentication</a>
+        </h3>
+<p id="section-4.2-1">Authorization Servers <span class="bcp14">SHOULD</span> follow the OAuth 2.0 Security Best Current Practice <span>[<a href="#I-D.ietf-oauth-security-topics" class="cite xref">I-D.ietf-oauth-security-topics</a>]</span> for client authentication.<a href="#section-4.2-1" class="pilcrow">¶</a></p>
 </section>
 </div>
 </section>
 </div>
+<div id="sec-combined-references">
 <section id="section-5">
       <h2 id="name-references">
 <a href="#section-5" class="section-number selfRef">5. </a><a href="#name-references" class="section-name selfRef">References</a>
@@ -1669,10 +1727,6 @@ Cache-Control: no-cache, no-store
         <dd>
 <span class="refAuthor">Jones, M.</span>, <span class="refAuthor">Campbell, B.</span>, and <span class="refAuthor">C. Mortimore</span>, <span class="refTitle">"JSON Web Token (JWT) Profile for OAuth 2.0 Client Authentication and Authorization Grants"</span>, <span class="seriesInfo">RFC 7523</span>, <span class="seriesInfo">DOI 10.17487/RFC7523</span>, <time datetime="2015-05" class="refDate">May 2015</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc7523">https://www.rfc-editor.org/rfc/rfc7523</a>&gt;</span>. </dd>
 <dd class="break"></dd>
-<dt id="RFC8705">[RFC8705]</dt>
-        <dd>
-<span class="refAuthor">Campbell, B.</span>, <span class="refAuthor">Bradley, J.</span>, <span class="refAuthor">Sakimura, N.</span>, and <span class="refAuthor">T. Lodderstedt</span>, <span class="refTitle">"OAuth 2.0 Mutual-TLS Client Authentication and Certificate-Bound Access Tokens"</span>, <span class="seriesInfo">RFC 8705</span>, <span class="seriesInfo">DOI 10.17487/RFC8705</span>, <time datetime="2020-02" class="refDate">February 2020</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc8705">https://www.rfc-editor.org/rfc/rfc8705</a>&gt;</span>. </dd>
-<dd class="break"></dd>
 <dt id="RFC8707">[RFC8707]</dt>
         <dd>
 <span class="refAuthor">Campbell, B.</span>, <span class="refAuthor">Bradley, J.</span>, and <span class="refAuthor">H. Tschofenig</span>, <span class="refTitle">"Resource Indicators for OAuth 2.0"</span>, <span class="seriesInfo">RFC 8707</span>, <span class="seriesInfo">DOI 10.17487/RFC8707</span>, <time datetime="2020-02" class="refDate">February 2020</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc8707">https://www.rfc-editor.org/rfc/rfc8707</a>&gt;</span>. </dd>
@@ -1680,6 +1734,10 @@ Cache-Control: no-cache, no-store
 <dt id="RFC8414">[RFC8414]</dt>
         <dd>
 <span class="refAuthor">Jones, M.</span>, <span class="refAuthor">Sakimura, N.</span>, and <span class="refAuthor">J. Bradley</span>, <span class="refTitle">"OAuth 2.0 Authorization Server Metadata"</span>, <span class="seriesInfo">RFC 8414</span>, <span class="seriesInfo">DOI 10.17487/RFC8414</span>, <time datetime="2018-06" class="refDate">June 2018</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc8414">https://www.rfc-editor.org/rfc/rfc8414</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="RFC8705">[RFC8705]</dt>
+        <dd>
+<span class="refAuthor">Campbell, B.</span>, <span class="refAuthor">Bradley, J.</span>, <span class="refAuthor">Sakimura, N.</span>, and <span class="refAuthor">T. Lodderstedt</span>, <span class="refTitle">"OAuth 2.0 Mutual-TLS Client Authentication and Certificate-Bound Access Tokens"</span>, <span class="seriesInfo">RFC 8705</span>, <span class="seriesInfo">DOI 10.17487/RFC8705</span>, <time datetime="2020-02" class="refDate">February 2020</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc8705">https://www.rfc-editor.org/rfc/rfc8705</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="RFC9449">[RFC9449]</dt>
         <dd>
@@ -1704,7 +1762,7 @@ Cache-Control: no-cache, no-store
 <dl class="references">
 <dt id="I-D.ietf-oauth-selective-disclosure-jwt">[I-D.ietf-oauth-selective-disclosure-jwt]</dt>
         <dd>
-<span class="refAuthor">Fett, D.</span>, <span class="refAuthor">Yasuda, K.</span>, and <span class="refAuthor">B. Campbell</span>, <span class="refTitle">"Selective Disclosure for JWTs (SD-JWT)"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-oauth-selective-disclosure-jwt-10</span>, <time datetime="2024-07-08" class="refDate">8 July 2024</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-ietf-oauth-selective-disclosure-jwt-10">https://datatracker.ietf.org/doc/html/draft-ietf-oauth-selective-disclosure-jwt-10</a>&gt;</span>. </dd>
+<span class="refAuthor">Fett, D.</span>, <span class="refAuthor">Yasuda, K.</span>, and <span class="refAuthor">B. Campbell</span>, <span class="refTitle">"Selective Disclosure for JWTs (SD-JWT)"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-oauth-selective-disclosure-jwt-12</span>, <time datetime="2024-09-03" class="refDate">3 September 2024</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-ietf-oauth-selective-disclosure-jwt-12">https://datatracker.ietf.org/doc/html/draft-ietf-oauth-selective-disclosure-jwt-12</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="I-D.ietf-oauth-security-topics">[I-D.ietf-oauth-security-topics]</dt>
         <dd>
@@ -1712,12 +1770,13 @@ Cache-Control: no-cache, no-store
 <dd class="break"></dd>
 <dt id="I-D.ietf-oauth-resource-metadata">[I-D.ietf-oauth-resource-metadata]</dt>
       <dd>
-<span class="refAuthor">Jones, M. B.</span>, <span class="refAuthor">Hunt, P.</span>, and <span class="refAuthor">A. Parecki</span>, <span class="refTitle">"OAuth 2.0 Protected Resource Metadata"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-oauth-resource-metadata-05</span>, <time datetime="2024-05-03" class="refDate">3 May 2024</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-ietf-oauth-resource-metadata-05">https://datatracker.ietf.org/doc/html/draft-ietf-oauth-resource-metadata-05</a>&gt;</span>. </dd>
+<span class="refAuthor">Jones, M. B.</span>, <span class="refAuthor">Hunt, P.</span>, and <span class="refAuthor">A. Parecki</span>, <span class="refTitle">"OAuth 2.0 Protected Resource Metadata"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-oauth-resource-metadata-10</span>, <time datetime="2024-09-16" class="refDate">16 September 2024</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-ietf-oauth-resource-metadata-10">https://datatracker.ietf.org/doc/html/draft-ietf-oauth-resource-metadata-10</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 </dl>
 </section>
 </div>
 </section>
+</div>
 <div id="use-cases">
 <section id="appendix-A">
       <h2 id="name-use-cases">
@@ -1785,23 +1844,23 @@ Cache-Control: no-cache, no-store
        |                     | ---------------------------------&gt;|
        |                     | &lt;- - - - - - - - - - - - - - - - -|
        |                     |                     |             |
-       | (C) exchange token  |                     |             |
+       | (B) exchange token  |                     |             |
        |   [RFC 8693]        |                     |             |
        |&lt;--------------------|                     |             |
        |                     |                     |             |
-       | (D) &lt;authorization  |                     |             |
+       | (C) &lt;authorization  |                     |             |
        |        grant&gt;       |                     |             |
        | - - - - - - - - - -&gt;|                     |             |
        |                     |                     |             |
-       |                     | (E) present         |             |
+       |                     | (D) present         |             |
        |                     |  authorization      |             |
        |                     |  grant [RFC 7523]   |             |
        |                     | -------------------&gt;|             |
        |                     |                     |             |
-       |                     | (F) &lt;access token&gt;  |             |
+       |                     | (E) &lt;access token&gt;  |             |
        |                     | &lt;- - - - - - - - - -|             |
        |                     |                     |             |
-       |                     |               (G) access          |
+       |                     |               (F) access          |
        |                     | ---------------------------------&gt;|
        |                     |                     |             |
        |                     |                     |             |
@@ -1905,7 +1964,7 @@ Cache-Control: no-cache, no-store
       <h2 id="name-acknowledgements">
 <a href="#appendix-C" class="section-number selfRef">Appendix C. </a><a href="#name-acknowledgements" class="section-name selfRef">Acknowledgements</a>
       </h2>
-<p id="appendix-C-1">The editors would like to thank Joe Jubinski, Justin Richer, Aaron Parecki  and others (please let us know, if you've been mistakenly omitted) for their valuable input, feedback and general support of this work.<a href="#appendix-C-1" class="pilcrow">¶</a></p>
+<p id="appendix-C-1">The editors would like to thank Joe Jubinski, Justin Richer, Aaron Parecki, Dean H. Saxe, and others (please let us know, if you've been mistakenly omitted) for their valuable input, feedback and general support of this work.<a href="#appendix-C-1" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="document-history">
@@ -1917,13 +1976,16 @@ Cache-Control: no-cache, no-store
 <p id="appendix-D-2">-03<a href="#appendix-D-2" class="pilcrow">¶</a></p>
 <ul class="normal">
 <li class="normal" id="appendix-D-3.1">
-          <p id="appendix-D-3.1.1">add sender constrained tokens<a href="#appendix-D-3.1.1" class="pilcrow">¶</a></p>
+          <p id="appendix-D-3.1.1">add sender contrained/proof of possession tokens<a href="#appendix-D-3.1.1" class="pilcrow">¶</a></p>
 </li>
       </ul>
 <p id="appendix-D-4">-02<a href="#appendix-D-4" class="pilcrow">¶</a></p>
 <ul class="normal">
 <li class="normal" id="appendix-D-5.1">
           <p id="appendix-D-5.1.1">remove recommendation to not use RFC8693's requested_token_type<a href="#appendix-D-5.1.1" class="pilcrow">¶</a></p>
+</li>
+        <li class="normal" id="appendix-D-5.2">
+          <p id="appendix-D-5.2.1">Corrected discrepancy between alphabetic numbering of the diagram and text in the resource acting as client example<a href="#appendix-D-5.2.1" class="pilcrow">¶</a></p>
 </li>
       </ul>
 <p id="appendix-D-6">-01<a href="#appendix-D-6" class="pilcrow">¶</a></p>

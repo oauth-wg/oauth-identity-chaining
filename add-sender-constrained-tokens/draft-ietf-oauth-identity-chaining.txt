@@ -5,13 +5,13 @@
 oauth                                                 A. Schwenkschuster
 Internet-Draft                                             P. Kasselmann
 Intended status: Informational                                 Microsoft
-Expires: 9 January 2025                                        K. Burgin
+Expires: 31 March 2025                                         K. Burgin
                                                                    MITRE
                                                               M. Jenkins
                                                                 NSA-CCSS
                                                              B. Campbell
                                                            Ping Identity
-                                                             8 July 2024
+                                                       27 September 2024
 
 
         OAuth Identity and Authorization Chaining Across Domains
@@ -49,7 +49,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 9 January 2025.
+   This Internet-Draft will expire on 31 March 2025.
 
 Copyright Notice
 
@@ -86,7 +86,8 @@ Table of Contents
      2.6.  Claims transcription
    3.  IANA Considerations
    4.  Security Considerations
-     4.1.  Client Authentication
+     4.1.  Sender Constrained Tokens
+     4.2.  Client Authentication
    5.  References
      5.1.  Normative References
      5.2.  Informative References
@@ -153,7 +154,7 @@ Table of Contents
    how a combination of OAuth 2.0 Token Exchange [RFC8693] and JWT
    Profile for OAuth 2.0 Client Authentication and Authorization Grants
    [RFC7523] are used to address the use cases identified.
-   Section Appendix B includes two additional examples that describe how
+   Section Appendix B include two additional examples that describe how
    this flow is used.  In one example, the resource server acts as the
    client and in the other, the authorization server acts as the client.
 
@@ -234,10 +235,37 @@ Table of Contents
 
 2.3.  Sender Constrained Tokens
 
-   The authorization server MAY issue sender constrained tokens.  There
-   are currently two options for sender constrained tokens: Mutually
-   Authenticated TLS (mTLS) [RFC8705] and Demonstrating Proof of
-   Possessions (DPoP) [RFC9449].
+   Either authorization server MAY issue sender constrained tokens.
+   There are currently two options for sender constrained tokens:
+   Mutually Authenticated TLS (mTLS) [RFC8705] and Demonstrating Proof
+   of Possessions (DPoP) [RFC9449].
+
+   This document introduces the following authorization server metadata
+   values to indicate the authorization server's support for DPoP or
+   mTLS sender constrained tokens.
+
+   requested_cnf_supported_dpop  OPTIONAL.  Boolean indicator of whether
+      the authorization server supports DPoP sender constrained tokens.
+      When the authorization server is acting as the Client, the Client
+      MAY check whether AS-B supports sender constrained tokens by
+      obtaining the authorization server metadata and verifying
+      "requested_conf_supported" is set to true.
+
+   requested_cnf_supported_mtls  OPTIONAL.  Boolean indicator of whether
+      the authorization server supports mTLS sender constrained tokens.
+      When the authorization server is acting as the Client, the Client
+      MAY check whether AS-B supports sender constrained tokens by
+      obtaining the authorization server metadata and verifying the
+      appropriate sender constrained token method is set to true.
+
+   When the authorization server is acting as the Client, the Client MAY
+   check whether AS-B supports sender constrained tokens by obtaining
+   the authorization server metadata and verifying the appropriate
+   sender constrained token method is set to true.
+
+   If the inbound token is sender constrained, RS-A MUST verify the
+   proof of possession for the inbound token before proceeding to the
+   Token Exchange Request.
 
 2.4.  Token Exchange
 
@@ -252,24 +280,18 @@ Table of Contents
    The parameters described in section 2.1 of [RFC8693] apply here with
    the following restrictions:
 
-   "scope"
+   scope
       OPTIONAL.  Additional scopes to indicate scopes included in the
       returned JWT authorization grant.  See Claims transcription
       (Section 2.6).
 
-   "resource"
+   resource
       REQUIRED if audience is not set.  URI of authorization server of
       targeting domain (domain B).
 
-   "audience"
+   audience
       REQUIRED if resource is not set.  Well known/logical name of
       authorization server of targeting domain (domain B).
-
-   "chained_id"
-      REQUIRED if the authorization server issues sender constrained
-      tokens.  The chained_id claim contains as a sub-claim the "cnf"
-      value from the inbound token that was presented during token
-      exchange.
 
 2.4.2.  Processing rules
 
@@ -280,8 +302,12 @@ Table of Contents
    *  The authorization server MAY add, remove or change claims.  See
       Claims transcription (Section 2.6).
 
-   *  If the inbound token is sender constrained, the authorization
-      server MUST check the binding on the inbound token.
+   *  If the inbound token is sender constrained and the resource server
+      is acting as the Client, the Client MUST provide proof of
+      possession of its private key, using either mTLS or DPoP, in the
+      token exchange request to AS-A in Step (B).  This is not
+      applicable to the authorization server acting as the Client since
+      it performs an "internal token exchange".
 
 2.4.3.  Token Exchange Response
 
@@ -307,9 +333,15 @@ Table of Contents
       presenting the authorization grant it received from the client in
       Domain A to the authorization server for Domain C.
 
-   *  If the authorization server issues sender constrained tokens, the
-      authorization server MUST include the "cnf" sub-claim from the
-      "chained_id" claim from the issued JWT assertion.
+   *  If the token exchange request in (B) contains a proof of
+      possession of the Client's private key, the following apply.
+
+      -  AS-A MUST verify the proof of possession in the token exchange
+         request.
+
+      -  AS-A MUST include the “cnf” claim from the “requested_cnf”
+         claim in the token exchange request in the returned
+         authorization grant.
 
 2.4.4.  Example
 
@@ -360,21 +392,25 @@ grant_type=urn%3Aietf%3Aparams%3Aoauth%3Agrant-type%3Atoken-exchange
    2.0 Client Authentication and Authorization Grants [RFC7523].  For
    the purpose of this specification the following descriptions apply:
 
-   "grant_type"
+   grant_type
       REQUIRED.  As defined in Section 2.1 of [RFC7523] the value
       urn:ietf:params:oauth:grant-type:jwt-bearer indicates the request
       is a JWT bearer assertion authorization grant.
 
-   "assertion"
+   assertion
       REQUIRED.  Authorization grant returned by the token exchange
       (access_token response).
 
-   "scope"
+   scope
       OPTIONAL.
 
    The client MAY indicate the audience it is trying to access through
-   the "scope" parameter or the "resource" parameter defined in
-   [RFC8707].
+   the scope parameter or the resource parameter defined in [RFC8707].
+
+   If the authorization server is acting as the Client, the Client MUST
+   include the “cnf” claim from the token exchange request in a
+   “requested_cnf” claim in the returned authorization grant.  This does
+   not apply when the resource server is acting as the Client.
 
 2.5.2.  Processing rules
 
@@ -393,19 +429,50 @@ grant_type=urn%3Aietf%3Aparams%3Aoauth%3Agrant-type%3Atoken-exchange
    *  Due to policy the request MAY be denied (for instance if the
       federation from domain A is not allowed).
 
-   *  If the authorization server issues sender constrained tokens, the
-      authorization server MUST check the binding on inbound assertion
-      of the Access Token Request.  Additionally, the authorization
-      server MUST verify the "cnf" claim.
-
 2.5.3.  Access Token Response
 
    The authorization server responds with an access token as described
    in section 5.1 of [RFC6749].
 
+   The following processing rules applies:
+
+   *  If the JWT authorization grant in the Access Token Request
+      contains a "requested_cnf" claim:
+
+      -  The authorization server in Domain B MUST verify the proof of
+         possession for the private key corresponding to the top level
+         "cnf" claim.
+
+      -  The authorization server MUST include the "cnf" value from the
+         "requested_cnf" claim in the returned token.
+
+   *  If Domain B does not support sender constrained tokens and the
+      rAccess Token Request is sender constrained, AS-B MAY issue access
+      tokens that are not sender constrained.
+
+   *  If Domain B requires constrained tokens and the Token Exchange
+      Rquest is not sender constrained, AS-B MUST reject the request and
+      return an error response per Section 5.2 of [RFC6749] with
+      invalid_pop as the value of the error parameter.
+
+   The following processing rule applies when the authorization server
+   is acting as the Client
+
+   *  If Domain B requires sender constrained tokens and the JWT
+      authorization grant in the access token request contains a
+      "requested_cnf" claim, the authorization server in Domain B MUST
+      include the "cnf" claim from the Access Token request
+      "requested_cnf" claim in the returned token.
+
+   Note that when the authorization server is acting as the Client, the
+   "cnf" value in the the Access Token Request corresponds to the
+   private key of the Client, whereas the "cnf" claim from the
+   "requested_cnf" claim corresponds the the resource server in Domain
+   A.
+
 2.5.4.  Example
 
-   The example belows shows how the client in trust domain A presents an
+   The example below shows how the client in trust domain A presents an
    authorization grant to the authorization server in trust domain B
    (https://as.b.org/auth) to receive an access token for a protected
    resource in trust domain B.
@@ -475,7 +542,27 @@ grant_type=urn%3Aietf%3Aparams%3Aoauth%3Agrant-type%3Atoken-exchange
 
 4.  Security Considerations
 
-4.1.  Client Authentication
+4.1.  Sender Constrained Tokens
+
+   When the authorization server in Domain B issues sender constrained
+   tokens, the client in Domain A performs token exchange with the
+   authorization server in Domain A.  This results in an extra step to
+   obtain the assertion grant from the authorization server in Domain A.
+   The benefit of this extra step is that only the authorization in
+   Domain A is required to have a trust relationship with the
+   authorization server in Domain B.  Otherwise, if the client in Domain
+   A sends the inbound token directly to the authorization server in
+   Domain B, then all the resource servers in Domain A would need to
+   have the same level of trust relationship with the Authorization
+   server in Domain B.
+
+   If the inbound token is sender constrained and the resource server is
+   acting as the Client, the Client is required to provide proof of
+   possession of its private key in the Toke Exchange Request in Step
+   (B).  This is for consistency and to maintain the practice of sender
+   constraining tokens throughout.
+
+4.2.  Client Authentication
 
    Authorization Servers SHOULD follow the OAuth 2.0 Security Best
    Current Practice [I-D.ietf-oauth-security-topics] for client
@@ -499,12 +586,6 @@ grant_type=urn%3Aietf%3Aparams%3Aoauth%3Agrant-type%3Atoken-exchange
               Authorization Grants", RFC 7523, DOI 10.17487/RFC7523, May
               2015, <https://www.rfc-editor.org/rfc/rfc7523>.
 
-   [RFC8705]  Campbell, B., Bradley, J., Sakimura, N., and T.
-              Lodderstedt, "OAuth 2.0 Mutual-TLS Client Authentication
-              and Certificate-Bound Access Tokens", RFC 8705,
-              DOI 10.17487/RFC8705, February 2020,
-              <https://www.rfc-editor.org/rfc/rfc8705>.
-
    [RFC8707]  Campbell, B., Bradley, J., and H. Tschofenig, "Resource
               Indicators for OAuth 2.0", RFC 8707, DOI 10.17487/RFC8707,
               February 2020, <https://www.rfc-editor.org/rfc/rfc8707>.
@@ -513,6 +594,12 @@ grant_type=urn%3Aietf%3Aparams%3Aoauth%3Agrant-type%3Atoken-exchange
               Authorization Server Metadata", RFC 8414,
               DOI 10.17487/RFC8414, June 2018,
               <https://www.rfc-editor.org/rfc/rfc8414>.
+
+   [RFC8705]  Campbell, B., Bradley, J., Sakimura, N., and T.
+              Lodderstedt, "OAuth 2.0 Mutual-TLS Client Authentication
+              and Certificate-Bound Access Tokens", RFC 8705,
+              DOI 10.17487/RFC8705, February 2020,
+              <https://www.rfc-editor.org/rfc/rfc8705>.
 
    [RFC9449]  Fett, D., Campbell, B., Bradley, J., Lodderstedt, T.,
               Jones, M., and D. Waite, "OAuth 2.0 Demonstrating Proof of
@@ -533,9 +620,9 @@ grant_type=urn%3Aietf%3Aparams%3Aoauth%3Agrant-type%3Atoken-exchange
    [I-D.ietf-oauth-selective-disclosure-jwt]
               Fett, D., Yasuda, K., and B. Campbell, "Selective
               Disclosure for JWTs (SD-JWT)", Work in Progress, Internet-
-              Draft, draft-ietf-oauth-selective-disclosure-jwt-10, 8
-              July 2024, <https://datatracker.ietf.org/doc/html/draft-
-              ietf-oauth-selective-disclosure-jwt-10>.
+              Draft, draft-ietf-oauth-selective-disclosure-jwt-12, 3
+              September 2024, <https://datatracker.ietf.org/doc/html/
+              draft-ietf-oauth-selective-disclosure-jwt-12>.
 
    [I-D.ietf-oauth-security-topics]
               Lodderstedt, T., Bradley, J., Labunets, A., and D. Fett,
@@ -548,9 +635,9 @@ grant_type=urn%3Aietf%3Aparams%3Aoauth%3Agrant-type%3Atoken-exchange
    [I-D.ietf-oauth-resource-metadata]
               Jones, M. B., Hunt, P., and A. Parecki, "OAuth 2.0
               Protected Resource Metadata", Work in Progress, Internet-
-              Draft, draft-ietf-oauth-resource-metadata-05, 3 May 2024,
-              <https://datatracker.ietf.org/doc/html/draft-ietf-oauth-
-              resource-metadata-05>.
+              Draft, draft-ietf-oauth-resource-metadata-10, 16 September
+              2024, <https://datatracker.ietf.org/doc/html/draft-ietf-
+              oauth-resource-metadata-10>.
 
 Appendix A.  Use cases
 
@@ -628,23 +715,23 @@ B.1.  Resource server acting as client
         |                     | --------------------------------->|
         |                     | <- - - - - - - - - - - - - - - - -|
         |                     |                     |             |
-        | (C) exchange token  |                     |             |
+        | (B) exchange token  |                     |             |
         |   [RFC 8693]        |                     |             |
         |<--------------------|                     |             |
         |                     |                     |             |
-        | (D) <authorization  |                     |             |
+        | (C) <authorization  |                     |             |
         |        grant>       |                     |             |
         | - - - - - - - - - ->|                     |             |
         |                     |                     |             |
-        |                     | (E) present         |             |
+        |                     | (D) present         |             |
         |                     |  authorization      |             |
         |                     |  grant [RFC 7523]   |             |
         |                     | ------------------->|             |
         |                     |                     |             |
-        |                     | (F) <access token>  |             |
+        |                     | (E) <access token>  |             |
         |                     | <- - - - - - - - - -|             |
         |                     |                     |             |
-        |                     |               (G) access          |
+        |                     |               (F) access          |
         |                     | --------------------------------->|
         |                     |                     |             |
         |                     |                     |             |
@@ -778,9 +865,9 @@ B.2.  Authorization server acting as client
 Appendix C.  Acknowledgements
 
    The editors would like to thank Joe Jubinski, Justin Richer, Aaron
-   Parecki and others (please let us know, if you've been mistakenly
-   omitted) for their valuable input, feedback and general support of
-   this work.
+   Parecki, Dean H.  Saxe, and others (please let us know, if you've
+   been mistakenly omitted) for their valuable input, feedback and
+   general support of this work.
 
 Appendix D.  Document History
 
@@ -788,11 +875,14 @@ Appendix D.  Document History
 
    -03
 
-   *  add sender constrained tokens
+   *  add sender contrained/proof of possession tokens
 
    -02
 
    *  remove recommendation to not use RFC8693's requested_token_type
+
+   *  Corrected discrepancy between alphabetic numbering of the diagram
+      and text in the resource acting as client example
 
    -01
 
