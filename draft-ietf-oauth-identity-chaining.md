@@ -144,7 +144,7 @@ requested_cnf_supported_dpop
 : OPTIONAL. Boolean indicator of whether the authorization server supports DPoP sender constrained tokens.
 When the authorization server is acting as the Client, the Client MAY check whether AS-B supports sender constrained tokens by obtaining the authorization server metadata and verifying "requested_conf_supported" is set to true.
 
-requested_cnf_supported_mtls 
+requested_cnf_supported_mtls
 : OPTIONAL. Boolean indicator of whether the authorization server supports mTLS sender constrained tokens.
 When the authorization server is acting as the Client, the Client MAY check whether AS-B supports sender constrained tokens by obtaining the authorization server metadata and verifying the appropriate sender constrained token method is set to true.
 
