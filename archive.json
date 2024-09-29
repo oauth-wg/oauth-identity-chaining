@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2024-09-26T00:18:43.506614+00:00",
+  "timestamp": "2024-09-29T00:21:21.086292+00:00",
   "repo": "oauth-wg/oauth-identity-chaining",
   "labels": [
     {
@@ -4277,13 +4277,13 @@
       "labels": [],
       "body": "Added uses cases to the appendix (see issue #68 )",
       "createdAt": "2024-08-09T15:53:32Z",
-      "updatedAt": "2024-09-20T15:42:02Z",
+      "updatedAt": "2024-09-28T13:08:44Z",
       "baseRepository": "oauth-wg/oauth-identity-chaining",
       "baseRefName": "main",
       "baseRefOid": "13e44f9936b1db71b591f91526f4bd7be5898dd3",
       "headRepository": "PieterKas/ietf-identity-chaining",
       "headRefName": "patch-7",
-      "headRefOid": "c25511b904cbb942f819322cd95f890956c395b3",
+      "headRefOid": "2db0e45383e53079f87a90aa704744590af298fd",
       "closedAt": null,
       "mergedAt": null,
       "mergedBy": null,
@@ -4364,6 +4364,19 @@
               "updatedAt": "2024-08-12T18:55:30Z"
             }
           ]
+        },
+        {
+          "id": "PRR_kwDOJubJxM6LLUum",
+          "commit": {
+            "abbreviatedOid": "2db0e45"
+          },
+          "author": "kburgin3",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2024-09-28T13:08:44Z",
+          "updatedAt": "2024-09-28T13:08:44Z",
+          "comments": []
         }
       ]
     },
@@ -4379,13 +4392,13 @@
       "labels": [],
       "body": "Add sender constrained/proof of possession tokens if the initial inbound token had a proof of possession ",
       "createdAt": "2024-08-30T12:55:36Z",
-      "updatedAt": "2024-09-19T22:53:41Z",
+      "updatedAt": "2024-09-27T14:29:27Z",
       "baseRepository": "oauth-wg/oauth-identity-chaining",
       "baseRefName": "main",
       "baseRefOid": "13e44f9936b1db71b591f91526f4bd7be5898dd3",
       "headRepository": "oauth-wg/oauth-identity-chaining",
       "headRefName": "add-sender-constrained-tokens",
-      "headRefOid": "bca89c68e13c7c77a5facaf3bdfbaf4c2f4b4f65",
+      "headRefOid": "eafb88b167f7b2718ce33a83a4972c3f89f9318f",
       "closedAt": null,
       "mergedAt": null,
       "mergedBy": null,
@@ -4646,6 +4659,46 @@
           "createdAt": "2024-09-19T22:50:35Z",
           "updatedAt": "2024-09-19T22:53:41Z",
           "comments": []
+        },
+        {
+          "id": "PRR_kwDOJubJxM6LGCay",
+          "commit": {
+            "abbreviatedOid": "bca89c6"
+          },
+          "author": "kburgin3",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-09-27T12:35:44Z",
+          "updatedAt": "2024-09-27T12:35:44Z",
+          "comments": [
+            {
+              "originalPosition": 14,
+              "body": "I'm struggling with the web interface that I'm stuck using. Will continue working to resolve ",
+              "createdAt": "2024-09-27T12:35:44Z",
+              "updatedAt": "2024-09-27T12:35:44Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJubJxM6LHIrN",
+          "commit": {
+            "abbreviatedOid": "bca89c6"
+          },
+          "author": "kburgin3",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-09-27T14:29:26Z",
+          "updatedAt": "2024-09-27T14:29:27Z",
+          "comments": [
+            {
+              "originalPosition": 14,
+              "body": "@bc-pi Pieter figured it out. Take a look now",
+              "createdAt": "2024-09-27T14:29:26Z",
+              "updatedAt": "2024-09-27T14:29:27Z"
+            }
+          ]
         }
       ]
     }
