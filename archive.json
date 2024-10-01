@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2024-09-29T00:21:21.086292+00:00",
+  "timestamp": "2024-10-01T00:21:38.461499+00:00",
   "repo": "oauth-wg/oauth-identity-chaining",
   "labels": [
     {
@@ -4277,7 +4277,7 @@
       "labels": [],
       "body": "Added uses cases to the appendix (see issue #68 )",
       "createdAt": "2024-08-09T15:53:32Z",
-      "updatedAt": "2024-09-28T13:08:44Z",
+      "updatedAt": "2024-09-30T19:30:50Z",
       "baseRepository": "oauth-wg/oauth-identity-chaining",
       "baseRefName": "main",
       "baseRefOid": "13e44f9936b1db71b591f91526f4bd7be5898dd3",
@@ -4302,6 +4302,13 @@
           "body": "@aaronpk, @bc-pi I added some additional details to the use cases to illustrate the use cases Aaron describes in his identity assertion authz draft.",
           "createdAt": "2024-09-20T15:42:01Z",
           "updatedAt": "2024-09-20T15:42:01Z"
+        },
+        {
+          "author": "PieterKas",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "@arndt-s can you merge this pull request? I don't have write permissions.",
+          "createdAt": "2024-09-30T19:30:49Z",
+          "updatedAt": "2024-09-30T19:30:49Z"
         }
       ],
       "reviews": [
