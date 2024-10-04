@@ -5,13 +5,13 @@
 oauth                                                 A. Schwenkschuster
 Internet-Draft                                             P. Kasselmann
 Intended status: Informational                                 Microsoft
-Expires: 9 January 2025                                        K. Burgin
+Expires: 7 April 2025                                          K. Burgin
                                                                    MITRE
                                                               M. Jenkins
                                                                 NSA-CCSS
                                                              B. Campbell
                                                            Ping Identity
-                                                             8 July 2024
+                                                          4 October 2024
 
 
         OAuth Identity and Authorization Chaining Across Domains
@@ -49,7 +49,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 9 January 2025.
+   This Internet-Draft will expire on 7 April 2025.
 
 Copyright Notice
 
@@ -94,6 +94,8 @@ Table of Contents
            environments
      A.2.  Continuous Integration Accessing External Resources
      A.3.  API Security Use Case
+     A.4.  Extend Single-Sign-On to API Access
+     A.5.  Cross-domain API authorization
    Appendix B.  Examples
      B.1.  Resource server acting as client
      B.2.  Authorization server acting as client
@@ -495,9 +497,9 @@ grant_type=urn%3Aietf%3Aparams%3Aoauth%3Agrant-type%3Atoken-exchange
    [I-D.ietf-oauth-selective-disclosure-jwt]
               Fett, D., Yasuda, K., and B. Campbell, "Selective
               Disclosure for JWTs (SD-JWT)", Work in Progress, Internet-
-              Draft, draft-ietf-oauth-selective-disclosure-jwt-10, 8
-              July 2024, <https://datatracker.ietf.org/doc/html/draft-
-              ietf-oauth-selective-disclosure-jwt-10>.
+              Draft, draft-ietf-oauth-selective-disclosure-jwt-12, 3
+              September 2024, <https://datatracker.ietf.org/doc/html/
+              draft-ietf-oauth-selective-disclosure-jwt-12>.
 
    [I-D.ietf-oauth-security-topics]
               Lodderstedt, T., Bradley, J., Labunets, A., and D. Fett,
@@ -510,16 +512,17 @@ grant_type=urn%3Aietf%3Aparams%3Aoauth%3Agrant-type%3Atoken-exchange
    [I-D.ietf-oauth-resource-metadata]
               Jones, M. B., Hunt, P., and A. Parecki, "OAuth 2.0
               Protected Resource Metadata", Work in Progress, Internet-
-              Draft, draft-ietf-oauth-resource-metadata-06, 8 July 2024,
-              <https://datatracker.ietf.org/doc/html/draft-ietf-oauth-
-              resource-metadata-06>.
+              Draft, draft-ietf-oauth-resource-metadata-12, 3 October
+              2024, <https://datatracker.ietf.org/doc/html/draft-ietf-
+              oauth-resource-metadata-12>.
 
 Appendix A.  Use cases
 
    This sections outlines some use cases where the identity and
    authorization chaining described in this document can be applied.
-   This section is not complete and other use cases not mentioned here
-   are also valid.
+   The use cases described are not exhaustive, but are representative of
+   the type of use cases enabled by this specification.  Other use cases
+   may also be supported by this specification.
 
 A.1.  Preserve User Context across Multi-cloud, Multi-Hybrid
       environments
@@ -557,6 +560,38 @@ A.3.  API Security Use Case
    independently verify that the request originated and was authorized
    by a user who is authorized to view the feed of the requested home
    camera.
+
+A.4.  Extend Single-Sign-On to API Access
+
+   A user that authenticated to an enterprise Identity Provider (IdP)
+   does not have to sign-in to multiple SaaS applications if the SaaS
+   applications are configured to trust the enteprise IdP.  It is
+   possible to extend this SSO relationship to API access by allowing
+   the Client to contact the enterprise IdP and exchange the identity
+   assertion (ID Token or SAML Token) that it previously received from
+   the enteprise IdP for an authorization grant.  The authorization
+   grant can be used to obtain an access token from the SaaS
+   application's authorization server, provided that a trust
+   relationship has been established between the enterprise IdP which
+   issues the authorization grant and the SaaS authorization server.  As
+   a result SaaS servers that trust the enterprise IdP do not require
+   the user to complete an interactive delegated OAuth 2.0 flow to
+   obtain an access token to access the SaaS provider's APIs.
+
+A.5.  Cross-domain API authorization
+
+   An e-mail client can be used with arbitrary email servers, without
+   requiring pre-established relationships between each email client and
+   each email server.  An e-mail client obtains an identity assertion
+   (ID Token or SAML token) from an IdP.  When the e-mail client needs
+   access to a separate API, such as a third-party calendaring
+   application, the email client exchanges the identity assertion for an
+   authorization grant and uses this authorization grant to obtain an
+   access token for the third-party calendaring application from the
+   authorization server trusted by the third-party calendaring
+   application.  If the authorization server trusts the issuer of the
+   authorization grant, the e-mail client obtains an access token
+   without any additional user interaction.
 
 Appendix B.  Examples
 
@@ -746,7 +781,8 @@ Appendix C.  Acknowledgements
 
 Appendix D.  Document History
 
-   [[ To be removed from the final specification ]]
+   [[ To be removed from the final specification ]] -latest * Added two
+   more use cases
 
    -02
 
