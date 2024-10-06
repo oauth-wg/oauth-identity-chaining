@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2024-10-03T00:19:01.971505+00:00",
+  "timestamp": "2024-10-06T00:21:01.487292+00:00",
   "repo": "oauth-wg/oauth-identity-chaining",
   "labels": [
     {
@@ -4270,24 +4270,26 @@
       "id": "PR_kwDOJubJxM539sdT",
       "title": "Added use cases",
       "url": "https://github.com/oauth-wg/oauth-identity-chaining/pull/94",
-      "state": "OPEN",
+      "state": "MERGED",
       "author": "PieterKas",
       "authorAssociation": "CONTRIBUTOR",
       "assignees": [],
       "labels": [],
       "body": "Added uses cases to the appendix (see issue #68 )",
       "createdAt": "2024-08-09T15:53:32Z",
-      "updatedAt": "2024-09-30T19:30:50Z",
+      "updatedAt": "2024-10-04T10:01:03Z",
       "baseRepository": "oauth-wg/oauth-identity-chaining",
       "baseRefName": "main",
       "baseRefOid": "13e44f9936b1db71b591f91526f4bd7be5898dd3",
       "headRepository": "PieterKas/ietf-identity-chaining",
       "headRefName": "patch-7",
       "headRefOid": "2db0e45383e53079f87a90aa704744590af298fd",
-      "closedAt": null,
-      "mergedAt": null,
-      "mergedBy": null,
-      "mergeCommit": null,
+      "closedAt": "2024-10-04T10:01:03Z",
+      "mergedAt": "2024-10-04T10:01:03Z",
+      "mergedBy": "arndt-s",
+      "mergeCommit": {
+        "oid": "598fcb8bff96c3d49c88bd5f2c585089425994e6"
+      },
       "comments": [
         {
           "author": "PieterKas",
@@ -4399,7 +4401,7 @@
       "labels": [],
       "body": "Add sender constrained/proof of possession tokens if the initial inbound token had a proof of possession ",
       "createdAt": "2024-08-30T12:55:36Z",
-      "updatedAt": "2024-09-27T14:29:27Z",
+      "updatedAt": "2024-10-04T14:49:25Z",
       "baseRepository": "oauth-wg/oauth-identity-chaining",
       "baseRefName": "main",
       "baseRefOid": "13e44f9936b1db71b591f91526f4bd7be5898dd3",
@@ -4704,6 +4706,46 @@
               "body": "@bc-pi Pieter figured it out. Take a look now",
               "createdAt": "2024-09-27T14:29:26Z",
               "updatedAt": "2024-09-27T14:29:27Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJubJxM6L214I",
+          "commit": {
+            "abbreviatedOid": "eafb88b"
+          },
+          "author": "bc-pi",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-10-03T18:29:21Z",
+          "updatedAt": "2024-10-03T18:29:22Z",
+          "comments": [
+            {
+              "originalPosition": 14,
+              "body": "That part doesn't look like it renders like you'd want \r\nhttps://drafts.oauth.net/oauth-identity-chaining/add-sender-constrained-tokens/draft-ietf-oauth-identity-chaining.html#name-overview",
+              "createdAt": "2024-10-03T18:29:21Z",
+              "updatedAt": "2024-10-03T18:29:22Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJubJxM6L97-w",
+          "commit": {
+            "abbreviatedOid": "bca89c6"
+          },
+          "author": "kburgin3",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-10-04T14:49:25Z",
+          "updatedAt": "2024-10-04T14:49:25Z",
+          "comments": [
+            {
+              "originalPosition": 14,
+              "body": "Not sure what you mean. Let's talk next week",
+              "createdAt": "2024-10-04T14:49:25Z",
+              "updatedAt": "2024-10-04T14:49:25Z"
             }
           ]
         }
