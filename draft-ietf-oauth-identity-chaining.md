@@ -260,7 +260,7 @@ The following processing rules applies:
 * If the JWT authorization grant in the Access Token Request contains a "requested_cnf" claim:
   * The authorization server in Domain B MUST verify the proof of possession for the private key corresponding to the top level "cnf" claim.
   * The authorization server MUST include the "cnf" value from the "requested_cnf" claim in the returned token.
-* If Domain B does not support sender constrained tokens and the rAccess Token Request is sender constrained, AS-B MAY issue access tokens that are not sender constrained.
+* If Domain B does not support sender constrained tokens and the Access Token Request is sender constrained, AS-B MAY issue access tokens that are not sender constrained.
 * If Domain B requires constrained tokens and the Token Exchange Rquest is not sender constrained, AS-B MUST reject the request and return an error response per Section 5.2 of {{RFC6749}} with invalid_pop as the value of the error parameter.
 
 The following processing rule applies when the authorization server is acting as the Client
