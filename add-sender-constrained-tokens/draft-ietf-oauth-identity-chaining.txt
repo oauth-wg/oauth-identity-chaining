@@ -5,13 +5,13 @@
 oauth                                                 A. Schwenkschuster
 Internet-Draft                                             P. Kasselmann
 Intended status: Informational                                 Microsoft
-Expires: 31 March 2025                                         K. Burgin
+Expires: 11 April 2025                                         K. Burgin
                                                                    MITRE
                                                               M. Jenkins
                                                                 NSA-CCSS
                                                              B. Campbell
                                                            Ping Identity
-                                                       27 September 2024
+                                                          8 October 2024
 
 
         OAuth Identity and Authorization Chaining Across Domains
@@ -49,7 +49,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 31 March 2025.
+   This Internet-Draft will expire on 11 April 2025.
 
 Copyright Notice
 
@@ -447,7 +447,7 @@ grant_type=urn%3Aietf%3Aparams%3Aoauth%3Agrant-type%3Atoken-exchange
          "requested_cnf" claim in the returned token.
 
    *  If Domain B does not support sender constrained tokens and the
-      rAccess Token Request is sender constrained, AS-B MAY issue access
+      Access Token Request is sender constrained, AS-B MAY issue access
       tokens that are not sender constrained.
 
    *  If Domain B requires constrained tokens and the Token Exchange
@@ -635,9 +635,9 @@ grant_type=urn%3Aietf%3Aparams%3Aoauth%3Agrant-type%3Atoken-exchange
    [I-D.ietf-oauth-resource-metadata]
               Jones, M. B., Hunt, P., and A. Parecki, "OAuth 2.0
               Protected Resource Metadata", Work in Progress, Internet-
-              Draft, draft-ietf-oauth-resource-metadata-10, 16 September
+              Draft, draft-ietf-oauth-resource-metadata-12, 3 October
               2024, <https://datatracker.ietf.org/doc/html/draft-ietf-
-              oauth-resource-metadata-10>.
+              oauth-resource-metadata-12>.
 
 Appendix A.  Use cases
 
