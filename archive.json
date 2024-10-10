@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2024-10-08T00:18:50.764996+00:00",
+  "timestamp": "2024-10-10T00:19:09.301904+00:00",
   "repo": "oauth-wg/oauth-identity-chaining",
   "labels": [
     {
@@ -3996,21 +3996,21 @@
       "id": "PR_kwDOJubJxM50cPEi",
       "title": "[Kelley] add sender constraints",
       "url": "https://github.com/oauth-wg/oauth-identity-chaining/pull/90",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "arndt-s",
       "authorAssociation": "MEMBER",
       "assignees": [],
       "labels": [],
       "body": "",
       "createdAt": "2024-07-04T12:35:23Z",
-      "updatedAt": "2024-07-08T16:54:48Z",
+      "updatedAt": "2024-10-08T14:56:53Z",
       "baseRepository": "oauth-wg/oauth-identity-chaining",
       "baseRefName": "main",
       "baseRefOid": "781eeea1760504477fd37b0e7a666650775f8346",
       "headRepository": "oauth-wg/oauth-identity-chaining",
       "headRefName": "kelley/add-sender-constraints",
       "headRefOid": "565530b7ad394734b48152918b858069766f5790",
-      "closedAt": null,
+      "closedAt": "2024-10-08T14:56:53Z",
       "mergedAt": null,
       "mergedBy": null,
       "mergeCommit": null,
@@ -4401,13 +4401,13 @@
       "labels": [],
       "body": "Add sender constrained/proof of possession tokens if the initial inbound token had a proof of possession ",
       "createdAt": "2024-08-30T12:55:36Z",
-      "updatedAt": "2024-10-04T14:49:25Z",
+      "updatedAt": "2024-10-08T17:40:54Z",
       "baseRepository": "oauth-wg/oauth-identity-chaining",
       "baseRefName": "main",
-      "baseRefOid": "13e44f9936b1db71b591f91526f4bd7be5898dd3",
+      "baseRefOid": "598fcb8bff96c3d49c88bd5f2c585089425994e6",
       "headRepository": "oauth-wg/oauth-identity-chaining",
       "headRefName": "add-sender-constrained-tokens",
-      "headRefOid": "eafb88b167f7b2718ce33a83a4972c3f89f9318f",
+      "headRefOid": "7c9023f1224c6a5f13183b34c6d293c4ccb3fe1b",
       "closedAt": null,
       "mergedAt": null,
       "mergedBy": null,
@@ -4746,6 +4746,26 @@
               "body": "Not sure what you mean. Let's talk next week",
               "createdAt": "2024-10-04T14:49:25Z",
               "updatedAt": "2024-10-04T14:49:25Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJubJxM6MX_Xd",
+          "commit": {
+            "abbreviatedOid": "eafb88b"
+          },
+          "author": "bc-pi",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-10-08T17:19:07Z",
+          "updatedAt": "2024-10-08T17:19:08Z",
+          "comments": [
+            {
+              "originalPosition": 14,
+              "body": "Maybe just:\r\n```suggestion\r\nThe identity and authorization chaining flow outlined below describes how a combination of OAuth 2.0 Token Exchange {{RFC8693}} and JWT Profile for OAuth 2.0 Client Authentication and Authorization Grants {{RFC7523}} are used to address the use cases identified. (#examples) includes two additional examples that describe how this flow is used. In one example, the resource server acts as the client and in the other, the authorization server acts as the client.\r\n```",
+              "createdAt": "2024-10-08T17:19:07Z",
+              "updatedAt": "2024-10-08T17:19:22Z"
             }
           ]
         }
