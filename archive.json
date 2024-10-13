@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2024-10-10T00:19:09.301904+00:00",
+  "timestamp": "2024-10-13T00:20:57.852317+00:00",
   "repo": "oauth-wg/oauth-identity-chaining",
   "labels": [
     {
@@ -4770,6 +4770,32 @@
           ]
         }
       ]
+    },
+    {
+      "number": 96,
+      "id": "PR_kwDOJubJxM5-Wwhw",
+      "title": "Update affiliation of Arndt",
+      "url": "https://github.com/oauth-wg/oauth-identity-chaining/pull/96",
+      "state": "OPEN",
+      "author": "arndt-s",
+      "authorAssociation": "MEMBER",
+      "assignees": [],
+      "labels": [],
+      "body": "Update my affiliation",
+      "createdAt": "2024-10-11T15:15:20Z",
+      "updatedAt": "2024-10-11T15:15:21Z",
+      "baseRepository": "oauth-wg/oauth-identity-chaining",
+      "baseRefName": "main",
+      "baseRefOid": "598fcb8bff96c3d49c88bd5f2c585089425994e6",
+      "headRepository": "oauth-wg/oauth-identity-chaining",
+      "headRefName": "arndt/change_org",
+      "headRefOid": "21fab94405ec5476bffa88f8e4086ad99c512ace",
+      "closedAt": null,
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [],
+      "reviews": []
     }
   ]
 }
