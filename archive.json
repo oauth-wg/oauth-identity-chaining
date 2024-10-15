@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2024-10-13T00:20:57.852317+00:00",
+  "timestamp": "2024-10-15T00:19:23.195017+00:00",
   "repo": "oauth-wg/oauth-identity-chaining",
   "labels": [
     {
@@ -4783,7 +4783,7 @@
       "labels": [],
       "body": "Update my affiliation",
       "createdAt": "2024-10-11T15:15:20Z",
-      "updatedAt": "2024-10-11T15:15:21Z",
+      "updatedAt": "2024-10-14T16:46:35Z",
       "baseRepository": "oauth-wg/oauth-identity-chaining",
       "baseRefName": "main",
       "baseRefOid": "598fcb8bff96c3d49c88bd5f2c585089425994e6",
@@ -4795,7 +4795,28 @@
       "mergedBy": null,
       "mergeCommit": null,
       "comments": [],
-      "reviews": []
+      "reviews": [
+        {
+          "id": "PRR_kwDOJubJxM6NGCWf",
+          "commit": {
+            "abbreviatedOid": "21fab94"
+          },
+          "author": "kburgin3",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-10-14T16:46:35Z",
+          "updatedAt": "2024-10-14T16:46:35Z",
+          "comments": [
+            {
+              "originalPosition": 1,
+              "body": "We should update Pieter's too",
+              "createdAt": "2024-10-14T16:46:35Z",
+              "updatedAt": "2024-10-14T16:46:35Z"
+            }
+          ]
+        }
+      ]
     }
   ]
 }
