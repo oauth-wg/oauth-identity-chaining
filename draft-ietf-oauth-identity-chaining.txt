@@ -3,15 +3,16 @@
 
 
 oauth                                                 A. Schwenkschuster
-Internet-Draft                                             P. Kasselmann
-Intended status: Informational                                 Microsoft
-Expires: 7 April 2025                                          K. Burgin
+Internet-Draft                                                 Microsoft
+Intended status: Informational                             P. Kasselmann
+Expires: 18 April 2025                                             SPIRL
+                                                               K. Burgin
                                                                    MITRE
                                                               M. Jenkins
                                                                 NSA-CCSS
                                                              B. Campbell
                                                            Ping Identity
-                                                          4 October 2024
+                                                         15 October 2024
 
 
         OAuth Identity and Authorization Chaining Across Domains
@@ -49,7 +50,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 7 April 2025.
+   This Internet-Draft will expire on 18 April 2025.
 
 Copyright Notice
 
@@ -844,8 +845,8 @@ Authors' Addresses
 
 
    Pieter Kasselmann
-   Microsoft
-   Email: pieter.kasselman@microsoft.com
+   SPIRL
+   Email: pieter@spirl.com
 
 
    Kelley Burgin
