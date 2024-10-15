@@ -3,10 +3,9 @@
 
 
 oauth                                                 A. Schwenkschuster
-Internet-Draft                                                 Microsoft
-Intended status: Informational                             P. Kasselmann
-Expires: 18 April 2025                                             SPIRL
-                                                               K. Burgin
+Internet-Draft                                             P. Kasselmann
+Intended status: Informational                                     SPIRL
+Expires: 18 April 2025                                         K. Burgin
                                                                    MITRE
                                                               M. Jenkins
                                                                 NSA-CCSS
@@ -840,8 +839,8 @@ Contributors
 Authors' Addresses
 
    Arndt Schwenkschuster
-   Microsoft
-   Email: arndts@microsoft.com
+   SPIRL
+   Email: arndts.ietf@gmail.com
 
 
    Pieter Kasselmann
