@@ -15,8 +15,8 @@ kw: []
 # date: 2022-02-02 -- date is filled in automatically by xml2rfc if not given
 author:
 - name: Arndt Schwenkschuster
-  org: Microsoft
-  email: arndts@microsoft.com
+  org: SPIRL
+  email: arndts.ietf@gmail.com
 - name: Pieter Kasselmann
   org: SPIRL
   email: pieter@spirl.com
