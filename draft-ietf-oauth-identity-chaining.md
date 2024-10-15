@@ -18,8 +18,8 @@ author:
   org: Microsoft
   email: arndts@microsoft.com
 - name: Pieter Kasselmann
-  org: Microsoft
-  email: pieter.kasselman@microsoft.com
+  org: SPIRL
+  email: pieter@spirl.com
 - name: Kelley Burgin
   org: MITRE
   email: kburgin@mitre.org
