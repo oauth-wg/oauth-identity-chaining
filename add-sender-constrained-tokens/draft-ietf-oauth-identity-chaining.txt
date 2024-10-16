@@ -4,14 +4,14 @@
 
 oauth                                                 A. Schwenkschuster
 Internet-Draft                                             P. Kasselmann
-Intended status: Informational                                 Microsoft
-Expires: 11 April 2025                                         K. Burgin
+Intended status: Informational                                     SPIRL
+Expires: 19 April 2025                                         K. Burgin
                                                                    MITRE
                                                               M. Jenkins
                                                                 NSA-CCSS
                                                              B. Campbell
                                                            Ping Identity
-                                                          8 October 2024
+                                                         16 October 2024
 
 
         OAuth Identity and Authorization Chaining Across Domains
@@ -49,7 +49,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 11 April 2025.
+   This Internet-Draft will expire on 19 April 2025.
 
 Copyright Notice
 
@@ -246,26 +246,38 @@ Table of Contents
 
    requested_cnf_supported_dpop  OPTIONAL.  Boolean indicator of whether
       the authorization server supports DPoP sender constrained tokens.
-      When the authorization server is acting as the Client, the Client
-      MAY check whether AS-B supports sender constrained tokens by
-      obtaining the authorization server metadata and verifying
-      "requested_conf_supported" is set to true.
+      When the authorization server in Domain A is acting as the Client,
+      the authorization server MAY check whether the authorization
+      server of Domain B requires sender constrained tokens by obtaining
+      the authorization server metadata and verifying
+      "requested_cnf_supported" is set to true.
 
    requested_cnf_supported_mtls  OPTIONAL.  Boolean indicator of whether
       the authorization server supports mTLS sender constrained tokens.
-      When the authorization server is acting as the Client, the Client
-      MAY check whether AS-B supports sender constrained tokens by
-      obtaining the authorization server metadata and verifying the
-      appropriate sender constrained token method is set to true.
 
-   When the authorization server is acting as the Client, the Client MAY
-   check whether AS-B supports sender constrained tokens by obtaining
-   the authorization server metadata and verifying the appropriate
-   sender constrained token method is set to true.
+   The Client MAY check whether the authorization server of Domain B
+   requires sender constrained tokens by obtaining the authorization
+   server metadata and verifying the appropriate sender constrained
+   token method is set to true.
 
-   If the inbound token is sender constrained, RS-A MUST verify the
-   proof of possession for the inbound token before proceeding to the
-   Token Exchange Request.
+   If the inbound token contains a proof of possession of the sender's
+   private key, the resource server in Domain A MUST verify the proof of
+   possession for the inbound token before proceeding to the Token
+   Exchange Request.
+
+   If the inbound token contains a proof of possession of the sender's
+   private key and the resource server in Domain A is acting as the
+   Client, the resource server MUST provide proof of possession of its
+   private key, using either mTLS or DPoP, in the token exchange request
+   to the authorization server of Domain A in Step (B).  This is not
+   applicable to the authorization server acting as the Client since it
+   performs an "internal token exchange".
+
+   This specification defines a new claim "requested_cnf" which contains
+   the "cnf" claim associated with the proof of possession of the
+   resource server in Domain A.
+
+   (Insert diagram)
 
 2.4.  Token Exchange
 
@@ -336,12 +348,12 @@ Table of Contents
    *  If the token exchange request in (B) contains a proof of
       possession of the Client's private key, the following apply.
 
-      -  AS-A MUST verify the proof of possession in the token exchange
-         request.
+      -  The authorization server of Domain A MUST verify the proof of
+         possession in the token exchange request.
 
-      -  AS-A MUST include the “cnf” claim from the “requested_cnf”
-         claim in the token exchange request in the returned
-         authorization grant.
+      -  The authorization server of DOmain A MUST include the “cnf”
+         claim from the “requested_cnf” claim in the token exchange
+         request in the returned authorization grant.
 
 2.4.4.  Example
 
@@ -399,32 +411,34 @@ grant_type=urn%3Aietf%3Aparams%3Aoauth%3Agrant-type%3Atoken-exchange
 
    assertion
       REQUIRED.  Authorization grant returned by the token exchange
-      (access_token response).
+      (“access_token“ response).
 
    scope
       OPTIONAL.
 
    The client MAY indicate the audience it is trying to access through
-   the scope parameter or the resource parameter defined in [RFC8707].
+   the scope parameter or the “resource“ parameter defined in [RFC8707].
 
-   If the authorization server is acting as the Client, the Client MUST
-   include the “cnf” claim from the token exchange request in a
-   “requested_cnf” claim in the returned authorization grant.  This does
-   not apply when the resource server is acting as the Client.
+   If the authorization server of Domain A is acting as the Client, the
+   authorization server MUST construct a “requested_cnf“ claim that
+   contains the “cnf“ claim associated with the private key of the
+   authorization server of Domain A in the Token Exchange request.  This
+   does not apply when the resource server in Domain A is acting as the
+   Client.
 
 2.5.2.  Processing rules
 
-   The authorization server MUST validate the JWT authorization grant as
-   specified in Sections 3 and 3.1 of [RFC7523].  The following
-   processing rules also apply:
+   The authorization server of Domain B MUST validate the JWT
+   authorization grant as specified in Sections 3 and 3.1 of [RFC7523].
+   The following processing rules also apply:
 
-   *  The "aud" claim MUST identify the Authorization Server as a valid
-      intended audience of the assertion using either the token endpoint
-      as described Section 3 [RFC7523] or the issuer identifier as
-      defined in Section 2 of [RFC8414].
+   *  The "aud" claim MUST identify the Authorization Server of Domain B
+      as a valid intended audience of the assertion using either the
+      token endpoint as described Section 3 [RFC7523] or the issuer
+      identifier as defined in Section 2 of [RFC8414].
 
-   *  The authorization server SHOULD deny the request if it is not able
-      to identify the subject.
+   *  The authorization server of Domain B SHOULD deny the request if it
+      is not able to identify the subject.
 
    *  Due to policy the request MAY be denied (for instance if the
       federation from domain A is not allowed).
@@ -434,7 +448,7 @@ grant_type=urn%3Aietf%3Aparams%3Aoauth%3Agrant-type%3Atoken-exchange
    The authorization server responds with an access token as described
    in section 5.1 of [RFC6749].
 
-   The following processing rules applies:
+   The following processing rules apply:
 
    *  If the JWT authorization grant in the Access Token Request
       contains a "requested_cnf" claim:
@@ -447,28 +461,30 @@ grant_type=urn%3Aietf%3Aparams%3Aoauth%3Agrant-type%3Atoken-exchange
          "requested_cnf" claim in the returned token.
 
    *  If Domain B does not support sender constrained tokens and the
-      Access Token Request is sender constrained, AS-B MAY issue access
-      tokens that are not sender constrained.
-
-   *  If Domain B requires constrained tokens and the Token Exchange
-      Rquest is not sender constrained, AS-B MUST reject the request and
-      return an error response per Section 5.2 of [RFC6749] with
-      invalid_pop as the value of the error parameter.
-
-   The following processing rule applies when the authorization server
-   is acting as the Client
+      Access Token Request contains a proof of possession of the
+      Client's private key, the authorization server of Domain B MAY
+      issue access tokens that are not sender constrained.
 
    *  If Domain B requires sender constrained tokens and the JWT
       authorization grant in the access token request contains a
       "requested_cnf" claim, the authorization server in Domain B MUST
-      include the "cnf" claim from the Access Token request
+      include the "cnf" claim from the access token request
       "requested_cnf" claim in the returned token.
 
-   Note that when the authorization server is acting as the Client, the
-   "cnf" value in the the Access Token Request corresponds to the
-   private key of the Client, whereas the "cnf" claim from the
-   "requested_cnf" claim corresponds the the resource server in Domain
-   A.
+   The following processing rule applies when the authorization server
+   is acting as the Client.
+
+   *  If Domain B requires sender constrained tokens and the JWT
+      authorization grant in the access token request contains a
+      "requested_cnf" claim, the authorization server in Domain A MUST
+      include the "cnf" claim from the access token request
+      "requested_cnf" claim in the returned token.
+
+   Note that when the authorization server of Domain A is acting as the
+   Client, the "cnf" value in the the Access Token Request corresponds
+   to the private key of the authorization server, whereas the "cnf"
+   claim from the "requested_cnf" claim corresponds the the resource
+   server in Domain A.
 
 2.5.4.  Example
 
@@ -556,9 +572,10 @@ grant_type=urn%3Aietf%3Aparams%3Aoauth%3Agrant-type%3Atoken-exchange
    have the same level of trust relationship with the Authorization
    server in Domain B.
 
-   If the inbound token is sender constrained and the resource server is
-   acting as the Client, the Client is required to provide proof of
-   possession of its private key in the Toke Exchange Request in Step
+   If the inbound token contains a proof of possession of the sender's
+   private key and the resource server in Domain A is acting as the
+   Client, the resource server is required to provide proof of
+   possession of its private key in the Token Exchange Request in Step
    (B).  This is for consistency and to maintain the practice of sender
    constraining tokens throughout.
 
@@ -635,9 +652,9 @@ grant_type=urn%3Aietf%3Aparams%3Aoauth%3Agrant-type%3Atoken-exchange
    [I-D.ietf-oauth-resource-metadata]
               Jones, M. B., Hunt, P., and A. Parecki, "OAuth 2.0
               Protected Resource Metadata", Work in Progress, Internet-
-              Draft, draft-ietf-oauth-resource-metadata-12, 3 October
+              Draft, draft-ietf-oauth-resource-metadata-13, 15 October
               2024, <https://datatracker.ietf.org/doc/html/draft-ietf-
-              oauth-resource-metadata-12>.
+              oauth-resource-metadata-13>.
 
 Appendix A.  Use cases
 
@@ -932,13 +949,13 @@ Contributors
 Authors' Addresses
 
    Arndt Schwenkschuster
-   Microsoft
-   Email: arndts@microsoft.com
+   SPIRL
+   Email: arndts.ietf@gmail.com
 
 
    Pieter Kasselmann
-   Microsoft
-   Email: pieter.kasselman@microsoft.com
+   SPIRL
+   Email: pieter@spirl.com
 
 
    Kelley Burgin

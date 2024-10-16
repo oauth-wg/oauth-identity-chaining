@@ -17,7 +17,7 @@
 <meta content="draft-ietf-oauth-identity-chaining-latest" name="ietf.draft">
 <!-- Generator version information:
   xml2rfc 3.23.2
-    Python 3.12.6
+    Python 3.12.7
     ConfigArgParse 1.7
     google-i18n-address 3.1.1
     intervaltree 3.1.0
@@ -1031,7 +1031,7 @@ svg :is([fill="white"], [fill^="#fff"]) {
 </tr></thead>
 <tfoot><tr>
 <td class="left">Schwenkschuster, et al.</td>
-<td class="center">Expires 11 April 2025</td>
+<td class="center">Expires 19 April 2025</td>
 <td class="right">[Page]</td>
 </tr></tfoot>
 </table>
@@ -1044,21 +1044,21 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <dd class="internet-draft">draft-ietf-oauth-identity-chaining-latest</dd>
 <dt class="label-published">Published:</dt>
 <dd class="published">
-<time datetime="2024-10-08" class="published">8 October 2024</time>
+<time datetime="2024-10-16" class="published">16 October 2024</time>
     </dd>
 <dt class="label-intended-status">Intended Status:</dt>
 <dd class="intended-status">Informational</dd>
 <dt class="label-expires">Expires:</dt>
-<dd class="expires"><time datetime="2025-04-11">11 April 2025</time></dd>
+<dd class="expires"><time datetime="2025-04-19">19 April 2025</time></dd>
 <dt class="label-authors">Authors:</dt>
 <dd class="authors">
 <div class="author">
       <div class="author-name">A. Schwenkschuster</div>
-<div class="org">Microsoft</div>
+<div class="org">SPIRL</div>
 </div>
 <div class="author">
       <div class="author-name">P. Kasselmann</div>
-<div class="org">Microsoft</div>
+<div class="org">SPIRL</div>
 </div>
 <div class="author">
       <div class="author-name">K. Burgin</div>
@@ -1110,7 +1110,7 @@ svg :is([fill="white"], [fill^="#fff"]) {
         time. It is inappropriate to use Internet-Drafts as reference
         material or to cite them other than as "work in progress."<a href="#section-boilerplate.1-3" class="pilcrow">¶</a></p>
 <p id="section-boilerplate.1-4">
-        This Internet-Draft will expire on 11 April 2025.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
+        This Internet-Draft will expire on 19 April 2025.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="copyright">
@@ -1379,18 +1379,20 @@ appear in all capitals, as shown here.<a href="#section-1.1-1" class="pilcrow">�
           <dt id="section-2.3-3.1">requested_cnf_supported_dpop</dt>
           <dd style="margin-left: 1.5em" id="section-2.3-3.2">
             <p id="section-2.3-3.2.1"><span class="bcp14">OPTIONAL</span>. Boolean indicator of whether the authorization server supports DPoP sender constrained tokens.
-When the authorization server is acting as the Client, the Client <span class="bcp14">MAY</span> check whether AS-B supports sender constrained tokens by obtaining the authorization server metadata and verifying "requested_conf_supported" is set to true.<a href="#section-2.3-3.2.1" class="pilcrow">¶</a></p>
+When the authorization server in Domain A is acting as the Client, the authorization server <span class="bcp14">MAY</span> check whether the authorization server of Domain B requires sender constrained tokens by obtaining the authorization server metadata and verifying "requested_cnf_supported" is set to true.<a href="#section-2.3-3.2.1" class="pilcrow">¶</a></p>
 </dd>
           <dd class="break"></dd>
 <dt id="section-2.3-3.3">requested_cnf_supported_mtls</dt>
           <dd style="margin-left: 1.5em" id="section-2.3-3.4">
-            <p id="section-2.3-3.4.1"><span class="bcp14">OPTIONAL</span>. Boolean indicator of whether the authorization server supports mTLS sender constrained tokens.
-When the authorization server is acting as the Client, the Client <span class="bcp14">MAY</span> check whether AS-B supports sender constrained tokens by obtaining the authorization server metadata and verifying the appropriate sender constrained token method is set to true.<a href="#section-2.3-3.4.1" class="pilcrow">¶</a></p>
+            <p id="section-2.3-3.4.1"><span class="bcp14">OPTIONAL</span>. Boolean indicator of whether the authorization server supports mTLS sender constrained tokens.<a href="#section-2.3-3.4.1" class="pilcrow">¶</a></p>
 </dd>
         <dd class="break"></dd>
 </dl>
-<p id="section-2.3-4">When the authorization server is acting as the Client, the Client <span class="bcp14">MAY</span> check whether AS-B supports sender constrained tokens by obtaining the authorization server metadata and verifying the appropriate sender constrained token method is set to true.<a href="#section-2.3-4" class="pilcrow">¶</a></p>
-<p id="section-2.3-5">If the inbound token is sender constrained, RS-A <span class="bcp14">MUST</span> verify the proof of possession for the inbound token before proceeding to the Token Exchange Request.<a href="#section-2.3-5" class="pilcrow">¶</a></p>
+<p id="section-2.3-4">The Client <span class="bcp14">MAY</span> check whether the authorization server of Domain B requires sender constrained tokens by obtaining the authorization server metadata and verifying the appropriate sender constrained token method is set to true.<a href="#section-2.3-4" class="pilcrow">¶</a></p>
+<p id="section-2.3-5">If the inbound token contains a proof of possession of the sender's private key, the resource server in Domain A <span class="bcp14">MUST</span> verify the proof of possession for the inbound token before proceeding to the Token Exchange Request.<a href="#section-2.3-5" class="pilcrow">¶</a></p>
+<p id="section-2.3-6">If the inbound token contains a proof of possession of the sender's private key and the resource server in Domain A is acting as the Client, the resource server <span class="bcp14">MUST</span> provide proof of possession of its private key, using either mTLS or DPoP, in the token exchange request to the authorization server of Domain A in Step (B). This is not applicable to the authorization server acting as the Client since it performs an "internal token exchange".<a href="#section-2.3-6" class="pilcrow">¶</a></p>
+<p id="section-2.3-7">This specification defines a new claim "requested_cnf" which contains the "cnf" claim associated with the proof of possession of the resource server in Domain A.<a href="#section-2.3-7" class="pilcrow">¶</a></p>
+<p id="section-2.3-8">(Insert diagram)<a href="#section-2.3-8" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="token-exchange">
@@ -1459,10 +1461,10 @@ When the authorization server is acting as the Client, the Client <span class="b
               <p id="section-2.4.3-2.3.1">If the token exchange request in (B) contains a proof of possession of the Client's private key, the following apply.<a href="#section-2.4.3-2.3.1" class="pilcrow">¶</a></p>
 <ul class="normal">
 <li class="normal" id="section-2.4.3-2.3.2.1">
-                  <p id="section-2.4.3-2.3.2.1.1">AS-A <span class="bcp14">MUST</span> verify the proof of possession in the token exchange request.<a href="#section-2.4.3-2.3.2.1.1" class="pilcrow">¶</a></p>
+                  <p id="section-2.4.3-2.3.2.1.1">The authorization server of Domain A <span class="bcp14">MUST</span> verify the proof of possession in the token exchange request.<a href="#section-2.4.3-2.3.2.1.1" class="pilcrow">¶</a></p>
 </li>
                 <li class="normal" id="section-2.4.3-2.3.2.2">
-                  <p id="section-2.4.3-2.3.2.2.1">AS-A <span class="bcp14">MUST</span> include the “cnf” claim from the “requested_cnf” claim in the token exchange request in the returned authorization grant.<a href="#section-2.4.3-2.3.2.2.1" class="pilcrow">¶</a></p>
+                  <p id="section-2.4.3-2.3.2.2.1">The authorization server of DOmain A <span class="bcp14">MUST</span> include the “cnf” claim from the “requested_cnf” claim in the token exchange request in the returned authorization grant.<a href="#section-2.4.3-2.3.2.2.1" class="pilcrow">¶</a></p>
 </li>
               </ul>
 </li>
@@ -1536,7 +1538,7 @@ Cache-Control: no-cache, no-store
             <dd class="break"></dd>
 <dt id="section-2.5.1-2.3">assertion</dt>
             <dd style="margin-left: 1.5em" id="section-2.5.1-2.4">
-              <p id="section-2.5.1-2.4.1"><span class="bcp14">REQUIRED</span>. Authorization grant returned by the token exchange (<code>access_token</code> response).<a href="#section-2.5.1-2.4.1" class="pilcrow">¶</a></p>
+              <p id="section-2.5.1-2.4.1"><span class="bcp14">REQUIRED</span>. Authorization grant returned by the token exchange (“access_token“ response).<a href="#section-2.5.1-2.4.1" class="pilcrow">¶</a></p>
 </dd>
             <dd class="break"></dd>
 <dt id="section-2.5.1-2.5">scope</dt>
@@ -1545,8 +1547,8 @@ Cache-Control: no-cache, no-store
 </dd>
           <dd class="break"></dd>
 </dl>
-<p id="section-2.5.1-3">The client <span class="bcp14">MAY</span> indicate the audience it is trying to access through the <code>scope</code> parameter or the <code>resource</code> parameter defined in <span>[<a href="#RFC8707" class="cite xref">RFC8707</a>]</span>.<a href="#section-2.5.1-3" class="pilcrow">¶</a></p>
-<p id="section-2.5.1-4">If the authorization server is acting as the Client, the Client <span class="bcp14">MUST</span> include the “cnf” claim from the token exchange request in a “requested_cnf” claim in the returned authorization grant. This does not apply when the resource server is acting as the Client.<a href="#section-2.5.1-4" class="pilcrow">¶</a></p>
+<p id="section-2.5.1-3">The client <span class="bcp14">MAY</span> indicate the audience it is trying to access through the <code>scope</code> parameter or the “resource“ parameter defined in <span>[<a href="#RFC8707" class="cite xref">RFC8707</a>]</span>.<a href="#section-2.5.1-3" class="pilcrow">¶</a></p>
+<p id="section-2.5.1-4">If the authorization server of Domain A is acting as the Client, the authorization server <span class="bcp14">MUST</span> construct a “requested_cnf“ claim that contains the “cnf“ claim associated with the private key of the authorization server of Domain A in the Token Exchange request. This does not apply when the resource server in Domain A is acting as the Client.<a href="#section-2.5.1-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="processing-rules-1">
@@ -1554,13 +1556,13 @@ Cache-Control: no-cache, no-store
           <h4 id="name-processing-rules-2">
 <a href="#section-2.5.2" class="section-number selfRef">2.5.2. </a><a href="#name-processing-rules-2" class="section-name selfRef">Processing rules</a>
           </h4>
-<p id="section-2.5.2-1">The authorization server <span class="bcp14">MUST</span> validate the JWT authorization grant as specified in Sections 3 and 3.1 of <span>[<a href="#RFC7523" class="cite xref">RFC7523</a>]</span>. The following processing rules also apply:<a href="#section-2.5.2-1" class="pilcrow">¶</a></p>
+<p id="section-2.5.2-1">The authorization server of Domain B <span class="bcp14">MUST</span> validate the JWT authorization grant as specified in Sections 3 and 3.1 of <span>[<a href="#RFC7523" class="cite xref">RFC7523</a>]</span>. The following processing rules also apply:<a href="#section-2.5.2-1" class="pilcrow">¶</a></p>
 <ul class="normal">
 <li class="normal" id="section-2.5.2-2.1">
-              <p id="section-2.5.2-2.1.1">The "aud" claim <span class="bcp14">MUST</span> identify the Authorization Server as a valid intended audience of the assertion using either the token endpoint as described Section 3 <span>[<a href="#RFC7523" class="cite xref">RFC7523</a>]</span> or the issuer identifier as defined in Section 2 of <span>[<a href="#RFC8414" class="cite xref">RFC8414</a>]</span>.<a href="#section-2.5.2-2.1.1" class="pilcrow">¶</a></p>
+              <p id="section-2.5.2-2.1.1">The "aud" claim <span class="bcp14">MUST</span> identify the Authorization Server of Domain B as a valid intended audience of the assertion using either the token endpoint as described Section 3 <span>[<a href="#RFC7523" class="cite xref">RFC7523</a>]</span> or the issuer identifier as defined in Section 2 of <span>[<a href="#RFC8414" class="cite xref">RFC8414</a>]</span>.<a href="#section-2.5.2-2.1.1" class="pilcrow">¶</a></p>
 </li>
             <li class="normal" id="section-2.5.2-2.2">
-              <p id="section-2.5.2-2.2.1">The authorization server <span class="bcp14">SHOULD</span> deny the request if it is not able to identify the subject.<a href="#section-2.5.2-2.2.1" class="pilcrow">¶</a></p>
+              <p id="section-2.5.2-2.2.1">The authorization server of Domain B <span class="bcp14">SHOULD</span> deny the request if it is not able to identify the subject.<a href="#section-2.5.2-2.2.1" class="pilcrow">¶</a></p>
 </li>
             <li class="normal" id="section-2.5.2-2.3">
               <p id="section-2.5.2-2.3.1">Due to policy the request <span class="bcp14">MAY</span> be denied (for instance if the federation from domain A is not allowed).<a href="#section-2.5.2-2.3.1" class="pilcrow">¶</a></p>
@@ -1574,7 +1576,7 @@ Cache-Control: no-cache, no-store
 <a href="#section-2.5.3" class="section-number selfRef">2.5.3. </a><a href="#name-access-token-response" class="section-name selfRef">Access Token Response</a>
           </h4>
 <p id="section-2.5.3-1">The authorization server responds with an access token as described in section 5.1 of <span>[<a href="#RFC6749" class="cite xref">RFC6749</a>]</span>.<a href="#section-2.5.3-1" class="pilcrow">¶</a></p>
-<p id="section-2.5.3-2">The following processing rules applies:<a href="#section-2.5.3-2" class="pilcrow">¶</a></p>
+<p id="section-2.5.3-2">The following processing rules apply:<a href="#section-2.5.3-2" class="pilcrow">¶</a></p>
 <ul class="normal">
 <li class="normal" id="section-2.5.3-3.1">
               <p id="section-2.5.3-3.1.1">If the JWT authorization grant in the Access Token Request contains a "requested_cnf" claim:<a href="#section-2.5.3-3.1.1" class="pilcrow">¶</a></p>
@@ -1588,19 +1590,19 @@ Cache-Control: no-cache, no-store
               </ul>
 </li>
             <li class="normal" id="section-2.5.3-3.2">
-              <p id="section-2.5.3-3.2.1">If Domain B does not support sender constrained tokens and the Access Token Request is sender constrained, AS-B <span class="bcp14">MAY</span> issue access tokens that are not sender constrained.<a href="#section-2.5.3-3.2.1" class="pilcrow">¶</a></p>
+              <p id="section-2.5.3-3.2.1">If Domain B does not support sender constrained tokens and the Access Token Request contains a proof of possession of the Client's private key, the authorization server of Domain B <span class="bcp14">MAY</span> issue access tokens that are not sender constrained.<a href="#section-2.5.3-3.2.1" class="pilcrow">¶</a></p>
 </li>
             <li class="normal" id="section-2.5.3-3.3">
-              <p id="section-2.5.3-3.3.1">If Domain B requires constrained tokens and the Token Exchange Rquest is not sender constrained, AS-B <span class="bcp14">MUST</span> reject the request and return an error response per Section 5.2 of <span>[<a href="#RFC6749" class="cite xref">RFC6749</a>]</span> with invalid_pop as the value of the error parameter.<a href="#section-2.5.3-3.3.1" class="pilcrow">¶</a></p>
+              <p id="section-2.5.3-3.3.1">If Domain B requires sender constrained tokens and the JWT authorization grant in the access token request contains a "requested_cnf" claim, the authorization server in Domain B <span class="bcp14">MUST</span> include the "cnf" claim from the access token request "requested_cnf" claim in the returned token.<a href="#section-2.5.3-3.3.1" class="pilcrow">¶</a></p>
 </li>
           </ul>
-<p id="section-2.5.3-4">The following processing rule applies when the authorization server is acting as the Client<a href="#section-2.5.3-4" class="pilcrow">¶</a></p>
+<p id="section-2.5.3-4">The following processing rule applies when the authorization server is acting as the Client.<a href="#section-2.5.3-4" class="pilcrow">¶</a></p>
 <ul class="normal">
 <li class="normal" id="section-2.5.3-5.1">
-              <p id="section-2.5.3-5.1.1">If Domain B requires sender constrained tokens and the JWT authorization grant in the access token request contains a "requested_cnf" claim, the authorization server in Domain B <span class="bcp14">MUST</span> include the "cnf" claim from the Access Token request "requested_cnf" claim in the returned token.<a href="#section-2.5.3-5.1.1" class="pilcrow">¶</a></p>
+              <p id="section-2.5.3-5.1.1">If Domain B requires sender constrained tokens and the JWT authorization grant in the access token request contains a "requested_cnf" claim, the authorization server in Domain A <span class="bcp14">MUST</span> include the "cnf" claim from the access token request "requested_cnf" claim in the returned token.<a href="#section-2.5.3-5.1.1" class="pilcrow">¶</a></p>
 </li>
           </ul>
-<p id="section-2.5.3-6">Note that when the authorization server is acting as the Client, the "cnf" value in the the Access Token Request corresponds to the private key of the Client, whereas the "cnf" claim from the "requested_cnf" claim corresponds the the resource server in Domain A.<a href="#section-2.5.3-6" class="pilcrow">¶</a></p>
+<p id="section-2.5.3-6">Note that when the authorization server of Domain A is acting as the Client, the "cnf" value in the the Access Token Request corresponds to the private key of the authorization server, whereas the "cnf" claim from the "requested_cnf" claim corresponds the the resource server in Domain A.<a href="#section-2.5.3-6" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="example-1">
@@ -1691,7 +1693,7 @@ Cache-Control: no-cache, no-store
 <a href="#section-4.1" class="section-number selfRef">4.1. </a><a href="#name-sender-constrained-tokens-2" class="section-name selfRef">Sender Constrained Tokens</a>
         </h3>
 <p id="section-4.1-1">When the authorization server in Domain B issues sender constrained tokens, the client in Domain A performs token exchange with the authorization server in Domain A. This results in an extra step to obtain the assertion grant from the authorization server in Domain A. The benefit of this extra step is that only the authorization in Domain A is required to have a trust relationship with the authorization server in Domain B. Otherwise, if the client in Domain A sends the inbound token directly to the authorization server in Domain B, then all the resource servers in Domain A would need to have the same level of trust relationship with the Authorization server in Domain B.<a href="#section-4.1-1" class="pilcrow">¶</a></p>
-<p id="section-4.1-2">If the inbound token is sender constrained and the resource server is acting as the Client, the Client is required to provide proof of possession of its private key in the Toke Exchange Request in Step (B). This is for consistency and to maintain the practice of sender constraining tokens throughout.<a href="#section-4.1-2" class="pilcrow">¶</a></p>
+<p id="section-4.1-2">If the inbound token contains a proof of possession of the sender's private key and the resource server in Domain A is acting as the Client, the resource server is required to provide proof of possession of its private key in the Token Exchange Request in Step (B). This is for consistency and to maintain the practice of sender constraining tokens throughout.<a href="#section-4.1-2" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="client-authentication">
@@ -1770,7 +1772,7 @@ Cache-Control: no-cache, no-store
 <dd class="break"></dd>
 <dt id="I-D.ietf-oauth-resource-metadata">[I-D.ietf-oauth-resource-metadata]</dt>
       <dd>
-<span class="refAuthor">Jones, M. B.</span>, <span class="refAuthor">Hunt, P.</span>, and <span class="refAuthor">A. Parecki</span>, <span class="refTitle">"OAuth 2.0 Protected Resource Metadata"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-oauth-resource-metadata-12</span>, <time datetime="2024-10-03" class="refDate">3 October 2024</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-ietf-oauth-resource-metadata-12">https://datatracker.ietf.org/doc/html/draft-ietf-oauth-resource-metadata-12</a>&gt;</span>. </dd>
+<span class="refAuthor">Jones, M. B.</span>, <span class="refAuthor">Hunt, P.</span>, and <span class="refAuthor">A. Parecki</span>, <span class="refTitle">"OAuth 2.0 Protected Resource Metadata"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-oauth-resource-metadata-13</span>, <time datetime="2024-10-15" class="refDate">15 October 2024</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-ietf-oauth-resource-metadata-13">https://datatracker.ietf.org/doc/html/draft-ietf-oauth-resource-metadata-13</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 </dl>
 </section>
@@ -2068,18 +2070,18 @@ Cache-Control: no-cache, no-store
       </h2>
 <address class="vcard">
         <div dir="auto" class="left"><span class="fn nameRole">Arndt Schwenkschuster</span></div>
-<div dir="auto" class="left"><span class="org">Microsoft</span></div>
+<div dir="auto" class="left"><span class="org">SPIRL</span></div>
 <div class="email">
 <span>Email:</span>
-<a href="mailto:arndts@microsoft.com" class="email">arndts@microsoft.com</a>
+<a href="mailto:arndts.ietf@gmail.com" class="email">arndts.ietf@gmail.com</a>
 </div>
 </address>
 <address class="vcard">
         <div dir="auto" class="left"><span class="fn nameRole">Pieter Kasselmann</span></div>
-<div dir="auto" class="left"><span class="org">Microsoft</span></div>
+<div dir="auto" class="left"><span class="org">SPIRL</span></div>
 <div class="email">
 <span>Email:</span>
-<a href="mailto:pieter.kasselman@microsoft.com" class="email">pieter.kasselman@microsoft.com</a>
+<a href="mailto:pieter@spirl.com" class="email">pieter@spirl.com</a>
 </div>
 </address>
 <address class="vcard">
