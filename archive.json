@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2024-10-15T00:19:23.195017+00:00",
+  "timestamp": "2024-10-17T00:19:22.524640+00:00",
   "repo": "oauth-wg/oauth-identity-chaining",
   "labels": [
     {
@@ -4401,13 +4401,13 @@
       "labels": [],
       "body": "Add sender constrained/proof of possession tokens if the initial inbound token had a proof of possession ",
       "createdAt": "2024-08-30T12:55:36Z",
-      "updatedAt": "2024-10-08T17:40:54Z",
+      "updatedAt": "2024-10-16T19:04:05Z",
       "baseRepository": "oauth-wg/oauth-identity-chaining",
       "baseRefName": "main",
       "baseRefOid": "598fcb8bff96c3d49c88bd5f2c585089425994e6",
       "headRepository": "oauth-wg/oauth-identity-chaining",
       "headRefName": "add-sender-constrained-tokens",
-      "headRefOid": "7c9023f1224c6a5f13183b34c6d293c4ccb3fe1b",
+      "headRefOid": "d8aa7c171ac2d1fb652bc9bfdbff7752db61b16f",
       "closedAt": null,
       "mergedAt": null,
       "mergedBy": null,
@@ -4776,24 +4776,26 @@
       "id": "PR_kwDOJubJxM5-Wwhw",
       "title": "Update affiliation of Arndt",
       "url": "https://github.com/oauth-wg/oauth-identity-chaining/pull/96",
-      "state": "OPEN",
+      "state": "MERGED",
       "author": "arndt-s",
       "authorAssociation": "MEMBER",
       "assignees": [],
       "labels": [],
       "body": "Update my affiliation",
       "createdAt": "2024-10-11T15:15:20Z",
-      "updatedAt": "2024-10-14T16:46:35Z",
+      "updatedAt": "2024-10-15T17:13:28Z",
       "baseRepository": "oauth-wg/oauth-identity-chaining",
       "baseRefName": "main",
       "baseRefOid": "598fcb8bff96c3d49c88bd5f2c585089425994e6",
       "headRepository": "oauth-wg/oauth-identity-chaining",
       "headRefName": "arndt/change_org",
       "headRefOid": "21fab94405ec5476bffa88f8e4086ad99c512ace",
-      "closedAt": null,
-      "mergedAt": null,
-      "mergedBy": null,
-      "mergeCommit": null,
+      "closedAt": "2024-10-15T17:13:26Z",
+      "mergedAt": "2024-10-15T17:13:26Z",
+      "mergedBy": "bc-pi",
+      "mergeCommit": {
+        "oid": "6490de847b5c83cd8f1ce56f6a6ff1ade881ec41"
+      },
       "comments": [],
       "reviews": [
         {
@@ -4815,6 +4817,81 @@
               "updatedAt": "2024-10-14T16:46:35Z"
             }
           ]
+        },
+        {
+          "id": "PRR_kwDOJubJxM6NRFeC",
+          "commit": {
+            "abbreviatedOid": "21fab94"
+          },
+          "author": "bc-pi",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-10-15T17:12:07Z",
+          "updatedAt": "2024-10-15T17:12:07Z",
+          "comments": [
+            {
+              "originalPosition": 1,
+              "body": "yep - see #97 ",
+              "createdAt": "2024-10-15T17:12:07Z",
+              "updatedAt": "2024-10-15T17:12:07Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJubJxM6NRFl5",
+          "commit": {
+            "abbreviatedOid": "21fab94"
+          },
+          "author": "bc-pi",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2024-10-15T17:12:23Z",
+          "updatedAt": "2024-10-15T17:12:23Z",
+          "comments": []
+        }
+      ]
+    },
+    {
+      "number": 97,
+      "id": "PR_kwDOJubJxM5-tHDO",
+      "title": "Updated affiliation for Pieter",
+      "url": "https://github.com/oauth-wg/oauth-identity-chaining/pull/97",
+      "state": "MERGED",
+      "author": "PieterKas",
+      "authorAssociation": "CONTRIBUTOR",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2024-10-15T16:51:41Z",
+      "updatedAt": "2024-10-15T17:12:54Z",
+      "baseRepository": "oauth-wg/oauth-identity-chaining",
+      "baseRefName": "main",
+      "baseRefOid": "598fcb8bff96c3d49c88bd5f2c585089425994e6",
+      "headRepository": "oauth-wg/oauth-identity-chaining",
+      "headRefName": "PieterKas-patch-2",
+      "headRefOid": "7cccff6b37593798693ccba33fe13930023deda9",
+      "closedAt": "2024-10-15T17:12:52Z",
+      "mergedAt": "2024-10-15T17:12:52Z",
+      "mergedBy": "bc-pi",
+      "mergeCommit": {
+        "oid": "7d410af29a6f268e23c41141b8d1d4782431d053"
+      },
+      "comments": [],
+      "reviews": [
+        {
+          "id": "PRR_kwDOJubJxM6NRFro",
+          "commit": {
+            "abbreviatedOid": "7cccff6"
+          },
+          "author": "bc-pi",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2024-10-15T17:12:36Z",
+          "updatedAt": "2024-10-15T17:12:36Z",
+          "comments": []
         }
       ]
     }
