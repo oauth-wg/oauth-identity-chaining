@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2024-10-17T00:19:22.524640+00:00",
+  "timestamp": "2024-10-20T00:21:19.026670+00:00",
   "repo": "oauth-wg/oauth-identity-chaining",
   "labels": [
     {
@@ -4401,7 +4401,7 @@
       "labels": [],
       "body": "Add sender constrained/proof of possession tokens if the initial inbound token had a proof of possession ",
       "createdAt": "2024-08-30T12:55:36Z",
-      "updatedAt": "2024-10-16T19:04:05Z",
+      "updatedAt": "2024-10-17T18:29:08Z",
       "baseRepository": "oauth-wg/oauth-identity-chaining",
       "baseRefName": "main",
       "baseRefOid": "598fcb8bff96c3d49c88bd5f2c585089425994e6",
@@ -4766,6 +4766,46 @@
               "body": "Maybe just:\r\n```suggestion\r\nThe identity and authorization chaining flow outlined below describes how a combination of OAuth 2.0 Token Exchange {{RFC8693}} and JWT Profile for OAuth 2.0 Client Authentication and Authorization Grants {{RFC7523}} are used to address the use cases identified. (#examples) includes two additional examples that describe how this flow is used. In one example, the resource server acts as the client and in the other, the authorization server acts as the client.\r\n```",
               "createdAt": "2024-10-08T17:19:07Z",
               "updatedAt": "2024-10-08T17:19:22Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJubJxM6NmrTi",
+          "commit": {
+            "abbreviatedOid": "d8aa7c1"
+          },
+          "author": "bc-pi",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-10-17T16:24:15Z",
+          "updatedAt": "2024-10-17T16:24:15Z",
+          "comments": [
+            {
+              "originalPosition": 41,
+              "body": "I think \"authorization server's support for DPoP or mTLS sender constrained tokens\" is much too general ",
+              "createdAt": "2024-10-17T16:24:15Z",
+              "updatedAt": "2024-10-17T16:24:15Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJubJxM6NnqJK",
+          "commit": {
+            "abbreviatedOid": "d8aa7c1"
+          },
+          "author": "bc-pi",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-10-17T18:29:08Z",
+          "updatedAt": "2024-10-17T18:29:08Z",
+          "comments": [
+            {
+              "originalPosition": 41,
+              "body": "similar thoughts about below text too ",
+              "createdAt": "2024-10-17T18:29:08Z",
+              "updatedAt": "2024-10-17T18:29:08Z"
             }
           ]
         }
