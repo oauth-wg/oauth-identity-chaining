@@ -1438,7 +1438,7 @@ appear in all capitals, as shown here.<a href="#section-1.1-1" class="pilcrow">�
           <h4 id="name-key-binding-transfer">
 <a href="#section-2.3.3" class="section-number selfRef">2.3.3. </a><a href="#name-key-binding-transfer" class="section-name selfRef">Key binding transfer</a>
           </h4>
-<p id="section-2.3.3-1">To allow an end-to-end key binding the assertion may transfer <code>cnf</code> claim information from one domain to the other. Because the client can differ in different deployments and may not be the holder of the key a new claim is introduced:<a href="#section-2.3.3-1" class="pilcrow">¶</a></p>
+<p id="section-2.3.3-1">To allow an end-to-end transfer of key binding the assertion issued in domain A needs to transfer <code>cnf</code> claim data from one domain to another. Because the client may not be the holder of the key (for example deployment described in <a href="#authorization-server-as-client" class="auto internal xref">Appendix B.2</a>) a new claim is introduced:<a href="#section-2.3.3-1" class="pilcrow">¶</a></p>
 <span class="break"></span><dl class="dlNewline" id="section-2.3.3-2">
             <dt id="section-2.3.3-2.1">requested_cnf</dt>
             <dd style="margin-left: 1.5em" id="section-2.3.3-2.2">
@@ -1541,7 +1541,6 @@ Cache-Control: no-cache, no-store
           <dd class="break"></dd>
 </dl>
 <p id="section-2.4.1-3">The client <span class="bcp14">MAY</span> indicate the audience it is trying to access through the <code>scope</code> parameter or the “resource“ parameter defined in <span>[<a href="#RFC8707" class="cite xref">RFC8707</a>]</span>.<a href="#section-2.4.1-3" class="pilcrow">¶</a></p>
-<p id="section-2.4.1-4">If the authorization server of Domain A is acting as the Client, the authorization server <span class="bcp14">MUST</span> construct a “requested_cnf“ claim that contains the “cnf“ claim associated with the private key of the authorization server of Domain A in the Token Exchange request. This does not apply when the resource server in Domain A is acting as the Client.<a href="#section-2.4.1-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="assertion-processing-rules">
@@ -1863,7 +1862,7 @@ Cache-Control: no-cache, no-store
 <p id="appendix-B.1-11">(F) The resource server uses the access token to access the protected resource at Domain B.<a href="#appendix-B.1-11" class="pilcrow">¶</a></p>
 </section>
 </div>
-<div id="authorization-server-acting-as-client">
+<div id="authorization-server-as-client">
 <section id="appendix-B.2">
         <h3 id="name-authorization-server-acting">
 <a href="#appendix-B.2" class="section-number selfRef">B.2. </a><a href="#name-authorization-server-acting" class="section-name selfRef">Authorization server acting as client</a>

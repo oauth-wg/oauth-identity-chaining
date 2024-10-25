@@ -296,10 +296,11 @@ Table of Contents
 
 2.3.3.  Key binding transfer
 
-   To allow an end-to-end key binding the assertion may transfer cnf
-   claim information from one domain to the other.  Because the client
-   can differ in different deployments and may not be the holder of the
-   key a new claim is introduced:
+   To allow an end-to-end transfer of key binding the assertion issued
+   in domain A needs to transfer cnf claim data from one domain to
+   another.  Because the client may not be the holder of the key (for
+   example deployment described in Appendix B.2) a new claim is
+   introduced:
 
    requested_cnf
       OPTIONAL.  Indicates to the authorization server processing the
@@ -395,13 +396,6 @@ grant_type=urn%3Aietf%3Aparams%3Aoauth%3Agrant-type%3Atoken-exchange
 
    The client MAY indicate the audience it is trying to access through
    the scope parameter or the “resource“ parameter defined in [RFC8707].
-
-   If the authorization server of Domain A is acting as the Client, the
-   authorization server MUST construct a “requested_cnf“ claim that
-   contains the “cnf“ claim associated with the private key of the
-   authorization server of Domain A in the Token Exchange request.  This
-   does not apply when the resource server in Domain A is acting as the
-   Client.
 
 2.4.2.  Processing rules
 
