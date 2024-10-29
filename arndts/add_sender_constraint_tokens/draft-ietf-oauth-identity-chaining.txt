@@ -5,13 +5,13 @@
 oauth                                                 A. Schwenkschuster
 Internet-Draft                                             P. Kasselmann
 Intended status: Informational                                     SPIRL
-Expires: 28 April 2025                                         K. Burgin
+Expires: 2 May 2025                                            K. Burgin
                                                                    MITRE
                                                               M. Jenkins
                                                                 NSA-CCSS
                                                              B. Campbell
                                                            Ping Identity
-                                                         25 October 2024
+                                                         29 October 2024
 
 
         OAuth Identity and Authorization Chaining Across Domains
@@ -49,7 +49,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 28 April 2025.
+   This Internet-Draft will expire on 2 May 2025.
 
 Copyright Notice
 
@@ -288,11 +288,9 @@ Table of Contents
       Claims transcription (Section 2.5).
 
    *  If the request contains a sender-constraint subject_token the
-      client MUST provide proof of possession.  In scenarios where this
-      is not possible client authentication MUST be performed and the
-      client MUST be trusted by the authorization server to have
-      performed proof of possession of the token outside of this
-      specification.
+      client MUST provide proof of possession or MUST use client
+      authentication.  The authorization server MAY deny a request
+      without proof of possession, subject to policy.
 
 2.3.3.  Key binding transfer
 
@@ -414,21 +412,13 @@ grant_type=urn%3Aietf%3Aparams%3Aoauth%3Agrant-type%3Atoken-exchange
    *  Due to policy the request MAY be denied (for instance if the
       federation from domain A is not allowed).
 
-   *  When the assertion contains a requested_cnf claim as described in
-      Section 2.3.3:
-
-      -  If the authorization server supports token binding the value of
-         the requested_cnf MUST be reflected to the cnf claim of the
-         resulting access token.
-
-      -  If the authorization server does not support token binding the
-         value MAY be either ignored or still reflected to the cnf claim
-         of the resulting access token.
+   *  If the assertion contains a requested_cnf claim as described in
+      Section 2.3.3 the authorization server SHOULD be reflected to the
+      cnf claim of the resulting access token.
 
    *  If the authorization server requires sender constrained tokens and
-      no requested_cnf is present it MAY deny the request.  This is to
-      allow other means to provide proof of possession outside of the
-      assertion.
+      no requested_cnf is present it MAY allow the request when it has
+      other means to obtain the cnf claim.
 
    *  If the assertion contains a requested_cnf claim and any other way
       of proof of posession has been supplied by the caller the
