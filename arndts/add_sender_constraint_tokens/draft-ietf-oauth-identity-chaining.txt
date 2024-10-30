@@ -5,13 +5,13 @@
 oauth                                                 A. Schwenkschuster
 Internet-Draft                                             P. Kasselmann
 Intended status: Informational                                     SPIRL
-Expires: 2 May 2025                                            K. Burgin
+Expires: 3 May 2025                                            K. Burgin
                                                                    MITRE
                                                               M. Jenkins
                                                                 NSA-CCSS
                                                              B. Campbell
                                                            Ping Identity
-                                                         29 October 2024
+                                                         30 October 2024
 
 
         OAuth Identity and Authorization Chaining Across Domains
@@ -49,7 +49,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 2 May 2025.
+   This Internet-Draft will expire on 3 May 2025.
 
 Copyright Notice
 
@@ -235,8 +235,9 @@ Table of Contents
 
    The client MAY leverage [RFC8414] to retrieve information about the
    authorization server in domain B.  This includes whether it supports
-   the requested_cnf claim in the assertion.  For this purpose a new
-   property is added to the metadata values as specified in [RFC8414]:
+   the requested_cnf claim in the assertion (introduced later in this
+   specification in Section 2.3.3).  For this purpose a new property is
+   added to the metadata values as specified in [RFC8414]:
 
    requested_cnf_supported  OPTIONAL.  Boolean indicator of whether the
       authorization server supports key binding transfer via the
