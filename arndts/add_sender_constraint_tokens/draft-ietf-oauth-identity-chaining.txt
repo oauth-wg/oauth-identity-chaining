@@ -249,9 +249,13 @@ Table of Contents
 
    The client MAY use the data to decide whether identity and
    authorization chaining to domain B is possible.  For example in
-   situations where: * Domain A requires sender constrained tokens but
-   domain B doesn't support it. * Domain A or the client does not
-   support sender constrained but domain B requires it.
+   situations where:
+
+   *  Domain A requires sender constrained tokens but domain B doesn't
+      support it.
+
+   *  Domain A or the client does not support sender constrained tokens
+      but domain B requires it.
 
 2.3.  Token Exchange
 
