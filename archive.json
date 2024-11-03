@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2024-10-31T00:19:46.060683+00:00",
+  "timestamp": "2024-11-03T00:22:55.159026+00:00",
   "repo": "oauth-wg/oauth-identity-chaining",
   "labels": [
     {
@@ -2960,7 +2960,7 @@
       "labels": [],
       "body": "",
       "createdAt": "2023-12-01T13:50:09Z",
-      "updatedAt": "2024-01-14T16:42:45Z",
+      "updatedAt": "2024-10-31T16:56:28Z",
       "baseRepository": "oauth-wg/oauth-identity-chaining",
       "baseRefName": "main",
       "baseRefOid": "42c43fc8bd02f2e80f027d86de84fef6539df0eb",
