@@ -289,13 +289,13 @@ The representation of transcribed claims and their format is not defined in this
 
 To be added.
 
-TODO: add `requested_cnf` claim 
+TODO: add `requested_cnf` claim
 
 # Security Considerations {#Security}
 
 ## Confirmation key transfer {#confirmation-key-transfer-security}
 
-Clients MAY presented tokens including confirmation key data in the `subject_token` parameter of token exchange. Whilst it would be best to require proof of possession along with it there are situations where this is not possible, e.g. the token was issued to another party. In these scenarios the client initiating the token exchange MUST use client authentication and the authorization server MUST deny the request if not used. 
+Clients MAY presented tokens including confirmation key data in the `subject_token` parameter of token exchange. Whilst it would be best to require proof of possession along with it there are situations where this is not possible, e.g. the token was issued to another party. In these scenarios the client initiating the token exchange MUST use client authentication and the authorization server MUST deny the request if not used.
 
 This mitigates the possiblity to leverage token exchange to use key protected tokens without posessing the corresponding key.
 
@@ -467,7 +467,7 @@ The editors would like to thank Joe Jubinski, Justin Richer, Aaron Parecki, Dean
 
 -03
 
-* add transfer of confirmation data 
+* add transfer of confirmation data
 
 -02
 
