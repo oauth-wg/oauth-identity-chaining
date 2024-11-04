@@ -48,6 +48,9 @@ normative:
   RFC7523: # JSON Web Token (JWT) Profile for OAuth 2.0 Client Authentication and Authorization Grants
   RFC8707: # Resource Indicators for OAuth 2.0
   RFC8414: # OAuth 2.0 Authorization Server Metadata
+  RFC8705: # OAuth 2.0 Mutual-TLS Client Authentication and Certificate-Bound Access Tokens
+  RFC9449: # OAuth 2.0 Demonstrating Proof of Possession
+  RFC7800: # Proof-of-Possession Key Semantics for JSON Web Tokens (JWTs)
 
 informative:
 
@@ -77,7 +80,7 @@ A client in trust domain A that needs to access a resource server in trust domai
 
 ## Overview
 
-The identity and authorization chaining flow outlined below describes how a combination of OAuth 2.0 Token Exchange {{RFC8693}} and JWT Profile for OAuth 2.0 Client Authentication and Authorization Grants {{RFC7523}} are used to address the use cases identified. The appendix include two additional examples that describe how this flow is used. In one example, the resource server acts as the client and in the other, the authorization server acts as the client.
+The identity and authorization chaining flow outlined below describes how a combination of OAuth 2.0 Token Exchange {{RFC8693}} and JWT Profile for OAuth 2.0 Client Authentication and Authorization Grants {{RFC7523}} are used to address the use cases identified. Section [Examples](#examples) include two additional examples that describe how this flow is used. In one example, the resource server acts as the client and in the other, the authorization server acts as the client.
 
 ~~~~
 +-------------+                            +-------------+ +---------+
@@ -155,6 +158,15 @@ audience
 
 * If the request itself is not valid or if the given resource or audience are unknown, or are unacceptable based on policy, the authorization server MUST deny the request.
 * The authorization server MAY add, remove or change claims. See [Claims transcription](#claims-transcription).
+* If the request contains a sender-constraint `subject_token` the client MUST provide proof of possession or MUST use client authentication. The authorization server MAY deny a request without proof of possession, subject to policy.
+
+### Confirmation key transfer {#confirmation-key-transfer}
+
+Confirmation key information MAY need to be transferred from token exchange request to assertion grant response. A client MAY present proof of possession, for example via {{RFC9449}} or {{RFC8705}}, to indicate to the authorization server of domain A to include confirmation key information in the assertion. The claim can then be picked up by the authorization server of domain B to include this into issued credentials. To distinguish transfer of confirmation key from actual confirmation key claims a new claim is introduced.
+
+{:vspace}
+requested_cnf
+: OPTIONAL. Indicates to the authorization server processing the assertion to issue tokens with confirmation key based on {{RFC7800}}. The `cnf` claim of resulting tokens MUST match the value of the `requested_cnf` claim of the assertion. See {{assertion-processing-rules}} for more details on how authorization server are expected to process it.
 
 ### Token Exchange Response
 
@@ -210,20 +222,23 @@ grant_type
 : REQUIRED. As defined in Section 2.1 of {{RFC7523}} the value `urn:ietf:params:oauth:grant-type:jwt-bearer` indicates the request is a JWT bearer assertion authorization grant.
 
 assertion
-: REQUIRED. Authorization grant returned by the token exchange (`access_token` response).
+: REQUIRED. Authorization grant returned by the token exchange (“access_token“ response).
 
 scope
 : OPTIONAL.
 
-The client MAY indicate the audience it is trying to access through the `scope` parameter or the `resource` parameter defined in {{RFC8707}}.
+The client MAY indicate the audience it is trying to access through the `scope` parameter or the “resource“ parameter defined in {{RFC8707}}.
 
-### Processing rules
+### Processing rules {#assertion-processing-rules}
 
-The authorization server MUST validate the JWT authorization grant as specified in Sections 3 and 3.1 of {{RFC7523}}. The following processing rules also apply:
+The authorization server of Domain B MUST validate the JWT authorization grant as specified in Sections 3 and 3.1 of {{RFC7523}}. The following processing rules also apply:
 
-* The "aud" claim MUST identify the Authorization Server as a valid intended audience of the assertion using either the token endpoint as described Section 3 {{RFC7523}} or the issuer identifier as defined in Section 2 of {{RFC8414}}.
-* The authorization server SHOULD deny the request if it is not able to identify the subject.
+* The "aud" claim MUST identify the Authorization Server of Domain B as a valid intended audience of the assertion using either the token endpoint as described Section 3 {{RFC7523}} or the issuer identifier as defined in Section 2 of {{RFC8414}}.
+* The authorization server of Domain B SHOULD deny the request if it is not able to identify the subject.
 * Due to policy the request MAY be denied (for instance if the federation from domain A is not allowed).
+* If the assertion contains a `requested_cnf` claim as described in {{confirmation-key-transfer}} the authorization server SHOULD include it as `cnf` claim into the resulting access token.
+* The authorization server MAY deny the request if no `requested_cnf` is present and it has no other means to obtain it.
+* If the assertion contains a `requested_cnf` claim and any other way of proof of possession has been supplied by the caller the correspond information MUST be equal.
 
 ### Access Token Response
 
@@ -231,7 +246,7 @@ The authorization server responds with an access token as described in section 5
 
 ### Example
 
-The example belows shows how the client in trust domain A presents an authorization grant to the authorization server in trust domain B (https://as.b.org/auth) to receive an access token for a protected resource in trust domain B.
+The example below shows how the client in trust domain A presents an authorization grant to the authorization server in trust domain B (https://as.b.org/auth) to receive an access token for a protected resource in trust domain B.
 
 ~~~
 POST /auth/token HTTP/1.1
@@ -268,13 +283,21 @@ Authorization servers MAY transcribe claims when either producing JWT authorizat
 * **Controlling scope**: Clients MAY use the scope parameter to control transcribed claims (e.g. downscoping). Authorization Servers SHOULD verify that requested scopes are not higher privileged than the scopes of presented subject_token.
 * **Including JWT authorization grant claims**: The authorization server performing the assertion flow MAY leverage claims from the presented JWT authorization grant and include them in the returned access token. The populated claims SHOULD be namespaced or validated to prevent the injection of invalid claims.
 
-The representation of transcribed claims and their format is not defined in this specification.
+The representation of transcribed claims and their format is not defined in this specification apart from confirmation key information (see {{confirmation-key-transfer}})
 
 # IANA Considerations {#IANA}
 
 To be added.
 
+TODO: add `requested_cnf` claim 
+
 # Security Considerations {#Security}
+
+## Confirmation key transfer {#confirmation-key-transfer-security}
+
+Clients MAY presented tokens including confirmation key data in the `subject_token` parameter of token exchange. Whilst it would be best to require proof of possession along with it there are situations where this is not possible, e.g. the token was issued to another party. In these scenarios the client initiating the token exchange MUST use client authentication and the authorization server MUST deny the request if not used. 
+
+This mitigates the possiblity to leverage token exchange to use key protected tokens without posessing the corresponding key.
 
 ## Client Authentication
 Authorization Servers SHOULD follow the OAuth 2.0 Security Best Current Practice {{I-D.ietf-oauth-security-topics}} for client authentication.
@@ -362,7 +385,7 @@ The flow contains the following steps:
 
 (F) The resource server uses the access token to access the protected resource at Domain B.
 
-## Authorization server acting as client
+## Authorization server acting as client {#authorization-server-as-client}
 
 Authorization servers may act as clients too. This can be necessary because of following reasons:
 
@@ -441,6 +464,10 @@ The editors would like to thank Joe Jubinski, Justin Richer, Aaron Parecki, Dean
 \[\[ To be removed from the final specification ]]
 -latest
 * Added two more use cases
+
+-03
+
+* add transfer of confirmation data 
 
 -02
 
