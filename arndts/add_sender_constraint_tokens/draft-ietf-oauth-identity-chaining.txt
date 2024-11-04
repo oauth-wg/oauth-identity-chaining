@@ -5,13 +5,13 @@
 oauth                                                 A. Schwenkschuster
 Internet-Draft                                             P. Kasselmann
 Intended status: Informational                                     SPIRL
-Expires: 3 May 2025                                            K. Burgin
+Expires: 8 May 2025                                            K. Burgin
                                                                    MITRE
                                                               M. Jenkins
                                                                 NSA-CCSS
                                                              B. Campbell
                                                            Ping Identity
-                                                         30 October 2024
+                                                         4 November 2024
 
 
         OAuth Identity and Authorization Chaining Across Domains
@@ -49,7 +49,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 3 May 2025.
+   This Internet-Draft will expire on 8 May 2025.
 
 Copyright Notice
 
@@ -75,7 +75,7 @@ Table of Contents
      2.3.  Token Exchange
        2.3.1.  Token Exchange Request
        2.3.2.  Processing rules
-       2.3.3.  Key binding transfer
+       2.3.3.  Confirmation key transfer
        2.3.4.  Token Exchange Response
        2.3.5.  Example
      2.4.  JWT Authorization Grant
@@ -86,7 +86,7 @@ Table of Contents
      2.5.  Claims transcription
    3.  IANA Considerations
    4.  Security Considerations
-     4.1.  Sender Constrained Tokens
+     4.1.  Confirmation key transfer
      4.2.  Client Authentication
    5.  References
      5.1.  Normative References
@@ -96,6 +96,8 @@ Table of Contents
            environments
      A.2.  Continuous Integration Accessing External Resources
      A.3.  API Security Use Case
+     A.4.  Extend Single-Sign-On to API Access
+     A.5.  Cross-domain API authorization
    Appendix B.  Examples
      B.1.  Resource server acting as client
      B.2.  Authorization server acting as client
@@ -233,30 +235,6 @@ Table of Contents
    the authorization server.  The authorization_servers property in
    [I-D.ietf-oauth-resource-metadata] MAY be used.
 
-   The client MAY leverage [RFC8414] to retrieve information about the
-   authorization server in domain B.  This includes whether it supports
-   the requested_cnf claim in the assertion (introduced later in this
-   specification in Section 2.3.3).  For this purpose a new property is
-   added to the metadata values as specified in [RFC8414]:
-
-   requested_cnf_supported  OPTIONAL.  Boolean indicator of whether the
-      authorization server supports key binding transfer via the
-      requested_cnf claim in assertions.
-
-   requested_cnf_required  OPTIONAL.  Boolean indicator of whether the
-      authorization server requires key binding transfer via the
-      requested_cnf claim in assertions.
-
-   The client MAY use the data to decide whether identity and
-   authorization chaining to domain B is possible.  For example in
-   situations where:
-
-   *  Domain A requires sender constrained tokens but domain B doesn't
-      support it.
-
-   *  Domain A or the client does not support sender constrained tokens
-      but domain B requires it.
-
 2.3.  Token Exchange
 
    The client performs token exchange as defined in [RFC8693] with the
@@ -297,20 +275,24 @@ Table of Contents
       authentication.  The authorization server MAY deny a request
       without proof of possession, subject to policy.
 
-2.3.3.  Key binding transfer
+2.3.3.  Confirmation key transfer
 
-   To allow an end-to-end transfer of key binding the assertion issued
-   in domain A needs to transfer cnf claim data from one domain to
-   another.  Because the client may not be the holder of the key (for
-   example deployment described in Appendix B.2) a new claim is
-   introduced:
+   Confirmation key information MAY need to be transferred from token
+   exchange request to assertion grant response.  A client MAY present
+   proof of possession, for example via [RFC9449] or [RFC8705], to
+   indicate to the authorization server of domain A to include
+   confirmation key information in the assertion.  The claim can then be
+   picked up by the authorization server of domain B to include this
+   into issued credentials.  To distinguish transfer of confirmation key
+   from actual confirmation key claims a new claim is introduced.
 
    requested_cnf
       OPTIONAL.  Indicates to the authorization server processing the
-      assertion to issue sender constrained tokens.  The cnf claim of
-      resulting tokens MUST match the value of the requested_cnf claim
-      of the assertion.  See Section 2.4.2 for more details on how
-      authorization server are expected to process it.
+      assertion to issue tokens with confirmation key based on
+      [RFC7800].  The cnf claim of resulting tokens MUST match the value
+      of the requested_cnf claim of the assertion.  See Section 2.4.2
+      for more details on how authorization server are expected to
+      process it.
 
 2.3.4.  Token Exchange Response
 
@@ -418,16 +400,15 @@ grant_type=urn%3Aietf%3Aparams%3Aoauth%3Agrant-type%3Atoken-exchange
       federation from domain A is not allowed).
 
    *  If the assertion contains a requested_cnf claim as described in
-      Section 2.3.3 the authorization server SHOULD be reflected to the
-      cnf claim of the resulting access token.
+      Section 2.3.3 the authorization server SHOULD include it as cnf
+      claim into the resulting access token.
 
-   *  If the authorization server requires sender constrained tokens and
-      no requested_cnf is present it MAY allow the request when it has
-      other means to obtain the cnf claim.
+   *  The authorization server MAY deny the request if no requested_cnf
+      is present and it has no other means to obtain it.
 
    *  If the assertion contains a requested_cnf claim and any other way
-      of proof of posession has been supplied by the caller the
-      correspond keys MUST be equal.
+      of proof of possession has been supplied by the caller the
+      correspond information MUST be equal.
 
 2.4.3.  Access Token Response
 
@@ -498,34 +479,29 @@ grant_type=urn%3Aietf%3Aparams%3Aoauth%3Agrant-type%3Atoken-exchange
       validated to prevent the injection of invalid claims.
 
    The representation of transcribed claims and their format is not
-   defined in this specification.
+   defined in this specification apart from confirmation key information
+   (see Section 2.3.3)
 
 3.  IANA Considerations
 
    To be added.
 
+   TODO: add requested_cnf claim
+
 4.  Security Considerations
 
-4.1.  Sender Constrained Tokens
+4.1.  Confirmation key transfer
 
-   When the authorization server in Domain B issues sender constrained
-   tokens, the client in Domain A performs token exchange with the
-   authorization server in Domain A.  This results in an extra step to
-   obtain the assertion grant from the authorization server in Domain A.
-   The benefit of this extra step is that only the authorization in
-   Domain A is required to have a trust relationship with the
-   authorization server in Domain B.  Otherwise, if the client in Domain
-   A sends the inbound token directly to the authorization server in
-   Domain B, then all the resource servers in Domain A would need to
-   have the same level of trust relationship with the Authorization
-   server in Domain B.
+   Clients MAY presented tokens including confirmation key data in the
+   subject_token parameter of token exchange.  Whilst it would be best
+   to require proof of possession along with it there are situations
+   where this is not possible, e.g. the token was issued to another
+   party.  In these scenarios the client initiating the token exchange
+   MUST use client authentication and the authorization server MUST deny
+   the request if not used.
 
-   If the inbound token contains a proof of possession of the sender's
-   private key and the resource server in Domain A is acting as the
-   Client, the resource server is required to provide proof of
-   possession of its private key in the Token Exchange Request in Step
-   (B).  This is for consistency and to maintain the practice of sender
-   constraining tokens throughout.
+   This mitigates the possiblity to leverage token exchange to use key
+   protected tokens without posessing the corresponding key.
 
 4.2.  Client Authentication
 
@@ -571,6 +547,11 @@ grant_type=urn%3Aietf%3Aparams%3Aoauth%3Agrant-type%3Atoken-exchange
               Possession (DPoP)", RFC 9449, DOI 10.17487/RFC9449,
               September 2023, <https://www.rfc-editor.org/rfc/rfc9449>.
 
+   [RFC7800]  Jones, M., Bradley, J., and H. Tschofenig, "Proof-of-
+              Possession Key Semantics for JSON Web Tokens (JWTs)",
+              RFC 7800, DOI 10.17487/RFC7800, April 2016,
+              <https://www.rfc-editor.org/rfc/rfc7800>.
+
    [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
               Requirement Levels", BCP 14, RFC 2119,
               DOI 10.17487/RFC2119, March 1997,
@@ -608,8 +589,9 @@ Appendix A.  Use cases
 
    This sections outlines some use cases where the identity and
    authorization chaining described in this document can be applied.
-   This section is not complete and other use cases not mentioned here
-   are also valid.
+   The use cases described are not exhaustive, but are representative of
+   the type of use cases enabled by this specification.  Other use cases
+   may also be supported by this specification.
 
 A.1.  Preserve User Context across Multi-cloud, Multi-Hybrid
       environments
@@ -647,6 +629,38 @@ A.3.  API Security Use Case
    independently verify that the request originated and was authorized
    by a user who is authorized to view the feed of the requested home
    camera.
+
+A.4.  Extend Single-Sign-On to API Access
+
+   A user that authenticated to an enterprise Identity Provider (IdP)
+   does not have to sign-in to multiple SaaS applications if the SaaS
+   applications are configured to trust the enteprise IdP.  It is
+   possible to extend this SSO relationship to API access by allowing
+   the Client to contact the enterprise IdP and exchange the identity
+   assertion (ID Token or SAML Token) that it previously received from
+   the enteprise IdP for an authorization grant.  The authorization
+   grant can be used to obtain an access token from the SaaS
+   application's authorization server, provided that a trust
+   relationship has been established between the enterprise IdP which
+   issues the authorization grant and the SaaS authorization server.  As
+   a result SaaS servers that trust the enterprise IdP do not require
+   the user to complete an interactive delegated OAuth 2.0 flow to
+   obtain an access token to access the SaaS provider's APIs.
+
+A.5.  Cross-domain API authorization
+
+   An e-mail client can be used with arbitrary email servers, without
+   requiring pre-established relationships between each email client and
+   each email server.  An e-mail client obtains an identity assertion
+   (ID Token or SAML token) from an IdP.  When the e-mail client needs
+   access to a separate API, such as a third-party calendaring
+   application, the email client exchanges the identity assertion for an
+   authorization grant and uses this authorization grant to obtain an
+   access token for the third-party calendaring application from the
+   authorization server trusted by the third-party calendaring
+   application.  If the authorization server trusts the issuer of the
+   authorization grant, the e-mail client obtains an access token
+   without any additional user interaction.
 
 Appendix B.  Examples
 
@@ -836,11 +850,12 @@ Appendix C.  Acknowledgements
 
 Appendix D.  Document History
 
-   [[ To be removed from the final specification ]]
+   [[ To be removed from the final specification ]] -latest * Added two
+   more use cases
 
    -03
 
-   *  add sender contrained/proof of possession tokens
+   *  add transfer of confirmation data
 
    -02
 
