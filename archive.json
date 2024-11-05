@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2024-11-03T00:22:55.159026+00:00",
+  "timestamp": "2024-11-05T00:19:16.816510+00:00",
   "repo": "oauth-wg/oauth-identity-chaining",
   "labels": [
     {
@@ -1045,6 +1045,70 @@
       "body": ">* If the authorization server issues sender constrained tokens, the authorization server MUST include the \"cnf\" sub-claim from the \"chained_id\" claim from the issued JWT assertion.\r\n\r\nAdd security considerations for why the authorization server MUST include the \"cnf\" claim.",
       "createdAt": "2024-08-02T14:33:00Z",
       "updatedAt": "2024-08-02T14:33:00Z",
+      "closedAt": null,
+      "comments": []
+    },
+    {
+      "number": 98,
+      "id": "I_kwDOJubJxM6c7nBi",
+      "title": "Security Considerations on Client authentication",
+      "url": "https://github.com/oauth-wg/oauth-identity-chaining/issues/98",
+      "state": "OPEN",
+      "author": "PieterKas",
+      "authorAssociation": "CONTRIBUTOR",
+      "assignees": [],
+      "labels": [],
+      "body": "As discussed at IETF 121\r\n\r\nAdd security considerations outlining the importance of using client authentication when using the Access Token (sender constrained, or as bearer token) as Subject Token. Points to cover include:\r\n\r\n1. Implications of a stolen access token - mitigated by client authentication\r\n2. Limitations on preserving the binding (key is not under control of the entity requesting an assertion)",
+      "createdAt": "2024-11-04T13:48:06Z",
+      "updatedAt": "2024-11-04T13:48:06Z",
+      "closedAt": null,
+      "comments": []
+    },
+    {
+      "number": 99,
+      "id": "I_kwDOJubJxM6c7obU",
+      "title": "Using different keys for sender constrained tokens",
+      "url": "https://github.com/oauth-wg/oauth-identity-chaining/issues/99",
+      "state": "OPEN",
+      "author": "PieterKas",
+      "authorAssociation": "CONTRIBUTOR",
+      "assignees": [],
+      "labels": [],
+      "body": "Add text, possibly as a security consideration, but also as part of the main text to make it clear the key of an OAuth client presenting a sender constrained token cannot be used for proof of possession by a resource server acting as a client when requesting an assertion from the authorisation server. Instead the resource server will use their own key to perform PoP and obtain an assertion with a requested_cnf claim.",
+      "createdAt": "2024-11-04T13:50:30Z",
+      "updatedAt": "2024-11-04T13:51:30Z",
+      "closedAt": null,
+      "comments": []
+    },
+    {
+      "number": 100,
+      "id": "I_kwDOJubJxM6c7qFT",
+      "title": "Clarify client terminology",
+      "url": "https://github.com/oauth-wg/oauth-identity-chaining/issues/100",
+      "state": "OPEN",
+      "author": "PieterKas",
+      "authorAssociation": "CONTRIBUTOR",
+      "assignees": [],
+      "labels": [],
+      "body": "As Discussed at IETF 121, Introduce or clarify terminology to make it clear when we are referring to the original client that starts the OAuth flow vs the Resources Server or Authorisation Server acting as the client (e.g. initiating client, originating client, secondary client, ID chaining initiating client etc)",
+      "createdAt": "2024-11-04T13:53:21Z",
+      "updatedAt": "2024-11-04T13:54:02Z",
+      "closedAt": null,
+      "comments": []
+    },
+    {
+      "number": 101,
+      "id": "I_kwDOJubJxM6c7sEk",
+      "title": "Remove need for additional metadata",
+      "url": "https://github.com/oauth-wg/oauth-identity-chaining/issues/101",
+      "state": "OPEN",
+      "author": "PieterKas",
+      "authorAssociation": "CONTRIBUTOR",
+      "assignees": [],
+      "labels": [],
+      "body": "As discussed at IETF 121, the editors concluded that there is no need for additional metadata and that the trust decisions (e.g. expect the authorization server to always bind tokens) is a policy and configuration issue that should be handled outside the spec.",
+      "createdAt": "2024-11-04T13:56:12Z",
+      "updatedAt": "2024-11-04T13:56:12Z",
       "closedAt": null,
       "comments": []
     }
@@ -4394,25 +4458,33 @@
       "id": "PR_kwDOJubJxM55-M2s",
       "title": "Add sender constrained tokens (redo)",
       "url": "https://github.com/oauth-wg/oauth-identity-chaining/pull/95",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "kburgin3",
       "authorAssociation": "COLLABORATOR",
       "assignees": [],
       "labels": [],
       "body": "Add sender constrained/proof of possession tokens if the initial inbound token had a proof of possession ",
       "createdAt": "2024-08-30T12:55:36Z",
-      "updatedAt": "2024-10-17T18:29:08Z",
+      "updatedAt": "2024-11-04T14:06:25Z",
       "baseRepository": "oauth-wg/oauth-identity-chaining",
       "baseRefName": "main",
       "baseRefOid": "598fcb8bff96c3d49c88bd5f2c585089425994e6",
       "headRepository": "oauth-wg/oauth-identity-chaining",
       "headRefName": "add-sender-constrained-tokens",
       "headRefOid": "d8aa7c171ac2d1fb652bc9bfdbff7752db61b16f",
-      "closedAt": null,
+      "closedAt": "2024-11-04T14:06:25Z",
       "mergedAt": null,
       "mergedBy": null,
       "mergeCommit": null,
-      "comments": [],
+      "comments": [
+        {
+          "author": "arndt-s",
+          "authorAssociation": "MEMBER",
+          "body": "Closing this in favour of https://github.com/oauth-wg/oauth-identity-chaining/pull/102",
+          "createdAt": "2024-11-04T14:06:23Z",
+          "updatedAt": "2024-11-04T14:06:23Z"
+        }
+      ],
       "reviews": [
         {
           "id": "PRR_kwDOJubJxM6IR5PY",
@@ -4932,6 +5004,61 @@
           "createdAt": "2024-10-15T17:12:36Z",
           "updatedAt": "2024-10-15T17:12:36Z",
           "comments": []
+        }
+      ]
+    },
+    {
+      "number": 102,
+      "id": "PR_kwDOJubJxM6Azhzp",
+      "title": "Confirmation data transfer",
+      "url": "https://github.com/oauth-wg/oauth-identity-chaining/pull/102",
+      "state": "OPEN",
+      "author": "arndt-s",
+      "authorAssociation": "MEMBER",
+      "assignees": [],
+      "labels": [],
+      "body": "Adds transfer of confirmation data (concretely the `cnf` claim) across trust domains.",
+      "createdAt": "2024-11-04T14:05:40Z",
+      "updatedAt": "2024-11-04T16:23:21Z",
+      "baseRepository": "oauth-wg/oauth-identity-chaining",
+      "baseRefName": "main",
+      "baseRefOid": "6490de847b5c83cd8f1ce56f6a6ff1ade881ec41",
+      "headRepository": "oauth-wg/oauth-identity-chaining",
+      "headRefName": "arndts/add_sender_constraint_tokens",
+      "headRefOid": "6a24d4035dcdf1cc6fbdb238d81993d6f73c313d",
+      "closedAt": null,
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [
+        {
+          "author": "arndt-s",
+          "authorAssociation": "MEMBER",
+          "body": "Succeeds #95",
+          "createdAt": "2024-11-04T14:06:07Z",
+          "updatedAt": "2024-11-04T14:06:07Z"
+        }
+      ],
+      "reviews": [
+        {
+          "id": "PRR_kwDOJubJxM6P23Tz",
+          "commit": {
+            "abbreviatedOid": "6a24d40"
+          },
+          "author": "PieterKas",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-11-04T16:23:21Z",
+          "updatedAt": "2024-11-04T16:23:21Z",
+          "comments": [
+            {
+              "originalPosition": 23,
+              "body": "Is the \"MAY deny a request without proof of posession\" statement\" needed?\r\n\r\nIs the intent here that an authorization server may insist on both proof of possession and client authentication? Perhaps just say that instead. e.g. \"An authorisation server MAY require both client authentication and proof of possession\"",
+              "createdAt": "2024-11-04T16:23:21Z",
+              "updatedAt": "2024-11-04T16:23:21Z"
+            }
+          ]
         }
       ]
     }
