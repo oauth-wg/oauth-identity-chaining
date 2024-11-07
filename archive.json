@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2024-11-05T00:19:16.816510+00:00",
+  "timestamp": "2024-11-07T00:19:12.609145+00:00",
   "repo": "oauth-wg/oauth-identity-chaining",
   "labels": [
     {
@@ -1109,6 +1109,134 @@
       "body": "As discussed at IETF 121, the editors concluded that there is no need for additional metadata and that the trust decisions (e.g. expect the authorization server to always bind tokens) is a policy and configuration issue that should be handled outside the spec.",
       "createdAt": "2024-11-04T13:56:12Z",
       "updatedAt": "2024-11-04T13:56:12Z",
+      "closedAt": null,
+      "comments": []
+    },
+    {
+      "number": 103,
+      "id": "I_kwDOJubJxM6dNsr_",
+      "title": "Remove references to Federation ",
+      "url": "https://github.com/oauth-wg/oauth-identity-chaining/issues/103",
+      "state": "OPEN",
+      "author": "PieterKas",
+      "authorAssociation": "CONTRIBUTOR",
+      "assignees": [],
+      "labels": [],
+      "body": "Should we remove references to federation an instead refer to access ing resources across trust domains? \r\n\r\nPoint of View: Federation is a bigger topic and I think we are really just looking at the mechanisms for cross domain access and authorisation chaining.",
+      "createdAt": "2024-11-06T10:10:39Z",
+      "updatedAt": "2024-11-06T10:10:39Z",
+      "closedAt": null,
+      "comments": []
+    },
+    {
+      "number": 104,
+      "id": "I_kwDOJubJxM6dNwD-",
+      "title": "Figure 1 Decription update",
+      "url": "https://github.com/oauth-wg/oauth-identity-chaining/issues/104",
+      "state": "OPEN",
+      "author": "PieterKas",
+      "authorAssociation": "CONTRIBUTOR",
+      "assignees": [],
+      "labels": [],
+      "body": "Step F:\r\n\r\nThe diagram show the client accessing the resource in domain B. Update langugage to say:\r\n\r\nThe client use the access token to access the protected resource in Domain B.",
+      "createdAt": "2024-11-06T10:16:56Z",
+      "updatedAt": "2024-11-06T10:16:56Z",
+      "closedAt": null,
+      "comments": []
+    },
+    {
+      "number": 105,
+      "id": "I_kwDOJubJxM6dN4Rb",
+      "title": "Do we need additional clarification on re-using sender constraining mechanisms?",
+      "url": "https://github.com/oauth-wg/oauth-identity-chaining/issues/105",
+      "state": "OPEN",
+      "author": "PieterKas",
+      "authorAssociation": "CONTRIBUTOR",
+      "assignees": [],
+      "labels": [],
+      "body": "Processing rule 2.3.2 requires PoP - how should PoP be done for token exchange? Is this defined in MTLS or DPoP (I am unable to find a specific reference in DPoP on how this should be used with Token Exchange specifically).",
+      "createdAt": "2024-11-06T10:29:06Z",
+      "updatedAt": "2024-11-06T10:34:52Z",
+      "closedAt": null,
+      "comments": []
+    },
+    {
+      "number": 106,
+      "id": "I_kwDOJubJxM6dN_WY",
+      "title": "Confirmation key transfer",
+      "url": "https://github.com/oauth-wg/oauth-identity-chaining/issues/106",
+      "state": "OPEN",
+      "author": "PieterKas",
+      "authorAssociation": "CONTRIBUTOR",
+      "assignees": [],
+      "labels": [],
+      "body": "If we choose to keep this section in this part off the spec, should we add more clarification on why the \"requested_cnf\" claim may have to be included in the assertion grant (e.g. make it clear the purpose of this claim is allow the Authorization Server in Domain B to bind the key to the requested_cnf claim)?  \r\n\r\n",
+      "createdAt": "2024-11-06T10:38:37Z",
+      "updatedAt": "2024-11-06T10:38:37Z",
+      "closedAt": null,
+      "comments": []
+    },
+    {
+      "number": 107,
+      "id": "I_kwDOJubJxM6dOLLJ",
+      "title": "Editorial Changes Requested",
+      "url": "https://github.com/oauth-wg/oauth-identity-chaining/issues/107",
+      "state": "OPEN",
+      "author": "PieterKas",
+      "authorAssociation": "CONTRIBUTOR",
+      "assignees": [],
+      "labels": [],
+      "body": "Section 2.1\r\nDelete (there is not enough context at this point for the reader to understand why the examples are being described here):  In one example, the resource server acts as the client and in the other, the authorization server acts as the client.\r\n\r\nSection 2.4.2\r\nFrom: If the assertion contains a requested_cnf claim and any other way of proof of possession has been supplied by the caller the correspond information MUST be equal.\r\n\r\nTo: If the assertion contains a requested_cnf claim and any other way of proof of possession has been supplied by the caller the corresponding information MUST be equal.",
+      "createdAt": "2024-11-06T10:51:48Z",
+      "updatedAt": "2024-11-06T10:51:48Z",
+      "closedAt": null,
+      "comments": []
+    },
+    {
+      "number": 108,
+      "id": "I_kwDOJubJxM6dOOR8",
+      "title": "How would SD-JWT be used in claims transcription",
+      "url": "https://github.com/oauth-wg/oauth-identity-chaining/issues/108",
+      "state": "OPEN",
+      "author": "PieterKas",
+      "authorAssociation": "CONTRIBUTOR",
+      "assignees": [],
+      "labels": [],
+      "body": "The claims transcription section suggest that SD-JWT can be used for selective disclosure, but does not provide additional information nohow to combine this draft with something like SD-JWT. Do we need to provide more information on how this could be done (e.g. would the SD-JWT be requested using the assertion grant)?",
+      "createdAt": "2024-11-06T10:57:01Z",
+      "updatedAt": "2024-11-06T10:57:01Z",
+      "closedAt": null,
+      "comments": []
+    },
+    {
+      "number": 109,
+      "id": "I_kwDOJubJxM6dOPiP",
+      "title": "Controlling Scope",
+      "url": "https://github.com/oauth-wg/oauth-identity-chaining/issues/109",
+      "state": "OPEN",
+      "author": "PieterKas",
+      "authorAssociation": "CONTRIBUTOR",
+      "assignees": [],
+      "labels": [],
+      "body": "Which authorisation server is responsible for verifying that scopes do not exceed the privilege over that in the subject_token? Is that the authorization server in domain A only?",
+      "createdAt": "2024-11-06T10:59:11Z",
+      "updatedAt": "2024-11-06T10:59:11Z",
+      "closedAt": null,
+      "comments": []
+    },
+    {
+      "number": 110,
+      "id": "I_kwDOJubJxM6dOQ2Y",
+      "title": "Client Authentication Security Considerations",
+      "url": "https://github.com/oauth-wg/oauth-identity-chaining/issues/110",
+      "state": "OPEN",
+      "author": "PieterKas",
+      "authorAssociation": "CONTRIBUTOR",
+      "assignees": [],
+      "labels": [],
+      "body": "Expand client authentication security considerations to provide rationale for MUST use when a bound subjecct_token is presented.",
+      "createdAt": "2024-11-06T11:01:44Z",
+      "updatedAt": "2024-11-06T11:01:44Z",
       "closedAt": null,
       "comments": []
     }
@@ -5019,7 +5147,7 @@
       "labels": [],
       "body": "Adds transfer of confirmation data (concretely the `cnf` claim) across trust domains.",
       "createdAt": "2024-11-04T14:05:40Z",
-      "updatedAt": "2024-11-04T16:23:21Z",
+      "updatedAt": "2024-11-05T16:00:25Z",
       "baseRepository": "oauth-wg/oauth-identity-chaining",
       "baseRefName": "main",
       "baseRefOid": "6490de847b5c83cd8f1ce56f6a6ff1ade881ec41",
@@ -5057,6 +5185,79 @@
               "body": "Is the \"MAY deny a request without proof of posession\" statement\" needed?\r\n\r\nIs the intent here that an authorization server may insist on both proof of possession and client authentication? Perhaps just say that instead. e.g. \"An authorisation server MAY require both client authentication and proof of possession\"",
               "createdAt": "2024-11-04T16:23:21Z",
               "updatedAt": "2024-11-04T16:23:21Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJubJxM6P8wuu",
+          "commit": {
+            "abbreviatedOid": "6a24d40"
+          },
+          "author": "arndt-s",
+          "authorAssociation": "MEMBER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-11-05T09:24:59Z",
+          "updatedAt": "2024-11-05T09:24:59Z",
+          "comments": [
+            {
+              "originalPosition": 23,
+              "body": "Yes. I believe this sentence is from the previous proposal. Can probably be omitted as you suggest.",
+              "createdAt": "2024-11-05T09:24:59Z",
+              "updatedAt": "2024-11-05T09:24:59Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJubJxM6P8xVZ",
+          "commit": {
+            "abbreviatedOid": "6a24d40"
+          },
+          "author": "arndt-s",
+          "authorAssociation": "MEMBER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-11-05T09:25:57Z",
+          "updatedAt": "2024-11-05T09:25:57Z",
+          "comments": [
+            {
+              "originalPosition": 23,
+              "body": "However, thinking about it a bit more, some AS may completely block requests without proof of possession, even when client authentication is used.",
+              "createdAt": "2024-11-05T09:25:57Z",
+              "updatedAt": "2024-11-05T09:25:57Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJubJxM6P9odh",
+          "commit": {
+            "abbreviatedOid": "6a24d40"
+          },
+          "author": "kburgin3",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2024-11-05T10:58:55Z",
+          "updatedAt": "2024-11-05T10:58:55Z",
+          "comments": []
+        },
+        {
+          "id": "PRR_kwDOJubJxM6QAi_8",
+          "commit": {
+            "abbreviatedOid": "6a24d40"
+          },
+          "author": "PieterKas",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-11-05T16:00:25Z",
+          "updatedAt": "2024-11-05T16:00:25Z",
+          "comments": [
+            {
+              "originalPosition": 23,
+              "body": "In that case, perhaps we make client authentication mandatory and optionally allows proof of posession:\r\n\r\n\"If the request contains a sender-constrained `subject_token` the client MUST use client authentication and MAY provide proof of possession. An authorisation server MAY require both client authentication and proof of possession\"\r\n\r\nor we can also be explicit that you need to provide proof of posession, and if you can't you must do client authentication.\r\n\r\n\"If the request contains a sender-constrained `subject_token` the client MUST use client authentication if it is unable to perform proof of posession of the key used to constrain the 'subject open'. An authorisation server MAY require both client authentication and proof of possession\"\r\n\r\n\r\n\r\n",
+              "createdAt": "2024-11-05T16:00:25Z",
+              "updatedAt": "2024-11-05T16:00:25Z"
             }
           ]
         }
