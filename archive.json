@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2024-11-12T00:19:01.833309+00:00",
+  "timestamp": "2024-11-14T00:19:12.541796+00:00",
   "repo": "oauth-wg/oauth-identity-chaining",
   "labels": [
     {
@@ -1239,6 +1239,30 @@
       "updatedAt": "2024-11-06T11:01:44Z",
       "closedAt": null,
       "comments": []
+    },
+    {
+      "number": 111,
+      "id": "I_kwDOJubJxM6eTBWh",
+      "title": "Required `requested_token_type` parameter",
+      "url": "https://github.com/oauth-wg/oauth-identity-chaining/issues/111",
+      "state": "OPEN",
+      "author": "arndt-s",
+      "authorAssociation": "MEMBER",
+      "assignees": [],
+      "labels": [],
+      "body": "Issue to track email sent to the authors\r\n\r\n> Hello All,\r\nI would like to propose below suggestion for  https://datatracker.ietf.org/doc/html/draft-ietf-oauth-identity-chaining\r\nSection 2.3.1 Token Exchange Request\r\nAs per my understanding the Token exchange request in this proposed RFC will always expect JWT token (urn:ietf:params:oauth:token-type:jwt) as clearly mentioned in the \u2018section 2.3.4 Example\u2019 with Figure 3: Token exchange response with claim \u2018issued_token_type\u2019 and also mentioned in section 2.4.1 Access Token Request (where only JWT token/assertion is sent to Authorization Server in Domain B as Authorization grant) .\r\nHence my suggestion is to enforce it in the Token exchange request itself (as REQUIRED) parameter by using the \u2018requested_token_type\u2019 parameter of OAuth 2.0 Token Exchange RFC 8693 section 2.1 with value \u2018urn:ietf:params:oauth:token-type:jwt\u2019 as per section 3 of RFC 8693 (OAuth 2.0 Token Exchange). This could prevent the Authorization server in Domain A to respond with another other type of tokens/assertions (like access_token , refresh_token , id_token , saml1 , saml2 as other possible values as per section 3 of RFC 8693 OAuth 2.0 Token Exchange) by mistake or other reasons, which could break this (draft) specification inadvertently.\r\nBest Regards,\r\nRandip Malakar\r\nSTMicroelectronics",
+      "createdAt": "2024-11-13T14:54:38Z",
+      "updatedAt": "2024-11-13T14:55:52Z",
+      "closedAt": null,
+      "comments": [
+        {
+          "author": "arndt-s",
+          "authorAssociation": "MEMBER",
+          "body": "> Thank you for your email Randip! \r\nI agree to talk more about the requested_token_type parameter of the token exchange request. I personally don't see a problem setting it as required, but will my co-authors chime in if they see something I don't.\r\nRegarding the value, yes, \"urn:ietf:params:oauth:token-type:jwt\" seems the one at hand. Personally, I would also like to discuss to introduce a new type here to be able to differentiate ID chaining from other token exchange use cases on the authorization server. For example something like \"urn:ietf:params:oauth:token-type:assertion+jwt\"?\r\nWhat do you think? (@randip and co-authors)\r\n-Arndt",
+          "createdAt": "2024-11-13T14:55:13Z",
+          "updatedAt": "2024-11-13T14:55:52Z"
+        }
+      ]
     }
   ],
   "pulls": [
