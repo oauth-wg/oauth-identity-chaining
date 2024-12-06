@@ -128,7 +128,7 @@ The flow illustrated in Figure 1 shows the steps the client in trust Domain A ne
 
 * (E) Authorization server of Domain B validates the JWT authorization grant and returns an access token.
 
-* (F) The client now possesses an access token to access the protected resource in Domain B.
+* (F) The client in Domain A uses the access token received from the authorization server in Domain B to access the protected resource in Domain B.
 
 ## Authorization Server Discovery
 This specification does not define authorization server discovery. A client MAY maintain a static mapping or use other means to identify the authorization server. The `authorization_servers` property in {{I-D.ietf-oauth-resource-metadata}} MAY be used.
