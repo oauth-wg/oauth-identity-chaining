@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2024-12-05T00:21:27.071655+00:00",
+  "timestamp": "2024-12-08T00:23:10.852200+00:00",
   "repo": "oauth-wg/oauth-identity-chaining",
   "labels": [
     {
@@ -736,15 +736,15 @@
       "id": "I_kwDOJubJxM55DJxT",
       "title": "Add use case to the appendix",
       "url": "https://github.com/oauth-wg/oauth-identity-chaining/issues/68",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "PieterKas",
       "authorAssociation": "CONTRIBUTOR",
       "assignees": [],
       "labels": [],
       "body": "@aaronpk described an additional use case which should be added to the appendix. ",
       "createdAt": "2023-12-07T14:25:22Z",
-      "updatedAt": "2023-12-07T14:25:22Z",
-      "closedAt": null,
+      "updatedAt": "2024-12-06T14:37:24Z",
+      "closedAt": "2024-12-06T14:37:23Z",
       "comments": []
     },
     {
@@ -783,7 +783,7 @@
       "labels": [],
       "body": "Currently the text says \"its token\" without giving any guidance on where this token came from or what kind of token it is. (ID token? access token? refresh token?) While not being prescriptive about the type of token is useful to enable more use cases, there should at least be some clues about how this token was obtained in the first place.",
       "createdAt": "2024-02-07T19:44:36Z",
-      "updatedAt": "2024-02-16T22:52:01Z",
+      "updatedAt": "2024-12-06T16:34:53Z",
       "closedAt": null,
       "comments": [
         {
@@ -813,6 +813,27 @@
           "body": "My use case involves ID tokens and SAML assertions. I can easily imagine a use case for refresh tokens (basically any time you would exchange an access token but the access token might be expired, e.g. long running tasks, etc). I don't think this spec should add any restrictions on token types, since the Token Exchange spec already provides the flexibility needed. My original comment was more that a reader would have no context for how an initial token would be obtained by reading the current text. (Also \"its token\" is slightly misleading because it might be a delegated token in which case who does the token actually belong to? the client or the user?)",
           "createdAt": "2024-02-16T22:52:00Z",
           "updatedAt": "2024-02-16T22:52:00Z"
+        },
+        {
+          "author": "PieterKas",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "I agree we don't need to be more prescriptive here and leave it to profiles to be specific about how certain tokens are handled. I suggest we close this issue. @aaronpk do you agree?",
+          "createdAt": "2024-12-06T14:39:19Z",
+          "updatedAt": "2024-12-06T14:39:19Z"
+        },
+        {
+          "author": "aaronpk",
+          "authorAssociation": "MEMBER",
+          "body": "I agree with Brian's comment earlier. We don't need to be prescriptive, but my initial comment was that there is no context for what the text is describing at that point in the document. Also I'd like to reiterate my comment above that \"its token\" isn't even accurate since the token doesn't necessarily belong to the client using it at this stage.",
+          "createdAt": "2024-12-06T15:00:29Z",
+          "updatedAt": "2024-12-06T15:01:25Z"
+        },
+        {
+          "author": "PieterKas",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "@aaronpk - I proposed some text - take a look and see if helps. If not, please suggest alternative text.",
+          "createdAt": "2024-12-06T16:34:52Z",
+          "updatedAt": "2024-12-06T16:34:52Z"
         }
       ]
     },
@@ -1037,16 +1058,24 @@
       "id": "I_kwDOJubJxM6RvScj",
       "title": "Security consideration for id_chaining",
       "url": "https://github.com/oauth-wg/oauth-identity-chaining/issues/93",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "PieterKas",
       "authorAssociation": "CONTRIBUTOR",
       "assignees": [],
       "labels": [],
       "body": ">* If the authorization server issues sender constrained tokens, the authorization server MUST include the \"cnf\" sub-claim from the \"chained_id\" claim from the issued JWT assertion.\r\n\r\nAdd security considerations for why the authorization server MUST include the \"cnf\" claim.",
       "createdAt": "2024-08-02T14:33:00Z",
-      "updatedAt": "2024-08-02T14:33:00Z",
-      "closedAt": null,
-      "comments": []
+      "updatedAt": "2024-12-06T14:48:22Z",
+      "closedAt": "2024-12-06T14:48:22Z",
+      "comments": [
+        {
+          "author": "PieterKas",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "Closing following IETF 121 discussions and removal of this sentence.",
+          "createdAt": "2024-12-06T14:48:22Z",
+          "updatedAt": "2024-12-06T14:48:22Z"
+        }
+      ]
     },
     {
       "number": 98,
@@ -1092,24 +1121,32 @@
       "labels": [],
       "body": "As Discussed at IETF 121, Introduce or clarify terminology to make it clear when we are referring to the original client that starts the OAuth flow vs the Resources Server or Authorisation Server acting as the client (e.g. initiating client, originating client, secondary client, ID chaining initiating client etc)",
       "createdAt": "2024-11-04T13:53:21Z",
-      "updatedAt": "2024-11-04T13:54:02Z",
+      "updatedAt": "2024-12-06T16:44:07Z",
       "closedAt": null,
-      "comments": []
+      "comments": [
+        {
+          "author": "PieterKas",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "@arndt-s",
+          "createdAt": "2024-12-06T16:44:07Z",
+          "updatedAt": "2024-12-06T16:44:07Z"
+        }
+      ]
     },
     {
       "number": 101,
       "id": "I_kwDOJubJxM6c7sEk",
       "title": "Remove need for additional metadata",
       "url": "https://github.com/oauth-wg/oauth-identity-chaining/issues/101",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "PieterKas",
       "authorAssociation": "CONTRIBUTOR",
       "assignees": [],
       "labels": [],
       "body": "As discussed at IETF 121, the editors concluded that there is no need for additional metadata and that the trust decisions (e.g. expect the authorization server to always bind tokens) is a policy and configuration issue that should be handled outside the spec.",
       "createdAt": "2024-11-04T13:56:12Z",
-      "updatedAt": "2024-11-04T13:56:12Z",
-      "closedAt": null,
+      "updatedAt": "2024-12-06T14:50:20Z",
+      "closedAt": "2024-12-06T14:50:20Z",
       "comments": []
     },
     {
@@ -1124,9 +1161,24 @@
       "labels": [],
       "body": "Should we remove references to federation an instead refer to access ing resources across trust domains? \r\n\r\nPoint of View: Federation is a bigger topic and I think we are really just looking at the mechanisms for cross domain access and authorisation chaining.",
       "createdAt": "2024-11-06T10:10:39Z",
-      "updatedAt": "2024-11-06T10:10:39Z",
+      "updatedAt": "2024-12-06T14:48:12Z",
       "closedAt": null,
-      "comments": []
+      "comments": [
+        {
+          "author": "PieterKas",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "Incorrectly closed",
+          "createdAt": "2024-12-06T14:45:36Z",
+          "updatedAt": "2024-12-06T14:48:12Z"
+        },
+        {
+          "author": "PieterKas",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "Incorrectly closed",
+          "createdAt": "2024-12-06T14:47:57Z",
+          "updatedAt": "2024-12-06T14:47:57Z"
+        }
+      ]
     },
     {
       "number": 104,
@@ -1149,32 +1201,48 @@
       "id": "I_kwDOJubJxM6dN4Rb",
       "title": "Do we need additional clarification on re-using sender constraining mechanisms?",
       "url": "https://github.com/oauth-wg/oauth-identity-chaining/issues/105",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "PieterKas",
       "authorAssociation": "CONTRIBUTOR",
       "assignees": [],
       "labels": [],
       "body": "Processing rule 2.3.2 requires PoP - how should PoP be done for token exchange? Is this defined in MTLS or DPoP (I am unable to find a specific reference in DPoP on how this should be used with Token Exchange specifically).",
       "createdAt": "2024-11-06T10:29:06Z",
-      "updatedAt": "2024-11-06T10:34:52Z",
-      "closedAt": null,
-      "comments": []
+      "updatedAt": "2024-12-06T15:00:31Z",
+      "closedAt": "2024-12-06T15:00:31Z",
+      "comments": [
+        {
+          "author": "PieterKas",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "Closing based on discussions at IETF 121 where this was removed from the text.",
+          "createdAt": "2024-12-06T15:00:31Z",
+          "updatedAt": "2024-12-06T15:00:31Z"
+        }
+      ]
     },
     {
       "number": 106,
       "id": "I_kwDOJubJxM6dN_WY",
       "title": "Confirmation key transfer",
       "url": "https://github.com/oauth-wg/oauth-identity-chaining/issues/106",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "PieterKas",
       "authorAssociation": "CONTRIBUTOR",
       "assignees": [],
       "labels": [],
       "body": "If we choose to keep this section in this part off the spec, should we add more clarification on why the \"requested_cnf\" claim may have to be included in the assertion grant (e.g. make it clear the purpose of this claim is allow the Authorization Server in Domain B to bind the key to the requested_cnf claim)?  \r\n\r\n",
       "createdAt": "2024-11-06T10:38:37Z",
-      "updatedAt": "2024-11-06T10:38:37Z",
-      "closedAt": null,
-      "comments": []
+      "updatedAt": "2024-12-06T16:54:00Z",
+      "closedAt": "2024-12-06T16:53:59Z",
+      "comments": [
+        {
+          "author": "PieterKas",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "Closed following discussions at IETF 121 to remove requested_cnf.",
+          "createdAt": "2024-12-06T16:53:59Z",
+          "updatedAt": "2024-12-06T16:53:59Z"
+        }
+      ]
     },
     {
       "number": 107,
@@ -1188,9 +1256,17 @@
       "labels": [],
       "body": "Section 2.1\r\nDelete (there is not enough context at this point for the reader to understand why the examples are being described here):  In one example, the resource server acts as the client and in the other, the authorization server acts as the client.\r\n\r\nSection 2.4.2\r\nFrom: If the assertion contains a requested_cnf claim and any other way of proof of possession has been supplied by the caller the correspond information MUST be equal.\r\n\r\nTo: If the assertion contains a requested_cnf claim and any other way of proof of possession has been supplied by the caller the corresponding information MUST be equal.",
       "createdAt": "2024-11-06T10:51:48Z",
-      "updatedAt": "2024-11-06T10:51:48Z",
+      "updatedAt": "2024-12-06T17:33:01Z",
       "closedAt": null,
-      "comments": []
+      "comments": [
+        {
+          "author": "PieterKas",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "Editorial clarifications for Section 2.4.2 nbc longer needed following IETF 121.",
+          "createdAt": "2024-12-06T17:32:59Z",
+          "updatedAt": "2024-12-06T17:32:59Z"
+        }
+      ]
     },
     {
       "number": 108,
@@ -1204,25 +1280,48 @@
       "labels": [],
       "body": "The claims transcription section suggest that SD-JWT can be used for selective disclosure, but does not provide additional information nohow to combine this draft with something like SD-JWT. Do we need to provide more information on how this could be done (e.g. would the SD-JWT be requested using the assertion grant)?",
       "createdAt": "2024-11-06T10:57:01Z",
-      "updatedAt": "2024-11-06T10:57:01Z",
+      "updatedAt": "2024-12-06T17:50:59Z",
       "closedAt": null,
-      "comments": []
+      "comments": [
+        {
+          "author": "PieterKas",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "@bc-pi @kburgin3 @arndt-s although I agree that SD-JWT could be used, it is not clear to me how that would be achieved in the context of the identity chaining draft. I am worried that this may be quite a bit of scope expansion if we try to explain how it gets done, and not altogether certain we need it as a part of a \"basic framework\". Perhaps if someone feels they need to support SD-JWTs with identity chaining, they should create aa profile or extension.",
+          "createdAt": "2024-12-06T17:43:10Z",
+          "updatedAt": "2024-12-06T17:43:10Z"
+        },
+        {
+          "author": "kburgin3",
+          "authorAssociation": "COLLABORATOR",
+          "body": "I agree we do not need to include text around SD-JWT and rather leave it to a profile or extension.",
+          "createdAt": "2024-12-06T17:50:58Z",
+          "updatedAt": "2024-12-06T17:50:58Z"
+        }
+      ]
     },
     {
       "number": 109,
       "id": "I_kwDOJubJxM6dOPiP",
       "title": "Controlling Scope",
       "url": "https://github.com/oauth-wg/oauth-identity-chaining/issues/109",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "PieterKas",
       "authorAssociation": "CONTRIBUTOR",
       "assignees": [],
       "labels": [],
       "body": "Which authorisation server is responsible for verifying that scopes do not exceed the privilege over that in the subject_token? Is that the authorization server in domain A only?",
       "createdAt": "2024-11-06T10:59:11Z",
-      "updatedAt": "2024-11-06T10:59:11Z",
-      "closedAt": null,
-      "comments": []
+      "updatedAt": "2024-12-06T18:45:06Z",
+      "closedAt": "2024-12-06T18:45:06Z",
+      "comments": [
+        {
+          "author": "PieterKas",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "Closing given this sentence in the current draft provides clarity that both servers have a responsibility to ensure privelage is not increased:\r\n\r\n\"Authorization servers MAY transcribe claims when either producing JWT authorization grants in the token exchange flow or access tokens in the assertion flow.\"",
+          "createdAt": "2024-12-06T18:44:56Z",
+          "updatedAt": "2024-12-06T18:44:56Z"
+        }
+      ]
     },
     {
       "number": 110,
@@ -1236,9 +1335,17 @@
       "labels": [],
       "body": "Expand client authentication security considerations to provide rationale for MUST use when a bound subjecct_token is presented.",
       "createdAt": "2024-11-06T11:01:44Z",
-      "updatedAt": "2024-11-06T11:01:44Z",
+      "updatedAt": "2024-12-06T18:46:35Z",
       "closedAt": null,
-      "comments": []
+      "comments": [
+        {
+          "author": "PieterKas",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "@kburgin3 - I am keeping this issue open so that we can move this to an appropriate section in the delegated key binding spec (or section) depending which way things go in the working group meeting.",
+          "createdAt": "2024-12-06T18:46:34Z",
+          "updatedAt": "2024-12-06T18:46:34Z"
+        }
+      ]
     },
     {
       "number": 111,
@@ -1252,7 +1359,7 @@
       "labels": [],
       "body": "Issue to track email sent to the authors\r\n\r\n> Hello All,\r\nI would like to propose below suggestion for  https://datatracker.ietf.org/doc/html/draft-ietf-oauth-identity-chaining\r\nSection 2.3.1 Token Exchange Request\r\nAs per my understanding the Token exchange request in this proposed RFC will always expect JWT token (urn:ietf:params:oauth:token-type:jwt) as clearly mentioned in the \u2018section 2.3.4 Example\u2019 with Figure 3: Token exchange response with claim \u2018issued_token_type\u2019 and also mentioned in section 2.4.1 Access Token Request (where only JWT token/assertion is sent to Authorization Server in Domain B as Authorization grant) .\r\nHence my suggestion is to enforce it in the Token exchange request itself (as REQUIRED) parameter by using the \u2018requested_token_type\u2019 parameter of OAuth 2.0 Token Exchange RFC 8693 section 2.1 with value \u2018urn:ietf:params:oauth:token-type:jwt\u2019 as per section 3 of RFC 8693 (OAuth 2.0 Token Exchange). This could prevent the Authorization server in Domain A to respond with another other type of tokens/assertions (like access_token , refresh_token , id_token , saml1 , saml2 as other possible values as per section 3 of RFC 8693 OAuth 2.0 Token Exchange) by mistake or other reasons, which could break this (draft) specification inadvertently.\r\nBest Regards,\r\nRandip Malakar\r\nSTMicroelectronics",
       "createdAt": "2024-11-13T14:54:38Z",
-      "updatedAt": "2024-11-13T14:55:52Z",
+      "updatedAt": "2024-12-06T19:05:22Z",
       "closedAt": null,
       "comments": [
         {
@@ -1261,6 +1368,13 @@
           "body": "> Thank you for your email Randip! \r\nI agree to talk more about the requested_token_type parameter of the token exchange request. I personally don't see a problem setting it as required, but will my co-authors chime in if they see something I don't.\r\nRegarding the value, yes, \"urn:ietf:params:oauth:token-type:jwt\" seems the one at hand. Personally, I would also like to discuss to introduce a new type here to be able to differentiate ID chaining from other token exchange use cases on the authorization server. For example something like \"urn:ietf:params:oauth:token-type:assertion+jwt\"?\r\nWhat do you think? (@randip and co-authors)\r\n-Arndt",
           "createdAt": "2024-11-13T14:55:13Z",
           "updatedAt": "2024-11-13T14:55:52Z"
+        },
+        {
+          "author": "PieterKas",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "I think making the requested_token_type REQUIRED makes sense (we already restrict it to JWT in any event).\r\n\r\nAlthough JWT is pretty generic (access and ID tokens can be JWTs as well, but they do have their own identifiers), restricting it further may cause adoption issues for existing token Exchange implementations, who do not support a new type like \"urn:ietf:params:oauth:token-type:assertion+jwt\".\r\n\r\nLooking at section 2 of RFC 7523 (https://datatracker.ietf.org/doc/html/rfc7523#section-2.1), it does define a \"urn:ietf:params:oauth:grant-type:jwt-bearer\", which we could possibly use.\r\n\r\n@bc-pi would love your thoughts on this.",
+          "createdAt": "2024-12-06T19:05:20Z",
+          "updatedAt": "2024-12-06T19:05:20Z"
         }
       ]
     }
@@ -5284,6 +5398,231 @@
               "updatedAt": "2024-11-05T16:00:25Z"
             }
           ]
+        }
+      ]
+    },
+    {
+      "number": 112,
+      "id": "PR_kwDOJubJxM6EVdiW",
+      "title": "Change text to avoid confusion with federation",
+      "url": "https://github.com/oauth-wg/oauth-identity-chaining/pull/112",
+      "state": "OPEN",
+      "author": "PieterKas",
+      "authorAssociation": "CONTRIBUTOR",
+      "assignees": [],
+      "labels": [],
+      "body": "See issue #103",
+      "createdAt": "2024-12-06T14:36:42Z",
+      "updatedAt": "2024-12-06T15:05:52Z",
+      "baseRepository": "oauth-wg/oauth-identity-chaining",
+      "baseRefName": "main",
+      "baseRefOid": "6490de847b5c83cd8f1ce56f6a6ff1ade881ec41",
+      "headRepository": "oauth-wg/oauth-identity-chaining",
+      "headRefName": "PieterKas-patch-2",
+      "headRefOid": "08c7a78d61f3c2e7128ddad0ecc75363263174ae",
+      "closedAt": null,
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [],
+      "reviews": [
+        {
+          "id": "PRR_kwDOJubJxM6UHnuP",
+          "commit": {
+            "abbreviatedOid": "08c7a78"
+          },
+          "author": "kburgin3",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2024-12-06T14:43:49Z",
+          "updatedAt": "2024-12-06T14:43:49Z",
+          "comments": []
+        },
+        {
+          "id": "PRR_kwDOJubJxM6UH0hU",
+          "commit": {
+            "abbreviatedOid": "08c7a78"
+          },
+          "author": "arndt-s",
+          "authorAssociation": "MEMBER",
+          "state": "APPROVED",
+          "body": "LGTM",
+          "createdAt": "2024-12-06T15:05:52Z",
+          "updatedAt": "2024-12-06T15:05:52Z",
+          "comments": []
+        }
+      ]
+    },
+    {
+      "number": 113,
+      "id": "PR_kwDOJubJxM6EVnum",
+      "title": "Clarify text describing Step F in Figure 1",
+      "url": "https://github.com/oauth-wg/oauth-identity-chaining/pull/113",
+      "state": "OPEN",
+      "author": "PieterKas",
+      "authorAssociation": "CONTRIBUTOR",
+      "assignees": [],
+      "labels": [],
+      "body": "See issue #104",
+      "createdAt": "2024-12-06T14:58:29Z",
+      "updatedAt": "2024-12-06T15:05:34Z",
+      "baseRepository": "oauth-wg/oauth-identity-chaining",
+      "baseRefName": "main",
+      "baseRefOid": "6490de847b5c83cd8f1ce56f6a6ff1ade881ec41",
+      "headRepository": "oauth-wg/oauth-identity-chaining",
+      "headRefName": "PieterKas-patch-3",
+      "headRefOid": "9ca21960d9dfeb0cddb97391ddc1f20d0c094d87",
+      "closedAt": null,
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [],
+      "reviews": [
+        {
+          "id": "PRR_kwDOJubJxM6UHzWM",
+          "commit": {
+            "abbreviatedOid": "9ca2196"
+          },
+          "author": "kburgin3",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2024-12-06T15:03:37Z",
+          "updatedAt": "2024-12-06T15:03:37Z",
+          "comments": []
+        },
+        {
+          "id": "PRR_kwDOJubJxM6UH0XG",
+          "commit": {
+            "abbreviatedOid": "9ca2196"
+          },
+          "author": "arndt-s",
+          "authorAssociation": "MEMBER",
+          "state": "APPROVED",
+          "body": "LGTM",
+          "createdAt": "2024-12-06T15:05:34Z",
+          "updatedAt": "2024-12-06T15:05:34Z",
+          "comments": []
+        }
+      ]
+    },
+    {
+      "number": 114,
+      "id": "PR_kwDOJubJxM6EWixX",
+      "title": "Clarifying origin of initial client token",
+      "url": "https://github.com/oauth-wg/oauth-identity-chaining/pull/114",
+      "state": "OPEN",
+      "author": "PieterKas",
+      "authorAssociation": "CONTRIBUTOR",
+      "assignees": [],
+      "labels": [],
+      "body": "Proposed text to clarify what \"its token\" might be and where it comes from as raised in issue #75 by @aaronpk",
+      "createdAt": "2024-12-06T16:59:58Z",
+      "updatedAt": "2024-12-06T16:59:59Z",
+      "baseRepository": "oauth-wg/oauth-identity-chaining",
+      "baseRefName": "main",
+      "baseRefOid": "6490de847b5c83cd8f1ce56f6a6ff1ade881ec41",
+      "headRepository": "oauth-wg/oauth-identity-chaining",
+      "headRefName": "PieterKas-patch-4",
+      "headRefOid": "f95b62baccc6b0b149c7076f268ddecc6cae285e",
+      "closedAt": null,
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [],
+      "reviews": []
+    },
+    {
+      "number": 115,
+      "id": "PR_kwDOJubJxM6EWqoq",
+      "title": "Editorial clarifications",
+      "url": "https://github.com/oauth-wg/oauth-identity-chaining/pull/115",
+      "state": "OPEN",
+      "author": "PieterKas",
+      "authorAssociation": "CONTRIBUTOR",
+      "assignees": [],
+      "labels": [],
+      "body": "Attempt at addressing issue #107",
+      "createdAt": "2024-12-06T17:20:11Z",
+      "updatedAt": "2024-12-06T18:39:13Z",
+      "baseRepository": "oauth-wg/oauth-identity-chaining",
+      "baseRefName": "main",
+      "baseRefOid": "6490de847b5c83cd8f1ce56f6a6ff1ade881ec41",
+      "headRepository": "oauth-wg/oauth-identity-chaining",
+      "headRefName": "PieterKas-patch-5",
+      "headRefOid": "ad242d6bf1bd30e61f5f529b4506486bf76438d1",
+      "closedAt": null,
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [],
+      "reviews": [
+        {
+          "id": "PRR_kwDOJubJxM6UJgF0",
+          "commit": {
+            "abbreviatedOid": "794ec9a"
+          },
+          "author": "kburgin3",
+          "authorAssociation": "COLLABORATOR",
+          "state": "CHANGES_REQUESTED",
+          "body": "The (Appendix, (#Example)) include two additional\r\n\r\nshould be (with the \"s\" at the end of include)\r\n\r\nThe (Appendix, (#Example)) includes two additional",
+          "createdAt": "2024-12-06T17:45:16Z",
+          "updatedAt": "2024-12-06T17:45:16Z",
+          "comments": []
+        },
+        {
+          "id": "PRR_kwDOJubJxM6UJhkF",
+          "commit": {
+            "abbreviatedOid": "794ec9a"
+          },
+          "author": "kburgin3",
+          "authorAssociation": "COLLABORATOR",
+          "state": "CHANGES_REQUESTED",
+          "body": "Also should be a \"s\" in (Appendix, (#Examples))",
+          "createdAt": "2024-12-06T17:46:21Z",
+          "updatedAt": "2024-12-06T17:46:21Z",
+          "comments": []
+        }
+      ]
+    },
+    {
+      "number": 116,
+      "id": "PR_kwDOJubJxM6EXKP1",
+      "title": "Editorial change in Claims Transcription",
+      "url": "https://github.com/oauth-wg/oauth-identity-chaining/pull/116",
+      "state": "OPEN",
+      "author": "PieterKas",
+      "authorAssociation": "CONTRIBUTOR",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2024-12-06T18:43:02Z",
+      "updatedAt": "2024-12-06T18:45:03Z",
+      "baseRepository": "oauth-wg/oauth-identity-chaining",
+      "baseRefName": "main",
+      "baseRefOid": "6490de847b5c83cd8f1ce56f6a6ff1ade881ec41",
+      "headRepository": "oauth-wg/oauth-identity-chaining",
+      "headRefName": "PieterKas-patch-6",
+      "headRefOid": "325a500c73cc725d76f3b78a987ba83dd692c6c8",
+      "closedAt": null,
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [],
+      "reviews": [
+        {
+          "id": "PRR_kwDOJubJxM6UJ6k1",
+          "commit": {
+            "abbreviatedOid": "325a500"
+          },
+          "author": "kburgin3",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2024-12-06T18:45:03Z",
+          "updatedAt": "2024-12-06T18:45:03Z",
+          "comments": []
         }
       ]
     }
