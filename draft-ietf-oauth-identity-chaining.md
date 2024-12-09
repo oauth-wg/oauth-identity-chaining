@@ -371,13 +371,15 @@ Authorization servers may act as clients too. This can be necessary because of f
 * A strict access control on resources outside the trust domain is required and enforced by authorization servers.
 * Authorization servers require client authentication. Managing clients for resource servers outside of the trust domain is not intended.
 
-The flow when authorization servers act as client would look like this:
+Under these conditions, an authorization server in one domain (Domain A) may obtain an Access Token from an authorization server in another domain (Domain B) on-behalf-of the resource server in Domain A. This enables the resource server in Domain A to access a resource server in Domain B. The authorization server may use the flows described in this specification by acting as a client. The flow when authorization servers act as client would look like this:
 
 ~~~
 +--------+          +-------------+         +-------------+ +---------+
 |Resource|          |Authorization|         |Authorization| |Protected|
 |Server  |          |Server       |         |Server       | |Resource |
 |Domain A|          |Domain A     |         |Domain B     | |Domain B |
+|        |          |acting as    |         |             | |         |
+|        |          |client       |         |             | |         |
 +--------+          +-------------+         +-------------+ +---------+
     |                      |                       |             |
     | (A) request or       |                       |             |
@@ -441,6 +443,7 @@ The editors would like to thank Joe Jubinski, Justin Richer, Aaron Parecki, Dean
 \[\[ To be removed from the final specification ]]
 -latest
 * Added two more use cases
+* Clarified diagrams and description of authorization server acting as a client.
 
 -02
 
