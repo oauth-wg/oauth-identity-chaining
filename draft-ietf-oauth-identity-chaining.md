@@ -306,7 +306,7 @@ This section contains two examples, demonstrating how this specification may be 
 
 ## Resource server acting as client
 
-Resources servers may act as clients if the following is true:
+As part of completing a request, a resource server in one domain (Domain A) may need to access a resource server in another domain (Domain B). This requires the resource server in Domain A to obtain an Access Token from an authorization server in Domain B, which may then be presented to the resource server in Domain B. A Resource server may use the flows described in this specification by assuming the role of an OAuth client when attempting to access the resource server in Domain B. Resources servers may act as clients if the following is true:
 
 * Authorization Server B is reachable by the resource server by network and is able to perform the appropriate client authentication (if required).
 * The resource server has the ability to determine the authorization server of the protected resource outside its trust domain.
@@ -314,11 +314,13 @@ Resources servers may act as clients if the following is true:
 The flow would look like this:
 
 ~~~
-+-------------+          +--------+         +-------------+ +---------+
-|Authorization|          |Resource|         |Authorization| |Protected|
-|Server       |          |Server  |         |Server       | |Resource |
-|Domain A     |          |Domain A|         |Domain B     | |Domain B |
-+-------------+          +--------+         +-------------+ +---------+
++-------------+         +---------+         +-------------+ +---------+
+|Authorization|         |Resource |         |Authorization| |Protected|
+|Server       |         |Server   |         |Server       | |Resource |
+|Domain A     |         |Domain A |         |Domain B     | |Domain B |
+|             |         |acting as|         |             | |         |
+|             |         |Client   |         |             | |         |
++-------------+         +---------+         +-------------+ +---------+
        |                     |                     |             |
        |                     |   (A) request protected resource  |
        |                     |      metadata                     |
@@ -331,15 +333,15 @@ The flow would look like this:
        |                     |                     |             |
        | (C) <authorization  |                     |             |
        |        grant>       |                     |             |
-       | - - - - - - - - - ->|                     |             |
+       | - - - - - - - - -  >|                     |             |
        |                     |                     |             |
        |                     | (D) present         |             |
        |                     |  authorization      |             |
        |                     |  grant [RFC 7523]   |             |
-       |                     | ------------------->|             |
+       |                     |-------------------->|             |
        |                     |                     |             |
        |                     | (E) <access token>  |             |
-       |                     | <- - - - - - - - - -|             |
+       |                     |<- - - - - - - - - - |             |
        |                     |                     |             |
        |                     |               (F) access          |
        |                     | --------------------------------->|
