@@ -280,7 +280,7 @@ To be added.
 # Security Considerations {#Security}
 
 ## Client Authentication
-Authorization Servers SHOULD follow the OAuth 2.0 Security Best Current Practice {{I-D.ietf-oauth-security-topics}} for client authentication. 
+Authorization Servers SHOULD follow the OAuth 2.0 Security Best Current Practice {{I-D.ietf-oauth-security-topics}} for client authentication.
 
 --- back
 
