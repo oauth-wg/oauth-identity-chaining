@@ -429,7 +429,7 @@ The flow contains the following steps:
 
 (C) Once the authorization server in Domain B is determined, the authorization server in Domain A issues a JWT authorization grant to itself. This reflects to [Token exchange](#token-exchange) of this specification and can be seen as an "internal token exchange".
 
-(D) The authorization server in Domain A acts as a client and presents the JWT authorization grant to the authorization server of Domain B. This presentation happens between the authorization servers. Authorization server A may be required to perform client authentication while doing so. This reflects to [See [Access Token Request](#access-token-request)] of this specification. 
+(D) The authorization server in Domain A acts as a client and presents the JWT authorization grant to the authorization server of Domain B. This presentation happens between the authorization servers. Authorization server A may be required to perform client authentication while doing so. This reflects to [See [Access Token Request](#access-token-request)] of this specification.
 
 (E) The authorization server of Domain B returns an access token for the protected resource in Domain B to the authorization server in Domain A.
 
