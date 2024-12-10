@@ -58,7 +58,7 @@ informative:
 
 --- abstract
 
-This specification defines a mechanism to preserve identity information and federate authorization across trust domains that use the OAuth 2.0 Framework.
+This specification defines a mechanism to preserve identity and authorization information across trust domains that use the OAuth 2.0 Framework.
 
 --- middle
 
