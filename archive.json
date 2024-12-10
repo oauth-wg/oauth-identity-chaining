@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2024-12-08T00:23:10.852200+00:00",
+  "timestamp": "2024-12-10T00:21:42.497296+00:00",
   "repo": "oauth-wg/oauth-identity-chaining",
   "labels": [
     {
@@ -1377,6 +1377,22 @@
           "updatedAt": "2024-12-06T19:05:20Z"
         }
       ]
+    },
+    {
+      "number": 120,
+      "id": "I_kwDOJubJxM6ij78O",
+      "title": "OAuth client acting as a client",
+      "url": "https://github.com/oauth-wg/oauth-identity-chaining/issues/120",
+      "state": "OPEN",
+      "author": "arndt-s",
+      "authorAssociation": "MEMBER",
+      "assignees": [],
+      "labels": [],
+      "body": "@PieterKas mentioned that it may just be a non-defined OAuth client, not a resource server and not an authorization server. While the abstract flow stays the same we should maybe mention this somewhere in the text as a possible deployment.",
+      "createdAt": "2024-12-09T15:00:08Z",
+      "updatedAt": "2024-12-09T15:00:08Z",
+      "closedAt": null,
+      "comments": []
     }
   ],
   "pulls": [
@@ -5278,21 +5294,21 @@
       "id": "PR_kwDOJubJxM6Azhzp",
       "title": "Confirmation data transfer",
       "url": "https://github.com/oauth-wg/oauth-identity-chaining/pull/102",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "arndt-s",
       "authorAssociation": "MEMBER",
       "assignees": [],
       "labels": [],
       "body": "Adds transfer of confirmation data (concretely the `cnf` claim) across trust domains.",
       "createdAt": "2024-11-04T14:05:40Z",
-      "updatedAt": "2024-11-05T16:00:25Z",
+      "updatedAt": "2024-12-09T14:55:57Z",
       "baseRepository": "oauth-wg/oauth-identity-chaining",
       "baseRefName": "main",
       "baseRefOid": "6490de847b5c83cd8f1ce56f6a6ff1ade881ec41",
       "headRepository": "oauth-wg/oauth-identity-chaining",
       "headRefName": "arndts/add_sender_constraint_tokens",
       "headRefOid": "6a24d4035dcdf1cc6fbdb238d81993d6f73c313d",
-      "closedAt": null,
+      "closedAt": "2024-12-09T14:55:57Z",
       "mergedAt": null,
       "mergedBy": null,
       "mergeCommit": null,
@@ -5303,6 +5319,13 @@
           "body": "Succeeds #95",
           "createdAt": "2024-11-04T14:06:07Z",
           "updatedAt": "2024-11-04T14:06:07Z"
+        },
+        {
+          "author": "PieterKas",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "@arndt-s is this PR still something we want to merge? Based on discussions at IETF 121, I think we decided to back this out. We can leave it for the time being, but perhaps not merge it?",
+          "createdAt": "2024-12-09T12:29:02Z",
+          "updatedAt": "2024-12-09T12:29:02Z"
         }
       ],
       "reviews": [
@@ -5625,6 +5648,120 @@
           "comments": []
         }
       ]
+    },
+    {
+      "number": 117,
+      "id": "PR_kwDOJubJxM6Ec8ei",
+      "title": "Update diagram in Overview section",
+      "url": "https://github.com/oauth-wg/oauth-identity-chaining/pull/117",
+      "state": "OPEN",
+      "author": "kburgin3",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "There needs to be a RS in Domain A for the last step to make sense (sending the access token to RS B) in the case that AS A is the Abstract Client",
+      "createdAt": "2024-12-08T18:41:55Z",
+      "updatedAt": "2024-12-09T12:27:11Z",
+      "baseRepository": "oauth-wg/oauth-identity-chaining",
+      "baseRefName": "main",
+      "baseRefOid": "6490de847b5c83cd8f1ce56f6a6ff1ade881ec41",
+      "headRepository": "oauth-wg/oauth-identity-chaining",
+      "headRefName": "kburgin-diagram",
+      "headRefOid": "b477e572a14df62ed7c51cadc9b2fde228187bcb",
+      "closedAt": null,
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [
+        {
+          "author": "PieterKas",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "I don't think the inclusion of the resource server helps clarify the concepts or flows in the main section of the draft.\r\n\r\nThe draft is constructed to describe a generic OAuth flow using existing RFCs. The resource server acting as a client and the authorization server acting as a client are specific instances where the resource server acts as a client, or the Authorization server acts as a client.\r\n\r\nI think we are better served by maintaining the generic flow as the main flow and then referencing specific deployments or profiles of this flow in an appendix or in a separate draft. ",
+          "createdAt": "2024-12-09T11:07:21Z",
+          "updatedAt": "2024-12-09T11:07:21Z"
+        },
+        {
+          "author": "kburgin3",
+          "authorAssociation": "COLLABORATOR",
+          "body": "OK, then I believe the last step (Step (F)) should be removed. AS A (in the case that AS A is acting as the abstract client) does not present the token to RS B",
+          "createdAt": "2024-12-09T11:31:03Z",
+          "updatedAt": "2024-12-09T11:31:03Z"
+        },
+        {
+          "author": "kburgin3",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Back to needing RS A in Figure 1: Figure 7 (Authorization server acting as client use case) requires RS A to be present. @PieterKas can you explain further your issue with including RS A in Figure 1?",
+          "createdAt": "2024-12-09T11:54:09Z",
+          "updatedAt": "2024-12-09T11:54:09Z"
+        },
+        {
+          "author": "PieterKas",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "> OK, then I believe the last step (Step (F)) should be removed. AS A (in the case that AS A is acting as the abstract client) does not present the token to RS B\r\n\r\nI am not sure I follow why Step F should be removed from Figure 1. It is the client that obtains an access token and then presents it to the resource server. The AS and the RS acting as clients are not described in this part of the document. The structure we adopted is that we describe the flow in the context of an OAuth client, and then we describe the AS and RS use cases seperately.",
+          "createdAt": "2024-12-09T12:22:47Z",
+          "updatedAt": "2024-12-09T12:22:47Z"
+        },
+        {
+          "author": "PieterKas",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "> Figure 7 (Authorization server acting as client use case) requires RS A to be present. @PieterKas can you explain further your issue with including RS A in Figure 1?\r\n\r\nThe figures and descriptions in the appendix should include the AS and RS acting as clients. I created two pull PRs to describe each of those a bit more. Hopefully that helps.\r\n\r\nRegular OAuth client may want to use this specification as well. Aaron's draft that profiles this flow is a good example of other uses, so the RS or AS acting as clients are really two use cases, but the primary task of this draft is to provide a framework for cross domain identity and authorization chaining. Consequently we should describe the generic case where there is an OAuth Client, and then have specific instances such as RS and AS as clients. ",
+          "createdAt": "2024-12-09T12:27:09Z",
+          "updatedAt": "2024-12-09T12:27:09Z"
+        }
+      ],
+      "reviews": []
+    },
+    {
+      "number": 118,
+      "id": "PR_kwDOJubJxM6EhfIm",
+      "title": "Clarify resource server as client",
+      "url": "https://github.com/oauth-wg/oauth-identity-chaining/pull/118",
+      "state": "OPEN",
+      "author": "PieterKas",
+      "authorAssociation": "CONTRIBUTOR",
+      "assignees": [],
+      "labels": [],
+      "body": "Modified diagram and added additional text to describe the resource server acting as a client.\r\n\r\n",
+      "createdAt": "2024-12-09T11:29:22Z",
+      "updatedAt": "2024-12-09T11:29:23Z",
+      "baseRepository": "oauth-wg/oauth-identity-chaining",
+      "baseRefName": "main",
+      "baseRefOid": "6490de847b5c83cd8f1ce56f6a6ff1ade881ec41",
+      "headRepository": "oauth-wg/oauth-identity-chaining",
+      "headRefName": "PieterKas-patch-7",
+      "headRefOid": "29f89394ce8de7008ab8a2c3b433839ad36f952f",
+      "closedAt": null,
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [],
+      "reviews": []
+    },
+    {
+      "number": 119,
+      "id": "PR_kwDOJubJxM6EhnCN",
+      "title": "Clarify AS-as-Client",
+      "url": "https://github.com/oauth-wg/oauth-identity-chaining/pull/119",
+      "state": "OPEN",
+      "author": "PieterKas",
+      "authorAssociation": "CONTRIBUTOR",
+      "assignees": [],
+      "labels": [],
+      "body": "Added text and diagrams to clarify Authorization-server-as-aclient flows.",
+      "createdAt": "2024-12-09T11:44:27Z",
+      "updatedAt": "2024-12-09T11:44:27Z",
+      "baseRepository": "oauth-wg/oauth-identity-chaining",
+      "baseRefName": "main",
+      "baseRefOid": "6490de847b5c83cd8f1ce56f6a6ff1ade881ec41",
+      "headRepository": "oauth-wg/oauth-identity-chaining",
+      "headRefName": "PieterKas-patch-8",
+      "headRefOid": "e1c9f7132a9d50f9a1c10eb5fb1779205bad9a17",
+      "closedAt": null,
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [],
+      "reviews": []
     }
   ]
 }
