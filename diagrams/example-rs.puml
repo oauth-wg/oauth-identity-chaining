@@ -5,7 +5,7 @@ skinparam {
 }
 
 participant ASa as "Authorization\nServer\nDomain A"
-participant client as "Resource\nServer\nDomain A"
+participant client as "Resource\nServer\nDomain A\n(Actor)"
 participant ASb as "Authorization\nServer\nDomain B"
 participant pr as "Protected\nResource\nDomain B"
 
