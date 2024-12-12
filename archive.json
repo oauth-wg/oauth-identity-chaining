@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2024-12-10T00:21:42.497296+00:00",
+  "timestamp": "2024-12-12T00:21:12.022856+00:00",
   "repo": "oauth-wg/oauth-identity-chaining",
   "labels": [
     {
@@ -1359,7 +1359,7 @@
       "labels": [],
       "body": "Issue to track email sent to the authors\r\n\r\n> Hello All,\r\nI would like to propose below suggestion for  https://datatracker.ietf.org/doc/html/draft-ietf-oauth-identity-chaining\r\nSection 2.3.1 Token Exchange Request\r\nAs per my understanding the Token exchange request in this proposed RFC will always expect JWT token (urn:ietf:params:oauth:token-type:jwt) as clearly mentioned in the \u2018section 2.3.4 Example\u2019 with Figure 3: Token exchange response with claim \u2018issued_token_type\u2019 and also mentioned in section 2.4.1 Access Token Request (where only JWT token/assertion is sent to Authorization Server in Domain B as Authorization grant) .\r\nHence my suggestion is to enforce it in the Token exchange request itself (as REQUIRED) parameter by using the \u2018requested_token_type\u2019 parameter of OAuth 2.0 Token Exchange RFC 8693 section 2.1 with value \u2018urn:ietf:params:oauth:token-type:jwt\u2019 as per section 3 of RFC 8693 (OAuth 2.0 Token Exchange). This could prevent the Authorization server in Domain A to respond with another other type of tokens/assertions (like access_token , refresh_token , id_token , saml1 , saml2 as other possible values as per section 3 of RFC 8693 OAuth 2.0 Token Exchange) by mistake or other reasons, which could break this (draft) specification inadvertently.\r\nBest Regards,\r\nRandip Malakar\r\nSTMicroelectronics",
       "createdAt": "2024-11-13T14:54:38Z",
-      "updatedAt": "2024-12-06T19:05:22Z",
+      "updatedAt": "2024-12-10T14:59:54Z",
       "closedAt": null,
       "comments": [
         {
@@ -1375,6 +1375,20 @@
           "body": "I think making the requested_token_type REQUIRED makes sense (we already restrict it to JWT in any event).\r\n\r\nAlthough JWT is pretty generic (access and ID tokens can be JWTs as well, but they do have their own identifiers), restricting it further may cause adoption issues for existing token Exchange implementations, who do not support a new type like \"urn:ietf:params:oauth:token-type:assertion+jwt\".\r\n\r\nLooking at section 2 of RFC 7523 (https://datatracker.ietf.org/doc/html/rfc7523#section-2.1), it does define a \"urn:ietf:params:oauth:grant-type:jwt-bearer\", which we could possibly use.\r\n\r\n@bc-pi would love your thoughts on this.",
           "createdAt": "2024-12-06T19:05:20Z",
           "updatedAt": "2024-12-06T19:05:20Z"
+        },
+        {
+          "author": "randipmalakar",
+          "authorAssociation": "NONE",
+          "body": "> I think making the requested_token_type REQUIRED makes sense (we already restrict it to JWT in any event).\r\n> \r\n> Although JWT is pretty generic (access and ID tokens can be JWTs as well, but they do have their own identifiers), restricting it further may cause adoption issues for existing token Exchange implementations, who do not support a new type like \"urn:ietf:params:oauth:token-type:assertion+jwt\".\r\n> \r\n> Looking at section 2 of RFC 7523 (https://datatracker.ietf.org/doc/html/rfc7523#section-2.1), it does define a \"urn:ietf:params:oauth:grant-type:jwt-bearer\", which we could possibly use.\r\n> \r\n> @bc-pi would love your thoughts on this.\r\n\r\nDear @PieterKas Just a feedback on your proposal (unless it's a typo or a copy/paste error),  my understanding is that \"urn:ietf:params:oauth:grant-type:jwt-bearer\" is defined to be used for grant type and in Token exchange request (in the proposed identity-chaining flow) we would use the grant type \"urn:ietf:params:oauth:grant-type:token-exchange\" and if so, we are left to use \"urn:ietf:params:oauth:token-type:jwt\" in requested_token_type parameter (unless we define a new token type like \"urn:ietf:params:oauth:token-type:assertion+jwt\" )\r\n",
+          "createdAt": "2024-12-10T14:02:08Z",
+          "updatedAt": "2024-12-10T14:02:08Z"
+        },
+        {
+          "author": "PieterKas",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "Good catch @randipmalakar. I was looking at RFC 7523 to see if a token type was defined there that might be more specific that we can use, but you are right, it's a grant type, not a token type. \r\n\r\nReading a bit on, there is section 8 which defines urn:ietf:params:oauth:client-assertion-type:jwt-bearer - not a token type, but to be used when presenting the assertion https://datatracker.ietf.org/doc/html/rfc7523#section-8.2\r\n\r\nSo, it may well be that our best option here is urn:ietf:params:oauth:token-type:jwt unless we define a new token type. Immediate pros that come to mind is it would be more specific and less overloaded. The con would be that it is a new token type and would delay or impede adoption. I would like to hear from others on whether urn:ietf:params:oauth:token-type:jwt is a sufficient restriction, or if we need to be more specific. ",
+          "createdAt": "2024-12-10T14:35:31Z",
+          "updatedAt": "2024-12-10T14:59:54Z"
         }
       ]
     },
@@ -5429,24 +5443,26 @@
       "id": "PR_kwDOJubJxM6EVdiW",
       "title": "Change text to avoid confusion with federation",
       "url": "https://github.com/oauth-wg/oauth-identity-chaining/pull/112",
-      "state": "OPEN",
+      "state": "MERGED",
       "author": "PieterKas",
       "authorAssociation": "CONTRIBUTOR",
       "assignees": [],
       "labels": [],
       "body": "See issue #103",
       "createdAt": "2024-12-06T14:36:42Z",
-      "updatedAt": "2024-12-06T15:05:52Z",
+      "updatedAt": "2024-12-10T09:58:40Z",
       "baseRepository": "oauth-wg/oauth-identity-chaining",
       "baseRefName": "main",
       "baseRefOid": "6490de847b5c83cd8f1ce56f6a6ff1ade881ec41",
       "headRepository": "oauth-wg/oauth-identity-chaining",
       "headRefName": "PieterKas-patch-2",
       "headRefOid": "08c7a78d61f3c2e7128ddad0ecc75363263174ae",
-      "closedAt": null,
-      "mergedAt": null,
-      "mergedBy": null,
-      "mergeCommit": null,
+      "closedAt": "2024-12-10T09:58:37Z",
+      "mergedAt": "2024-12-10T09:58:37Z",
+      "mergedBy": "arndt-s",
+      "mergeCommit": {
+        "oid": "778e7b5ef42418af24b896f004a18406a6cd6c15"
+      },
       "comments": [],
       "reviews": [
         {
@@ -5482,24 +5498,26 @@
       "id": "PR_kwDOJubJxM6EVnum",
       "title": "Clarify text describing Step F in Figure 1",
       "url": "https://github.com/oauth-wg/oauth-identity-chaining/pull/113",
-      "state": "OPEN",
+      "state": "MERGED",
       "author": "PieterKas",
       "authorAssociation": "CONTRIBUTOR",
       "assignees": [],
       "labels": [],
       "body": "See issue #104",
       "createdAt": "2024-12-06T14:58:29Z",
-      "updatedAt": "2024-12-06T15:05:34Z",
+      "updatedAt": "2024-12-10T09:59:03Z",
       "baseRepository": "oauth-wg/oauth-identity-chaining",
       "baseRefName": "main",
       "baseRefOid": "6490de847b5c83cd8f1ce56f6a6ff1ade881ec41",
       "headRepository": "oauth-wg/oauth-identity-chaining",
       "headRefName": "PieterKas-patch-3",
       "headRefOid": "9ca21960d9dfeb0cddb97391ddc1f20d0c094d87",
-      "closedAt": null,
-      "mergedAt": null,
-      "mergedBy": null,
-      "mergeCommit": null,
+      "closedAt": "2024-12-10T09:59:00Z",
+      "mergedAt": "2024-12-10T09:59:00Z",
+      "mergedBy": "arndt-s",
+      "mergeCommit": {
+        "oid": "c77faf6c177d01fdf7b862bf5b974b9a3f0a19e3"
+      },
       "comments": [],
       "reviews": [
         {
@@ -5542,7 +5560,7 @@
       "labels": [],
       "body": "Proposed text to clarify what \"its token\" might be and where it comes from as raised in issue #75 by @aaronpk",
       "createdAt": "2024-12-06T16:59:58Z",
-      "updatedAt": "2024-12-06T16:59:59Z",
+      "updatedAt": "2024-12-10T10:06:00Z",
       "baseRepository": "oauth-wg/oauth-identity-chaining",
       "baseRefName": "main",
       "baseRefOid": "6490de847b5c83cd8f1ce56f6a6ff1ade881ec41",
@@ -5554,7 +5572,21 @@
       "mergedBy": null,
       "mergeCommit": null,
       "comments": [],
-      "reviews": []
+      "reviews": [
+        {
+          "id": "PRR_kwDOJubJxM6UhTD_",
+          "commit": {
+            "abbreviatedOid": "f95b62b"
+          },
+          "author": "arndt-s",
+          "authorAssociation": "MEMBER",
+          "state": "APPROVED",
+          "body": "Thank you! This change makes it much clearer and doesn't leave it to the interpretation of the reader what \"its token\" is.",
+          "createdAt": "2024-12-10T10:06:00Z",
+          "updatedAt": "2024-12-10T10:06:00Z",
+          "comments": []
+        }
+      ]
     },
     {
       "number": 115,
@@ -5621,7 +5653,7 @@
       "labels": [],
       "body": "",
       "createdAt": "2024-12-06T18:43:02Z",
-      "updatedAt": "2024-12-06T18:45:03Z",
+      "updatedAt": "2024-12-10T10:07:58Z",
       "baseRepository": "oauth-wg/oauth-identity-chaining",
       "baseRefName": "main",
       "baseRefOid": "6490de847b5c83cd8f1ce56f6a6ff1ade881ec41",
@@ -5645,6 +5677,19 @@
           "body": "",
           "createdAt": "2024-12-06T18:45:03Z",
           "updatedAt": "2024-12-06T18:45:03Z",
+          "comments": []
+        },
+        {
+          "id": "PRR_kwDOJubJxM6UhUnt",
+          "commit": {
+            "abbreviatedOid": "325a500"
+          },
+          "author": "arndt-s",
+          "authorAssociation": "MEMBER",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2024-12-10T10:07:58Z",
+          "updatedAt": "2024-12-10T10:07:58Z",
           "comments": []
         }
       ]
@@ -5749,19 +5794,242 @@
       "labels": [],
       "body": "Added text and diagrams to clarify Authorization-server-as-aclient flows.",
       "createdAt": "2024-12-09T11:44:27Z",
-      "updatedAt": "2024-12-09T11:44:27Z",
+      "updatedAt": "2024-12-10T12:14:16Z",
       "baseRepository": "oauth-wg/oauth-identity-chaining",
       "baseRefName": "main",
       "baseRefOid": "6490de847b5c83cd8f1ce56f6a6ff1ade881ec41",
       "headRepository": "oauth-wg/oauth-identity-chaining",
       "headRefName": "PieterKas-patch-8",
-      "headRefOid": "e1c9f7132a9d50f9a1c10eb5fb1779205bad9a17",
+      "headRefOid": "06e51bb63600eeff88ed7880e207e55699d5f2f2",
       "closedAt": null,
       "mergedAt": null,
       "mergedBy": null,
       "mergeCommit": null,
       "comments": [],
-      "reviews": []
+      "reviews": [
+        {
+          "id": "PRR_kwDOJubJxM6UhKKp",
+          "commit": {
+            "abbreviatedOid": "e1c9f71"
+          },
+          "author": "arndt-s",
+          "authorAssociation": "MEMBER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-12-10T09:52:03Z",
+          "updatedAt": "2024-12-10T09:53:25Z",
+          "comments": [
+            {
+              "originalPosition": 5,
+              "body": "```on-behalf-of the resource server in Domain A```\r\nAccording to our discussion yesterday this should be something like\r\n```on-behalf-of any client in Domain A (e.g. a resource server)```",
+              "createdAt": "2024-12-10T09:52:03Z",
+              "updatedAt": "2024-12-10T09:53:25Z"
+            },
+            {
+              "originalPosition": 12,
+              "body": "nit: I would have put `acting as client` in brackets.",
+              "createdAt": "2024-12-10T09:53:15Z",
+              "updatedAt": "2024-12-10T09:53:25Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJubJxM6Uia0M",
+          "commit": {
+            "abbreviatedOid": "e1c9f71"
+          },
+          "author": "PieterKas",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-12-10T11:45:40Z",
+          "updatedAt": "2024-12-10T11:45:40Z",
+          "comments": [
+            {
+              "originalPosition": 5,
+              "body": "Agreed +1 - changes made. @arndt-s and @kburgin3 please review.",
+              "createdAt": "2024-12-10T11:45:40Z",
+              "updatedAt": "2024-12-10T11:45:40Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJubJxM6Uia9E",
+          "commit": {
+            "abbreviatedOid": "e1c9f71"
+          },
+          "author": "PieterKas",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-12-10T11:45:52Z",
+          "updatedAt": "2024-12-10T11:45:52Z",
+          "comments": [
+            {
+              "originalPosition": 12,
+              "body": "change made.",
+              "createdAt": "2024-12-10T11:45:52Z",
+              "updatedAt": "2024-12-10T11:45:52Z"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 121,
+      "id": "PR_kwDOJubJxM6EsQEH",
+      "title": "Use \"Actor\" instead of \"(abstract) Client\"",
+      "url": "https://github.com/oauth-wg/oauth-identity-chaining/pull/121",
+      "state": "OPEN",
+      "author": "arndt-s",
+      "authorAssociation": "MEMBER",
+      "assignees": [],
+      "labels": [],
+      "body": "The term \"Client\" or \"abstract client\" is very confusing. Based on the point of view and context the term \"client\" can mean very different things.\n\n|Point of view|Context|Who is \"client\"?|\n|----|-----|-----|\n|AS Domain A|OAuth|Any OAuth client|\n|AS Domain A|ID chaining|Either itself, a resource server or any arbitrary OAuth Client|\n|RS Domain A|OAuth|Itself or another client that is calling it|\n|RS Domain A|ID chaining|Itself or its AS|\n|AS Domain B|-|AS or RS in Domain A|\n|RS Domain B|OAuth|Itself|\n|RS Domain B|ID chaining|AS or RS in Domain A|\n\nIf we would continue with the term \"client\" we would need to always specify exactly from what POV and context. Thus, introducing the role of \"actor\".",
+      "createdAt": "2024-12-10T11:29:29Z",
+      "updatedAt": "2024-12-10T14:43:50Z",
+      "baseRepository": "oauth-wg/oauth-identity-chaining",
+      "baseRefName": "main",
+      "baseRefOid": "c77faf6c177d01fdf7b862bf5b974b9a3f0a19e3",
+      "headRepository": "oauth-wg/oauth-identity-chaining",
+      "headRefName": "arndt/rename_client_to_actor",
+      "headRefOid": "efc828de361786e03ca3dfe545cdff9293dbd9e8",
+      "closedAt": null,
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [
+        {
+          "author": "PieterKas",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "> If we would continue with the term \"client\" we would need to always specify exactly from what POV and context. Thus, introducing the role of \"actor\".\r\n\r\nThanks for creating the PR to give an alternative view of how we might describe these concepts. \r\n\r\nThe term \"actor\" was not all that helpful as I ended up having to decode it back to \"who is the client, what is the POV and what is the context\". This introduces an extra layer of indirection that an implementor may get wrong as they figure out the mapping from actor to client. Specifying the POV and the context upfront removes that risk of renewed ambiguity - it is hard to write this down clearly, but I would rather that we try and be clear in the spec, than leaving it to the implementor to figure out (given our own tussles with this topic, I feel the community will benefit from that precision).\r\n\r\nIt also risks introducing a new concept that is not immediately relatable to the existing OAuth specification eco-system and sticking to the existing system allows us to more easily re-use existing drafts that were written for resource owners, clients, authorization servers and resource providers. \r\n\r\nOther editors need to weigh in as well here.",
+          "createdAt": "2024-12-10T12:10:09Z",
+          "updatedAt": "2024-12-10T12:10:09Z"
+        },
+        {
+          "author": "arndt-s",
+          "authorAssociation": "MEMBER",
+          "body": "> This introduces an extra layer of indirection that an implementor may get wrong as they figure out the mapping from actor to client.\r\n\r\nI believe this is only relevant to us as our mental models are based on the client. Generally, I don't think readers need to map from actor to client.\r\n\r\n> It also risks introducing a new concept that is not immediately relatable to the existing OAuth specification eco-system and sticking to the existing system allows us to more easily re-use existing drafts that were written for resource owners, clients, authorization servers and resource providers.\r\n\r\nIn my opinion it's the opposite. Using \"client\" conflicts with the OAuth term, which is different. By using a different term (in the context of this doc only!) we don't overload existing terminology.",
+          "createdAt": "2024-12-10T12:31:39Z",
+          "updatedAt": "2024-12-10T12:37:57Z"
+        },
+        {
+          "author": "PieterKas",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": ">In my opinion it's the opposite. Using \"client\" conflicts with the OAuth term, which is different. By using a different term (in the context of this doc only!) we don't overload existing terminology.\r\n\r\nAdding the definition of \"client\" from RFC 6749 for convenience:\r\n\r\n      An application making protected resource requests on behalf of the\r\n      resource owner and with its authorization.  The term \"client\" does\r\n      not imply any particular implementation characteristics (e.g.,\r\n      whether the application executes on a server, a desktop, or other\r\n      devices).\r\n\r\nI believe we are using client in the context of how it was meant to be used. The main draft should stick to using \"client\" since it also allows us to profile and use existing specifications that uses this definition. \r\n\r\nThe fact that a piece of software can act as both resource server and client, or as authorization server and client is something we need to describe, and given how the specification is structures, we only need to define this in the appendix (or maybe not at all, leaving that as an exercise for a profile). \r\n\r\n",
+          "createdAt": "2024-12-10T13:14:50Z",
+          "updatedAt": "2024-12-10T13:17:10Z"
+        },
+        {
+          "author": "PieterKas",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "> I believe this is only relevant to us as our mental models are based on the client. Generally, I don't think readers need to map from actor to client.\r\n> \r\nIt is crucial that this mapping takes place, otherwise, the implementor cannot use the Oauth specifications we are or re-using here. There is no notion of \"actor\" in any of those drafts - it only describes client, resource server and authorization server behaviour\r\n\r\n",
+          "createdAt": "2024-12-10T13:16:40Z",
+          "updatedAt": "2024-12-10T13:16:40Z"
+        }
+      ],
+      "reviews": [
+        {
+          "id": "PRR_kwDOJubJxM6Uifdh",
+          "commit": {
+            "abbreviatedOid": "c65a019"
+          },
+          "author": "PieterKas",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-12-10T11:51:49Z",
+          "updatedAt": "2024-12-10T11:51:50Z",
+          "comments": [
+            {
+              "originalPosition": 47,
+              "body": "The actor in Domain A.",
+              "createdAt": "2024-12-10T11:51:49Z",
+              "updatedAt": "2024-12-10T11:51:50Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJubJxM6UigGR",
+          "commit": {
+            "abbreviatedOid": "c65a019"
+          },
+          "author": "PieterKas",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-12-10T11:52:49Z",
+          "updatedAt": "2024-12-10T11:52:49Z",
+          "comments": [
+            {
+              "originalPosition": 53,
+              "body": "perhaps delete the (e.g. federation) clause.",
+              "createdAt": "2024-12-10T11:52:49Z",
+              "updatedAt": "2024-12-10T11:52:50Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJubJxM6Uiip7",
+          "commit": {
+            "abbreviatedOid": "c65a019"
+          },
+          "author": "PieterKas",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-12-10T11:55:05Z",
+          "updatedAt": "2024-12-10T11:55:06Z",
+          "comments": [
+            {
+              "originalPosition": 53,
+              "body": "I think there might be other constraints on the authorization grant beyond scoping the audience (which seems sensible). The concern I have with only addressing the audience is that each AS may have some specific claims it may be looking for in an authorization grant. Happy to hear from others that I am unduly concerned.",
+              "createdAt": "2024-12-10T11:55:05Z",
+              "updatedAt": "2024-12-10T11:55:06Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJubJxM6Uiju0",
+          "commit": {
+            "abbreviatedOid": "c65a019"
+          },
+          "author": "PieterKas",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-12-10T11:56:00Z",
+          "updatedAt": "2024-12-10T11:56:00Z",
+          "comments": [
+            {
+              "originalPosition": 72,
+              "body": "actor",
+              "createdAt": "2024-12-10T11:56:00Z",
+              "updatedAt": "2024-12-10T11:56:00Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJubJxM6UkVjQ",
+          "commit": {
+            "abbreviatedOid": "efc828d"
+          },
+          "author": "PieterKas",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-12-10T14:43:50Z",
+          "updatedAt": "2024-12-10T14:43:50Z",
+          "comments": [
+            {
+              "originalPosition": 13,
+              "body": "If we are going to use this framing, perhaps we should do it the other way round. The Actor is a component in the system (e.g. software) and it may take on one or more OAuth roles (RFC 6749 describes roles, not components) https://datatracker.ietf.org/doc/html/rfc6749\r\n\r\nIt does raise another question  - what if we have multiple actors taking on different roles, then we have to describe those difference as well. \r\n\r\nThe role vs component distinction is interesting though - we often talk about the as the same, but I don't believe there is any prohibition against a component taking on multiple roles. \r\n\r\nAnother thought - perhaps we only need the Agent concept when we need to describe multiple roles being assumed, which is something we only do in the Appendix, so perhaps the concept of Actor is only used to help illustrate how an Actor can have both Resource Server and Client roles, or an Agent can have both Authorization Server and Client roles (and the context of those roles).\r\n\r\nThe key insight from this exercise is that we need to be specific about the roles assumed and how it relates toothed entities (I think you call this POV and context). I think we also only need this for the appendix. ",
+              "createdAt": "2024-12-10T14:43:50Z",
+              "updatedAt": "2024-12-10T14:59:08Z"
+            }
+          ]
+        }
+      ]
     }
   ]
 }
