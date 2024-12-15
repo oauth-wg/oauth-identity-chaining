@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2024-12-12T00:21:12.022856+00:00",
+  "timestamp": "2024-12-15T00:23:31.883448+00:00",
   "repo": "oauth-wg/oauth-identity-chaining",
   "labels": [
     {
@@ -327,14 +327,14 @@
         },
         {
           "author": "kburgin3",
-          "authorAssociation": "COLLABORATOR",
+          "authorAssociation": "CONTRIBUTOR",
           "body": "I'm now happy with the current text. Closing the issue",
           "createdAt": "2024-02-20T16:15:47Z",
           "updatedAt": "2024-02-20T16:15:47Z"
         },
         {
           "author": "kburgin3",
-          "authorAssociation": "COLLABORATOR",
+          "authorAssociation": "CONTRIBUTOR",
           "body": "Current text is sufficient. Saying the first request in the protocol is out of scope is fine",
           "createdAt": "2024-02-20T16:16:55Z",
           "updatedAt": "2024-02-20T16:16:55Z"
@@ -570,7 +570,7 @@
       "url": "https://github.com/oauth-wg/oauth-identity-chaining/issues/51",
       "state": "CLOSED",
       "author": "kburgin3",
-      "authorAssociation": "COLLABORATOR",
+      "authorAssociation": "CONTRIBUTOR",
       "assignees": [
         "arndt-s"
       ],
@@ -861,7 +861,7 @@
         },
         {
           "author": "kburgin3",
-          "authorAssociation": "COLLABORATOR",
+          "authorAssociation": "CONTRIBUTOR",
           "body": "I'd like mTLS sender constrained tokens. Can we consider adding sender constraining mechanisms to the draft?",
           "createdAt": "2024-03-01T15:18:03Z",
           "updatedAt": "2024-03-01T15:18:03Z"
@@ -968,7 +968,7 @@
       "url": "https://github.com/oauth-wg/oauth-identity-chaining/issues/86",
       "state": "OPEN",
       "author": "kburgin3",
-      "authorAssociation": "COLLABORATOR",
+      "authorAssociation": "CONTRIBUTOR",
       "assignees": [],
       "labels": [],
       "body": "Add mTLS and DPoP",
@@ -1292,7 +1292,7 @@
         },
         {
           "author": "kburgin3",
-          "authorAssociation": "COLLABORATOR",
+          "authorAssociation": "CONTRIBUTOR",
           "body": "I agree we do not need to include text around SD-JWT and rather leave it to a profile or extension.",
           "createdAt": "2024-12-06T17:50:58Z",
           "updatedAt": "2024-12-06T17:50:58Z"
@@ -4248,7 +4248,7 @@
             "abbreviatedOid": "db22609"
           },
           "author": "kburgin3",
-          "authorAssociation": "COLLABORATOR",
+          "authorAssociation": "CONTRIBUTOR",
           "state": "APPROVED",
           "body": "I have no problems with this",
           "createdAt": "2024-02-28T17:44:54Z",
@@ -4316,7 +4316,7 @@
             "abbreviatedOid": "d8deecf"
           },
           "author": "kburgin3",
-          "authorAssociation": "COLLABORATOR",
+          "authorAssociation": "CONTRIBUTOR",
           "state": "APPROVED",
           "body": "",
           "createdAt": "2024-03-06T20:57:00Z",
@@ -4488,7 +4488,7 @@
             "abbreviatedOid": "43fc5d6"
           },
           "author": "kburgin3",
-          "authorAssociation": "COLLABORATOR",
+          "authorAssociation": "CONTRIBUTOR",
           "state": "COMMENTED",
           "body": "",
           "createdAt": "2024-07-06T17:49:52Z",
@@ -4508,7 +4508,7 @@
             "abbreviatedOid": "43fc5d6"
           },
           "author": "kburgin3",
-          "authorAssociation": "COLLABORATOR",
+          "authorAssociation": "CONTRIBUTOR",
           "state": "COMMENTED",
           "body": "",
           "createdAt": "2024-07-06T17:52:08Z",
@@ -4528,7 +4528,7 @@
             "abbreviatedOid": "43fc5d6"
           },
           "author": "kburgin3",
-          "authorAssociation": "COLLABORATOR",
+          "authorAssociation": "CONTRIBUTOR",
           "state": "COMMENTED",
           "body": "",
           "createdAt": "2024-07-06T17:53:54Z",
@@ -4740,7 +4740,7 @@
             "abbreviatedOid": "2db0e45"
           },
           "author": "kburgin3",
-          "authorAssociation": "COLLABORATOR",
+          "authorAssociation": "CONTRIBUTOR",
           "state": "APPROVED",
           "body": "",
           "createdAt": "2024-09-28T13:08:44Z",
@@ -4756,7 +4756,7 @@
       "url": "https://github.com/oauth-wg/oauth-identity-chaining/pull/95",
       "state": "CLOSED",
       "author": "kburgin3",
-      "authorAssociation": "COLLABORATOR",
+      "authorAssociation": "CONTRIBUTOR",
       "assignees": [],
       "labels": [],
       "body": "Add sender constrained/proof of possession tokens if the initial inbound token had a proof of possession ",
@@ -4852,7 +4852,7 @@
             "abbreviatedOid": "822d6d7"
           },
           "author": "kburgin3",
-          "authorAssociation": "COLLABORATOR",
+          "authorAssociation": "CONTRIBUTOR",
           "state": "COMMENTED",
           "body": "",
           "createdAt": "2024-09-13T14:10:26Z",
@@ -4872,7 +4872,7 @@
             "abbreviatedOid": "822d6d7"
           },
           "author": "kburgin3",
-          "authorAssociation": "COLLABORATOR",
+          "authorAssociation": "CONTRIBUTOR",
           "state": "COMMENTED",
           "body": "",
           "createdAt": "2024-09-13T14:17:25Z",
@@ -4892,7 +4892,7 @@
             "abbreviatedOid": "822d6d7"
           },
           "author": "kburgin3",
-          "authorAssociation": "COLLABORATOR",
+          "authorAssociation": "CONTRIBUTOR",
           "state": "COMMENTED",
           "body": "",
           "createdAt": "2024-09-13T14:27:21Z",
@@ -4912,7 +4912,7 @@
             "abbreviatedOid": "822d6d7"
           },
           "author": "kburgin3",
-          "authorAssociation": "COLLABORATOR",
+          "authorAssociation": "CONTRIBUTOR",
           "state": "COMMENTED",
           "body": "",
           "createdAt": "2024-09-13T14:31:53Z",
@@ -5043,7 +5043,7 @@
             "abbreviatedOid": "bca89c6"
           },
           "author": "kburgin3",
-          "authorAssociation": "COLLABORATOR",
+          "authorAssociation": "CONTRIBUTOR",
           "state": "COMMENTED",
           "body": "",
           "createdAt": "2024-09-27T12:35:44Z",
@@ -5063,7 +5063,7 @@
             "abbreviatedOid": "bca89c6"
           },
           "author": "kburgin3",
-          "authorAssociation": "COLLABORATOR",
+          "authorAssociation": "CONTRIBUTOR",
           "state": "COMMENTED",
           "body": "",
           "createdAt": "2024-09-27T14:29:26Z",
@@ -5103,7 +5103,7 @@
             "abbreviatedOid": "bca89c6"
           },
           "author": "kburgin3",
-          "authorAssociation": "COLLABORATOR",
+          "authorAssociation": "CONTRIBUTOR",
           "state": "COMMENTED",
           "body": "",
           "createdAt": "2024-10-04T14:49:25Z",
@@ -5212,7 +5212,7 @@
             "abbreviatedOid": "21fab94"
           },
           "author": "kburgin3",
-          "authorAssociation": "COLLABORATOR",
+          "authorAssociation": "CONTRIBUTOR",
           "state": "COMMENTED",
           "body": "",
           "createdAt": "2024-10-14T16:46:35Z",
@@ -5409,7 +5409,7 @@
             "abbreviatedOid": "6a24d40"
           },
           "author": "kburgin3",
-          "authorAssociation": "COLLABORATOR",
+          "authorAssociation": "CONTRIBUTOR",
           "state": "APPROVED",
           "body": "",
           "createdAt": "2024-11-05T10:58:55Z",
@@ -5471,7 +5471,7 @@
             "abbreviatedOid": "08c7a78"
           },
           "author": "kburgin3",
-          "authorAssociation": "COLLABORATOR",
+          "authorAssociation": "CONTRIBUTOR",
           "state": "APPROVED",
           "body": "",
           "createdAt": "2024-12-06T14:43:49Z",
@@ -5526,7 +5526,7 @@
             "abbreviatedOid": "9ca2196"
           },
           "author": "kburgin3",
-          "authorAssociation": "COLLABORATOR",
+          "authorAssociation": "CONTRIBUTOR",
           "state": "APPROVED",
           "body": "",
           "createdAt": "2024-12-06T15:03:37Z",
@@ -5619,7 +5619,7 @@
             "abbreviatedOid": "794ec9a"
           },
           "author": "kburgin3",
-          "authorAssociation": "COLLABORATOR",
+          "authorAssociation": "CONTRIBUTOR",
           "state": "CHANGES_REQUESTED",
           "body": "The (Appendix, (#Example)) include two additional\r\n\r\nshould be (with the \"s\" at the end of include)\r\n\r\nThe (Appendix, (#Example)) includes two additional",
           "createdAt": "2024-12-06T17:45:16Z",
@@ -5632,7 +5632,7 @@
             "abbreviatedOid": "794ec9a"
           },
           "author": "kburgin3",
-          "authorAssociation": "COLLABORATOR",
+          "authorAssociation": "CONTRIBUTOR",
           "state": "CHANGES_REQUESTED",
           "body": "Also should be a \"s\" in (Appendix, (#Examples))",
           "createdAt": "2024-12-06T17:46:21Z",
@@ -5672,7 +5672,7 @@
             "abbreviatedOid": "325a500"
           },
           "author": "kburgin3",
-          "authorAssociation": "COLLABORATOR",
+          "authorAssociation": "CONTRIBUTOR",
           "state": "APPROVED",
           "body": "",
           "createdAt": "2024-12-06T18:45:03Z",
@@ -5701,12 +5701,12 @@
       "url": "https://github.com/oauth-wg/oauth-identity-chaining/pull/117",
       "state": "OPEN",
       "author": "kburgin3",
-      "authorAssociation": "COLLABORATOR",
+      "authorAssociation": "CONTRIBUTOR",
       "assignees": [],
       "labels": [],
       "body": "There needs to be a RS in Domain A for the last step to make sense (sending the access token to RS B) in the case that AS A is the Abstract Client",
       "createdAt": "2024-12-08T18:41:55Z",
-      "updatedAt": "2024-12-09T12:27:11Z",
+      "updatedAt": "2024-12-14T15:32:05Z",
       "baseRepository": "oauth-wg/oauth-identity-chaining",
       "baseRefName": "main",
       "baseRefOid": "6490de847b5c83cd8f1ce56f6a6ff1ade881ec41",
@@ -5727,14 +5727,14 @@
         },
         {
           "author": "kburgin3",
-          "authorAssociation": "COLLABORATOR",
+          "authorAssociation": "CONTRIBUTOR",
           "body": "OK, then I believe the last step (Step (F)) should be removed. AS A (in the case that AS A is acting as the abstract client) does not present the token to RS B",
           "createdAt": "2024-12-09T11:31:03Z",
           "updatedAt": "2024-12-09T11:31:03Z"
         },
         {
           "author": "kburgin3",
-          "authorAssociation": "COLLABORATOR",
+          "authorAssociation": "CONTRIBUTOR",
           "body": "Back to needing RS A in Figure 1: Figure 7 (Authorization server acting as client use case) requires RS A to be present. @PieterKas can you explain further your issue with including RS A in Figure 1?",
           "createdAt": "2024-12-09T11:54:09Z",
           "updatedAt": "2024-12-09T11:54:09Z"
@@ -5752,6 +5752,20 @@
           "body": "> Figure 7 (Authorization server acting as client use case) requires RS A to be present. @PieterKas can you explain further your issue with including RS A in Figure 1?\r\n\r\nThe figures and descriptions in the appendix should include the AS and RS acting as clients. I created two pull PRs to describe each of those a bit more. Hopefully that helps.\r\n\r\nRegular OAuth client may want to use this specification as well. Aaron's draft that profiles this flow is a good example of other uses, so the RS or AS acting as clients are really two use cases, but the primary task of this draft is to provide a framework for cross domain identity and authorization chaining. Consequently we should describe the generic case where there is an OAuth Client, and then have specific instances such as RS and AS as clients. ",
           "createdAt": "2024-12-09T12:27:09Z",
           "updatedAt": "2024-12-09T12:27:09Z"
+        },
+        {
+          "author": "bergtau",
+          "authorAssociation": "NONE",
+          "body": "A picture may paint a thousand words, but it can be challenging to make a single picture paint the same thousand words for everyone. I think maybe using a detailed flow diagram to convey what's in the draft before having introduced the new ideas is asking it to do too much. I might suggest removing the diagram entirely. Here's some suggested Overview text that doesn't refer to a diagram. I expect its not quite what anyone wants, but it's simpler.\r\n \r\n=-=-=-=-=-=-=\r\nThis document describes how to use OAuth exchanges to effect RS-to-RS requests, where the RSes are subject to separate and independent authorities. No assumption is made regarding the trust relationships between the RSes (or their associated ASes) until certain implementation details are decided. However, in every case the identity of the original requester is carried through to the RS that renders the requested data.\r\n\r\nThe general flow is as follows:\r\n\r\n   o A client requests a resource from an RS in Domain A (RS-A), as in a normal OAuth flow.\r\n\r\n   o To complete the request, RS-A needs data from an RS in Domain B (RS-B). That is, RS-A must act as a Client to RS-B. It must obtain a token to complete this request. \r\n\r\n   o Having obtained a valid token, RS-A requests data from RS-B.\r\n\r\nThe details of the token request in the second bullet will depend on the trust relationship between the two domains. Two cases are summarized here, and presented in detail in appendixes. \r\n\r\n   (1) RSes can request tokens from ASes in multiple domains.\r\n      > RS-A asks AS-A for a token to introduce RS-A to AS-B, and receives one.\r\n      > RS-A presents that token to AS-B, and requests a token with RS-A as requester and RS-B as responder, and receives one.\r\n      > RS-A presents the subsequent token to RS-B and obtains data.\r\n\r\n   (2) RSes can request tokens only from the AS in its own domain.\r\n      > RS-A asks AS-A for a token to access RS-B.\r\n      > AS-A asks AS-B for a token with RS-A as requester and RS-B as responder, and receives one.\r\n      > AS-A returns the subsequent token to RS-A.\r\n      > RS-A presents the subsequent token to RS-B and obtains data.\r\n\r\nThe following sections define the tokens, grants, and claims to acheive this flow. Proper understanding and implementation of this document depends on familiarity with OAuth 2.0 Token Exchange [RFC8693] and JWT Profile for OAuth 2.0 Client Authentication and Authorization Grants [RFC7523] etc etc.\r\n=-=-=-=-=-=-=",
+          "createdAt": "2024-12-13T02:03:44Z",
+          "updatedAt": "2024-12-13T02:03:44Z"
+        },
+        {
+          "author": "kburgin3",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "> A picture may paint a thousand words, but it can be challenging to make a single picture paint the same thousand words for everyone. I think maybe using a detailed flow diagram to convey what's in the draft before having introduced the new ideas is asking it to do too much. I might suggest removing the diagram entirely. Here's some suggested Overview text that doesn't refer to a diagram. I expect its not quite what anyone wants, but it's simpler.\r\n> \r\n> =-=-=-=-=-=-= This document describes how to use OAuth exchanges to effect RS-to-RS requests, where the RSes are subject to separate and independent authorities. No assumption is made regarding the trust relationships between the RSes (or their associated ASes) until certain implementation details are decided. However, in every case the identity of the original requester is carried through to the RS that renders the requested data.\r\n> \r\n> The general flow is as follows:\r\n> \r\n> o A client requests a resource from an RS in Domain A (RS-A), as in a normal OAuth flow.\r\n> \r\n> o To complete the request, RS-A needs data from an RS in Domain B (RS-B). That is, RS-A must act as a Client to RS-B. It must obtain a token to complete this request.\r\n> \r\n> o Having obtained a valid token, RS-A requests data from RS-B.\r\n> \r\n> The details of the token request in the second bullet will depend on the trust relationship between the two domains. Two cases are summarized here, and presented in detail in appendixes.\r\n> \r\n> (1) RSes can request tokens from ASes in multiple domains. > RS-A asks AS-A for a token to introduce RS-A to AS-B, and receives one. > RS-A presents that token to AS-B, and requests a token with RS-A as requester and RS-B as responder, and receives one. > RS-A presents the subsequent token to RS-B and obtains data.\r\n> \r\n> (2) RSes can request tokens only from the AS in its own domain. > RS-A asks AS-A for a token to access RS-B. > AS-A asks AS-B for a token with RS-A as requester and RS-B as responder, and receives one. > AS-A returns the subsequent token to RS-A. > RS-A presents the subsequent token to RS-B and obtains data.\r\n> \r\n> The following sections define the tokens, grants, and claims to acheive this flow. Proper understanding and implementation of this document depends on familiarity with OAuth 2.0 Token Exchange [RFC8693] and JWT Profile for OAuth 2.0 Client Authentication and Authorization Grants [RFC7523] etc etc. =-=-=-=-=-=-=\r\n\r\nI also like the idea of removing Figure 1 in the Overview section. To get it right is too complicated to begin the doc so just leave the steps (A) - (F) in text and point to the appendix for specific use cases (RS as client, AS as client)",
+          "createdAt": "2024-12-14T15:32:04Z",
+          "updatedAt": "2024-12-14T15:32:04Z"
         }
       ],
       "reviews": []
@@ -5768,7 +5782,7 @@
       "labels": [],
       "body": "Modified diagram and added additional text to describe the resource server acting as a client.\r\n\r\n",
       "createdAt": "2024-12-09T11:29:22Z",
-      "updatedAt": "2024-12-09T11:29:23Z",
+      "updatedAt": "2024-12-14T15:28:50Z",
       "baseRepository": "oauth-wg/oauth-identity-chaining",
       "baseRefName": "main",
       "baseRefOid": "6490de847b5c83cd8f1ce56f6a6ff1ade881ec41",
@@ -5780,7 +5794,48 @@
       "mergedBy": null,
       "mergeCommit": null,
       "comments": [],
-      "reviews": []
+      "reviews": [
+        {
+          "id": "PRR_kwDOJubJxM6VPoz0",
+          "commit": {
+            "abbreviatedOid": "29f8939"
+          },
+          "author": "kburgin3",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-12-14T15:27:26Z",
+          "updatedAt": "2024-12-14T15:27:27Z",
+          "comments": [
+            {
+              "originalPosition": 5,
+              "body": "Same comment as in the AS as OAuth client PR. \r\n'a resource server in one domain (Domain A) may need to access a resource server in another domain (Domain B).' \r\nSuggest eliminating the generic Authorization Servers:\r\n'a resource server in **Domain A** may need to access a resource server in **Domain B**.'",
+              "createdAt": "2024-12-14T15:27:27Z",
+              "updatedAt": "2024-12-14T15:27:27Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJubJxM6VPo5S",
+          "commit": {
+            "abbreviatedOid": "29f8939"
+          },
+          "author": "kburgin3",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-12-14T15:28:50Z",
+          "updatedAt": "2024-12-14T15:28:50Z",
+          "comments": [
+            {
+              "originalPosition": 24,
+              "body": "Can we make the box containing 'RS Domain A acting as client' wider so it's not so tall?",
+              "createdAt": "2024-12-14T15:28:50Z",
+              "updatedAt": "2024-12-14T15:28:50Z"
+            }
+          ]
+        }
+      ]
     },
     {
       "number": 119,
@@ -5794,7 +5849,7 @@
       "labels": [],
       "body": "Added text and diagrams to clarify Authorization-server-as-aclient flows.",
       "createdAt": "2024-12-09T11:44:27Z",
-      "updatedAt": "2024-12-10T12:14:16Z",
+      "updatedAt": "2024-12-14T15:19:20Z",
       "baseRepository": "oauth-wg/oauth-identity-chaining",
       "baseRefName": "main",
       "baseRefOid": "6490de847b5c83cd8f1ce56f6a6ff1ade881ec41",
@@ -5872,6 +5927,86 @@
               "updatedAt": "2024-12-10T11:45:52Z"
             }
           ]
+        },
+        {
+          "id": "PRR_kwDOJubJxM6VJ2md",
+          "commit": {
+            "abbreviatedOid": "06e51bb"
+          },
+          "author": "arndt-s",
+          "authorAssociation": "MEMBER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-12-13T14:10:40Z",
+          "updatedAt": "2024-12-13T14:10:50Z",
+          "comments": [
+            {
+              "originalPosition": 16,
+              "body": "I think we should settle on the terminology first before merging this.",
+              "createdAt": "2024-12-13T14:10:40Z",
+              "updatedAt": "2024-12-13T14:11:43Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJubJxM6VMI0M",
+          "commit": {
+            "abbreviatedOid": "a34fc09"
+          },
+          "author": "PieterKas",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-12-13T19:28:11Z",
+          "updatedAt": "2024-12-13T19:28:11Z",
+          "comments": [
+            {
+              "originalPosition": 16,
+              "body": "We could also change it later if we decide we want to change terminology - it is consistent with the current terminology and may help people better understand, parse the spec until such time as we decide to change terminology (or not).\r\n\r\n@kburgin3 would love your thoughts on whether it is worth adding this clarification.",
+              "createdAt": "2024-12-13T19:28:11Z",
+              "updatedAt": "2024-12-13T19:28:11Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJubJxM6VPoMN",
+          "commit": {
+            "abbreviatedOid": "e1c9f71"
+          },
+          "author": "kburgin3",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-12-14T15:17:56Z",
+          "updatedAt": "2024-12-14T15:17:56Z",
+          "comments": [
+            {
+              "originalPosition": 5,
+              "body": "Why say 'one domain' and 'another domain'? Could just say \r\n\r\n'Under these conditions, an authorization server in **Domain A** may obtain an Access Token from an authorization server in **Domain B** on-behalf-of the resource server in Domain A'",
+              "createdAt": "2024-12-14T15:17:56Z",
+              "updatedAt": "2024-12-14T15:17:56Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJubJxM6VPoP6",
+          "commit": {
+            "abbreviatedOid": "a34fc09"
+          },
+          "author": "kburgin3",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-12-14T15:19:20Z",
+          "updatedAt": "2024-12-14T15:19:20Z",
+          "comments": [
+            {
+              "originalPosition": 16,
+              "body": "> We could also change it later if we decide we want to change terminology - it is consistent with the current terminology and may help people better understand, parse the spec until such time as we decide to change terminology (or not).\r\n> \r\n> @kburgin3 would love your thoughts on whether it is worth adding this clarification.\r\n\r\nSame comment as before. Why not just say \r\n\r\n'...an authorization server in **Domain A** may obtain an Access Token from an authorization server in **Domain B**'\r\n\r\nAlso, in 'This enables clients in Domain A to access a protected resource server in Domain B.' isn't it always the resource server in domain A (not 'clients') who accesses the resource server in Domain B? The AS in domain A does not present the token to the resource server in Domain B.",
+              "createdAt": "2024-12-14T15:19:20Z",
+              "updatedAt": "2024-12-14T15:22:54Z"
+            }
+          ]
         }
       ]
     },
@@ -5887,7 +6022,7 @@
       "labels": [],
       "body": "The term \"Client\" or \"abstract client\" is very confusing. Based on the point of view and context the term \"client\" can mean very different things.\n\n|Point of view|Context|Who is \"client\"?|\n|----|-----|-----|\n|AS Domain A|OAuth|Any OAuth client|\n|AS Domain A|ID chaining|Either itself, a resource server or any arbitrary OAuth Client|\n|RS Domain A|OAuth|Itself or another client that is calling it|\n|RS Domain A|ID chaining|Itself or its AS|\n|AS Domain B|-|AS or RS in Domain A|\n|RS Domain B|OAuth|Itself|\n|RS Domain B|ID chaining|AS or RS in Domain A|\n\nIf we would continue with the term \"client\" we would need to always specify exactly from what POV and context. Thus, introducing the role of \"actor\".",
       "createdAt": "2024-12-10T11:29:29Z",
-      "updatedAt": "2024-12-10T14:43:50Z",
+      "updatedAt": "2024-12-14T15:15:12Z",
       "baseRepository": "oauth-wg/oauth-identity-chaining",
       "baseRefName": "main",
       "baseRefOid": "c77faf6c177d01fdf7b862bf5b974b9a3f0a19e3",
@@ -5926,6 +6061,20 @@
           "body": "> I believe this is only relevant to us as our mental models are based on the client. Generally, I don't think readers need to map from actor to client.\r\n> \r\nIt is crucial that this mapping takes place, otherwise, the implementor cannot use the Oauth specifications we are or re-using here. There is no notion of \"actor\" in any of those drafts - it only describes client, resource server and authorization server behaviour\r\n\r\n",
           "createdAt": "2024-12-10T13:16:40Z",
           "updatedAt": "2024-12-10T13:16:40Z"
+        },
+        {
+          "author": "PieterKas",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "Capturing a few notes from a discussion with @jricher:\r\n\r\n1. Suggested to stick to standard terminology over introducing new concepts.\r\n2. Consider writing use cases as worked examples (e.g. payment gateway accessing information in another domain) and then describe the payment gateway acting as resource server on receiving a request and as client to the authorisation server in their trust domain to get an assertion grant and then as a client to an authorisation server in another trust domain to get an access token).",
+          "createdAt": "2024-12-12T15:12:11Z",
+          "updatedAt": "2024-12-12T15:12:11Z"
+        },
+        {
+          "author": "kburgin3",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "> > If we would continue with the term \"client\" we would need to always specify exactly from what POV and context. Thus, introducing the role of \"actor\".\r\n> \r\n> Thanks for creating the PR to give an alternative view of how we might describe these concepts.\r\n> \r\n> The term \"actor\" was not all that helpful as I ended up having to decode it back to \"who is the client, what is the POV and what is the context\". This introduces an extra layer of indirection that an implementor may get wrong as they figure out the mapping from actor to client. Specifying the POV and the context upfront removes that risk of renewed ambiguity - it is hard to write this down clearly, but I would rather that we try and be clear in the spec, than leaving it to the implementor to figure out (given our own tussles with this topic, I feel the community will benefit from that precision).\r\n> \r\n> It also risks introducing a new concept that is not immediately relatable to the existing OAuth specification eco-system and sticking to the existing system allows us to more easily re-use existing drafts that were written for resource owners, clients, authorization servers and resource providers.\r\n> \r\n> Other editors need to weigh in as well here.\r\n\r\nI'm concerned that using 'Actor' overloads the \"actor\" claim defined in Token Exchange \r\nhttps://datatracker.ietf.org/doc/html/rfc8693\r\n\r\nIf sticking with 'Client', we could say 'OAuth Client' instead of just 'Client'\r\n\r\nI guess I have concerns about both 'Actor' and 'Client'. My suggestion was 'Abstract Client' which didn't seem to get support. \r\n",
+          "createdAt": "2024-12-14T15:15:10Z",
+          "updatedAt": "2024-12-14T15:15:10Z"
         }
       ],
       "reviews": [
@@ -6026,6 +6175,64 @@
               "body": "If we are going to use this framing, perhaps we should do it the other way round. The Actor is a component in the system (e.g. software) and it may take on one or more OAuth roles (RFC 6749 describes roles, not components) https://datatracker.ietf.org/doc/html/rfc6749\r\n\r\nIt does raise another question  - what if we have multiple actors taking on different roles, then we have to describe those difference as well. \r\n\r\nThe role vs component distinction is interesting though - we often talk about the as the same, but I don't believe there is any prohibition against a component taking on multiple roles. \r\n\r\nAnother thought - perhaps we only need the Agent concept when we need to describe multiple roles being assumed, which is something we only do in the Appendix, so perhaps the concept of Actor is only used to help illustrate how an Actor can have both Resource Server and Client roles, or an Agent can have both Authorization Server and Client roles (and the context of those roles).\r\n\r\nThe key insight from this exercise is that we need to be specific about the roles assumed and how it relates toothed entities (I think you call this POV and context). I think we also only need this for the appendix. ",
               "createdAt": "2024-12-10T14:43:50Z",
               "updatedAt": "2024-12-10T14:59:08Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJubJxM6VJ_65",
+          "commit": {
+            "abbreviatedOid": "efc828d"
+          },
+          "author": "gffletch",
+          "authorAssociation": "NONE",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-12-13T14:28:08Z",
+          "updatedAt": "2024-12-13T14:28:08Z",
+          "comments": [
+            {
+              "originalPosition": 13,
+              "body": "I like this framing Pieter. An Actor is a software component in the system that can perform multiple OAuth related roles (e.g. `client` , `authorization server`) within the context of this specification.",
+              "createdAt": "2024-12-13T14:28:08Z",
+              "updatedAt": "2024-12-13T14:28:08Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJubJxM6VKAu0",
+          "commit": {
+            "abbreviatedOid": "efc828d"
+          },
+          "author": "gffletch",
+          "authorAssociation": "NONE",
+          "state": "COMMENTED",
+          "body": "I not sure using a generic term like Actor to really mean a specific software component in the flow is the correct term.",
+          "createdAt": "2024-12-13T14:29:36Z",
+          "updatedAt": "2024-12-13T14:41:40Z",
+          "comments": [
+            {
+              "originalPosition": 24,
+              "body": "I'm not sure the last sentence is correct. The software component, or Actor, can perform both the `resource server` OAuth role and the `client` OAuth role.",
+              "createdAt": "2024-12-13T14:29:36Z",
+              "updatedAt": "2024-12-13T14:41:40Z"
+            },
+            {
+              "originalPosition": 33,
+              "body": "Aren't each of these software components Actor's? ",
+              "createdAt": "2024-12-13T14:30:50Z",
+              "updatedAt": "2024-12-13T14:41:40Z"
+            },
+            {
+              "originalPosition": 56,
+              "body": "I'm not sure this `actor` terminology helps as we are using it to explicitly rename just one component in the flow. Yet the Authorization Server in Domain A also acts in multiple roles but we don't label it an \"actor\".",
+              "createdAt": "2024-12-13T14:38:10Z",
+              "updatedAt": "2024-12-13T14:41:40Z"
+            },
+            {
+              "originalPosition": 61,
+              "body": "I'm not sure I understand the intent of this new paragraph. Is it to say that there are two flows by which the access_token can be retrieved?",
+              "createdAt": "2024-12-13T14:39:16Z",
+              "updatedAt": "2024-12-13T14:41:40Z"
             }
           ]
         }
