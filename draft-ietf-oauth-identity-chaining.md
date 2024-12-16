@@ -371,7 +371,7 @@ Authorization servers may act as clients too. This can be necessary because of f
 * Strict access control on resources outside the trust domain is required and enforced by authorization servers in Domain B.
 * Authorization servers in domain B require client authentication, but are unable to manage clients outside of Domain B.
 
-Under these conditions, an authorization server in one domain (Domain A) may obtain an Access Token from an authorization server in another domain (Domain B) on-behalf-of any client in Domain A. This enables clients in Domain A to access a protected resource server in Domain B. Resource servers in domain A may act as a client to the authorization server in Domain A in order to obtain an access token to access a protected resource in Domain B in order to complete a request.
+Under these conditions, an authorization server in Domain A may obtain an Access Token from an authorization server in Domain B on-behalf-of any client in Domain A. This enables clients in Domain A to access a protected resource server in Domain B. Resource servers in domain A may act as a client to the authorization server in Domain A in order to obtain an access token to access a protected resource in Domain B in order to complete a request.
 
 The authorization server may use the flows described in this specification by acting first as a client to itself to obtain an assertion grant and then act as a client to the authorization server in domain B to request an access token for protected resources in Domain B. The flow when authorization servers act as a client on-behalf of another client in it's own trust domain would look like this:
 
