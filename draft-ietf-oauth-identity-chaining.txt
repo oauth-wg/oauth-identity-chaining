@@ -5,13 +5,13 @@
 oauth                                                 A. Schwenkschuster
 Internet-Draft                                             P. Kasselmann
 Intended status: Informational                                     SPIRL
-Expires: 13 June 2025                                          K. Burgin
+Expires: 19 June 2025                                          K. Burgin
                                                                    MITRE
                                                               M. Jenkins
                                                                 NSA-CCSS
                                                              B. Campbell
                                                            Ping Identity
-                                                        10 December 2024
+                                                        16 December 2024
 
 
         OAuth Identity and Authorization Chaining Across Domains
@@ -49,7 +49,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 13 June 2025.
+   This Internet-Draft will expire on 19 June 2025.
 
 Copyright Notice
 
@@ -196,19 +196,22 @@ Table of Contents
 
    The flow illustrated in Figure 1 shows the steps the client in trust
    Domain A needs to perform to access a protected resource in trust
-   domain B.  In this flow, the client has a way to discover the
-   authorization server in Domain B and a trust relationship exists
-   between Domain A and Domain B (e.g., through federation).  It
-   includes the following:
+   domain B.  In this flow, the client is in posession of a token that
+   an authorization server will accept as part of a token exchange flow
+   as defined in Token Exchange (Section 2.3).  How the client obtained
+   this token is out of scope of this specification.  The client has a
+   way to discover the authorization server in Domain B and a trust
+   relationship exists between Domain A and Domain B (e.g., through
+   federation).  It includes the following:
 
    *  (A) The client of Domain A needs to discover the authorization
       server of Domain B.  See Authorization Server Discovery
       (Section 2.2).
 
-   *  (B) The client exchanges its token at the authorization server of
-      its own domain (Domain A) for a JWT authorization grant that can
-      be used at the authorization server in Domain B.  See Token
-      Exchange (Section 2.3).
+   *  (B) The client exchanges a token it has in its posession at the
+      authorization server of its own domain (Domain A) for a JWT
+      authorization grant that can be used at the authorization server
+      in Domain B.  See Token Exchange (Section 2.3).
 
    *  (C) The authorization server of Domain A processes the request and
       returns a JWT authorization grant that the client can use with the

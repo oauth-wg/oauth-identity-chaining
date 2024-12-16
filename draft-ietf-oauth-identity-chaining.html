@@ -1051,7 +1051,7 @@ svg :is([fill="white"], [fill^="#fff"]) {
 </tr></thead>
 <tfoot><tr>
 <td class="left">Schwenkschuster, et al.</td>
-<td class="center">Expires 13 June 2025</td>
+<td class="center">Expires 19 June 2025</td>
 <td class="right">[Page]</td>
 </tr></tfoot>
 </table>
@@ -1064,12 +1064,12 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <dd class="internet-draft">draft-ietf-oauth-identity-chaining-latest</dd>
 <dt class="label-published">Published:</dt>
 <dd class="published">
-<time datetime="2024-12-10" class="published">10 December 2024</time>
+<time datetime="2024-12-16" class="published">16 December 2024</time>
     </dd>
 <dt class="label-intended-status">Intended Status:</dt>
 <dd class="intended-status">Informational</dd>
 <dt class="label-expires">Expires:</dt>
-<dd class="expires"><time datetime="2025-06-13">13 June 2025</time></dd>
+<dd class="expires"><time datetime="2025-06-19">19 June 2025</time></dd>
 <dt class="label-authors">Authors:</dt>
 <dd class="authors">
 <div class="author">
@@ -1130,7 +1130,7 @@ svg :is([fill="white"], [fill^="#fff"]) {
         time. It is inappropriate to use Internet-Drafts as reference
         material or to cite them other than as "work in progress."<a href="#section-boilerplate.1-3" class="pilcrow">¶</a></p>
 <p id="section-boilerplate.1-4">
-        This Internet-Draft will expire on 13 June 2025.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
+        This Internet-Draft will expire on 19 June 2025.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="copyright">
@@ -1357,13 +1357,13 @@ appear in all capitals, as shown here.<a href="#section-1.1-1" class="pilcrow">�
 <figcaption><a href="#figure-1" class="selfRef">Figure 1</a>:
 <a href="#name-identity-and-authorization-c" class="selfRef">Identity and Authorization Chaining Flow</a>
           </figcaption></figure>
-<p id="section-2.1-3">The flow illustrated in Figure 1 shows the steps the client in trust Domain A needs to perform to access a protected resource in trust domain B. In this flow, the client has a way to discover the authorization server in Domain B and a trust relationship exists between Domain A and Domain B (e.g., through federation). It includes the following:<a href="#section-2.1-3" class="pilcrow">¶</a></p>
+<p id="section-2.1-3">The flow illustrated in Figure 1 shows the steps the client in trust Domain A needs to perform to access a protected resource in trust domain B. In this flow, the client is in posession of a token that an authorization server will accept as part of a token exchange flow as defined in <span><a href="#token-exchange" class="internal xref">Token Exchange</a> (<a href="#token-exchange" class="auto internal xref">Section 2.3</a>)</span>. How the client obtained this token is out of scope of this specification. The client has a way to discover the authorization server in Domain B and a trust relationship exists between Domain A and Domain B (e.g., through federation). It includes the following:<a href="#section-2.1-3" class="pilcrow">¶</a></p>
 <ul class="normal">
 <li class="normal" id="section-2.1-4.1">
             <p id="section-2.1-4.1.1">(A) The client of Domain A needs to discover the authorization server of Domain B. See <span><a href="#authorization-server-discovery" class="internal xref">Authorization Server Discovery</a> (<a href="#authorization-server-discovery" class="auto internal xref">Section 2.2</a>)</span>.<a href="#section-2.1-4.1.1" class="pilcrow">¶</a></p>
 </li>
           <li class="normal" id="section-2.1-4.2">
-            <p id="section-2.1-4.2.1">(B) The client exchanges its token at the authorization server of its own domain (Domain A) for a JWT authorization grant that can be used at the authorization server in Domain B. See <span><a href="#token-exchange" class="internal xref">Token Exchange</a> (<a href="#token-exchange" class="auto internal xref">Section 2.3</a>)</span>.<a href="#section-2.1-4.2.1" class="pilcrow">¶</a></p>
+            <p id="section-2.1-4.2.1">(B) The client exchanges a token it has in its posession at the authorization server of its own domain (Domain A) for a JWT authorization grant that can be used at the authorization server in Domain B. See <span><a href="#token-exchange" class="internal xref">Token Exchange</a> (<a href="#token-exchange" class="auto internal xref">Section 2.3</a>)</span>.<a href="#section-2.1-4.2.1" class="pilcrow">¶</a></p>
 </li>
           <li class="normal" id="section-2.1-4.3">
             <p id="section-2.1-4.3.1">(C) The authorization server of Domain A processes the request and returns a JWT authorization grant that the client can use with the authorization server of Domain B. This requires a trust relationship between Domain A and Domain B (e.g., through federation).<a href="#section-2.1-4.3.1" class="pilcrow">¶</a></p>
