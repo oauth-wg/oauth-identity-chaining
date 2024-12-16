@@ -436,8 +436,8 @@ grant_type=urn%3Aietf%3Aparams%3Aoauth%3Agrant-type%3Atoken-exchange
 
    *  *Controlling scope*: Clients MAY use the scope parameter to
       control transcribed claims (e.g. downscoping).  Authorization
-      Servers SHOULD verify that requested scopes are not higher
-      privileged than the scopes of presented subject_token.
+      Servers SHOULD verify that the requested scopes are not higher
+      privileged than the scopes of the presented subject_token.
 
    *  *Including JWT authorization grant claims*: The authorization
       server performing the assertion flow MAY leverage claims from the
