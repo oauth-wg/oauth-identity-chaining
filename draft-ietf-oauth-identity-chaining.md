@@ -306,21 +306,20 @@ This section contains two examples, demonstrating how this specification may be 
 
 ## Resource server acting as client
 
-As part of completing a request, a resource server in one domain (Domain A) may need to access a resource server in another domain (Domain B). This requires the resource server in Domain A to obtain an Access Token from an authorization server in Domain B, which may then be presented to the resource server in Domain B. A Resource server may use the flows described in this specification by assuming the role of an OAuth client when attempting to access the resource server in Domain B. Resources servers may act as clients if the following is true:
+As part of completing a request, a resource server in Domain A may need to access a resource server in Domain B. This requires the resource server in Domain A to obtain an Access Token from an authorization server in Domain B, which it may then be presented to the resource server in Domain B. A Resource server in Domain B may use the flows described in this specification by assuming the role of a client when attempting to access the resource server in Domain B. Resources servers may act as clients if the following is true:
 
-* Authorization Server B is reachable by the resource server by network and is able to perform the appropriate client authentication (if required).
 * The resource server has the ability to determine the authorization server of the protected resource outside its trust domain.
+* Authorization Server B is reachable by the resource server and is able to perform the appropriate client authentication (if required).
 
 The flow would look like this:
 
 ~~~
-+-------------+         +---------+         +-------------+ +---------+
-|Authorization|         |Resource |         |Authorization| |Protected|
-|Server       |         |Server   |         |Server       | |Resource |
-|Domain A     |         |Domain A |         |Domain B     | |Domain B |
-|             |         |acting as|         |             | |         |
-|             |         |Client   |         |             | |         |
-+-------------+         +---------+         +-------------+ +---------+
++-------------+       +---------------+     +-------------+ +---------+
+|Authorization|       |Resource Server|     |Authorization| |Protected|
+|Server       |       |Domain A       |     |Server       | |Resource |
+|Domain A     |       |(acting as     |     |Domain B     | |Domain B |
+|             |       | Client)       |     |             | |         |
++-------------+       +---------------+     +-------------+ +---------+
        |                     |                     |             |
        |                     |   (A) request protected resource  |
        |                     |      metadata                     |
@@ -352,7 +351,7 @@ The flow would look like this:
 
 The flow contains the following steps:
 
-(A) The resource server of domain A needs to access protected resource in Domain B. It requires an access token to do so which it does not possess. In this example {{I-D.ietf-oauth-resource-metadata}} is used to receive information about the authorization server which protects the resource in domain B. This step MAY be skipped if discovery is not needed and other means of discovery MAY be used. The protected resource returns its metadata along with the authorization server information.
+(A) The resource server of Domain A needs to access protected resource in Domain B. It requires an access token to do so which it does not possess. In this example {{I-D.ietf-oauth-resource-metadata}} is used to receive information about the authorization server which protects the resource in domain B. This step MAY be skipped if discovery is not needed and other means of discovery MAY be used. The protected resource returns its metadata along with the authorization server information.
 
 (B) Now, after the resource server has identified the authorization server for Domain B, the resource server requests a JWT authorization grant for the authorization server in Domain B from its own authorization server (Domain A). This happens via the token exchange protocol.
 
