@@ -786,7 +786,7 @@ Appendix C.  Acknowledgements
 Appendix D.  Document History
 
    [[ To be removed from the final specification ]] -latest * Added two
-   more use cases
+   more use cases * Editorial updates
 
    -02
 
