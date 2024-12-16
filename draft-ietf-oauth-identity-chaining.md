@@ -441,6 +441,7 @@ The editors would like to thank Joe Jubinski, Justin Richer, Aaron Parecki, Dean
 \[\[ To be removed from the final specification ]]
 -latest
 * Added two more use cases
+* Editorial updates
 
 -02
 
