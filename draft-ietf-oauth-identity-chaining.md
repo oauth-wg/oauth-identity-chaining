@@ -116,11 +116,11 @@ The identity and authorization chaining flow outlined below describes how a comb
 ~~~~
 {: title='Identity and Authorization Chaining Flow'}
 
-The flow illustrated in Figure 1 shows the steps the client in trust Domain A needs to perform to access a protected resource in trust domain B. In this flow, the client has a way to discover the authorization server in Domain B and a trust relationship exists between Domain A and Domain B (e.g., through federation). It includes the following:
+The flow illustrated in Figure 1 shows the steps the client in trust Domain A needs to perform to access a protected resource in trust domain B. In this flow, the client is in posession of a token that an authorization server will accept as part of a token exchange flow as defined in [Token Exchange](#token-exchange). How the client obtained this token is out of scope of this specification. The client has a way to discover the authorization server in Domain B and a trust relationship exists between Domain A and Domain B (e.g., through federation). It includes the following:
 
 * (A) The client of Domain A needs to discover the authorization server of Domain B. See [Authorization Server Discovery](#authorization-server-discovery).
 
-* (B) The client exchanges its token at the authorization server of its own domain (Domain A) for a JWT authorization grant that can be used at the authorization server in Domain B. See [Token Exchange](#token-exchange).
+* (B) The client exchanges a token it has in its posession at the authorization server of its own domain (Domain A) for a JWT authorization grant that can be used at the authorization server in Domain B. See [Token Exchange](#token-exchange).
 
 * (C) The authorization server of Domain A processes the request and returns a JWT authorization grant that the client can use with the authorization server of Domain B. This requires a trust relationship between Domain A and Domain B (e.g., through federation).
 
