@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2024-12-15T00:23:31.883448+00:00",
+  "timestamp": "2024-12-17T00:21:15.667254+00:00",
   "repo": "oauth-wg/oauth-identity-chaining",
   "labels": [
     {
@@ -783,7 +783,7 @@
       "labels": [],
       "body": "Currently the text says \"its token\" without giving any guidance on where this token came from or what kind of token it is. (ID token? access token? refresh token?) While not being prescriptive about the type of token is useful to enable more use cases, there should at least be some clues about how this token was obtained in the first place.",
       "createdAt": "2024-02-07T19:44:36Z",
-      "updatedAt": "2024-12-06T16:34:53Z",
+      "updatedAt": "2024-12-16T13:22:44Z",
       "closedAt": null,
       "comments": [
         {
@@ -1405,6 +1405,22 @@
       "body": "@PieterKas mentioned that it may just be a non-defined OAuth client, not a resource server and not an authorization server. While the abstract flow stays the same we should maybe mention this somewhere in the text as a possible deployment.",
       "createdAt": "2024-12-09T15:00:08Z",
       "updatedAt": "2024-12-09T15:00:08Z",
+      "closedAt": null,
+      "comments": []
+    },
+    {
+      "number": 122,
+      "id": "I_kwDOJubJxM6jcbjk",
+      "title": "Review usage of \"one domain\" and \"another domain\"",
+      "url": "https://github.com/oauth-wg/oauth-identity-chaining/issues/122",
+      "state": "OPEN",
+      "author": "PieterKas",
+      "authorAssociation": "CONTRIBUTOR",
+      "assignees": [],
+      "labels": [],
+      "body": "Editorial review on the use of language of \"one domain\" and \"another domain\" and replacing it with \"Domain A\" and \"Domain B\" for clarity and consistency.",
+      "createdAt": "2024-12-16T11:37:33Z",
+      "updatedAt": "2024-12-16T11:37:33Z",
       "closedAt": null,
       "comments": []
     }
@@ -5553,24 +5569,26 @@
       "id": "PR_kwDOJubJxM6EWixX",
       "title": "Clarifying origin of initial client token",
       "url": "https://github.com/oauth-wg/oauth-identity-chaining/pull/114",
-      "state": "OPEN",
+      "state": "MERGED",
       "author": "PieterKas",
       "authorAssociation": "CONTRIBUTOR",
       "assignees": [],
       "labels": [],
       "body": "Proposed text to clarify what \"its token\" might be and where it comes from as raised in issue #75 by @aaronpk",
       "createdAt": "2024-12-06T16:59:58Z",
-      "updatedAt": "2024-12-10T10:06:00Z",
+      "updatedAt": "2024-12-16T12:55:55Z",
       "baseRepository": "oauth-wg/oauth-identity-chaining",
       "baseRefName": "main",
       "baseRefOid": "6490de847b5c83cd8f1ce56f6a6ff1ade881ec41",
       "headRepository": "oauth-wg/oauth-identity-chaining",
       "headRefName": "PieterKas-patch-4",
       "headRefOid": "f95b62baccc6b0b149c7076f268ddecc6cae285e",
-      "closedAt": null,
-      "mergedAt": null,
-      "mergedBy": null,
-      "mergeCommit": null,
+      "closedAt": "2024-12-16T12:55:53Z",
+      "mergedAt": "2024-12-16T12:55:53Z",
+      "mergedBy": "PieterKas",
+      "mergeCommit": {
+        "oid": "4e36abe600440f1a85871295ccad954e0790d5ea"
+      },
       "comments": [],
       "reviews": [
         {
@@ -5584,6 +5602,19 @@
           "body": "Thank you! This change makes it much clearer and doesn't leave it to the interpretation of the reader what \"its token\" is.",
           "createdAt": "2024-12-10T10:06:00Z",
           "updatedAt": "2024-12-10T10:06:00Z",
+          "comments": []
+        },
+        {
+          "id": "PRR_kwDOJubJxM6VSQdV",
+          "commit": {
+            "abbreviatedOid": "f95b62b"
+          },
+          "author": "kburgin3",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2024-12-15T15:56:22Z",
+          "updatedAt": "2024-12-15T15:56:22Z",
           "comments": []
         }
       ]
@@ -5600,7 +5631,7 @@
       "labels": [],
       "body": "Attempt at addressing issue #107",
       "createdAt": "2024-12-06T17:20:11Z",
-      "updatedAt": "2024-12-06T18:39:13Z",
+      "updatedAt": "2024-12-16T13:21:03Z",
       "baseRepository": "oauth-wg/oauth-identity-chaining",
       "baseRefName": "main",
       "baseRefOid": "6490de847b5c83cd8f1ce56f6a6ff1ade881ec41",
@@ -5611,7 +5642,15 @@
       "mergedAt": null,
       "mergedBy": null,
       "mergeCommit": null,
-      "comments": [],
+      "comments": [
+        {
+          "author": "PieterKas",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "@kburgin3 I corrected they Typos, can you approve?",
+          "createdAt": "2024-12-16T13:21:02Z",
+          "updatedAt": "2024-12-16T13:21:02Z"
+        }
+      ],
       "reviews": [
         {
           "id": "PRR_kwDOJubJxM6UJgF0",
@@ -5646,24 +5685,26 @@
       "id": "PR_kwDOJubJxM6EXKP1",
       "title": "Editorial change in Claims Transcription",
       "url": "https://github.com/oauth-wg/oauth-identity-chaining/pull/116",
-      "state": "OPEN",
+      "state": "MERGED",
       "author": "PieterKas",
       "authorAssociation": "CONTRIBUTOR",
       "assignees": [],
       "labels": [],
       "body": "",
       "createdAt": "2024-12-06T18:43:02Z",
-      "updatedAt": "2024-12-10T10:07:58Z",
+      "updatedAt": "2024-12-16T12:57:46Z",
       "baseRepository": "oauth-wg/oauth-identity-chaining",
       "baseRefName": "main",
       "baseRefOid": "6490de847b5c83cd8f1ce56f6a6ff1ade881ec41",
       "headRepository": "oauth-wg/oauth-identity-chaining",
       "headRefName": "PieterKas-patch-6",
       "headRefOid": "325a500c73cc725d76f3b78a987ba83dd692c6c8",
-      "closedAt": null,
-      "mergedAt": null,
-      "mergedBy": null,
-      "mergeCommit": null,
+      "closedAt": "2024-12-16T12:57:43Z",
+      "mergedAt": "2024-12-16T12:57:43Z",
+      "mergedBy": "PieterKas",
+      "mergeCommit": {
+        "oid": "575184d1170fdda7a08c47387b7006cf3cae93c6"
+      },
       "comments": [],
       "reviews": [
         {
@@ -5706,7 +5747,7 @@
       "labels": [],
       "body": "There needs to be a RS in Domain A for the last step to make sense (sending the access token to RS B) in the case that AS A is the Abstract Client",
       "createdAt": "2024-12-08T18:41:55Z",
-      "updatedAt": "2024-12-14T15:32:05Z",
+      "updatedAt": "2024-12-16T15:42:13Z",
       "baseRepository": "oauth-wg/oauth-identity-chaining",
       "baseRefName": "main",
       "baseRefOid": "6490de847b5c83cd8f1ce56f6a6ff1ade881ec41",
@@ -5766,6 +5807,20 @@
           "body": "> A picture may paint a thousand words, but it can be challenging to make a single picture paint the same thousand words for everyone. I think maybe using a detailed flow diagram to convey what's in the draft before having introduced the new ideas is asking it to do too much. I might suggest removing the diagram entirely. Here's some suggested Overview text that doesn't refer to a diagram. I expect its not quite what anyone wants, but it's simpler.\r\n> \r\n> =-=-=-=-=-=-= This document describes how to use OAuth exchanges to effect RS-to-RS requests, where the RSes are subject to separate and independent authorities. No assumption is made regarding the trust relationships between the RSes (or their associated ASes) until certain implementation details are decided. However, in every case the identity of the original requester is carried through to the RS that renders the requested data.\r\n> \r\n> The general flow is as follows:\r\n> \r\n> o A client requests a resource from an RS in Domain A (RS-A), as in a normal OAuth flow.\r\n> \r\n> o To complete the request, RS-A needs data from an RS in Domain B (RS-B). That is, RS-A must act as a Client to RS-B. It must obtain a token to complete this request.\r\n> \r\n> o Having obtained a valid token, RS-A requests data from RS-B.\r\n> \r\n> The details of the token request in the second bullet will depend on the trust relationship between the two domains. Two cases are summarized here, and presented in detail in appendixes.\r\n> \r\n> (1) RSes can request tokens from ASes in multiple domains. > RS-A asks AS-A for a token to introduce RS-A to AS-B, and receives one. > RS-A presents that token to AS-B, and requests a token with RS-A as requester and RS-B as responder, and receives one. > RS-A presents the subsequent token to RS-B and obtains data.\r\n> \r\n> (2) RSes can request tokens only from the AS in its own domain. > RS-A asks AS-A for a token to access RS-B. > AS-A asks AS-B for a token with RS-A as requester and RS-B as responder, and receives one. > AS-A returns the subsequent token to RS-A. > RS-A presents the subsequent token to RS-B and obtains data.\r\n> \r\n> The following sections define the tokens, grants, and claims to acheive this flow. Proper understanding and implementation of this document depends on familiarity with OAuth 2.0 Token Exchange [RFC8693] and JWT Profile for OAuth 2.0 Client Authentication and Authorization Grants [RFC7523] etc etc. =-=-=-=-=-=-=\r\n\r\nI also like the idea of removing Figure 1 in the Overview section. To get it right is too complicated to begin the doc so just leave the steps (A) - (F) in text and point to the appendix for specific use cases (RS as client, AS as client)",
           "createdAt": "2024-12-14T15:32:04Z",
           "updatedAt": "2024-12-14T15:32:04Z"
+        },
+        {
+          "author": "PieterKas",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "I disagree, the figure used to illustrate the flows is often the first thing a reader looks at to try and get a sense of what the document is trying to accomplish and to get a sense of the flows. \r\n\r\nFigure 1 in this draft should represent the flow described in the normative section of the draft. The normative section of the draft describes the interaction between a client in domain A, accessing a resource server in domain B. The current Figure 1 already describes this flow.\r\n\r\nThe non-normative appendix describes use cases where a resources server in Domain A needs to access a resource server in Domain B. There are two variants - with the RS in domain A accessing the AS in domain B directly, and the AS in domain A acting as proxy for all clients (including the RS) in domain A. We have diagrams to explain those flows, and we should make changes to those diagrams to highlight any peculiarities of the those use cases. \r\n\r\n",
+          "createdAt": "2024-12-16T13:35:23Z",
+          "updatedAt": "2024-12-16T13:35:23Z"
+        },
+        {
+          "author": "bergtau",
+          "authorAssociation": "NONE",
+          "body": "I'm not against the diagram per se. I'm now reading a TLS draft, the Overview of which refers to data structures defined within the draft itself. I'm finding that I have to drill down into the body of the draft to make sense of the Overview. I got the sense that the same problem was coming up with this diagram. ",
+          "createdAt": "2024-12-16T15:42:12Z",
+          "updatedAt": "2024-12-16T15:42:12Z"
         }
       ],
       "reviews": []
@@ -5782,13 +5837,13 @@
       "labels": [],
       "body": "Modified diagram and added additional text to describe the resource server acting as a client.\r\n\r\n",
       "createdAt": "2024-12-09T11:29:22Z",
-      "updatedAt": "2024-12-14T15:28:50Z",
+      "updatedAt": "2024-12-16T13:50:29Z",
       "baseRepository": "oauth-wg/oauth-identity-chaining",
       "baseRefName": "main",
       "baseRefOid": "6490de847b5c83cd8f1ce56f6a6ff1ade881ec41",
       "headRepository": "oauth-wg/oauth-identity-chaining",
       "headRefName": "PieterKas-patch-7",
-      "headRefOid": "29f89394ce8de7008ab8a2c3b433839ad36f952f",
+      "headRefOid": "c8af9785b5d33300c13429f0d1ddf13756a54801",
       "closedAt": null,
       "mergedAt": null,
       "mergedBy": null,
@@ -5834,6 +5889,66 @@
               "updatedAt": "2024-12-14T15:28:50Z"
             }
           ]
+        },
+        {
+          "id": "PRR_kwDOJubJxM6VSP7k",
+          "commit": {
+            "abbreviatedOid": "29f8939"
+          },
+          "author": "kburgin3",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-12-15T15:46:24Z",
+          "updatedAt": "2024-12-15T15:46:24Z",
+          "comments": [
+            {
+              "originalPosition": 5,
+              "body": "Also, in the sentence that starts 'A Resource server may use...', we are talking about the resource server in Domain A, so suggest changing to 'The resource server in Domain A may use...'\r\n\r\nAnd the last sentence, should we say 'OAuth clients' instead of just 'clients' since that's what we said in the previous sentence?",
+              "createdAt": "2024-12-15T15:46:24Z",
+              "updatedAt": "2024-12-15T15:46:24Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJubJxM6VYjBe",
+          "commit": {
+            "abbreviatedOid": "29f8939"
+          },
+          "author": "PieterKas",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-12-16T13:49:16Z",
+          "updatedAt": "2024-12-16T13:49:16Z",
+          "comments": [
+            {
+              "originalPosition": 24,
+              "body": "Update made/box widened.",
+              "createdAt": "2024-12-16T13:49:16Z",
+              "updatedAt": "2024-12-16T13:49:17Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJubJxM6VYj2L",
+          "commit": {
+            "abbreviatedOid": "29f8939"
+          },
+          "author": "PieterKas",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-12-16T13:50:29Z",
+          "updatedAt": "2024-12-16T13:50:29Z",
+          "comments": [
+            {
+              "originalPosition": 5,
+              "body": "changes made\r\n\r\nSince we never explicitly reference the OAuth client or introduce any clients that are not OAuth clients, I removed the reference to an OAuth client and simply used client as we do throughout the draft.",
+              "createdAt": "2024-12-16T13:50:29Z",
+              "updatedAt": "2024-12-16T13:50:29Z"
+            }
+          ]
         }
       ]
     },
@@ -5849,18 +5964,33 @@
       "labels": [],
       "body": "Added text and diagrams to clarify Authorization-server-as-aclient flows.",
       "createdAt": "2024-12-09T11:44:27Z",
-      "updatedAt": "2024-12-14T15:19:20Z",
+      "updatedAt": "2024-12-16T13:19:34Z",
       "baseRepository": "oauth-wg/oauth-identity-chaining",
       "baseRefName": "main",
       "baseRefOid": "6490de847b5c83cd8f1ce56f6a6ff1ade881ec41",
       "headRepository": "oauth-wg/oauth-identity-chaining",
       "headRefName": "PieterKas-patch-8",
-      "headRefOid": "06e51bb63600eeff88ed7880e207e55699d5f2f2",
+      "headRefOid": "349721601c9755cdb2b2a3e0390aa83a205ce91a",
       "closedAt": null,
       "mergedAt": null,
       "mergedBy": null,
       "mergeCommit": null,
-      "comments": [],
+      "comments": [
+        {
+          "author": "kburgin3",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "Why do we say 'resource server' in Domain A and 'protected resource' in Domain B? If the resource server in Domain B needs to chain again (to Domain C) it will become a resource server in the current terminology",
+          "createdAt": "2024-12-15T15:43:02Z",
+          "updatedAt": "2024-12-15T15:43:02Z"
+        },
+        {
+          "author": "PieterKas",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "> Why do we say 'resource server' in Domain A and 'protected resource' in Domain B? If the resource server in Domain B needs to chain again (to Domain C) it will become a resource server in the current terminology\r\n\r\nThe only relevant interaction is when crossing from one domain to the next. We use domain A/Domain B to distinguish between those. \r\n\r\nIf Domain B needs to go to Domain C, Domain B would effectively become Domain A and at a protocol and interaction level everything remains the same. The key is that we are describing what you do when you cross a trust boundary, and you do it the same way, whenever you cross that trust boundary.",
+          "createdAt": "2024-12-16T13:19:33Z",
+          "updatedAt": "2024-12-16T13:19:33Z"
+        }
+      ],
       "reviews": [
         {
           "id": "PRR_kwDOJubJxM6UhKKp",
@@ -6007,6 +6137,26 @@
               "updatedAt": "2024-12-14T15:22:54Z"
             }
           ]
+        },
+        {
+          "id": "PRR_kwDOJubJxM6VXZAD",
+          "commit": {
+            "abbreviatedOid": "3497216"
+          },
+          "author": "PieterKas",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-12-16T11:35:32Z",
+          "updatedAt": "2024-12-16T11:35:32Z",
+          "comments": [
+            {
+              "originalPosition": 16,
+              "body": "Agreed - made the change. We use the \"one domain\"/\"another domain\" language throughout the doc. I created another issue to review usage and consider replacing them with Domain A/Domain B language.",
+              "createdAt": "2024-12-16T11:35:32Z",
+              "updatedAt": "2024-12-16T11:35:32Z"
+            }
+          ]
         }
       ]
     },
@@ -6022,7 +6172,7 @@
       "labels": [],
       "body": "The term \"Client\" or \"abstract client\" is very confusing. Based on the point of view and context the term \"client\" can mean very different things.\n\n|Point of view|Context|Who is \"client\"?|\n|----|-----|-----|\n|AS Domain A|OAuth|Any OAuth client|\n|AS Domain A|ID chaining|Either itself, a resource server or any arbitrary OAuth Client|\n|RS Domain A|OAuth|Itself or another client that is calling it|\n|RS Domain A|ID chaining|Itself or its AS|\n|AS Domain B|-|AS or RS in Domain A|\n|RS Domain B|OAuth|Itself|\n|RS Domain B|ID chaining|AS or RS in Domain A|\n\nIf we would continue with the term \"client\" we would need to always specify exactly from what POV and context. Thus, introducing the role of \"actor\".",
       "createdAt": "2024-12-10T11:29:29Z",
-      "updatedAt": "2024-12-14T15:15:12Z",
+      "updatedAt": "2024-12-15T15:54:39Z",
       "baseRepository": "oauth-wg/oauth-identity-chaining",
       "baseRefName": "main",
       "baseRefOid": "c77faf6c177d01fdf7b862bf5b974b9a3f0a19e3",
@@ -6235,6 +6385,68 @@
               "updatedAt": "2024-12-13T14:41:40Z"
             }
           ]
+        },
+        {
+          "id": "PRR_kwDOJubJxM6VSQYu",
+          "commit": {
+            "abbreviatedOid": "c65a019"
+          },
+          "author": "kburgin3",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-12-15T15:54:39Z",
+          "updatedAt": "2024-12-15T15:54:39Z",
+          "comments": [
+            {
+              "originalPosition": 53,
+              "body": "> I think there might be other constraints on the authorization grant beyond scoping the audience (which seems sensible). The concern I have with only addressing the audience is that each AS may have some specific claims it may be looking for in an authorization grant. Happy to hear from others that I am unduly concerned.\r\n\r\nDo you have specific other claims that should be added?\r\n\r\nAlso, 'JWT authorization grant  that is audienced to the' sounds weird. How about '...JWT authorization grant that is **audience-restricted** to the...'?",
+              "createdAt": "2024-12-15T15:54:39Z",
+              "updatedAt": "2024-12-15T15:54:39Z"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 123,
+      "id": "PR_kwDOJubJxM6FWpcn",
+      "title": "Update Document History",
+      "url": "https://github.com/oauth-wg/oauth-identity-chaining/pull/123",
+      "state": "MERGED",
+      "author": "PieterKas",
+      "authorAssociation": "CONTRIBUTOR",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2024-12-16T13:00:13Z",
+      "updatedAt": "2024-12-16T13:03:14Z",
+      "baseRepository": "oauth-wg/oauth-identity-chaining",
+      "baseRefName": "main",
+      "baseRefOid": "575184d1170fdda7a08c47387b7006cf3cae93c6",
+      "headRepository": "oauth-wg/oauth-identity-chaining",
+      "headRefName": "PieterKas-patch-2",
+      "headRefOid": "f1d4cd9dffd285aa2959d7bbb21879d3094187f5",
+      "closedAt": "2024-12-16T13:03:12Z",
+      "mergedAt": "2024-12-16T13:03:11Z",
+      "mergedBy": "PieterKas",
+      "mergeCommit": {
+        "oid": "36cc6a9e9eb7dc5bf98db2f5845425afa92ffe74"
+      },
+      "comments": [],
+      "reviews": [
+        {
+          "id": "PRR_kwDOJubJxM6VYIk6",
+          "commit": {
+            "abbreviatedOid": "f1d4cd9"
+          },
+          "author": "arndt-s",
+          "authorAssociation": "MEMBER",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2024-12-16T13:00:57Z",
+          "updatedAt": "2024-12-16T13:00:57Z",
+          "comments": []
         }
       ]
     }
