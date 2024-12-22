@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2024-12-19T00:20:47.906561+00:00",
+  "timestamp": "2024-12-22T00:21:39.140093+00:00",
   "repo": "oauth-wg/oauth-identity-chaining",
   "labels": [
     {
@@ -1359,7 +1359,7 @@
       "labels": [],
       "body": "Issue to track email sent to the authors\r\n\r\n> Hello All,\r\nI would like to propose below suggestion for  https://datatracker.ietf.org/doc/html/draft-ietf-oauth-identity-chaining\r\nSection 2.3.1 Token Exchange Request\r\nAs per my understanding the Token exchange request in this proposed RFC will always expect JWT token (urn:ietf:params:oauth:token-type:jwt) as clearly mentioned in the \u2018section 2.3.4 Example\u2019 with Figure 3: Token exchange response with claim \u2018issued_token_type\u2019 and also mentioned in section 2.4.1 Access Token Request (where only JWT token/assertion is sent to Authorization Server in Domain B as Authorization grant) .\r\nHence my suggestion is to enforce it in the Token exchange request itself (as REQUIRED) parameter by using the \u2018requested_token_type\u2019 parameter of OAuth 2.0 Token Exchange RFC 8693 section 2.1 with value \u2018urn:ietf:params:oauth:token-type:jwt\u2019 as per section 3 of RFC 8693 (OAuth 2.0 Token Exchange). This could prevent the Authorization server in Domain A to respond with another other type of tokens/assertions (like access_token , refresh_token , id_token , saml1 , saml2 as other possible values as per section 3 of RFC 8693 OAuth 2.0 Token Exchange) by mistake or other reasons, which could break this (draft) specification inadvertently.\r\nBest Regards,\r\nRandip Malakar\r\nSTMicroelectronics",
       "createdAt": "2024-11-13T14:54:38Z",
-      "updatedAt": "2024-12-10T14:59:54Z",
+      "updatedAt": "2024-12-19T17:05:41Z",
       "closedAt": null,
       "comments": [
         {
@@ -1389,6 +1389,13 @@
           "body": "Good catch @randipmalakar. I was looking at RFC 7523 to see if a token type was defined there that might be more specific that we can use, but you are right, it's a grant type, not a token type. \r\n\r\nReading a bit on, there is section 8 which defines urn:ietf:params:oauth:client-assertion-type:jwt-bearer - not a token type, but to be used when presenting the assertion https://datatracker.ietf.org/doc/html/rfc7523#section-8.2\r\n\r\nSo, it may well be that our best option here is urn:ietf:params:oauth:token-type:jwt unless we define a new token type. Immediate pros that come to mind is it would be more specific and less overloaded. The con would be that it is a new token type and would delay or impede adoption. I would like to hear from others on whether urn:ietf:params:oauth:token-type:jwt is a sufficient restriction, or if we need to be more specific. ",
           "createdAt": "2024-12-10T14:35:31Z",
           "updatedAt": "2024-12-10T14:59:54Z"
+        },
+        {
+          "author": "bc-pi",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "requested_token_type can be used now but making it required is IMHO a non starter ",
+          "createdAt": "2024-12-19T17:05:40Z",
+          "updatedAt": "2024-12-19T17:05:40Z"
         }
       ]
     },
