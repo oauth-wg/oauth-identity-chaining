@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2025-01-05T00:21:35.073033+00:00",
+  "timestamp": "2025-01-07T00:21:32.455957+00:00",
   "repo": "oauth-wg/oauth-identity-chaining",
   "labels": [
     {
@@ -1427,9 +1427,24 @@
       "labels": [],
       "body": "Editorial review on the use of language of \"one domain\" and \"another domain\" and replacing it with \"Domain A\" and \"Domain B\" for clarity and consistency.",
       "createdAt": "2024-12-16T11:37:33Z",
-      "updatedAt": "2024-12-16T11:37:33Z",
+      "updatedAt": "2025-01-06T17:04:31Z",
       "closedAt": null,
-      "comments": []
+      "comments": [
+        {
+          "author": "kburgin3",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "> Editorial review on the use of language of \"one domain\" and \"another domain\" and replacing it with \"Domain A\" and \"Domain B\" for clarity and consistency.\r\n\r\nI'm in favor of this",
+          "createdAt": "2025-01-06T15:39:30Z",
+          "updatedAt": "2025-01-06T15:39:30Z"
+        },
+        {
+          "author": "PieterKas",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "I will prepare a PR :)",
+          "createdAt": "2025-01-06T17:04:30Z",
+          "updatedAt": "2025-01-06T17:04:30Z"
+        }
+      ]
     }
   ],
   "pulls": [
