@@ -58,7 +58,7 @@ informative:
 
 --- abstract
 
-This specification defines a mechanism to preserve identity information and federate authorization across trust domains that use the OAuth 2.0 Framework.
+This specification defines a mechanism to preserve identity and authorization information across trust domains that use the OAuth 2.0 Framework.
 
 --- middle
 
@@ -116,11 +116,11 @@ The identity and authorization chaining flow outlined below describes how a comb
 ~~~~
 {: title='Identity and Authorization Chaining Flow'}
 
-The flow illustrated in Figure 1 shows the steps the client in trust Domain A needs to perform to access a protected resource in trust domain B. In this flow, the client has a way to discover the authorization server in Domain B and a trust relationship exists between Domain A and Domain B (e.g., through federation). It includes the following:
+The flow illustrated in Figure 1 shows the steps the client in trust Domain A needs to perform to access a protected resource in trust domain B. In this flow, the client is in posession of a token that an authorization server will accept as part of a token exchange flow as defined in [Token Exchange](#token-exchange). How the client obtained this token is out of scope of this specification. The client has a way to discover the authorization server in Domain B and a trust relationship exists between Domain A and Domain B (e.g., through federation). It includes the following:
 
 * (A) The client of Domain A needs to discover the authorization server of Domain B. See [Authorization Server Discovery](#authorization-server-discovery).
 
-* (B) The client exchanges its token at the authorization server of its own domain (Domain A) for a JWT authorization grant that can be used at the authorization server in Domain B. See [Token Exchange](#token-exchange).
+* (B) The client exchanges a token it has in its posession at the authorization server of its own domain (Domain A) for a JWT authorization grant that can be used at the authorization server in Domain B. See [Token Exchange](#token-exchange).
 
 * (C) The authorization server of Domain A processes the request and returns a JWT authorization grant that the client can use with the authorization server of Domain B. This requires a trust relationship between Domain A and Domain B (e.g., through federation).
 
@@ -128,7 +128,7 @@ The flow illustrated in Figure 1 shows the steps the client in trust Domain A ne
 
 * (E) Authorization server of Domain B validates the JWT authorization grant and returns an access token.
 
-* (F) The client now possesses an access token to access the protected resource in Domain B.
+* (F) The client in Domain A uses the access token received from the authorization server in Domain B to access the protected resource in Domain B.
 
 ## Authorization Server Discovery
 This specification does not define authorization server discovery. A client MAY maintain a static mapping or use other means to identify the authorization server. The `authorization_servers` property in {{I-D.ietf-oauth-resource-metadata}} MAY be used.
@@ -265,7 +265,7 @@ Authorization servers MAY transcribe claims when either producing JWT authorizat
 
 * **Transcribing the subject identifier**: Subject identifier can differ between the parties involved. For instance: A user is known at domain A by "johndoe@a.org" but in domain B by "doe.john@b.org". The mapping from one identifier to the other MAY either happen in the token exchange step and the updated identifier is reflected in returned JWT authorization grant or in the assertion step where the updated identifier would be reflected in the access token. To support this both authorization servers MAY add, change or remove claims as described above.
 * **Selective disclosure**: Authorization servers MAY remove or hide certain claims due to privacy requirements or reduced trust towards the targeting trust domain. To hide and enclose claims {{I-D.ietf-oauth-selective-disclosure-jwt}} MAY be used.
-* **Controlling scope**: Clients MAY use the scope parameter to control transcribed claims (e.g. downscoping). Authorization Servers SHOULD verify that requested scopes are not higher privileged than the scopes of presented subject_token.
+* **Controlling scope**: Clients MAY use the scope parameter to control transcribed claims (e.g. downscoping). Authorization Servers SHOULD verify that the requested scopes are not higher privileged than the scopes of the presented subject_token.
 * **Including JWT authorization grant claims**: The authorization server performing the assertion flow MAY leverage claims from the presented JWT authorization grant and include them in the returned access token. The populated claims SHOULD be namespaced or validated to prevent the injection of invalid claims.
 
 The representation of transcribed claims and their format is not defined in this specification.
@@ -444,8 +444,11 @@ The editors would like to thank Joe Jubinski, Justin Richer, Aaron Parecki, Dean
 
 \[\[ To be removed from the final specification ]]
 -latest
-* Added two more use cases
 * Clarified diagrams and description of authorization server acting as a client.
+
+-03
+
+* Editorial updates
 
 -02
 
