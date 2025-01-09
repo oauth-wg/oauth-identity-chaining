@@ -366,18 +366,22 @@ The flow contains the following steps:
 
 Authorization servers may act as clients too. This can be necessary because of following reasons:
 
-* Resource servers may not have knowledge of authorization servers.
-* Resource servers may not have network access to other authorization servers.
-* A strict access control on resources outside the trust domain is required and enforced by authorization servers.
-* Authorization servers require client authentication. Managing clients for resource servers outside of the trust domain is not intended.
+* Clients in Domain A may not have knowledge of authorization servers in Domain B.
+* Clients in domain A may not have network access to other authorization servers in Domain B.
+* Strict access control on resources outside the trust domain is required and enforced by authorization servers in Domain B.
+* Authorization servers in domain B require client authentication, but are unable to manage clients outside of Domain B.
 
-The flow when authorization servers act as client would look like this:
+Under these conditions, an authorization server in Domain A may obtain an Access Token from an authorization server in Domain B on-behalf-of any client in Domain A. This enables clients in Domain A to access a protected resource server in Domain B. Resource servers in domain A may act as a client to the authorization server in Domain A in order to obtain an access token to access a protected resource in Domain B in order to complete a request.
+
+The authorization server may use the flows described in this specification by acting first as a client to itself to obtain an assertion grant and then act as a client to the authorization server in domain B to request an access token for protected resources in Domain B. The flow when authorization servers act as a client on-behalf of another client in it's own trust domain would look like this:
 
 ~~~
 +--------+          +-------------+         +-------------+ +---------+
-|Resource|          |Authorization|         |Authorization| |Protected|
-|Server  |          |Server       |         |Server       | |Resource |
+|Client  |          |Authorization|         |Authorization| |Protected|
+|        |          |Server       |         |Server       | |Resource |
 |Domain A|          |Domain A     |         |Domain B     | |Domain B |
+|        |          |(acting as   |         |             | |         |
+|        |          |client)      |         |             | |         |
 +--------+          +-------------+         +-------------+ +---------+
     |                      |                       |             |
     | (A) request or       |                       |             |
@@ -419,19 +423,19 @@ The flow when authorization servers act as client would look like this:
 
 The flow contains the following steps:
 
-(A) The resource server of Domain A requests a token for the protected resource in Domain B from the authorization server in Domain A. This specification does not cover this step. A profile of Token Exchange {{RFC8693}} may be used.
+(A) The client in Domain A requests a token for the protected resource in Domain B from the authorization server in Domain A. This specification does not define this step. A profile of Token Exchange {{RFC8693}} may be used.
 
-(B) The authorization server (of Domain A) determines the authorization server (of Domain B). This could have been passed by the client, is statically maintained or dynamically resolved.
+(B) The authorization server of Domain A determines the authorization server of Domain B. This could have been passed by the client, is statically maintained or dynamically resolved.
 
-(C) Once the authorization server is determined a JWT authorization grant is issued internally. This reflects to [Token exchange](#token-exchange) of this specification and can be seen as an "internal token exchange".
+(C) Once the authorization server in Domain B is determined, the authorization server in Domain A issues a JWT authorization grant to itself. This reflects to [Token exchange](#token-exchange) of this specification and can be seen as an "internal token exchange".
 
-(D) The issued JWT authorization grant is presented to the authorization server of Domain B. This presentation happens between the authorization servers and authorization server A may be required to perform client authentication while doing so.
+(D) The authorization server in Domain A acts as a client and presents the JWT authorization grant to the authorization server of Domain B. This presentation happens between the authorization servers. Authorization server A may be required to perform client authentication while doing so. This reflects to [See [Access Token Request](#access-token-request)] of this specification.
 
-(E) The authorization server of Domain B returns an access token for access to the protected resource in Domain B to the authorization server in Domain A.
+(E) The authorization server of Domain B returns an access token for the protected resource in Domain B to the authorization server in Domain A.
 
-(F) The authorization server of Domain A returns that access token to the resource server in Domain A.
+(F) The authorization server of Domain A returns the access token to the client in Domain A.
 
-(G) The resource server in Domain A uses the received access token to access the protected resource in Domain B.
+(G) The client in Domain A uses the received access token to access the protected resource in Domain B.
 
 # Acknowledgements {#Acknowledgements}
 The editors would like to thank Joe Jubinski, Justin Richer, Aaron Parecki, Dean H. Saxe, and others (please let us know, if you've been mistakenly omitted) for their valuable input, feedback and general support of this work.
@@ -440,7 +444,10 @@ The editors would like to thank Joe Jubinski, Justin Richer, Aaron Parecki, Dean
 
 \[\[ To be removed from the final specification ]]
 -latest
-* Added two more use cases
+* Clarified diagrams and description of authorization server acting as a client.
+
+-03
+
 * Editorial updates
 
 -02
