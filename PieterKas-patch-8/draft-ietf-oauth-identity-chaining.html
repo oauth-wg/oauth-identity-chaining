@@ -11,21 +11,21 @@
 <meta content="Mike Jenkins" name="author">
 <meta content="Brian Campbell" name="author">
 <meta content="
-       This specification defines a mechanism to preserve identity information and federate authorization across trust domains that use the OAuth 2.0 Framework. 
+       This specification defines a mechanism to preserve identity and authorization information across trust domains that use the OAuth 2.0 Framework. 
     " name="description">
 <meta content="xml2rfc 3.25.0" name="generator">
 <meta content="draft-ietf-oauth-identity-chaining-latest" name="ietf.draft">
 <!-- Generator version information:
   xml2rfc 3.25.0
-    Python 3.12.7
+    Python 3.12.8
     ConfigArgParse 1.7
     google-i18n-address 3.1.1
     intervaltree 3.1.0
-    Jinja2 3.1.4
+    Jinja2 3.1.5
     lxml 5.3.0
     platformdirs 4.3.6
-    pycountry 22.3.5
-    PyYAML 6.0.1
+    pycountry 24.6.1
+    PyYAML 6.0.2
     requests 2.32.3
     setuptools 70.3.0
     wcwidth 0.2.13
@@ -1047,11 +1047,11 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <thead><tr>
 <td class="left">Internet-Draft</td>
 <td class="center">OAuth Identity and Authorization Chainin</td>
-<td class="right">December 2024</td>
+<td class="right">January 2025</td>
 </tr></thead>
 <tfoot><tr>
 <td class="left">Schwenkschuster, et al.</td>
-<td class="center">Expires 19 June 2025</td>
+<td class="center">Expires 13 July 2025</td>
 <td class="right">[Page]</td>
 </tr></tfoot>
 </table>
@@ -1064,12 +1064,12 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <dd class="internet-draft">draft-ietf-oauth-identity-chaining-latest</dd>
 <dt class="label-published">Published:</dt>
 <dd class="published">
-<time datetime="2024-12-16" class="published">16 December 2024</time>
+<time datetime="2025-01-09" class="published">9 January 2025</time>
     </dd>
 <dt class="label-intended-status">Intended Status:</dt>
 <dd class="intended-status">Informational</dd>
 <dt class="label-expires">Expires:</dt>
-<dd class="expires"><time datetime="2025-06-19">19 June 2025</time></dd>
+<dd class="expires"><time datetime="2025-07-13">13 July 2025</time></dd>
 <dt class="label-authors">Authors:</dt>
 <dd class="authors">
 <div class="author">
@@ -1098,7 +1098,7 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <h1 id="title">OAuth Identity and Authorization Chaining Across Domains</h1>
 <section id="section-abstract">
       <h2 id="abstract"><a href="#abstract" class="selfRef">Abstract</a></h2>
-<p id="section-abstract-1">This specification defines a mechanism to preserve identity information and federate authorization across trust domains that use the OAuth 2.0 Framework.<a href="#section-abstract-1" class="pilcrow">¶</a></p>
+<p id="section-abstract-1">This specification defines a mechanism to preserve identity and authorization information across trust domains that use the OAuth 2.0 Framework.<a href="#section-abstract-1" class="pilcrow">¶</a></p>
 </section>
 <section class="note rfcEditorRemove" id="section-note.1">
       <h2 id="name-discussion-venues">
@@ -1130,7 +1130,7 @@ svg :is([fill="white"], [fill^="#fff"]) {
         time. It is inappropriate to use Internet-Drafts as reference
         material or to cite them other than as "work in progress."<a href="#section-boilerplate.1-3" class="pilcrow">¶</a></p>
 <p id="section-boilerplate.1-4">
-        This Internet-Draft will expire on 19 June 2025.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
+        This Internet-Draft will expire on 13 July 2025.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="copyright">
@@ -1139,7 +1139,7 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <a href="#name-copyright-notice" class="section-name selfRef">Copyright Notice</a>
         </h2>
 <p id="section-boilerplate.2-1">
-            Copyright (c) 2024 IETF Trust and the persons identified as the
+            Copyright (c) 2025 IETF Trust and the persons identified as the
             document authors. All rights reserved.<a href="#section-boilerplate.2-1" class="pilcrow">¶</a></p>
 <p id="section-boilerplate.2-2">
             This document is subject to BCP 78 and the IETF Trust's Legal
@@ -1357,13 +1357,13 @@ appear in all capitals, as shown here.<a href="#section-1.1-1" class="pilcrow">�
 <figcaption><a href="#figure-1" class="selfRef">Figure 1</a>:
 <a href="#name-identity-and-authorization-c" class="selfRef">Identity and Authorization Chaining Flow</a>
           </figcaption></figure>
-<p id="section-2.1-3">The flow illustrated in Figure 1 shows the steps the client in trust Domain A needs to perform to access a protected resource in trust domain B. In this flow, the client has a way to discover the authorization server in Domain B and a trust relationship exists between Domain A and Domain B (e.g., through federation). It includes the following:<a href="#section-2.1-3" class="pilcrow">¶</a></p>
+<p id="section-2.1-3">The flow illustrated in Figure 1 shows the steps the client in trust Domain A needs to perform to access a protected resource in trust domain B. In this flow, the client is in posession of a token that an authorization server will accept as part of a token exchange flow as defined in <span><a href="#token-exchange" class="internal xref">Token Exchange</a> (<a href="#token-exchange" class="auto internal xref">Section 2.3</a>)</span>. How the client obtained this token is out of scope of this specification. The client has a way to discover the authorization server in Domain B and a trust relationship exists between Domain A and Domain B (e.g., through federation). It includes the following:<a href="#section-2.1-3" class="pilcrow">¶</a></p>
 <ul class="normal">
 <li class="normal" id="section-2.1-4.1">
             <p id="section-2.1-4.1.1">(A) The client of Domain A needs to discover the authorization server of Domain B. See <span><a href="#authorization-server-discovery" class="internal xref">Authorization Server Discovery</a> (<a href="#authorization-server-discovery" class="auto internal xref">Section 2.2</a>)</span>.<a href="#section-2.1-4.1.1" class="pilcrow">¶</a></p>
 </li>
           <li class="normal" id="section-2.1-4.2">
-            <p id="section-2.1-4.2.1">(B) The client exchanges its token at the authorization server of its own domain (Domain A) for a JWT authorization grant that can be used at the authorization server in Domain B. See <span><a href="#token-exchange" class="internal xref">Token Exchange</a> (<a href="#token-exchange" class="auto internal xref">Section 2.3</a>)</span>.<a href="#section-2.1-4.2.1" class="pilcrow">¶</a></p>
+            <p id="section-2.1-4.2.1">(B) The client exchanges a token it has in its posession at the authorization server of its own domain (Domain A) for a JWT authorization grant that can be used at the authorization server in Domain B. See <span><a href="#token-exchange" class="internal xref">Token Exchange</a> (<a href="#token-exchange" class="auto internal xref">Section 2.3</a>)</span>.<a href="#section-2.1-4.2.1" class="pilcrow">¶</a></p>
 </li>
           <li class="normal" id="section-2.1-4.3">
             <p id="section-2.1-4.3.1">(C) The authorization server of Domain A processes the request and returns a JWT authorization grant that the client can use with the authorization server of Domain B. This requires a trust relationship between Domain A and Domain B (e.g., through federation).<a href="#section-2.1-4.3.1" class="pilcrow">¶</a></p>
@@ -1375,7 +1375,7 @@ appear in all capitals, as shown here.<a href="#section-1.1-1" class="pilcrow">�
             <p id="section-2.1-4.5.1">(E) Authorization server of Domain B validates the JWT authorization grant and returns an access token.<a href="#section-2.1-4.5.1" class="pilcrow">¶</a></p>
 </li>
           <li class="normal" id="section-2.1-4.6">
-            <p id="section-2.1-4.6.1">(F) The client now possesses an access token to access the protected resource in Domain B.<a href="#section-2.1-4.6.1" class="pilcrow">¶</a></p>
+            <p id="section-2.1-4.6.1">(F) The client in Domain A uses the access token received from the authorization server in Domain B to access the protected resource in Domain B.<a href="#section-2.1-4.6.1" class="pilcrow">¶</a></p>
 </li>
         </ul>
 </section>
@@ -1614,7 +1614,7 @@ Cache-Control: no-cache, no-store
             <p id="section-2.5-2.2.1"><strong>Selective disclosure</strong>: Authorization servers <span class="bcp14">MAY</span> remove or hide certain claims due to privacy requirements or reduced trust towards the targeting trust domain. To hide and enclose claims <span>[<a href="#I-D.ietf-oauth-selective-disclosure-jwt" class="cite xref">I-D.ietf-oauth-selective-disclosure-jwt</a>]</span> <span class="bcp14">MAY</span> be used.<a href="#section-2.5-2.2.1" class="pilcrow">¶</a></p>
 </li>
           <li class="normal" id="section-2.5-2.3">
-            <p id="section-2.5-2.3.1"><strong>Controlling scope</strong>: Clients <span class="bcp14">MAY</span> use the scope parameter to control transcribed claims (e.g. downscoping). Authorization Servers <span class="bcp14">SHOULD</span> verify that requested scopes are not higher privileged than the scopes of presented subject_token.<a href="#section-2.5-2.3.1" class="pilcrow">¶</a></p>
+            <p id="section-2.5-2.3.1"><strong>Controlling scope</strong>: Clients <span class="bcp14">MAY</span> use the scope parameter to control transcribed claims (e.g. downscoping). Authorization Servers <span class="bcp14">SHOULD</span> verify that the requested scopes are not higher privileged than the scopes of the presented subject_token.<a href="#section-2.5-2.3.1" class="pilcrow">¶</a></p>
 </li>
           <li class="normal" id="section-2.5-2.4">
             <p id="section-2.5-2.4.1"><strong>Including JWT authorization grant claims</strong>: The authorization server performing the assertion flow <span class="bcp14">MAY</span> leverage claims from the presented JWT authorization grant and include them in the returned access token. The populated claims <span class="bcp14">SHOULD</span> be namespaced or validated to prevent the injection of invalid claims.<a href="#section-2.5-2.4.1" class="pilcrow">¶</a></p>
@@ -1929,48 +1929,53 @@ Cache-Control: no-cache, no-store
       </h2>
 <p id="appendix-D-1">[[ To be removed from the final specification ]]
 -latest
-* Added two more use cases
 * Clarified diagrams and description of authorization server acting as a client.<a href="#appendix-D-1" class="pilcrow">¶</a></p>
-<p id="appendix-D-2">-02<a href="#appendix-D-2" class="pilcrow">¶</a></p>
+<p id="appendix-D-2">-03<a href="#appendix-D-2" class="pilcrow">¶</a></p>
 <ul class="normal">
 <li class="normal" id="appendix-D-3.1">
-          <p id="appendix-D-3.1.1">remove recommendation to not use RFC8693's requested_token_type<a href="#appendix-D-3.1.1" class="pilcrow">¶</a></p>
-</li>
-        <li class="normal" id="appendix-D-3.2">
-          <p id="appendix-D-3.2.1">Corrected discrepancy between alphabetic numbering of the diagram and text in the resource acting as client example<a href="#appendix-D-3.2.1" class="pilcrow">¶</a></p>
+          <p id="appendix-D-3.1.1">Editorial updates<a href="#appendix-D-3.1.1" class="pilcrow">¶</a></p>
 </li>
       </ul>
-<p id="appendix-D-4">-01<a href="#appendix-D-4" class="pilcrow">¶</a></p>
+<p id="appendix-D-4">-02<a href="#appendix-D-4" class="pilcrow">¶</a></p>
 <ul class="normal">
 <li class="normal" id="appendix-D-5.1">
-          <p id="appendix-D-5.1.1">limit the authorization grant format to RFC7523 JWT<a href="#appendix-D-5.1.1" class="pilcrow">¶</a></p>
+          <p id="appendix-D-5.1.1">remove recommendation to not use RFC8693's requested_token_type<a href="#appendix-D-5.1.1" class="pilcrow">¶</a></p>
 </li>
         <li class="normal" id="appendix-D-5.2">
-          <p id="appendix-D-5.2.1">minor example fixes<a href="#appendix-D-5.2.1" class="pilcrow">¶</a></p>
-</li>
-        <li class="normal" id="appendix-D-5.3">
-          <p id="appendix-D-5.3.1">editorial fixes<a href="#appendix-D-5.3.1" class="pilcrow">¶</a></p>
-</li>
-        <li class="normal" id="appendix-D-5.4">
-          <p id="appendix-D-5.4.1">added Aaron Parecki to acknowledgements<a href="#appendix-D-5.4.1" class="pilcrow">¶</a></p>
-</li>
-        <li class="normal" id="appendix-D-5.5">
-          <p id="appendix-D-5.5.1">renamed section headers to be more explicit<a href="#appendix-D-5.5.1" class="pilcrow">¶</a></p>
-</li>
-        <li class="normal" id="appendix-D-5.6">
-          <p id="appendix-D-5.6.1">use more specific term "JWT authorization grant"<a href="#appendix-D-5.6.1" class="pilcrow">¶</a></p>
-</li>
-        <li class="normal" id="appendix-D-5.7">
-          <p id="appendix-D-5.7.1">changed name to "OAuth Identity and Authorization Chaining Across Domains"<a href="#appendix-D-5.7.1" class="pilcrow">¶</a></p>
-</li>
-        <li class="normal" id="appendix-D-5.8">
-          <p id="appendix-D-5.8.1">move use cases to appendix and add continuous integration use case<a href="#appendix-D-5.8.1" class="pilcrow">¶</a></p>
+          <p id="appendix-D-5.2.1">Corrected discrepancy between alphabetic numbering of the diagram and text in the resource acting as client example<a href="#appendix-D-5.2.1" class="pilcrow">¶</a></p>
 </li>
       </ul>
-<p id="appendix-D-6">-00<a href="#appendix-D-6" class="pilcrow">¶</a></p>
+<p id="appendix-D-6">-01<a href="#appendix-D-6" class="pilcrow">¶</a></p>
 <ul class="normal">
 <li class="normal" id="appendix-D-7.1">
-          <p id="appendix-D-7.1.1">initial working group version (previously draft-schwenkschuster-oauth-identity-chaining)<a href="#appendix-D-7.1.1" class="pilcrow">¶</a></p>
+          <p id="appendix-D-7.1.1">limit the authorization grant format to RFC7523 JWT<a href="#appendix-D-7.1.1" class="pilcrow">¶</a></p>
+</li>
+        <li class="normal" id="appendix-D-7.2">
+          <p id="appendix-D-7.2.1">minor example fixes<a href="#appendix-D-7.2.1" class="pilcrow">¶</a></p>
+</li>
+        <li class="normal" id="appendix-D-7.3">
+          <p id="appendix-D-7.3.1">editorial fixes<a href="#appendix-D-7.3.1" class="pilcrow">¶</a></p>
+</li>
+        <li class="normal" id="appendix-D-7.4">
+          <p id="appendix-D-7.4.1">added Aaron Parecki to acknowledgements<a href="#appendix-D-7.4.1" class="pilcrow">¶</a></p>
+</li>
+        <li class="normal" id="appendix-D-7.5">
+          <p id="appendix-D-7.5.1">renamed section headers to be more explicit<a href="#appendix-D-7.5.1" class="pilcrow">¶</a></p>
+</li>
+        <li class="normal" id="appendix-D-7.6">
+          <p id="appendix-D-7.6.1">use more specific term "JWT authorization grant"<a href="#appendix-D-7.6.1" class="pilcrow">¶</a></p>
+</li>
+        <li class="normal" id="appendix-D-7.7">
+          <p id="appendix-D-7.7.1">changed name to "OAuth Identity and Authorization Chaining Across Domains"<a href="#appendix-D-7.7.1" class="pilcrow">¶</a></p>
+</li>
+        <li class="normal" id="appendix-D-7.8">
+          <p id="appendix-D-7.8.1">move use cases to appendix and add continuous integration use case<a href="#appendix-D-7.8.1" class="pilcrow">¶</a></p>
+</li>
+      </ul>
+<p id="appendix-D-8">-00<a href="#appendix-D-8" class="pilcrow">¶</a></p>
+<ul class="normal">
+<li class="normal" id="appendix-D-9.1">
+          <p id="appendix-D-9.1.1">initial working group version (previously draft-schwenkschuster-oauth-identity-chaining)<a href="#appendix-D-9.1.1" class="pilcrow">¶</a></p>
 </li>
       </ul>
 </section>
