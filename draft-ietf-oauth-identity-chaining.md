@@ -442,7 +442,7 @@ The flow contains the following steps:
 
 In some environments, there is a need to bind the final access token to a private key held by the Resource Server in Domain A. This is so that the Resource Server in Domain B can verify the proof of possession of the private key of the Resource Server in Domain A on the final access token when the Resource Server in Domain A presents the token to the Resource Server in Domain B.
 
-The case where the Resource Server is acting as the client, this is straight forward. 
+The case where the Resource Server is acting as the client, this is straight forward.
 
 However, the case where the Authorization Server is acting as a client is more complicated, but can be accomplished as follows. The Authorization Server in Domain A includes the "cnf" claim of the Resource Server in Domain A in the token request sent to the Authorization Server in Domain B. This can, for example, be accomplished by including a "requested_cnf" claim, that contains the "cnf" claim of the Resource Server in Domain A, in the assertion authorization grant sent to the Authorization Server in Domain B  The Authorization Server in Domain B then includes the requested "cnf" claim of the Resource Server in Domain A in the returned, final access token.
 
