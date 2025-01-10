@@ -5,13 +5,13 @@
 oauth                                                 A. Schwenkschuster
 Internet-Draft                                             P. Kasselmann
 Intended status: Informational                                     SPIRL
-Expires: 13 July 2025                                          K. Burgin
+Expires: 14 July 2025                                          K. Burgin
                                                                    MITRE
                                                               M. Jenkins
                                                                 NSA-CCSS
                                                              B. Campbell
                                                            Ping Identity
-                                                          9 January 2025
+                                                         10 January 2025
 
 
         OAuth Identity and Authorization Chaining Across Domains
@@ -49,7 +49,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 13 July 2025.
+   This Internet-Draft will expire on 14 July 2025.
 
 Copyright Notice
 
@@ -153,10 +153,10 @@ Table of Contents
    The identity and authorization chaining flow outlined below describes
    how a combination of OAuth 2.0 Token Exchange [RFC8693] and JWT
    Profile for OAuth 2.0 Client Authentication and Authorization Grants
-   [RFC7523] are used to address the use cases identified.  The appendix
-   include two additional examples that describe how this flow is used.
-   In one example, the resource server acts as the client and in the
-   other, the authorization server acts as the client.
+   [RFC7523] are used to address the use cases identified.  The
+   (Appendix, (#Examples)) include two additional examples that describe
+   how this flow is used when the resource server acts as the client or
+   the authorization server acts as the client.
 
   +-------------+                            +-------------+ +---------+
   |Authorization|         +--------+         |Authorization| |Protected|
