@@ -5,13 +5,13 @@
 oauth                                                 A. Schwenkschuster
 Internet-Draft                                             P. Kasselmann
 Intended status: Informational                                     SPIRL
-Expires: 19 June 2025                                          K. Burgin
+Expires: 14 July 2025                                          K. Burgin
                                                                    MITRE
                                                               M. Jenkins
                                                                 NSA-CCSS
                                                              B. Campbell
                                                            Ping Identity
-                                                        16 December 2024
+                                                         10 January 2025
 
 
         OAuth Identity and Authorization Chaining Across Domains
@@ -49,11 +49,11 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 19 June 2025.
+   This Internet-Draft will expire on 14 July 2025.
 
 Copyright Notice
 
-   Copyright (c) 2024 IETF Trust and the persons identified as the
+   Copyright (c) 2025 IETF Trust and the persons identified as the
    document authors.  All rights reserved.
 
    This document is subject to BCP 78 and the IETF Trust's Legal
@@ -153,10 +153,10 @@ Table of Contents
    The identity and authorization chaining flow outlined below describes
    how a combination of OAuth 2.0 Token Exchange [RFC8693] and JWT
    Profile for OAuth 2.0 Client Authentication and Authorization Grants
-   [RFC7523] are used to address the use cases identified.  The appendix
-   include two additional examples that describe how this flow is used.
-   In one example, the resource server acts as the client and in the
-   other, the authorization server acts as the client.
+   [RFC7523] are used to address the use cases identified.  The
+   (Appendix, (#Examples)) include two additional examples that describe
+   how this flow is used when the resource server acts as the client or
+   the authorization server acts as the client.
 
   +-------------+                            +-------------+ +---------+
   |Authorization|         +--------+         |Authorization| |Protected|
@@ -431,8 +431,7 @@ grant_type=urn%3Aietf%3Aparams%3Aoauth%3Agrant-type%3Atoken-exchange
 
    *  *Selective disclosure*: Authorization servers MAY remove or hide
       certain claims due to privacy requirements or reduced trust
-      towards the targeting trust domain.  To hide and enclose claims
-      [I-D.ietf-oauth-selective-disclosure-jwt] MAY be used.
+      towards the targeting trust domain.
 
    *  *Controlling scope*: Clients MAY use the scope parameter to
       control transcribed claims (e.g. downscoping).  Authorization
@@ -497,13 +496,6 @@ grant_type=urn%3Aietf%3Aparams%3Aoauth%3Agrant-type%3Atoken-exchange
               May 2017, <https://www.rfc-editor.org/rfc/rfc8174>.
 
 5.2.  Informative References
-
-   [I-D.ietf-oauth-selective-disclosure-jwt]
-              Fett, D., Yasuda, K., and B. Campbell, "Selective
-              Disclosure for JWTs (SD-JWT)", Work in Progress, Internet-
-              Draft, draft-ietf-oauth-selective-disclosure-jwt-14, 15
-              November 2024, <https://datatracker.ietf.org/doc/html/
-              draft-ietf-oauth-selective-disclosure-jwt-14>.
 
    [I-D.ietf-oauth-security-topics]
               Lodderstedt, T., Bradley, J., Labunets, A., and D. Fett,
@@ -607,22 +599,30 @@ Appendix B.  Examples
 
 B.1.  Resource server acting as client
 
+   As part of completing a request, a resource server in Domain A may
+   need to access a resource server in Domain B.  This requires the
+   resource server in Domain A to obtain an Access Token from an
+   authorization server in Domain B, which it may then be presented to
+   the resource server in Domain B.  A Resource server in Domain B may
+   use the flows described in this specification by assuming the role of
+   a client when attempting to access the resource server in Domain B.
    Resources servers may act as clients if the following is true:
-
-   *  Authorization Server B is reachable by the resource server by
-      network and is able to perform the appropriate client
-      authentication (if required).
 
    *  The resource server has the ability to determine the authorization
       server of the protected resource outside its trust domain.
 
+   *  Authorization Server B is reachable by the resource server and is
+      able to perform the appropriate client authentication (if
+      required).
+
    The flow would look like this:
 
- +-------------+          +--------+         +-------------+ +---------+
- |Authorization|          |Resource|         |Authorization| |Protected|
- |Server       |          |Server  |         |Server       | |Resource |
- |Domain A     |          |Domain A|         |Domain B     | |Domain B |
- +-------------+          +--------+         +-------------+ +---------+
+ +-------------+       +---------------+     +-------------+ +---------+
+ |Authorization|       |Resource Server|     |Authorization| |Protected|
+ |Server       |       |Domain A       |     |Server       | |Resource |
+ |Domain A     |       |(acting as     |     |Domain B     | |Domain B |
+ |             |       | Client)       |     |             | |         |
+ +-------------+       +---------------+     +-------------+ +---------+
         |                     |                     |             |
         |                     |   (A) request protected resource  |
         |                     |      metadata                     |
@@ -635,15 +635,15 @@ B.1.  Resource server acting as client
         |                     |                     |             |
         | (C) <authorization  |                     |             |
         |        grant>       |                     |             |
-        | - - - - - - - - - ->|                     |             |
+        | - - - - - - - - -  >|                     |             |
         |                     |                     |             |
         |                     | (D) present         |             |
         |                     |  authorization      |             |
         |                     |  grant [RFC 7523]   |             |
-        |                     | ------------------->|             |
+        |                     |-------------------->|             |
         |                     |                     |             |
         |                     | (E) <access token>  |             |
-        |                     | <- - - - - - - - - -|             |
+        |                     |<- - - - - - - - - - |             |
         |                     |                     |             |
         |                     |               (F) access          |
         |                     | --------------------------------->|
@@ -654,7 +654,7 @@ B.1.  Resource server acting as client
 
    The flow contains the following steps:
 
-   (A) The resource server of domain A needs to access protected
+   (A) The resource server of Domain A needs to access protected
    resource in Domain B.  It requires an access token to do so which it
    does not possess.  In this example [I-D.ietf-oauth-resource-metadata]
    is used to receive information about the authorization server which
@@ -687,25 +687,40 @@ B.2.  Authorization server acting as client
    Authorization servers may act as clients too.  This can be necessary
    because of following reasons:
 
-   *  Resource servers may not have knowledge of authorization servers.
+   *  Clients in Domain A may not have knowledge of authorization
+      servers in Domain B.
 
-   *  Resource servers may not have network access to other
-      authorization servers.
+   *  Clients in domain A may not have network access to other
+      authorization servers in Domain B.
 
-   *  A strict access control on resources outside the trust domain is
-      required and enforced by authorization servers.
+   *  Strict access control on resources outside the trust domain is
+      required and enforced by authorization servers in Domain B.
 
-   *  Authorization servers require client authentication.  Managing
-      clients for resource servers outside of the trust domain is not
-      intended.
+   *  Authorization servers in domain B require client authentication,
+      but are unable to manage clients outside of Domain B.
 
-   The flow when authorization servers act as client would look like
+   Under these conditions, an authorization server in Domain A may
+   obtain an Access Token from an authorization server in Domain B on-
+   behalf-of any client in Domain A.  This enables clients in Domain A
+   to access a protected resource server in Domain B.  Resource servers
+   in domain A may act as a client to the authorization server in Domain
+   A in order to obtain an access token to access a protected resource
+   in Domain B in order to complete a request.
+
+   The authorization server may use the flows described in this
+   specification by acting first as a client to itself to obtain an
+   assertion grant and then act as a client to the authorization server
+   in domain B to request an access token for protected resources in
+   Domain B.  The flow when authorization servers act as a client on-
+   behalf of another client in it's own trust domain would look like
    this:
 
  +--------+          +-------------+         +-------------+ +---------+
- |Resource|          |Authorization|         |Authorization| |Protected|
- |Server  |          |Server       |         |Server       | |Resource |
+ |Client  |          |Authorization|         |Authorization| |Protected|
+ |        |          |Server       |         |Server       | |Resource |
  |Domain A|          |Domain A     |         |Domain B     | |Domain B |
+ |        |          |(acting as   |         |             | |         |
+ |        |          |client)      |         |             | |         |
  +--------+          +-------------+         +-------------+ +---------+
      |                      |                       |             |
      | (A) request or       |                       |             |
@@ -747,34 +762,36 @@ B.2.  Authorization server acting as client
 
    The flow contains the following steps:
 
-   (A) The resource server of Domain A requests a token for the
-   protected resource in Domain B from the authorization server in
-   Domain A.  This specification does not cover this step.  A profile of
-   Token Exchange [RFC8693] may be used.
+   (A) The client in Domain A requests a token for the protected
+   resource in Domain B from the authorization server in Domain A.  This
+   specification does not define this step.  A profile of Token Exchange
+   [RFC8693] may be used.
 
-   (B) The authorization server (of Domain A) determines the
-   authorization server (of Domain B).  This could have been passed by
-   the client, is statically maintained or dynamically resolved.
+   (B) The authorization server of Domain A determines the authorization
+   server of Domain B.  This could have been passed by the client, is
+   statically maintained or dynamically resolved.
 
-   (C) Once the authorization server is determined a JWT authorization
-   grant is issued internally.  This reflects to Token exchange
-   (Section 2.3) of this specification and can be seen as an "internal
-   token exchange".
+   (C) Once the authorization server in Domain B is determined, the
+   authorization server in Domain A issues a JWT authorization grant to
+   itself.  This reflects to Token exchange (Section 2.3) of this
+   specification and can be seen as an "internal token exchange".
 
-   (D) The issued JWT authorization grant is presented to the
-   authorization server of Domain B.  This presentation happens between
-   the authorization servers and authorization server A may be required
-   to perform client authentication while doing so.
+   (D) The authorization server in Domain A acts as a client and
+   presents the JWT authorization grant to the authorization server of
+   Domain B.  This presentation happens between the authorization
+   servers.  Authorization server A may be required to perform client
+   authentication while doing so.  This reflects to [See Access Token
+   Request (Section 2.4.1)] of this specification.
 
    (E) The authorization server of Domain B returns an access token for
-   access to the protected resource in Domain B to the authorization
-   server in Domain A.
+   the protected resource in Domain B to the authorization server in
+   Domain A.
 
-   (F) The authorization server of Domain A returns that access token to
-   the resource server in Domain A.
+   (F) The authorization server of Domain A returns the access token to
+   the client in Domain A.
 
-   (G) The resource server in Domain A uses the received access token to
-   access the protected resource in Domain B.
+   (G) The client in Domain A uses the received access token to access
+   the protected resource in Domain B.
 
 Appendix C.  Acknowledgements
 
@@ -785,8 +802,13 @@ Appendix C.  Acknowledgements
 
 Appendix D.  Document History
 
-   [[ To be removed from the final specification ]] -latest * Added two
-   more use cases * Editorial updates
+   [[ To be removed from the final specification ]] -latest * Clarified
+   diagrams and description of authorization server acting as a client.
+   * Remove references to sd-jwt.
+
+   -03
+
+   *  Editorial updates
 
    -02
 

@@ -17,15 +17,15 @@
 <meta content="draft-ietf-oauth-identity-chaining-latest" name="ietf.draft">
 <!-- Generator version information:
   xml2rfc 3.25.0
-    Python 3.12.7
+    Python 3.12.8
     ConfigArgParse 1.7
     google-i18n-address 3.1.1
     intervaltree 3.1.0
-    Jinja2 3.1.4
+    Jinja2 3.1.5
     lxml 5.3.0
     platformdirs 4.3.6
-    pycountry 22.3.5
-    PyYAML 6.0.1
+    pycountry 24.6.1
+    PyYAML 6.0.2
     requests 2.32.3
     setuptools 70.3.0
     wcwidth 0.2.13
@@ -1047,11 +1047,11 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <thead><tr>
 <td class="left">Internet-Draft</td>
 <td class="center">OAuth Identity and Authorization Chainin</td>
-<td class="right">December 2024</td>
+<td class="right">January 2025</td>
 </tr></thead>
 <tfoot><tr>
 <td class="left">Schwenkschuster, et al.</td>
-<td class="center">Expires 19 June 2025</td>
+<td class="center">Expires 14 July 2025</td>
 <td class="right">[Page]</td>
 </tr></tfoot>
 </table>
@@ -1064,12 +1064,12 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <dd class="internet-draft">draft-ietf-oauth-identity-chaining-latest</dd>
 <dt class="label-published">Published:</dt>
 <dd class="published">
-<time datetime="2024-12-16" class="published">16 December 2024</time>
+<time datetime="2025-01-10" class="published">10 January 2025</time>
     </dd>
 <dt class="label-intended-status">Intended Status:</dt>
 <dd class="intended-status">Informational</dd>
 <dt class="label-expires">Expires:</dt>
-<dd class="expires"><time datetime="2025-06-19">19 June 2025</time></dd>
+<dd class="expires"><time datetime="2025-07-14">14 July 2025</time></dd>
 <dt class="label-authors">Authors:</dt>
 <dd class="authors">
 <div class="author">
@@ -1130,7 +1130,7 @@ svg :is([fill="white"], [fill^="#fff"]) {
         time. It is inappropriate to use Internet-Drafts as reference
         material or to cite them other than as "work in progress."<a href="#section-boilerplate.1-3" class="pilcrow">¶</a></p>
 <p id="section-boilerplate.1-4">
-        This Internet-Draft will expire on 19 June 2025.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
+        This Internet-Draft will expire on 14 July 2025.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="copyright">
@@ -1139,7 +1139,7 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <a href="#name-copyright-notice" class="section-name selfRef">Copyright Notice</a>
         </h2>
 <p id="section-boilerplate.2-1">
-            Copyright (c) 2024 IETF Trust and the persons identified as the
+            Copyright (c) 2025 IETF Trust and the persons identified as the
             document authors. All rights reserved.<a href="#section-boilerplate.2-1" class="pilcrow">¶</a></p>
 <p id="section-boilerplate.2-2">
             This document is subject to BCP 78 and the IETF Trust's Legal
@@ -1315,7 +1315,7 @@ appear in all capitals, as shown here.<a href="#section-1.1-1" class="pilcrow">�
         <h3 id="name-overview">
 <a href="#section-2.1" class="section-number selfRef">2.1. </a><a href="#name-overview" class="section-name selfRef">Overview</a>
         </h3>
-<p id="section-2.1-1">The identity and authorization chaining flow outlined below describes how a combination of OAuth 2.0 Token Exchange <span>[<a href="#RFC8693" class="cite xref">RFC8693</a>]</span> and JWT Profile for OAuth 2.0 Client Authentication and Authorization Grants <span>[<a href="#RFC7523" class="cite xref">RFC7523</a>]</span> are used to address the use cases identified. The appendix include two additional examples that describe how this flow is used. In one example, the resource server acts as the client and in the other, the authorization server acts as the client.<a href="#section-2.1-1" class="pilcrow">¶</a></p>
+<p id="section-2.1-1">The identity and authorization chaining flow outlined below describes how a combination of OAuth 2.0 Token Exchange <span>[<a href="#RFC8693" class="cite xref">RFC8693</a>]</span> and JWT Profile for OAuth 2.0 Client Authentication and Authorization Grants <span>[<a href="#RFC7523" class="cite xref">RFC7523</a>]</span> are used to address the use cases identified. The (Appendix, (#Examples)) include two additional examples that describe how this flow is used when the resource server acts as the client or the authorization server acts as the client.<a href="#section-2.1-1" class="pilcrow">¶</a></p>
 <span id="name-identity-and-authorization-c"></span><figure id="figure-1">
           <div class="alignLeft art-text artwork" id="section-2.1-2.1">
 <pre>
@@ -1611,7 +1611,7 @@ Cache-Control: no-cache, no-store
             <p id="section-2.5-2.1.1"><strong>Transcribing the subject identifier</strong>: Subject identifier can differ between the parties involved. For instance: A user is known at domain A by "johndoe@a.org" but in domain B by "doe.john@b.org". The mapping from one identifier to the other <span class="bcp14">MAY</span> either happen in the token exchange step and the updated identifier is reflected in returned JWT authorization grant or in the assertion step where the updated identifier would be reflected in the access token. To support this both authorization servers <span class="bcp14">MAY</span> add, change or remove claims as described above.<a href="#section-2.5-2.1.1" class="pilcrow">¶</a></p>
 </li>
           <li class="normal" id="section-2.5-2.2">
-            <p id="section-2.5-2.2.1"><strong>Selective disclosure</strong>: Authorization servers <span class="bcp14">MAY</span> remove or hide certain claims due to privacy requirements or reduced trust towards the targeting trust domain. To hide and enclose claims <span>[<a href="#I-D.ietf-oauth-selective-disclosure-jwt" class="cite xref">I-D.ietf-oauth-selective-disclosure-jwt</a>]</span> <span class="bcp14">MAY</span> be used.<a href="#section-2.5-2.2.1" class="pilcrow">¶</a></p>
+            <p id="section-2.5-2.2.1"><strong>Selective disclosure</strong>: Authorization servers <span class="bcp14">MAY</span> remove or hide certain claims due to privacy requirements or reduced trust towards the targeting trust domain.<a href="#section-2.5-2.2.1" class="pilcrow">¶</a></p>
 </li>
           <li class="normal" id="section-2.5-2.3">
             <p id="section-2.5-2.3.1"><strong>Controlling scope</strong>: Clients <span class="bcp14">MAY</span> use the scope parameter to control transcribed claims (e.g. downscoping). Authorization Servers <span class="bcp14">SHOULD</span> verify that the requested scopes are not higher privileged than the scopes of the presented subject_token.<a href="#section-2.5-2.3.1" class="pilcrow">¶</a></p>
@@ -1696,10 +1696,6 @@ Cache-Control: no-cache, no-store
 <a href="#section-5.2" class="section-number selfRef">5.2. </a><a href="#name-informative-references" class="section-name selfRef">Informative References</a>
         </h3>
 <dl class="references">
-<dt id="I-D.ietf-oauth-selective-disclosure-jwt">[I-D.ietf-oauth-selective-disclosure-jwt]</dt>
-        <dd>
-<span class="refAuthor">Fett, D.</span>, <span class="refAuthor">Yasuda, K.</span>, and <span class="refAuthor">B. Campbell</span>, <span class="refTitle">"Selective Disclosure for JWTs (SD-JWT)"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-oauth-selective-disclosure-jwt-14</span>, <time datetime="2024-11-15" class="refDate">15 November 2024</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-ietf-oauth-selective-disclosure-jwt-14">https://datatracker.ietf.org/doc/html/draft-ietf-oauth-selective-disclosure-jwt-14</a>&gt;</span>. </dd>
-<dd class="break"></dd>
 <dt id="I-D.ietf-oauth-security-topics">[I-D.ietf-oauth-security-topics]</dt>
         <dd>
 <span class="refAuthor">Lodderstedt, T.</span>, <span class="refAuthor">Bradley, J.</span>, <span class="refAuthor">Labunets, A.</span>, and <span class="refAuthor">D. Fett</span>, <span class="refTitle">"OAuth 2.0 Security Best Current Practice"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-oauth-security-topics-29</span>, <time datetime="2024-06-03" class="refDate">3 June 2024</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-ietf-oauth-security-topics-29">https://datatracker.ietf.org/doc/html/draft-ietf-oauth-security-topics-29</a>&gt;</span>. </dd>
@@ -1761,7 +1757,7 @@ Cache-Control: no-cache, no-store
 </div>
 </section>
 </div>
-<div id="examples">
+<div id="Examples">
 <section id="appendix-B">
       <h2 id="name-examples">
 <a href="#appendix-B" class="section-number selfRef">Appendix B. </a><a href="#name-examples" class="section-name selfRef">Examples</a>
@@ -1772,24 +1768,25 @@ Cache-Control: no-cache, no-store
         <h3 id="name-resource-server-acting-as-c">
 <a href="#appendix-B.1" class="section-number selfRef">B.1. </a><a href="#name-resource-server-acting-as-c" class="section-name selfRef">Resource server acting as client</a>
         </h3>
-<p id="appendix-B.1-1">Resources servers may act as clients if the following is true:<a href="#appendix-B.1-1" class="pilcrow">¶</a></p>
+<p id="appendix-B.1-1">As part of completing a request, a resource server in Domain A may need to access a resource server in Domain B. This requires the resource server in Domain A to obtain an Access Token from an authorization server in Domain B, which it may then be presented to the resource server in Domain B. A Resource server in Domain B may use the flows described in this specification by assuming the role of a client when attempting to access the resource server in Domain B. Resources servers may act as clients if the following is true:<a href="#appendix-B.1-1" class="pilcrow">¶</a></p>
 <ul class="normal">
 <li class="normal" id="appendix-B.1-2.1">
-            <p id="appendix-B.1-2.1.1">Authorization Server B is reachable by the resource server by network and is able to perform the appropriate client authentication (if required).<a href="#appendix-B.1-2.1.1" class="pilcrow">¶</a></p>
+            <p id="appendix-B.1-2.1.1">The resource server has the ability to determine the authorization server of the protected resource outside its trust domain.<a href="#appendix-B.1-2.1.1" class="pilcrow">¶</a></p>
 </li>
           <li class="normal" id="appendix-B.1-2.2">
-            <p id="appendix-B.1-2.2.1">The resource server has the ability to determine the authorization server of the protected resource outside its trust domain.<a href="#appendix-B.1-2.2.1" class="pilcrow">¶</a></p>
+            <p id="appendix-B.1-2.2.1">Authorization Server B is reachable by the resource server and is able to perform the appropriate client authentication (if required).<a href="#appendix-B.1-2.2.1" class="pilcrow">¶</a></p>
 </li>
         </ul>
 <p id="appendix-B.1-3">The flow would look like this:<a href="#appendix-B.1-3" class="pilcrow">¶</a></p>
 <span id="name-resource-server-acting-as-cl"></span><figure id="figure-6">
           <div class="alignLeft art-text artwork" id="appendix-B.1-4.1">
 <pre>
-+-------------+          +--------+         +-------------+ +---------+
-|Authorization|          |Resource|         |Authorization| |Protected|
-|Server       |          |Server  |         |Server       | |Resource |
-|Domain A     |          |Domain A|         |Domain B     | |Domain B |
-+-------------+          +--------+         +-------------+ +---------+
++-------------+       +---------------+     +-------------+ +---------+
+|Authorization|       |Resource Server|     |Authorization| |Protected|
+|Server       |       |Domain A       |     |Server       | |Resource |
+|Domain A     |       |(acting as     |     |Domain B     | |Domain B |
+|             |       | Client)       |     |             | |         |
++-------------+       +---------------+     +-------------+ +---------+
        |                     |                     |             |
        |                     |   (A) request protected resource  |
        |                     |      metadata                     |
@@ -1802,15 +1799,15 @@ Cache-Control: no-cache, no-store
        |                     |                     |             |
        | (C) &lt;authorization  |                     |             |
        |        grant&gt;       |                     |             |
-       | - - - - - - - - - -&gt;|                     |             |
+       | - - - - - - - - -  &gt;|                     |             |
        |                     |                     |             |
        |                     | (D) present         |             |
        |                     |  authorization      |             |
        |                     |  grant [RFC 7523]   |             |
-       |                     | -------------------&gt;|             |
+       |                     |--------------------&gt;|             |
        |                     |                     |             |
        |                     | (E) &lt;access token&gt;  |             |
-       |                     | &lt;- - - - - - - - - -|             |
+       |                     |&lt;- - - - - - - - - - |             |
        |                     |                     |             |
        |                     |               (F) access          |
        |                     | ---------------------------------&gt;|
@@ -1822,7 +1819,7 @@ Cache-Control: no-cache, no-store
 <a href="#name-resource-server-acting-as-cl" class="selfRef">Resource server acting as client</a>
           </figcaption></figure>
 <p id="appendix-B.1-5">The flow contains the following steps:<a href="#appendix-B.1-5" class="pilcrow">¶</a></p>
-<p id="appendix-B.1-6">(A) The resource server of domain A needs to access protected resource in Domain B. It requires an access token to do so which it does not possess. In this example <span>[<a href="#I-D.ietf-oauth-resource-metadata" class="cite xref">I-D.ietf-oauth-resource-metadata</a>]</span> is used to receive information about the authorization server which protects the resource in domain B. This step <span class="bcp14">MAY</span> be skipped if discovery is not needed and other means of discovery <span class="bcp14">MAY</span> be used. The protected resource returns its metadata along with the authorization server information.<a href="#appendix-B.1-6" class="pilcrow">¶</a></p>
+<p id="appendix-B.1-6">(A) The resource server of Domain A needs to access protected resource in Domain B. It requires an access token to do so which it does not possess. In this example <span>[<a href="#I-D.ietf-oauth-resource-metadata" class="cite xref">I-D.ietf-oauth-resource-metadata</a>]</span> is used to receive information about the authorization server which protects the resource in domain B. This step <span class="bcp14">MAY</span> be skipped if discovery is not needed and other means of discovery <span class="bcp14">MAY</span> be used. The protected resource returns its metadata along with the authorization server information.<a href="#appendix-B.1-6" class="pilcrow">¶</a></p>
 <p id="appendix-B.1-7">(B) Now, after the resource server has identified the authorization server for Domain B, the resource server requests a JWT authorization grant for the authorization server in Domain B from its own authorization server (Domain A). This happens via the token exchange protocol.<a href="#appendix-B.1-7" class="pilcrow">¶</a></p>
 <p id="appendix-B.1-8">(C) If successful, the authorization server returns a JWT authorization grant to the resource server.<a href="#appendix-B.1-8" class="pilcrow">¶</a></p>
 <p id="appendix-B.1-9">(D) The resource server presents the JWT authorization grant to the authorization server of Domain B.<a href="#appendix-B.1-9" class="pilcrow">¶</a></p>
@@ -1838,26 +1835,29 @@ Cache-Control: no-cache, no-store
 <p id="appendix-B.2-1">Authorization servers may act as clients too. This can be necessary because of following reasons:<a href="#appendix-B.2-1" class="pilcrow">¶</a></p>
 <ul class="normal">
 <li class="normal" id="appendix-B.2-2.1">
-            <p id="appendix-B.2-2.1.1">Resource servers may not have knowledge of authorization servers.<a href="#appendix-B.2-2.1.1" class="pilcrow">¶</a></p>
+            <p id="appendix-B.2-2.1.1">Clients in Domain A may not have knowledge of authorization servers in Domain B.<a href="#appendix-B.2-2.1.1" class="pilcrow">¶</a></p>
 </li>
           <li class="normal" id="appendix-B.2-2.2">
-            <p id="appendix-B.2-2.2.1">Resource servers may not have network access to other authorization servers.<a href="#appendix-B.2-2.2.1" class="pilcrow">¶</a></p>
+            <p id="appendix-B.2-2.2.1">Clients in domain A may not have network access to other authorization servers in Domain B.<a href="#appendix-B.2-2.2.1" class="pilcrow">¶</a></p>
 </li>
           <li class="normal" id="appendix-B.2-2.3">
-            <p id="appendix-B.2-2.3.1">A strict access control on resources outside the trust domain is required and enforced by authorization servers.<a href="#appendix-B.2-2.3.1" class="pilcrow">¶</a></p>
+            <p id="appendix-B.2-2.3.1">Strict access control on resources outside the trust domain is required and enforced by authorization servers in Domain B.<a href="#appendix-B.2-2.3.1" class="pilcrow">¶</a></p>
 </li>
           <li class="normal" id="appendix-B.2-2.4">
-            <p id="appendix-B.2-2.4.1">Authorization servers require client authentication. Managing clients for resource servers outside of the trust domain is not intended.<a href="#appendix-B.2-2.4.1" class="pilcrow">¶</a></p>
+            <p id="appendix-B.2-2.4.1">Authorization servers in domain B require client authentication, but are unable to manage clients outside of Domain B.<a href="#appendix-B.2-2.4.1" class="pilcrow">¶</a></p>
 </li>
         </ul>
-<p id="appendix-B.2-3">The flow when authorization servers act as client would look like this:<a href="#appendix-B.2-3" class="pilcrow">¶</a></p>
+<p id="appendix-B.2-3">Under these conditions, an authorization server in Domain A may obtain an Access Token from an authorization server in Domain B on-behalf-of any client in Domain A. This enables clients in Domain A to access a protected resource server in Domain B. Resource servers in domain A may act as a client to the authorization server in Domain A in order to obtain an access token to access a protected resource in Domain B in order to complete a request.<a href="#appendix-B.2-3" class="pilcrow">¶</a></p>
+<p id="appendix-B.2-4">The authorization server may use the flows described in this specification by acting first as a client to itself to obtain an assertion grant and then act as a client to the authorization server in domain B to request an access token for protected resources in Domain B. The flow when authorization servers act as a client on-behalf of another client in it's own trust domain would look like this:<a href="#appendix-B.2-4" class="pilcrow">¶</a></p>
 <span id="name-authorization-server-acting-"></span><figure id="figure-7">
-          <div class="alignLeft art-text artwork" id="appendix-B.2-4.1">
+          <div class="alignLeft art-text artwork" id="appendix-B.2-5.1">
 <pre>
 +--------+          +-------------+         +-------------+ +---------+
-|Resource|          |Authorization|         |Authorization| |Protected|
-|Server  |          |Server       |         |Server       | |Resource |
+|Client  |          |Authorization|         |Authorization| |Protected|
+|        |          |Server       |         |Server       | |Resource |
 |Domain A|          |Domain A     |         |Domain B     | |Domain B |
+|        |          |(acting as   |         |             | |         |
+|        |          |client)      |         |             | |         |
 +--------+          +-------------+         +-------------+ +---------+
     |                      |                       |             |
     | (A) request or       |                       |             |
@@ -1899,14 +1899,14 @@ Cache-Control: no-cache, no-store
 <figcaption><a href="#figure-7" class="selfRef">Figure 7</a>:
 <a href="#name-authorization-server-acting-" class="selfRef">Authorization server acting as client</a>
           </figcaption></figure>
-<p id="appendix-B.2-5">The flow contains the following steps:<a href="#appendix-B.2-5" class="pilcrow">¶</a></p>
-<p id="appendix-B.2-6">(A) The resource server of Domain A requests a token for the protected resource in Domain B from the authorization server in Domain A. This specification does not cover this step. A profile of Token Exchange <span>[<a href="#RFC8693" class="cite xref">RFC8693</a>]</span> may be used.<a href="#appendix-B.2-6" class="pilcrow">¶</a></p>
-<p id="appendix-B.2-7">(B) The authorization server (of Domain A) determines the authorization server (of Domain B). This could have been passed by the client, is statically maintained or dynamically resolved.<a href="#appendix-B.2-7" class="pilcrow">¶</a></p>
-<p id="appendix-B.2-8">(C) Once the authorization server is determined a JWT authorization grant is issued internally. This reflects to <span><a href="#token-exchange" class="internal xref">Token exchange</a> (<a href="#token-exchange" class="auto internal xref">Section 2.3</a>)</span> of this specification and can be seen as an "internal token exchange".<a href="#appendix-B.2-8" class="pilcrow">¶</a></p>
-<p id="appendix-B.2-9">(D) The issued JWT authorization grant is presented to the authorization server of Domain B. This presentation happens between the authorization servers and authorization server A may be required to perform client authentication while doing so.<a href="#appendix-B.2-9" class="pilcrow">¶</a></p>
-<p id="appendix-B.2-10">(E) The authorization server of Domain B returns an access token for access to the protected resource in Domain B to the authorization server in Domain A.<a href="#appendix-B.2-10" class="pilcrow">¶</a></p>
-<p id="appendix-B.2-11">(F) The authorization server of Domain A returns that access token to the resource server in Domain A.<a href="#appendix-B.2-11" class="pilcrow">¶</a></p>
-<p id="appendix-B.2-12">(G) The resource server in Domain A uses the received access token to access the protected resource in Domain B.<a href="#appendix-B.2-12" class="pilcrow">¶</a></p>
+<p id="appendix-B.2-6">The flow contains the following steps:<a href="#appendix-B.2-6" class="pilcrow">¶</a></p>
+<p id="appendix-B.2-7">(A) The client in Domain A requests a token for the protected resource in Domain B from the authorization server in Domain A. This specification does not define this step. A profile of Token Exchange <span>[<a href="#RFC8693" class="cite xref">RFC8693</a>]</span> may be used.<a href="#appendix-B.2-7" class="pilcrow">¶</a></p>
+<p id="appendix-B.2-8">(B) The authorization server of Domain A determines the authorization server of Domain B. This could have been passed by the client, is statically maintained or dynamically resolved.<a href="#appendix-B.2-8" class="pilcrow">¶</a></p>
+<p id="appendix-B.2-9">(C) Once the authorization server in Domain B is determined, the authorization server in Domain A issues a JWT authorization grant to itself. This reflects to <span><a href="#token-exchange" class="internal xref">Token exchange</a> (<a href="#token-exchange" class="auto internal xref">Section 2.3</a>)</span> of this specification and can be seen as an "internal token exchange".<a href="#appendix-B.2-9" class="pilcrow">¶</a></p>
+<p id="appendix-B.2-10">(D) The authorization server in Domain A acts as a client and presents the JWT authorization grant to the authorization server of Domain B. This presentation happens between the authorization servers. Authorization server A may be required to perform client authentication while doing so. This reflects to [See <span><a href="#access-token-request" class="internal xref">Access Token Request</a> (<a href="#access-token-request" class="auto internal xref">Section 2.4.1</a>)</span>] of this specification.<a href="#appendix-B.2-10" class="pilcrow">¶</a></p>
+<p id="appendix-B.2-11">(E) The authorization server of Domain B returns an access token for the protected resource in Domain B to the authorization server in Domain A.<a href="#appendix-B.2-11" class="pilcrow">¶</a></p>
+<p id="appendix-B.2-12">(F) The authorization server of Domain A returns the access token to the client in Domain A.<a href="#appendix-B.2-12" class="pilcrow">¶</a></p>
+<p id="appendix-B.2-13">(G) The client in Domain A uses the received access token to access the protected resource in Domain B.<a href="#appendix-B.2-13" class="pilcrow">¶</a></p>
 </section>
 </div>
 </section>
@@ -1926,48 +1926,54 @@ Cache-Control: no-cache, no-store
       </h2>
 <p id="appendix-D-1">[[ To be removed from the final specification ]]
 -latest
-* Added two more use cases
-* Editorial updates<a href="#appendix-D-1" class="pilcrow">¶</a></p>
-<p id="appendix-D-2">-02<a href="#appendix-D-2" class="pilcrow">¶</a></p>
+* Clarified diagrams and description of authorization server acting as a client.
+* Remove references to sd-jwt.<a href="#appendix-D-1" class="pilcrow">¶</a></p>
+<p id="appendix-D-2">-03<a href="#appendix-D-2" class="pilcrow">¶</a></p>
 <ul class="normal">
 <li class="normal" id="appendix-D-3.1">
-          <p id="appendix-D-3.1.1">remove recommendation to not use RFC8693's requested_token_type<a href="#appendix-D-3.1.1" class="pilcrow">¶</a></p>
-</li>
-        <li class="normal" id="appendix-D-3.2">
-          <p id="appendix-D-3.2.1">Corrected discrepancy between alphabetic numbering of the diagram and text in the resource acting as client example<a href="#appendix-D-3.2.1" class="pilcrow">¶</a></p>
+          <p id="appendix-D-3.1.1">Editorial updates<a href="#appendix-D-3.1.1" class="pilcrow">¶</a></p>
 </li>
       </ul>
-<p id="appendix-D-4">-01<a href="#appendix-D-4" class="pilcrow">¶</a></p>
+<p id="appendix-D-4">-02<a href="#appendix-D-4" class="pilcrow">¶</a></p>
 <ul class="normal">
 <li class="normal" id="appendix-D-5.1">
-          <p id="appendix-D-5.1.1">limit the authorization grant format to RFC7523 JWT<a href="#appendix-D-5.1.1" class="pilcrow">¶</a></p>
+          <p id="appendix-D-5.1.1">remove recommendation to not use RFC8693's requested_token_type<a href="#appendix-D-5.1.1" class="pilcrow">¶</a></p>
 </li>
         <li class="normal" id="appendix-D-5.2">
-          <p id="appendix-D-5.2.1">minor example fixes<a href="#appendix-D-5.2.1" class="pilcrow">¶</a></p>
-</li>
-        <li class="normal" id="appendix-D-5.3">
-          <p id="appendix-D-5.3.1">editorial fixes<a href="#appendix-D-5.3.1" class="pilcrow">¶</a></p>
-</li>
-        <li class="normal" id="appendix-D-5.4">
-          <p id="appendix-D-5.4.1">added Aaron Parecki to acknowledgements<a href="#appendix-D-5.4.1" class="pilcrow">¶</a></p>
-</li>
-        <li class="normal" id="appendix-D-5.5">
-          <p id="appendix-D-5.5.1">renamed section headers to be more explicit<a href="#appendix-D-5.5.1" class="pilcrow">¶</a></p>
-</li>
-        <li class="normal" id="appendix-D-5.6">
-          <p id="appendix-D-5.6.1">use more specific term "JWT authorization grant"<a href="#appendix-D-5.6.1" class="pilcrow">¶</a></p>
-</li>
-        <li class="normal" id="appendix-D-5.7">
-          <p id="appendix-D-5.7.1">changed name to "OAuth Identity and Authorization Chaining Across Domains"<a href="#appendix-D-5.7.1" class="pilcrow">¶</a></p>
-</li>
-        <li class="normal" id="appendix-D-5.8">
-          <p id="appendix-D-5.8.1">move use cases to appendix and add continuous integration use case<a href="#appendix-D-5.8.1" class="pilcrow">¶</a></p>
+          <p id="appendix-D-5.2.1">Corrected discrepancy between alphabetic numbering of the diagram and text in the resource acting as client example<a href="#appendix-D-5.2.1" class="pilcrow">¶</a></p>
 </li>
       </ul>
-<p id="appendix-D-6">-00<a href="#appendix-D-6" class="pilcrow">¶</a></p>
+<p id="appendix-D-6">-01<a href="#appendix-D-6" class="pilcrow">¶</a></p>
 <ul class="normal">
 <li class="normal" id="appendix-D-7.1">
-          <p id="appendix-D-7.1.1">initial working group version (previously draft-schwenkschuster-oauth-identity-chaining)<a href="#appendix-D-7.1.1" class="pilcrow">¶</a></p>
+          <p id="appendix-D-7.1.1">limit the authorization grant format to RFC7523 JWT<a href="#appendix-D-7.1.1" class="pilcrow">¶</a></p>
+</li>
+        <li class="normal" id="appendix-D-7.2">
+          <p id="appendix-D-7.2.1">minor example fixes<a href="#appendix-D-7.2.1" class="pilcrow">¶</a></p>
+</li>
+        <li class="normal" id="appendix-D-7.3">
+          <p id="appendix-D-7.3.1">editorial fixes<a href="#appendix-D-7.3.1" class="pilcrow">¶</a></p>
+</li>
+        <li class="normal" id="appendix-D-7.4">
+          <p id="appendix-D-7.4.1">added Aaron Parecki to acknowledgements<a href="#appendix-D-7.4.1" class="pilcrow">¶</a></p>
+</li>
+        <li class="normal" id="appendix-D-7.5">
+          <p id="appendix-D-7.5.1">renamed section headers to be more explicit<a href="#appendix-D-7.5.1" class="pilcrow">¶</a></p>
+</li>
+        <li class="normal" id="appendix-D-7.6">
+          <p id="appendix-D-7.6.1">use more specific term "JWT authorization grant"<a href="#appendix-D-7.6.1" class="pilcrow">¶</a></p>
+</li>
+        <li class="normal" id="appendix-D-7.7">
+          <p id="appendix-D-7.7.1">changed name to "OAuth Identity and Authorization Chaining Across Domains"<a href="#appendix-D-7.7.1" class="pilcrow">¶</a></p>
+</li>
+        <li class="normal" id="appendix-D-7.8">
+          <p id="appendix-D-7.8.1">move use cases to appendix and add continuous integration use case<a href="#appendix-D-7.8.1" class="pilcrow">¶</a></p>
+</li>
+      </ul>
+<p id="appendix-D-8">-00<a href="#appendix-D-8" class="pilcrow">¶</a></p>
+<ul class="normal">
+<li class="normal" id="appendix-D-9.1">
+          <p id="appendix-D-9.1.1">initial working group version (previously draft-schwenkschuster-oauth-identity-chaining)<a href="#appendix-D-9.1.1" class="pilcrow">¶</a></p>
 </li>
       </ul>
 </section>
