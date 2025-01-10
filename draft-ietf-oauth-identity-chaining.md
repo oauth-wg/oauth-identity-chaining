@@ -51,7 +51,6 @@ normative:
 
 informative:
 
-  I-D.ietf-oauth-selective-disclosure-jwt:
   I-D.ietf-oauth-security-topics:
   I-D.ietf-oauth-resource-metadata:
 
@@ -264,7 +263,7 @@ Cache-Control: no-cache, no-store
 Authorization servers MAY transcribe claims when either producing JWT authorization grants in the token exchange flow or access tokens in the assertion flow.
 
 * **Transcribing the subject identifier**: Subject identifier can differ between the parties involved. For instance: A user is known at domain A by "johndoe@a.org" but in domain B by "doe.john@b.org". The mapping from one identifier to the other MAY either happen in the token exchange step and the updated identifier is reflected in returned JWT authorization grant or in the assertion step where the updated identifier would be reflected in the access token. To support this both authorization servers MAY add, change or remove claims as described above.
-* **Selective disclosure**: Authorization servers MAY remove or hide certain claims due to privacy requirements or reduced trust towards the targeting trust domain. To hide and enclose claims {{I-D.ietf-oauth-selective-disclosure-jwt}} MAY be used.
+* **Selective disclosure**: Authorization servers MAY remove or hide certain claims due to privacy requirements or reduced trust towards the targeting trust domain.
 * **Controlling scope**: Clients MAY use the scope parameter to control transcribed claims (e.g. downscoping). Authorization Servers SHOULD verify that the requested scopes are not higher privileged than the scopes of the presented subject_token.
 * **Including JWT authorization grant claims**: The authorization server performing the assertion flow MAY leverage claims from the presented JWT authorization grant and include them in the returned access token. The populated claims SHOULD be namespaced or validated to prevent the injection of invalid claims.
 
@@ -446,6 +445,7 @@ The editors would like to thank Joe Jubinski, Justin Richer, Aaron Parecki, Dean
 \[\[ To be removed from the final specification ]]
 -latest
 * Clarified diagrams and description of authorization server acting as a client.
+* Remove references to sd-jwt.
 
 -03
 
