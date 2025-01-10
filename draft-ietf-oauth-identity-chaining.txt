@@ -431,8 +431,7 @@ grant_type=urn%3Aietf%3Aparams%3Aoauth%3Agrant-type%3Atoken-exchange
 
    *  *Selective disclosure*: Authorization servers MAY remove or hide
       certain claims due to privacy requirements or reduced trust
-      towards the targeting trust domain.  To hide and enclose claims
-      [I-D.ietf-oauth-selective-disclosure-jwt] MAY be used.
+      towards the targeting trust domain.
 
    *  *Controlling scope*: Clients MAY use the scope parameter to
       control transcribed claims (e.g. downscoping).  Authorization
@@ -497,13 +496,6 @@ grant_type=urn%3Aietf%3Aparams%3Aoauth%3Agrant-type%3Atoken-exchange
               May 2017, <https://www.rfc-editor.org/rfc/rfc8174>.
 
 5.2.  Informative References
-
-   [I-D.ietf-oauth-selective-disclosure-jwt]
-              Fett, D., Yasuda, K., and B. Campbell, "Selective
-              Disclosure for JWTs (SD-JWT)", Work in Progress, Internet-
-              Draft, draft-ietf-oauth-selective-disclosure-jwt-14, 15
-              November 2024, <https://datatracker.ietf.org/doc/html/
-              draft-ietf-oauth-selective-disclosure-jwt-14>.
 
    [I-D.ietf-oauth-security-topics]
               Lodderstedt, T., Bradley, J., Labunets, A., and D. Fett,
@@ -812,6 +804,7 @@ Appendix D.  Document History
 
    [[ To be removed from the final specification ]] -latest * Clarified
    diagrams and description of authorization server acting as a client.
+   * Remove references to sd-jwt.
 
    -03
 
