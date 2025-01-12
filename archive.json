@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2025-01-09T00:19:33.669147+00:00",
+  "timestamp": "2025-01-12T00:22:20.959830+00:00",
   "repo": "oauth-wg/oauth-identity-chaining",
   "labels": [
     {
@@ -849,7 +849,7 @@
       "labels": [],
       "body": "If the user's token is a sender constraint token \"DPoP\", can it be exchanged by the client to an authorization grant for another domain? Does the authorization server verify proof of possession?",
       "createdAt": "2024-02-16T11:36:39Z",
-      "updatedAt": "2024-04-26T16:52:43Z",
+      "updatedAt": "2025-01-10T20:06:15Z",
       "closedAt": null,
       "comments": [
         {
@@ -872,6 +872,13 @@
           "body": "some more related discussion in \"Add sender constraining mechanisms #86\" ",
           "createdAt": "2024-04-26T16:52:41Z",
           "updatedAt": "2024-04-26T16:52:41Z"
+        },
+        {
+          "author": "PieterKas",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "I a don't think we should disallow this. The constrained access token is being used for another purpose. I would also argue the constrain was introduced to prevent it from being replayed as an access token. In this case it is. being used for something different. I imagine it will also be impractical to require proof of the sender constraining as the key bound to the token is probably not be under control of the resource server. ",
+          "createdAt": "2025-01-10T20:06:15Z",
+          "updatedAt": "2025-01-10T20:06:15Z"
         }
       ]
     },
@@ -1154,15 +1161,15 @@
       "id": "I_kwDOJubJxM6dNsr_",
       "title": "Remove references to Federation ",
       "url": "https://github.com/oauth-wg/oauth-identity-chaining/issues/103",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "PieterKas",
       "authorAssociation": "CONTRIBUTOR",
       "assignees": [],
       "labels": [],
       "body": "Should we remove references to federation an instead refer to access ing resources across trust domains? \r\n\r\nPoint of View: Federation is a bigger topic and I think we are really just looking at the mechanisms for cross domain access and authorisation chaining.",
       "createdAt": "2024-11-06T10:10:39Z",
-      "updatedAt": "2024-12-06T14:48:12Z",
-      "closedAt": null,
+      "updatedAt": "2025-01-09T14:24:52Z",
+      "closedAt": "2025-01-09T14:24:52Z",
       "comments": [
         {
           "author": "PieterKas",
@@ -1273,15 +1280,17 @@
       "id": "I_kwDOJubJxM6dOOR8",
       "title": "How would SD-JWT be used in claims transcription",
       "url": "https://github.com/oauth-wg/oauth-identity-chaining/issues/108",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "PieterKas",
       "authorAssociation": "CONTRIBUTOR",
-      "assignees": [],
+      "assignees": [
+        "PieterKas"
+      ],
       "labels": [],
       "body": "The claims transcription section suggest that SD-JWT can be used for selective disclosure, but does not provide additional information nohow to combine this draft with something like SD-JWT. Do we need to provide more information on how this could be done (e.g. would the SD-JWT be requested using the assertion grant)?",
       "createdAt": "2024-11-06T10:57:01Z",
-      "updatedAt": "2024-12-06T17:50:59Z",
-      "closedAt": null,
+      "updatedAt": "2025-01-10T20:00:05Z",
+      "closedAt": "2025-01-10T20:00:05Z",
       "comments": [
         {
           "author": "PieterKas",
@@ -1296,6 +1305,13 @@
           "body": "I agree we do not need to include text around SD-JWT and rather leave it to a profile or extension.",
           "createdAt": "2024-12-06T17:50:58Z",
           "updatedAt": "2024-12-06T17:50:58Z"
+        },
+        {
+          "author": "PieterKas",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "After discussion amongst editors, it was decide to remove this reference as the underlying specifications for assertion grant is scoped to JWT and using SD-JWTs for access tokens is undefined, and also incompatible with the idea of opaque tokens since clients are not meant to be inspecting or selectively disclosing them.",
+          "createdAt": "2025-01-10T15:57:10Z",
+          "updatedAt": "2025-01-10T15:57:10Z"
         }
       ]
     },
@@ -1445,6 +1461,40 @@
           "updatedAt": "2025-01-06T17:04:30Z"
         }
       ]
+    },
+    {
+      "number": 125,
+      "id": "I_kwDOJubJxM6luznN",
+      "title": "Add sender constraining of tokens to the security considerations",
+      "url": "https://github.com/oauth-wg/oauth-identity-chaining/issues/125",
+      "state": "OPEN",
+      "author": "PieterKas",
+      "authorAssociation": "CONTRIBUTOR",
+      "assignees": [
+        "PieterKas"
+      ],
+      "labels": [],
+      "body": "Narrowly describe the use of mTLS and DpoP to sender constrain tokens requested by the client.",
+      "createdAt": "2025-01-10T15:58:17Z",
+      "updatedAt": "2025-01-10T15:58:28Z",
+      "closedAt": null,
+      "comments": []
+    },
+    {
+      "number": 126,
+      "id": "I_kwDOJubJxM6lu1OO",
+      "title": "Privacy considerations",
+      "url": "https://github.com/oauth-wg/oauth-identity-chaining/issues/126",
+      "state": "OPEN",
+      "author": "PieterKas",
+      "authorAssociation": "CONTRIBUTOR",
+      "assignees": [],
+      "labels": [],
+      "body": "Review draft for privacy considerations and suggest alternative text or an additional section to aggregate privacy considerations - @gffletch\r\n",
+      "createdAt": "2025-01-10T16:00:48Z",
+      "updatedAt": "2025-01-10T16:02:34Z",
+      "closedAt": null,
+      "comments": []
     }
   ],
   "pulls": [
@@ -5646,24 +5696,26 @@
       "id": "PR_kwDOJubJxM6EWqoq",
       "title": "Editorial clarifications",
       "url": "https://github.com/oauth-wg/oauth-identity-chaining/pull/115",
-      "state": "OPEN",
+      "state": "MERGED",
       "author": "PieterKas",
       "authorAssociation": "CONTRIBUTOR",
       "assignees": [],
       "labels": [],
       "body": "Attempt at addressing issue #107",
       "createdAt": "2024-12-06T17:20:11Z",
-      "updatedAt": "2024-12-16T13:21:03Z",
+      "updatedAt": "2025-01-10T13:05:51Z",
       "baseRepository": "oauth-wg/oauth-identity-chaining",
       "baseRefName": "main",
       "baseRefOid": "6490de847b5c83cd8f1ce56f6a6ff1ade881ec41",
       "headRepository": "oauth-wg/oauth-identity-chaining",
       "headRefName": "PieterKas-patch-5",
       "headRefOid": "ad242d6bf1bd30e61f5f529b4506486bf76438d1",
-      "closedAt": null,
-      "mergedAt": null,
-      "mergedBy": null,
-      "mergeCommit": null,
+      "closedAt": "2025-01-10T13:05:49Z",
+      "mergedAt": "2025-01-10T13:05:49Z",
+      "mergedBy": "PieterKas",
+      "mergeCommit": {
+        "oid": "213c3337304de7123351d98210bbe688a675744d"
+      },
       "comments": [
         {
           "author": "PieterKas",
@@ -5698,6 +5750,19 @@
           "body": "Also should be a \"s\" in (Appendix, (#Examples))",
           "createdAt": "2024-12-06T17:46:21Z",
           "updatedAt": "2024-12-06T17:46:21Z",
+          "comments": []
+        },
+        {
+          "id": "PRR_kwDOJubJxM6XaNlD",
+          "commit": {
+            "abbreviatedOid": "ad242d6"
+          },
+          "author": "kburgin3",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "APPROVED",
+          "body": "Looks good",
+          "createdAt": "2025-01-09T15:26:18Z",
+          "updatedAt": "2025-01-09T15:26:18Z",
           "comments": []
         }
       ]
@@ -5769,7 +5834,7 @@
       "labels": [],
       "body": "There needs to be a RS in Domain A for the last step to make sense (sending the access token to RS B) in the case that AS A is the Abstract Client",
       "createdAt": "2024-12-08T18:41:55Z",
-      "updatedAt": "2024-12-16T15:42:13Z",
+      "updatedAt": "2025-01-10T22:25:29Z",
       "baseRepository": "oauth-wg/oauth-identity-chaining",
       "baseRefName": "main",
       "baseRefOid": "6490de847b5c83cd8f1ce56f6a6ff1ade881ec41",
@@ -5843,6 +5908,13 @@
           "body": "I'm not against the diagram per se. I'm now reading a TLS draft, the Overview of which refers to data structures defined within the draft itself. I'm finding that I have to drill down into the body of the draft to make sense of the Overview. I got the sense that the same problem was coming up with this diagram. ",
           "createdAt": "2024-12-16T15:42:12Z",
           "updatedAt": "2024-12-16T15:42:12Z"
+        },
+        {
+          "author": "gffletch",
+          "authorAssociation": "NONE",
+          "body": "Personally, trying to pull in the OAuth client as an abstract concept I think adds confusion to the diagram. Wouldn't it just be easier to change the label of the original diagram from \"Client Domain A\" to \"Protected Resource Domain A\"?  \r\n\r\nThere is a client in play as well but it doesn't matter for the spec. It's the entity that invokes the Protected Resource in Domain A. ",
+          "createdAt": "2025-01-10T22:25:28Z",
+          "updatedAt": "2025-01-10T22:25:28Z"
         }
       ],
       "reviews": []
@@ -5852,24 +5924,26 @@
       "id": "PR_kwDOJubJxM6EhfIm",
       "title": "Clarify resource server as client",
       "url": "https://github.com/oauth-wg/oauth-identity-chaining/pull/118",
-      "state": "OPEN",
+      "state": "MERGED",
       "author": "PieterKas",
       "authorAssociation": "CONTRIBUTOR",
       "assignees": [],
       "labels": [],
       "body": "Modified diagram and added additional text to describe the resource server acting as a client.\r\n\r\n",
       "createdAt": "2024-12-09T11:29:22Z",
-      "updatedAt": "2024-12-16T13:50:29Z",
+      "updatedAt": "2025-01-09T15:23:07Z",
       "baseRepository": "oauth-wg/oauth-identity-chaining",
       "baseRefName": "main",
       "baseRefOid": "6490de847b5c83cd8f1ce56f6a6ff1ade881ec41",
       "headRepository": "oauth-wg/oauth-identity-chaining",
       "headRefName": "PieterKas-patch-7",
       "headRefOid": "c8af9785b5d33300c13429f0d1ddf13756a54801",
-      "closedAt": null,
-      "mergedAt": null,
-      "mergedBy": null,
-      "mergeCommit": null,
+      "closedAt": "2025-01-09T15:23:04Z",
+      "mergedAt": "2025-01-09T15:23:04Z",
+      "mergedBy": "PieterKas",
+      "mergeCommit": {
+        "oid": "9f85675b4c48477904e446270cf5143e2198014d"
+      },
       "comments": [],
       "reviews": [
         {
@@ -5971,6 +6045,19 @@
               "updatedAt": "2024-12-16T13:50:29Z"
             }
           ]
+        },
+        {
+          "id": "PRR_kwDOJubJxM6XaKDv",
+          "commit": {
+            "abbreviatedOid": "c8af978"
+          },
+          "author": "kburgin3",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "APPROVED",
+          "body": "Thanks Pieter. Looks good",
+          "createdAt": "2025-01-09T15:21:09Z",
+          "updatedAt": "2025-01-09T15:21:09Z",
+          "comments": []
         }
       ]
     },
@@ -5979,24 +6066,26 @@
       "id": "PR_kwDOJubJxM6EhnCN",
       "title": "Clarify AS-as-Client",
       "url": "https://github.com/oauth-wg/oauth-identity-chaining/pull/119",
-      "state": "OPEN",
+      "state": "MERGED",
       "author": "PieterKas",
       "authorAssociation": "CONTRIBUTOR",
       "assignees": [],
       "labels": [],
       "body": "Added text and diagrams to clarify Authorization-server-as-aclient flows.",
       "createdAt": "2024-12-09T11:44:27Z",
-      "updatedAt": "2024-12-16T13:19:34Z",
+      "updatedAt": "2025-01-09T14:28:40Z",
       "baseRepository": "oauth-wg/oauth-identity-chaining",
       "baseRefName": "main",
-      "baseRefOid": "6490de847b5c83cd8f1ce56f6a6ff1ade881ec41",
+      "baseRefOid": "36cc6a9e9eb7dc5bf98db2f5845425afa92ffe74",
       "headRepository": "oauth-wg/oauth-identity-chaining",
       "headRefName": "PieterKas-patch-8",
-      "headRefOid": "349721601c9755cdb2b2a3e0390aa83a205ce91a",
-      "closedAt": null,
-      "mergedAt": null,
-      "mergedBy": null,
-      "mergeCommit": null,
+      "headRefOid": "ac9c2a6e465ad9121d3f8f08903e396fa381e1ed",
+      "closedAt": "2025-01-09T14:28:37Z",
+      "mergedAt": "2025-01-09T14:28:37Z",
+      "mergedBy": "PieterKas",
+      "mergeCommit": {
+        "oid": "6be8a31242593e760733aaf5057dc74bda35cc96"
+      },
       "comments": [
         {
           "author": "kburgin3",
@@ -6179,6 +6268,19 @@
               "updatedAt": "2024-12-16T11:35:32Z"
             }
           ]
+        },
+        {
+          "id": "PRR_kwDOJubJxM6XZKs0",
+          "commit": {
+            "abbreviatedOid": "ac9c2a6"
+          },
+          "author": "arndt-s",
+          "authorAssociation": "MEMBER",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2025-01-09T13:44:27Z",
+          "updatedAt": "2025-01-09T13:44:27Z",
+          "comments": []
         }
       ]
     },
@@ -6468,6 +6570,115 @@
           "body": "",
           "createdAt": "2024-12-16T13:00:57Z",
           "updatedAt": "2024-12-16T13:00:57Z",
+          "comments": []
+        }
+      ]
+    },
+    {
+      "number": 124,
+      "id": "PR_kwDOJubJxM6HVnDs",
+      "title": "Added delegated key binding",
+      "url": "https://github.com/oauth-wg/oauth-identity-chaining/pull/124",
+      "state": "OPEN",
+      "author": "kburgin3",
+      "authorAssociation": "CONTRIBUTOR",
+      "assignees": [],
+      "labels": [],
+      "body": "Added a section to the examples section in the appendix that describes how to perform delegated key binding when the AS in Domain A is acting as the client.",
+      "createdAt": "2025-01-10T14:13:57Z",
+      "updatedAt": "2025-01-10T22:15:20Z",
+      "baseRepository": "oauth-wg/oauth-identity-chaining",
+      "baseRefName": "main",
+      "baseRefOid": "213c3337304de7123351d98210bbe688a675744d",
+      "headRepository": "oauth-wg/oauth-identity-chaining",
+      "headRefName": "kburgin3-delegated-key-binding",
+      "headRefOid": "198933ffdbe84808ac8289a4e39cb99c05967fd5",
+      "closedAt": null,
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [],
+      "reviews": [
+        {
+          "id": "PRR_kwDOJubJxM6Xo3Cn",
+          "commit": {
+            "abbreviatedOid": "198933f"
+          },
+          "author": "gffletch",
+          "authorAssociation": "NONE",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2025-01-10T22:09:23Z",
+          "updatedAt": "2025-01-10T22:09:23Z",
+          "comments": [
+            {
+              "originalPosition": 8,
+              "body": "Maybe change to \"For the case...\" or \"In the case...\"",
+              "createdAt": "2025-01-10T22:09:23Z",
+              "updatedAt": "2025-01-10T22:09:24Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJubJxM6Xo6vQ",
+          "commit": {
+            "abbreviatedOid": "198933f"
+          },
+          "author": "gffletch",
+          "authorAssociation": "NONE",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2025-01-10T22:15:20Z",
+          "updatedAt": "2025-01-10T22:15:20Z",
+          "comments": [
+            {
+              "originalPosition": 6,
+              "body": "In some environments, there is a need to bind the final access token to a private key held by the Resource Server in Domain A. This is so that the Resource Server in Domain B can verify the proof of possession of the private key of the Resource Server in Domain A. The proof of possession is sent when the Resource Server in Domain A makes a request of the Resource Server in Domain B using the issued access token.\r\n\r\nI'm not sure that's better but maybe it will be useful :)",
+              "createdAt": "2025-01-10T22:15:20Z",
+              "updatedAt": "2025-01-10T22:15:21Z"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 127,
+      "id": "PR_kwDOJubJxM6HWnyA",
+      "title": "Remove reference to sd-jwt",
+      "url": "https://github.com/oauth-wg/oauth-identity-chaining/pull/127",
+      "state": "MERGED",
+      "author": "PieterKas",
+      "authorAssociation": "CONTRIBUTOR",
+      "assignees": [],
+      "labels": [],
+      "body": "As described in issue #108, the use of sd-jwt as either an access token or as an assertion grant is undefined and possibly at odds with those drafts and out of scope for the protocol we intend to describe here.",
+      "createdAt": "2025-01-10T16:26:41Z",
+      "updatedAt": "2025-01-10T19:59:44Z",
+      "baseRepository": "oauth-wg/oauth-identity-chaining",
+      "baseRefName": "main",
+      "baseRefOid": "213c3337304de7123351d98210bbe688a675744d",
+      "headRepository": "oauth-wg/oauth-identity-chaining",
+      "headRefName": "PieterKas-patch-2",
+      "headRefOid": "9684e03fc0d544ecc87b96ab14f25ddf9ce33abc",
+      "closedAt": "2025-01-10T19:59:43Z",
+      "mergedAt": "2025-01-10T19:59:43Z",
+      "mergedBy": "PieterKas",
+      "mergeCommit": {
+        "oid": "a7fb5ae19e7e7b848dd9ed635cfc03b39835e6ce"
+      },
+      "comments": [],
+      "reviews": [
+        {
+          "id": "PRR_kwDOJubJxM6Xkt8n",
+          "commit": {
+            "abbreviatedOid": "9684e03"
+          },
+          "author": "bc-pi",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2025-01-10T17:02:05Z",
+          "updatedAt": "2025-01-10T17:02:05Z",
           "comments": []
         }
       ]
