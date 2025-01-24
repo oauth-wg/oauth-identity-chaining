@@ -462,10 +462,10 @@ grant_type=urn%3Aietf%3Aparams%3Aoauth%3Agrant-type%3Atoken-exchange
 
 4.2.  Sender Constraining Tokens
 
-   Access and refresh tokens SHOULD be sender constrained using
-   mechanisms such as OAuth Demonstration of Proof of Possession (DPoP)
-   [RFC9449] or Mutual TLS for OAuth 2.0 [RFC8705] to minimise the risks
-   of token theft and replay.
+   Access tokens SHOULD be sender constrained using mechanisms such as
+   OAuth Demonstration of Proof of Possession (DPoP) [RFC9449] or Mutual
+   TLS for OAuth 2.0 [RFC8705] to minimise the risks of token theft and
+   replay.
 
 5.  Use cases
 
