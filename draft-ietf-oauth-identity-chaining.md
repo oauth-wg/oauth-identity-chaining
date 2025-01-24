@@ -281,7 +281,7 @@ To be added.
 Authorization Servers SHOULD follow the OAuth 2.0 Security Best Current Practice {{I-D.ietf-oauth-security-topics}} for client authentication.
 
 ## Sender Constraining Tokens
-Access and refresh tokens SHOULD be sender constrained using mechanisms such as OAuth Demonstration of Proof of Possession (DPoP) {{RFC9449}} or Mutual TLS for OAuth 2.0 {{RFC8705}} to minimise the risks of token theft and replay.
+Access tokens SHOULD be sender constrained using mechanisms such as OAuth Demonstration of Proof of Possession (DPoP) {{RFC9449}} or Mutual TLS for OAuth 2.0 {{RFC8705}} to minimise the risks of token theft and replay.
 
 # Use cases
 
