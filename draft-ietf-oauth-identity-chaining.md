@@ -281,7 +281,7 @@ To be added.
 Authorization Servers SHOULD follow the OAuth 2.0 Security Best Current Practice {{I-D.ietf-oauth-security-topics}} for client authentication.
 
 ## Sender Constraining Tokens
-The authorization server in Domain B SHOULD sender constrain access and refresh tokens issued to clients in Domain A using mechanisms like OAuth Demonstration of Proof of Possession (DPoP) {{RFC9449}} or Mutual TLS for OAuth 2.0 {{RFC8705}} to minimize the risk of token theft and replay. Resource servers in Domain B SHOULD verify that the access token they receive is constrained to the client in Domain A presenting it.
+The authorization server in Domain B SHOULD sender constrain access tokens issued to clients in Domain A using mechanisms like OAuth Demonstration of Proof of Possession (DPoP) {{RFC9449}} or Mutual TLS for OAuth 2.0 {{RFC8705}} to minimize the risk of token theft and replay. Resource servers in Domain B SHOULD verify that the access token they receive is constrained to the client in Domain A presenting it.
 
 --- back
 
