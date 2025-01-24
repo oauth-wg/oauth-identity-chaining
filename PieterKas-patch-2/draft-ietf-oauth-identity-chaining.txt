@@ -5,13 +5,13 @@
 oauth                                                 A. Schwenkschuster
 Internet-Draft                                             P. Kasselmann
 Intended status: Informational                                     SPIRL
-Expires: 14 July 2025                                          K. Burgin
+Expires: 28 July 2025                                          K. Burgin
                                                                    MITRE
                                                               M. Jenkins
                                                                 NSA-CCSS
                                                              B. Campbell
                                                            Ping Identity
-                                                         10 January 2025
+                                                         24 January 2025
 
 
         OAuth Identity and Authorization Chaining Across Domains
@@ -49,7 +49,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 14 July 2025.
+   This Internet-Draft will expire on 28 July 2025.
 
 Copyright Notice
 
@@ -86,21 +86,22 @@ Table of Contents
    3.  IANA Considerations
    4.  Security Considerations
      4.1.  Client Authentication
-   5.  References
-     5.1.  Normative References
-     5.2.  Informative References
-   Appendix A.  Use cases
-     A.1.  Preserve User Context across Multi-cloud, Multi-Hybrid
+     4.2.  Sender Constraining Tokens
+   5.  Use cases
+     5.1.  Preserve User Context across Multi-cloud, Multi-Hybrid
            environments
-     A.2.  Continuous Integration Accessing External Resources
-     A.3.  API Security Use Case
-     A.4.  Extend Single-Sign-On to API Access
-     A.5.  Cross-domain API authorization
-   Appendix B.  Examples
-     B.1.  Resource server acting as client
-     B.2.  Authorization server acting as client
-   Appendix C.  Acknowledgements
-   Appendix D.  Document History
+     5.2.  Continuous Integration Accessing External Resources
+     5.3.  API Security Use Case
+     5.4.  Extend Single-Sign-On to API Access
+     5.5.  Cross-domain API authorization
+   6.  Examples
+     6.1.  Resource server acting as client
+     6.2.  Authorization server acting as client
+   7.  Acknowledgements
+   8.  Document History
+   9.  References
+     9.1.  Normative References
+     9.2.  Informative References
    Contributors
    Authors' Addresses
 
@@ -459,60 +460,14 @@ grant_type=urn%3Aietf%3Aparams%3Aoauth%3Agrant-type%3Atoken-exchange
    Current Practice [I-D.ietf-oauth-security-topics] for client
    authentication.
 
-5.  References
+4.2.  Sender Constraining Tokens
 
-5.1.  Normative References
+   Access and refresh tokens SHOULD be sender constrained using
+   mechanisms such as OAuth Demonstration of Proof of Possession (DPoP)
+   [RFC9449] or Mutual TLS for OAuth 2.0 [RFC8705] to minimise the risks
+   of token theft and replay.
 
-   [RFC6749]  Hardt, D., Ed., "The OAuth 2.0 Authorization Framework",
-              RFC 6749, DOI 10.17487/RFC6749, October 2012,
-              <https://www.rfc-editor.org/rfc/rfc6749>.
-
-   [RFC8693]  Jones, M., Nadalin, A., Campbell, B., Ed., Bradley, J.,
-              and C. Mortimore, "OAuth 2.0 Token Exchange", RFC 8693,
-              DOI 10.17487/RFC8693, January 2020,
-              <https://www.rfc-editor.org/rfc/rfc8693>.
-
-   [RFC7523]  Jones, M., Campbell, B., and C. Mortimore, "JSON Web Token
-              (JWT) Profile for OAuth 2.0 Client Authentication and
-              Authorization Grants", RFC 7523, DOI 10.17487/RFC7523, May
-              2015, <https://www.rfc-editor.org/rfc/rfc7523>.
-
-   [RFC8707]  Campbell, B., Bradley, J., and H. Tschofenig, "Resource
-              Indicators for OAuth 2.0", RFC 8707, DOI 10.17487/RFC8707,
-              February 2020, <https://www.rfc-editor.org/rfc/rfc8707>.
-
-   [RFC8414]  Jones, M., Sakimura, N., and J. Bradley, "OAuth 2.0
-              Authorization Server Metadata", RFC 8414,
-              DOI 10.17487/RFC8414, June 2018,
-              <https://www.rfc-editor.org/rfc/rfc8414>.
-
-   [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
-              Requirement Levels", BCP 14, RFC 2119,
-              DOI 10.17487/RFC2119, March 1997,
-              <https://www.rfc-editor.org/rfc/rfc2119>.
-
-   [RFC8174]  Leiba, B., "Ambiguity of Uppercase vs Lowercase in RFC
-              2119 Key Words", BCP 14, RFC 8174, DOI 10.17487/RFC8174,
-              May 2017, <https://www.rfc-editor.org/rfc/rfc8174>.
-
-5.2.  Informative References
-
-   [I-D.ietf-oauth-security-topics]
-              Lodderstedt, T., Bradley, J., Labunets, A., and D. Fett,
-              "OAuth 2.0 Security Best Current Practice", Work in
-              Progress, Internet-Draft, draft-ietf-oauth-security-
-              topics-29, 3 June 2024,
-              <https://datatracker.ietf.org/doc/html/draft-ietf-oauth-
-              security-topics-29>.
-
-   [I-D.ietf-oauth-resource-metadata]
-              Jones, M. B., Hunt, P., and A. Parecki, "OAuth 2.0
-              Protected Resource Metadata", Work in Progress, Internet-
-              Draft, draft-ietf-oauth-resource-metadata-13, 15 October
-              2024, <https://datatracker.ietf.org/doc/html/draft-ietf-
-              oauth-resource-metadata-13>.
-
-Appendix A.  Use cases
+5.  Use cases
 
    This sections outlines some use cases where the identity and
    authorization chaining described in this document can be applied.
@@ -520,7 +475,7 @@ Appendix A.  Use cases
    the type of use cases enabled by this specification.  Other use cases
    may also be supported by this specification.
 
-A.1.  Preserve User Context across Multi-cloud, Multi-Hybrid
+5.1.  Preserve User Context across Multi-cloud, Multi-Hybrid
       environments
 
    A user attempts to access a service that is implemented as a number
@@ -533,7 +488,7 @@ A.1.  Preserve User Context across Multi-cloud, Multi-Hybrid
    when a microservice in one trust domain calls another service in
    another trust domain.
 
-A.2.  Continuous Integration Accessing External Resources
+5.2.  Continuous Integration Accessing External Resources
 
    A continuous integration system needs to access external resources,
    for example to upload an artifact or to run tests.  These resources
@@ -543,7 +498,7 @@ A.2.  Continuous Integration Accessing External Resources
    boundary.  This not just prevents maintaining credentials it also
    allows fine grained access control at the resource.
 
-A.3.  API Security Use Case
+5.3.  API Security Use Case
 
    A home devices company provides a "Camera API" to enable access to
    home cameras.  Partner companies use this Camera API to integrate the
@@ -557,7 +512,7 @@ A.3.  API Security Use Case
    by a user who is authorized to view the feed of the requested home
    camera.
 
-A.4.  Extend Single-Sign-On to API Access
+5.4.  Extend Single-Sign-On to API Access
 
    A user that authenticated to an enterprise Identity Provider (IdP)
    does not have to sign-in to multiple SaaS applications if the SaaS
@@ -574,7 +529,7 @@ A.4.  Extend Single-Sign-On to API Access
    the user to complete an interactive delegated OAuth 2.0 flow to
    obtain an access token to access the SaaS provider's APIs.
 
-A.5.  Cross-domain API authorization
+5.5.  Cross-domain API authorization
 
    An e-mail client can be used with arbitrary email servers, without
    requiring pre-established relationships between each email client and
@@ -589,7 +544,7 @@ A.5.  Cross-domain API authorization
    authorization grant, the e-mail client obtains an access token
    without any additional user interaction.
 
-Appendix B.  Examples
+6.  Examples
 
    This section contains two examples, demonstrating how this
    specification may be used in different environments with specific
@@ -597,7 +552,7 @@ Appendix B.  Examples
    the client and the second example shows the authorization server
    acting as the client.
 
-B.1.  Resource server acting as client
+6.1.  Resource server acting as client
 
    As part of completing a request, a resource server in Domain A may
    need to access a resource server in Domain B.  This requires the
@@ -682,7 +637,7 @@ B.1.  Resource server acting as client
    (F) The resource server uses the access token to access the protected
    resource at Domain B.
 
-B.2.  Authorization server acting as client
+6.2.  Authorization server acting as client
 
    Authorization servers may act as clients too.  This can be necessary
    because of following reasons:
@@ -793,14 +748,14 @@ B.2.  Authorization server acting as client
    (G) The client in Domain A uses the received access token to access
    the protected resource in Domain B.
 
-Appendix C.  Acknowledgements
+7.  Acknowledgements
 
    The editors would like to thank Joe Jubinski, Justin Richer, Aaron
    Parecki, Dean H.  Saxe, and others (please let us know, if you've
    been mistakenly omitted) for their valuable input, feedback and
    general support of this work.
 
-Appendix D.  Document History
+8.  Document History
 
    [[ To be removed from the final specification ]] -latest * Clarified
    diagrams and description of authorization server acting as a client.
@@ -840,6 +795,70 @@ Appendix D.  Document History
 
    *  initial working group version (previously draft-schwenkschuster-
       oauth-identity-chaining)
+
+9.  References
+
+9.1.  Normative References
+
+   [RFC6749]  Hardt, D., Ed., "The OAuth 2.0 Authorization Framework",
+              RFC 6749, DOI 10.17487/RFC6749, October 2012,
+              <https://www.rfc-editor.org/rfc/rfc6749>.
+
+   [RFC8693]  Jones, M., Nadalin, A., Campbell, B., Ed., Bradley, J.,
+              and C. Mortimore, "OAuth 2.0 Token Exchange", RFC 8693,
+              DOI 10.17487/RFC8693, January 2020,
+              <https://www.rfc-editor.org/rfc/rfc8693>.
+
+   [RFC7523]  Jones, M., Campbell, B., and C. Mortimore, "JSON Web Token
+              (JWT) Profile for OAuth 2.0 Client Authentication and
+              Authorization Grants", RFC 7523, DOI 10.17487/RFC7523, May
+              2015, <https://www.rfc-editor.org/rfc/rfc7523>.
+
+   [RFC8707]  Campbell, B., Bradley, J., and H. Tschofenig, "Resource
+              Indicators for OAuth 2.0", RFC 8707, DOI 10.17487/RFC8707,
+              February 2020, <https://www.rfc-editor.org/rfc/rfc8707>.
+
+   [RFC8414]  Jones, M., Sakimura, N., and J. Bradley, "OAuth 2.0
+              Authorization Server Metadata", RFC 8414,
+              DOI 10.17487/RFC8414, June 2018,
+              <https://www.rfc-editor.org/rfc/rfc8414>.
+
+   [RFC9449]  Fett, D., Campbell, B., Bradley, J., Lodderstedt, T.,
+              Jones, M., and D. Waite, "OAuth 2.0 Demonstrating Proof of
+              Possession (DPoP)", RFC 9449, DOI 10.17487/RFC9449,
+              September 2023, <https://www.rfc-editor.org/rfc/rfc9449>.
+
+   [RFC8705]  Campbell, B., Bradley, J., Sakimura, N., and T.
+              Lodderstedt, "OAuth 2.0 Mutual-TLS Client Authentication
+              and Certificate-Bound Access Tokens", RFC 8705,
+              DOI 10.17487/RFC8705, February 2020,
+              <https://www.rfc-editor.org/rfc/rfc8705>.
+
+   [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
+              Requirement Levels", BCP 14, RFC 2119,
+              DOI 10.17487/RFC2119, March 1997,
+              <https://www.rfc-editor.org/rfc/rfc2119>.
+
+   [RFC8174]  Leiba, B., "Ambiguity of Uppercase vs Lowercase in RFC
+              2119 Key Words", BCP 14, RFC 8174, DOI 10.17487/RFC8174,
+              May 2017, <https://www.rfc-editor.org/rfc/rfc8174>.
+
+9.2.  Informative References
+
+   [I-D.ietf-oauth-security-topics]
+              Lodderstedt, T., Bradley, J., Labunets, A., and D. Fett,
+              "OAuth 2.0 Security Best Current Practice", Work in
+              Progress, Internet-Draft, draft-ietf-oauth-security-
+              topics-29, 3 June 2024,
+              <https://datatracker.ietf.org/doc/html/draft-ietf-oauth-
+              security-topics-29>.
+
+   [I-D.ietf-oauth-resource-metadata]
+              Jones, M. B., Hunt, P., and A. Parecki, "OAuth 2.0
+              Protected Resource Metadata", Work in Progress, Internet-
+              Draft, draft-ietf-oauth-resource-metadata-13, 15 October
+              2024, <https://datatracker.ietf.org/doc/html/draft-ietf-
+              oauth-resource-metadata-13>.
 
 Contributors
 
