@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2025-01-23T00:19:18.701147+00:00",
+  "timestamp": "2025-01-26T00:19:07.846002+00:00",
   "repo": "oauth-wg/oauth-identity-chaining",
   "labels": [
     {
@@ -1493,6 +1493,38 @@
       "body": "Review draft for privacy considerations and suggest alternative text or an additional section to aggregate privacy considerations - @gffletch\r\n",
       "createdAt": "2025-01-10T16:00:48Z",
       "updatedAt": "2025-01-10T16:02:34Z",
+      "closedAt": null,
+      "comments": []
+    },
+    {
+      "number": 130,
+      "id": "I_kwDOJubJxM6neYFC",
+      "title": "Add security consideration on refresh tokens?",
+      "url": "https://github.com/oauth-wg/oauth-identity-chaining/issues/130",
+      "state": "OPEN",
+      "author": "PieterKas",
+      "authorAssociation": "CONTRIBUTOR",
+      "assignees": [],
+      "labels": [],
+      "body": "Based on discussion with Brian - should we give guidance on refresh tokens?",
+      "createdAt": "2025-01-24T15:44:00Z",
+      "updatedAt": "2025-01-24T15:44:00Z",
+      "closedAt": null,
+      "comments": []
+    },
+    {
+      "number": 131,
+      "id": "I_kwDOJubJxM6neb5c",
+      "title": "Security Considerations",
+      "url": "https://github.com/oauth-wg/oauth-identity-chaining/issues/131",
+      "state": "OPEN",
+      "author": "PieterKas",
+      "authorAssociation": "CONTRIBUTOR",
+      "assignees": [],
+      "labels": [],
+      "body": "Should we add language that the assertion is not constrained and should be protected. \n\nPoint out that this is a risk if no client authentication.\n\nAaron addresses it in his profile (client_id is included as a claim in the assertion claim). ",
+      "createdAt": "2025-01-24T15:51:40Z",
+      "updatedAt": "2025-01-24T15:51:40Z",
       "closedAt": null,
       "comments": []
     }
@@ -6742,6 +6774,107 @@
           "comments": []
         }
       ]
+    },
+    {
+      "number": 128,
+      "id": "PR_kwDOJubJxM6I5Lv1",
+      "title": "Security Considerations - Sender Constrain Option 1",
+      "url": "https://github.com/oauth-wg/oauth-identity-chaining/pull/128",
+      "state": "OPEN",
+      "author": "PieterKas",
+      "authorAssociation": "CONTRIBUTOR",
+      "assignees": [],
+      "labels": [],
+      "body": "First option for security consideration recommending sender constraining tokens: (#125 )",
+      "createdAt": "2025-01-24T12:31:31Z",
+      "updatedAt": "2025-01-24T16:12:05Z",
+      "baseRepository": "oauth-wg/oauth-identity-chaining",
+      "baseRefName": "main",
+      "baseRefOid": "a7fb5ae19e7e7b848dd9ed635cfc03b39835e6ce",
+      "headRepository": "oauth-wg/oauth-identity-chaining",
+      "headRefName": "PieterKas-patch-2",
+      "headRefOid": "fa597057466bbbe5ac40ef2c81e9832a3334e072",
+      "closedAt": null,
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [
+        {
+          "author": "PieterKas",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "Comment from Brian, remove reference to refresh tokens.",
+          "createdAt": "2025-01-24T15:44:43Z",
+          "updatedAt": "2025-01-24T15:44:43Z"
+        },
+        {
+          "author": "PieterKas",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "Comment from Aaron - maybe just link to OAuth 2.1 draft.",
+          "createdAt": "2025-01-24T15:46:12Z",
+          "updatedAt": "2025-01-24T15:46:12Z"
+        }
+      ],
+      "reviews": []
+    },
+    {
+      "number": 129,
+      "id": "PR_kwDOJubJxM6I5N-R",
+      "title": "Security Considerations - Sender Constrain Option 2",
+      "url": "https://github.com/oauth-wg/oauth-identity-chaining/pull/129",
+      "state": "OPEN",
+      "author": "PieterKas",
+      "authorAssociation": "CONTRIBUTOR",
+      "assignees": [],
+      "labels": [],
+      "body": "Second option for security consideration recommending sender constraining tokens: (#125 )",
+      "createdAt": "2025-01-24T12:35:38Z",
+      "updatedAt": "2025-01-24T16:14:05Z",
+      "baseRepository": "oauth-wg/oauth-identity-chaining",
+      "baseRefName": "main",
+      "baseRefOid": "a7fb5ae19e7e7b848dd9ed635cfc03b39835e6ce",
+      "headRepository": "oauth-wg/oauth-identity-chaining",
+      "headRefName": "PieterKas-patch-3",
+      "headRefOid": "00f59145fd5df0b68d689bdb1d4e1e1594ea1838",
+      "closedAt": null,
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [],
+      "reviews": []
+    },
+    {
+      "number": 132,
+      "id": "PR_kwDOJubJxM6I7Inm",
+      "title": "Security Considerations - Sender Constrain Option 3",
+      "url": "https://github.com/oauth-wg/oauth-identity-chaining/pull/132",
+      "state": "OPEN",
+      "author": "PieterKas",
+      "authorAssociation": "CONTRIBUTOR",
+      "assignees": [],
+      "labels": [],
+      "body": "Third variant explicitly referencing OAuth 2.1 (see issue #125)",
+      "createdAt": "2025-01-24T17:07:19Z",
+      "updatedAt": "2025-01-24T17:10:05Z",
+      "baseRepository": "oauth-wg/oauth-identity-chaining",
+      "baseRefName": "main",
+      "baseRefOid": "a7fb5ae19e7e7b848dd9ed635cfc03b39835e6ce",
+      "headRepository": "oauth-wg/oauth-identity-chaining",
+      "headRefName": "PieterKas-patch-4",
+      "headRefOid": "cfaf5d0da3ea0c9704e3f44502ec36870123d6e7",
+      "closedAt": null,
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [
+        {
+          "author": "PieterKas",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "@bc-pi - please take look. The intent here is that the reader SHOULD do whatever OAuth 2.1 says to do about sender constraining tokens, so no new requirements are really created (apart from aligning with OAuth 2.1).",
+          "createdAt": "2025-01-24T17:10:03Z",
+          "updatedAt": "2025-01-24T17:10:03Z"
+        }
+      ],
+      "reviews": []
     }
   ]
 }
