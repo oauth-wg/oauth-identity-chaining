@@ -1051,7 +1051,7 @@ svg :is([fill="white"], [fill^="#fff"]) {
 </tr></thead>
 <tfoot><tr>
 <td class="left">Schwenkschuster, et al.</td>
-<td class="center">Expires 14 July 2025</td>
+<td class="center">Expires 4 August 2025</td>
 <td class="right">[Page]</td>
 </tr></tfoot>
 </table>
@@ -1064,12 +1064,12 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <dd class="internet-draft">draft-ietf-oauth-identity-chaining-latest</dd>
 <dt class="label-published">Published:</dt>
 <dd class="published">
-<time datetime="2025-01-10" class="published">10 January 2025</time>
+<time datetime="2025-01-31" class="published">31 January 2025</time>
     </dd>
 <dt class="label-intended-status">Intended Status:</dt>
 <dd class="intended-status">Informational</dd>
 <dt class="label-expires">Expires:</dt>
-<dd class="expires"><time datetime="2025-07-14">14 July 2025</time></dd>
+<dd class="expires"><time datetime="2025-08-04">4 August 2025</time></dd>
 <dt class="label-authors">Authors:</dt>
 <dd class="authors">
 <div class="author">
@@ -1130,7 +1130,7 @@ svg :is([fill="white"], [fill^="#fff"]) {
         time. It is inappropriate to use Internet-Drafts as reference
         material or to cite them other than as "work in progress."<a href="#section-boilerplate.1-3" class="pilcrow">¶</a></p>
 <p id="section-boilerplate.1-4">
-        This Internet-Draft will expire on 14 July 2025.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
+        This Internet-Draft will expire on 4 August 2025.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="copyright">
@@ -1614,7 +1614,7 @@ Cache-Control: no-cache, no-store
             <p id="section-2.5-2.1.1"><strong>Transcribing the subject identifier</strong>: Subject identifier can differ between the parties involved. For instance: A user is known at domain A by "johndoe@a.org" but in domain B by "doe.john@b.org". The mapping from one identifier to the other <span class="bcp14">MAY</span> either happen in the token exchange step and the updated identifier is reflected in returned JWT authorization grant or in the assertion step where the updated identifier would be reflected in the access token. To support this both authorization servers <span class="bcp14">MAY</span> add, change or remove claims as described above.<a href="#section-2.5-2.1.1" class="pilcrow">¶</a></p>
 </li>
           <li class="normal" id="section-2.5-2.2">
-            <p id="section-2.5-2.2.1"><strong>Selective disclosure</strong>: Authorization servers <span class="bcp14">MAY</span> remove or hide certain claims due to privacy requirements or reduced trust towards the targeting trust domain. To hide and enclose claims <span>[<a href="#I-D.ietf-oauth-selective-disclosure-jwt" class="cite xref">I-D.ietf-oauth-selective-disclosure-jwt</a>]</span> <span class="bcp14">MAY</span> be used.<a href="#section-2.5-2.2.1" class="pilcrow">¶</a></p>
+            <p id="section-2.5-2.2.1"><strong>Selective disclosure</strong>: Authorization servers <span class="bcp14">MAY</span> remove or hide certain claims due to privacy requirements or reduced trust towards the targeting trust domain.<a href="#section-2.5-2.2.1" class="pilcrow">¶</a></p>
 </li>
           <li class="normal" id="section-2.5-2.3">
             <p id="section-2.5-2.3.1"><strong>Controlling scope</strong>: Clients <span class="bcp14">MAY</span> use the scope parameter to control transcribed claims (e.g. downscoping). Authorization Servers <span class="bcp14">SHOULD</span> verify that the requested scopes are not higher privileged than the scopes of the presented subject_token.<a href="#section-2.5-2.3.1" class="pilcrow">¶</a></p>
@@ -1699,10 +1699,6 @@ Cache-Control: no-cache, no-store
 <a href="#section-5.2" class="section-number selfRef">5.2. </a><a href="#name-informative-references" class="section-name selfRef">Informative References</a>
         </h3>
 <dl class="references">
-<dt id="I-D.ietf-oauth-selective-disclosure-jwt">[I-D.ietf-oauth-selective-disclosure-jwt]</dt>
-        <dd>
-<span class="refAuthor">Fett, D.</span>, <span class="refAuthor">Yasuda, K.</span>, and <span class="refAuthor">B. Campbell</span>, <span class="refTitle">"Selective Disclosure for JWTs (SD-JWT)"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-oauth-selective-disclosure-jwt-14</span>, <time datetime="2024-11-15" class="refDate">15 November 2024</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-ietf-oauth-selective-disclosure-jwt-14">https://datatracker.ietf.org/doc/html/draft-ietf-oauth-selective-disclosure-jwt-14</a>&gt;</span>. </dd>
-<dd class="break"></dd>
 <dt id="I-D.ietf-oauth-security-topics">[I-D.ietf-oauth-security-topics]</dt>
         <dd>
 <span class="refAuthor">Lodderstedt, T.</span>, <span class="refAuthor">Bradley, J.</span>, <span class="refAuthor">Labunets, A.</span>, and <span class="refAuthor">D. Fett</span>, <span class="refTitle">"OAuth 2.0 Security Best Current Practice"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-oauth-security-topics-29</span>, <time datetime="2024-06-03" class="refDate">3 June 2024</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-ietf-oauth-security-topics-29">https://datatracker.ietf.org/doc/html/draft-ietf-oauth-security-topics-29</a>&gt;</span>. </dd>
@@ -1921,9 +1917,10 @@ Cache-Control: no-cache, no-store
         <h3 id="name-delegated-key-binding">
 <a href="#appendix-B.3" class="section-number selfRef">B.3. </a><a href="#name-delegated-key-binding" class="section-name selfRef">Delegated Key Binding</a>
         </h3>
-<p id="appendix-B.3-1">In some environments, there is a need to bind the final access token to a private key held by the Resource Server in Domain A. This is so that the Resource Server in Domain B can verify the proof of possession of the private key of the Resource Server in Domain A on the final access token when the Resource Server in Domain A presents the token to the Resource Server in Domain B.<a href="#appendix-B.3-1" class="pilcrow">¶</a></p>
-<p id="appendix-B.3-2">The case where the Resource Server is acting as the client, this is straight forward.<a href="#appendix-B.3-2" class="pilcrow">¶</a></p>
-<p id="appendix-B.3-3">However, the case where the Authorization Server is acting as a client is more complicated, but can be accomplished as follows. The Authorization Server in Domain A includes the "cnf" claim of the Resource Server in Domain A in the token request sent to the Authorization Server in Domain B. This can, for example, be accomplished by including a "requested_cnf" claim, that contains the "cnf" claim of the Resource Server in Domain A, in the assertion authorization grant sent to the Authorization Server in Domain B  The Authorization Server in Domain B then includes the requested "cnf" claim of the Resource Server in Domain A in the returned, final access token.<a href="#appendix-B.3-3" class="pilcrow">¶</a></p>
+<p id="appendix-B.3-1">In some environments, there is a need to bind the access token issued by the Authorization Server in Domain B to a private key held by the client in Domain A. This is so that the Resource Server in Domain B can verify the proof of possession of the private key of the client in Domain A when the client in Domain A presents the token to the Resource Server in Domain B. Any application in Domain A may act as a client, including applications that are resource servers in Domain A and need to access resource servers in Domain B in order to complete a request.<a href="#appendix-B.3-1" class="pilcrow">¶</a></p>
+<p id="appendix-B.3-2">In the case where the Resource Server in Domain A is acting as the client, the access token may be constrained using existing techniques as described in Security Considerations (add reference once it is merged).<a href="#appendix-B.3-2" class="pilcrow">¶</a></p>
+<p id="appendix-B.3-3">The case where the Authorization Server in Domain A is acting as a client is more complicated since the Authorization Server in domain A acting as client does not have access to the key material of the client on whose behalf the access token is being requested.<a href="#appendix-B.3-3" class="pilcrow">¶</a></p>
+<p id="appendix-B.3-4">However, the trust relationship between the Authorization Server in Domain A and the Authorization Server in Domain B can be leveraged to sender constrain the access token issued by the Authorization Server in domain B. This can be achieved as follows. The Authorization Server in Domain A verifies proof of posession of the key presented by the client. It then includes the "cnf" claim of the client in Domain A in the token request sent to the Authorization Server in Domain B. This can, for example, be accomplished by including a "requested_cnf" claim, that contains the "cnf" claim of the Resource Server in Domain A, in the assertion authorization grant sent to the Authorization Server in Domain B The Authorization Server in Domain B then includes a "cnf" claim that matches the value of the "requested_cnf" claim in the authorization grant in the returned access token. The client in domain A that presents the access token must use the key matching the "cnf" claim to generate a DPoP proof or setup a MTLS session when presenting the access token to a resource server in Domain B.<a href="#appendix-B.3-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 </section>
@@ -1943,7 +1940,8 @@ Cache-Control: no-cache, no-store
       </h2>
 <p id="appendix-D-1">[[ To be removed from the final specification ]]
 -latest
-* Clarified diagrams and description of authorization server acting as a client.<a href="#appendix-D-1" class="pilcrow">¶</a></p>
+* Clarified diagrams and description of authorization server acting as a client.
+* Remove references to sd-jwt.<a href="#appendix-D-1" class="pilcrow">¶</a></p>
 <p id="appendix-D-2">-03<a href="#appendix-D-2" class="pilcrow">¶</a></p>
 <ul class="normal">
 <li class="normal" id="appendix-D-3.1">

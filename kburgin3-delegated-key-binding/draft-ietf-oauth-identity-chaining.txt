@@ -5,13 +5,13 @@
 oauth                                                 A. Schwenkschuster
 Internet-Draft                                             P. Kasselmann
 Intended status: Informational                                     SPIRL
-Expires: 14 July 2025                                          K. Burgin
+Expires: 4 August 2025                                         K. Burgin
                                                                    MITRE
                                                               M. Jenkins
                                                                 NSA-CCSS
                                                              B. Campbell
                                                            Ping Identity
-                                                         10 January 2025
+                                                         31 January 2025
 
 
         OAuth Identity and Authorization Chaining Across Domains
@@ -49,7 +49,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 14 July 2025.
+   This Internet-Draft will expire on 4 August 2025.
 
 Copyright Notice
 
@@ -432,8 +432,7 @@ grant_type=urn%3Aietf%3Aparams%3Aoauth%3Agrant-type%3Atoken-exchange
 
    *  *Selective disclosure*: Authorization servers MAY remove or hide
       certain claims due to privacy requirements or reduced trust
-      towards the targeting trust domain.  To hide and enclose claims
-      [I-D.ietf-oauth-selective-disclosure-jwt] MAY be used.
+      towards the targeting trust domain.
 
    *  *Controlling scope*: Clients MAY use the scope parameter to
       control transcribed claims (e.g. downscoping).  Authorization
@@ -498,13 +497,6 @@ grant_type=urn%3Aietf%3Aparams%3Aoauth%3Agrant-type%3Atoken-exchange
               May 2017, <https://www.rfc-editor.org/rfc/rfc8174>.
 
 5.2.  Informative References
-
-   [I-D.ietf-oauth-selective-disclosure-jwt]
-              Fett, D., Yasuda, K., and B. Campbell, "Selective
-              Disclosure for JWTs (SD-JWT)", Work in Progress, Internet-
-              Draft, draft-ietf-oauth-selective-disclosure-jwt-14, 15
-              November 2024, <https://datatracker.ietf.org/doc/html/
-              draft-ietf-oauth-selective-disclosure-jwt-14>.
 
    [I-D.ietf-oauth-security-topics]
               Lodderstedt, T., Bradley, J., Labunets, A., and D. Fett,
@@ -804,27 +796,43 @@ B.2.  Authorization server acting as client
 
 B.3.  Delegated Key Binding
 
-   In some environments, there is a need to bind the final access token
-   to a private key held by the Resource Server in Domain A.  This is so
-   that the Resource Server in Domain B can verify the proof of
-   possession of the private key of the Resource Server in Domain A on
-   the final access token when the Resource Server in Domain A presents
-   the token to the Resource Server in Domain B.
+   In some environments, there is a need to bind the access token issued
+   by the Authorization Server in Domain B to a private key held by the
+   client in Domain A.  This is so that the Resource Server in Domain B
+   can verify the proof of possession of the private key of the client
+   in Domain A when the client in Domain A presents the token to the
+   Resource Server in Domain B.  Any application in Domain A may act as
+   a client, including applications that are resource servers in Domain
+   A and need to access resource servers in Domain B in order to
+   complete a request.
 
-   The case where the Resource Server is acting as the client, this is
-   straight forward.
+   In the case where the Resource Server in Domain A is acting as the
+   client, the access token may be constrained using existing techniques
+   as described in Security Considerations (add reference once it is
+   merged).
 
-   However, the case where the Authorization Server is acting as a
-   client is more complicated, but can be accomplished as follows.  The
-   Authorization Server in Domain A includes the "cnf" claim of the
-   Resource Server in Domain A in the token request sent to the
-   Authorization Server in Domain B.  This can, for example, be
-   accomplished by including a "requested_cnf" claim, that contains the
-   "cnf" claim of the Resource Server in Domain A, in the assertion
-   authorization grant sent to the Authorization Server in Domain B The
-   Authorization Server in Domain B then includes the requested "cnf"
-   claim of the Resource Server in Domain A in the returned, final
-   access token.
+   The case where the Authorization Server in Domain A is acting as a
+   client is more complicated since the Authorization Server in domain A
+   acting as client does not have access to the key material of the
+   client on whose behalf the access token is being requested.
+
+   However, the trust relationship between the Authorization Server in
+   Domain A and the Authorization Server in Domain B can be leveraged to
+   sender constrain the access token issued by the Authorization Server
+   in domain B.  This can be achieved as follows.  The Authorization
+   Server in Domain A verifies proof of posession of the key presented
+   by the client.  It then includes the "cnf" claim of the client in
+   Domain A in the token request sent to the Authorization Server in
+   Domain B.  This can, for example, be accomplished by including a
+   "requested_cnf" claim, that contains the "cnf" claim of the Resource
+   Server in Domain A, in the assertion authorization grant sent to the
+   Authorization Server in Domain B The Authorization Server in Domain B
+   then includes a "cnf" claim that matches the value of the
+   "requested_cnf" claim in the authorization grant in the returned
+   access token.  The client in domain A that presents the access token
+   must use the key matching the "cnf" claim to generate a DPoP proof or
+   setup a MTLS session when presenting the access token to a resource
+   server in Domain B.
 
 Appendix C.  Acknowledgements
 
@@ -837,6 +845,7 @@ Appendix D.  Document History
 
    [[ To be removed from the final specification ]] -latest * Clarified
    diagrams and description of authorization server acting as a client.
+   * Remove references to sd-jwt.
 
    -03
 
