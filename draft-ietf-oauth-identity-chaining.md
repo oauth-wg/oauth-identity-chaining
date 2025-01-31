@@ -440,7 +440,7 @@ The flow contains the following steps:
 
 ## Delegated Key Binding
 
-In some environments, there is a need to bind the access token issued by the Authorization Server in Domain B to a private key held by the Resource Server in Domain A. This is so that the Resource Server in Domain B can verify the proof of possession of the private key of the client in Domain A when the client in Domain A presents the token to the Resource Server in Domain B. Any application in Domain A may act as a client, including applications that are resource servers in Domain A and need to access resource servers in Domain B in order to complete a request.
+In some environments, there is a need to bind the access token issued by the Authorization Server in Domain B to a private key held by the client in Domain A. This is so that the Resource Server in Domain B can verify the proof of possession of the private key of the client in Domain A when the client in Domain A presents the token to the Resource Server in Domain B. Any application in Domain A may act as a client, including applications that are resource servers in Domain A and need to access resource servers in Domain B in order to complete a request.
 
 In the case where the Resource Server in Domain A is acting as the client, the access token may be constrained using existing techniques as described in Security Considerations (add reference once it is merged).
 
