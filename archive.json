@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2025-01-30T00:18:56.428621+00:00",
+  "timestamp": "2025-02-02T00:20:34.379723+00:00",
   "repo": "oauth-wg/oauth-identity-chaining",
   "labels": [
     {
@@ -6618,13 +6618,13 @@
       "labels": [],
       "body": "Added a section to the examples section in the appendix that describes how to perform delegated key binding when the AS in Domain A is acting as the client.",
       "createdAt": "2025-01-10T14:13:57Z",
-      "updatedAt": "2025-01-13T16:45:36Z",
+      "updatedAt": "2025-01-31T18:14:14Z",
       "baseRepository": "oauth-wg/oauth-identity-chaining",
       "baseRefName": "main",
-      "baseRefOid": "213c3337304de7123351d98210bbe688a675744d",
+      "baseRefOid": "d91de074f900ff02eef37b8eaead5aa86b74196f",
       "headRepository": "oauth-wg/oauth-identity-chaining",
       "headRefName": "kburgin3-delegated-key-binding",
-      "headRefOid": "198933ffdbe84808ac8289a4e39cb99c05967fd5",
+      "headRefOid": "9a901c914859b6dad4e4381ec2cc23cf241cb14e",
       "closedAt": null,
       "mergedAt": null,
       "mergedBy": null,
@@ -6728,6 +6728,46 @@
               "body": "In the case where the Authorization Server is acting as a client is more complicated since the authorisation server in domain A acting as client does not have access to the key material of the client on whose behalf the access token is being requested. \r\n\r\nHowever, the trust relationship between the authorisation server in domain A and the authorization server in domain B can be leveraged to sender constrain the access token issued by the authorisation server in domain B. This can be achieved as follows. The Authorization Server in Domain A verifies proof of posession of the key presented by the client. It then includes the \"cnf\" claim of the client in Domain A in the token request sent to the Authorization Server in Domain B. This can, for example, be accomplished by including a \"requested_cnf\" claim, that contains the \"cnf\" claim of the Resource Server in Domain A, in the assertion authorization grant sent to the Authorization Server in Domain B  The Authorization Server in Domain B then includes a \"cnf\" claim that matches the value of the \"requested_cnf\" claim in the authorization grant in the returned access token. The client in domain A that presents the access token must use the key matching the \"cnf\" claim to generate a DPoP proof or setup a MTLS session when presenting the access token to a resource server in Domain B. ",
               "createdAt": "2025-01-13T16:45:36Z",
               "updatedAt": "2025-01-13T16:45:36Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJubJxM6aNHhB",
+          "commit": {
+            "abbreviatedOid": "c0de84f"
+          },
+          "author": "PieterKas",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2025-01-31T15:47:42Z",
+          "updatedAt": "2025-01-31T15:47:42Z",
+          "comments": [
+            {
+              "originalPosition": 6,
+              "body": "to a private key held by the Resource Server in Domain A -> to a private key held by a Client in Domain A",
+              "createdAt": "2025-01-31T15:47:42Z",
+              "updatedAt": "2025-01-31T15:47:43Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJubJxM6aOfjC",
+          "commit": {
+            "abbreviatedOid": "9a901c9"
+          },
+          "author": "bc-pi",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2025-01-31T18:14:14Z",
+          "updatedAt": "2025-01-31T18:14:14Z",
+          "comments": [
+            {
+              "originalPosition": 12,
+              "body": "suggested suggestions:\r\n```suggestion\r\nHowever, the trust relationship between the Authorization Server in Domain A and the Authorization Server in Domain B can be leveraged to sender constrain the access token issued by the Authorization Server in domain B. This can be achieved as follows. The Authorization Server in Domain A verifies proof of possession of the key presented by the client. It then conveys the key of the client in Domain A in the token request sent to the Authorization Server in Domain B. This can, for example, be accomplished by including a \"requested_cnf\" claim that contains the \"cnf\" claim of the Resource Server in Domain A, in the assertion authorization grant sent to the Authorization Server in Domain B. The Authorization Server in Domain B then includes a \"cnf\" claim that matches the value of the \"requested_cnf\" claim in the authorization grant in the returned access token. The client in domain A that presents the access token must use the key matching the \"cnf\" claim to generate a DPoP proof or setup a MTLS session when presenting the access token to a resource server in Domain B.\r\n```",
+              "createdAt": "2025-01-31T18:14:14Z",
+              "updatedAt": "2025-01-31T18:14:15Z"
             }
           ]
         }
@@ -6854,7 +6894,7 @@
       "labels": [],
       "body": "Third variant explicitly referencing OAuth 2.1 (see issue #125)",
       "createdAt": "2025-01-24T17:07:19Z",
-      "updatedAt": "2025-01-24T17:10:05Z",
+      "updatedAt": "2025-01-31T18:28:17Z",
       "baseRepository": "oauth-wg/oauth-identity-chaining",
       "baseRefName": "main",
       "baseRefOid": "a7fb5ae19e7e7b848dd9ed635cfc03b39835e6ce",
@@ -6874,6 +6914,137 @@
           "updatedAt": "2025-01-24T17:10:03Z"
         }
       ],
+      "reviews": [
+        {
+          "id": "PRR_kwDOJubJxM6aL1Wr",
+          "commit": {
+            "abbreviatedOid": "cfaf5d0"
+          },
+          "author": "kburgin3",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "APPROVED",
+          "body": "I like this one best",
+          "createdAt": "2025-01-31T13:42:06Z",
+          "updatedAt": "2025-01-31T13:42:06Z",
+          "comments": []
+        },
+        {
+          "id": "PRR_kwDOJubJxM6aOlCx",
+          "commit": {
+            "abbreviatedOid": "cfaf5d0"
+          },
+          "author": "bc-pi",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2025-01-31T18:28:09Z",
+          "updatedAt": "2025-01-31T18:28:09Z",
+          "comments": [
+            {
+              "originalPosition": 5,
+              "body": "I think you can and probably should leave the draft # off and the tooling will do more or less what you'd want \r\n```suggestion\r\n  I-D.draft-ietf-oauth-v2-1:\r\n```",
+              "createdAt": "2025-01-31T18:28:09Z",
+              "updatedAt": "2025-01-31T18:28:09Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJubJxM6aOlGc",
+          "commit": {
+            "abbreviatedOid": "cfaf5d0"
+          },
+          "author": "bc-pi",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2025-01-31T18:28:17Z",
+          "updatedAt": "2025-01-31T18:28:17Z",
+          "comments": []
+        }
+      ]
+    },
+    {
+      "number": 133,
+      "id": "PR_kwDOJubJxM6JqI1r",
+      "title": "Update publish.yml",
+      "url": "https://github.com/oauth-wg/oauth-identity-chaining/pull/133",
+      "state": "MERGED",
+      "author": "kburgin3",
+      "authorAssociation": "CONTRIBUTOR",
+      "assignees": [],
+      "labels": [],
+      "body": "v3 to v4",
+      "createdAt": "2025-01-31T15:42:28Z",
+      "updatedAt": "2025-01-31T15:43:25Z",
+      "baseRepository": "oauth-wg/oauth-identity-chaining",
+      "baseRefName": "main",
+      "baseRefOid": "a7fb5ae19e7e7b848dd9ed635cfc03b39835e6ce",
+      "headRepository": "oauth-wg/oauth-identity-chaining",
+      "headRefName": "kburgin3-patch-1",
+      "headRefOid": "251958027ca7c23ca8b7f5fdbf5165907b847f22",
+      "closedAt": "2025-01-31T15:43:23Z",
+      "mergedAt": "2025-01-31T15:43:23Z",
+      "mergedBy": "aaronpk",
+      "mergeCommit": {
+        "oid": "b8f442f3669c84014b198b953510ece229f0b2f4"
+      },
+      "comments": [],
+      "reviews": []
+    },
+    {
+      "number": 134,
+      "id": "PR_kwDOJubJxM6JqI-E",
+      "title": "Update archive.yml",
+      "url": "https://github.com/oauth-wg/oauth-identity-chaining/pull/134",
+      "state": "MERGED",
+      "author": "kburgin3",
+      "authorAssociation": "CONTRIBUTOR",
+      "assignees": [],
+      "labels": [],
+      "body": "v3 to v4",
+      "createdAt": "2025-01-31T15:42:46Z",
+      "updatedAt": "2025-01-31T15:43:41Z",
+      "baseRepository": "oauth-wg/oauth-identity-chaining",
+      "baseRefName": "main",
+      "baseRefOid": "a7fb5ae19e7e7b848dd9ed635cfc03b39835e6ce",
+      "headRepository": "oauth-wg/oauth-identity-chaining",
+      "headRefName": "kburgin3-patch-2",
+      "headRefOid": "f22c6939447a0776856a4355c6b9f6370c0027f9",
+      "closedAt": "2025-01-31T15:43:39Z",
+      "mergedAt": "2025-01-31T15:43:39Z",
+      "mergedBy": "aaronpk",
+      "mergeCommit": {
+        "oid": "e6e2fdc75f2bffcd65f70e5ed1321e4a6bef8270"
+      },
+      "comments": [],
+      "reviews": []
+    },
+    {
+      "number": 135,
+      "id": "PR_kwDOJubJxM6JqKrF",
+      "title": "Update ghpages.yml",
+      "url": "https://github.com/oauth-wg/oauth-identity-chaining/pull/135",
+      "state": "MERGED",
+      "author": "kburgin3",
+      "authorAssociation": "CONTRIBUTOR",
+      "assignees": [],
+      "labels": [],
+      "body": "v3 to v4",
+      "createdAt": "2025-01-31T15:46:17Z",
+      "updatedAt": "2025-01-31T15:46:36Z",
+      "baseRepository": "oauth-wg/oauth-identity-chaining",
+      "baseRefName": "main",
+      "baseRefOid": "e6e2fdc75f2bffcd65f70e5ed1321e4a6bef8270",
+      "headRepository": "oauth-wg/oauth-identity-chaining",
+      "headRefName": "kburgin3-patch-2",
+      "headRefOid": "29efb5262dfe9b154c53574cbc289471aa80af8b",
+      "closedAt": "2025-01-31T15:46:34Z",
+      "mergedAt": "2025-01-31T15:46:34Z",
+      "mergedBy": "aaronpk",
+      "mergeCommit": {
+        "oid": "d91de074f900ff02eef37b8eaead5aa86b74196f"
+      },
+      "comments": [],
       "reviews": []
     }
   ]
