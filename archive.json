@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2025-02-06T00:19:45.877437+00:00",
+  "timestamp": "2025-02-09T00:21:18.628766+00:00",
   "repo": "oauth-wg/oauth-identity-chaining",
   "labels": [
     {
@@ -6618,7 +6618,7 @@
       "labels": [],
       "body": "Added a section to the examples section in the appendix that describes how to perform delegated key binding when the AS in Domain A is acting as the client.",
       "createdAt": "2025-01-10T14:13:57Z",
-      "updatedAt": "2025-01-31T18:14:14Z",
+      "updatedAt": "2025-02-07T14:32:19Z",
       "baseRepository": "oauth-wg/oauth-identity-chaining",
       "baseRefName": "main",
       "baseRefOid": "d91de074f900ff02eef37b8eaead5aa86b74196f",
@@ -6770,6 +6770,32 @@
               "updatedAt": "2025-01-31T18:14:15Z"
             }
           ]
+        },
+        {
+          "id": "PRR_kwDOJubJxM6bFYVC",
+          "commit": {
+            "abbreviatedOid": "9a901c9"
+          },
+          "author": "bc-pi",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "CHANGES_REQUESTED",
+          "body": "https://github.com/oauth-wg/oauth-identity-chaining/pull/124/files#r1937735575 ",
+          "createdAt": "2025-02-07T14:26:24Z",
+          "updatedAt": "2025-02-07T14:26:24Z",
+          "comments": []
+        },
+        {
+          "id": "PRR_kwDOJubJxM6bFc5u",
+          "commit": {
+            "abbreviatedOid": "9a901c9"
+          },
+          "author": "kburgin3",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "COMMENTED",
+          "body": "Looks good",
+          "createdAt": "2025-02-07T14:32:19Z",
+          "updatedAt": "2025-02-07T14:32:19Z",
+          "comments": []
         }
       ]
     },
