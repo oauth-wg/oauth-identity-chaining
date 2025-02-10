@@ -5,13 +5,13 @@
 oauth                                                 A. Schwenkschuster
 Internet-Draft                                             P. Kasselmann
 Intended status: Informational                                     SPIRL
-Expires: 4 August 2025                                         K. Burgin
+Expires: 14 August 2025                                        K. Burgin
                                                                    MITRE
                                                               M. Jenkins
                                                                 NSA-CCSS
                                                              B. Campbell
                                                            Ping Identity
-                                                         31 January 2025
+                                                        10 February 2025
 
 
         OAuth Identity and Authorization Chaining Across Domains
@@ -49,7 +49,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 4 August 2025.
+   This Internet-Draft will expire on 14 August 2025.
 
 Copyright Notice
 
@@ -820,19 +820,19 @@ B.3.  Delegated Key Binding
    Domain A and the Authorization Server in Domain B can be leveraged to
    sender constrain the access token issued by the Authorization Server
    in domain B.  This can be achieved as follows.  The Authorization
-   Server in Domain A verifies proof of posession of the key presented
-   by the client.  It then includes the "cnf" claim of the client in
-   Domain A in the token request sent to the Authorization Server in
-   Domain B.  This can, for example, be accomplished by including a
-   "requested_cnf" claim, that contains the "cnf" claim of the Resource
-   Server in Domain A, in the assertion authorization grant sent to the
-   Authorization Server in Domain B The Authorization Server in Domain B
-   then includes a "cnf" claim that matches the value of the
-   "requested_cnf" claim in the authorization grant in the returned
-   access token.  The client in domain A that presents the access token
-   must use the key matching the "cnf" claim to generate a DPoP proof or
-   setup a MTLS session when presenting the access token to a resource
-   server in Domain B.
+   Server in Domain A verifies proof of possession of the key presented
+   by the client.  It then conveys the key of the client in Domain A in
+   the token request sent to the Authorization Server in Domain B.  This
+   can, for example, be accomplished by including a "requested_cnf"
+   claim that contains the "cnf" claim of the Resource Server in Domain
+   A, in the assertion authorization grant sent to the Authorization
+   Server in Domain B.  The Authorization Server in Domain B then
+   includes a "cnf" claim that matches the value of the "requested_cnf"
+   claim in the authorization grant in the returned access token.  The
+   client in domain A that presents the access token must use the key
+   matching the "cnf" claim to generate a DPoP proof or setup a MTLS
+   session when presenting the access token to a resource server in
+   Domain B.
 
 Appendix C.  Acknowledgements
 
