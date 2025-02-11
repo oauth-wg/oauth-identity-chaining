@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2025-02-09T00:21:18.628766+00:00",
+  "timestamp": "2025-02-11T00:19:22.063857+00:00",
   "repo": "oauth-wg/oauth-identity-chaining",
   "labels": [
     {
@@ -6618,13 +6618,13 @@
       "labels": [],
       "body": "Added a section to the examples section in the appendix that describes how to perform delegated key binding when the AS in Domain A is acting as the client.",
       "createdAt": "2025-01-10T14:13:57Z",
-      "updatedAt": "2025-02-07T14:32:19Z",
+      "updatedAt": "2025-02-10T15:14:53Z",
       "baseRepository": "oauth-wg/oauth-identity-chaining",
       "baseRefName": "main",
       "baseRefOid": "d91de074f900ff02eef37b8eaead5aa86b74196f",
       "headRepository": "oauth-wg/oauth-identity-chaining",
       "headRefName": "kburgin3-delegated-key-binding",
-      "headRefOid": "9a901c914859b6dad4e4381ec2cc23cf241cb14e",
+      "headRefOid": "46668a1877eb470ddcbba2d4af3ef19049a3d273",
       "closedAt": null,
       "mergedAt": null,
       "mergedBy": null,
