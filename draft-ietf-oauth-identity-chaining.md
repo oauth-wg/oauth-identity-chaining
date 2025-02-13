@@ -53,7 +53,7 @@ informative:
 
   I-D.ietf-oauth-security-topics:
   I-D.ietf-oauth-resource-metadata:
-  I-D.draft-ietf-oauth-v2-1-12:
+  I-D.draft-ietf-oauth-v2-1:
 
 --- abstract
 
