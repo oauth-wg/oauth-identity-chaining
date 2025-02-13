@@ -463,8 +463,7 @@ grant_type=urn%3Aietf%3Aparams%3Aoauth%3Agrant-type%3Atoken-exchange
 4.2.  Sender Constraining Tokens
 
    Authorization Servers SHOULD follow the The OAuth 2.1 Authorization
-   Framework [I-D.draft-ietf-oauth-v2-1-12] for sender constraining
-   tokens.
+   Framework [I-D.draft-ietf-oauth-v2-1] for sender constraining tokens.
 
 5.  References
 
@@ -519,7 +518,7 @@ grant_type=urn%3Aietf%3Aparams%3Aoauth%3Agrant-type%3Atoken-exchange
               2024, <https://datatracker.ietf.org/doc/html/draft-ietf-
               oauth-resource-metadata-13>.
 
-   [I-D.draft-ietf-oauth-v2-1-12]
+   [I-D.draft-ietf-oauth-v2-1]
               Hardt, D., Parecki, A., and T. Lodderstedt, "The OAuth 2.1
               Authorization Framework", Work in Progress, Internet-
               Draft, draft-ietf-oauth-v2-1-12, 15 November 2024,
