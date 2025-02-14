@@ -820,7 +820,10 @@ Appendix D.  Document History
 
    [[ To be removed from the final specification ]] -latest * Clarified
    diagrams and description of authorization server acting as a client.
-   * Remove references to sd-jwt.
+   * Remove references to sd-jwt. * Editorial updates to be consistent
+   about the trust domain for a client, authorization server or resource
+   server. * Added sender constraining of tokens to security
+   considerations
 
    -03
 
