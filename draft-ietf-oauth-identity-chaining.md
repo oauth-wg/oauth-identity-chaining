@@ -450,7 +450,9 @@ The editors would like to thank Joe Jubinski, Justin Richer, Aaron Parecki, Dean
 -latest
 * Clarified diagrams and description of authorization server acting as a client.
 * Remove references to sd-jwt.
-
+* Editorial updates to be consistent about the trust domain for a client, authorization server or resource server.
+* Added sender constraining of tokens to security considerations
+  
 -03
 
 * Editorial updates
