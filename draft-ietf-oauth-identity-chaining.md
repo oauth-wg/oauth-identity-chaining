@@ -76,7 +76,7 @@ A client in trust domain A that needs to access a resource server in trust domai
 
 ## Overview
 
-The identity and authorization chaining flow outlined below describes how a combination of OAuth 2.0 Token Exchange {{RFC8693}} and JWT Profile for OAuth 2.0 Client Authentication and Authorization Grants {{RFC7523}} are used to address the use cases identified. 
+The identity and authorization chaining flow outlined below describes how a combination of OAuth 2.0 Token Exchange {{RFC8693}} and JWT Profile for OAuth 2.0 Client Authentication and Authorization Grants {{RFC7523}} are used to address the use cases identified.
 
 ~~~~
 +-------------+         +--------+         +-------------+ +---------+
@@ -131,7 +131,7 @@ The flow illustrated in Figure 1 shows the steps the client in trust domain A ne
 * (F) The client in trust domain A uses the access token received from the authorization server in trust domain B to access the protected resource in trust domain B.
 
 ## Authorization Server Discovery
-This specification does not define authorization server discovery. A client MAY use the `authorization_servers` property as defined in {{I-D.ietf-oauth-resource-metadata}}, maintain a static mapping or use other means to identify the authorization server. 
+This specification does not define authorization server discovery. A client MAY use the `authorization_servers` property as defined in {{I-D.ietf-oauth-resource-metadata}}, maintain a static mapping or use other means to identify the authorization server.
 
 ## Token Exchange
 
