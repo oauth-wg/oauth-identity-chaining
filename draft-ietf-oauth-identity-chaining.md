@@ -452,7 +452,7 @@ The editors would like to thank Joe Jubinski, Justin Richer, Aaron Parecki, Dean
 * Remove references to sd-jwt.
 * Editorial updates to be consistent about the trust domain for a client, authorization server or resource server.
 * Added sender constraining of tokens to security considerations
-  
+
 -03
 
 * Editorial updates
