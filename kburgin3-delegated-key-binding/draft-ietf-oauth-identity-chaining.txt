@@ -5,13 +5,13 @@
 oauth                                                 A. Schwenkschuster
 Internet-Draft                                             P. Kasselmann
 Intended status: Informational                                     SPIRL
-Expires: 14 August 2025                                        K. Burgin
+Expires: 18 August 2025                                        K. Burgin
                                                                    MITRE
                                                               M. Jenkins
                                                                 NSA-CCSS
                                                              B. Campbell
                                                            Ping Identity
-                                                        10 February 2025
+                                                        14 February 2025
 
 
         OAuth Identity and Authorization Chaining Across Domains
@@ -49,7 +49,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 14 August 2025.
+   This Internet-Draft will expire on 18 August 2025.
 
 Copyright Notice
 
@@ -86,6 +86,7 @@ Table of Contents
    3.  IANA Considerations
    4.  Security Considerations
      4.1.  Client Authentication
+     4.2.  Sender Constraining Tokens
    5.  References
      5.1.  Normative References
      5.2.  Informative References
@@ -460,6 +461,11 @@ grant_type=urn%3Aietf%3Aparams%3Aoauth%3Agrant-type%3Atoken-exchange
    Current Practice [I-D.ietf-oauth-security-topics] for client
    authentication.
 
+4.2.  Sender Constraining Tokens
+
+   Authorization Servers SHOULD follow the The OAuth 2.1 Authorization
+   Framework [I-D.draft-ietf-oauth-v2-1] for sender constraining tokens.
+
 5.  References
 
 5.1.  Normative References
@@ -512,6 +518,13 @@ grant_type=urn%3Aietf%3Aparams%3Aoauth%3Agrant-type%3Atoken-exchange
               Draft, draft-ietf-oauth-resource-metadata-13, 15 October
               2024, <https://datatracker.ietf.org/doc/html/draft-ietf-
               oauth-resource-metadata-13>.
+
+   [I-D.draft-ietf-oauth-v2-1]
+              Hardt, D., Parecki, A., and T. Lodderstedt, "The OAuth 2.1
+              Authorization Framework", Work in Progress, Internet-
+              Draft, draft-ietf-oauth-v2-1-12, 15 November 2024,
+              <https://datatracker.ietf.org/doc/html/draft-ietf-oauth-
+              v2-1-12>.
 
 Appendix A.  Use cases
 
