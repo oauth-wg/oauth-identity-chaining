@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2025-02-18T00:19:29.760991+00:00",
+  "timestamp": "2025-02-20T00:19:49.692335+00:00",
   "repo": "oauth-wg/oauth-identity-chaining",
   "labels": [
     {
@@ -6405,21 +6405,21 @@
       "id": "PR_kwDOJubJxM6EsQEH",
       "title": "Use \"Actor\" instead of \"(abstract) Client\"",
       "url": "https://github.com/oauth-wg/oauth-identity-chaining/pull/121",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "arndt-s",
       "authorAssociation": "MEMBER",
       "assignees": [],
       "labels": [],
       "body": "The term \"Client\" or \"abstract client\" is very confusing. Based on the point of view and context the term \"client\" can mean very different things.\n\n|Point of view|Context|Who is \"client\"?|\n|----|-----|-----|\n|AS Domain A|OAuth|Any OAuth client|\n|AS Domain A|ID chaining|Either itself, a resource server or any arbitrary OAuth Client|\n|RS Domain A|OAuth|Itself or another client that is calling it|\n|RS Domain A|ID chaining|Itself or its AS|\n|AS Domain B|-|AS or RS in Domain A|\n|RS Domain B|OAuth|Itself|\n|RS Domain B|ID chaining|AS or RS in Domain A|\n\nIf we would continue with the term \"client\" we would need to always specify exactly from what POV and context. Thus, introducing the role of \"actor\".",
       "createdAt": "2024-12-10T11:29:29Z",
-      "updatedAt": "2024-12-15T15:54:39Z",
+      "updatedAt": "2025-02-18T13:26:42Z",
       "baseRepository": "oauth-wg/oauth-identity-chaining",
       "baseRefName": "main",
       "baseRefOid": "c77faf6c177d01fdf7b862bf5b974b9a3f0a19e3",
       "headRepository": "oauth-wg/oauth-identity-chaining",
       "headRefName": "arndt/rename_client_to_actor",
       "headRefOid": "efc828de361786e03ca3dfe545cdff9293dbd9e8",
-      "closedAt": null,
+      "closedAt": "2025-02-18T13:26:42Z",
       "mergedAt": null,
       "mergedBy": null,
       "mergeCommit": null,
@@ -7186,7 +7186,7 @@
       "labels": [],
       "body": "Cleaning up language to be explicit about which trust domain an authorization server and client is active in. Changes are limited to the main text. Separate PRs need to be created for appendixes and use cases.",
       "createdAt": "2025-02-14T14:23:35Z",
-      "updatedAt": "2025-02-14T14:36:20Z",
+      "updatedAt": "2025-02-18T13:26:30Z",
       "baseRepository": "oauth-wg/oauth-identity-chaining",
       "baseRefName": "main",
       "baseRefOid": "82a0b0d0d0f701c0a61fcdca2ea977a8ebfde3a6",
@@ -7211,6 +7211,38 @@
           "createdAt": "2025-02-14T14:26:17Z",
           "updatedAt": "2025-02-14T14:26:17Z",
           "comments": []
+        },
+        {
+          "id": "PRR_kwDOJubJxM6cYCNh",
+          "commit": {
+            "abbreviatedOid": "46c1082"
+          },
+          "author": "arndt-s",
+          "authorAssociation": "MEMBER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2025-02-18T13:19:05Z",
+          "updatedAt": "2025-02-18T13:26:30Z",
+          "comments": [
+            {
+              "originalPosition": 14,
+              "body": "I'm not sure on the \"profile\" term here, do you feel like we actually profile those? But tbh, I never really got the concept of \"profile\" - so good chance I'm wrong here.",
+              "createdAt": "2025-02-18T13:19:05Z",
+              "updatedAt": "2025-02-18T13:26:30Z"
+            },
+            {
+              "originalPosition": 77,
+              "body": "```suggestion\r\nThe client in trust domain A performs token exchange as defined in {{RFC8693}} with the authorization server in trust domain A in order to obtain a JWT authorization grant that can be used with the authorization server of trust domain B as specified in section 1.3 of {{RFC6749}}.\r\n```",
+              "createdAt": "2025-02-18T13:21:47Z",
+              "updatedAt": "2025-02-18T13:26:30Z"
+            },
+            {
+              "originalPosition": 134,
+              "body": "```suggestion\r\n: REQUIRED. Authorization grant returned by the authorization server for domain A (see [Token Exchange](#token-exchange) response).\r\n```",
+              "createdAt": "2025-02-18T13:23:53Z",
+              "updatedAt": "2025-02-18T13:26:30Z"
+            }
+          ]
         }
       ]
     }
