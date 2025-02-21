@@ -275,7 +275,7 @@ The representation of transcribed claims and their format is not defined in this
 ## Media Types
 This specification does not define any new media types.
 
-It is RECOMMEDED that any profile or deployment specific implementation adopt explicit typig as defined in JSON Web Token Best Current Practices {{RFC8725}} and define a new media type {{RFC2046}} in the "Media Types" registry {{IANA.MediaTypes}} in the manner described in {{RFC6838}}.
+It is RECOMMENDED that any profile or deployment-specific implementation adopt explicit typing as defined in JSON Web Token Best Current Practices {{RFC8725}} and define a new media type {{RFC2046}} in the "Media Types" registry {{IANA.MediaTypes}} in the manner described in {{RFC6838}}.
 
 # Security Considerations {#Security}
 
