@@ -48,6 +48,7 @@ normative:
   RFC7523: # JSON Web Token (JWT) Profile for OAuth 2.0 Client Authentication and Authorization Grants
   RFC8707: # Resource Indicators for OAuth 2.0
   RFC8414: # OAuth 2.0 Authorization Server Metadata
+  RFC8725: # JSON Web Token Best Current Practices
 
 informative:
 
@@ -271,7 +272,10 @@ The representation of transcribed claims and their format is not defined in this
 
 # IANA Considerations {#IANA}
 
-To be added.
+## Media Types
+This specification does not define any new media types. 
+
+It is RECOMMEDED that any profile or deployment specific implementation adopt explicit typig as defined in JSON Web Token Best Current Practices {{RFC8725}} and define a new media type {{RFC2046}} in the "Media Types" registry {{IANA.MediaTypes}} in the manner described in {{RFC6838}}.
 
 # Security Considerations {#Security}
 
