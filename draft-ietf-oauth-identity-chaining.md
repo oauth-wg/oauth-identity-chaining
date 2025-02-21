@@ -135,7 +135,7 @@ This specification does not define authorization server discovery. A client MAY 
 
 ## Token Exchange
 
-The client in trust domain A performs token exchange as defined in {{RFC8693}} with the authorization server in trust domainn A in order to obtain a JWT authorization grant that can be used with the authorization server of trust domain B as specified in section 1.3 of {{RFC6749}}.
+The client in trust domain A performs token exchange as defined in {{RFC8693}} with the authorization server in trust domain A in order to obtain a JWT authorization grant that can be used with the authorization server of trust domain B as specified in section 1.3 of {{RFC6749}}.
 
 ### Token Exchange Request
 
