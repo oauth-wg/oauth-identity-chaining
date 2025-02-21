@@ -351,8 +351,7 @@ grant_type=urn%3Aietf%3Aparams%3Aoauth%3Agrant-type%3Atoken-exchange
 
    assertion
       REQUIRED.  Authorization grant returned by the authorization
-      server for domain A (see [] See Token Exchange (Section 2.3)
-      response).
+      server for domain A (see Token Exchange (Section 2.3) response).
 
    scope
       OPTIONAL.
