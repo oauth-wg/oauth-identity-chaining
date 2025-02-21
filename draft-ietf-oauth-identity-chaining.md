@@ -273,7 +273,7 @@ The representation of transcribed claims and their format is not defined in this
 # IANA Considerations {#IANA}
 
 ## Media Types
-This specification does not define any new media types. 
+This specification does not define any new media types.
 
 It is RECOMMEDED that any profile or deployment specific implementation adopt explicit typig as defined in JSON Web Token Best Current Practices {{RFC8725}} and define a new media type {{RFC2046}} in the "Media Types" registry {{IANA.MediaTypes}} in the manner described in {{RFC6838}}.
 
@@ -463,6 +463,7 @@ The editors would like to thank Joe Jubinski, Justin Richer, Aaron Parecki, Dean
 -latest
 * Clarified diagrams and description of authorization server acting as a client.
 * Remove references to sd-jwt.
+* Added text to recommend use of explicit typing.
 
 -03
 
