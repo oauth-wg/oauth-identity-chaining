@@ -282,7 +282,7 @@ Authorization Servers SHOULD follow the OAuth 2.0 Security Best Current Practice
 Authorization Servers SHOULD follow the The OAuth 2.1 Authorization Framework {{I-D.draft-ietf-oauth-v2-1}} for sender constraining tokens.
 
 ## Authorised use of Subject Token
-The authorization server in trust domain A SHOULD perform client authentication and verify that the client in trust domain A is authorised to present the token used as a subject_token in the token exchange flow before issuing an authroization grant. By doing so, it minimises the risk of an attacker making a lateral move by using a stolen token from trust domain A to obtain an authorization grant with which to authenticate to an authroization server in trust domain B and request an access token for a resource server in trust domain B.
+The authorization server in trust domain A SHOULD perform client authentication and verify that the client in trust domain A is authorized to present the token used as a subject_token in the token exchange flow before issuing an authorization grant. By doing so, it minimizes the risk of an attacker making a lateral move by using a stolen token from trust domain A to obtain an authorization grant with which to authenticate to an authorization server in trust domain B and request an access token for a resource server in trust domain B.
 
 --- back
 
