@@ -5,13 +5,13 @@
 oauth                                                 A. Schwenkschuster
 Internet-Draft                                             P. Kasselmann
 Intended status: Informational                                     SPIRL
-Expires: 18 August 2025                                        K. Burgin
+Expires: 25 August 2025                                        K. Burgin
                                                                    MITRE
                                                               M. Jenkins
                                                                 NSA-CCSS
                                                              B. Campbell
                                                            Ping Identity
-                                                        14 February 2025
+                                                        21 February 2025
 
 
         OAuth Identity and Authorization Chaining Across Domains
@@ -49,7 +49,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 18 August 2025.
+   This Internet-Draft will expire on 25 August 2025.
 
 Copyright Notice
 
@@ -236,8 +236,8 @@ Table of Contents
 2.3.  Token Exchange
 
    The client in trust domain A performs token exchange as defined in
-   [RFC8693] with the authorization server in trust domainn A in order
-   to obtain a JWT authorization grant that can be used with the
+   [RFC8693] with the authorization server in trust domain A in order to
+   obtain a JWT authorization grant that can be used with the
    authorization server of trust domain B as specified in section 1.3 of
    [RFC6749].
 
