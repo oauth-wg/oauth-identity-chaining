@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2025-02-20T00:19:49.692335+00:00",
+  "timestamp": "2025-02-23T00:21:38.758910+00:00",
   "repo": "oauth-wg/oauth-identity-chaining",
   "labels": [
     {
@@ -952,11 +952,13 @@
       "state": "OPEN",
       "author": "aaronpk",
       "authorAssociation": "MEMBER",
-      "assignees": [],
+      "assignees": [
+        "PieterKas"
+      ],
       "labels": [],
       "body": "There should probably be a recommendation for a media type for the JWT Authorization Grant, because:\r\n\r\n* cross-JWT confusion\r\n* the token request `grant_type=urn:ietf:params:oauth:grant-type:jwt-bearer` needs to know how to process the JWT authorization differently from other uses of JWT-Bearer\r\n\r\nRFC 7523 was published before the more recent recommendation of [explicit typing](https://datatracker.ietf.org/doc/html/rfc8725#name-use-explicit-typing)\r\n\r\nI don't think this draft needs to _define_ one, but it should at least recommend that an implementation uses one.",
       "createdAt": "2024-02-27T23:12:57Z",
-      "updatedAt": "2024-03-01T22:17:45Z",
+      "updatedAt": "2025-02-21T15:59:01Z",
       "closedAt": null,
       "comments": [
         {
@@ -965,6 +967,13 @@
           "body": "In my own defense - RFC 7523 was published _several years_ before RFC8725...\r\n\r\nAnyway, such a recommendation (and maybe even definition of one) seems reasonable as long as it doesn't suggest or imply that plain vanilla RFC 7523 implementations/deployments (new or existing) can't function as-is or are problematic security-wise or otherwise somehow deficient. ",
           "createdAt": "2024-03-01T22:17:31Z",
           "updatedAt": "2024-03-01T22:17:45Z"
+        },
+        {
+          "author": "PieterKas",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "Following discussion with editors, we will add a sentence to suggest it should be done.",
+          "createdAt": "2025-02-21T15:58:58Z",
+          "updatedAt": "2025-02-21T15:58:58Z"
         }
       ]
     },
@@ -1112,16 +1121,24 @@
       "id": "I_kwDOJubJxM6c7obU",
       "title": "Using different keys for sender constrained tokens",
       "url": "https://github.com/oauth-wg/oauth-identity-chaining/issues/99",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "PieterKas",
       "authorAssociation": "CONTRIBUTOR",
       "assignees": [],
       "labels": [],
       "body": "Add text, possibly as a security consideration, but also as part of the main text to make it clear the key of an OAuth client presenting a sender constrained token cannot be used for proof of possession by a resource server acting as a client when requesting an assertion from the authorisation server. Instead the resource server will use their own key to perform PoP and obtain an assertion with a requested_cnf claim.",
       "createdAt": "2024-11-04T13:50:30Z",
-      "updatedAt": "2024-11-04T13:51:30Z",
-      "closedAt": null,
-      "comments": []
+      "updatedAt": "2025-02-21T17:43:02Z",
+      "closedAt": "2025-02-21T17:43:00Z",
+      "comments": [
+        {
+          "author": "PieterKas",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "closed as we changed the use of requested_cnf",
+          "createdAt": "2025-02-21T17:43:00Z",
+          "updatedAt": "2025-02-21T17:43:00Z"
+        }
+      ]
     },
     {
       "number": 100,
@@ -1263,15 +1280,15 @@
       "id": "I_kwDOJubJxM6dOLLJ",
       "title": "Editorial Changes Requested",
       "url": "https://github.com/oauth-wg/oauth-identity-chaining/issues/107",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "PieterKas",
       "authorAssociation": "CONTRIBUTOR",
       "assignees": [],
       "labels": [],
       "body": "Section 2.1\r\nDelete (there is not enough context at this point for the reader to understand why the examples are being described here):  In one example, the resource server acts as the client and in the other, the authorization server acts as the client.\r\n\r\nSection 2.4.2\r\nFrom: If the assertion contains a requested_cnf claim and any other way of proof of possession has been supplied by the caller the correspond information MUST be equal.\r\n\r\nTo: If the assertion contains a requested_cnf claim and any other way of proof of possession has been supplied by the caller the corresponding information MUST be equal.",
       "createdAt": "2024-11-06T10:51:48Z",
-      "updatedAt": "2024-12-06T17:33:01Z",
-      "closedAt": null,
+      "updatedAt": "2025-02-21T17:42:02Z",
+      "closedAt": "2025-02-21T17:42:02Z",
       "comments": [
         {
           "author": "PieterKas",
@@ -1351,15 +1368,15 @@
       "id": "I_kwDOJubJxM6dOQ2Y",
       "title": "Client Authentication Security Considerations",
       "url": "https://github.com/oauth-wg/oauth-identity-chaining/issues/110",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "PieterKas",
       "authorAssociation": "CONTRIBUTOR",
       "assignees": [],
       "labels": [],
       "body": "Expand client authentication security considerations to provide rationale for MUST use when a bound subjecct_token is presented.",
       "createdAt": "2024-11-06T11:01:44Z",
-      "updatedAt": "2024-12-06T18:46:35Z",
-      "closedAt": null,
+      "updatedAt": "2025-02-21T17:41:35Z",
+      "closedAt": "2025-02-21T17:41:33Z",
       "comments": [
         {
           "author": "PieterKas",
@@ -1367,6 +1384,13 @@
           "body": "@kburgin3 - I am keeping this issue open so that we can move this to an appropriate section in the delegated key binding spec (or section) depending which way things go in the working group meeting.",
           "createdAt": "2024-12-06T18:46:34Z",
           "updatedAt": "2024-12-06T18:46:34Z"
+        },
+        {
+          "author": "PieterKas",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "@kburgin3 I think we can close this issue. ",
+          "createdAt": "2025-02-21T17:41:33Z",
+          "updatedAt": "2025-02-21T17:41:33Z"
         }
       ]
     },
@@ -1594,9 +1618,45 @@
       "labels": [],
       "body": "Remove reference to token endpoint in JWT authorization grant section to protect against malicious authorization servers (see https://github.com/selfissued/draft-jones-oauth-rfc7523bis )",
       "createdAt": "2025-02-14T15:57:08Z",
-      "updatedAt": "2025-02-14T15:57:08Z",
+      "updatedAt": "2025-02-21T15:48:24Z",
       "closedAt": null,
-      "comments": []
+      "comments": [
+        {
+          "author": "bc-pi",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "let's be somewhat restrained in what is applied in this context and when. Some further refs:\n\nhttps://github.com/selfissued/draft-jones-oauth-rfc7523bis/issues/5\n\nhttps://mailarchive.ietf.org/arch/msg/oauth/rZBbsr3TXkgK5bCrxRpdiRv2QVU/ \n\nhttps://mailarchive.ietf.org/arch/msg/oauth/v8wte0UT0-Is4DNEnTSFRNOReKs/\n\nhttps://mailarchive.ietf.org/arch/msg/oauth/Zxf3rV07zut1Ix2KBih1jlcYLkU/\n\n",
+          "createdAt": "2025-02-21T13:07:21Z",
+          "updatedAt": "2025-02-21T13:07:21Z"
+        },
+        {
+          "author": "PieterKas",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "Thanks Brian. \n\nHere is the text we already have: \n\n\"The \"aud\" claim included in the returned JWT authorization grant MAY identify multiple authorization servers, provided that trust relationships exist with them (e.g. through federation). It is RECOMMENDED that the \"aud\" claim is restricted to a single authorization server in trust domain B to prevent an authorization server from presenting the client's authorization grant to an authorization server in a different trust domain. For example, this will prevent the authorization server in trust domain B from presenting the authorization grant it received from the client in trust domain A to the authorization server for trust domain C.\"\n\nBased on what I understand of the attack (i.e. a compromised or malicious AS gets hold of a JWT that includes an aud value that is not intended for it and then replays it to another AS - this may be a gross oversimplification), we already try to prevent that with the current text as we already caution against having multiple \"aud\" values, to avoid something somewhat equivalent to the attack that has lead to the RFC7523-bis proposal. We don't say anything about it being restricted to the issuer identifier of the Authorisation server though.\n\nKeeping with the spirit of lesss is more, perhaps the following approach is appropriate:\n\nIf RFC 7523bis gets adopted, we may just remove this text completely and say \"do what RFC7523-bis does\". If it does not get adopted, I think the current text pushes implementors to have a strong preference for a single aud value in the authorization grant while keeping backwarrds compatibility.\n\n",
+          "createdAt": "2025-02-21T13:59:16Z",
+          "updatedAt": "2025-02-21T13:59:16Z"
+        },
+        {
+          "author": "bc-pi",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "There's also https://www.ietf.org/archive/id/draft-ietf-oauth-identity-chaining-03.html#section-2.4.2 with some treatment of aud just for posterity \n\n> The \"aud\" claim MUST identify the Authorization Server as a valid intended audience of the assertion using either the token endpoint as described Section 3 [[RFC7523](https://www.ietf.org/archive/id/draft-ietf-oauth-identity-chaining-03.html#RFC7523)] or the issuer identifier as defined in Section 2 of [[RFC8414](https://www.ietf.org/archive/id/draft-ietf-oauth-identity-chaining-03.html#RFC8414)].",
+          "createdAt": "2025-02-21T14:46:08Z",
+          "updatedAt": "2025-02-21T14:46:08Z"
+        },
+        {
+          "author": "PieterKas",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "Thanks Brain - so the additional restriction on that text would be that the token endpoint would be removed as a valid \"aud\" claim?",
+          "createdAt": "2025-02-21T15:00:46Z",
+          "updatedAt": "2025-02-21T15:00:46Z"
+        },
+        {
+          "author": "PieterKas",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "Following conversation between editors, we concluded that we will defer taking action on this issue until there was an opportunity to further clarify the relevance of the attack or necessity of the mitigations.",
+          "createdAt": "2025-02-21T15:48:22Z",
+          "updatedAt": "2025-02-21T15:48:22Z"
+        }
+      ]
     }
   ],
   "pulls": [
@@ -7186,13 +7246,13 @@
       "labels": [],
       "body": "Cleaning up language to be explicit about which trust domain an authorization server and client is active in. Changes are limited to the main text. Separate PRs need to be created for appendixes and use cases.",
       "createdAt": "2025-02-14T14:23:35Z",
-      "updatedAt": "2025-02-18T13:26:30Z",
+      "updatedAt": "2025-02-21T14:52:31Z",
       "baseRepository": "oauth-wg/oauth-identity-chaining",
       "baseRefName": "main",
       "baseRefOid": "82a0b0d0d0f701c0a61fcdca2ea977a8ebfde3a6",
       "headRepository": "oauth-wg/oauth-identity-chaining",
       "headRefName": "PieterKas-patch-4",
-      "headRefOid": "46c108265bbf3ebc6e6b51777184fc5e76aa1886",
+      "headRefOid": "c63a1d3cf383a57ecd56344643ed89d685146b97",
       "closedAt": null,
       "mergedAt": null,
       "mergedBy": null,
@@ -7243,6 +7303,139 @@
               "updatedAt": "2025-02-18T13:26:30Z"
             }
           ]
+        },
+        {
+          "id": "PRR_kwDOJubJxM6c8RCK",
+          "commit": {
+            "abbreviatedOid": "46c1082"
+          },
+          "author": "PieterKas",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2025-02-21T13:28:50Z",
+          "updatedAt": "2025-02-21T13:28:50Z",
+          "comments": [
+            {
+              "originalPosition": 14,
+              "body": "We are taking existing specifications and restricting how they should be used, so that feels like a profile (as opposed to an extension where we add things).",
+              "createdAt": "2025-02-21T13:28:50Z",
+              "updatedAt": "2025-02-21T13:28:50Z"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 140,
+      "id": "PR_kwDOJubJxM6MD8s9",
+      "title": "Security Considerations: subject token",
+      "url": "https://github.com/oauth-wg/oauth-identity-chaining/pull/140",
+      "state": "OPEN",
+      "author": "PieterKas",
+      "authorAssociation": "CONTRIBUTOR",
+      "assignees": [],
+      "labels": [],
+      "body": "See #98",
+      "createdAt": "2025-02-21T14:54:02Z",
+      "updatedAt": "2025-02-22T12:30:07Z",
+      "baseRepository": "oauth-wg/oauth-identity-chaining",
+      "baseRefName": "main",
+      "baseRefOid": "a6b9a0215f5370beeeb67d9627f25beb2ce5750d",
+      "headRepository": "oauth-wg/oauth-identity-chaining",
+      "headRefName": "PieterKas-patch-5",
+      "headRefOid": "e78cb10901bac9486ff3b2d3a809daa47c84c8cc",
+      "closedAt": null,
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [],
+      "reviews": [
+        {
+          "id": "PRR_kwDOJubJxM6dC7y7",
+          "commit": {
+            "abbreviatedOid": "e78cb10"
+          },
+          "author": "kburgin3",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2025-02-22T12:30:07Z",
+          "updatedAt": "2025-02-22T12:30:07Z",
+          "comments": []
+        }
+      ]
+    },
+    {
+      "number": 141,
+      "id": "PR_kwDOJubJxM6MFR7y",
+      "title": "Recommendation on media types",
+      "url": "https://github.com/oauth-wg/oauth-identity-chaining/pull/141",
+      "state": "OPEN",
+      "author": "PieterKas",
+      "authorAssociation": "CONTRIBUTOR",
+      "assignees": [],
+      "labels": [],
+      "body": "See issue #85\r\n\r\n@aaronpk please review",
+      "createdAt": "2025-02-21T17:40:01Z",
+      "updatedAt": "2025-02-22T12:28:23Z",
+      "baseRepository": "oauth-wg/oauth-identity-chaining",
+      "baseRefName": "main",
+      "baseRefOid": "a6b9a0215f5370beeeb67d9627f25beb2ce5750d",
+      "headRepository": "oauth-wg/oauth-identity-chaining",
+      "headRefName": "PieterKas-patch-6",
+      "headRefOid": "3b9c92659d28025253d856ad0d9e1d1d50b82ef2",
+      "closedAt": null,
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [],
+      "reviews": [
+        {
+          "id": "PRR_kwDOJubJxM6c_PYR",
+          "commit": {
+            "abbreviatedOid": "9033405"
+          },
+          "author": "aaronpk",
+          "authorAssociation": "MEMBER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2025-02-21T17:49:27Z",
+          "updatedAt": "2025-02-21T17:49:28Z",
+          "comments": [
+            {
+              "originalPosition": 16,
+              "body": "```suggestion\r\nIt is RECOMMENDED that any profile or deployment-specific implementation adopt explicit typing as defined in JSON Web Token Best Current Practices {{RFC8725}} and define a new media type {{RFC2046}} in the \"Media Types\" registry {{IANA.MediaTypes}} in the manner described in {{RFC6838}}.\r\n```",
+              "createdAt": "2025-02-21T17:49:27Z",
+              "updatedAt": "2025-02-21T17:49:28Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJubJxM6c_PyY",
+          "commit": {
+            "abbreviatedOid": "82c2ad7"
+          },
+          "author": "aaronpk",
+          "authorAssociation": "MEMBER",
+          "state": "APPROVED",
+          "body": "works for me!",
+          "createdAt": "2025-02-21T17:50:22Z",
+          "updatedAt": "2025-02-21T17:50:22Z",
+          "comments": []
+        },
+        {
+          "id": "PRR_kwDOJubJxM6dC7H8",
+          "commit": {
+            "abbreviatedOid": "3b9c926"
+          },
+          "author": "kburgin3",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "APPROVED",
+          "body": "Looks good",
+          "createdAt": "2025-02-22T12:28:23Z",
+          "updatedAt": "2025-02-22T12:28:23Z",
+          "comments": []
         }
       ]
     }
