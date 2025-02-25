@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2025-02-23T00:21:38.758910+00:00",
+  "timestamp": "2025-02-25T00:24:24.099342+00:00",
   "repo": "oauth-wg/oauth-identity-chaining",
   "labels": [
     {
@@ -849,7 +849,7 @@
       "labels": [],
       "body": "If the user's token is a sender constraint token \"DPoP\", can it be exchanged by the client to an authorization grant for another domain? Does the authorization server verify proof of possession?",
       "createdAt": "2024-02-16T11:36:39Z",
-      "updatedAt": "2025-01-10T20:06:15Z",
+      "updatedAt": "2025-02-24T14:56:10Z",
       "closedAt": null,
       "comments": [
         {
@@ -879,6 +879,13 @@
           "body": "I a don't think we should disallow this. The constrained access token is being used for another purpose. I would also argue the constrain was introduced to prevent it from being replayed as an access token. In this case it is. being used for something different. I imagine it will also be impractical to require proof of the sender constraining as the key bound to the token is probably not be under control of the resource server. ",
           "createdAt": "2025-01-10T20:06:15Z",
           "updatedAt": "2025-01-10T20:06:15Z"
+        },
+        {
+          "author": "martin-lindstrom",
+          "authorAssociation": "NONE",
+          "body": "The [Authorization server acting as client](https://www.ietf.org/archive/id/draft-ietf-oauth-identity-chaining-03.html#name-authorization-server-acting) example is a pretty appealing use case, where much of the inter-organization configuration and trust can be handled by the Authorization Servers in domain A and B, and the clients and resources servers can stay pretty \"simple\". However, what if the resource server in B requires DPoP?\nI saw a comment about the difficulties concerning using DPoP for this example in #86 but I haven't seen any further discussions about it.\n\nBefore people start inventing their own solutions to this, wouldn't it be a good idea to define a mechanism for including some sort of DPop-related info in the authorization grant JWT issued by AS A? ",
+          "createdAt": "2025-02-24T14:56:07Z",
+          "updatedAt": "2025-02-24T14:56:07Z"
         }
       ]
     },
@@ -7338,13 +7345,13 @@
       "labels": [],
       "body": "See #98",
       "createdAt": "2025-02-21T14:54:02Z",
-      "updatedAt": "2025-02-22T12:30:07Z",
+      "updatedAt": "2025-02-24T09:29:33Z",
       "baseRepository": "oauth-wg/oauth-identity-chaining",
       "baseRefName": "main",
       "baseRefOid": "a6b9a0215f5370beeeb67d9627f25beb2ce5750d",
       "headRepository": "oauth-wg/oauth-identity-chaining",
       "headRefName": "PieterKas-patch-5",
-      "headRefOid": "e78cb10901bac9486ff3b2d3a809daa47c84c8cc",
+      "headRefOid": "92ce2784470421edfcf83fb155b7568642a96efb",
       "closedAt": null,
       "mergedAt": null,
       "mergedBy": null,
