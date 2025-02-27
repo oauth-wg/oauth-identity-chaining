@@ -62,7 +62,7 @@ This specification defines a mechanism to preserve identity and authorization in
 --- middle
 
 # Introduction
-Applications often require access to resources that are distributed across multiple trust domains where each trust domain has its own OAuth 2.0 authorization server. As a result, developers are often faced with the situation that a protected resource is located in a different trust domain and thus protected by a different authorization server. A request may transverse multiple resource servers in multiple trust domains before completing. All protected resources involved in such a request need to know on whose behalf the request was originally initiated (i.e. the user), what authorization was granted and optionally which other resource servers were called prior to making an authorization decision. This information needs to be preserved, even when a request crosses one or more trust domains. This document refers to this as "chaining" and defines a mechanism for preserving identity and authorization information across domains using a combination of OAuth 2.0 Token Exchange {{RFC8693}} and JSON Web Token (JWT) Profile for OAuth 2.0 Client Authentication and Authorization Grants {{RFC7523}}.
+Applications often require access to resources that are distributed across multiple trust domains where each trust domain has its own OAuth 2.0 authorization server. A request may transverse multiple resource servers in multiple trust domains before completing. All protected resources involved in such a request need to know on whose behalf the request was originally initiated (i.e. the user), what authorization was granted and optionally which other resource servers were called prior to making an authorization decision. This information needs to be preserved, even when a request crosses one or more trust domains. This document refers to this as "chaining" and defines a mechanism for preserving identity and authorization information across domains using a combination of OAuth 2.0 Token Exchange {{RFC8693}} and JSON Web Token (JWT) Profile for OAuth 2.0 Client Authentication and Authorization Grants {{RFC7523}}.
 
 ## Requirements Language
 
@@ -72,24 +72,25 @@ Applications often require access to resources that are distributed across multi
 
 This specification describes a combination of OAuth 2.0 Token Exchange {{RFC8693}} and JWT Profile for OAuth 2.0 Client Authentication and Authorization Grants {{RFC7523}} to achieve identity and authorization chaining across domains.
 
-A client in trust domain A that needs to access a resource server in trust domain B requests a JWT authorization grant from the authorization server for trust domain A via a token exchange. The client in trust domain A presents the received grant as an assertion to the authorization server in domain B in order to obtain an access token for the protected resource in domain B. The client in domain A may be a resource server, or it may be the authorization server itself.
+A client in trust domain A that needs to access a resource server in trust domain B requests a JWT authorization grant from the authorization server for trust domain A using a profile of OAuth 2.0 Token Exchange {{RFC8693}}. The client in trust domain A then presents the received grant as an assertion to the authorization server in trust domain B to obtain an access token for the protected resource in trust domain B using a profile of JWT Profile for OAuth 2.0 Client Authentication and Authorization Grants {{RFC7523}}.
 
 ## Overview
 
-The identity and authorization chaining flow outlined below describes how a combination of OAuth 2.0 Token Exchange {{RFC8693}} and JWT Profile for OAuth 2.0 Client Authentication and Authorization Grants {{RFC7523}} are used to address the use cases identified. The (Appendix, (#Examples)) include two additional examples that describe how this flow is used when the resource server acts as the client or the authorization server acts as the client.
+The identity and authorization chaining flow outlined below describes how a combination of OAuth 2.0 Token Exchange {{RFC8693}} and JWT Profile for OAuth 2.0 Client Authentication and Authorization Grants {{RFC7523}} are used to address the use cases identified.
 
 ~~~~
-+-------------+                            +-------------+ +---------+
-|Authorization|         +--------+         |Authorization| |Protected|
-|Server       |         |Client  |         |Server       | |Resource |
-|Domain A     |         |Domain A|         |Domain B     | |Domain B |
++-------------+         +--------+         +-------------+ +---------+
+|Authorization|         | Client |         |Authorization| |Protected|
+|Server       |         | Trust  |         |Server       | |Resource |
+|Trust        |         |Domain A|         |Trust        | |Trust    |
+|Domain A     |         |        |         |Domain B     | |Domain B |
 +-------------+         +--------+         +-------------+ +---------+
        |                    |                     |             |
        |                    |----+                |             |
-       |                    |    | (A) discover   |             |
-       |                    |<---+ Authorization  |             |
-       |                    |      Server         |             |
-       |                    |      Domain B       |             |
+       |      (A) discover  |    |                |             |
+       |      Authorization |<---+                |             |
+       |      Server        |                     |             |
+       |      Trust Domain B|                     |             |
        |                    |                     |             |
        |                    |                     |             |
        | (B) exchange token |                     |             |
@@ -115,26 +116,26 @@ The identity and authorization chaining flow outlined below describes how a comb
 ~~~~
 {: title='Identity and Authorization Chaining Flow'}
 
-The flow illustrated in Figure 1 shows the steps the client in trust Domain A needs to perform to access a protected resource in trust domain B. In this flow, the client is in posession of a token that an authorization server will accept as part of a token exchange flow as defined in [Token Exchange](#token-exchange). How the client obtained this token is out of scope of this specification. The client has a way to discover the authorization server in Domain B and a trust relationship exists between Domain A and Domain B (e.g., through federation). It includes the following:
+The flow illustrated in Figure 1 shows the steps the client in trust domain A needs to perform to access a protected resource in trust domain B. In this flow, the client is in posession of a token that an authorization server will accept as part of a token exchange flow as defined in [Token Exchange](#token-exchange). How the client obtained this token is out of scope of this specification. The client has a way to discover the authorization server in Domain B and a trust relationship exists between Domain A and Domain B (e.g., through federation). It includes the following:
 
-* (A) The client of Domain A needs to discover the authorization server of Domain B. See [Authorization Server Discovery](#authorization-server-discovery).
+* (A) The client in trust domain A discovers the location of the authorization server of trust domain B. See [Authorization Server Discovery](#authorization-server-discovery).
 
-* (B) The client exchanges a token it has in its posession at the authorization server of its own domain (Domain A) for a JWT authorization grant that can be used at the authorization server in Domain B. See [Token Exchange](#token-exchange).
+* (B) The client in trust domain A exchanges a token it has in its posession with the authorization server in trust domain A for a JWT authorization grant that can be used at the authorization server in trust domain B. See [Token Exchange](#token-exchange).
 
-* (C) The authorization server of Domain A processes the request and returns a JWT authorization grant that the client can use with the authorization server of Domain B. This requires a trust relationship between Domain A and Domain B (e.g., through federation).
+* (C) The authorization server of trust domain A processes the request and returns a JWT authorization grant that the client can use with the authorization server of trust domain B. This requires a trust relationship between the authorization servers in trust domain A and trust domain B (e.g., through federation).
 
-* (D) The client presents the authorization grant to the authorization server of Domain B. See [Access Token Request](#access-token-request).
+* (D) The client in trust domain A presents the authorization grant to the authorization server of trust domain B. See [Access Token Request](#access-token-request).
 
-* (E) Authorization server of Domain B validates the JWT authorization grant and returns an access token.
+* (E) Authorization server of trust domain B validates the JWT authorization grant and returns an access token.
 
-* (F) The client in Domain A uses the access token received from the authorization server in Domain B to access the protected resource in Domain B.
+* (F) The client in trust domain A uses the access token received from the authorization server in trust domain B to access the protected resource in trust domain B.
 
 ## Authorization Server Discovery
-This specification does not define authorization server discovery. A client MAY maintain a static mapping or use other means to identify the authorization server. The `authorization_servers` property in {{I-D.ietf-oauth-resource-metadata}} MAY be used.
+This specification does not define authorization server discovery. A client MAY use the `authorization_servers` property as defined in {{I-D.ietf-oauth-resource-metadata}}, maintain a static mapping or use other means to identify the authorization server.
 
 ## Token Exchange
 
-The client performs token exchange as defined in {{RFC8693}} with the authorization server for its own domain (e.g., Domain A) in order to obtain a JWT authorization grant that can be used with the authorization server of a different domain (e.g., Domain B) as specified in section 1.3 of {{RFC6749}}.
+The client in trust domain A performs token exchange as defined in {{RFC8693}} with the authorization server in trust domain A in order to obtain a JWT authorization grant that can be used with the authorization server of trust domain B as specified in section 1.3 of {{RFC6749}}.
 
 ### Token Exchange Request
 
@@ -145,27 +146,27 @@ scope
 : OPTIONAL. Additional scopes to indicate scopes included in the returned JWT authorization grant. See [Claims transcription](#claims-transcription).
 
 resource
-: REQUIRED if audience is not set. URI of authorization server of targeting domain (domain B).
+: REQUIRED if audience is not set. URI of authorization server for trust domain B.
 
 audience
-: REQUIRED if resource is not set. Well known/logical name of authorization server of targeting domain (domain B).
+: REQUIRED if resource is not set. Well known/logical name of authorization server for trust domain B.
 
 ### Processing rules
 
-* If the request itself is not valid or if the given resource or audience are unknown, or are unacceptable based on policy, the authorization server MUST deny the request.
-* The authorization server MAY add, remove or change claims. See [Claims transcription](#claims-transcription).
+* If the request itself is not valid or if the given resource or audience are unknown, or are unacceptable based on policy, the authorization server in trust domain A MUST deny the request.
+* The authorization server in trust domain A MAY add, remove or change claims. See [Claims transcription](#claims-transcription).
 
 ### Token Exchange Response
 
 All of section 2.2 of {{RFC8693}} applies. In addition, the following applies to implementations that conform to this specification.
 
-* The "aud" claim in the returned JWT authorization grant MUST identify the requested authorization server. This corresponds with [RFC 7523 Section 3, Point 3](https://datatracker.ietf.org/doc/html/rfc7523#section-3) and is there to reduce misuse and to prevent clients from presenting access tokens as an authorization grant to an authorization server in a different domain.
+* The "aud" claim in the returned JWT authorization grant MUST identify the requested authorization server in trust domain B. This corresponds with [RFC 7523 Section 3, Point 3](https://datatracker.ietf.org/doc/html/rfc7523#section-3) and is there to reduce misuse and to prevent clients from presenting access tokens as an authorization grant to an authorization server in trust domain B.
 
-* The "aud" claim included in the returned JWT authorization grant MAY identify multiple authorization servers, provided that trust relationships exist with them (e.g. through federation). It is RECOMMENDED that the "aud" claim is restricted to a single authorization server to prevent an authorization server in one domain from presenting the client's authorization grant to an authorization server in a different trust domain. For example, this will prevent the authorization server in Domain B from presenting the authorization grant it received from the client in Domain A to the authorization server for Domain C.
+* The "aud" claim included in the returned JWT authorization grant MAY identify multiple authorization servers, provided that trust relationships exist with them (e.g. through federation). It is RECOMMENDED that the "aud" claim is restricted to a single authorization server in trust domain B to prevent an authorization server from presenting the client's authorization grant to an authorization server in a different trust domain. For example, this will prevent the authorization server in trust domain B from presenting the authorization grant it received from the client in trust domain A to the authorization server for trust domain C.
 
 ### Example
 
-The example below shows the message invoked by the client in trust domain A to perform token exchange with the authorization server in domain A (https://as.a.org/auth) to receive a JWT authorization grant for the authorization server in trust domain B (https://as.b.org/auth).
+The example below shows the message invoked by the client in trust domain A to perform token exchange with the authorization server in trust domain A (https://as.a.org/auth) to receive a JWT authorization grant for the authorization server in trust domain B (https://as.b.org/auth).
 
 ~~~
 POST /auth/token HTTP/1.1
@@ -198,35 +199,35 @@ Cache-Control: no-cache, no-store
 
 ## JWT Authorization Grant
 
-The client presents the JWT authorization grant it received from the authorization server in its own domain as an authorization grant to the authorization server in the domain of the resource server it wants to access as defined in {{RFC7523}}.
+The client presents the JWT authorization grant it received from the authorization server in trust domain A as an authorization grant to the authorization server in trust domain B to obtain an access token for a resource server in trust domain B. The authorization grant is presented as defined in the JWT Profile for OAuth 2.0 Client Authentication and Authorization Grants {{RFC7523}}.
 
 ### Access Token Request
 
-The authorization grant is a JWT bearer token, which the client uses to request an access token as described in the JWT Profile for OAuth 2.0 Client Authentication and Authorization Grants {{RFC7523}}. For the purpose of this specification the following descriptions apply:
+The authorization grant is a JWT bearer token, which the client in trust domain A uses to request an access token from the authorization server in trust domain B as described in the JWT Profile for OAuth 2.0 Client Authentication and Authorization Grants {{RFC7523}}. For the purpose of this specification the following descriptions apply:
 
 {:vspace}
 grant_type
 : REQUIRED. As defined in Section 2.1 of {{RFC7523}} the value `urn:ietf:params:oauth:grant-type:jwt-bearer` indicates the request is a JWT bearer assertion authorization grant.
 
 assertion
-: REQUIRED. Authorization grant returned by the token exchange (`access_token` response).
+: REQUIRED. Authorization grant returned by the authorization server for domain A (see [Token Exchange](#token-exchange) response).
 
 scope
 : OPTIONAL.
 
-The client MAY indicate the audience it is trying to access through the `scope` parameter or the `resource` parameter defined in {{RFC8707}}.
+The client in trust domain A MAY indicate the audience it is trying to access through the `scope` parameter or the `resource` parameter defined in {{RFC8707}}.
 
 ### Processing rules
 
-The authorization server MUST validate the JWT authorization grant as specified in Sections 3 and 3.1 of {{RFC7523}}. The following processing rules also apply:
+The authorization server in trust domain B MUST validate the JWT authorization grant as specified in Sections 3 and 3.1 of {{RFC7523}}. The following processing rules also apply:
 
-* The "aud" claim MUST identify the Authorization Server as a valid intended audience of the assertion using either the token endpoint as described Section 3 {{RFC7523}} or the issuer identifier as defined in Section 2 of {{RFC8414}}.
-* The authorization server SHOULD deny the request if it is not able to identify the subject.
-* Due to policy the request MAY be denied (for instance if the federation from domain A is not allowed).
+* The "aud" claim MUST identify the authorization server in trust domain B as a valid intended audience of the assertion using either the token endpoint as described Section 3 {{RFC7523}} or the issuer identifier as defined in Section 2 of {{RFC8414}}.
+* The authorization server in trust domain B SHOULD deny the request if it is not able to identify the subject.
+* Due to policy the request MAY be denied (for instance if federation with trust domain A is not established).
 
 ### Access Token Response
 
-The authorization server responds with an access token as described in section 5.1 of {{RFC6749}}.
+The authorization server in trust domain B responds with an access token as described in section 5.1 of {{RFC6749}}.
 
 ### Example
 
@@ -260,12 +261,12 @@ Cache-Control: no-cache, no-store
 
 ## Claims transcription
 
-Authorization servers MAY transcribe claims when either producing JWT authorization grants in the token exchange flow or access tokens in the assertion flow.
+Authorization servers MAY transcribe claims when either producing JWT authorization grants in the token exchange flow or access tokens in the assertion flow. Transcription of claims may be required for the following reasons:
 
-* **Transcribing the subject identifier**: Subject identifier can differ between the parties involved. For instance: A user is known at domain A by "johndoe@a.org" but in domain B by "doe.john@b.org". The mapping from one identifier to the other MAY either happen in the token exchange step and the updated identifier is reflected in returned JWT authorization grant or in the assertion step where the updated identifier would be reflected in the access token. To support this both authorization servers MAY add, change or remove claims as described above.
+* **Transcribing the subject identifier**: The subject identifier can differ between the parties involved. For example, a user is identified in trust domain A as "johndoe@a.org" but in trust domain B they are identified as "doe.john@b.org". The mapping from one identifier to the other MAY either happen in the token exchange step and the updated identifier is reflected in the returned JWT authorization grant or in the assertion step where the updated identifier would be reflected in the access token. To support this both authorization servers MAY add, change or remove claims as described above.
 * **Selective disclosure**: Authorization servers MAY remove or hide certain claims due to privacy requirements or reduced trust towards the targeting trust domain.
 * **Controlling scope**: Clients MAY use the scope parameter to control transcribed claims (e.g. downscoping). Authorization Servers SHOULD verify that the requested scopes are not higher privileged than the scopes of the presented subject_token.
-* **Including JWT authorization grant claims**: The authorization server performing the assertion flow MAY leverage claims from the presented JWT authorization grant and include them in the returned access token. The populated claims SHOULD be namespaced or validated to prevent the injection of invalid claims.
+* **Including JWT authorization grant claims**: The authorization server in trust domain B which is performing the assertion flow MAY leverage claims from the JWT authorization grant presented by the client in trust doman A and include them in the returned access token. The populated claims SHOULD be namespaced or validated to prevent the injection of invalid claims.
 
 The representation of transcribed claims and their format is not defined in this specification.
 
@@ -463,6 +464,8 @@ The editors would like to thank Joe Jubinski, Justin Richer, Aaron Parecki, Dean
 * Clarified diagrams and description of authorization server acting as a client.
 * Remove references to sd-jwt.
 * Added security consideration on preventing lateral moves.
+* Editorial updates to be consistent about the trust domain for a client, authorization server or resource server.
+* Added sender constraining of tokens to security considerations
 
 -03
 
