@@ -898,13 +898,23 @@ Appendix C.  Acknowledgements
 
 Appendix D.  Document History
 
-   [[ To be removed from the final specification ]] -latest * Clarified
-   diagrams and description of authorization server acting as a client.
-   * Remove references to sd-jwt. * Added text to recommend use of
-   explicit typing. * Added security consideration on preventing lateral
-   moves. * Editorial updates to be consistent about the trust domain
-   for a client, authorization server or resource server. * Added sender
-   constraining of tokens to security considerations
+   [[ To be removed from the final specification ]] -latest
+
+   -04
+
+   *  Clarified diagrams and description of authorization server acting
+      as a client.
+
+   *  Remove references to sd-jwt.
+
+   *  Added text to recommend use of explicit typing.
+
+   *  Added security consideration on preventing lateral moves.
+
+   *  Editorial updates to be consistent about the trust domain for a
+      client, authorization server or resource server.
+
+   *  Added sender constraining of tokens to security considerations
 
    -03
 
