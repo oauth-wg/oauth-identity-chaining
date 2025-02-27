@@ -468,6 +468,9 @@ The editors would like to thank Joe Jubinski, Justin Richer, Aaron Parecki, Dean
 
 \[\[ To be removed from the final specification ]]
 -latest
+
+-04
+
 * Clarified diagrams and description of authorization server acting as a client.
 * Remove references to sd-jwt.
 * Added text to recommend use of explicit typing.
