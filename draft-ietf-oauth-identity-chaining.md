@@ -48,6 +48,10 @@ normative:
   RFC7523: # JSON Web Token (JWT) Profile for OAuth 2.0 Client Authentication and Authorization Grants
   RFC8707: # Resource Indicators for OAuth 2.0
   RFC8414: # OAuth 2.0 Authorization Server Metadata
+  RFC8725: # JSON Web Token Best Current Practices
+  RFC2046: # Multipurpose Internet Mail Extensions (MIME) Part Two: Media Types
+  RFC6838: # Media Type Specifications and Registration Procedures
+  IANA.MediaTypes:
 
 informative:
 
@@ -272,7 +276,10 @@ The representation of transcribed claims and their format is not defined in this
 
 # IANA Considerations {#IANA}
 
-To be added.
+## Media Types
+This specification does not define any new media types.
+
+It is RECOMMENDED that any profile or deployment-specific implementation adopt explicit typing as defined in JSON Web Token Best Current Practices {{RFC8725}} and define a new media type {{RFC2046}} in the "Media Types" registry {{IANA.MediaTypes}} in the manner described in {{RFC6838}}.
 
 # Security Considerations {#Security}
 
@@ -463,6 +470,7 @@ The editors would like to thank Joe Jubinski, Justin Richer, Aaron Parecki, Dean
 -latest
 * Clarified diagrams and description of authorization server acting as a client.
 * Remove references to sd-jwt.
+* Added text to recommend use of explicit typing.
 * Added security consideration on preventing lateral moves.
 * Editorial updates to be consistent about the trust domain for a client, authorization server or resource server.
 * Added sender constraining of tokens to security considerations
