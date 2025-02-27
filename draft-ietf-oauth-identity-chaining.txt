@@ -84,6 +84,7 @@ Table of Contents
        2.4.4.  Example
      2.5.  Claims transcription
    3.  IANA Considerations
+     3.1.  Media Types
    4.  Security Considerations
      4.1.  Client Authentication
      4.2.  Sender Constraining Tokens
@@ -454,7 +455,15 @@ grant_type=urn%3Aietf%3Aparams%3Aoauth%3Agrant-type%3Atoken-exchange
 
 3.  IANA Considerations
 
-   To be added.
+3.1.  Media Types
+
+   This specification does not define any new media types.
+
+   It is RECOMMENDED that any profile or deployment-specific
+   implementation adopt explicit typing as defined in JSON Web Token
+   Best Current Practices [RFC8725] and define a new media type
+   [RFC2046] in the "Media Types" registry [IANA.MediaTypes] in the
+   manner described in [RFC6838].
 
 4.  Security Considerations
 
@@ -507,6 +516,24 @@ grant_type=urn%3Aietf%3Aparams%3Aoauth%3Agrant-type%3Atoken-exchange
               Authorization Server Metadata", RFC 8414,
               DOI 10.17487/RFC8414, June 2018,
               <https://www.rfc-editor.org/rfc/rfc8414>.
+
+   [RFC8725]  Sheffer, Y., Hardt, D., and M. Jones, "JSON Web Token Best
+              Current Practices", BCP 225, RFC 8725,
+              DOI 10.17487/RFC8725, February 2020,
+              <https://www.rfc-editor.org/rfc/rfc8725>.
+
+   [RFC2046]  Freed, N. and N. Borenstein, "Multipurpose Internet Mail
+              Extensions (MIME) Part Two: Media Types", RFC 2046,
+              DOI 10.17487/RFC2046, November 1996,
+              <https://www.rfc-editor.org/rfc/rfc2046>.
+
+   [RFC6838]  Freed, N., Klensin, J., and T. Hansen, "Media Type
+              Specifications and Registration Procedures", BCP 13,
+              RFC 6838, DOI 10.17487/RFC6838, January 2013,
+              <https://www.rfc-editor.org/rfc/rfc6838>.
+
+   [IANA.MediaTypes]
+              "*** BROKEN REFERENCE ***".
 
    [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
               Requirement Levels", BCP 14, RFC 2119,
@@ -873,11 +900,11 @@ Appendix D.  Document History
 
    [[ To be removed from the final specification ]] -latest * Clarified
    diagrams and description of authorization server acting as a client.
-   * Remove references to sd-jwt. * Added security consideration on
-   preventing lateral moves. * Editorial updates to be consistent about
-   the trust domain for a client, authorization server or resource
-   server. * Added sender constraining of tokens to security
-   considerations
+   * Remove references to sd-jwt. * Added text to recommend use of
+   explicit typing. * Added security consideration on preventing lateral
+   moves. * Editorial updates to be consistent about the trust domain
+   for a client, authorization server or resource server. * Added sender
+   constraining of tokens to security considerations
 
    -03
 
