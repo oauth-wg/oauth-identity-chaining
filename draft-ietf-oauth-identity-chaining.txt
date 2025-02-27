@@ -87,6 +87,7 @@ Table of Contents
    4.  Security Considerations
      4.1.  Client Authentication
      4.2.  Sender Constraining Tokens
+     4.3.  Authorized use of Subject Token
    5.  References
      5.1.  Normative References
      5.2.  Informative References
@@ -467,6 +468,18 @@ grant_type=urn%3Aietf%3Aparams%3Aoauth%3Agrant-type%3Atoken-exchange
 
    Authorization Servers SHOULD follow the The OAuth 2.1 Authorization
    Framework [I-D.draft-ietf-oauth-v2-1] for sender constraining tokens.
+
+4.3.  Authorized use of Subject Token
+
+   The authorization server in trust domain A SHOULD perform client
+   authentication and verify that the client in trust domain A is
+   authorized to present the token used as a subject_token in the token
+   exchange flow before issuing an authorization grant.  By doing so, it
+   minimizes the risk of an attacker making a lateral move by using a
+   stolen token from trust domain A to obtain an authorization grant
+   with which to authenticate to an authorization server in trust domain
+   B and request an access token for a resource server in trust domain
+   B.
 
 5.  References
 
@@ -860,8 +873,9 @@ Appendix D.  Document History
 
    [[ To be removed from the final specification ]] -latest * Clarified
    diagrams and description of authorization server acting as a client.
-   * Remove references to sd-jwt. * Editorial updates to be consistent
-   about the trust domain for a client, authorization server or resource
+   * Remove references to sd-jwt. * Added security consideration on
+   preventing lateral moves. * Editorial updates to be consistent about
+   the trust domain for a client, authorization server or resource
    server. * Added sender constraining of tokens to security
    considerations
 

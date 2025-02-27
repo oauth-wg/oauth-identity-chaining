@@ -1227,6 +1227,9 @@ svg :is([fill="white"], [fill^="#fff"]) {
               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4.2.2">
                 <p id="section-toc.1-1.4.2.2.1"><a href="#section-4.2" class="auto internal xref">4.2</a>.  <a href="#name-sender-constraining-tokens" class="internal xref">Sender Constraining Tokens</a></p>
 </li>
+              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4.2.3">
+                <p id="section-toc.1-1.4.2.3.1"><a href="#section-4.3" class="auto internal xref">4.3</a>.  <a href="#name-authorized-use-of-subject-t" class="internal xref">Authorized use of Subject Token</a></p>
+</li>
             </ul>
 </li>
           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5">
@@ -1661,6 +1664,14 @@ Cache-Control: no-cache, no-store
 <p id="section-4.2-1">Authorization Servers <span class="bcp14">SHOULD</span> follow the The OAuth 2.1 Authorization Framework <span>[<a href="#I-D.draft-ietf-oauth-v2-1" class="cite xref">I-D.draft-ietf-oauth-v2-1</a>]</span> for sender constraining tokens.<a href="#section-4.2-1" class="pilcrow">¶</a></p>
 </section>
 </div>
+<div id="authorized-use-of-subject-token">
+<section id="section-4.3">
+        <h3 id="name-authorized-use-of-subject-t">
+<a href="#section-4.3" class="section-number selfRef">4.3. </a><a href="#name-authorized-use-of-subject-t" class="section-name selfRef">Authorized use of Subject Token</a>
+        </h3>
+<p id="section-4.3-1">The authorization server in trust domain A <span class="bcp14">SHOULD</span> perform client authentication and verify that the client in trust domain A is authorized to present the token used as a subject_token in the token exchange flow before issuing an authorization grant. By doing so, it minimizes the risk of an attacker making a lateral move by using a stolen token from trust domain A to obtain an authorization grant with which to authenticate to an authorization server in trust domain B and request an access token for a resource server in trust domain B.<a href="#section-4.3-1" class="pilcrow">¶</a></p>
+</section>
+</div>
 </section>
 </div>
 <div id="sec-combined-references">
@@ -1958,6 +1969,7 @@ Cache-Control: no-cache, no-store
 -latest
 * Clarified diagrams and description of authorization server acting as a client.
 * Remove references to sd-jwt.
+* Added security consideration on preventing lateral moves.
 * Editorial updates to be consistent about the trust domain for a client, authorization server or resource server.
 * Added sender constraining of tokens to security considerations<a href="#appendix-D-1" class="pilcrow">¶</a></p>
 <p id="appendix-D-2">-03<a href="#appendix-D-2" class="pilcrow">¶</a></p>
