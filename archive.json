@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2025-02-25T00:24:24.099342+00:00",
+  "timestamp": "2025-02-27T00:20:17.601125+00:00",
   "repo": "oauth-wg/oauth-identity-chaining",
   "labels": [
     {
@@ -7253,7 +7253,7 @@
       "labels": [],
       "body": "Cleaning up language to be explicit about which trust domain an authorization server and client is active in. Changes are limited to the main text. Separate PRs need to be created for appendixes and use cases.",
       "createdAt": "2025-02-14T14:23:35Z",
-      "updatedAt": "2025-02-21T14:52:31Z",
+      "updatedAt": "2025-02-26T17:41:38Z",
       "baseRepository": "oauth-wg/oauth-identity-chaining",
       "baseRefName": "main",
       "baseRefOid": "82a0b0d0d0f701c0a61fcdca2ea977a8ebfde3a6",
@@ -7330,6 +7330,19 @@
               "updatedAt": "2025-02-21T13:28:50Z"
             }
           ]
+        },
+        {
+          "id": "PRR_kwDOJubJxM6drF2R",
+          "commit": {
+            "abbreviatedOid": "c63a1d3"
+          },
+          "author": "bc-pi",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2025-02-26T17:41:38Z",
+          "updatedAt": "2025-02-26T17:41:38Z",
+          "comments": []
         }
       ]
     },
@@ -7345,7 +7358,7 @@
       "labels": [],
       "body": "See #98",
       "createdAt": "2025-02-21T14:54:02Z",
-      "updatedAt": "2025-02-24T09:29:33Z",
+      "updatedAt": "2025-02-26T17:23:23Z",
       "baseRepository": "oauth-wg/oauth-identity-chaining",
       "baseRefName": "main",
       "baseRefOid": "a6b9a0215f5370beeeb67d9627f25beb2ce5750d",
@@ -7370,6 +7383,19 @@
           "createdAt": "2025-02-22T12:30:07Z",
           "updatedAt": "2025-02-22T12:30:07Z",
           "comments": []
+        },
+        {
+          "id": "PRR_kwDOJubJxM6dq5dH",
+          "commit": {
+            "abbreviatedOid": "92ce278"
+          },
+          "author": "bc-pi",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2025-02-26T17:23:23Z",
+          "updatedAt": "2025-02-26T17:23:23Z",
+          "comments": []
         }
       ]
     },
@@ -7385,7 +7411,7 @@
       "labels": [],
       "body": "See issue #85\r\n\r\n@aaronpk please review",
       "createdAt": "2025-02-21T17:40:01Z",
-      "updatedAt": "2025-02-22T12:28:23Z",
+      "updatedAt": "2025-02-26T17:22:28Z",
       "baseRepository": "oauth-wg/oauth-identity-chaining",
       "baseRefName": "main",
       "baseRefOid": "a6b9a0215f5370beeeb67d9627f25beb2ce5750d",
@@ -7442,6 +7468,19 @@
           "body": "Looks good",
           "createdAt": "2025-02-22T12:28:23Z",
           "updatedAt": "2025-02-22T12:28:23Z",
+          "comments": []
+        },
+        {
+          "id": "PRR_kwDOJubJxM6dq4eG",
+          "commit": {
+            "abbreviatedOid": "3b9c926"
+          },
+          "author": "bc-pi",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2025-02-26T17:22:28Z",
+          "updatedAt": "2025-02-26T17:22:28Z",
           "comments": []
         }
       ]
