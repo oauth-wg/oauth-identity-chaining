@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2025-02-27T00:20:17.601125+00:00",
+  "timestamp": "2025-03-02T00:22:02.869917+00:00",
   "repo": "oauth-wg/oauth-identity-chaining",
   "labels": [
     {
@@ -849,7 +849,7 @@
       "labels": [],
       "body": "If the user's token is a sender constraint token \"DPoP\", can it be exchanged by the client to an authorization grant for another domain? Does the authorization server verify proof of possession?",
       "createdAt": "2024-02-16T11:36:39Z",
-      "updatedAt": "2025-02-24T14:56:10Z",
+      "updatedAt": "2025-02-27T09:04:19Z",
       "closedAt": null,
       "comments": [
         {
@@ -886,6 +886,20 @@
           "body": "The [Authorization server acting as client](https://www.ietf.org/archive/id/draft-ietf-oauth-identity-chaining-03.html#name-authorization-server-acting) example is a pretty appealing use case, where much of the inter-organization configuration and trust can be handled by the Authorization Servers in domain A and B, and the clients and resources servers can stay pretty \"simple\". However, what if the resource server in B requires DPoP?\nI saw a comment about the difficulties concerning using DPoP for this example in #86 but I haven't seen any further discussions about it.\n\nBefore people start inventing their own solutions to this, wouldn't it be a good idea to define a mechanism for including some sort of DPop-related info in the authorization grant JWT issued by AS A? ",
           "createdAt": "2025-02-24T14:56:07Z",
           "updatedAt": "2025-02-24T14:56:07Z"
+        },
+        {
+          "author": "kburgin3",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "> The [Authorization server acting as client](https://www.ietf.org/archive/id/draft-ietf-oauth-identity-chaining-03.html#name-authorization-server-acting) example is a pretty appealing use case, where much of the inter-organization configuration and trust can be handled by the Authorization Servers in domain A and B, and the clients and resources servers can stay pretty \"simple\". However, what if the resource server in B requires DPoP? I saw a comment about the difficulties concerning using DPoP for this example in [#86](https://github.com/oauth-wg/oauth-identity-chaining/issues/86) but I haven't seen any further discussions about it.\n> \n> Before people start inventing their own solutions to this, wouldn't it be a good idea to define a mechanism for including some sort of DPop-related info in the authorization grant JWT issued by AS A?\n\nSpeaking for myself (other co-authors can reply if they disagree), defining a mechanism is left to implementations. If you would like to define such a mechanism, I suggest taking this to the list or creating a draft, maybe a profile of this document?",
+          "createdAt": "2025-02-27T08:03:51Z",
+          "updatedAt": "2025-02-27T08:03:51Z"
+        },
+        {
+          "author": "arndt-s",
+          "authorAssociation": "MEMBER",
+          "body": "@martin-lindstrom we spent a lot of time talking about this and while we see value in this there's plenty of work that needs to happen in order to standardize it in a way that it can be \"easily picked up and implemented\". I believe we could have done a better job keeping issues up to date with it, sorry about that.\n\nOur main reasons we don't define it as such in this document:\n- Delegated key binding: AS A would need to request access_token from AS B that is bound to the client, not AS A. Related to this, how would AS A present proof of possession to AS B if it doesn't have the key in it's possession?\n- We would need to specify the token exchange between client and AS A that results in the access_token from AS B and not in the assertion. This would be a 2nd profile of token exchange on top of the existing profile defined in this specification. I believe this would cause a lot of confusion.\n- Neither token exchange RFC8693  nor the assertion flow RFC7523 define PoP - something that we believe should be addressed more \"globally\" - not hidden behind ID chaining.\n\nWe decided that this document should rather be a \"framework\" and profiles of it can go into the details of deployment variations. We already have one going into a totally different deployment direction. As @kburgin3 mentioned, if you have need to define this we believe that this should be a dedicated profile of this document solving the unique challenges I described. ",
+          "createdAt": "2025-02-27T09:04:18Z",
+          "updatedAt": "2025-02-27T09:04:18Z"
         }
       ]
     },
@@ -956,7 +970,7 @@
       "id": "I_kwDOJubJxM6AnP_D",
       "title": "Recommended media type for JWT Authorization Grant",
       "url": "https://github.com/oauth-wg/oauth-identity-chaining/issues/85",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "aaronpk",
       "authorAssociation": "MEMBER",
       "assignees": [
@@ -965,8 +979,8 @@
       "labels": [],
       "body": "There should probably be a recommendation for a media type for the JWT Authorization Grant, because:\r\n\r\n* cross-JWT confusion\r\n* the token request `grant_type=urn:ietf:params:oauth:grant-type:jwt-bearer` needs to know how to process the JWT authorization differently from other uses of JWT-Bearer\r\n\r\nRFC 7523 was published before the more recent recommendation of [explicit typing](https://datatracker.ietf.org/doc/html/rfc8725#name-use-explicit-typing)\r\n\r\nI don't think this draft needs to _define_ one, but it should at least recommend that an implementation uses one.",
       "createdAt": "2024-02-27T23:12:57Z",
-      "updatedAt": "2025-02-21T15:59:01Z",
-      "closedAt": null,
+      "updatedAt": "2025-02-27T09:51:46Z",
+      "closedAt": "2025-02-27T09:51:46Z",
       "comments": [
         {
           "author": "bc-pi",
@@ -1152,15 +1166,15 @@
       "id": "I_kwDOJubJxM6c7qFT",
       "title": "Clarify client terminology",
       "url": "https://github.com/oauth-wg/oauth-identity-chaining/issues/100",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "PieterKas",
       "authorAssociation": "CONTRIBUTOR",
       "assignees": [],
       "labels": [],
       "body": "As Discussed at IETF 121, Introduce or clarify terminology to make it clear when we are referring to the original client that starts the OAuth flow vs the Resources Server or Authorisation Server acting as the client (e.g. initiating client, originating client, secondary client, ID chaining initiating client etc)",
       "createdAt": "2024-11-04T13:53:21Z",
-      "updatedAt": "2024-12-06T16:44:07Z",
-      "closedAt": null,
+      "updatedAt": "2025-02-27T09:51:33Z",
+      "closedAt": "2025-02-27T09:51:33Z",
       "comments": [
         {
           "author": "PieterKas",
@@ -1481,7 +1495,7 @@
       "labels": [],
       "body": "Editorial review on the use of language of \"one domain\" and \"another domain\" and replacing it with \"Domain A\" and \"Domain B\" for clarity and consistency.",
       "createdAt": "2024-12-16T11:37:33Z",
-      "updatedAt": "2025-02-14T14:34:29Z",
+      "updatedAt": "2025-02-27T09:51:07Z",
       "closedAt": null,
       "comments": [
         {
@@ -1504,6 +1518,13 @@
           "body": "Also see PR #138 ",
           "createdAt": "2025-02-14T14:34:27Z",
           "updatedAt": "2025-02-14T14:34:27Z"
+        },
+        {
+          "author": "PieterKas",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "Main text has been updated - separate PR for appendixes needed.",
+          "createdAt": "2025-02-27T09:51:06Z",
+          "updatedAt": "2025-02-27T09:51:06Z"
         }
       ]
     },
@@ -7246,24 +7267,26 @@
       "id": "PR_kwDOJubJxM6LQP3o",
       "title": "Consistent use of \"trust domain\" - Main text only",
       "url": "https://github.com/oauth-wg/oauth-identity-chaining/pull/138",
-      "state": "OPEN",
+      "state": "MERGED",
       "author": "PieterKas",
       "authorAssociation": "CONTRIBUTOR",
       "assignees": [],
       "labels": [],
       "body": "Cleaning up language to be explicit about which trust domain an authorization server and client is active in. Changes are limited to the main text. Separate PRs need to be created for appendixes and use cases.",
       "createdAt": "2025-02-14T14:23:35Z",
-      "updatedAt": "2025-02-26T17:41:38Z",
+      "updatedAt": "2025-02-27T09:44:55Z",
       "baseRepository": "oauth-wg/oauth-identity-chaining",
       "baseRefName": "main",
       "baseRefOid": "82a0b0d0d0f701c0a61fcdca2ea977a8ebfde3a6",
       "headRepository": "oauth-wg/oauth-identity-chaining",
       "headRefName": "PieterKas-patch-4",
       "headRefOid": "c63a1d3cf383a57ecd56344643ed89d685146b97",
-      "closedAt": null,
-      "mergedAt": null,
-      "mergedBy": null,
-      "mergeCommit": null,
+      "closedAt": "2025-02-27T09:44:52Z",
+      "mergedAt": "2025-02-27T09:44:52Z",
+      "mergedBy": "PieterKas",
+      "mergeCommit": {
+        "oid": "eb278a45fb6937b6709f7092098f2eb811ad74d0"
+      },
       "comments": [],
       "reviews": [
         {
@@ -7343,6 +7366,19 @@
           "createdAt": "2025-02-26T17:41:38Z",
           "updatedAt": "2025-02-26T17:41:38Z",
           "comments": []
+        },
+        {
+          "id": "PRR_kwDOJubJxM6dx2bG",
+          "commit": {
+            "abbreviatedOid": "c63a1d3"
+          },
+          "author": "arndt-s",
+          "authorAssociation": "MEMBER",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2025-02-27T09:05:46Z",
+          "updatedAt": "2025-02-27T09:05:46Z",
+          "comments": []
         }
       ]
     },
@@ -7351,24 +7387,26 @@
       "id": "PR_kwDOJubJxM6MD8s9",
       "title": "Security Considerations: subject token",
       "url": "https://github.com/oauth-wg/oauth-identity-chaining/pull/140",
-      "state": "OPEN",
+      "state": "MERGED",
       "author": "PieterKas",
       "authorAssociation": "CONTRIBUTOR",
       "assignees": [],
       "labels": [],
       "body": "See #98",
       "createdAt": "2025-02-21T14:54:02Z",
-      "updatedAt": "2025-02-26T17:23:23Z",
+      "updatedAt": "2025-02-27T09:47:26Z",
       "baseRepository": "oauth-wg/oauth-identity-chaining",
       "baseRefName": "main",
-      "baseRefOid": "a6b9a0215f5370beeeb67d9627f25beb2ce5750d",
+      "baseRefOid": "eb278a45fb6937b6709f7092098f2eb811ad74d0",
       "headRepository": "oauth-wg/oauth-identity-chaining",
       "headRefName": "PieterKas-patch-5",
-      "headRefOid": "92ce2784470421edfcf83fb155b7568642a96efb",
-      "closedAt": null,
-      "mergedAt": null,
-      "mergedBy": null,
-      "mergeCommit": null,
+      "headRefOid": "65fda0f7357447dfb46790c0e0c9a3461838c9ef",
+      "closedAt": "2025-02-27T09:47:25Z",
+      "mergedAt": "2025-02-27T09:47:25Z",
+      "mergedBy": "PieterKas",
+      "mergeCommit": {
+        "oid": "63a8df00e917130349e18d0e23c275d3a3d6ae50"
+      },
       "comments": [],
       "reviews": [
         {
@@ -7396,6 +7434,19 @@
           "createdAt": "2025-02-26T17:23:23Z",
           "updatedAt": "2025-02-26T17:23:23Z",
           "comments": []
+        },
+        {
+          "id": "PRR_kwDOJubJxM6dx22G",
+          "commit": {
+            "abbreviatedOid": "92ce278"
+          },
+          "author": "arndt-s",
+          "authorAssociation": "MEMBER",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2025-02-27T09:06:24Z",
+          "updatedAt": "2025-02-27T09:06:24Z",
+          "comments": []
         }
       ]
     },
@@ -7404,24 +7455,26 @@
       "id": "PR_kwDOJubJxM6MFR7y",
       "title": "Recommendation on media types",
       "url": "https://github.com/oauth-wg/oauth-identity-chaining/pull/141",
-      "state": "OPEN",
+      "state": "MERGED",
       "author": "PieterKas",
       "authorAssociation": "CONTRIBUTOR",
       "assignees": [],
       "labels": [],
       "body": "See issue #85\r\n\r\n@aaronpk please review",
       "createdAt": "2025-02-21T17:40:01Z",
-      "updatedAt": "2025-02-26T17:22:28Z",
+      "updatedAt": "2025-02-27T09:49:45Z",
       "baseRepository": "oauth-wg/oauth-identity-chaining",
       "baseRefName": "main",
-      "baseRefOid": "a6b9a0215f5370beeeb67d9627f25beb2ce5750d",
+      "baseRefOid": "63a8df00e917130349e18d0e23c275d3a3d6ae50",
       "headRepository": "oauth-wg/oauth-identity-chaining",
       "headRefName": "PieterKas-patch-6",
-      "headRefOid": "3b9c92659d28025253d856ad0d9e1d1d50b82ef2",
-      "closedAt": null,
-      "mergedAt": null,
-      "mergedBy": null,
-      "mergeCommit": null,
+      "headRefOid": "c5ea027126497e0ce9e3851aa7eea4c8680c0045",
+      "closedAt": "2025-02-27T09:49:43Z",
+      "mergedAt": "2025-02-27T09:49:43Z",
+      "mergedBy": "PieterKas",
+      "mergeCommit": {
+        "oid": "aadea3c3f926864663954afa4705cdd8f498f564"
+      },
       "comments": [],
       "reviews": [
         {
@@ -7482,8 +7535,49 @@
           "createdAt": "2025-02-26T17:22:28Z",
           "updatedAt": "2025-02-26T17:22:28Z",
           "comments": []
+        },
+        {
+          "id": "PRR_kwDOJubJxM6dx3E-",
+          "commit": {
+            "abbreviatedOid": "3b9c926"
+          },
+          "author": "arndt-s",
+          "authorAssociation": "MEMBER",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2025-02-27T09:06:46Z",
+          "updatedAt": "2025-02-27T09:06:46Z",
+          "comments": []
         }
       ]
+    },
+    {
+      "number": 142,
+      "id": "PR_kwDOJubJxM6Myj3Y",
+      "title": "Prepare changelog for -04 release",
+      "url": "https://github.com/oauth-wg/oauth-identity-chaining/pull/142",
+      "state": "MERGED",
+      "author": "arndt-s",
+      "authorAssociation": "MEMBER",
+      "assignees": [],
+      "labels": [],
+      "body": "Move current changes to -04 release.",
+      "createdAt": "2025-02-27T12:21:27Z",
+      "updatedAt": "2025-02-27T12:22:08Z",
+      "baseRepository": "oauth-wg/oauth-identity-chaining",
+      "baseRefName": "main",
+      "baseRefOid": "aadea3c3f926864663954afa4705cdd8f498f564",
+      "headRepository": "oauth-wg/oauth-identity-chaining",
+      "headRefName": "arndt/prepare-04",
+      "headRefOid": "e885f2009eae5b0d3748b75af643bede271aa6b3",
+      "closedAt": "2025-02-27T12:22:07Z",
+      "mergedAt": "2025-02-27T12:22:07Z",
+      "mergedBy": "arndt-s",
+      "mergeCommit": {
+        "oid": "ffb7d9de01dcca08c0f3a2095575ab63bddc1c38"
+      },
+      "comments": [],
+      "reviews": []
     }
   ]
 }
