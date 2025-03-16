@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2025-03-13T00:20:55.967877+00:00",
+  "timestamp": "2025-03-16T00:22:46.690285+00:00",
   "repo": "oauth-wg/oauth-identity-chaining",
   "labels": [
     {
@@ -849,7 +849,7 @@
       "labels": [],
       "body": "If the user's token is a sender constraint token \"DPoP\", can it be exchanged by the client to an authorization grant for another domain? Does the authorization server verify proof of possession?",
       "createdAt": "2024-02-16T11:36:39Z",
-      "updatedAt": "2025-02-27T09:04:19Z",
+      "updatedAt": "2025-03-14T11:24:03Z",
       "closedAt": null,
       "comments": [
         {
@@ -900,6 +900,13 @@
           "body": "@martin-lindstrom we spent a lot of time talking about this and while we see value in this there's plenty of work that needs to happen in order to standardize it in a way that it can be \"easily picked up and implemented\". I believe we could have done a better job keeping issues up to date with it, sorry about that.\n\nOur main reasons we don't define it as such in this document:\n- Delegated key binding: AS A would need to request access_token from AS B that is bound to the client, not AS A. Related to this, how would AS A present proof of possession to AS B if it doesn't have the key in it's possession?\n- We would need to specify the token exchange between client and AS A that results in the access_token from AS B and not in the assertion. This would be a 2nd profile of token exchange on top of the existing profile defined in this specification. I believe this would cause a lot of confusion.\n- Neither token exchange RFC8693  nor the assertion flow RFC7523 define PoP - something that we believe should be addressed more \"globally\" - not hidden behind ID chaining.\n\nWe decided that this document should rather be a \"framework\" and profiles of it can go into the details of deployment variations. We already have one going into a totally different deployment direction. As @kburgin3 mentioned, if you have need to define this we believe that this should be a dedicated profile of this document solving the unique challenges I described. ",
           "createdAt": "2025-02-27T09:04:18Z",
           "updatedAt": "2025-02-27T09:04:18Z"
+        },
+        {
+          "author": "brockallen",
+          "authorAssociation": "NONE",
+          "body": "I spoke to Kelley at OSW and promised I'd put my idea somewhere, just to add to the conversation (albeit late and likely already identified and discussed by others), so sorry if this is redundant. \n\nIn short it seems given the \"physics\" of mTLS it doesn't seem possible to support that as an approach where AS(A) is acting as the client to AS(B) and trying to obtain PoP access tokens. Given that, it seems fair to call that out in the document and not try to solve it.\n\nBut it does seem that DPoP is possible (in a variety of ways), so that could either be described in this document or left to an extension doc (I don't know which makes the most sense from a IETF procedure process).\n\nI know some approaches were floated for making DPoP work (*ahem* `tmb`), but one that I didn't hear (but again, doesn't mean it hasn't been identified/discussed elsewhere) was it seems that given that the params from AS(A) to AS(B) to the token endpoint are fairly well-known and expected values, then why can't the RS(A) provide that proof as part of its request to AS(A) when it needs the proxying behavior? IOW, RS(A) creates a DPoP proof token as part of the request to AS(A), but with all the values that AS(A) will be sending to AS(B). Then with this proof token, AS(A) can just pass it along in its request to AS(B). \n\nThis is different than the approach mentioned in the current document where RS(A) only provides a proof for the direct request to AS(A).\n\nMy thinking was that if RS(A), acting as the real client, knows all the details of AS(B) then it can create the proof as part of it's initial request to AS(A). But if it doesn't, or if AS(B) requires a DPoP nonce, then there could be an error response all the way back to RS(A) including the information it needs (e.g. the `htu`, and/or the `nonce`, and where `htm` is assumed to always be `POST`). So in this proxying architecture, some error response would need to be defined to identify the values needed to be provided in the proof token.\n\nI know just sending stuff to RS(A) to sign feels like maybe some attack vector, but the RS(A) trusts the AS(A), right? Also, what I've not thought about is there some additional detached signature needed with this idea (similar to the `ath`)?\n\nAlso, I know the back-and-forth perf aspects of this approach are not ideal, but if you're stuck in an architecture given your other constraints where you have to proxy, then you're already resigned to the extra hops. \n\nIs this idea just too far out there?",
+          "createdAt": "2025-03-14T11:16:23Z",
+          "updatedAt": "2025-03-14T11:24:02Z"
         }
       ]
     },
