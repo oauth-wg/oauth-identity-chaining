@@ -331,7 +331,7 @@ The flow would look like this:
 |Authorization|       |Resource Server|     |Authorization| |Protected|
 |Server       |       |Domain A       |     |Server       | |Resource |
 |Domain A     |       |(acting as     |     |Domain B     | |Domain B |
-|             |       | Client)       |     |             | |         |
+| (ASᴬ)       |       | Client; RSᴬ)  |     |(ASᴮ)        | |(RSᴮ)    |
 +-------------+       +---------------+     +-------------+ +---------+
        |                     |                     |             |
        |                     |   (A) request protected resource  |
@@ -364,17 +364,17 @@ The flow would look like this:
 
 The flow contains the following steps:
 
-(A) The resource server of Domain A needs to access protected resource in Domain B. It requires an access token to do so which it does not possess. In this example {{I-D.ietf-oauth-resource-metadata}} is used to receive information about the authorization server which protects the resource in domain B. This step MAY be skipped if discovery is not needed and other means of discovery MAY be used. The protected resource returns its metadata along with the authorization server information.
+(A) The resource server of Domain A (RSᴬ) needs to access protected resource in Domain B. It requires an access token to do so which it does not possess. In this example {{I-D.ietf-oauth-resource-metadata}} is used to receive information about the authorization server (ASᴮ) which protects the resource in domain B. This step MAY be skipped if discovery is not needed and other means of discovery MAY be used. The protected resource returns its metadata along with the authorization server information.
 
-(B) Now, after the resource server has identified the authorization server for Domain B, the resource server requests a JWT authorization grant for the authorization server in Domain B from its own authorization server (Domain A). This happens via the token exchange protocol.
+(B) Now, after the resource server RSᴬ has identified the authorization server for Domain B (ASᴮ), RSᴬ requests a JWT authorization grant for ASᴮ from its own authorization server (ASᴬ). This happens via the token exchange protocol.
 
-(C) If successful, the authorization server returns a JWT authorization grant to the resource server.
+(C) If successful, ASᴬ returns a JWT authorization grant to RSᴬ.
 
-(D) The resource server presents the JWT authorization grant to the authorization server of Domain B.
+(D) RSᴬ presents the JWT authorization grant to ASᴮ.
 
-(E) The authorization server of Domain B uses claims from the JWT authorization grant to identify the user and its access. If access is granted an access token is returned.
+(E) ASᴮ uses claims from the JWT authorization grant to identify the user and its access. If access is granted an access token is returned.
 
-(F) The resource server uses the access token to access the protected resource at Domain B.
+(F) The resource server in Domain B (RSᴮ) uses the access token to access the protected resource at Domain B.
 
 ## Authorization server acting as client
 
