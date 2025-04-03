@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2025-04-01T00:24:29.259363+00:00",
+  "timestamp": "2025-04-03T00:21:01.384402+00:00",
   "repo": "oauth-wg/oauth-identity-chaining",
   "labels": [
     {
@@ -1692,6 +1692,22 @@
           "updatedAt": "2025-02-21T15:48:22Z"
         }
       ]
+    },
+    {
+      "number": 143,
+      "id": "I_kwDOJubJxM6wrodP",
+      "title": "Introduction text clarity",
+      "url": "https://github.com/oauth-wg/oauth-identity-chaining/issues/143",
+      "state": "OPEN",
+      "author": "dhs-BI",
+      "authorAssociation": "NONE",
+      "assignees": [],
+      "labels": [],
+      "body": "At IETF122, @bc-pi described the draft as describing patterns based on RFCs 7523 and 8693 to provide best practices and bring clarity to the implementation of the pattern.  I recommend that a statement is included in the introduction to provide this context to the document.  Currently, the intro contains references to these two RFCs, but no clear statement that the document is designed to bring clarity to the recommended pattern.\n",
+      "createdAt": "2025-04-01T18:13:59Z",
+      "updatedAt": "2025-04-01T18:16:56Z",
+      "closedAt": null,
+      "comments": []
     }
   ],
   "pulls": [
@@ -7583,6 +7599,58 @@
       "mergeCommit": {
         "oid": "ffb7d9de01dcca08c0f3a2095575ab63bddc1c38"
       },
+      "comments": [],
+      "reviews": []
+    },
+    {
+      "number": 144,
+      "id": "PR_kwDOJubJxM6Q-sB6",
+      "title": "Nit: Swap Domain B for Domain A",
+      "url": "https://github.com/oauth-wg/oauth-identity-chaining/pull/144",
+      "state": "OPEN",
+      "author": "dhs-BI",
+      "authorAssociation": "NONE",
+      "assignees": [],
+      "labels": [],
+      "body": "The text inadvertently swapped Domain B and Domain A when talking about the RS acting as a client.",
+      "createdAt": "2025-04-01T18:46:16Z",
+      "updatedAt": "2025-04-01T18:46:17Z",
+      "baseRepository": "oauth-wg/oauth-identity-chaining",
+      "baseRefName": "main",
+      "baseRefOid": "ffb7d9de01dcca08c0f3a2095575ab63bddc1c38",
+      "headRepository": "dhs-BI/oauth-identity-chaining",
+      "headRefName": "patch-1",
+      "headRefOid": "e1949e9ba144cf161c9575e20c5d6971d8f5f0c5",
+      "closedAt": null,
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [],
+      "reviews": []
+    },
+    {
+      "number": 145,
+      "id": "PR_kwDOJubJxM6Q--94",
+      "title": "Clarity for Appendix B1",
+      "url": "https://github.com/oauth-wg/oauth-identity-chaining/pull/145",
+      "state": "OPEN",
+      "author": "dhs-BI",
+      "authorAssociation": "NONE",
+      "assignees": [],
+      "labels": [],
+      "body": "I found myself struggling with the language in B1, so I reworked the diagrams to label the AS and RS in their respective domains.  The language has been carried into the text, as well.\r\n\r\nIf this is helpful, I'll make the same changes for B2 and other places in the text where more clarity is required.",
+      "createdAt": "2025-04-01T19:25:29Z",
+      "updatedAt": "2025-04-01T19:25:30Z",
+      "baseRepository": "oauth-wg/oauth-identity-chaining",
+      "baseRefName": "main",
+      "baseRefOid": "ffb7d9de01dcca08c0f3a2095575ab63bddc1c38",
+      "headRepository": "dhs-BI/oauth-identity-chaining",
+      "headRefName": "patch-2",
+      "headRefOid": "4db4d58b43a99eb0f55c6fe38a0bd7e6754176ff",
+      "closedAt": null,
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
       "comments": [],
       "reviews": []
     }
