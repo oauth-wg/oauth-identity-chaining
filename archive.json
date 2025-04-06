@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2025-04-03T00:21:01.384402+00:00",
+  "timestamp": "2025-04-06T00:23:04.747409+00:00",
   "repo": "oauth-wg/oauth-identity-chaining",
   "labels": [
     {
@@ -842,15 +842,17 @@
       "id": "I_kwDOJubJxM5_dbrY",
       "title": "Should we allow identity chaining with DPoP tokens?",
       "url": "https://github.com/oauth-wg/oauth-identity-chaining/issues/79",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "arndt-s",
       "authorAssociation": "MEMBER",
-      "assignees": [],
+      "assignees": [
+        "PieterKas"
+      ],
       "labels": [],
       "body": "If the user's token is a sender constraint token \"DPoP\", can it be exchanged by the client to an authorization grant for another domain? Does the authorization server verify proof of possession?",
       "createdAt": "2024-02-16T11:36:39Z",
-      "updatedAt": "2025-03-21T19:42:14Z",
-      "closedAt": null,
+      "updatedAt": "2025-04-04T15:00:18Z",
+      "closedAt": "2025-04-04T15:00:16Z",
       "comments": [
         {
           "author": "bc-pi",
@@ -907,6 +909,13 @@
           "body": "~I spoke to Kelley at OSW and promised I'd put my idea somewhere, just to add to the conversation (albeit late and likely already identified and discussed by others), so sorry if this is redundant.\nIn short it seems given the \"physics\" of mTLS it doesn't seem possible to support that as an approach where AS(A) is acting as the client to AS(B) and trying to obtain PoP access tokens. Given that, it seems fair to call that out in the document and not try to solve it.\nBut it does seem that DPoP is possible (in a variety of ways), so that could either be described in this document or left to an extension doc (I don't know which makes the most sense from a IETF procedure process).\nI know some approaches were floated for making DPoP work (*ahem* `tmb`), but one that I didn't hear (but again, doesn't mean it hasn't been identified/discussed elsewhere) was it seems that given that the params from AS(A) to AS(B) to the token endpoint are fairly well-known and expected values, then why can't the RS(A) provide that proof as part of its request to AS(A) when it needs the proxying behavior? IOW, RS(A) creates a DPoP proof token as part of the request to AS(A), but with all the values that AS(A) will be sending to AS(B). Then with this proof token, AS(A) can just pass it along in its request to AS(B). \nThis is different than the approach mentioned in the current document where RS(A) only provides a proof for the direct request to AS(A).\nMy thinking was that if RS(A), acting as the real client, knows all the details of AS(B) then it can create the proof as part of it's initial request to AS(A). But if it doesn't, or if AS(B) requires a DPoP nonce, then there could be an error response all the way back to RS(A) including the information it needs (e.g. the `htu`, and/or the `nonce`, and where `htm` is assumed to always be `POST`). So in this proxying architecture, some error response would need to be defined to identify the values needed to be provided in the proof token.\nI know just sending stuff to RS(A) to sign feels like maybe some attack vector, but the RS(A) trusts the AS(A), right? Also, what I've not thought about is there some additional detached signature needed with this idea (similar to the `ath`)?\nAlso, I know the back-and-forth perf aspects of this approach are not ideal, but if you're stuck in an architecture given your other constraints where you have to proxy, then you're already resigned to the extra hops. \nIs this idea just too far out there?~\n\nOk, I see there was an update at IETF122 on this, so that sounds like the best approach. Also, it sounds like there will be some effort along these lines from Justin's Deferred Key Binding proposal (which was a more serious version of the original half-joking `tmb` idea). ",
           "createdAt": "2025-03-14T11:16:23Z",
           "updatedAt": "2025-03-21T19:42:13Z"
+        },
+        {
+          "author": "PieterKas",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "Thanks @brockallen for your thoughtful comment and input. I believe the best venue for continuing to explore this idea is in the discussions Justin Richer (@jricher) is leading in the OAuth working group (perhaps something to contribute to the upcoming interim)",
+          "createdAt": "2025-04-04T15:00:16Z",
+          "updatedAt": "2025-04-04T15:00:16Z"
         }
       ]
     },
@@ -1091,7 +1100,7 @@
       "id": "I_kwDOJubJxM6RI1ff",
       "title": "Single hop federation",
       "url": "https://github.com/oauth-wg/oauth-identity-chaining/issues/92",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "arndt-s",
       "authorAssociation": "MEMBER",
       "assignees": [
@@ -1100,9 +1109,17 @@
       "labels": [],
       "body": "Deployment may want to do federation in a single hop. Currently, the document describes a 2 hop federation (First get assertion grant, then present assertion to domain B).\r\n\r\nDo we have specific warnings, drawbacks, etc. for this use case? Do we want to describe it?\r\n\r\nJust writing down what comes into my head:\r\n\r\nDrawbacks\r\n- AS of domain A loses control \r\n- Domain B does not know if federation is intended\r\n- Presented assertion may have been stolen (if not key bound)\r\n\r\nHowever:\r\n- federation is more resilient (AS of domain A does not need to be available)\r\n- COGS of AS in Domain A can go down significantly (if federation is primary use case for example)\r\n- Privacy?! AS of domain A does not know what clients federate to",
       "createdAt": "2024-07-29T10:12:55Z",
-      "updatedAt": "2024-08-02T14:53:37Z",
-      "closedAt": null,
-      "comments": []
+      "updatedAt": "2025-04-04T14:57:35Z",
+      "closedAt": "2025-04-04T14:57:33Z",
+      "comments": [
+        {
+          "author": "arndt-s",
+          "authorAssociation": "MEMBER",
+          "body": "Agreed that amongst the authors that this topic is out of scope at the moment and would bring more confusion into the work.",
+          "createdAt": "2025-04-04T14:57:34Z",
+          "updatedAt": "2025-04-04T14:57:34Z"
+        }
+      ]
     },
     {
       "number": 93,
@@ -1133,16 +1150,24 @@
       "id": "I_kwDOJubJxM6c7nBi",
       "title": "Security Considerations on Client authentication",
       "url": "https://github.com/oauth-wg/oauth-identity-chaining/issues/98",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "PieterKas",
       "authorAssociation": "CONTRIBUTOR",
       "assignees": [],
       "labels": [],
       "body": "As discussed at IETF 121\r\n\r\nAdd security considerations outlining the importance of using client authentication when using the Access Token (sender constrained, or as bearer token) as Subject Token. Points to cover include:\r\n\r\n1. Implications of a stolen access token - mitigated by client authentication\r\n2. Limitations on preserving the binding (key is not under control of the entity requesting an assertion)",
       "createdAt": "2024-11-04T13:48:06Z",
-      "updatedAt": "2024-11-04T13:48:06Z",
-      "closedAt": null,
-      "comments": []
+      "updatedAt": "2025-04-04T14:58:04Z",
+      "closedAt": "2025-04-04T14:58:02Z",
+      "comments": [
+        {
+          "author": "arndt-s",
+          "authorAssociation": "MEMBER",
+          "body": "PR has been merged.",
+          "createdAt": "2025-04-04T14:58:02Z",
+          "updatedAt": "2025-04-04T14:58:02Z"
+        }
+      ]
     },
     {
       "number": 99,
@@ -1706,6 +1731,24 @@
       "body": "At IETF122, @bc-pi described the draft as describing patterns based on RFCs 7523 and 8693 to provide best practices and bring clarity to the implementation of the pattern.  I recommend that a statement is included in the introduction to provide this context to the document.  Currently, the intro contains references to these two RFCs, but no clear statement that the document is designed to bring clarity to the recommended pattern.\n",
       "createdAt": "2025-04-01T18:13:59Z",
       "updatedAt": "2025-04-01T18:16:56Z",
+      "closedAt": null,
+      "comments": []
+    },
+    {
+      "number": 146,
+      "id": "I_kwDOJubJxM6xLnwT",
+      "title": "Improve examples in the appendix",
+      "url": "https://github.com/oauth-wg/oauth-identity-chaining/issues/146",
+      "state": "OPEN",
+      "author": "aaronpk",
+      "authorAssociation": "MEMBER",
+      "assignees": [
+        "aaronpk"
+      ],
+      "labels": [],
+      "body": "",
+      "createdAt": "2025-04-04T14:47:43Z",
+      "updatedAt": "2025-04-04T14:47:43Z",
       "closedAt": null,
       "comments": []
     }
@@ -7614,7 +7657,7 @@
       "labels": [],
       "body": "The text inadvertently swapped Domain B and Domain A when talking about the RS acting as a client.",
       "createdAt": "2025-04-01T18:46:16Z",
-      "updatedAt": "2025-04-01T18:46:17Z",
+      "updatedAt": "2025-04-04T14:22:11Z",
       "baseRepository": "oauth-wg/oauth-identity-chaining",
       "baseRefName": "main",
       "baseRefOid": "ffb7d9de01dcca08c0f3a2095575ab63bddc1c38",
@@ -7626,7 +7669,21 @@
       "mergedBy": null,
       "mergeCommit": null,
       "comments": [],
-      "reviews": []
+      "reviews": [
+        {
+          "id": "PRR_kwDOJubJxM6jgYje",
+          "commit": {
+            "abbreviatedOid": "e1949e9"
+          },
+          "author": "arndt-s",
+          "authorAssociation": "MEMBER",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2025-04-04T14:22:11Z",
+          "updatedAt": "2025-04-04T14:22:11Z",
+          "comments": []
+        }
+      ]
     },
     {
       "number": 145,
@@ -7640,7 +7697,7 @@
       "labels": [],
       "body": "I found myself struggling with the language in B1, so I reworked the diagrams to label the AS and RS in their respective domains.  The language has been carried into the text, as well.\r\n\r\nIf this is helpful, I'll make the same changes for B2 and other places in the text where more clarity is required.",
       "createdAt": "2025-04-01T19:25:29Z",
-      "updatedAt": "2025-04-01T19:25:30Z",
+      "updatedAt": "2025-04-04T14:26:40Z",
       "baseRepository": "oauth-wg/oauth-identity-chaining",
       "baseRefName": "main",
       "baseRefOid": "ffb7d9de01dcca08c0f3a2095575ab63bddc1c38",
@@ -7652,7 +7709,28 @@
       "mergedBy": null,
       "mergeCommit": null,
       "comments": [],
-      "reviews": []
+      "reviews": [
+        {
+          "id": "PRR_kwDOJubJxM6jgbTk",
+          "commit": {
+            "abbreviatedOid": "4db4d58"
+          },
+          "author": "arndt-s",
+          "authorAssociation": "MEMBER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2025-04-04T14:25:40Z",
+          "updatedAt": "2025-04-04T14:26:40Z",
+          "comments": [
+            {
+              "originalPosition": 29,
+              "body": "```suggestion\r\n(F) The resource server in Domain A (RS\u1d2c) uses the access token to access the protected resource at Domain B (RS\u1d2e).\r\n```",
+              "createdAt": "2025-04-04T14:25:41Z",
+              "updatedAt": "2025-04-04T14:26:40Z"
+            }
+          ]
+        }
+      ]
     }
   ]
 }
