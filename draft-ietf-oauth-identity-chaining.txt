@@ -5,13 +5,13 @@
 oauth                                                 A. Schwenkschuster
 Internet-Draft                                             P. Kasselmann
 Intended status: Informational                                     SPIRL
-Expires: 31 August 2025                                        K. Burgin
+Expires: 11 October 2025                                       K. Burgin
                                                                    MITRE
                                                               M. Jenkins
                                                                 NSA-CCSS
                                                              B. Campbell
                                                            Ping Identity
-                                                        27 February 2025
+                                                            9 April 2025
 
 
         OAuth Identity and Authorization Chaining Across Domains
@@ -49,7 +49,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 31 August 2025.
+   This Internet-Draft will expire on 11 October 2025.
 
 Copyright Notice
 
@@ -659,7 +659,7 @@ B.1.  Resource server acting as client
    need to access a resource server in Domain B.  This requires the
    resource server in Domain A to obtain an Access Token from an
    authorization server in Domain B, which it may then be presented to
-   the resource server in Domain B.  A Resource server in Domain B may
+   the resource server in Domain B.  A Resource server in Domain A may
    use the flows described in this specification by assuming the role of
    a client when attempting to access the resource server in Domain B.
    Resources servers may act as clients if the following is true:
