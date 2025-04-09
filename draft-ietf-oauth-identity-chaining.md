@@ -374,7 +374,7 @@ The flow contains the following steps:
 
 (E) ASᴮ uses claims from the JWT authorization grant to identify the user and its access. If access is granted an access token is returned.
 
-(F) The resource server in Domain B (RSᴮ) uses the access token to access the protected resource at Domain B.
+(F) The resource server in Domain A (RSᴬ) uses the access token to access the protected resource at Domain B (RSᴮ).
 
 ## Authorization server acting as client
 
