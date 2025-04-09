@@ -1844,7 +1844,7 @@ Cache-Control: no-cache, no-store
 |Authorization|       |Resource Server|     |Authorization| |Protected|
 |Server       |       |Domain A       |     |Server       | |Resource |
 |Domain A     |       |(acting as     |     |Domain B     | |Domain B |
-|             |       | Client)       |     |             | |         |
+| (ASᴬ)       |       | Client; RSᴬ)  |     |(ASᴮ)        | |(RSᴮ)    |
 +-------------+       +---------------+     +-------------+ +---------+
        |                     |                     |             |
        |                     |   (A) request protected resource  |
@@ -1878,12 +1878,12 @@ Cache-Control: no-cache, no-store
 <a href="#name-resource-server-acting-as-cl" class="selfRef">Resource server acting as client</a>
           </figcaption></figure>
 <p id="appendix-B.1-5">The flow contains the following steps:<a href="#appendix-B.1-5" class="pilcrow">¶</a></p>
-<p id="appendix-B.1-6">(A) The resource server of Domain A needs to access protected resource in Domain B. It requires an access token to do so which it does not possess. In this example <span>[<a href="#I-D.ietf-oauth-resource-metadata" class="cite xref">I-D.ietf-oauth-resource-metadata</a>]</span> is used to receive information about the authorization server which protects the resource in domain B. This step <span class="bcp14">MAY</span> be skipped if discovery is not needed and other means of discovery <span class="bcp14">MAY</span> be used. The protected resource returns its metadata along with the authorization server information.<a href="#appendix-B.1-6" class="pilcrow">¶</a></p>
-<p id="appendix-B.1-7">(B) Now, after the resource server has identified the authorization server for Domain B, the resource server requests a JWT authorization grant for the authorization server in Domain B from its own authorization server (Domain A). This happens via the token exchange protocol.<a href="#appendix-B.1-7" class="pilcrow">¶</a></p>
-<p id="appendix-B.1-8">(C) If successful, the authorization server returns a JWT authorization grant to the resource server.<a href="#appendix-B.1-8" class="pilcrow">¶</a></p>
-<p id="appendix-B.1-9">(D) The resource server presents the JWT authorization grant to the authorization server of Domain B.<a href="#appendix-B.1-9" class="pilcrow">¶</a></p>
-<p id="appendix-B.1-10">(E) The authorization server of Domain B uses claims from the JWT authorization grant to identify the user and its access. If access is granted an access token is returned.<a href="#appendix-B.1-10" class="pilcrow">¶</a></p>
-<p id="appendix-B.1-11">(F) The resource server uses the access token to access the protected resource at Domain B.<a href="#appendix-B.1-11" class="pilcrow">¶</a></p>
+<p id="appendix-B.1-6">(A) The resource server of Domain A (RSᴬ) needs to access protected resource in Domain B. It requires an access token to do so which it does not possess. In this example <span>[<a href="#I-D.ietf-oauth-resource-metadata" class="cite xref">I-D.ietf-oauth-resource-metadata</a>]</span> is used to receive information about the authorization server (ASᴮ) which protects the resource in domain B. This step <span class="bcp14">MAY</span> be skipped if discovery is not needed and other means of discovery <span class="bcp14">MAY</span> be used. The protected resource returns its metadata along with the authorization server information.<a href="#appendix-B.1-6" class="pilcrow">¶</a></p>
+<p id="appendix-B.1-7">(B) Now, after the resource server RSᴬ has identified the authorization server for Domain B (ASᴮ), RSᴬ requests a JWT authorization grant for ASᴮ from its own authorization server (ASᴬ). This happens via the token exchange protocol.<a href="#appendix-B.1-7" class="pilcrow">¶</a></p>
+<p id="appendix-B.1-8">(C) If successful, ASᴬ returns a JWT authorization grant to RSᴬ.<a href="#appendix-B.1-8" class="pilcrow">¶</a></p>
+<p id="appendix-B.1-9">(D) RSᴬ presents the JWT authorization grant to ASᴮ.<a href="#appendix-B.1-9" class="pilcrow">¶</a></p>
+<p id="appendix-B.1-10">(E) ASᴮ uses claims from the JWT authorization grant to identify the user and its access. If access is granted an access token is returned.<a href="#appendix-B.1-10" class="pilcrow">¶</a></p>
+<p id="appendix-B.1-11">(F) The resource server in Domain A (RSᴬ) uses the access token to access the protected resource at Domain B (RSᴮ).<a href="#appendix-B.1-11" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="authorization-server-acting-as-client">
