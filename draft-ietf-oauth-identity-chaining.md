@@ -319,7 +319,7 @@ This section contains two examples, demonstrating how this specification may be 
 
 ## Resource server acting as client
 
-As part of completing a request, a resource server in Domain A may need to access a resource server in Domain B. This requires the resource server in Domain A to obtain an Access Token from an authorization server in Domain B, which it may then be presented to the resource server in Domain B. A Resource server in Domain B may use the flows described in this specification by assuming the role of a client when attempting to access the resource server in Domain B. Resources servers may act as clients if the following is true:
+As part of completing a request, a resource server in Domain A may need to access a resource server in Domain B. This requires the resource server in Domain A to obtain an Access Token from an authorization server in Domain B, which it may then be presented to the resource server in Domain B. A Resource server in Domain A may use the flows described in this specification by assuming the role of a client when attempting to access the resource server in Domain B. Resources servers may act as clients if the following is true:
 
 * The resource server has the ability to determine the authorization server of the protected resource outside its trust domain.
 * Authorization Server B is reachable by the resource server and is able to perform the appropriate client authentication (if required).
