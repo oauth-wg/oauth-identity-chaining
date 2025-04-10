@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2025-04-06T00:23:04.747409+00:00",
+  "timestamp": "2025-04-10T00:21:09.736811+00:00",
   "repo": "oauth-wg/oauth-identity-chaining",
   "labels": [
     {
@@ -7650,24 +7650,26 @@
       "id": "PR_kwDOJubJxM6Q-sB6",
       "title": "Nit: Swap Domain B for Domain A",
       "url": "https://github.com/oauth-wg/oauth-identity-chaining/pull/144",
-      "state": "OPEN",
+      "state": "MERGED",
       "author": "dhs-BI",
-      "authorAssociation": "NONE",
+      "authorAssociation": "CONTRIBUTOR",
       "assignees": [],
       "labels": [],
       "body": "The text inadvertently swapped Domain B and Domain A when talking about the RS acting as a client.",
       "createdAt": "2025-04-01T18:46:16Z",
-      "updatedAt": "2025-04-04T14:22:11Z",
+      "updatedAt": "2025-04-09T16:55:07Z",
       "baseRepository": "oauth-wg/oauth-identity-chaining",
       "baseRefName": "main",
       "baseRefOid": "ffb7d9de01dcca08c0f3a2095575ab63bddc1c38",
       "headRepository": "dhs-BI/oauth-identity-chaining",
       "headRefName": "patch-1",
       "headRefOid": "e1949e9ba144cf161c9575e20c5d6971d8f5f0c5",
-      "closedAt": null,
-      "mergedAt": null,
-      "mergedBy": null,
-      "mergeCommit": null,
+      "closedAt": "2025-04-09T16:55:07Z",
+      "mergedAt": "2025-04-09T16:55:07Z",
+      "mergedBy": "arndt-s",
+      "mergeCommit": {
+        "oid": "70652b6a9e35f962d7ae140f64d5d95c4f9e27fd"
+      },
       "comments": [],
       "reviews": [
         {
@@ -7690,24 +7692,26 @@
       "id": "PR_kwDOJubJxM6Q--94",
       "title": "Clarity for Appendix B1",
       "url": "https://github.com/oauth-wg/oauth-identity-chaining/pull/145",
-      "state": "OPEN",
+      "state": "MERGED",
       "author": "dhs-BI",
-      "authorAssociation": "NONE",
+      "authorAssociation": "CONTRIBUTOR",
       "assignees": [],
       "labels": [],
       "body": "I found myself struggling with the language in B1, so I reworked the diagrams to label the AS and RS in their respective domains.  The language has been carried into the text, as well.\r\n\r\nIf this is helpful, I'll make the same changes for B2 and other places in the text where more clarity is required.",
       "createdAt": "2025-04-01T19:25:29Z",
-      "updatedAt": "2025-04-04T14:26:40Z",
+      "updatedAt": "2025-04-09T16:55:19Z",
       "baseRepository": "oauth-wg/oauth-identity-chaining",
       "baseRefName": "main",
       "baseRefOid": "ffb7d9de01dcca08c0f3a2095575ab63bddc1c38",
       "headRepository": "dhs-BI/oauth-identity-chaining",
       "headRefName": "patch-2",
-      "headRefOid": "4db4d58b43a99eb0f55c6fe38a0bd7e6754176ff",
-      "closedAt": null,
-      "mergedAt": null,
-      "mergedBy": null,
-      "mergeCommit": null,
+      "headRefOid": "38da9d96fc0122e7eed7318d0e266c2d8b1a451f",
+      "closedAt": "2025-04-09T16:55:18Z",
+      "mergedAt": "2025-04-09T16:55:18Z",
+      "mergedBy": "arndt-s",
+      "mergeCommit": {
+        "oid": "64373c85ab5f21887d0b8b14e38e75666c5b6c5d"
+      },
       "comments": [],
       "reviews": [
         {
@@ -7729,6 +7733,19 @@
               "updatedAt": "2025-04-04T14:26:40Z"
             }
           ]
+        },
+        {
+          "id": "PRR_kwDOJubJxM6kKPIm",
+          "commit": {
+            "abbreviatedOid": "38da9d9"
+          },
+          "author": "arndt-s",
+          "authorAssociation": "MEMBER",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2025-04-09T16:54:23Z",
+          "updatedAt": "2025-04-09T16:54:23Z",
+          "comments": []
         }
       ]
     }
