@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2025-04-10T00:21:09.736811+00:00",
+  "timestamp": "2025-04-22T00:21:55.383236+00:00",
   "repo": "oauth-wg/oauth-identity-chaining",
   "labels": [
     {
@@ -1678,7 +1678,7 @@
       "labels": [],
       "body": "Remove reference to token endpoint in JWT authorization grant section to protect against malicious authorization servers (see https://github.com/selfissued/draft-jones-oauth-rfc7523bis )",
       "createdAt": "2025-02-14T15:57:08Z",
-      "updatedAt": "2025-02-21T15:48:24Z",
+      "updatedAt": "2025-04-21T03:32:05Z",
       "closedAt": null,
       "comments": [
         {
@@ -1715,6 +1715,13 @@
           "body": "Following conversation between editors, we concluded that we will defer taking action on this issue until there was an opportunity to further clarify the relevance of the attack or necessity of the mitigations.",
           "createdAt": "2025-02-21T15:48:22Z",
           "updatedAt": "2025-02-21T15:48:22Z"
+        },
+        {
+          "author": "kook125125",
+          "authorAssociation": "NONE",
+          "body": "mti",
+          "createdAt": "2025-04-21T03:32:04Z",
+          "updatedAt": "2025-04-21T03:32:04Z"
         }
       ]
     },
