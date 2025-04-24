@@ -896,7 +896,8 @@ Appendix C.  Acknowledgements
 
 Appendix D.  Document History
 
-   [[ To be removed from the final specification ]] -latest
+   [[ To be removed from the final specification ]] -latest * Clarified
+   introduction
 
    -04
 
