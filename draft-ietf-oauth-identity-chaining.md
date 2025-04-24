@@ -468,6 +468,7 @@ The editors would like to thank Joe Jubinski, Justin Richer, Aaron Parecki, Dean
 
 \[\[ To be removed from the final specification ]]
 -latest
+* Clarified introduction
 
 -04
 
