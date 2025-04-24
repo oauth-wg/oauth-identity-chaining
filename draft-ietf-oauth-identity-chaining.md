@@ -368,7 +368,7 @@ The resource server of trust domain A needs to access protected resource in trus
 
 (A) The resource server (acting as a client) in trust domain A requests protected resource metadata from the resource server in trust domain B as described in {{I-D.ietf-oauth-resource-metadata}}. It uses the resource metadata to discover information about the authorization server for trust domain B. This step MAY be skipped if discovery is not needed and other means of discovery MAY be used. The protected resource in trust domain B returns its metadata along with the authorization server information in trust domain A.
 
-(B) Once the resource server (acting as a client) in trust domain A identified the authorization server for trust domain B, it requests a JWT authorization grant for the authorization server in trust domain B from the authorization server in trust domain A (it's own authroization server). This happens via the token exchange protocol (See [Token Exchange](#token_exchange)).
+(B) Once the resource server (acting as a client) in trust domain A identified the authorization server for trust domain B, it requests a JWT authorization grant for the authorization server in trust domain B from the authorization server in trust domain A (it's own authroization server). This happens via the token exchange protocol (See [Token Exchange](#token-exchange)).
 
 (C) If successful, the authorization server in trust domain A returns a JWT authorization grant to the resource server (acting as client) in trust domain A.
 
@@ -457,7 +457,7 @@ The flow contains the following steps:
 
 In some environments, there is a need to bind the access token issued by the authorization server in trust domain B to a private key held by the client in trust domain A. This is so that the resource server in trust domain B can verify the proof of possession of the private key of the client in trust domain A when the client in trust domain A presents the token to the resource server in trust domain B. Any application in trust domain A may act as a client, including applications that are resource servers in trust domain A and need to access resource servers in trust domain B in order to complete a request.
 
-In the case where the resource server in trust domain A is acting as the client, the access token may be constrained using existing techniques as described in Security Considerations [See [Sender Constraining Tokens](#sender_constraining_tokens)].
+In the case where the resource server in trust domain A is acting as the client, the access token may be constrained using existing techniques as described in Security Considerations [See [Sender Constraining Tokens](#sender-constraining-tokens)].
 
 The case where the authorization server in trust domain A is acting as a client is more complicated since the authorization server in trust domain A (acting as client) does not have access to the key material of the client on whose behalf the access token is being requested.
 
@@ -475,6 +475,7 @@ The editors would like to thank Joe Jubinski, Justin Richer, Aaron Parecki, Dean
 
 \[\[ To be removed from the final specification ]]
 -latest
+* Editorial pass on Appendix for consistency
 
 -04
 
