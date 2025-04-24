@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2025-04-22T00:21:55.383236+00:00",
+  "timestamp": "2025-04-24T00:21:38.817554+00:00",
   "repo": "oauth-wg/oauth-identity-chaining",
   "labels": [
     {
@@ -1732,14 +1732,22 @@
       "url": "https://github.com/oauth-wg/oauth-identity-chaining/issues/143",
       "state": "OPEN",
       "author": "dhs-BI",
-      "authorAssociation": "NONE",
+      "authorAssociation": "CONTRIBUTOR",
       "assignees": [],
       "labels": [],
       "body": "At IETF122, @bc-pi described the draft as describing patterns based on RFCs 7523 and 8693 to provide best practices and bring clarity to the implementation of the pattern.  I recommend that a statement is included in the introduction to provide this context to the document.  Currently, the intro contains references to these two RFCs, but no clear statement that the document is designed to bring clarity to the recommended pattern.\n",
       "createdAt": "2025-04-01T18:13:59Z",
-      "updatedAt": "2025-04-01T18:16:56Z",
+      "updatedAt": "2025-04-23T11:33:53Z",
       "closedAt": null,
-      "comments": []
+      "comments": [
+        {
+          "author": "bc-pi",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "story checks out ",
+          "createdAt": "2025-04-23T11:33:51Z",
+          "updatedAt": "2025-04-23T11:33:51Z"
+        }
+      ]
     },
     {
       "number": 146,
@@ -1756,6 +1764,22 @@
       "body": "",
       "createdAt": "2025-04-04T14:47:43Z",
       "updatedAt": "2025-04-04T14:47:43Z",
+      "closedAt": null,
+      "comments": []
+    },
+    {
+      "number": 147,
+      "id": "I_kwDOJubJxM6zi5GU",
+      "title": "Authorization server metadata to enable discovery of grant/token type",
+      "url": "https://github.com/oauth-wg/oauth-identity-chaining/issues/147",
+      "state": "OPEN",
+      "author": "aaronpk",
+      "authorAssociation": "MEMBER",
+      "assignees": [],
+      "labels": [],
+      "body": "Please refer to this issue for the full context: https://github.com/aaronpk/draft-parecki-oauth-identity-assertion-authz-grant/issues/16\n\nShould this specification define Authorization Server Metadata for this purpose, or should it be left to profiles like the Identity Assertion Authorization Grant?",
+      "createdAt": "2025-04-22T22:30:48Z",
+      "updatedAt": "2025-04-22T22:30:48Z",
       "closedAt": null,
       "comments": []
     }
