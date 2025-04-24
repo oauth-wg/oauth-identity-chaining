@@ -120,13 +120,11 @@ Table of Contents
    were called prior to making an authorization decision.  This
    information needs to be preserved, even when a request crosses one or
    more trust domains.  This document refers to this as "chaining" and
-   defines a mechanism for preserving identity and authorization
-   information across domains.  A common pattern to achive this is by
-   combining OAuth 2.0 Token Exchange [RFC8693] and JSON Web Token (JWT)
-   Profile for OAuth 2.0 Client Authentication and Authorization Grants
-   [RFC7523].  This document describes how [RFC8693] and [RFC7523]
-   should be combined to access resources across multiple trust domain
-   while preserving identity and authorization information.
+   defines a common pattern for combining OAuth 2.0 Token Exchange
+   [RFC8693] and the JSON Web Token (JWT) Profile for OAuth 2.0 Client
+   Authentication and Authorization Grants [RFC7523] to access resources
+   across multiple trust domains while preserving identity and
+   authorization information.
 
 1.1.  Requirements Language
 
