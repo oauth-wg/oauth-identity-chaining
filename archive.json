@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2025-04-24T00:21:38.817554+00:00",
+  "timestamp": "2025-04-27T00:23:39.545818+00:00",
   "repo": "oauth-wg/oauth-identity-chaining",
   "labels": [
     {
@@ -1455,11 +1455,13 @@
       "state": "OPEN",
       "author": "arndt-s",
       "authorAssociation": "MEMBER",
-      "assignees": [],
+      "assignees": [
+        "arndt-s"
+      ],
       "labels": [],
       "body": "Issue to track email sent to the authors\r\n\r\n> Hello All,\r\nI would like to propose below suggestion for  https://datatracker.ietf.org/doc/html/draft-ietf-oauth-identity-chaining\r\nSection 2.3.1 Token Exchange Request\r\nAs per my understanding the Token exchange request in this proposed RFC will always expect JWT token (urn:ietf:params:oauth:token-type:jwt) as clearly mentioned in the \u2018section 2.3.4 Example\u2019 with Figure 3: Token exchange response with claim \u2018issued_token_type\u2019 and also mentioned in section 2.4.1 Access Token Request (where only JWT token/assertion is sent to Authorization Server in Domain B as Authorization grant) .\r\nHence my suggestion is to enforce it in the Token exchange request itself (as REQUIRED) parameter by using the \u2018requested_token_type\u2019 parameter of OAuth 2.0 Token Exchange RFC 8693 section 2.1 with value \u2018urn:ietf:params:oauth:token-type:jwt\u2019 as per section 3 of RFC 8693 (OAuth 2.0 Token Exchange). This could prevent the Authorization server in Domain A to respond with another other type of tokens/assertions (like access_token , refresh_token , id_token , saml1 , saml2 as other possible values as per section 3 of RFC 8693 OAuth 2.0 Token Exchange) by mistake or other reasons, which could break this (draft) specification inadvertently.\r\nBest Regards,\r\nRandip Malakar\r\nSTMicroelectronics",
       "createdAt": "2024-11-13T14:54:38Z",
-      "updatedAt": "2024-12-19T17:05:41Z",
+      "updatedAt": "2025-04-25T15:07:55Z",
       "closedAt": null,
       "comments": [
         {
@@ -1507,11 +1509,13 @@
       "state": "OPEN",
       "author": "arndt-s",
       "authorAssociation": "MEMBER",
-      "assignees": [],
+      "assignees": [
+        "arndt-s"
+      ],
       "labels": [],
       "body": "@PieterKas mentioned that it may just be a non-defined OAuth client, not a resource server and not an authorization server. While the abstract flow stays the same we should maybe mention this somewhere in the text as a possible deployment.",
       "createdAt": "2024-12-09T15:00:08Z",
-      "updatedAt": "2024-12-09T15:00:08Z",
+      "updatedAt": "2025-04-25T15:07:37Z",
       "closedAt": null,
       "comments": []
     },
@@ -1523,11 +1527,13 @@
       "state": "OPEN",
       "author": "PieterKas",
       "authorAssociation": "CONTRIBUTOR",
-      "assignees": [],
+      "assignees": [
+        "PieterKas"
+      ],
       "labels": [],
       "body": "Editorial review on the use of language of \"one domain\" and \"another domain\" and replacing it with \"Domain A\" and \"Domain B\" for clarity and consistency.",
       "createdAt": "2024-12-16T11:37:33Z",
-      "updatedAt": "2025-02-27T09:51:07Z",
+      "updatedAt": "2025-04-25T14:35:14Z",
       "closedAt": null,
       "comments": [
         {
@@ -1610,11 +1616,13 @@
       "state": "OPEN",
       "author": "PieterKas",
       "authorAssociation": "CONTRIBUTOR",
-      "assignees": [],
+      "assignees": [
+        "arndt-s"
+      ],
       "labels": [],
-      "body": "Based on discussion with Brian - should we give guidance on refresh tokens?",
+      "body": "Based on discussion with Brian - should we give guidance on refresh tokens?\n\nWe should only add anything if there is new information. Currently it is not clear that we should. RFC 7521 already defines this. \n\n\"Implementation of this specification should treat refresh tokens in accordance with RFC 7521\"",
       "createdAt": "2025-01-24T15:44:00Z",
-      "updatedAt": "2025-01-24T15:44:00Z",
+      "updatedAt": "2025-04-25T15:06:48Z",
       "closedAt": null,
       "comments": []
     },
@@ -1626,11 +1634,13 @@
       "state": "OPEN",
       "author": "PieterKas",
       "authorAssociation": "CONTRIBUTOR",
-      "assignees": [],
+      "assignees": [
+        "PieterKas"
+      ],
       "labels": [],
       "body": "Should we add language that the assertion is not constrained and should be protected. \n\nPoint out that this is a risk if no client authentication.\n\nAaron addresses it in his profile (client_id is included as a claim in the assertion claim). ",
       "createdAt": "2025-01-24T15:51:40Z",
-      "updatedAt": "2025-01-24T15:51:40Z",
+      "updatedAt": "2025-04-25T14:30:13Z",
       "closedAt": null,
       "comments": []
     },
@@ -1642,11 +1652,13 @@
       "state": "OPEN",
       "author": "PieterKas",
       "authorAssociation": "CONTRIBUTOR",
-      "assignees": [],
+      "assignees": [
+        "kburgin3"
+      ],
       "labels": [],
       "body": "## JWT Authorization Grant\n\nThe client presents the JWT authorization grant it received from the authorization server in trust domain A as an authorization grant to the authorization server in trust domain B to obtain an access token for a resource server in trust domain B. The authorization grant is presented as defined inthe JWT Profile for OAuth 2.0 Client Authentication and Authorization Grants {{RFC7523}}.\n\n### Access Token Request\n\nThe authorization grant is a JWT bearer token, which the client in trust domain A uses to request an access token from the authorization server in trust domain B as described in the JWT Profile for OAuth 2.0 Client Authentication and Authorization Grants {{RFC7523}}. For the purpose of this specification the following descriptions apply:",
       "createdAt": "2025-02-14T13:58:24Z",
-      "updatedAt": "2025-02-14T13:58:24Z",
+      "updatedAt": "2025-04-25T14:54:41Z",
       "closedAt": null,
       "comments": []
     },
@@ -1658,11 +1670,13 @@
       "state": "OPEN",
       "author": "PieterKas",
       "authorAssociation": "CONTRIBUTOR",
-      "assignees": [],
+      "assignees": [
+        "kburgin3"
+      ],
       "labels": [],
       "body": "Consider re-workding and providing motivation for why claims transcription may be required.\n\n1. Should reference be made tot he different trust domains (for consistency)\n2. Should examples or reasons/use cases be provided to explain what this may be required.",
       "createdAt": "2025-02-14T14:12:49Z",
-      "updatedAt": "2025-02-14T14:12:49Z",
+      "updatedAt": "2025-04-25T14:54:07Z",
       "closedAt": null,
       "comments": []
     },
@@ -1730,15 +1744,17 @@
       "id": "I_kwDOJubJxM6wrodP",
       "title": "Introduction text clarity",
       "url": "https://github.com/oauth-wg/oauth-identity-chaining/issues/143",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "dhs-BI",
       "authorAssociation": "CONTRIBUTOR",
-      "assignees": [],
+      "assignees": [
+        "PieterKas"
+      ],
       "labels": [],
       "body": "At IETF122, @bc-pi described the draft as describing patterns based on RFCs 7523 and 8693 to provide best practices and bring clarity to the implementation of the pattern.  I recommend that a statement is included in the introduction to provide this context to the document.  Currently, the intro contains references to these two RFCs, but no clear statement that the document is designed to bring clarity to the recommended pattern.\n",
       "createdAt": "2025-04-01T18:13:59Z",
-      "updatedAt": "2025-04-23T11:33:53Z",
-      "closedAt": null,
+      "updatedAt": "2025-04-25T18:17:04Z",
+      "closedAt": "2025-04-25T18:17:04Z",
       "comments": [
         {
           "author": "bc-pi",
@@ -1746,6 +1762,13 @@
           "body": "story checks out ",
           "createdAt": "2025-04-23T11:33:51Z",
           "updatedAt": "2025-04-23T11:33:51Z"
+        },
+        {
+          "author": "PieterKas",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "Prepared a PR: https://github.com/oauth-wg/oauth-identity-chaining/pulls\n",
+          "createdAt": "2025-04-24T11:54:05Z",
+          "updatedAt": "2025-04-24T11:54:05Z"
         }
       ]
     },
@@ -1775,13 +1798,23 @@
       "state": "OPEN",
       "author": "aaronpk",
       "authorAssociation": "MEMBER",
-      "assignees": [],
+      "assignees": [
+        "aaronpk"
+      ],
       "labels": [],
       "body": "Please refer to this issue for the full context: https://github.com/aaronpk/draft-parecki-oauth-identity-assertion-authz-grant/issues/16\n\nShould this specification define Authorization Server Metadata for this purpose, or should it be left to profiles like the Identity Assertion Authorization Grant?",
       "createdAt": "2025-04-22T22:30:48Z",
-      "updatedAt": "2025-04-22T22:30:48Z",
+      "updatedAt": "2025-04-25T14:50:49Z",
       "closedAt": null,
-      "comments": []
+      "comments": [
+        {
+          "author": "PieterKas",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "@aaronpk will take the issue.\n\nConclusion from discussion with editors is that the registry and concepts are defined in identity chaining draft and specific values defined in the profiles.\n\nBrian's feedback is that it should be scoped narrowly to these use cases.\n\nSuggests additional wording that lack of a value does not mean it is not supported.",
+          "createdAt": "2025-04-25T14:47:49Z",
+          "updatedAt": "2025-04-25T14:50:48Z"
+        }
+      ]
     }
   ],
   "pulls": [
@@ -7779,6 +7812,74 @@
           "comments": []
         }
       ]
+    },
+    {
+      "number": 148,
+      "id": "PR_kwDOJubJxM6TwK7H",
+      "title": "Clarify Introduction",
+      "url": "https://github.com/oauth-wg/oauth-identity-chaining/pull/148",
+      "state": "MERGED",
+      "author": "PieterKas",
+      "authorAssociation": "CONTRIBUTOR",
+      "assignees": [],
+      "labels": [],
+      "body": "Addresses Feedback in #143 to provide context that this draft codifies the pattern of combining RFC8693 and RFC7523 for cross-domain access. ",
+      "createdAt": "2025-04-24T11:48:02Z",
+      "updatedAt": "2025-04-25T18:16:47Z",
+      "baseRepository": "oauth-wg/oauth-identity-chaining",
+      "baseRefName": "main",
+      "baseRefOid": "64373c85ab5f21887d0b8b14e38e75666c5b6c5d",
+      "headRepository": "oauth-wg/oauth-identity-chaining",
+      "headRefName": "PieterKas-patch-4",
+      "headRefOid": "1cf411022eba063ea00bc6110e9847ad34720edc",
+      "closedAt": "2025-04-25T18:16:45Z",
+      "mergedAt": "2025-04-25T18:16:45Z",
+      "mergedBy": "PieterKas",
+      "mergeCommit": {
+        "oid": "5a3ad9998b27abe0d9b2334677b8c85049c154d9"
+      },
+      "comments": [],
+      "reviews": [
+        {
+          "id": "PRR_kwDOJubJxM6mlmnj",
+          "commit": {
+            "abbreviatedOid": "1cf4110"
+          },
+          "author": "bc-pi",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2025-04-25T17:49:48Z",
+          "updatedAt": "2025-04-25T17:49:48Z",
+          "comments": []
+        }
+      ]
+    },
+    {
+      "number": 149,
+      "id": "PR_kwDOJubJxM6Tw5T6",
+      "title": "Editorial pass for consistency with the main document.",
+      "url": "https://github.com/oauth-wg/oauth-identity-chaining/pull/149",
+      "state": "OPEN",
+      "author": "PieterKas",
+      "authorAssociation": "CONTRIBUTOR",
+      "assignees": [],
+      "labels": [],
+      "body": "Editorial pass (see issue #122)",
+      "createdAt": "2025-04-24T12:59:22Z",
+      "updatedAt": "2025-04-24T13:02:48Z",
+      "baseRepository": "oauth-wg/oauth-identity-chaining",
+      "baseRefName": "main",
+      "baseRefOid": "64373c85ab5f21887d0b8b14e38e75666c5b6c5d",
+      "headRepository": "oauth-wg/oauth-identity-chaining",
+      "headRefName": "PieterKas-patch-5",
+      "headRefOid": "4317ed2f7145b9630b0998cc5a6b8e3af728c703",
+      "closedAt": null,
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [],
+      "reviews": []
     }
   ]
 }
