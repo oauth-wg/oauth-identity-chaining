@@ -292,6 +292,9 @@ Authorization Servers SHOULD follow the The OAuth 2.1 Authorization Framework {{
 ## Authorized use of Subject Token
 The authorization server in trust domain A SHOULD perform client authentication and verify that the client in trust domain A is authorized to present the token used as a subject_token in the token exchange flow before issuing an authorization grant. By doing so, it minimizes the risk of an attacker making a lateral move by using a stolen token from trust domain A to obtain an authorization grant with which to authenticate to an authorization server in trust domain B and request an access token for a resource server in trust domain B.
 
+## Refresh Tokens
+The authorization server in trust domain B SHOULD NOT issue refresh tokens to the client within the scope of this specification. When re-authentication is required, clients SHOULD re-submit the original JWT Authorization Grant to obtain a new Access Token. If the JWT Authorization Grant has expired, the client SHOULD request a new grant from the authorization server in trust domain A before presenting it to the authorization server in trust domain B. The issuance of Refresh Tokens would introduce redundant credential requiring additional security measures, and creating unnecessary security risks.
+
 --- back
 
 # Use cases
