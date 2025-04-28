@@ -292,6 +292,17 @@ Authorization Servers SHOULD follow the The OAuth 2.1 Authorization Framework {{
 ## Authorized use of Subject Token
 The authorization server in trust domain A SHOULD perform client authentication and verify that the client in trust domain A is authorized to present the token used as a subject_token in the token exchange flow before issuing an authorization grant. By doing so, it minimizes the risk of an attacker making a lateral move by using a stolen token from trust domain A to obtain an authorization grant with which to authenticate to an authorization server in trust domain B and request an access token for a resource server in trust domain B.
 
+## Replay of Authorization Grant
+The authorization grant obtained from the Token Exchange process is a bearer token. If an attacker obtains an authorization grant issued to a client in trust domain A, it could replay it to an authorization server in trust domain B to obtain an access token. Implementations SHOULD evaluate this risk and deploy appropriate mitigations based on their threat model and deployment environment. Mitigations include, but are not limited to:
+
+* Issuing short-lived authorization grants to minimize the window of exposure.
+* Limiting authorization grants to a single use to prevent repeated replay.
+* Requiring client authentication to ensure the client presenting the grant is known to the authorization server in trust domain B.
+
+Authorization servers in trust domain B MAY enforce these mitigations. 
+
+Implementations and profiles of this specification MAY define additional mitigations tailored to specific use cases and operational contexts.
+
 --- back
 
 # Use cases
@@ -469,6 +480,7 @@ The editors would like to thank Joe Jubinski, Justin Richer, Aaron Parecki, Dean
 \[\[ To be removed from the final specification ]]
 -latest
 * Clarified introduction
+* Added security considerations for unconstrained authorization grants.
 
 -04
 
