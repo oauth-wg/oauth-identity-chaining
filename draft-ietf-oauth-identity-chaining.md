@@ -299,7 +299,7 @@ The authorization grant obtained from the Token Exchange process is a bearer tok
 * Limiting authorization grants to a single use to prevent repeated replay.
 * Requiring client authentication to ensure the client presenting the grant is known to the authorization server in trust domain B.
 
-Authorization servers in trust domain B MAY enforce these mitigations. 
+Authorization servers in trust domain B MAY enforce these mitigations.
 
 Implementations and profiles of this specification MAY define additional mitigations tailored to specific use cases and operational contexts.
 
