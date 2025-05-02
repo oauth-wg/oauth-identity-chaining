@@ -288,8 +288,8 @@ The following privacy concerns are considered in theis document:
 * Authorization servers need to validate trust relationships between domains to ensure privacy and prevent unauthorized access. (Section 2.3.2)
 * Authorization servers must ensure that federation trust relationships between domains are properly established and maintained to protect user privacy. (Section 2.3.2)
 * Authorization servers should carefully manage the claims included in tokens during token exchange to avoid exposing sensitive user information unnecessarily. 
-** There is no discussion on requiring or enforcing consistent privacy policies across trust domains to ensure user data is handled uniformly. (Section 2.3.2)
-** There is no discussion on techniques for anonymizing user identities in tokens or claims to protect privacy while enabling authorization.
+  * There is no discussion on requiring or enforcing consistent privacy policies across trust domains to ensure user data is handled uniformly. (Section 2.3.2)
+  * There is no discussion on techniques for anonymizing user identities in tokens or claims to protect privacy while enabling authorization.
 * Authorization servers may remove or hide certain claims due to privacy requirements or reduced trust towards the targeting trust domain (Section 2.5)
 * Authorization servers may transcribe subject identifiers to ensure privacy when identifiers differ between trust domains(?) (Section 2.5)
 * Clients may use the scope parameter to control transcribed claims, ensuring that only necessary claims are shared across domains.(Section 2.5)
