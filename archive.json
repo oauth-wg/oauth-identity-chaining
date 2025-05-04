@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2025-04-29T00:22:08.925172+00:00",
+  "timestamp": "2025-05-04T00:24:52.421484+00:00",
   "repo": "oauth-wg/oauth-identity-chaining",
   "labels": [
     {
@@ -1633,7 +1633,7 @@
       "id": "I_kwDOJubJxM6neb5c",
       "title": "Security Considerations",
       "url": "https://github.com/oauth-wg/oauth-identity-chaining/issues/131",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "PieterKas",
       "authorAssociation": "CONTRIBUTOR",
       "assignees": [
@@ -1642,8 +1642,8 @@
       "labels": [],
       "body": "Should we add language that the assertion is not constrained and should be protected. \n\nPoint out that this is a risk if no client authentication.\n\nAaron addresses it in his profile (client_id is included as a claim in the assertion claim). ",
       "createdAt": "2025-01-24T15:51:40Z",
-      "updatedAt": "2025-04-25T14:30:13Z",
-      "closedAt": null,
+      "updatedAt": "2025-05-02T10:02:26Z",
+      "closedAt": "2025-05-02T10:02:26Z",
       "comments": []
     },
     {
@@ -7888,26 +7888,42 @@
       "id": "PR_kwDOJubJxM6UJUGN",
       "title": "Security Considerations for Authorization Grants",
       "url": "https://github.com/oauth-wg/oauth-identity-chaining/pull/150",
-      "state": "OPEN",
+      "state": "MERGED",
       "author": "PieterKas",
       "authorAssociation": "CONTRIBUTOR",
       "assignees": [],
       "labels": [],
       "body": "Proposed security considerations for authorisation grants (see issue #131",
       "createdAt": "2025-04-28T10:43:26Z",
-      "updatedAt": "2025-04-28T11:42:18Z",
+      "updatedAt": "2025-05-02T10:02:12Z",
       "baseRepository": "oauth-wg/oauth-identity-chaining",
       "baseRefName": "main",
       "baseRefOid": "5a3ad9998b27abe0d9b2334677b8c85049c154d9",
       "headRepository": "oauth-wg/oauth-identity-chaining",
       "headRefName": "PieterKas-patch-4",
       "headRefOid": "3aba04a9c38ba418cdf049b9ed6b9ba9787bf2cc",
-      "closedAt": null,
-      "mergedAt": null,
-      "mergedBy": null,
-      "mergeCommit": null,
+      "closedAt": "2025-05-02T10:02:10Z",
+      "mergedAt": "2025-05-02T10:02:10Z",
+      "mergedBy": "PieterKas",
+      "mergeCommit": {
+        "oid": "b3dd3eb3a70029bb4a3c9bb30f67a9537685dc7b"
+      },
       "comments": [],
-      "reviews": []
+      "reviews": [
+        {
+          "id": "PRR_kwDOJubJxM6nlUpK",
+          "commit": {
+            "abbreviatedOid": "3aba04a"
+          },
+          "author": "bc-pi",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2025-05-02T09:30:42Z",
+          "updatedAt": "2025-05-02T09:30:42Z",
+          "comments": []
+        }
+      ]
     },
     {
       "number": 151,
@@ -7921,13 +7937,140 @@
       "labels": [],
       "body": "",
       "createdAt": "2025-04-28T16:56:51Z",
-      "updatedAt": "2025-04-28T16:57:04Z",
+      "updatedAt": "2025-05-02T15:10:48Z",
       "baseRepository": "oauth-wg/oauth-identity-chaining",
       "baseRefName": "main",
       "baseRefOid": "5a3ad9998b27abe0d9b2334677b8c85049c154d9",
       "headRepository": "oauth-wg/oauth-identity-chaining",
       "headRefName": "arndt/refresh-token-security-consideration",
       "headRefOid": "356b8c0bf998cf15e0e8aae76cba6807a3ff3bc4",
+      "closedAt": null,
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [],
+      "reviews": [
+        {
+          "id": "PRR_kwDOJubJxM6nf6RW",
+          "commit": {
+            "abbreviatedOid": "356b8c0"
+          },
+          "author": "PieterKas",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2025-05-01T16:30:07Z",
+          "updatedAt": "2025-05-01T16:30:19Z",
+          "comments": [
+            {
+              "originalPosition": 5,
+              "body": ">When re-authentication is required,\r\n\r\nI don't think this is about authentication, but rather the Access Token expiring. So, perhaps the way to phrase this is \"When the access token in possession of the client in trust domain A expires, ...\" or \"When the access token in possession of the client expires, ...\"",
+              "createdAt": "2025-05-01T16:30:08Z",
+              "updatedAt": "2025-05-01T16:30:19Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJubJxM6nibJM",
+          "commit": {
+            "abbreviatedOid": "356b8c0"
+          },
+          "author": "bc-pi",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2025-05-01T22:01:33Z",
+          "updatedAt": "2025-05-01T22:01:33Z",
+          "comments": [
+            {
+              "originalPosition": 5,
+              "body": "the \"re-authentication\" also struck me as not-quite-right",
+              "createdAt": "2025-05-01T22:01:33Z",
+              "updatedAt": "2025-05-01T22:01:33Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJubJxM6njl6M",
+          "commit": {
+            "abbreviatedOid": "356b8c0"
+          },
+          "author": "mcguinness",
+          "authorAssociation": "NONE",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2025-05-02T04:01:31Z",
+          "updatedAt": "2025-05-02T04:01:31Z",
+          "comments": [
+            {
+              "originalPosition": 5,
+              "body": "Can this be left to profiles to determine if a refresh token is allowed or not?  [Identity Assertion Authorization Grant](https://datatracker.ietf.org/doc/html/draft-parecki-oauth-identity-assertion-authz-grant-03) uses the SSO assertion as the bootstrap token for cross-domain access so a client may not have ability to obtain a new access token for cross-domain API requests  when the access token is expired without a lot of user friction to go back to the IdP and re-authenticate the end-user.  The enterprise may have additional mechanisms to revoke the refresh token (e.g shared signals) to mitigate security concerns as they are the administrative owner of all the parties.  ",
+              "createdAt": "2025-05-02T04:01:31Z",
+              "updatedAt": "2025-05-02T04:01:31Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJubJxM6nltLD",
+          "commit": {
+            "abbreviatedOid": "356b8c0"
+          },
+          "author": "PieterKas",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2025-05-02T10:28:35Z",
+          "updatedAt": "2025-05-02T10:28:35Z",
+          "comments": [
+            {
+              "originalPosition": 5,
+              "body": "Perhaps the \"security considerations\" should highlight the risks that need to be mitigated, but as @mcguinness points out, the decision on the risks of a refresh token is down to the deployment or downstream profiles.\r\n\r\nAlso, RFC 9700 has a very detailed review on refresh token protection (see section 4.14 - https://datatracker.ietf.org/doc/html/rfc9700#name-refresh-token-protection).\r\n\r\nPerhaps something along the lines of \r\n\r\n\"The use of refresh tokens is subject to the risk profile and desired user experience of a deployment. If refresh tokens are used, they should be protected as described in RFC 9700 (see Section 2.2. and 4.14)\"",
+              "createdAt": "2025-05-02T10:28:35Z",
+              "updatedAt": "2025-05-02T10:28:35Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJubJxM6nn69g",
+          "commit": {
+            "abbreviatedOid": "356b8c0"
+          },
+          "author": "PieterKas",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2025-05-02T15:10:48Z",
+          "updatedAt": "2025-05-02T15:10:48Z",
+          "comments": [
+            {
+              "originalPosition": 5,
+              "body": "Comment from George - could RFC 9700 be in conflict with FAPI?\r\n\r\nAaron commented that they are not.\r\n\r\nGeorge - FAPI limits rotation of refresh tokens. \r\n\r\nBrian - Security BCP does not speak to refresh tokens for cross domain access. \r\n\r\nAaron, it is the combination of these two specs that creates this issue.\r\n\r\nThe considerations for a refresh token in Trust Domain A is different than for Trust Domain B. This may need to be expanded on to provide clarity.\r\n\r\nAaron's point on public vs confidential clients is important and should be addressed as well.",
+              "createdAt": "2025-05-02T15:10:48Z",
+              "updatedAt": "2025-05-02T15:10:48Z"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 152,
+      "id": "PR_kwDOJubJxM6Uwz39",
+      "title": "Kelley/privacy considerations",
+      "url": "https://github.com/oauth-wg/oauth-identity-chaining/pull/152",
+      "state": "OPEN",
+      "author": "kburgin3",
+      "authorAssociation": "CONTRIBUTOR",
+      "assignees": [],
+      "labels": [],
+      "body": "Added Privacy Concerns",
+      "createdAt": "2025-05-02T14:36:23Z",
+      "updatedAt": "2025-05-02T14:36:24Z",
+      "baseRepository": "oauth-wg/oauth-identity-chaining",
+      "baseRefName": "main",
+      "baseRefOid": "b3dd3eb3a70029bb4a3c9bb30f67a9537685dc7b",
+      "headRepository": "oauth-wg/oauth-identity-chaining",
+      "headRefName": "kelley/privacy-considerations",
+      "headRefOid": "e946d63a74663e9dd71c5d13f537941d7d68fd17",
       "closedAt": null,
       "mergedAt": null,
       "mergedBy": null,
