@@ -205,7 +205,7 @@ Cache-Control: no-cache, no-store
 
 The client presents the JWT authorization grant it received from the authorization server in trust domain A as an authorization grant to the authorization server in trust domain B to obtain an access token for a resource server in trust domain B. The authorization grant is presented as defined in the JWT Profile for OAuth 2.0 Client Authentication and Authorization Grants {{RFC7523}}.
 
-### Access Token Request
+### Access Token Request {#access-token-request}
 
 The authorization grant is a JWT bearer token, which the client in trust domain A uses to request an access token from the authorization server in trust domain B as described in the JWT Profile for OAuth 2.0 Client Authentication and Authorization Grants {{RFC7523}}. For the purpose of this specification the following descriptions apply:
 
