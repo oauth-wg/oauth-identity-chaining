@@ -284,20 +284,15 @@ It is RECOMMENDED that any profile or deployment-specific implementation adopt e
 # Privacy Considerations {#Privacy}
 The following privacy concerns are considered in theis document:  
 
-* Authorization server discovery mechanisms should avoid exposing sensitive metadata that could compromise user privacy (Section 2.2)
-* Authorization servers need to validate trust relationships between domains to ensure privacy and prevent unauthorized access. (Section 2.3.2)
-* Authorization servers must ensure that federation trust relationships between domains are properly established and maintained to protect user privacy. (Section 2.3.2)
-* Authorization servers should carefully manage the claims included in tokens during token exchange to avoid exposing sensitive user information unnecessarily. 
-  * There is no discussion on requiring or enforcing consistent privacy policies across trust domains to ensure user data is handled uniformly. (Section 2.3.2)
-  * There is no discussion on techniques for anonymizing user identities in tokens or claims to protect privacy while enabling authorization.
-* Authorization servers may remove or hide certain claims due to privacy requirements or reduced trust towards the targeting trust domain (Section 2.5)
-* Authorization servers may transcribe subject identifiers to ensure privacy when identifiers differ between trust domains(?) (Section 2.5)
-* Clients may use the scope parameter to control transcribed claims, ensuring that only necessary claims are shared across domains.(Section 2.5)
-* The document does not address how users or administrators can revoke authorization grants or tokens to prevent misuse after issuance.(Section 2.5)
-* Issuing short-lived authorization grants (if possible) reduces the risk of unauthorized access (Section 4.4)
-* There is no discussion on how authorization servers should log and monitor token exchanges and grant usage while ensuring that sensitive user information is not exposed in logs.
-* There is no discussion on potential privacy impacts of replay attack mitigations, such as increased tracking of token usage.
-* There is no discussion on techniques for anonymizing user identities in tokens or claims to protect privacy while enabling authorization.
+## Subject identifiers in JWTs:
+OAuth federation involves the exchange of tokens and claims between trust domains. If excessive or unnecessary user data is included in these tokens, it could lead to privacy violations. JWTs contain user info in the "sub" claim which often identifies the user. The use of consistent identifiers (e.g., subject identifiers) across federated domains may enable correlation of user activities, potentially leading to tracking without user consent. This allows an adversary to track the user's behavior, including which services they use, when they log in, and what resources they access. This can be mitigated by authorization servers carefully managing the claims included in tokens during token exchange to avoid exposing sensitive user information unnecessarily. This includes limiting the inclusion of excessive or unnecessary user data in tokens.
+
+## Removal or Hiding of Claims
+Inconsistent privacy policies in Domain A and B:
+Inconsistent user privacy policies within OAuth federation arise from varying interpretations and implementations of the protocol by different Identity Providers (IdPs) and Relying Parties (RPs). This can lead to a lack of transparency and control for users regarding what information they are sharing and with whom. This can be mitigated by ensuring the federation trust relationships between domains are properly established and maintained to protect user privacy. This includes verifying that privacy policies align across trust domains that explain how user data is collected, used, and protected
+
+## Securing Authorization Server Logs and User Data Privacy
+Authorization Server logs for Token Exchange and Assertion Grants usage contain user data. This can be mitigated by establishing a policy for how long user data is retained and to ensure user data is deleted immediately after use or when the user requests its deletion.
 
 # Security Considerations {#Security}
 
