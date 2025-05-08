@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2025-05-06T00:22:25.322561+00:00",
+  "timestamp": "2025-05-08T00:22:33.517649+00:00",
   "repo": "oauth-wg/oauth-identity-chaining",
   "labels": [
     {
@@ -8077,6 +8077,46 @@
       "mergeCommit": null,
       "comments": [],
       "reviews": []
+    },
+    {
+      "number": 153,
+      "id": "PR_kwDOJubJxM6VIBvm",
+      "title": "Added privacy consideration",
+      "url": "https://github.com/oauth-wg/oauth-identity-chaining/pull/153",
+      "state": "OPEN",
+      "author": "kburgin3",
+      "authorAssociation": "CONTRIBUTOR",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2025-05-06T15:09:31Z",
+      "updatedAt": "2025-05-06T15:21:30Z",
+      "baseRepository": "oauth-wg/oauth-identity-chaining",
+      "baseRefName": "main",
+      "baseRefOid": "b3dd3eb3a70029bb4a3c9bb30f67a9537685dc7b",
+      "headRepository": "oauth-wg/oauth-identity-chaining",
+      "headRefName": "kelley/privacy-considerations",
+      "headRefOid": "87f109c388ff49030c7d3020d31feef206cc1ed7",
+      "closedAt": null,
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [],
+      "reviews": [
+        {
+          "id": "PRR_kwDOJubJxM6oAXSN",
+          "commit": {
+            "abbreviatedOid": "9c431bc"
+          },
+          "author": "kburgin3",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "COMMENTED",
+          "body": "Addresses Issue #126",
+          "createdAt": "2025-05-06T15:14:10Z",
+          "updatedAt": "2025-05-06T15:14:10Z",
+          "comments": []
+        }
+      ]
     }
   ]
 }
