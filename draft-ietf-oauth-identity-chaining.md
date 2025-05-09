@@ -265,6 +265,8 @@ Cache-Control: no-cache, no-store
 
 ## Claims transcription
 
+Claims transcription is motivated by the need to propagate user and client identities, and potentially other information, across different trust domains when a request traverses multiple protected resources. This ensures that each resource knows on whose behalf the request is being made, what authorization is granted, and potentially which other resources were previously involved. 
+
 Authorization servers MAY transcribe claims when either producing JWT authorization grants in the token exchange flow or access tokens in the assertion flow. Transcription of claims may be required for the following reasons:
 
 * **Transcribing the subject identifier**: The subject identifier can differ between the parties involved. For example, a user is identified in trust domain A as "johndoe@a.org" but in trust domain B they are identified as "doe.john@b.org". The mapping from one identifier to the other MAY either happen in the token exchange step and the updated identifier is reflected in the returned JWT authorization grant or in the assertion step where the updated identifier would be reflected in the access token. To support this both authorization servers MAY add, change or remove claims as described above.
@@ -273,6 +275,18 @@ Authorization servers MAY transcribe claims when either producing JWT authorizat
 * **Including JWT authorization grant claims**: The authorization server in trust domain B which is performing the assertion flow MAY leverage claims from the JWT authorization grant presented by the client in trust doman A and include them in the returned access token. The populated claims SHOULD be namespaced or validated to prevent the injection of invalid claims.
 
 The representation of transcribed claims and their format is not defined in this specification.
+
+### Use Cases
+
+Some use cases that demonstrate the need for claims description are as follows.
+
+Downscoping Permissions for API Access:
+
+A cloud-based development platform allows developers to access APIs across multiple trust domains. A developer in Domain A requests access to an API in Domain B but only needs limited permissions, such as "read-only" access. The authorization server in Domain A transcribes the claims in the JWT authorization grant to reflect the downscoped permissions, removing higher-privileged claims like "write" or "admin." This ensures that the access token issued by Domain B aligns with the developer's intended scope of access.
+
+Granular Access Control for Partner Integration:
+
+A financial institution integrates with a third-party payment gateway across trust domains. Domain A (the financial institution) includes detailed claims such as "account type: premium" and "transaction limit: $10,000" in the JWT authorization grant. However, Domain B (the payment gateway) only needs claims like "transaction limit" for its access control policies. Domain A transcribes the claims to exclude unnecessary information, ensuring that Domain B receives only the claims relevant to its operations.
 
 # IANA Considerations {#IANA}
 
