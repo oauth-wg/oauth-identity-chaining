@@ -265,7 +265,7 @@ Cache-Control: no-cache, no-store
 
 ## Claims transcription
 
-Claims transcription is motivated by the need to propagate user and client identities, and potentially other information, across different trust domains when a request traverses multiple protected resources. This ensures that each resource knows on whose behalf the request is being made, what authorization is granted, and potentially which other resources were previously involved. 
+Claims transcription is motivated by the need to propagate user and client identities, and potentially other information, across different trust domains when a request traverses multiple protected resources. This ensures that each resource knows on whose behalf the request is being made, what authorization is granted, and potentially which other resources were previously involved.
 
 Authorization servers MAY transcribe claims when either producing JWT authorization grants in the token exchange flow or access tokens in the assertion flow. Transcription of claims may be required for the following reasons:
 
