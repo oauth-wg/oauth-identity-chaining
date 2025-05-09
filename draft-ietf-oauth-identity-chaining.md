@@ -150,10 +150,10 @@ scope
 : OPTIONAL. Additional scopes to indicate scopes included in the returned JWT authorization grant. See [Claims transcription](#claims-transcription).
 
 resource
-: REQUIRED if audience is not set. URI of authorization server for trust domain B.
+: OPTINAL URI of authorization server for trust domain B.
 
 audience
-: REQUIRED if resource is not set. Well known/logical name of authorization server for trust domain B.
+: REQUIRED. Well known/logical name of authorization server for trust domain B.
 
 ### Processing rules
 
@@ -203,11 +203,11 @@ Cache-Control: no-cache, no-store
 
 ## JWT Authorization Grant
 
-The client presents the JWT authorization grant it received from the authorization server in trust domain A as an authorization grant to the authorization server in trust domain B to obtain an access token for a resource server in trust domain B. The authorization grant is presented as defined in the JWT Profile for OAuth 2.0 Client Authentication and Authorization Grants {{RFC7523}}.
+The client in trust domain A uses the JWT bearer token obtained from the authorization server in trust domain A as an authorization grant to request an access token from the authorization server in trust domain B, as described in {{RFC7523}}.
 
 ### Access Token Request
 
-The authorization grant is a JWT bearer token, which the client in trust domain A uses to request an access token from the authorization server in trust domain B as described in the JWT Profile for OAuth 2.0 Client Authentication and Authorization Grants {{RFC7523}}. For the purpose of this specification the following descriptions apply:
+For the purpose of this specification the following descriptions apply:
 
 {:vspace}
 grant_type
