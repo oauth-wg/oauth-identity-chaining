@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2025-05-08T00:22:33.517649+00:00",
+  "timestamp": "2025-05-11T00:24:05.590673+00:00",
   "repo": "oauth-wg/oauth-identity-chaining",
   "labels": [
     {
@@ -8090,13 +8090,13 @@
       "labels": [],
       "body": "",
       "createdAt": "2025-05-06T15:09:31Z",
-      "updatedAt": "2025-05-06T15:21:30Z",
+      "updatedAt": "2025-05-09T14:39:19Z",
       "baseRepository": "oauth-wg/oauth-identity-chaining",
       "baseRefName": "main",
       "baseRefOid": "b3dd3eb3a70029bb4a3c9bb30f67a9537685dc7b",
       "headRepository": "oauth-wg/oauth-identity-chaining",
       "headRefName": "kelley/privacy-considerations",
-      "headRefOid": "87f109c388ff49030c7d3020d31feef206cc1ed7",
+      "headRefOid": "531ffa5087f372d827bc61f259bc739c02ef2a4a",
       "closedAt": null,
       "mergedAt": null,
       "mergedBy": null,
@@ -8115,6 +8115,220 @@
           "createdAt": "2025-05-06T15:14:10Z",
           "updatedAt": "2025-05-06T15:14:10Z",
           "comments": []
+        },
+        {
+          "id": "PRR_kwDOJubJxM6ol-mt",
+          "commit": {
+            "abbreviatedOid": "87f109c"
+          },
+          "author": "gffletch",
+          "authorAssociation": "NONE",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2025-05-09T14:16:45Z",
+          "updatedAt": "2025-05-09T14:16:45Z",
+          "comments": [
+            {
+              "originalPosition": 24,
+              "body": "Another mitigation option is tokenization such that the clear text values are not logged.",
+              "createdAt": "2025-05-09T14:16:45Z",
+              "updatedAt": "2025-05-09T14:16:45Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJubJxM6ol_3P",
+          "commit": {
+            "abbreviatedOid": "87f109c"
+          },
+          "author": "gffletch",
+          "authorAssociation": "NONE",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2025-05-09T14:17:56Z",
+          "updatedAt": "2025-05-09T14:17:56Z",
+          "comments": [
+            {
+              "originalPosition": 18,
+              "body": "There is also the case that `sub` identifiers are not consistent across trust domains and hence other claims must be used. In this context, the minimum set of user identifying claims should be used to limit privacy exposure.",
+              "createdAt": "2025-05-09T14:17:56Z",
+              "updatedAt": "2025-05-09T14:17:56Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJubJxM6omQoJ",
+          "commit": {
+            "abbreviatedOid": "87f109c"
+          },
+          "author": "aaronpk",
+          "authorAssociation": "MEMBER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2025-05-09T14:38:18Z",
+          "updatedAt": "2025-05-09T14:38:19Z",
+          "comments": [
+            {
+              "originalPosition": 14,
+              "body": "```suggestion\r\nThe following privacy concerns are considered in theis document:\r\n```\r\n\r\ntrailing spaces break the build",
+              "createdAt": "2025-05-09T14:38:18Z",
+              "updatedAt": "2025-05-09T14:38:19Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJubJxM6omR0M",
+          "commit": {
+            "abbreviatedOid": "87f109c"
+          },
+          "author": "arndt-s",
+          "authorAssociation": "MEMBER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2025-05-09T14:39:19Z",
+          "updatedAt": "2025-05-09T14:39:19Z",
+          "comments": [
+            {
+              "originalPosition": 24,
+              "body": "To me this feels valid to everything OAuth and I'm not sure if there's anything in this draft that adds additional aspects.",
+              "createdAt": "2025-05-09T14:39:19Z",
+              "updatedAt": "2025-05-09T14:39:19Z"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 154,
+      "id": "PR_kwDOJubJxM6VlNuE",
+      "title": "Simplified text in Section 2.4",
+      "url": "https://github.com/oauth-wg/oauth-identity-chaining/pull/154",
+      "state": "OPEN",
+      "author": "kburgin3",
+      "authorAssociation": "CONTRIBUTOR",
+      "assignees": [],
+      "labels": [],
+      "body": "Per Issue #136 ",
+      "createdAt": "2025-05-09T12:46:02Z",
+      "updatedAt": "2025-05-09T15:01:14Z",
+      "baseRepository": "oauth-wg/oauth-identity-chaining",
+      "baseRefName": "main",
+      "baseRefOid": "b3dd3eb3a70029bb4a3c9bb30f67a9537685dc7b",
+      "headRepository": "oauth-wg/oauth-identity-chaining",
+      "headRefName": "kelley/simplify_text_issue136",
+      "headRefOid": "b1c0092cde6bdd0b3669c15a6cb56040fece2710",
+      "closedAt": null,
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [],
+      "reviews": [
+        {
+          "id": "PRR_kwDOJubJxM6omif8",
+          "commit": {
+            "abbreviatedOid": "b1c0092"
+          },
+          "author": "PieterKas",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2025-05-09T14:58:45Z",
+          "updatedAt": "2025-05-09T14:58:45Z",
+          "comments": [
+            {
+              "originalPosition": 9,
+              "body": "Note - there is a difference between parameters (audience/resource) and claim in the JWT (aud).",
+              "createdAt": "2025-05-09T14:58:45Z",
+              "updatedAt": "2025-05-09T14:58:45Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJubJxM6omj48",
+          "commit": {
+            "abbreviatedOid": "b1c0092"
+          },
+          "author": "aaronpk",
+          "authorAssociation": "MEMBER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2025-05-09T15:01:02Z",
+          "updatedAt": "2025-05-09T15:01:03Z",
+          "comments": [
+            {
+              "originalPosition": 5,
+              "body": "```suggestion\r\n: REQUIRED if audience is not set. URI of authorization server for trust domain B.\r\n```",
+              "createdAt": "2025-05-09T15:01:02Z",
+              "updatedAt": "2025-05-09T15:01:03Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJubJxM6omj_3",
+          "commit": {
+            "abbreviatedOid": "b1c0092"
+          },
+          "author": "aaronpk",
+          "authorAssociation": "MEMBER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2025-05-09T15:01:13Z",
+          "updatedAt": "2025-05-09T15:01:14Z",
+          "comments": [
+            {
+              "originalPosition": 9,
+              "body": "```suggestion\r\n: REQUIRED if resource is not set. Well known/logical name of authorization server for trust domain B.\r\n```",
+              "createdAt": "2025-05-09T15:01:13Z",
+              "updatedAt": "2025-05-09T15:01:14Z"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 155,
+      "id": "PR_kwDOJubJxM6VlT2j",
+      "title": "Added claims transcription examples",
+      "url": "https://github.com/oauth-wg/oauth-identity-chaining/pull/155",
+      "state": "OPEN",
+      "author": "kburgin3",
+      "authorAssociation": "CONTRIBUTOR",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2025-05-09T12:57:36Z",
+      "updatedAt": "2025-05-09T14:37:50Z",
+      "baseRepository": "oauth-wg/oauth-identity-chaining",
+      "baseRefName": "main",
+      "baseRefOid": "b3dd3eb3a70029bb4a3c9bb30f67a9537685dc7b",
+      "headRepository": "oauth-wg/oauth-identity-chaining",
+      "headRefName": "kelley/claims_transcription_issue137",
+      "headRefOid": "0123f4d8f3769a6b87eaaf9fdb95f87bfae2e238",
+      "closedAt": null,
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [],
+      "reviews": [
+        {
+          "id": "PRR_kwDOJubJxM6omPh9",
+          "commit": {
+            "abbreviatedOid": "2d93415"
+          },
+          "author": "aaronpk",
+          "authorAssociation": "MEMBER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2025-05-09T14:37:26Z",
+          "updatedAt": "2025-05-09T14:37:26Z",
+          "comments": [
+            {
+              "originalPosition": 4,
+              "body": "```suggestion\r\nClaims transcription is motivated by the need to propagate user and client identities, and potentially other information, across different trust domains when a request traverses multiple protected resources. This ensures that each resource knows on whose behalf the request is being made, what authorization is granted, and potentially which other resources were previously involved.\r\n```\r\n\r\ntrailing spaces break the build",
+              "createdAt": "2025-05-09T14:37:26Z",
+              "updatedAt": "2025-05-09T14:37:27Z"
+            }
+          ]
         }
       ]
     }
