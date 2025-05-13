@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2025-05-11T00:24:05.590673+00:00",
+  "timestamp": "2025-05-13T00:22:31.606520+00:00",
   "repo": "oauth-wg/oauth-identity-chaining",
   "labels": [
     {
@@ -7937,7 +7937,7 @@
       "labels": [],
       "body": "",
       "createdAt": "2025-04-28T16:56:51Z",
-      "updatedAt": "2025-05-02T15:10:48Z",
+      "updatedAt": "2025-05-12T19:19:19Z",
       "baseRepository": "oauth-wg/oauth-identity-chaining",
       "baseRefName": "main",
       "baseRefOid": "5a3ad9998b27abe0d9b2334677b8c85049c154d9",
@@ -8047,6 +8047,46 @@
               "body": "Comment from George - could RFC 9700 be in conflict with FAPI?\r\n\r\nAaron commented that they are not.\r\n\r\nGeorge - FAPI limits rotation of refresh tokens. \r\n\r\nBrian - Security BCP does not speak to refresh tokens for cross domain access. \r\n\r\nAaron, it is the combination of these two specs that creates this issue.\r\n\r\nThe considerations for a refresh token in Trust Domain A is different than for Trust Domain B. This may need to be expanded on to provide clarity.\r\n\r\nAaron's point on public vs confidential clients is important and should be addressed as well.",
               "createdAt": "2025-05-02T15:10:48Z",
               "updatedAt": "2025-05-02T15:10:48Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJubJxM6o1E0m",
+          "commit": {
+            "abbreviatedOid": "356b8c0"
+          },
+          "author": "arndt-s",
+          "authorAssociation": "MEMBER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2025-05-12T09:16:33Z",
+          "updatedAt": "2025-05-12T09:16:33Z",
+          "comments": [
+            {
+              "originalPosition": 5,
+              "body": "Unfortunately I missed this conversation and it's not clear to me what the result of it was.\r\n\r\nRFC9700 refers [RFC6749](https://datatracker.ietf.org/doc/html/rfc6749) and says that one should key-bind refresh tokens - which we kind of navigate around in this draft.\r\n\r\n@mcguinness @aaronpk with ID-JAGs, doesn't the client have a refresh token of the enterprise IDP and a session with it? I wonder why split off a dedicated session with the resource IDP and not leverage the existing session with the enterprise IDP when the access token expires? From a security POV it's better to manage a single session instead of forking sessions at every IDP - also helps with single sign out. From a performance POV the enterprise IDP would be involved in every refresh, but I think that's ok.\r\n\r\nTo me the statement above, that issuing refresh tokens in the assertion flow creates unnecessary security risk is still valid.",
+              "createdAt": "2025-05-12T09:16:33Z",
+              "updatedAt": "2025-05-12T09:17:06Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJubJxM6o7ysX",
+          "commit": {
+            "abbreviatedOid": "356b8c0"
+          },
+          "author": "mcguinness",
+          "authorAssociation": "NONE",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2025-05-12T19:19:19Z",
+          "updatedAt": "2025-05-12T19:19:19Z",
+          "comments": [
+            {
+              "originalPosition": 5,
+              "body": "We definitely support the flow you suggested and this may be something we can do a better job recommending.  The goal was to leverage the Enterprise IdP as a policy decision point and having opportunity to eval policy centrally on token refresh is a benefit of this pattern.\r\n\r\nWe do however also support SAML Assertions as the primary identity token as the majority of SSO in enterprise today is SAML-based and not OIDC.  SAML backchannel isn't a reality with what is in the wild.\r\n\r\nSo while I agree that issuing refresh tokens from an assertion introduces additional security risks, it is possible to mitigate based on deployment (e.g. DPOP + Shared Signals).   The feedback was just that `MUST NOT` limited any profile from mitigating the risk and supporting where as `RECOMMENDED` felt more appropriate for this spec that defines the pattern/framework.",
+              "createdAt": "2025-05-12T19:19:19Z",
+              "updatedAt": "2025-05-12T19:19:19Z"
             }
           ]
         }
