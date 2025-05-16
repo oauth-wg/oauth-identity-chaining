@@ -90,6 +90,7 @@ Table of Contents
      4.2.  Sender Constraining Tokens
      4.3.  Authorized use of Subject Token
      4.4.  Refresh Tokens
+     4.5.  Replay of Authorization Grant
    5.  References
      5.1.  Normative References
      5.2.  Informative References
@@ -510,6 +511,32 @@ grant_type=urn%3Aietf%3Aparams%3Aoauth%3Agrant-type%3Atoken-exchange
    the issuance of refresh tokens by the authorization server in trust
    domain A.
 
+4.5.  Replay of Authorization Grant
+
+   The authorization grant obtained from the Token Exchange process is a
+   bearer token.  If an attacker obtains an authorization grant issued
+   to a client in trust domain A, it could replay it to an authorization
+   server in trust domain B to obtain an access token.  Implementations
+   SHOULD evaluate this risk and deploy appropriate mitigations based on
+   their threat model and deployment environment.  Mitigations include,
+   but are not limited to:
+
+   *  Issuing short-lived authorization grants to minimize the window of
+      exposure.
+
+   *  Limiting authorization grants to a single use to prevent repeated
+      replay.
+
+   *  Requiring client authentication to ensure the client presenting
+      the grant is known to the authorization server in trust domain B.
+
+   Authorization servers in trust domain B MAY enforce these
+   mitigations.
+
+   Implementations and profiles of this specification MAY define
+   additional mitigations tailored to specific use cases and operational
+   contexts.
+
 5.  References
 
 5.1.  Normative References
@@ -916,7 +943,8 @@ Appendix C.  Acknowledgements
 Appendix D.  Document History
 
    [[ To be removed from the final specification ]] -latest * Clarified
-   introduction
+   introduction * Added security considerations for unconstrained
+   authorization grants.
 
    -04
 
