@@ -295,6 +295,17 @@ The authorization server in trust domain A SHOULD perform client authentication 
 ## Refresh Tokens
 The authorization server in trust domain B SHOULD NOT issue refresh tokens to the client within the scope of this specification. When the access token has expired, clients SHOULD re-submit the original JWT Authorization Grant to obtain a new Access Token. If the JWT Authorization Grant has expired, the client SHOULD request a new grant from the authorization server in trust domain A before presenting it to the authorization server in trust domain B. The issuance of Refresh Tokens by the authorization server in trust domain B introduce redundant credential requiring additional security measures, and creating unnecessary security risks. It also allows the client to obtain access tokens within trust domain B, even if the initial session in trust domain A has finished (e.g. the user has logged out or access got revoked). This paragraph does not relate to the issuance of refresh tokens by the authorization server in trust domain A.
 
+## Replay of Authorization Grant
+The authorization grant obtained from the Token Exchange process is a bearer token. If an attacker obtains an authorization grant issued to a client in trust domain A, it could replay it to an authorization server in trust domain B to obtain an access token. Implementations SHOULD evaluate this risk and deploy appropriate mitigations based on their threat model and deployment environment. Mitigations include, but are not limited to:
+
+* Issuing short-lived authorization grants to minimize the window of exposure.
+* Limiting authorization grants to a single use to prevent repeated replay.
+* Requiring client authentication to ensure the client presenting the grant is known to the authorization server in trust domain B.
+
+Authorization servers in trust domain B MAY enforce these mitigations.
+
+Implementations and profiles of this specification MAY define additional mitigations tailored to specific use cases and operational contexts.
+
 --- back
 
 # Use cases
@@ -472,6 +483,7 @@ The editors would like to thank Joe Jubinski, Justin Richer, Aaron Parecki, Dean
 \[\[ To be removed from the final specification ]]
 -latest
 * Clarified introduction
+* Added security considerations for unconstrained authorization grants.
 
 -04
 
