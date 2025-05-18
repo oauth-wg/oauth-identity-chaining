@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2025-05-13T00:22:31.606520+00:00",
+  "timestamp": "2025-05-18T00:24:30.509666+00:00",
   "repo": "oauth-wg/oauth-identity-chaining",
   "labels": [
     {
@@ -7937,13 +7937,13 @@
       "labels": [],
       "body": "",
       "createdAt": "2025-04-28T16:56:51Z",
-      "updatedAt": "2025-05-12T19:19:19Z",
+      "updatedAt": "2025-05-16T16:48:10Z",
       "baseRepository": "oauth-wg/oauth-identity-chaining",
       "baseRefName": "main",
-      "baseRefOid": "5a3ad9998b27abe0d9b2334677b8c85049c154d9",
+      "baseRefOid": "b3dd3eb3a70029bb4a3c9bb30f67a9537685dc7b",
       "headRepository": "oauth-wg/oauth-identity-chaining",
       "headRefName": "arndt/refresh-token-security-consideration",
-      "headRefOid": "356b8c0bf998cf15e0e8aae76cba6807a3ff3bc4",
+      "headRefOid": "2c32b5c1cae3df7af196755cbc53cf08ed74c0ee",
       "closedAt": null,
       "mergedAt": null,
       "mergedBy": null,
@@ -8087,6 +8087,26 @@
               "body": "We definitely support the flow you suggested and this may be something we can do a better job recommending.  The goal was to leverage the Enterprise IdP as a policy decision point and having opportunity to eval policy centrally on token refresh is a benefit of this pattern.\r\n\r\nWe do however also support SAML Assertions as the primary identity token as the majority of SSO in enterprise today is SAML-based and not OIDC.  SAML backchannel isn't a reality with what is in the wild.\r\n\r\nSo while I agree that issuing refresh tokens from an assertion introduces additional security risks, it is possible to mitigate based on deployment (e.g. DPOP + Shared Signals).   The feedback was just that `MUST NOT` limited any profile from mitigating the risk and supporting where as `RECOMMENDED` felt more appropriate for this spec that defines the pattern/framework.",
               "createdAt": "2025-05-12T19:19:19Z",
               "updatedAt": "2025-05-12T19:19:19Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJubJxM6ptBto",
+          "commit": {
+            "abbreviatedOid": "356b8c0"
+          },
+          "author": "arndt-s",
+          "authorAssociation": "MEMBER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2025-05-16T16:44:28Z",
+          "updatedAt": "2025-05-16T16:44:30Z",
+          "comments": [
+            {
+              "originalPosition": 5,
+              "body": "I removed the \"re-authentication\" wording and also added additional sentences:\n\n> ... and creating unnecessary security risks. It also allows the client to obtain access tokens within trust domain B, even if the initial session in trust domain A has finished (e.g. the user has logged out or access got revoked). This paragraph does not relate to the issuance of refresh tokens by the authorization server in trust domain A.",
+              "createdAt": "2025-05-16T16:44:29Z",
+              "updatedAt": "2025-05-16T16:44:31Z"
             }
           ]
         }
