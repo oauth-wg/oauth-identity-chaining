@@ -150,7 +150,7 @@ scope
 : OPTIONAL. Additional scopes to indicate scopes included in the returned JWT authorization grant. See [Claims transcription](#claims-transcription).
 
 resource
-: OPTINAL URI of authorization server for trust domain B.
+: REQUIRED if audience is not set. URI of authorization server for trust domain B.
 
 audience
 : REQUIRED. Well known/logical name of authorization server for trust domain B.
