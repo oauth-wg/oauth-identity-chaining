@@ -66,7 +66,7 @@ This specification defines a mechanism to preserve identity and authorization in
 --- middle
 
 # Introduction
-Applications often require access to resources that are distributed across multiple trust domains where each trust domain has its own OAuth 2.0 authorization server. A request may transverse multiple resource servers in multiple trust domains before completing. All protected resources involved in such a request need to know on whose behalf the request was originally initiated (i.e. the user), what authorization was granted and optionally which other resource servers were called prior to making an authorization decision. This information needs to be preserved, even when a request crosses one or more trust domains. This document refers to this as "chaining" and defines a mechanism for preserving identity and authorization information across domains using a combination of OAuth 2.0 Token Exchange {{RFC8693}} and JSON Web Token (JWT) Profile for OAuth 2.0 Client Authentication and Authorization Grants {{RFC7523}}.
+Applications often require access to resources that are distributed across multiple trust domains where each trust domain has its own OAuth 2.0 authorization server. A request may transverse multiple resource servers in multiple trust domains before completing. All protected resources involved in such a request need to know on whose behalf the request was originally initiated (i.e. the user), what authorization was granted and optionally which other resource servers were called prior to making an authorization decision. This information needs to be preserved, even when a request crosses one or more trust domains. This document refers to this as "chaining" and defines a common pattern for combining OAuth 2.0 Token Exchange {{RFC8693}} and the JSON Web Token (JWT) Profile for OAuth 2.0 Client Authentication and Authorization Grants {{RFC7523}} to access resources across multiple trust domains while preserving identity and authorization information.
 
 ## Requirements Language
 
@@ -292,6 +292,17 @@ Authorization Servers SHOULD follow the The OAuth 2.1 Authorization Framework {{
 ## Authorized use of Subject Token
 The authorization server in trust domain A SHOULD perform client authentication and verify that the client in trust domain A is authorized to present the token used as a subject_token in the token exchange flow before issuing an authorization grant. By doing so, it minimizes the risk of an attacker making a lateral move by using a stolen token from trust domain A to obtain an authorization grant with which to authenticate to an authorization server in trust domain B and request an access token for a resource server in trust domain B.
 
+## Replay of Authorization Grant
+The authorization grant obtained from the Token Exchange process is a bearer token. If an attacker obtains an authorization grant issued to a client in trust domain A, it could replay it to an authorization server in trust domain B to obtain an access token. Implementations SHOULD evaluate this risk and deploy appropriate mitigations based on their threat model and deployment environment. Mitigations include, but are not limited to:
+
+* Issuing short-lived authorization grants to minimize the window of exposure.
+* Limiting authorization grants to a single use to prevent repeated replay.
+* Requiring client authentication to ensure the client presenting the grant is known to the authorization server in trust domain B.
+
+Authorization servers in trust domain B MAY enforce these mitigations.
+
+Implementations and profiles of this specification MAY define additional mitigations tailored to specific use cases and operational contexts.
+
 --- back
 
 # Use cases
@@ -476,6 +487,8 @@ The editors would like to thank Joe Jubinski, Justin Richer, Aaron Parecki, Dean
 \[\[ To be removed from the final specification ]]
 -latest
 * Editorial pass on Appendix for consistency
+* Clarified introduction
+* Added security considerations for unconstrained authorization grants.
 
 -04
 
