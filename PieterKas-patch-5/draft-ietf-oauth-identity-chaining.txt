@@ -5,13 +5,13 @@
 oauth                                                 A. Schwenkschuster
 Internet-Draft                                             P. Kasselmann
 Intended status: Informational                                     SPIRL
-Expires: 26 October 2025                                       K. Burgin
+Expires: 24 November 2025                                      K. Burgin
                                                                    MITRE
                                                               M. Jenkins
                                                                 NSA-CCSS
                                                              B. Campbell
                                                            Ping Identity
-                                                           24 April 2025
+                                                             23 May 2025
 
 
         OAuth Identity and Authorization Chaining Across Domains
@@ -49,7 +49,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 26 October 2025.
+   This Internet-Draft will expire on 24 November 2025.
 
 Copyright Notice
 
@@ -89,6 +89,7 @@ Table of Contents
      4.1.  Client Authentication
      4.2.  Sender Constraining Tokens
      4.3.  Authorized use of Subject Token
+     4.4.  Replay of Authorization Grant
    5.  References
      5.1.  Normative References
      5.2.  Informative References
@@ -120,10 +121,11 @@ Table of Contents
    were called prior to making an authorization decision.  This
    information needs to be preserved, even when a request crosses one or
    more trust domains.  This document refers to this as "chaining" and
-   defines a mechanism for preserving identity and authorization
-   information across domains using a combination of OAuth 2.0 Token
-   Exchange [RFC8693] and JSON Web Token (JWT) Profile for OAuth 2.0
-   Client Authentication and Authorization Grants [RFC7523].
+   defines a common pattern for combining OAuth 2.0 Token Exchange
+   [RFC8693] and the JSON Web Token (JWT) Profile for OAuth 2.0 Client
+   Authentication and Authorization Grants [RFC7523] to access resources
+   across multiple trust domains while preserving identity and
+   authorization information.
 
 1.1.  Requirements Language
 
@@ -489,6 +491,32 @@ grant_type=urn%3Aietf%3Aparams%3Aoauth%3Agrant-type%3Atoken-exchange
    with which to authenticate to an authorization server in trust domain
    B and request an access token for a resource server in trust domain
    B.
+
+4.4.  Replay of Authorization Grant
+
+   The authorization grant obtained from the Token Exchange process is a
+   bearer token.  If an attacker obtains an authorization grant issued
+   to a client in trust domain A, it could replay it to an authorization
+   server in trust domain B to obtain an access token.  Implementations
+   SHOULD evaluate this risk and deploy appropriate mitigations based on
+   their threat model and deployment environment.  Mitigations include,
+   but are not limited to:
+
+   *  Issuing short-lived authorization grants to minimize the window of
+      exposure.
+
+   *  Limiting authorization grants to a single use to prevent repeated
+      replay.
+
+   *  Requiring client authentication to ensure the client presenting
+      the grant is known to the authorization server in trust domain B.
+
+   Authorization servers in trust domain B MAY enforce these
+   mitigations.
+
+   Implementations and profiles of this specification MAY define
+   additional mitigations tailored to specific use cases and operational
+   contexts.
 
 5.  References
 
@@ -922,7 +950,8 @@ Appendix C.  Acknowledgements
 Appendix D.  Document History
 
    [[ To be removed from the final specification ]] -latest * Editorial
-   pass on Appendix for consistency
+   pass on Appendix for consistency * Clarified introduction * Added
+   security considerations for unconstrained authorization grants.
 
    -04
 
