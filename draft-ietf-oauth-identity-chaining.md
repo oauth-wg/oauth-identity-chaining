@@ -153,7 +153,7 @@ resource
 : REQUIRED if audience is not set. URI of authorization server for trust domain B.
 
 audience
-: REQUIRED. Well known/logical name of authorization server for trust domain B.
+: REQUIRED if resource is not set. Well known/logical name of authorization server for trust domain B.
 
 ### Processing rules
 
