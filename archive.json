@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2025-05-18T00:24:30.509666+00:00",
+  "timestamp": "2025-05-25T00:25:23.391581+00:00",
   "repo": "oauth-wg/oauth-identity-chaining",
   "labels": [
     {
@@ -1524,7 +1524,7 @@
       "id": "I_kwDOJubJxM6jcbjk",
       "title": "Review usage of \"one domain\" and \"another domain\"",
       "url": "https://github.com/oauth-wg/oauth-identity-chaining/issues/122",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "PieterKas",
       "authorAssociation": "CONTRIBUTOR",
       "assignees": [
@@ -1533,8 +1533,8 @@
       "labels": [],
       "body": "Editorial review on the use of language of \"one domain\" and \"another domain\" and replacing it with \"Domain A\" and \"Domain B\" for clarity and consistency.",
       "createdAt": "2024-12-16T11:37:33Z",
-      "updatedAt": "2025-04-25T14:35:14Z",
-      "closedAt": null,
+      "updatedAt": "2025-05-23T12:14:03Z",
+      "closedAt": "2025-05-23T12:14:03Z",
       "comments": [
         {
           "author": "kburgin3",
@@ -1678,9 +1678,17 @@
       "labels": [],
       "body": "Consider re-workding and providing motivation for why claims transcription may be required.\n\n1. Should reference be made tot he different trust domains (for consistency)\n2. Should examples or reasons/use cases be provided to explain what this may be required.",
       "createdAt": "2025-02-14T14:12:49Z",
-      "updatedAt": "2025-04-25T14:54:07Z",
+      "updatedAt": "2025-05-23T12:26:38Z",
       "closedAt": null,
-      "comments": []
+      "comments": [
+        {
+          "author": "kburgin3",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "[Added PR #155](https://github.com/oauth-wg/oauth-identity-chaining/pull/155)",
+          "createdAt": "2025-05-23T12:26:38Z",
+          "updatedAt": "2025-05-23T12:26:38Z"
+        }
+      ]
     },
     {
       "number": 139,
@@ -7869,13 +7877,13 @@
       "labels": [],
       "body": "Editorial pass (see issue #122)",
       "createdAt": "2025-04-24T12:59:22Z",
-      "updatedAt": "2025-04-24T13:02:48Z",
+      "updatedAt": "2025-05-23T13:16:53Z",
       "baseRepository": "oauth-wg/oauth-identity-chaining",
       "baseRefName": "main",
-      "baseRefOid": "64373c85ab5f21887d0b8b14e38e75666c5b6c5d",
+      "baseRefOid": "b3dd3eb3a70029bb4a3c9bb30f67a9537685dc7b",
       "headRepository": "oauth-wg/oauth-identity-chaining",
       "headRefName": "PieterKas-patch-5",
-      "headRefOid": "4317ed2f7145b9630b0998cc5a6b8e3af728c703",
+      "headRefOid": "30c120afb4379ec36b177515f07a82574250879e",
       "closedAt": null,
       "mergedAt": null,
       "mergedBy": null,
@@ -7935,9 +7943,9 @@
       "authorAssociation": "MEMBER",
       "assignees": [],
       "labels": [],
-      "body": "",
+      "body": "Resolves #130 ",
       "createdAt": "2025-04-28T16:56:51Z",
-      "updatedAt": "2025-05-16T16:48:10Z",
+      "updatedAt": "2025-05-23T14:46:12Z",
       "baseRepository": "oauth-wg/oauth-identity-chaining",
       "baseRefName": "main",
       "baseRefOid": "b3dd3eb3a70029bb4a3c9bb30f67a9537685dc7b",
@@ -8109,6 +8117,19 @@
               "updatedAt": "2025-05-16T16:44:31Z"
             }
           ]
+        },
+        {
+          "id": "PRR_kwDOJubJxM6qt6Zm",
+          "commit": {
+            "abbreviatedOid": "2c32b5c"
+          },
+          "author": "kburgin3",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2025-05-23T11:54:45Z",
+          "updatedAt": "2025-05-23T11:54:45Z",
+          "comments": []
         }
       ]
     },
@@ -8148,9 +8169,9 @@
       "authorAssociation": "CONTRIBUTOR",
       "assignees": [],
       "labels": [],
-      "body": "",
+      "body": "Resolves #126 ",
       "createdAt": "2025-05-06T15:09:31Z",
-      "updatedAt": "2025-05-09T14:39:19Z",
+      "updatedAt": "2025-05-23T14:48:01Z",
       "baseRepository": "oauth-wg/oauth-identity-chaining",
       "baseRefName": "main",
       "baseRefOid": "b3dd3eb3a70029bb4a3c9bb30f67a9537685dc7b",
@@ -8255,6 +8276,46 @@
               "updatedAt": "2025-05-09T14:39:19Z"
             }
           ]
+        },
+        {
+          "id": "PRR_kwDOJubJxM6qvyBQ",
+          "commit": {
+            "abbreviatedOid": "531ffa5"
+          },
+          "author": "arndt-s",
+          "authorAssociation": "MEMBER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2025-05-23T14:35:13Z",
+          "updatedAt": "2025-05-23T14:35:14Z",
+          "comments": [
+            {
+              "originalPosition": 14,
+              "body": "```suggestion\r\nThe following privacy concerns are considered in this document:\r\n```",
+              "createdAt": "2025-05-23T14:35:13Z",
+              "updatedAt": "2025-05-23T14:35:14Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJubJxM6qv2zk",
+          "commit": {
+            "abbreviatedOid": "531ffa5"
+          },
+          "author": "arndt-s",
+          "authorAssociation": "MEMBER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2025-05-23T14:39:45Z",
+          "updatedAt": "2025-05-23T14:39:45Z",
+          "comments": [
+            {
+              "originalPosition": 24,
+              "body": "Discussed today for Kelley to check if other RFCs talk about logging, if yes we can remove this paragraph.",
+              "createdAt": "2025-05-23T14:39:45Z",
+              "updatedAt": "2025-05-23T14:39:45Z"
+            }
+          ]
         }
       ]
     },
@@ -8268,15 +8329,15 @@
       "authorAssociation": "CONTRIBUTOR",
       "assignees": [],
       "labels": [],
-      "body": "Per Issue #136 ",
+      "body": "Per Issue #136 \r\n\r\nResolves #136 ",
       "createdAt": "2025-05-09T12:46:02Z",
-      "updatedAt": "2025-05-09T15:01:14Z",
+      "updatedAt": "2025-05-23T14:46:45Z",
       "baseRepository": "oauth-wg/oauth-identity-chaining",
       "baseRefName": "main",
       "baseRefOid": "b3dd3eb3a70029bb4a3c9bb30f67a9537685dc7b",
       "headRepository": "oauth-wg/oauth-identity-chaining",
       "headRefName": "kelley/simplify_text_issue136",
-      "headRefOid": "b1c0092cde6bdd0b3669c15a6cb56040fece2710",
+      "headRefOid": "f4ccfb92186e28ac513f16d1076b32c4348d2e38",
       "closedAt": null,
       "mergedAt": null,
       "mergedBy": null,
@@ -8342,6 +8403,46 @@
               "updatedAt": "2025-05-09T15:01:14Z"
             }
           ]
+        },
+        {
+          "id": "PRR_kwDOJubJxM6quJvu",
+          "commit": {
+            "abbreviatedOid": "b1c0092"
+          },
+          "author": "kburgin3",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2025-05-23T12:20:16Z",
+          "updatedAt": "2025-05-23T12:20:16Z",
+          "comments": [
+            {
+              "originalPosition": 9,
+              "body": "Do I need to change anything?",
+              "createdAt": "2025-05-23T12:20:16Z",
+              "updatedAt": "2025-05-23T12:20:17Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJubJxM6qv5gX",
+          "commit": {
+            "abbreviatedOid": "f4ccfb9"
+          },
+          "author": "arndt-s",
+          "authorAssociation": "MEMBER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2025-05-23T14:43:18Z",
+          "updatedAt": "2025-05-23T14:43:18Z",
+          "comments": [
+            {
+              "originalPosition": 5,
+              "body": "```suggestion\r\nThe client in trust domain A uses the JWT authorization grant obtained from the authorization server in trust domain A as an assertion to request an access token from the authorization server in trust domain B, as described in {{RFC7523}}.\r\n```",
+              "createdAt": "2025-05-23T14:43:18Z",
+              "updatedAt": "2025-05-23T14:44:15Z"
+            }
+          ]
         }
       ]
     },
@@ -8355,9 +8456,9 @@
       "authorAssociation": "CONTRIBUTOR",
       "assignees": [],
       "labels": [],
-      "body": "",
+      "body": "Resolves #137",
       "createdAt": "2025-05-09T12:57:36Z",
-      "updatedAt": "2025-05-09T14:37:50Z",
+      "updatedAt": "2025-05-23T14:53:43Z",
       "baseRepository": "oauth-wg/oauth-identity-chaining",
       "baseRefName": "main",
       "baseRefOid": "b3dd3eb3a70029bb4a3c9bb30f67a9537685dc7b",
@@ -8387,6 +8488,98 @@
               "body": "```suggestion\r\nClaims transcription is motivated by the need to propagate user and client identities, and potentially other information, across different trust domains when a request traverses multiple protected resources. This ensures that each resource knows on whose behalf the request is being made, what authorization is granted, and potentially which other resources were previously involved.\r\n```\r\n\r\ntrailing spaces break the build",
               "createdAt": "2025-05-09T14:37:26Z",
               "updatedAt": "2025-05-09T14:37:27Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJubJxM6qvTnx",
+          "commit": {
+            "abbreviatedOid": "0123f4d"
+          },
+          "author": "PieterKas",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2025-05-23T13:56:37Z",
+          "updatedAt": "2025-05-23T13:56:38Z",
+          "comments": [
+            {
+              "originalPosition": 6,
+              "body": "Perhaps distinguish between the tow authorization servers. Describe when authorization servers in domain A would transcribe a claim (from input token to JWT Authorization grant). Then have a separate sentence that describes claims transcription by an authorization server in trust domain B (from authorisation grant to access token).",
+              "createdAt": "2025-05-23T13:56:38Z",
+              "updatedAt": "2025-05-23T13:56:38Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJubJxM6qvUqN",
+          "commit": {
+            "abbreviatedOid": "0123f4d"
+          },
+          "author": "PieterKas",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2025-05-23T13:57:52Z",
+          "updatedAt": "2025-05-23T13:57:52Z",
+          "comments": [
+            {
+              "originalPosition": 4,
+              "body": "propagate user and client identities, authorisation context and potentially other information",
+              "createdAt": "2025-05-23T13:57:52Z",
+              "updatedAt": "2025-05-23T13:57:53Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJubJxM6qvV59",
+          "commit": {
+            "abbreviatedOid": "0123f4d"
+          },
+          "author": "PieterKas",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2025-05-23T13:59:26Z",
+          "updatedAt": "2025-05-23T13:59:27Z",
+          "comments": [
+            {
+              "originalPosition": 19,
+              "body": "How would Domain A's server know what permissions the user needs in domain B? Isn't this something that the authorization server in Domain B is more likely to enforce? Perhaps this example can be reworked to describe claims transcription by the authorization server in Domain B (perhaps making it about identity mapping for example, which I expect to be common).",
+              "createdAt": "2025-05-23T13:59:26Z",
+              "updatedAt": "2025-05-23T14:03:52Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJubJxM6qv_w-",
+          "commit": {
+            "abbreviatedOid": "0123f4d"
+          },
+          "author": "arndt-s",
+          "authorAssociation": "MEMBER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2025-05-23T14:52:10Z",
+          "updatedAt": "2025-05-23T14:53:43Z",
+          "comments": [
+            {
+              "originalPosition": 4,
+              "body": "`when a request traverses multiple protected resources.` - I feel like \"across different trust domains\" is enough. Traversing multiple protected resources struck to me a bit misleading, the protected resource lays at the end of the chain, not in between.",
+              "createdAt": "2025-05-23T14:52:10Z",
+              "updatedAt": "2025-05-23T14:53:43Z"
+            },
+            {
+              "originalPosition": 4,
+              "body": "Similarly \"and potentially which other resources were previously involved.\" - maybe workload is better? or clients? Maybe there's wording in the instruction we can pick up?",
+              "createdAt": "2025-05-23T14:52:50Z",
+              "updatedAt": "2025-05-23T14:53:43Z"
+            },
+            {
+              "originalPosition": 13,
+              "body": "I'm not sure we need use cases if we give examples at the various bullet points above.",
+              "createdAt": "2025-05-23T14:53:40Z",
+              "updatedAt": "2025-05-23T14:53:43Z"
             }
           ]
         }
