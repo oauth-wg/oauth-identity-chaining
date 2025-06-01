@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2025-05-25T00:25:23.391581+00:00",
+  "timestamp": "2025-06-01T00:28:27.146328+00:00",
   "repo": "oauth-wg/oauth-identity-chaining",
   "labels": [
     {
@@ -7945,7 +7945,7 @@
       "labels": [],
       "body": "Resolves #130 ",
       "createdAt": "2025-04-28T16:56:51Z",
-      "updatedAt": "2025-05-23T14:46:12Z",
+      "updatedAt": "2025-05-29T23:02:19Z",
       "baseRepository": "oauth-wg/oauth-identity-chaining",
       "baseRefName": "main",
       "baseRefOid": "b3dd3eb3a70029bb4a3c9bb30f67a9537685dc7b",
@@ -8130,6 +8130,26 @@
           "createdAt": "2025-05-23T11:54:45Z",
           "updatedAt": "2025-05-23T11:54:45Z",
           "comments": []
+        },
+        {
+          "id": "PRR_kwDOJubJxM6rpiFM",
+          "commit": {
+            "abbreviatedOid": "2c32b5c"
+          },
+          "author": "bc-pi",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2025-05-29T23:02:19Z",
+          "updatedAt": "2025-05-29T23:02:19Z",
+          "comments": [
+            {
+              "originalPosition": 5,
+              "body": "I'm not sure I love the text TBH but having said that here are just some editorial suggestions: \r\n```suggestion\r\nThe authorization server in trust domain B SHOULD NOT issue refresh tokens to the client within the scope of this specification. When the access token has expired, clients SHOULD re-submit the original JWT Authorization Grant to obtain a new Access Token. If the JWT Authorization Grant has expired, the client SHOULD request a new grant from the authorization server in trust domain A before presenting it to the authorization server in trust domain B. The issuance of Refresh Tokens by the authorization server in trust domain B introduces a redundant credential requiring additional security measures, and creating unnecessary security risks. It also allows the client to obtain access tokens within trust domain B, even if the initial session in trust domain A has finished (e.g. the user has logged out or access has been revoked). This paragraph does not relate to the issuance of refresh tokens by the authorization server in trust domain A.\r\n```",
+              "createdAt": "2025-05-29T23:02:19Z",
+              "updatedAt": "2025-05-29T23:02:20Z"
+            }
+          ]
         }
       ]
     },
