@@ -330,19 +330,19 @@ This section contains two examples, demonstrating how this specification may be 
 
 ## Resource server acting as client
 
-As part of completing a request, a resource server in Domain A may need to access a resource server in Domain B. This requires the resource server in Domain A to obtain an Access Token from an authorization server in Domain B, which it may then be presented to the resource server in Domain B. A Resource server in Domain A may use the flows described in this specification by assuming the role of a client when attempting to access the resource server in Domain B. Resources servers may act as clients if the following is true:
+As part of completing a request, a resource server in trust domain A may need to access a resource server in trust domain B. This requires the resource server in trust domain A to obtain an Access Token from an authorization server in trust domain B, which it may then present to the resource server in trust domain B. A resource server in trust domain A may use the flows described in this specification by assuming the role of a client when attempting to access the resource server in trust domain B. Resource servers may act as clients if the following is true:
 
-* The resource server has the ability to determine the authorization server of the protected resource outside its trust domain.
-* Authorization Server B is reachable by the resource server and is able to perform the appropriate client authentication (if required).
+* The resource server has the ability to determine the authorization server of the protected resource outside trust domain A.
+* The authorization server in trust domain B is reachable by the resource server in trust domain A and is able to perform the appropriate client authentication (if required).
 
 The flow would look like this:
 
 ~~~
 +-------------+       +---------------+     +-------------+ +---------+
 |Authorization|       |Resource Server|     |Authorization| |Protected|
-|Server       |       |Domain A       |     |Server       | |Resource |
-|Domain A     |       |(acting as     |     |Domain B     | |Domain B |
-| (ASᴬ)       |       | Client; RSᴬ)  |     |(ASᴮ)        | |(RSᴮ)    |
+|Server       |       |Trust Domain A |     |Server       | |Resource |
+|Trust        |       |(acting as     |     |Trust        | |Trust    |
+|Domain A     |       | a client)     |     |Domain B     | |Domain B |
 +-------------+       +---------------+     +-------------+ +---------+
        |                     |                     |             |
        |                     |   (A) request protected resource  |
@@ -375,51 +375,53 @@ The flow would look like this:
 
 The flow contains the following steps:
 
-(A) The resource server of Domain A (RSᴬ) needs to access protected resource in Domain B. It requires an access token to do so which it does not possess. In this example {{I-D.ietf-oauth-resource-metadata}} is used to receive information about the authorization server (ASᴮ) which protects the resource in domain B. This step MAY be skipped if discovery is not needed and other means of discovery MAY be used. The protected resource returns its metadata along with the authorization server information.
+The resource server of trust domain A needs to access protected resource in trust domain B. It requires an access token to do so. In order to obtain the required access token, the resource server in trust domain A will act as a client.
 
-(B) Now, after the resource server RSᴬ has identified the authorization server for Domain B (ASᴮ), RSᴬ requests a JWT authorization grant for ASᴮ from its own authorization server (ASᴬ). This happens via the token exchange protocol.
+(A) The resource server (acting as a client) in trust domain A requests protected resource metadata from the resource server in trust domain B as described in {{I-D.ietf-oauth-resource-metadata}}. It uses the resource metadata to discover information about the authorization server for trust domain B. This step MAY be skipped if discovery is not needed and other means of discovery MAY be used. The protected resource in trust domain B returns its metadata along with the authorization server information in trust domain A.
 
-(C) If successful, ASᴬ returns a JWT authorization grant to RSᴬ.
+(B) Once the resource server (acting as a client) in trust domain A identified the authorization server for trust domain B, it requests a JWT authorization grant for the authorization server in trust domain B from the authorization server in trust domain A (it's own authroization server). This happens via the token exchange protocol (See [Token Exchange](#token-exchange)).
 
-(D) RSᴬ presents the JWT authorization grant to ASᴮ.
+(C) If successful, the authorization server in trust domain A returns a JWT authorization grant to the resource server (acting as client) in trust domain A.
 
-(E) ASᴮ uses claims from the JWT authorization grant to identify the user and its access. If access is granted an access token is returned.
+(D) The resource server (acting as client) in trust domain A presents the JWT authorization grant to the authroization server in trust domain B.
 
-(F) The resource server in Domain A (RSᴬ) uses the access token to access the protected resource at Domain B (RSᴮ).
+(E) The authroization server in trust domain B uses claims from the JWT authorization grant to identify the user and establish additional authorization context. If access is granted, the authroization server in trust domain B returns an access token.
+
+(F) The resource server (acting as a client) in trust domain A uses the access token to access the protected resource in trust Domain B.
 
 ## Authorization server acting as client
 
 Authorization servers may act as clients too. This can be necessary because of following reasons:
 
-* Clients in Domain A may not have knowledge of authorization servers in Domain B.
-* Clients in domain A may not have network access to other authorization servers in Domain B.
-* Strict access control on resources outside the trust domain is required and enforced by authorization servers in Domain B.
-* Authorization servers in domain B require client authentication, but are unable to manage clients outside of Domain B.
+* Clients in trust domain A may not have knowledge of authorization servers in trust domain B.
+* Clients in trust domain A may not have network access to other authorization servers in trust domain B.
+* Strict access control on resources in trust domain B is required. This acccess control is enforced by authorization servers in trust domain B.
+* Authorization servers in trust domain B require client authentication, but are unable to manage clients outside of trust domain B.
 
-Under these conditions, an authorization server in Domain A may obtain an Access Token from an authorization server in Domain B on-behalf-of any client in Domain A. This enables clients in Domain A to access a protected resource server in Domain B. Resource servers in domain A may act as a client to the authorization server in Domain A in order to obtain an access token to access a protected resource in Domain B in order to complete a request.
+Under these conditions, an authorization server in trust domain A may obtain an access token from an authorization server in trust domain B on-behalf-of any client in trust domain A. This enables clients in trust domain A to access a protected resource server in trust domain B. Resource servers in trust domain A may act as a client to the authorization server in trust domain A in order to obtain an access token to access a protected resource in trust domain B in order to complete a request.
 
-The authorization server may use the flows described in this specification by acting first as a client to itself to obtain an assertion grant and then act as a client to the authorization server in domain B to request an access token for protected resources in Domain B. The flow when authorization servers act as a client on-behalf of another client in it's own trust domain would look like this:
+The authorization server in trust domain A may use the flows described in this specification by acting first as a client to itself to obtain an assertion grant and then act as a client to the authorization server in trust domain B to request an access token for a protected resource in trust domain B. The flow when authorization servers act as a client on-behalf of another client in it's own trust domain is shown below:
 
 ~~~
-+--------+          +-------------+         +-------------+ +---------+
-|Client  |          |Authorization|         |Authorization| |Protected|
-|        |          |Server       |         |Server       | |Resource |
-|Domain A|          |Domain A     |         |Domain B     | |Domain B |
-|        |          |(acting as   |         |             | |         |
-|        |          |client)      |         |             | |         |
-+--------+          +-------------+         +-------------+ +---------+
++--------+          +--------------+       +--------------+ +---------+
+|Client  |          |Authorization |       |Authorization | |Protected|
+|Trust   |          |Server        |       |Server        | |Resource |
+|Domain A|          |Trust Domain A|       |Trust Domain B| |Trust    |
+|        |          |(acting as    |       |              | |Domain   |
+|        |          |client)       |       |              | |         |
++--------+          +--------------+       +--------------+ +---------+
     |                      |                       |             |
-    | (A) request or       |                       |             |
-    | exchange token for   |                       |             |
+    | (A) request          |                       |             |
+    | token for            |                       |             |
     | protected resource   |                       |             |
-    | in domain B.         |                       |             |
+    | in trust domain B.   |                       |             |
     | -------------------->|                       |             |
     |                      |                       |             |
     |                      |----+                  |             |
     |                      |    | (B) determine    |             |
     |                      |<---+ authorization    |             |
-    |                      |      server B         |             |
-    |                      |                       |             |
+    |                      |      server trust     |             |
+    |                      |      domain B         |             |
     |                      |                       |             |
     |                      |----+                  |             |
     |                      |    | (C) issue        |             |
@@ -448,29 +450,34 @@ The authorization server may use the flows described in this specification by ac
 
 The flow contains the following steps:
 
-(A) The client in Domain A requests a token for the protected resource in Domain B from the authorization server in Domain A. This specification does not define this step. A profile of Token Exchange {{RFC8693}} may be used.
+(A) The client in trust domain A requests a token for the protected resource in trust domain B from the authorization server in trust domain A. This specification does not define this step. A profile of Token Exchange {{RFC8693}} may be used.
 
-(B) The authorization server of Domain A determines the authorization server of Domain B. This could have been passed by the client, is statically maintained or dynamically resolved.
+(B) The authorization server for trust domain A determines the authorization server for trust domain B. This could have been passed by the client, is statically maintained or dynamically resolved.
 
-(C) Once the authorization server in Domain B is determined, the authorization server in Domain A issues a JWT authorization grant to itself. This reflects to [Token exchange](#token-exchange) of this specification and can be seen as an "internal token exchange".
+(C) Once the authorization server in trust domain B is determined, the authorization server in domain A issues a JWT authorization grant to itself. This reflects to [Token exchange](#token-exchange) of this specification and can be seen as an "internal token exchange".
 
-(D) The authorization server in Domain A acts as a client and presents the JWT authorization grant to the authorization server of Domain B. This presentation happens between the authorization servers. Authorization server A may be required to perform client authentication while doing so. This reflects to [See [Access Token Request](#access-token-request)] of this specification.
+(D) The authorization server in trust domain A acts as a client and presents the JWT authorization grant to the authorization server for trust domain B. This presentation happens between the authorization servers. The authorization server in trust domain A may be required to perform client authentication while doing so. This reflects to [See [Access Token Request](#access-token-request)] of this specification.
 
-(E) The authorization server of Domain B returns an access token for the protected resource in Domain B to the authorization server in Domain A.
+(E) The authorization server of of trust domain B returns an access token for the protected resource in trust domain B to the authorization server (acting as a client) in trust Domain A.
 
-(F) The authorization server of Domain A returns the access token to the client in Domain A.
+(F) The authorization server of trust domain A returns the access token to the client in trust domain A.
 
-(G) The client in Domain A uses the received access token to access the protected resource in Domain B.
+(G) The client in trust domain A uses the received access token to access the protected resource in trust domain B.
 
 ## Delegated Key Binding
 
-In some environments, there is a need to bind the access token issued by the Authorization Server in Domain B to a private key held by the client in Domain A. This is so that the Resource Server in Domain B can verify the proof of possession of the private key of the client in Domain A when the client in Domain A presents the token to the Resource Server in Domain B. Any application in Domain A may act as a client, including applications that are resource servers in Domain A and need to access resource servers in Domain B in order to complete a request.
+In some environments, there is a need to bind the access token issued by the authorization server in trust domain B to a private key held by the client in trust domain A. This is so that the resource server in trust domain B can verify the proof of possession of the private key of the client in trust domain A when the client in trust domain A presents the token to the resource server in trust domain B. Any application in trust domain A may act as a client, including applications that are resource servers in trust domain A and need to access resource servers in trust domain B in order to complete a request.
 
-In the case where the Resource Server in Domain A is acting as the client, the access token may be constrained using existing techniques as described in Security Considerations (add reference once it is merged).
+In the case where the resource server in trust domain A is acting as the client, the access token may be constrained using existing techniques as described in Security Considerations [See [Sender Constraining Tokens](#sender-constraining-tokens)].
 
-The case where the Authorization Server in Domain A is acting as a client is more complicated since the Authorization Server in domain A acting as client does not have access to the key material of the client on whose behalf the access token is being requested.
+The case where the authorization server in trust domain A is acting as a client is more complicated since the authorization server in trust domain A (acting as client) does not have access to the key material of the client on whose behalf the access token is being requested.
 
-However, the trust relationship between the Authorization Server in Domain A and the Authorization Server in Domain B can be leveraged to sender constrain the access token issued by the Authorization Server in domain B. This can be achieved as follows. The Authorization Server in Domain A verifies proof of possession of the key presented by the client. It then conveys the key of the client in Domain A in the token request sent to the Authorization Server in Domain B. This can, for example, be accomplished by including a "requested_cnf" claim that contains the "cnf" claim of the Resource Server in Domain A, in the assertion authorization grant sent to the Authorization Server in Domain B. The Authorization Server in Domain B then includes a "cnf" claim that matches the value of the "requested_cnf" claim in the authorization grant in the returned access token. The client in domain A that presents the access token must use the key matching the "cnf" claim to generate a DPoP proof or setup a MTLS session when presenting the access token to a resource server in Domain B.
+However, the trust relationship between the authorization server in trust domain A and the authorization server in trust domain B can be leveraged to sender constrain the access token issued by the authorization server in trust domain B. This can be achieved as follows.
+
+* The authorization server in trust domain A verifies proof of possession of the key presented by the client.
+* The authorization server in trust domain A then conveys the key of the client in trust domain A in the token request sent to the authorization server in trust domain B. This can, for example, be accomplished by including a "requested_cnf" claim that contains the "cnf" claim of the client in trust domain A, in the assertion authorization grant sent to the authorization server in trust domain B.
+* The authorization server in trust domain B then includes a "cnf" claim that matches the value of the "requested_cnf" claim included in the authorization grant in the returned access token.
+* The client in trust domain A that presents the access token must use the key matching the "cnf" claim to generate a DPoP proof or setup a MTLS session when presenting the access token to a resource server in in trust domain B.
 
 # Acknowledgements {#Acknowledgements}
 The editors would like to thank Joe Jubinski, Justin Richer, Aaron Parecki, Dean H. Saxe, and others (please let us know, if you've been mistakenly omitted) for their valuable input, feedback and general support of this work.
@@ -479,6 +486,7 @@ The editors would like to thank Joe Jubinski, Justin Richer, Aaron Parecki, Dean
 
 \[\[ To be removed from the final specification ]]
 -latest
+* Editorial pass on Appendix for consistency
 * Clarified introduction
 * Added security considerations for unconstrained authorization grants.
 
