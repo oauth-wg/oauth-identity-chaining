@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2025-06-01T00:28:27.146328+00:00",
+  "timestamp": "2025-06-08T00:25:38.644711+00:00",
   "repo": "oauth-wg/oauth-identity-chaining",
   "labels": [
     {
@@ -7870,26 +7870,42 @@
       "id": "PR_kwDOJubJxM6Tw5T6",
       "title": "Editorial pass for consistency with the main document.",
       "url": "https://github.com/oauth-wg/oauth-identity-chaining/pull/149",
-      "state": "OPEN",
+      "state": "MERGED",
       "author": "PieterKas",
       "authorAssociation": "CONTRIBUTOR",
       "assignees": [],
       "labels": [],
       "body": "Editorial pass (see issue #122)",
       "createdAt": "2025-04-24T12:59:22Z",
-      "updatedAt": "2025-05-23T13:16:53Z",
+      "updatedAt": "2025-06-06T04:17:53Z",
       "baseRepository": "oauth-wg/oauth-identity-chaining",
       "baseRefName": "main",
       "baseRefOid": "b3dd3eb3a70029bb4a3c9bb30f67a9537685dc7b",
       "headRepository": "oauth-wg/oauth-identity-chaining",
       "headRefName": "PieterKas-patch-5",
       "headRefOid": "30c120afb4379ec36b177515f07a82574250879e",
-      "closedAt": null,
-      "mergedAt": null,
-      "mergedBy": null,
-      "mergeCommit": null,
+      "closedAt": "2025-06-06T04:17:52Z",
+      "mergedAt": "2025-06-06T04:17:52Z",
+      "mergedBy": "PieterKas",
+      "mergeCommit": {
+        "oid": "818225ac32efb7a7e902f7b33cfc91d9881a9899"
+      },
       "comments": [],
-      "reviews": []
+      "reviews": [
+        {
+          "id": "PRR_kwDOJubJxM6s88Hc",
+          "commit": {
+            "abbreviatedOid": "30c120a"
+          },
+          "author": "kburgin3",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2025-06-05T18:37:35Z",
+          "updatedAt": "2025-06-05T18:37:35Z",
+          "comments": []
+        }
+      ]
     },
     {
       "number": 150,
