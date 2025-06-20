@@ -205,7 +205,7 @@ Cache-Control: no-cache, no-store
 
 The client presents the JWT authorization grant it received from the authorization server in trust domain A as an authorization grant to the authorization server in trust domain B to obtain an access token for a resource server in trust domain B. The authorization grant is presented as defined in the JWT Profile for OAuth 2.0 Client Authentication and Authorization Grants {{RFC7523}}.
 
-### Access Token Request
+### Access Token Request {#access-token-request}
 
 The authorization grant is a JWT bearer token, which the client in trust domain A uses to request an access token from the authorization server in trust domain B as described in the JWT Profile for OAuth 2.0 Client Authentication and Authorization Grants {{RFC7523}}. For the purpose of this specification the following descriptions apply:
 
@@ -280,6 +280,19 @@ The representation of transcribed claims and their format is not defined in this
 This specification does not define any new media types.
 
 It is RECOMMENDED that any profile or deployment-specific implementation adopt explicit typing as defined in JSON Web Token Best Current Practices {{RFC8725}} and define a new media type {{RFC2046}} in the "Media Types" registry {{IANA.MediaTypes}} in the manner described in {{RFC6838}}.
+
+# Privacy Considerations {#Privacy}
+The following privacy concerns are considered in this document:
+
+## Subject identifiers in JWTs:
+OAuth federation involves the exchange of tokens and claims between trust domains. If excessive or unnecessary user data is included in these tokens, it could lead to privacy violations. JWTs contain user info in the "sub" claim which often identifies the user. The use of consistent identifiers (e.g., subject identifiers) across federated domains may enable correlation of user activities, potentially leading to tracking without user consent. This allows an adversary to track the user's behavior, including which services they use, when they log in, and what resources they access. This can be mitigated by authorization servers carefully managing the claims included in tokens during token exchange to avoid exposing sensitive user information unnecessarily. This includes limiting the inclusion of excessive or unnecessary user data in tokens.
+
+## Removal or Hiding of Claims
+Inconsistent privacy policies in Domain A and B:
+Inconsistent user privacy policies within OAuth federation arise from varying interpretations and implementations of the protocol by different Identity Providers (IdPs) and Relying Parties (RPs). This can lead to a lack of transparency and control for users regarding what information they are sharing and with whom. This can be mitigated by ensuring the federation trust relationships between domains are properly established and maintained to protect user privacy. This includes verifying that privacy policies align across trust domains that explain how user data is collected, used, and protected
+
+## Securing Authorization Server Logs and User Data Privacy
+Authorization Server logs for Token Exchange and Assertion Grants usage contain user data. This can be mitigated by establishing a policy for how long user data is retained and to ensure user data is deleted immediately after use or when the user requests its deletion.
 
 # Security Considerations {#Security}
 
