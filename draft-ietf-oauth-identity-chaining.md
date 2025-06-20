@@ -282,7 +282,7 @@ This specification does not define any new media types.
 It is RECOMMENDED that any profile or deployment-specific implementation adopt explicit typing as defined in JSON Web Token Best Current Practices {{RFC8725}} and define a new media type {{RFC2046}} in the "Media Types" registry {{IANA.MediaTypes}} in the manner described in {{RFC6838}}.
 
 # Privacy Considerations {#Privacy}
-The following privacy concerns are considered in theis document:
+The following privacy concerns are considered in this document:
 
 ## Subject identifiers in JWTs:
 OAuth federation involves the exchange of tokens and claims between trust domains. If excessive or unnecessary user data is included in these tokens, it could lead to privacy violations. JWTs contain user info in the "sub" claim which often identifies the user. The use of consistent identifiers (e.g., subject identifiers) across federated domains may enable correlation of user activities, potentially leading to tracking without user consent. This allows an adversary to track the user's behavior, including which services they use, when they log in, and what resources they access. This can be mitigated by authorization servers carefully managing the claims included in tokens during token exchange to avoid exposing sensitive user information unnecessarily. This includes limiting the inclusion of excessive or unnecessary user data in tokens.
