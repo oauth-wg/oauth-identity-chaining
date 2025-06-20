@@ -203,7 +203,7 @@ Cache-Control: no-cache, no-store
 
 ## JWT Authorization Grant
 
-The client in trust domain A uses the JWT bearer token obtained from the authorization server in trust domain A as an authorization grant to request an access token from the authorization server in trust domain B, as described in {{RFC7523}}.
+The client in trust domain A uses the JWT authorization grant obtained from the authorization server in trust domain A as an assertion to request an access token from the authorization server in trust domain B, as described in {{RFC7523}}.
 
 ### Access Token Request
 
