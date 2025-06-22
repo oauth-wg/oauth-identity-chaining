@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2025-06-08T00:25:38.644711+00:00",
+  "timestamp": "2025-06-22T00:26:01.103060+00:00",
   "repo": "oauth-wg/oauth-identity-chaining",
   "labels": [
     {
@@ -1823,6 +1823,30 @@
           "body": "@aaronpk will take the issue.\n\nConclusion from discussion with editors is that the registry and concepts are defined in identity chaining draft and specific values defined in the profiles.\n\nBrian's feedback is that it should be scoped narrowly to these use cases.\n\nSuggests additional wording that lack of a value does not mean it is not supported.",
           "createdAt": "2025-04-25T14:47:49Z",
           "updatedAt": "2025-04-25T14:50:48Z"
+        }
+      ]
+    },
+    {
+      "number": 156,
+      "id": "I_kwDOJubJxM68aeGo",
+      "title": "Targeting domain terminology",
+      "url": "https://github.com/oauth-wg/oauth-identity-chaining/issues/156",
+      "state": "CLOSED",
+      "author": "jsalowey",
+      "authorAssociation": "NONE",
+      "assignees": [],
+      "labels": [],
+      "body": "I find the \"targeting\" domain terminology a bit foreign.  If this is a common term then perhaps it is OK, however I think defining the targeting domain by definition or example would help. ",
+      "createdAt": "2025-06-19T18:16:47Z",
+      "updatedAt": "2025-06-19T18:17:48Z",
+      "closedAt": "2025-06-19T18:17:48Z",
+      "comments": [
+        {
+          "author": "jsalowey",
+          "authorAssociation": "NONE",
+          "body": "Whoops I see that this is already done  with the parenthetical (Domain B) ",
+          "createdAt": "2025-06-19T18:17:48Z",
+          "updatedAt": "2025-06-19T18:17:48Z"
         }
       ]
     }
@@ -8207,13 +8231,13 @@
       "labels": [],
       "body": "Resolves #126 ",
       "createdAt": "2025-05-06T15:09:31Z",
-      "updatedAt": "2025-05-23T14:48:01Z",
+      "updatedAt": "2025-06-20T13:25:55Z",
       "baseRepository": "oauth-wg/oauth-identity-chaining",
       "baseRefName": "main",
       "baseRefOid": "b3dd3eb3a70029bb4a3c9bb30f67a9537685dc7b",
       "headRepository": "oauth-wg/oauth-identity-chaining",
       "headRefName": "kelley/privacy-considerations",
-      "headRefOid": "531ffa5087f372d827bc61f259bc739c02ef2a4a",
+      "headRefOid": "9a9eb263d91b5e97f819d33b92ab5211a2b3de88",
       "closedAt": null,
       "mergedAt": null,
       "mergedBy": null,
@@ -8352,6 +8376,66 @@
               "updatedAt": "2025-05-23T14:39:45Z"
             }
           ]
+        },
+        {
+          "id": "PRR_kwDOJubJxM6vahir",
+          "commit": {
+            "abbreviatedOid": "87f109c"
+          },
+          "author": "kburgin3",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2025-06-19T13:09:34Z",
+          "updatedAt": "2025-06-19T13:09:34Z",
+          "comments": [
+            {
+              "originalPosition": 24,
+              "body": "The only reference to audit logs is in an expired draft https://datatracker.ietf.org/doc/draft-tsitkov-oauth-audit/",
+              "createdAt": "2025-06-19T13:09:34Z",
+              "updatedAt": "2025-06-19T13:09:34Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJubJxM6vmu6U",
+          "commit": {
+            "abbreviatedOid": "87f109c"
+          },
+          "author": "kburgin3",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2025-06-20T13:24:05Z",
+          "updatedAt": "2025-06-20T13:24:05Z",
+          "comments": [
+            {
+              "originalPosition": 24,
+              "body": "I will add",
+              "createdAt": "2025-06-20T13:24:05Z",
+              "updatedAt": "2025-06-20T13:24:05Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJubJxM6vmwxQ",
+          "commit": {
+            "abbreviatedOid": "87f109c"
+          },
+          "author": "kburgin3",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2025-06-20T13:25:55Z",
+          "updatedAt": "2025-06-20T13:25:55Z",
+          "comments": [
+            {
+              "originalPosition": 18,
+              "body": "I will add",
+              "createdAt": "2025-06-20T13:25:55Z",
+              "updatedAt": "2025-06-20T13:25:55Z"
+            }
+          ]
         }
       ]
     },
@@ -8367,13 +8451,13 @@
       "labels": [],
       "body": "Per Issue #136 \r\n\r\nResolves #136 ",
       "createdAt": "2025-05-09T12:46:02Z",
-      "updatedAt": "2025-05-23T14:46:45Z",
+      "updatedAt": "2025-06-20T13:31:36Z",
       "baseRepository": "oauth-wg/oauth-identity-chaining",
       "baseRefName": "main",
       "baseRefOid": "b3dd3eb3a70029bb4a3c9bb30f67a9537685dc7b",
       "headRepository": "oauth-wg/oauth-identity-chaining",
       "headRefName": "kelley/simplify_text_issue136",
-      "headRefOid": "f4ccfb92186e28ac513f16d1076b32c4348d2e38",
+      "headRefOid": "01c45f8abed49978880d5c901d73caa5d2e1f375",
       "closedAt": null,
       "mergedAt": null,
       "mergedBy": null,
@@ -8494,7 +8578,7 @@
       "labels": [],
       "body": "Resolves #137",
       "createdAt": "2025-05-09T12:57:36Z",
-      "updatedAt": "2025-05-23T14:53:43Z",
+      "updatedAt": "2025-06-20T14:56:28Z",
       "baseRepository": "oauth-wg/oauth-identity-chaining",
       "baseRefName": "main",
       "baseRefOid": "b3dd3eb3a70029bb4a3c9bb30f67a9537685dc7b",
@@ -8616,6 +8700,146 @@
               "body": "I'm not sure we need use cases if we give examples at the various bullet points above.",
               "createdAt": "2025-05-23T14:53:40Z",
               "updatedAt": "2025-05-23T14:53:43Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJubJxM6vmxpG",
+          "commit": {
+            "abbreviatedOid": "0123f4d"
+          },
+          "author": "kburgin3",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2025-06-20T13:26:47Z",
+          "updatedAt": "2025-06-20T13:26:47Z",
+          "comments": [
+            {
+              "originalPosition": 6,
+              "body": "I will add",
+              "createdAt": "2025-06-20T13:26:47Z",
+              "updatedAt": "2025-06-20T13:26:47Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJubJxM6vm0b6",
+          "commit": {
+            "abbreviatedOid": "0123f4d"
+          },
+          "author": "kburgin3",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2025-06-20T13:28:57Z",
+          "updatedAt": "2025-06-20T13:28:57Z",
+          "comments": [
+            {
+              "originalPosition": 4,
+              "body": "Clients make sense to me since the resource servers are acting as clients. Thoughts?",
+              "createdAt": "2025-06-20T13:28:57Z",
+              "updatedAt": "2025-06-20T13:28:57Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJubJxM6vm2oC",
+          "commit": {
+            "abbreviatedOid": "0123f4d"
+          },
+          "author": "kburgin3",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2025-06-20T13:30:34Z",
+          "updatedAt": "2025-06-20T13:30:35Z",
+          "comments": [
+            {
+              "originalPosition": 13,
+              "body": "> I'm not sure we need use cases if we give examples at the various bullet points above.\r\n\r\nUse cases were requested at some point. I\u2019m happy to do it either way. Thoughts?",
+              "createdAt": "2025-06-20T13:30:34Z",
+              "updatedAt": "2025-06-20T13:30:35Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJubJxM6vnvp8",
+          "commit": {
+            "abbreviatedOid": "0123f4d"
+          },
+          "author": "PieterKas",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2025-06-20T14:45:02Z",
+          "updatedAt": "2025-06-20T14:45:02Z",
+          "comments": [
+            {
+              "originalPosition": 4,
+              "body": "Based on the conversation and consensus on the call today replace with \"resource servers\" to be consistent with the opening paragraphs.",
+              "createdAt": "2025-06-20T14:45:02Z",
+              "updatedAt": "2025-06-20T14:45:02Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJubJxM6vnzf_",
+          "commit": {
+            "abbreviatedOid": "0123f4d"
+          },
+          "author": "gffletch",
+          "authorAssociation": "NONE",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2025-06-20T14:50:37Z",
+          "updatedAt": "2025-06-20T14:50:37Z",
+          "comments": [
+            {
+              "originalPosition": 15,
+              "body": "I think \"description\" should be \"transcription\"",
+              "createdAt": "2025-06-20T14:50:37Z",
+              "updatedAt": "2025-06-20T14:50:37Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJubJxM6vn3In",
+          "commit": {
+            "abbreviatedOid": "0123f4d"
+          },
+          "author": "PieterKas",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2025-06-20T14:56:01Z",
+          "updatedAt": "2025-06-20T14:56:02Z",
+          "comments": [
+            {
+              "originalPosition": 13,
+              "body": "Consensus on call - move use cases into the body of the text.",
+              "createdAt": "2025-06-20T14:56:01Z",
+              "updatedAt": "2025-06-20T14:56:02Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJubJxM6vn3ZX",
+          "commit": {
+            "abbreviatedOid": "0123f4d"
+          },
+          "author": "PieterKas",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2025-06-20T14:56:28Z",
+          "updatedAt": "2025-06-20T14:56:28Z",
+          "comments": [
+            {
+              "originalPosition": 13,
+              "body": "First use case go to controlling scopes, second use case goes to selective disclosure",
+              "createdAt": "2025-06-20T14:56:28Z",
+              "updatedAt": "2025-06-20T14:56:28Z"
             }
           ]
         }
