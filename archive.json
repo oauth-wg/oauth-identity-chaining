@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2025-06-22T00:26:01.103060+00:00",
+  "timestamp": "2025-06-24T00:23:20.628500+00:00",
   "repo": "oauth-wg/oauth-identity-chaining",
   "labels": [
     {
@@ -8840,6 +8840,53 @@
               "body": "First use case go to controlling scopes, second use case goes to selective disclosure",
               "createdAt": "2025-06-20T14:56:28Z",
               "updatedAt": "2025-06-20T14:56:28Z"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 157,
+      "id": "PR_kwDOJubJxM6bpXtQ",
+      "title": "Regenerate files",
+      "url": "https://github.com/oauth-wg/oauth-identity-chaining/pull/157",
+      "state": "OPEN",
+      "author": "arndt-s",
+      "authorAssociation": "MEMBER",
+      "assignees": [],
+      "labels": [],
+      "body": "Run `make update-files` to clean up supporting files.",
+      "createdAt": "2025-06-23T11:14:35Z",
+      "updatedAt": "2025-06-23T11:16:30Z",
+      "baseRepository": "oauth-wg/oauth-identity-chaining",
+      "baseRefName": "main",
+      "baseRefOid": "818225ac32efb7a7e902f7b33cfc91d9881a9899",
+      "headRepository": "oauth-wg/oauth-identity-chaining",
+      "headRefName": "arndt/regenerate-files",
+      "headRefOid": "2850ef581d732a8d3c2e7abb277a1e41d443403f",
+      "closedAt": null,
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [],
+      "reviews": [
+        {
+          "id": "PRR_kwDOJubJxM6v0If4",
+          "commit": {
+            "abbreviatedOid": "2850ef5"
+          },
+          "author": "copilot-pull-request-reviewer",
+          "authorAssociation": "NONE",
+          "state": "COMMENTED",
+          "body": "## Pull Request Overview\n\nThis PR regenerates supporting files via `make update-files`, updating documentation links, build instructions, and CI workflows.\n\n- Refresh README links and add a CLI usage section  \n- Streamline Makefile submodule handling and add local template symlink support  \n- Bump GitHub Actions versions, add permissions and dispatch inputs, and name artifacts\n\n### Reviewed Changes\n\nCopilot reviewed 7 out of 8 changed files in this pull request and generated 1 comment.\n\n<details>\n<summary>Show a summary per file</summary>\n\n| File                                      | Description                                                       |\r\n| ----------------------------------------- | ----------------------------------------------------------------- |\r\n| README.md                                 | Updated datatracker links, added regenerate tag and CLI usage     |\r\n| Makefile                                  | Removed custom clone arguments, added `ID_TEMPLATE_HOME` symlink  |\r\n| CONTRIBUTING.md                           | Adjusted whitespace                                               |\r\n| .github/workflows/update.yml              | Upgraded `actions/checkout` to v4                                 |\r\n| .github/workflows/publish.yml             | Added `workflow_dispatch` email input, bumped checkout/cache to v4, set `UPLOAD_EMAIL` |\r\n| .github/workflows/ghpages.yml             | Added write permissions, bumped checkout/cache to v4, named artifact `drafts` |\r\n| .github/workflows/archive.yml             | Added write permissions, bumped checkout to v4, named artifact `archive` |\n</details>\n\n\n\n<details>\n<summary>Comments suppressed due to low confidence (2)</summary>\n\n**.github/workflows/publish.yml:11**\n* The `email` input defaults to an empty string but is used as `UPLOAD_EMAIL` downstream; consider marking this input as `required: true` or providing a non-empty default to prevent unintended empty values.\n```\n        default: \"\"\n```\n**Makefile:7**\n* Removing $(CLONE_ARGS) may drop custom submodule clone flags; confirm that any necessary arguments (e.g., depth or tag filters) are no longer needed or note the change in documentation.\n```\n\tgit submodule update --init\n```\n</details>\n\n",
+          "createdAt": "2025-06-23T11:16:30Z",
+          "updatedAt": "2025-06-23T11:16:30Z",
+          "comments": [
+            {
+              "originalPosition": 10,
+              "body": "The symlink operation will fail if $(LIBDIR) already exists; consider checking for or removing an existing directory/symlink before linking, or use `ln -sf` to force overwrite.\n```suggestion\n\tln -sf \"$(ID_TEMPLATE_HOME)\" $(LIBDIR)\n```",
+              "createdAt": "2025-06-23T11:16:30Z",
+              "updatedAt": "2025-06-23T11:16:31Z"
             }
           ]
         }
