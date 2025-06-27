@@ -89,7 +89,8 @@ Table of Contents
      4.1.  Client Authentication
      4.2.  Sender Constraining Tokens
      4.3.  Authorized use of Subject Token
-     4.4.  Replay of Authorization Grant
+     4.4.  Refresh Tokens
+     4.5.  Replay of Authorization Grant
    5.  References
      5.1.  Normative References
      5.2.  Informative References
@@ -492,7 +493,25 @@ grant_type=urn%3Aietf%3Aparams%3Aoauth%3Agrant-type%3Atoken-exchange
    B and request an access token for a resource server in trust domain
    B.
 
-4.4.  Replay of Authorization Grant
+4.4.  Refresh Tokens
+
+   The authorization server in trust domain B SHOULD NOT issue refresh
+   tokens to the client within the scope of this specification.  When
+   the access token has expired, clients SHOULD re-submit the original
+   JWT Authorization Grant to obtain a new Access Token.  If the JWT
+   Authorization Grant has expired, the client SHOULD request a new
+   grant from the authorization server in trust domain A before
+   presenting it to the authorization server in trust domain B.  The
+   issuance of Refresh Tokens by the authorization server in trust
+   domain B introduces a redundant credential requiring additional
+   security measures, and creating unnecessary security risks.  It also
+   allows the client to obtain access tokens within trust domain B, even
+   if the initial session in trust domain A has finished (e.g. the user
+   has logged out or access has been revoked).  This paragraph does not
+   relate to the issuance of refresh tokens by the authorization server
+   in trust domain A.
+
+4.5.  Replay of Authorization Grant
 
    The authorization grant obtained from the Token Exchange process is a
    bearer token.  If an attacker obtains an authorization grant issued
