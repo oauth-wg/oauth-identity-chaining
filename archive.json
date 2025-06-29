@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2025-06-24T00:23:20.628500+00:00",
+  "timestamp": "2025-06-29T00:26:26.763379+00:00",
   "repo": "oauth-wg/oauth-identity-chaining",
   "labels": [
     {
@@ -1615,7 +1615,7 @@
       "id": "I_kwDOJubJxM6neYFC",
       "title": "Add security consideration on refresh tokens?",
       "url": "https://github.com/oauth-wg/oauth-identity-chaining/issues/130",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "PieterKas",
       "authorAssociation": "CONTRIBUTOR",
       "assignees": [
@@ -1624,8 +1624,8 @@
       "labels": [],
       "body": "Based on discussion with Brian - should we give guidance on refresh tokens?\n\nWe should only add anything if there is new information. Currently it is not clear that we should. RFC 7521 already defines this. \n\n\"Implementation of this specification should treat refresh tokens in accordance with RFC 7521\"",
       "createdAt": "2025-01-24T15:44:00Z",
-      "updatedAt": "2025-04-25T15:06:48Z",
-      "closedAt": null,
+      "updatedAt": "2025-06-27T14:55:31Z",
+      "closedAt": "2025-06-27T14:55:31Z",
       "comments": []
     },
     {
@@ -7978,24 +7978,26 @@
       "id": "PR_kwDOJubJxM6UM5KS",
       "title": "Add refresh token consideration",
       "url": "https://github.com/oauth-wg/oauth-identity-chaining/pull/151",
-      "state": "OPEN",
+      "state": "MERGED",
       "author": "arndt-s",
       "authorAssociation": "MEMBER",
       "assignees": [],
       "labels": [],
       "body": "Resolves #130 ",
       "createdAt": "2025-04-28T16:56:51Z",
-      "updatedAt": "2025-05-29T23:02:19Z",
+      "updatedAt": "2025-06-27T14:55:31Z",
       "baseRepository": "oauth-wg/oauth-identity-chaining",
       "baseRefName": "main",
-      "baseRefOid": "b3dd3eb3a70029bb4a3c9bb30f67a9537685dc7b",
+      "baseRefOid": "b5d2c3af0969d8f88ee5207955c35352f3fed0a8",
       "headRepository": "oauth-wg/oauth-identity-chaining",
       "headRefName": "arndt/refresh-token-security-consideration",
-      "headRefOid": "2c32b5c1cae3df7af196755cbc53cf08ed74c0ee",
-      "closedAt": null,
-      "mergedAt": null,
-      "mergedBy": null,
-      "mergeCommit": null,
+      "headRefOid": "8610c0907a1b435fa5bff3c3118266aea197cfad",
+      "closedAt": "2025-06-27T14:55:30Z",
+      "mergedAt": "2025-06-27T14:55:30Z",
+      "mergedBy": "arndt-s",
+      "mergeCommit": {
+        "oid": "19297eaea207db3e63f963f555b33e8d7580cab6"
+      },
       "comments": [],
       "reviews": [
         {
@@ -8190,6 +8192,19 @@
               "updatedAt": "2025-05-29T23:02:20Z"
             }
           ]
+        },
+        {
+          "id": "PRR_kwDOJubJxM6w1xbK",
+          "commit": {
+            "abbreviatedOid": "8610c09"
+          },
+          "author": "aaronpk",
+          "authorAssociation": "MEMBER",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2025-06-27T14:52:44Z",
+          "updatedAt": "2025-06-27T14:53:59Z",
+          "comments": []
         }
       ]
     },
@@ -8578,13 +8593,13 @@
       "labels": [],
       "body": "Resolves #137",
       "createdAt": "2025-05-09T12:57:36Z",
-      "updatedAt": "2025-06-20T14:56:28Z",
+      "updatedAt": "2025-06-27T13:13:11Z",
       "baseRepository": "oauth-wg/oauth-identity-chaining",
       "baseRefName": "main",
       "baseRefOid": "b3dd3eb3a70029bb4a3c9bb30f67a9537685dc7b",
       "headRepository": "oauth-wg/oauth-identity-chaining",
       "headRefName": "kelley/claims_transcription_issue137",
-      "headRefOid": "0123f4d8f3769a6b87eaaf9fdb95f87bfae2e238",
+      "headRefOid": "f3586ded57e4e5666c0ac0b050f650cd5bce9637",
       "closedAt": null,
       "mergedAt": null,
       "mergedBy": null,
@@ -8850,24 +8865,26 @@
       "id": "PR_kwDOJubJxM6bpXtQ",
       "title": "Regenerate files",
       "url": "https://github.com/oauth-wg/oauth-identity-chaining/pull/157",
-      "state": "OPEN",
+      "state": "MERGED",
       "author": "arndt-s",
       "authorAssociation": "MEMBER",
       "assignees": [],
       "labels": [],
       "body": "Run `make update-files` to clean up supporting files.",
       "createdAt": "2025-06-23T11:14:35Z",
-      "updatedAt": "2025-06-23T11:16:30Z",
+      "updatedAt": "2025-06-27T14:53:14Z",
       "baseRepository": "oauth-wg/oauth-identity-chaining",
       "baseRefName": "main",
       "baseRefOid": "818225ac32efb7a7e902f7b33cfc91d9881a9899",
       "headRepository": "oauth-wg/oauth-identity-chaining",
       "headRefName": "arndt/regenerate-files",
       "headRefOid": "2850ef581d732a8d3c2e7abb277a1e41d443403f",
-      "closedAt": null,
-      "mergedAt": null,
-      "mergedBy": null,
-      "mergeCommit": null,
+      "closedAt": "2025-06-27T14:53:13Z",
+      "mergedAt": "2025-06-27T14:53:13Z",
+      "mergedBy": "PieterKas",
+      "mergeCommit": {
+        "oid": "b5d2c3af0969d8f88ee5207955c35352f3fed0a8"
+      },
       "comments": [],
       "reviews": [
         {
@@ -8889,6 +8906,19 @@
               "updatedAt": "2025-06-23T11:16:31Z"
             }
           ]
+        },
+        {
+          "id": "PRR_kwDOJubJxM6w1xvW",
+          "commit": {
+            "abbreviatedOid": "2850ef5"
+          },
+          "author": "PieterKas",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2025-06-27T14:53:04Z",
+          "updatedAt": "2025-06-27T14:53:04Z",
+          "comments": []
         }
       ]
     }
