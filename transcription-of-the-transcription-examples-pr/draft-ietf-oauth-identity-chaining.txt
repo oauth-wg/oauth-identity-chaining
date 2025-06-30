@@ -1005,6 +1005,8 @@ Appendix D.  Document History
 
    *  Updated some contributors' affiliation and contact information
 
+   *  Added examples in claims transcription text
+
    -04
 
    *  Clarified diagrams and description of authorization server acting
