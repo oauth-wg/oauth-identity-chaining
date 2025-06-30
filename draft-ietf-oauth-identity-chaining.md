@@ -503,6 +503,7 @@ The editors would like to thank Joe Jubinski, Justin Richer, Aaron Parecki, Dean
 * Clarified introduction
 * Added security considerations for unconstrained authorization grants.
 * Updated some contributors' affiliation and contact information
+* Added examples in claims transcription text
 
 -04
 
