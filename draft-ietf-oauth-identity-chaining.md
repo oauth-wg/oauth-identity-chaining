@@ -34,11 +34,11 @@ contributor:
   org: SGNL
   email: atuls@sgnl.ai
 - name: George Fletcher
-  org: Capital One
-  email: george.fletcher@capitalone.com
+  org: Practical Identity LLC
+  email: gffletch@gmail.com
 - name: Rifaat Shekh-Yusef
-  org: EY
-  email: rifaat.shekh-yusef@ca.ey.com
+  org: Ciena
+  email: rifaat.s.ietf@gmail.com
 - name: Hannes Tschofenig
   email: hannes.tschofenig@gmx.net
 
@@ -488,10 +488,13 @@ The editors would like to thank Joe Jubinski, Justin Richer, Aaron Parecki, Dean
 # Document History
 
 \[\[ To be removed from the final specification ]]
--latest
+
+-05
+
 * Editorial pass on Appendix for consistency
 * Clarified introduction
 * Added security considerations for unconstrained authorization grants.
+* Updated some contributors' affiliation and contact information
 
 -04
 
