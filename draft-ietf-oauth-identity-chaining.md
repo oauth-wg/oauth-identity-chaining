@@ -265,11 +265,19 @@ Cache-Control: no-cache, no-store
 
 ## Claims transcription
 
+Claims transcription is motivated by the need to propagate user and client identities, authorization context, and other relevant information across trust boundaries.
+This enables the various entities involved to determine on whose behalf the request is being made, what authorization has been granted, and, potentially, which other resource servers were previously involveded.
+
 Authorization servers MAY transcribe claims when either producing JWT authorization grants in the token exchange flow or access tokens in the assertion flow. Transcription of claims may be required for the following reasons:
 
 * **Transcribing the subject identifier**: The subject identifier can differ between the parties involved. For example, a user is identified in trust domain A as "johndoe@a.org" but in trust domain B they are identified as "doe.john@b.org". The mapping from one identifier to the other MAY either happen in the token exchange step and the updated identifier is reflected in the returned JWT authorization grant or in the assertion step where the updated identifier would be reflected in the access token. To support this both authorization servers MAY add, change or remove claims as described above.
 * **Selective disclosure**: Authorization servers MAY remove or hide certain claims due to privacy requirements or reduced trust towards the targeting trust domain.
+One example is a financial institution that integrates with a third-party payment gateway.
+Domain A (the financial institution) includes detailed claims such as "account type: premium" and "transaction limit: $10,000" in the JWT authorization grant.
+However, domain B (the payment gateway) only needs claims like "transaction limit" for its access control policies. Domain A transcribes the claims to exclude unnecessary information, ensuring that domain B receives only the claims relevant to its operations.
 * **Controlling scope**: Clients MAY use the scope parameter to control transcribed claims (e.g. downscoping). Authorization Servers SHOULD verify that the requested scopes are not higher privileged than the scopes of the presented subject_token.
+For example, a cloud-based development platform that allows developers to access APIs across multiple trust domains where a developer in domain A requests access to an API in Domain B but only needs limited permissions, such as "read-only" access.
+The authorization server in Domain A transcribes the claims in the JWT authorization grant to reflect the downscoped permissions, removing higher-privileged claims like "write" or "admin." This ensures that the access token issued by domain B aligns with the developer's intended scope of access.
 * **Including JWT authorization grant claims**: The authorization server in trust domain B which is performing the assertion flow MAY leverage claims from the JWT authorization grant presented by the client in trust doman A and include them in the returned access token. The populated claims SHOULD be namespaced or validated to prevent the injection of invalid claims.
 
 The representation of transcribed claims and their format is not defined in this specification.
