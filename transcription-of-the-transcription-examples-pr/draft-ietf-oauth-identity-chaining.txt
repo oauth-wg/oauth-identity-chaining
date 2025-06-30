@@ -992,9 +992,18 @@ Appendix C.  Acknowledgements
 
 Appendix D.  Document History
 
-   [[ To be removed from the final specification ]] -latest * Editorial
-   pass on Appendix for consistency * Clarified introduction * Added
-   security considerations for unconstrained authorization grants.
+   [[ To be removed from the final specification ]]
+
+   -05
+
+   *  Editorial pass on Appendix for consistency
+
+   *  Clarified introduction
+
+   *  Added security considerations for unconstrained authorization
+      grants.
+
+   *  Updated some contributors' affiliation and contact information
 
    -04
 
@@ -1055,13 +1064,13 @@ Contributors
 
 
    George Fletcher
-   Capital One
-   Email: george.fletcher@capitalone.com
+   Practical Identity LLC
+   Email: gffletch@gmail.com
 
 
    Rifaat Shekh-Yusef
-   EY
-   Email: rifaat.shekh-yusef@ca.ey.com
+   Ciena
+   Email: rifaat.s.ietf@gmail.com
 
 
    Hannes Tschofenig
