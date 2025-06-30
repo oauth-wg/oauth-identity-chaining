@@ -5,13 +5,13 @@
 oauth                                                 A. Schwenkschuster
 Internet-Draft                                             P. Kasselmann
 Intended status: Informational                                     SPIRL
-Expires: 29 December 2025                                      K. Burgin
+Expires: 1 January 2026                                        K. Burgin
                                                                    MITRE
                                                               M. Jenkins
                                                                 NSA-CCSS
                                                              B. Campbell
                                                            Ping Identity
-                                                            27 June 2025
+                                                            30 June 2025
 
 
         OAuth Identity and Authorization Chaining Across Domains
@@ -49,7 +49,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 29 December 2025.
+   This Internet-Draft will expire on 1 January 2026.
 
 Copyright Notice
 
@@ -968,9 +968,18 @@ Appendix C.  Acknowledgements
 
 Appendix D.  Document History
 
-   [[ To be removed from the final specification ]] -latest * Editorial
-   pass on Appendix for consistency * Clarified introduction * Added
-   security considerations for unconstrained authorization grants.
+   [[ To be removed from the final specification ]]
+
+   -05
+
+   *  Editorial pass on Appendix for consistency
+
+   *  Clarified introduction
+
+   *  Added security considerations for unconstrained authorization
+      grants.
+
+   *  Updated some contributors' affiliation and contact information
 
    -04
 
@@ -1031,13 +1040,13 @@ Contributors
 
 
    George Fletcher
-   Capital One
-   Email: george.fletcher@capitalone.com
+   Practical Identity LLC
+   Email: gffletch@gmail.com
 
 
    Rifaat Shekh-Yusef
-   EY
-   Email: rifaat.shekh-yusef@ca.ey.com
+   Ciena
+   Email: rifaat.s.ietf@gmail.com
 
 
    Hannes Tschofenig
