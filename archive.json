@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2025-06-29T00:26:26.763379+00:00",
+  "timestamp": "2025-07-01T00:27:03.490260+00:00",
   "repo": "oauth-wg/oauth-identity-chaining",
   "labels": [
     {
@@ -8459,25 +8459,33 @@
       "id": "PR_kwDOJubJxM6VlNuE",
       "title": "Simplified text in Section 2.4",
       "url": "https://github.com/oauth-wg/oauth-identity-chaining/pull/154",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "kburgin3",
       "authorAssociation": "CONTRIBUTOR",
       "assignees": [],
       "labels": [],
       "body": "Per Issue #136 \r\n\r\nResolves #136 ",
       "createdAt": "2025-05-09T12:46:02Z",
-      "updatedAt": "2025-06-20T13:31:36Z",
+      "updatedAt": "2025-06-30T21:53:26Z",
       "baseRepository": "oauth-wg/oauth-identity-chaining",
       "baseRefName": "main",
       "baseRefOid": "b3dd3eb3a70029bb4a3c9bb30f67a9537685dc7b",
       "headRepository": "oauth-wg/oauth-identity-chaining",
       "headRefName": "kelley/simplify_text_issue136",
       "headRefOid": "01c45f8abed49978880d5c901d73caa5d2e1f375",
-      "closedAt": null,
+      "closedAt": "2025-06-30T21:53:26Z",
       "mergedAt": null,
       "mergedBy": null,
       "mergeCommit": null,
-      "comments": [],
+      "comments": [
+        {
+          "author": "bc-pi",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "please see https://github.com/oauth-wg/oauth-identity-chaining/pull/160 for an attempt at this that hopefully makes the tooling more happy",
+          "createdAt": "2025-06-30T21:53:26Z",
+          "updatedAt": "2025-06-30T21:53:26Z"
+        }
+      ],
       "reviews": [
         {
           "id": "PRR_kwDOJubJxM6omif8",
@@ -8586,25 +8594,40 @@
       "id": "PR_kwDOJubJxM6VlT2j",
       "title": "Added claims transcription examples",
       "url": "https://github.com/oauth-wg/oauth-identity-chaining/pull/155",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "kburgin3",
       "authorAssociation": "CONTRIBUTOR",
       "assignees": [],
       "labels": [],
       "body": "Resolves #137",
       "createdAt": "2025-05-09T12:57:36Z",
-      "updatedAt": "2025-06-27T13:13:11Z",
+      "updatedAt": "2025-06-30T21:24:17Z",
       "baseRepository": "oauth-wg/oauth-identity-chaining",
       "baseRefName": "main",
       "baseRefOid": "b3dd3eb3a70029bb4a3c9bb30f67a9537685dc7b",
       "headRepository": "oauth-wg/oauth-identity-chaining",
       "headRefName": "kelley/claims_transcription_issue137",
-      "headRefOid": "f3586ded57e4e5666c0ac0b050f650cd5bce9637",
-      "closedAt": null,
+      "headRefOid": "8268f8e5701df985afa911a337dbb170e605e9a5",
+      "closedAt": "2025-06-30T21:24:17Z",
       "mergedAt": null,
       "mergedBy": null,
       "mergeCommit": null,
-      "comments": [],
+      "comments": [
+        {
+          "author": "bc-pi",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "please see #158 for an attempt at this that hopefully makes the tooling more happy ",
+          "createdAt": "2025-06-30T21:18:51Z",
+          "updatedAt": "2025-06-30T21:18:51Z"
+        },
+        {
+          "author": "bc-pi",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "overcome by https://github.com/oauth-wg/oauth-identity-chaining/pull/158",
+          "createdAt": "2025-06-30T21:24:17Z",
+          "updatedAt": "2025-06-30T21:24:17Z"
+        }
+      ],
       "reviews": [
         {
           "id": "PRR_kwDOJubJxM6omPh9",
@@ -8857,6 +8880,38 @@
               "updatedAt": "2025-06-20T14:56:28Z"
             }
           ]
+        },
+        {
+          "id": "PRR_kwDOJubJxM6xHpva",
+          "commit": {
+            "abbreviatedOid": "f3586de"
+          },
+          "author": "bc-pi",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "COMMENTED",
+          "body": "attempt to remove trailing spaces ",
+          "createdAt": "2025-06-30T14:58:28Z",
+          "updatedAt": "2025-06-30T14:59:50Z",
+          "comments": [
+            {
+              "originalPosition": 11,
+              "body": "```suggestion\r\n* **Selective disclosure**: Authorization servers MAY remove or hide certain claims due to privacy requirements or reduced trust towards the targeting trust domain.\r\n```",
+              "createdAt": "2025-06-30T14:58:28Z",
+              "updatedAt": "2025-06-30T14:59:50Z"
+            },
+            {
+              "originalPosition": 12,
+              "body": "```suggestion\r\nExample: Granular Access Control for Partner Integration:\r\n```",
+              "createdAt": "2025-06-30T14:58:40Z",
+              "updatedAt": "2025-06-30T14:59:50Z"
+            },
+            {
+              "originalPosition": 14,
+              "body": "```suggestion\r\n* **Controlling scope**: Clients MAY use the scope parameter to control transcribed claims (e.g. downscoping). Authorization Servers SHOULD verify that the requested scopes are not higher privileged than the scopes of the presented subject_token.\r\n```",
+              "createdAt": "2025-06-30T14:59:00Z",
+              "updatedAt": "2025-06-30T14:59:50Z"
+            }
+          ]
         }
       ]
     },
@@ -8921,6 +8976,112 @@
           "comments": []
         }
       ]
+    },
+    {
+      "number": 158,
+      "id": "PR_kwDOJubJxM6cxNEq",
+      "title": "add claims transcription examples (attempt 2)",
+      "url": "https://github.com/oauth-wg/oauth-identity-chaining/pull/158",
+      "state": "OPEN",
+      "author": "bc-pi",
+      "authorAssociation": "CONTRIBUTOR",
+      "assignees": [],
+      "labels": [],
+      "body": "attempt to copy and fixup the content from PR #155 into a new one to hopefully workaround tooling issues\r\n\r\nResolves https://github.com/oauth-wg/oauth-identity-chaining/issues/137",
+      "createdAt": "2025-06-30T21:09:09Z",
+      "updatedAt": "2025-06-30T21:42:57Z",
+      "baseRepository": "oauth-wg/oauth-identity-chaining",
+      "baseRefName": "main",
+      "baseRefOid": "6190051e64459714d5c994b0ed37dd7c7e1e154b",
+      "headRepository": "oauth-wg/oauth-identity-chaining",
+      "headRefName": "transcription-of-the-transcription-examples-pr",
+      "headRefOid": "bf68c6a6033ef9a63b3b22e72e494b1c948bc3a8",
+      "closedAt": null,
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [],
+      "reviews": []
+    },
+    {
+      "number": 159,
+      "id": "PR_kwDOJubJxM6cxbUE",
+      "title": "Updated some contributors' affiliation and contact information",
+      "url": "https://github.com/oauth-wg/oauth-identity-chaining/pull/159",
+      "state": "MERGED",
+      "author": "bc-pi",
+      "authorAssociation": "CONTRIBUTOR",
+      "assignees": [],
+      "labels": [],
+      "body": "namely @rifaat-shekh-yusef and @gffletch ",
+      "createdAt": "2025-06-30T21:37:18Z",
+      "updatedAt": "2025-06-30T21:40:14Z",
+      "baseRepository": "oauth-wg/oauth-identity-chaining",
+      "baseRefName": "main",
+      "baseRefOid": "19297eaea207db3e63f963f555b33e8d7580cab6",
+      "headRepository": "oauth-wg/oauth-identity-chaining",
+      "headRefName": "housekeeping",
+      "headRefOid": "2d11460fc6131d46b22e25d1de181744dc242b97",
+      "closedAt": "2025-06-30T21:40:13Z",
+      "mergedAt": "2025-06-30T21:40:13Z",
+      "mergedBy": "bc-pi",
+      "mergeCommit": {
+        "oid": "6190051e64459714d5c994b0ed37dd7c7e1e154b"
+      },
+      "comments": [],
+      "reviews": []
+    },
+    {
+      "number": 160,
+      "id": "PR_kwDOJubJxM6cxhsV",
+      "title": "Simplify some text in the JWT Authorization Grant section (try 2)",
+      "url": "https://github.com/oauth-wg/oauth-identity-chaining/pull/160",
+      "state": "OPEN",
+      "author": "bc-pi",
+      "authorAssociation": "CONTRIBUTOR",
+      "assignees": [],
+      "labels": [],
+      "body": "attempt to copy and fixup the content from PR https://github.com/oauth-wg/oauth-identity-chaining/pull/154 into a new one to hopefully workaround tooling issues\r\n\r\nResolves https://github.com/oauth-wg/oauth-identity-chaining/issues/136",
+      "createdAt": "2025-06-30T21:51:57Z",
+      "updatedAt": "2025-06-30T23:17:09Z",
+      "baseRepository": "oauth-wg/oauth-identity-chaining",
+      "baseRefName": "main",
+      "baseRefOid": "6190051e64459714d5c994b0ed37dd7c7e1e154b",
+      "headRepository": "oauth-wg/oauth-identity-chaining",
+      "headRefName": "simplify-authz-grant-text",
+      "headRefOid": "5109d6666121ed95e423abcb5b38efb2b0c2c5ef",
+      "closedAt": null,
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [],
+      "reviews": []
+    },
+    {
+      "number": 161,
+      "id": "PR_kwDOJubJxM6cyLNx",
+      "title": "Fix some toolchain complaints and other nitpicks",
+      "url": "https://github.com/oauth-wg/oauth-identity-chaining/pull/161",
+      "state": "OPEN",
+      "author": "bc-pi",
+      "authorAssociation": "CONTRIBUTOR",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2025-06-30T23:16:35Z",
+      "updatedAt": "2025-06-30T23:16:35Z",
+      "baseRepository": "oauth-wg/oauth-identity-chaining",
+      "baseRefName": "main",
+      "baseRefOid": "6190051e64459714d5c994b0ed37dd7c7e1e154b",
+      "headRepository": "oauth-wg/oauth-identity-chaining",
+      "headRefName": "more-housekeeping",
+      "headRefOid": "44f14dff4c4ce34d0f3d6d779db6945faefe1c92",
+      "closedAt": null,
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [],
+      "reviews": []
     }
   ]
 }
