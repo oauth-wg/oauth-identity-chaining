@@ -41,6 +41,9 @@ contributor:
   email: rifaat.s.ietf@gmail.com
 - name: Hannes Tschofenig
   email: hannes.tschofenig@gmx.net
+- name: Aaron Parecki
+  org: Okta
+  email: aaron@parecki.com
 
 normative:
   RFC6749: # OAuth 2.0 Authorization Framework
@@ -485,7 +488,7 @@ However, the trust relationship between the authorization server in trust domain
 * The client in trust domain A that presents the access token must use the key matching the "cnf" claim to generate a DPoP proof or setup a MTLS session when presenting the access token to a resource server in in trust domain B.
 
 # Acknowledgements {#Acknowledgements}
-The editors would like to thank Joe Jubinski, Justin Richer, Aaron Parecki, Dean H. Saxe, and others (please let us know, if you've been mistakenly omitted) for their valuable input, feedback and general support of this work.
+The editors would like to thank Joe Jubinski, Justin Richer, Dean H. Saxe, and others (please let us know, if you've been mistakenly omitted) for their valuable input, feedback and general support of this work.
 
 # Document History
 
@@ -498,6 +501,7 @@ The editors would like to thank Joe Jubinski, Justin Richer, Aaron Parecki, Dean
 * Added security considerations for unconstrained authorization grants.
 * Updated some contributors' affiliation and contact information
 * Fix some toolchain complaints and other nitpicks
+* Move Mr. Parecki from acknowledgements to contributors in acknowledgement of his contributions
 
 -04
 
