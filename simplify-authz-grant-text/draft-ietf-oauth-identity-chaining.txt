@@ -5,13 +5,13 @@
 oauth                                                 A. Schwenkschuster
 Internet-Draft                                             P. Kasselmann
 Intended status: Informational                                     SPIRL
-Expires: 1 January 2026                                        K. Burgin
+Expires: 2 January 2026                                        K. Burgin
                                                                    MITRE
                                                               M. Jenkins
                                                                 NSA-CCSS
                                                              B. Campbell
                                                            Ping Identity
-                                                            30 June 2025
+                                                             1 July 2025
 
 
         OAuth Identity and Authorization Chaining Across Domains
@@ -49,7 +49,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 1 January 2026.
+   This Internet-Draft will expire on 2 January 2026.
 
 Copyright Notice
 
@@ -460,7 +460,7 @@ grant_type=urn%3Aietf%3Aparams%3Aoauth%3Agrant-type%3Atoken-exchange
    It is RECOMMENDED that any profile or deployment-specific
    implementation adopt explicit typing as defined in JSON Web Token
    Best Current Practices [RFC8725] and define a new media type
-   [RFC2046] in the "Media Types" registry [IANA.MediaTypes] in the
+   [RFC2046] in the "Media Types" registry [IANA-MediaTypes] in the
    manner described in [RFC6838].
 
 4.  Security Considerations
@@ -564,19 +564,6 @@ grant_type=urn%3Aietf%3Aparams%3Aoauth%3Agrant-type%3Atoken-exchange
               DOI 10.17487/RFC8725, February 2020,
               <https://www.rfc-editor.org/rfc/rfc8725>.
 
-   [RFC2046]  Freed, N. and N. Borenstein, "Multipurpose Internet Mail
-              Extensions (MIME) Part Two: Media Types", RFC 2046,
-              DOI 10.17487/RFC2046, November 1996,
-              <https://www.rfc-editor.org/rfc/rfc2046>.
-
-   [RFC6838]  Freed, N., Klensin, J., and T. Hansen, "Media Type
-              Specifications and Registration Procedures", BCP 13,
-              RFC 6838, DOI 10.17487/RFC6838, January 2013,
-              <https://www.rfc-editor.org/rfc/rfc6838>.
-
-   [IANA.MediaTypes]
-              "*** BROKEN REFERENCE ***".
-
    [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
               Requirement Levels", BCP 14, RFC 2119,
               DOI 10.17487/RFC2119, March 1997,
@@ -609,6 +596,20 @@ grant_type=urn%3Aietf%3Aparams%3Aoauth%3Agrant-type%3Atoken-exchange
               Draft, draft-ietf-oauth-v2-1-13, 28 May 2025,
               <https://datatracker.ietf.org/doc/html/draft-ietf-oauth-
               v2-1-13>.
+
+   [RFC2046]  Freed, N. and N. Borenstein, "Multipurpose Internet Mail
+              Extensions (MIME) Part Two: Media Types", RFC 2046,
+              DOI 10.17487/RFC2046, November 1996,
+              <https://www.rfc-editor.org/rfc/rfc2046>.
+
+   [RFC6838]  Freed, N., Klensin, J., and T. Hansen, "Media Type
+              Specifications and Registration Procedures", BCP 13,
+              RFC 6838, DOI 10.17487/RFC6838, January 2013,
+              <https://www.rfc-editor.org/rfc/rfc6838>.
+
+   [IANA-MediaTypes]
+              "IANA Media Types Registry", n.d.,
+              <https://www.iana.org/assignments/media-types/>.
 
 Appendix A.  Use cases
 
@@ -884,15 +885,15 @@ B.2.  Authorization server acting as client
 
    (C) Once the authorization server in trust domain B is determined,
    the authorization server in domain A issues a JWT authorization grant
-   to itself.  This reflects to Token exchange (Section 2.3) of this
+   to itself.  This reflects Token Exchange (Section 2.3) of this
    specification and can be seen as an "internal token exchange".
 
    (D) The authorization server in trust domain A acts as a client and
    presents the JWT authorization grant to the authorization server for
    trust domain B.  This presentation happens between the authorization
    servers.  The authorization server in trust domain A may be required
-   to perform client authentication while doing so.  This reflects to
-   [See Access Token Request (Section 2.4.1)] of this specification.
+   to perform client authentication while doing so.  This reflects the
+   Access Token Request (Section 2.4.1) in this specification.
 
    (E) The authorization server of of trust domain B returns an access
    token for the protected resource in trust domain B to the
@@ -919,8 +920,8 @@ B.3.  Delegated Key Binding
 
    In the case where the resource server in trust domain A is acting as
    the client, the access token may be constrained using existing
-   techniques as described in Security Considerations [See Sender
-   Constraining Tokens (Section 4.2)].
+   techniques as described in Security Considerations (See Sender
+   Constraining Tokens (Section 4.2)).
 
    The case where the authorization server in trust domain A is acting
    as a client is more complicated since the authorization server in
@@ -977,6 +978,8 @@ Appendix D.  Document History
    *  Updated some contributors' affiliation and contact information
 
    *  Simplify some text in the JWT Authorization Grant section
+
+   *  Fix some toolchain complaints and other nitpicks
 
    -04
 
