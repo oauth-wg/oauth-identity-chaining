@@ -49,15 +49,17 @@ normative:
   RFC8707: # Resource Indicators for OAuth 2.0
   RFC8414: # OAuth 2.0 Authorization Server Metadata
   RFC8725: # JSON Web Token Best Current Practices
-  RFC2046: # Multipurpose Internet Mail Extensions (MIME) Part Two: Media Types
-  RFC6838: # Media Type Specifications and Registration Procedures
-  IANA.MediaTypes:
 
 informative:
 
   I-D.ietf-oauth-security-topics:
   I-D.ietf-oauth-resource-metadata:
   I-D.draft-ietf-oauth-v2-1:
+  RFC2046: # Multipurpose Internet Mail Extensions (MIME) Part Two: Media Types
+  RFC6838: # Media Type Specifications and Registration Procedures
+  IANA-MediaTypes:
+   target: https://www.iana.org/assignments/media-types/
+   title: IANA Media Types Registry
 
 --- abstract
 
@@ -128,7 +130,7 @@ The flow illustrated in Figure 1 shows the steps the client in trust domain A ne
 
 * (C) The authorization server of trust domain A processes the request and returns a JWT authorization grant that the client can use with the authorization server of trust domain B. This requires a trust relationship between the authorization servers in trust domain A and trust domain B (e.g., through federation).
 
-* (D) The client in trust domain A presents the authorization grant to the authorization server of trust domain B. See [Access Token Request](#access-token-request).
+* (D) The client in trust domain A presents the authorization grant to the authorization server of trust domain B. See [Access Token Request](#atr).
 
 * (E) Authorization server of trust domain B validates the JWT authorization grant and returns an access token.
 
@@ -205,7 +207,7 @@ Cache-Control: no-cache, no-store
 
 The client in trust domain A uses the JWT authorization grant obtained from the authorization server in trust domain A as an assertion to request an access token from the authorization server in trust domain B, as described in {{RFC7523}}.
 
-### Access Token Request
+### Access Token Request {#atr}
 
 In the context of this specification the following descriptions apply:
 
@@ -279,14 +281,14 @@ The representation of transcribed claims and their format is not defined in this
 ## Media Types
 This specification does not define any new media types.
 
-It is RECOMMENDED that any profile or deployment-specific implementation adopt explicit typing as defined in JSON Web Token Best Current Practices {{RFC8725}} and define a new media type {{RFC2046}} in the "Media Types" registry {{IANA.MediaTypes}} in the manner described in {{RFC6838}}.
+It is RECOMMENDED that any profile or deployment-specific implementation adopt explicit typing as defined in JSON Web Token Best Current Practices {{RFC8725}} and define a new media type {{RFC2046}} in the "Media Types" registry {{IANA-MediaTypes}} in the manner described in {{RFC6838}}.
 
 # Security Considerations {#Security}
 
 ## Client Authentication
 Authorization Servers SHOULD follow the OAuth 2.0 Security Best Current Practice {{I-D.ietf-oauth-security-topics}} for client authentication.
 
-## Sender Constraining Tokens
+## Sender Constraining Tokens {#sender-constraining}
 Authorization Servers SHOULD follow the The OAuth 2.1 Authorization Framework {{I-D.draft-ietf-oauth-v2-1}} for sender constraining tokens.
 
 ## Authorized use of Subject Token
@@ -457,9 +459,9 @@ The flow contains the following steps:
 
 (B) The authorization server for trust domain A determines the authorization server for trust domain B. This could have been passed by the client, is statically maintained or dynamically resolved.
 
-(C) Once the authorization server in trust domain B is determined, the authorization server in domain A issues a JWT authorization grant to itself. This reflects to [Token exchange](#token-exchange) of this specification and can be seen as an "internal token exchange".
+(C) Once the authorization server in trust domain B is determined, the authorization server in domain A issues a JWT authorization grant to itself. This reflects [Token Exchange](#token-exchange) of this specification and can be seen as an "internal token exchange".
 
-(D) The authorization server in trust domain A acts as a client and presents the JWT authorization grant to the authorization server for trust domain B. This presentation happens between the authorization servers. The authorization server in trust domain A may be required to perform client authentication while doing so. This reflects to [See [Access Token Request](#access-token-request)] of this specification.
+(D) The authorization server in trust domain A acts as a client and presents the JWT authorization grant to the authorization server for trust domain B. This presentation happens between the authorization servers. The authorization server in trust domain A may be required to perform client authentication while doing so. This reflects the [Access Token Request](#atr) in this specification.
 
 (E) The authorization server of of trust domain B returns an access token for the protected resource in trust domain B to the authorization server (acting as a client) in trust Domain A.
 
@@ -471,7 +473,7 @@ The flow contains the following steps:
 
 In some environments, there is a need to bind the access token issued by the authorization server in trust domain B to a private key held by the client in trust domain A. This is so that the resource server in trust domain B can verify the proof of possession of the private key of the client in trust domain A when the client in trust domain A presents the token to the resource server in trust domain B. Any application in trust domain A may act as a client, including applications that are resource servers in trust domain A and need to access resource servers in trust domain B in order to complete a request.
 
-In the case where the resource server in trust domain A is acting as the client, the access token may be constrained using existing techniques as described in Security Considerations [See [Sender Constraining Tokens](#sender-constraining-tokens)].
+In the case where the resource server in trust domain A is acting as the client, the access token may be constrained using existing techniques as described in Security Considerations (See [Sender Constraining Tokens](#sender-constraining)).
 
 The case where the authorization server in trust domain A is acting as a client is more complicated since the authorization server in trust domain A (acting as client) does not have access to the key material of the client on whose behalf the access token is being requested.
 
@@ -496,6 +498,7 @@ The editors would like to thank Joe Jubinski, Justin Richer, Aaron Parecki, Dean
 * Added security considerations for unconstrained authorization grants.
 * Updated some contributors' affiliation and contact information
 * Simplify some text in the JWT Authorization Grant section
+* Fix some toolchain complaints and other nitpicks
 
 -04
 
