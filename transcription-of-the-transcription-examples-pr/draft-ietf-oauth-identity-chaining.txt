@@ -422,7 +422,7 @@ grant_type=urn%3Aietf%3Aparams%3Aoauth%3Agrant-type%3Atoken-exchange
 2.5.  Claims transcription
 
    Claims transcription is motivated by the need to propagate user and
-   client identities, authorization context, and other relevant
+   client identifiers, authorization context, and other relevant
    information across trust boundaries.  This enables the various
    entities involved to determine on whose behalf the request is being
    made, what authorization has been granted, and, potentially, which
