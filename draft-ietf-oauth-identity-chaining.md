@@ -308,6 +308,19 @@ Authorization servers in trust domain B MAY enforce these mitigations.
 
 Implementations and profiles of this specification MAY define additional mitigations tailored to specific use cases and operational contexts.
 
+# Privacy Considerations
+
+In addition to the privacy considerations outlined in {{RFC8693}} and {{RFC7523}}, the following items are relevant to this specification:
+
+OAuth federation involves the exchange of tokens and claims between disparate trust domains.
+If excessive or unnecessary user data is included in these tokens, it may lead to unintended privacy consequences.
+As noted in {{RFC8693}} and {{RFC7523}}, deployments should determine the minimum amount of information necessary to complete the exchange and ensure that only that information is included in the token.
+
+Inconsistent user privacy practices within OAuth federation can result from varying interpretations and implementations of the protocol across different domains.
+This inconsistency can lead to a lack of transparency and user control over what data is shared and with whom.
+To mitigate this, federation trust relationships between domains must be carefully established and maintained with user privacy in mind.
+This includes verifying that privacy policies are aligned across trust domains and clearly define how user data is collected, used, and protected.
+
 --- back
 
 # Use cases
@@ -498,6 +511,7 @@ The editors would like to thank Joe Jubinski, Justin Richer, Aaron Parecki, Dean
 * Added security considerations for unconstrained authorization grants.
 * Updated some contributors' affiliation and contact information
 * Fix some toolchain complaints and other nitpicks
+* Added some Privacy Considerations
 
 -04
 
