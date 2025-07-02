@@ -5,13 +5,13 @@
 oauth                                                 A. Schwenkschuster
 Internet-Draft                                             P. Kasselmann
 Intended status: Informational                                     SPIRL
-Expires: 2 January 2026                                        K. Burgin
+Expires: 3 January 2026                                        K. Burgin
                                                                    MITRE
                                                               M. Jenkins
                                                                 NSA-CCSS
                                                              B. Campbell
                                                            Ping Identity
-                                                             1 July 2025
+                                                             2 July 2025
 
 
         OAuth Identity and Authorization Chaining Across Domains
@@ -49,7 +49,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 2 January 2026.
+   This Internet-Draft will expire on 3 January 2026.
 
 Copyright Notice
 
@@ -962,10 +962,10 @@ B.3.  Delegated Key Binding
 
 Appendix C.  Acknowledgements
 
-   The editors would like to thank Joe Jubinski, Justin Richer, Aaron
-   Parecki, Dean H.  Saxe, and others (please let us know, if you've
-   been mistakenly omitted) for their valuable input, feedback and
-   general support of this work.
+   The editors would like to thank Joe Jubinski, Justin Richer, Dean H.
+   Saxe, and others (please let us know, if you've been mistakenly
+   omitted) for their valuable input, feedback and general support of
+   this work.
 
 Appendix D.  Document History
 
@@ -983,6 +983,9 @@ Appendix D.  Document History
    *  Updated some contributors' affiliation and contact information
 
    *  Fix some toolchain complaints and other nitpicks
+
+   *  Move Mr. Parecki from acknowledgements to contributors in
+      acknowledgement of his contributions
 
    -04
 
@@ -1054,6 +1057,11 @@ Contributors
 
    Hannes Tschofenig
    Email: hannes.tschofenig@gmx.net
+
+
+   Aaron Parecki
+   Okta
+   Email: aaron@parecki.com
 
 
 Authors' Addresses
