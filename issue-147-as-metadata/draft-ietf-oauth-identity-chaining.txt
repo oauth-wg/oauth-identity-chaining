@@ -463,12 +463,12 @@ grant_type=urn%3Aietf%3Aparams%3Aoauth%3Agrant-type%3Atoken-exchange
 
    identity_chaining_requested_token_types_supported
       OPTIONAL.  JSON array containing a list of Token Types that can be
-      requested as a requested_token_type in an Identity and
-      Authorization Chaining Token Exchange request with this
-      authorization server.  Authorization servers MAY choose not to
-      advertise some supported requested token types even when this
-      parameter is used, and lack of a value does not necessarily mean
-      that the token type is unsupported.
+      requested as a requested_token_type in the Token Exchange request
+      when performing Identity and Authorization Chaining Across
+      Domains.  Authorization servers MAY choose not to advertise some
+      supported requested token types even when this parameter is used,
+      and lack of a value does not necessarily mean that the token type
+      is unsupported.
 
 4.  IANA Considerations
 
