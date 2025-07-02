@@ -41,6 +41,9 @@ contributor:
   email: rifaat.s.ietf@gmail.com
 - name: Hannes Tschofenig
   email: hannes.tschofenig@gmx.net
+- name: Aaron Parecki
+  org: Okta
+  email: aaron@parecki.com
 
 normative:
   RFC6749: # OAuth 2.0 Authorization Framework
@@ -205,11 +208,11 @@ Cache-Control: no-cache, no-store
 
 ## JWT Authorization Grant
 
-The client presents the JWT authorization grant it received from the authorization server in trust domain A as an authorization grant to the authorization server in trust domain B to obtain an access token for a resource server in trust domain B. The authorization grant is presented as defined in the JWT Profile for OAuth 2.0 Client Authentication and Authorization Grants {{RFC7523}}.
+The client in trust domain A uses the JWT authorization grant obtained from the authorization server in trust domain A as an assertion to request an access token from the authorization server in trust domain B, as described in {{RFC7523}}.
 
 ### Access Token Request {#atr}
 
-The authorization grant is a JWT bearer token, which the client in trust domain A uses to request an access token from the authorization server in trust domain B as described in the JWT Profile for OAuth 2.0 Client Authentication and Authorization Grants {{RFC7523}}. For the purpose of this specification the following descriptions apply:
+In the context of this specification the following descriptions apply:
 
 {:vspace}
 grant_type
@@ -498,7 +501,7 @@ However, the trust relationship between the authorization server in trust domain
 * The client in trust domain A that presents the access token must use the key matching the "cnf" claim to generate a DPoP proof or setup a MTLS session when presenting the access token to a resource server in in trust domain B.
 
 # Acknowledgements {#Acknowledgements}
-The editors would like to thank Joe Jubinski, Justin Richer, Aaron Parecki, Dean H. Saxe, and others (please let us know, if you've been mistakenly omitted) for their valuable input, feedback and general support of this work.
+The editors would like to thank Joe Jubinski, Justin Richer, Dean H. Saxe, and others (please let us know, if you've been mistakenly omitted) for their valuable input, feedback and general support of this work.
 
 # Document History
 
@@ -510,8 +513,10 @@ The editors would like to thank Joe Jubinski, Justin Richer, Aaron Parecki, Dean
 * Clarified introduction
 * Added security considerations for unconstrained authorization grants.
 * Updated some contributors' affiliation and contact information
+* Simplify some text in the JWT Authorization Grant section
 * Fix some toolchain complaints and other nitpicks
 * Added some Privacy Considerations
+* Move Mr. Parecki from acknowledgements to contributors in acknowledgement of his contributions
 
 -04
 
