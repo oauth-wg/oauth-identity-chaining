@@ -5,13 +5,13 @@
 oauth                                                 A. Schwenkschuster
 Internet-Draft                                             P. Kasselmann
 Intended status: Informational                                     SPIRL
-Expires: 2 January 2026                                        K. Burgin
+Expires: 3 January 2026                                        K. Burgin
                                                                    MITRE
                                                               M. Jenkins
                                                                 NSA-CCSS
                                                              B. Campbell
                                                            Ping Identity
-                                                             1 July 2025
+                                                             2 July 2025
 
 
         OAuth Identity and Authorization Chaining Across Domains
@@ -49,7 +49,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 2 January 2026.
+   This Internet-Draft will expire on 3 January 2026.
 
 Copyright Notice
 
@@ -336,20 +336,15 @@ grant_type=urn%3Aietf%3Aparams%3Aoauth%3Agrant-type%3Atoken-exchange
 
 2.4.  JWT Authorization Grant
 
-   The client presents the JWT authorization grant it received from the
-   authorization server in trust domain A as an authorization grant to
-   the authorization server in trust domain B to obtain an access token
-   for a resource server in trust domain B.  The authorization grant is
-   presented as defined in the JWT Profile for OAuth 2.0 Client
-   Authentication and Authorization Grants [RFC7523].
+   The client in trust domain A uses the JWT authorization grant
+   obtained from the authorization server in trust domain A as an
+   assertion to request an access token from the authorization server in
+   trust domain B, as described in [RFC7523].
 
 2.4.1.  Access Token Request
 
-   The authorization grant is a JWT bearer token, which the client in
-   trust domain A uses to request an access token from the authorization
-   server in trust domain B as described in the JWT Profile for OAuth
-   2.0 Client Authentication and Authorization Grants [RFC7523].  For
-   the purpose of this specification the following descriptions apply:
+   In the context of this specification the following descriptions
+   apply:
 
    grant_type
       REQUIRED.  As defined in Section 2.1 of [RFC7523] the value
@@ -986,10 +981,10 @@ B.3.  Delegated Key Binding
 
 Appendix C.  Acknowledgements
 
-   The editors would like to thank Joe Jubinski, Justin Richer, Aaron
-   Parecki, Dean H.  Saxe, and others (please let us know, if you've
-   been mistakenly omitted) for their valuable input, feedback and
-   general support of this work.
+   The editors would like to thank Joe Jubinski, Justin Richer, Dean H.
+   Saxe, and others (please let us know, if you've been mistakenly
+   omitted) for their valuable input, feedback and general support of
+   this work.
 
 Appendix D.  Document History
 
@@ -1006,9 +1001,14 @@ Appendix D.  Document History
 
    *  Updated some contributors' affiliation and contact information
 
+   *  Simplify some text in the JWT Authorization Grant section
+
    *  Fix some toolchain complaints and other nitpicks
 
    *  Added some Privacy Considerations
+
+   *  Move Mr. Parecki from acknowledgements to contributors in
+      acknowledgement of his contributions
 
    -04
 
@@ -1080,6 +1080,11 @@ Contributors
 
    Hannes Tschofenig
    Email: hannes.tschofenig@gmx.net
+
+
+   Aaron Parecki
+   Okta
+   Email: aaron@parecki.com
 
 
 Authors' Addresses
