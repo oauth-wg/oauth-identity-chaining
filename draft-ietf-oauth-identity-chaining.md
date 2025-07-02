@@ -284,9 +284,8 @@ The representation of transcribed claims and their format is not defined in this
 The following authorization server metadata parameter is defined by this specification and is registered in the "OAuth Authorization Server Metadata" registry established in "OAuth 2.0 Authorization Server Metadata" {{RFC8414}}.
 
 {:vspace}
-token_exchange_token_types_supported
-: OPTIONAL. JSON array containing a list of Token Types for OAuth protected resources that can be used with this authorization server. Authorization servers MAY choose not to advertise some supported protected resources even when this parameter is used. In some use cases, the set of protected resources will not be enumerable, in which case this metadata parameter will not be present.
-
+identity_chaining_token_types_supported
+: OPTIONAL. JSON array containing a list of Token Types that can be used as an input to the Identity and Authorization Chaining Token Exchange request with this authorization server. Authorization servers MAY choose not to advertise some supported token types even when this parameter is used, and lack of a value does not necessarily mean that the token type is unsupported.
 
 
 # IANA Considerations {#IANA}
@@ -297,8 +296,8 @@ This specification defines the following parameter in the "OAuth Authorization S
 
 ### Registry Contents
 
-* Metadata Name: `token_exchange_token_types_supported`
-* Metadata Description: JSON array containing a list of Token Type Identifiers supported as a `requested_token_type` in a Token Exchange ({{RFC8693}}) request.
+* Metadata Name: `identity_chaining_token_types_supported`
+* Metadata Description: JSON array containing a list of Token Type Identifiers supported as a `requested_token_type` in an Identity and Authorization Chaining Token Exchange ({{RFC8693}}) request.
 * Change Controller: IETF
 * Specification Document(s): {{authorization-server-metadata}}
 
