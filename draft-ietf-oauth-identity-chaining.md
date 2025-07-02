@@ -285,7 +285,7 @@ The following authorization server metadata parameter is defined by this specifi
 
 {:vspace}
 identity_chaining_requested_token_types_supported
-: OPTIONAL. JSON array containing a list of Token Types that can be requested as a `requested_token_type` in an Identity and Authorization Chaining Token Exchange request with this authorization server. Authorization servers MAY choose not to advertise some supported requested token types even when this parameter is used, and lack of a value does not necessarily mean that the token type is unsupported.
+: OPTIONAL. JSON array containing a list of Token Types that can be requested as a `requested_token_type` in the Token Exchange request when performing Identity and Authorization Chaining Across Domains. Authorization servers MAY choose not to advertise some supported requested token types even when this parameter is used, and lack of a value does not necessarily mean that the token type is unsupported.
 
 
 # IANA Considerations {#IANA}
