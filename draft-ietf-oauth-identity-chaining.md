@@ -284,8 +284,8 @@ The representation of transcribed claims and their format is not defined in this
 The following authorization server metadata parameter is defined by this specification and is registered in the "OAuth Authorization Server Metadata" registry established in "OAuth 2.0 Authorization Server Metadata" {{RFC8414}}.
 
 {:vspace}
-identity_chaining_token_types_supported
-: OPTIONAL. JSON array containing a list of Token Types that can be used as an input to the Identity and Authorization Chaining Token Exchange request with this authorization server. Authorization servers MAY choose not to advertise some supported token types even when this parameter is used, and lack of a value does not necessarily mean that the token type is unsupported.
+identity_chaining_requested_token_types_supported
+: OPTIONAL. JSON array containing a list of Token Types that can be requested as a `requested_token_type` in an Identity and Authorization Chaining Token Exchange request with this authorization server. Authorization servers MAY choose not to advertise some supported requested token types even when this parameter is used, and lack of a value does not necessarily mean that the token type is unsupported.
 
 
 # IANA Considerations {#IANA}
@@ -296,7 +296,7 @@ This specification defines the following parameter in the "OAuth Authorization S
 
 ### Registry Contents
 
-* Metadata Name: `identity_chaining_token_types_supported`
+* Metadata Name: `identity_chaining_requested_token_types_supported`
 * Metadata Description: JSON array containing a list of Token Type Identifiers supported as a `requested_token_type` in an Identity and Authorization Chaining Token Exchange ({{RFC8693}}) request.
 * Change Controller: IETF
 * Specification Document(s): {{authorization-server-metadata}}
@@ -527,7 +527,7 @@ The editors would like to thank Joe Jubinski, Justin Richer, Dean H. Saxe, and o
 * Simplify some text in the JWT Authorization Grant section
 * Fix some toolchain complaints and other nitpicks
 * Move Mr. Parecki from acknowledgements to contributors in acknowledgement of his contributions
-* Added Authorization Server Metadata registry to publish supported Token Exchange token types
+* Added Authorization Server Metadata registry to publish supported Token Exchange requested token types
 
 -04
 
