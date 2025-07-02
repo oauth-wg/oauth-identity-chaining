@@ -461,14 +461,13 @@ grant_type=urn%3Aietf%3Aparams%3Aoauth%3Agrant-type%3Atoken-exchange
    Server Metadata" registry established in "OAuth 2.0 Authorization
    Server Metadata" [RFC8414].
 
-   token_exchange_token_types_supported
-      OPTIONAL.  JSON array containing a list of Token Types for OAuth
-      protected resources that can be used with this authorization
-      server.  Authorization servers MAY choose not to advertise some
-      supported protected resources even when this parameter is used.
-      In some use cases, the set of protected resources will not be
-      enumerable, in which case this metadata parameter will not be
-      present.
+   identity_chaining_token_types_supported
+      OPTIONAL.  JSON array containing a list of Token Types that can be
+      used as an input to the Identity and Authorization Chaining Token
+      Exchange request with this authorization server.  Authorization
+      servers MAY choose not to advertise some supported token types
+      even when this parameter is used, and lack of a value does not
+      necessarily mean that the token type is unsupported.
 
 4.  IANA Considerations
 
@@ -479,11 +478,11 @@ grant_type=urn%3Aietf%3Aparams%3Aoauth%3Agrant-type%3Atoken-exchange
 
 4.1.1.  Registry Contents
 
-   *  Metadata Name: token_exchange_token_types_supported
+   *  Metadata Name: identity_chaining_token_types_supported
 
    *  Metadata Description: JSON array containing a list of Token Type
-      Identifiers supported as a requested_token_type in a Token
-      Exchange ([RFC8693]) request.
+      Identifiers supported as a requested_token_type in an Identity and
+      Authorization Chaining Token Exchange ([RFC8693]) request.
 
    *  Change Controller: IETF
 
