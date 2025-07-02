@@ -279,7 +279,32 @@ Authorization servers MAY transcribe claims when either producing JWT authorizat
 
 The representation of transcribed claims and their format is not defined in this specification.
 
+# Authorization Server Metadata {#authorization-server-metadata}
+
+The following authorization server metadata parameter is defined by this specification and is registered in the "OAuth Authorization Server Metadata" registry established in "OAuth 2.0 Authorization Server Metadata" {{RFC8414}}.
+
+{:vspace}
+token_exchange_token_types_supported
+: OPTIONAL. JSON array containing a list of Token Types for OAuth protected resources that can be used with this authorization server. Authorization servers MAY choose not to advertise some supported protected resources even when this parameter is used. In some use cases, the set of protected resources will not be enumerable, in which case this metadata parameter will not be present.
+
+
+
 # IANA Considerations {#IANA}
+
+## OAuth Authorization Server Metadata Registry
+
+This specification defines the following parameter in the "OAuth Authorization Server Metadata" registry established in {{RFC8414}}.
+
+### Registry Contents
+
+* Metadata Name: `token_exchange_token_types_supported`
+* Metadata Description: JSON array containing a list of Token Type Identifiers supported as a `requested_token_type` in a Token Exchange ({{RFC8693}}) request.
+* Change Controller: IETF
+* Specification Document(s): {{authorization-server-metadata}}
+
+
+The registry records the supported token types that can be requested in an {{RFC8693}} Token Exchange.
+
 
 ## Media Types
 This specification does not define any new media types.
@@ -503,6 +528,7 @@ The editors would like to thank Joe Jubinski, Justin Richer, Dean H. Saxe, and o
 * Simplify some text in the JWT Authorization Grant section
 * Fix some toolchain complaints and other nitpicks
 * Move Mr. Parecki from acknowledgements to contributors in acknowledgement of his contributions
+* Added Authorization Server Metadata registry to publish supported Token Exchange token types
 
 -04
 
