@@ -91,9 +91,10 @@ Table of Contents
      4.3.  Authorized use of Subject Token
      4.4.  Refresh Tokens
      4.5.  Replay of Authorization Grant
-   5.  References
-     5.1.  Normative References
-     5.2.  Informative References
+   5.  Privacy Considerations
+   6.  References
+     6.1.  Normative References
+     6.2.  Informative References
    Appendix A.  Use cases
      A.1.  Preserve User Context across Multi-cloud, Multi-Hybrid
            environments
@@ -555,9 +556,32 @@ grant_type=urn%3Aietf%3Aparams%3Aoauth%3Agrant-type%3Atoken-exchange
    additional mitigations tailored to specific use cases and operational
    contexts.
 
-5.  References
+5.  Privacy Considerations
 
-5.1.  Normative References
+   In addition to the privacy considerations outlined in [RFC8693] and
+   [RFC7523], the following items are relevant to this specification:
+
+   OAuth federation involves the exchange of tokens and claims between
+   disparate trust domains.  If excessive or unnecessary user data is
+   included in these tokens, it may lead to unintended privacy
+   consequences.  As noted in [RFC8693] and [RFC7523], deployments
+   should determine the minimum amount of information necessary to
+   complete the exchange and ensure that only that information is
+   included in the token.
+
+   Inconsistent user privacy practices within OAuth federation can
+   result from varying interpretations and implementations of the
+   protocol across different domains.  This inconsistency can lead to a
+   lack of transparency and user control over what data is shared and
+   with whom.  To mitigate this, federation trust relationships between
+   domains must be carefully established and maintained with user
+   privacy in mind.  This includes verifying that privacy policies are
+   aligned across trust domains and clearly define how user data is
+   collected, used, and protected.
+
+6.  References
+
+6.1.  Normative References
 
    [RFC6749]  Hardt, D., Ed., "The OAuth 2.0 Authorization Framework",
               RFC 6749, DOI 10.17487/RFC6749, October 2012,
@@ -596,7 +620,7 @@ grant_type=urn%3Aietf%3Aparams%3Aoauth%3Agrant-type%3Atoken-exchange
               2119 Key Words", BCP 14, RFC 8174, DOI 10.17487/RFC8174,
               May 2017, <https://www.rfc-editor.org/rfc/rfc8174>.
 
-5.2.  Informative References
+6.2.  Informative References
 
    [I-D.draft-ietf-oauth-v2-1]
               Hardt, D., Parecki, A., and T. Lodderstedt, "The OAuth 2.1
@@ -1000,6 +1024,8 @@ Appendix D.  Document History
    *  Simplify some text in the JWT Authorization Grant section
 
    *  Fix some toolchain complaints and other nitpicks
+
+   *  Added some Privacy Considerations
 
    *  Move Mr. Parecki from acknowledgements to contributors in
       acknowledgement of his contributions
