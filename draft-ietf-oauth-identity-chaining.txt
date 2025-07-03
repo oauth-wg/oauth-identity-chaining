@@ -83,18 +83,21 @@ Table of Contents
        2.4.3.  Access Token Response
        2.4.4.  Example
      2.5.  Claims transcription
-   3.  IANA Considerations
-     3.1.  Media Types
-   4.  Security Considerations
-     4.1.  Client Authentication
-     4.2.  Sender Constraining Tokens
-     4.3.  Authorized use of Subject Token
-     4.4.  Refresh Tokens
-     4.5.  Replay of Authorization Grant
-   5.  Privacy Considerations
-   6.  References
-     6.1.  Normative References
-     6.2.  Informative References
+   3.  Authorization Server Metadata
+   4.  IANA Considerations
+     4.1.  OAuth Authorization Server Metadata Registry
+       4.1.1.  Registry Contents
+     4.2.  Media Types
+   5.  Security Considerations
+     5.1.  Client Authentication
+     5.2.  Sender Constraining Tokens
+     5.3.  Authorized use of Subject Token
+     5.4.  Refresh Tokens
+     5.5.  Replay of Authorization Grant
+   6.  Privacy Considerations
+   7.  References
+     7.1.  Normative References
+     7.2.  Informative References
    Appendix A.  Use cases
      A.1.  Preserve User Context across Multi-cloud, Multi-Hybrid
            environments
@@ -476,9 +479,45 @@ grant_type=urn%3Aietf%3Aparams%3Aoauth%3Agrant-type%3Atoken-exchange
    The representation of transcribed claims and their format is not
    defined in this specification.
 
-3.  IANA Considerations
+3.  Authorization Server Metadata
 
-3.1.  Media Types
+   The following authorization server metadata parameter is defined by
+   this specification and is registered in the "OAuth Authorization
+   Server Metadata" registry established in "OAuth 2.0 Authorization
+   Server Metadata" [RFC8414].
+
+   identity_chaining_requested_token_types_supported
+      OPTIONAL.  JSON array containing a list of Token Types that can be
+      requested as a requested_token_type in the Token Exchange request
+      when performing Identity and Authorization Chaining Across
+      Domains.  Authorization servers MAY choose not to advertise some
+      supported requested token types even when this parameter is used,
+      and lack of a value does not necessarily mean that the token type
+      is unsupported.
+
+4.  IANA Considerations
+
+4.1.  OAuth Authorization Server Metadata Registry
+
+   This specification defines the following parameter in the "OAuth
+   Authorization Server Metadata" registry established in [RFC8414].
+
+4.1.1.  Registry Contents
+
+   *  Metadata Name: identity_chaining_requested_token_types_supported
+
+   *  Metadata Description: JSON array containing a list of Token Type
+      Identifiers supported as a requested_token_type in an Identity and
+      Authorization Chaining Token Exchange ([RFC8693]) request.
+
+   *  Change Controller: IETF
+
+   *  Specification Document(s): Section 3
+
+   The registry records the supported token types that can be requested
+   in an [RFC8693] Token Exchange.
+
+4.2.  Media Types
 
    This specification does not define any new media types.
 
@@ -488,19 +527,19 @@ grant_type=urn%3Aietf%3Aparams%3Aoauth%3Agrant-type%3Atoken-exchange
    [RFC2046] in the "Media Types" registry [IANA-MediaTypes] in the
    manner described in [RFC6838].
 
-4.  Security Considerations
+5.  Security Considerations
 
-4.1.  Client Authentication
+5.1.  Client Authentication
 
    Authorization Servers SHOULD follow the Best Current Practice for
    OAuth 2.0 Security [RFC9700] for client authentication.
 
-4.2.  Sender Constraining Tokens
+5.2.  Sender Constraining Tokens
 
    Authorization Servers SHOULD follow the The OAuth 2.1 Authorization
    Framework [I-D.draft-ietf-oauth-v2-1] for sender constraining tokens.
 
-4.3.  Authorized use of Subject Token
+5.3.  Authorized use of Subject Token
 
    The authorization server in trust domain A SHOULD perform client
    authentication and verify that the client in trust domain A is
@@ -512,7 +551,7 @@ grant_type=urn%3Aietf%3Aparams%3Aoauth%3Agrant-type%3Atoken-exchange
    B and request an access token for a resource server in trust domain
    B.
 
-4.4.  Refresh Tokens
+5.4.  Refresh Tokens
 
    The authorization server in trust domain B SHOULD NOT issue refresh
    tokens to the client within the scope of this specification.  When
@@ -530,7 +569,7 @@ grant_type=urn%3Aietf%3Aparams%3Aoauth%3Agrant-type%3Atoken-exchange
    relate to the issuance of refresh tokens by the authorization server
    in trust domain A.
 
-4.5.  Replay of Authorization Grant
+5.5.  Replay of Authorization Grant
 
    The authorization grant obtained from the Token Exchange process is a
    bearer token.  If an attacker obtains an authorization grant issued
@@ -556,7 +595,7 @@ grant_type=urn%3Aietf%3Aparams%3Aoauth%3Agrant-type%3Atoken-exchange
    additional mitigations tailored to specific use cases and operational
    contexts.
 
-5.  Privacy Considerations
+6.  Privacy Considerations
 
    In addition to the privacy considerations outlined in [RFC8693] and
    [RFC7523], the following items are relevant to this specification:
@@ -579,9 +618,9 @@ grant_type=urn%3Aietf%3Aparams%3Aoauth%3Agrant-type%3Atoken-exchange
    aligned across trust domains and clearly define how user data is
    collected, used, and protected.
 
-6.  References
+7.  References
 
-6.1.  Normative References
+7.1.  Normative References
 
    [RFC6749]  Hardt, D., Ed., "The OAuth 2.0 Authorization Framework",
               RFC 6749, DOI 10.17487/RFC6749, October 2012,
@@ -620,7 +659,7 @@ grant_type=urn%3Aietf%3Aparams%3Aoauth%3Agrant-type%3Atoken-exchange
               2119 Key Words", BCP 14, RFC 8174, DOI 10.17487/RFC8174,
               May 2017, <https://www.rfc-editor.org/rfc/rfc8174>.
 
-6.2.  Informative References
+7.2.  Informative References
 
    [I-D.draft-ietf-oauth-v2-1]
               Hardt, D., Parecki, A., and T. Lodderstedt, "The OAuth 2.1
@@ -963,7 +1002,7 @@ B.3.  Delegated Key Binding
    In the case where the resource server in trust domain A is acting as
    the client, the access token may be constrained using existing
    techniques as described in Security Considerations (See Sender
-   Constraining Tokens (Section 4.2)).
+   Constraining Tokens (Section 5.2)).
 
    The case where the authorization server in trust domain A is acting
    as a client is more complicated since the authorization server in
@@ -1029,6 +1068,9 @@ Appendix D.  Document History
 
    *  Move Mr. Parecki from acknowledgements to contributors in
       acknowledgement of his contributions
+
+   *  Added Authorization Server Metadata registry to publish supported
+      Token Exchange requested token types
 
    -04
 
