@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2025-07-01T00:27:03.490260+00:00",
+  "timestamp": "2025-07-03T00:23:34.729853+00:00",
   "repo": "oauth-wg/oauth-identity-chaining",
   "labels": [
     {
@@ -1651,7 +1651,7 @@
       "id": "I_kwDOJubJxM6qGYE2",
       "title": "Simplify text in section on JWT Authorization Grant",
       "url": "https://github.com/oauth-wg/oauth-identity-chaining/issues/136",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "PieterKas",
       "authorAssociation": "CONTRIBUTOR",
       "assignees": [
@@ -1660,8 +1660,8 @@
       "labels": [],
       "body": "## JWT Authorization Grant\n\nThe client presents the JWT authorization grant it received from the authorization server in trust domain A as an authorization grant to the authorization server in trust domain B to obtain an access token for a resource server in trust domain B. The authorization grant is presented as defined inthe JWT Profile for OAuth 2.0 Client Authentication and Authorization Grants {{RFC7523}}.\n\n### Access Token Request\n\nThe authorization grant is a JWT bearer token, which the client in trust domain A uses to request an access token from the authorization server in trust domain B as described in the JWT Profile for OAuth 2.0 Client Authentication and Authorization Grants {{RFC7523}}. For the purpose of this specification the following descriptions apply:",
       "createdAt": "2025-02-14T13:58:24Z",
-      "updatedAt": "2025-04-25T14:54:41Z",
-      "closedAt": null,
+      "updatedAt": "2025-07-02T12:20:32Z",
+      "closedAt": "2025-07-02T12:20:32Z",
       "comments": []
     },
     {
@@ -1847,6 +1847,30 @@
           "body": "Whoops I see that this is already done  with the parenthetical (Domain B) ",
           "createdAt": "2025-06-19T18:17:48Z",
           "updatedAt": "2025-06-19T18:17:48Z"
+        }
+      ]
+    },
+    {
+      "number": 166,
+      "id": "I_kwDOJubJxM6-kyhq",
+      "title": "Publish new version for IETF 123",
+      "url": "https://github.com/oauth-wg/oauth-identity-chaining/issues/166",
+      "state": "OPEN",
+      "author": "aaronpk",
+      "authorAssociation": "MEMBER",
+      "assignees": [],
+      "labels": [],
+      "body": "The publication deadline is Monday July 7th. We need to publish an updated version of this before then. Who is taking the lead on clicking the publish button after the pending PRs are merged?",
+      "createdAt": "2025-07-02T22:11:03Z",
+      "updatedAt": "2025-07-02T22:29:47Z",
+      "closedAt": null,
+      "comments": [
+        {
+          "author": "arndt-s",
+          "authorAssociation": "MEMBER",
+          "body": "I can take care of that - are we all ok with merging the remaining PRs?On 2. Jul 2025, at 23:11, Aaron Parecki ***@***.***> wrote:\ufeffaaronpk created an issue (oauth-wg/oauth-identity-chaining#166)\r\nThe publication deadline is Monday July 7th. We need to publish an updated version of this before then. Who is taking the lead on clicking the publish button after the pending PRs are merged?\r\n\r\n\u2014Reply to this email directly, view it on GitHub, or unsubscribe.You are receiving this because you are subscribed to this thread.Message ID: ***@***.***>",
+          "createdAt": "2025-07-02T22:29:47Z",
+          "updatedAt": "2025-07-02T22:29:47Z"
         }
       ]
     }
@@ -8239,25 +8263,33 @@
       "id": "PR_kwDOJubJxM6VIBvm",
       "title": "Added privacy consideration",
       "url": "https://github.com/oauth-wg/oauth-identity-chaining/pull/153",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "kburgin3",
       "authorAssociation": "CONTRIBUTOR",
       "assignees": [],
       "labels": [],
       "body": "Resolves #126 ",
       "createdAt": "2025-05-06T15:09:31Z",
-      "updatedAt": "2025-06-20T13:25:55Z",
+      "updatedAt": "2025-07-01T17:29:42Z",
       "baseRepository": "oauth-wg/oauth-identity-chaining",
       "baseRefName": "main",
       "baseRefOid": "b3dd3eb3a70029bb4a3c9bb30f67a9537685dc7b",
       "headRepository": "oauth-wg/oauth-identity-chaining",
       "headRefName": "kelley/privacy-considerations",
       "headRefOid": "9a9eb263d91b5e97f819d33b92ab5211a2b3de88",
-      "closedAt": null,
+      "closedAt": "2025-07-01T17:29:42Z",
       "mergedAt": null,
       "mergedBy": null,
       "mergeCommit": null,
-      "comments": [],
+      "comments": [
+        {
+          "author": "bc-pi",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "#162 effectively replaces this",
+          "createdAt": "2025-07-01T17:29:42Z",
+          "updatedAt": "2025-07-01T17:29:42Z"
+        }
+      ],
       "reviews": [
         {
           "id": "PRR_kwDOJubJxM6oAXSN",
@@ -8989,19 +9021,133 @@
       "labels": [],
       "body": "attempt to copy and fixup the content from PR #155 into a new one to hopefully workaround tooling issues\r\n\r\nResolves https://github.com/oauth-wg/oauth-identity-chaining/issues/137",
       "createdAt": "2025-06-30T21:09:09Z",
-      "updatedAt": "2025-06-30T21:42:57Z",
+      "updatedAt": "2025-07-02T12:29:58Z",
       "baseRepository": "oauth-wg/oauth-identity-chaining",
       "baseRefName": "main",
-      "baseRefOid": "6190051e64459714d5c994b0ed37dd7c7e1e154b",
+      "baseRefOid": "ad5da9cc22c133af5d342e47984a02dba85473fd",
       "headRepository": "oauth-wg/oauth-identity-chaining",
       "headRefName": "transcription-of-the-transcription-examples-pr",
-      "headRefOid": "bf68c6a6033ef9a63b3b22e72e494b1c948bc3a8",
+      "headRefOid": "ba780b14b42c7a0ccc4f448cb62e3b9cc8e750cb",
       "closedAt": null,
       "mergedAt": null,
       "mergedBy": null,
       "mergeCommit": null,
       "comments": [],
-      "reviews": []
+      "reviews": [
+        {
+          "id": "PRR_kwDOJubJxM6xTsA6",
+          "commit": {
+            "abbreviatedOid": "bf68c6a"
+          },
+          "author": "PieterKas",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2025-07-01T10:23:35Z",
+          "updatedAt": "2025-07-01T10:23:35Z",
+          "comments": [
+            {
+              "originalPosition": 4,
+              "body": "identities or identifiers?",
+              "createdAt": "2025-07-01T10:23:35Z",
+              "updatedAt": "2025-07-01T10:23:35Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJubJxM6xYexn",
+          "commit": {
+            "abbreviatedOid": "bf68c6a"
+          },
+          "author": "bc-pi",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2025-07-01T15:37:09Z",
+          "updatedAt": "2025-07-01T15:37:09Z",
+          "comments": [
+            {
+              "originalPosition": 4,
+              "body": "either? I think I brought that wording over from a comment by you on the other PR. I have no attachment. \r\n\r\n```suggestion\r\nClaims transcription is motivated by the need to propagate user and client identifiers, authorization context, and other relevant information across trust boundaries.\r\n```",
+              "createdAt": "2025-07-01T15:37:09Z",
+              "updatedAt": "2025-07-01T15:37:09Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJubJxM6xi-K4",
+          "commit": {
+            "abbreviatedOid": "13f423f"
+          },
+          "author": "PieterKas",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "APPROVED",
+          "body": "Looks good to me.",
+          "createdAt": "2025-07-02T11:11:59Z",
+          "updatedAt": "2025-07-02T11:11:59Z",
+          "comments": []
+        },
+        {
+          "id": "PRR_kwDOJubJxM6xjv2k",
+          "commit": {
+            "abbreviatedOid": "13f423f"
+          },
+          "author": "arndt-s",
+          "authorAssociation": "MEMBER",
+          "state": "APPROVED",
+          "body": "Small typo, otherwise LGTM",
+          "createdAt": "2025-07-02T12:23:26Z",
+          "updatedAt": "2025-07-02T12:25:01Z",
+          "comments": [
+            {
+              "originalPosition": 5,
+              "body": "```suggestion\r\nThis enables the various entities involved to determine on whose behalf the request is being made, what authorization has been granted, and, potentially, which other resource servers were previously involved.\r\n```",
+              "createdAt": "2025-07-02T12:23:26Z",
+              "updatedAt": "2025-07-02T12:25:01Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJubJxM6xjxmF",
+          "commit": {
+            "abbreviatedOid": "13f423f"
+          },
+          "author": "arndt-s",
+          "authorAssociation": "MEMBER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2025-07-02T12:25:42Z",
+          "updatedAt": "2025-07-02T12:25:42Z",
+          "comments": [
+            {
+              "originalPosition": 5,
+              "body": "Took the liberty to fix it directly.",
+              "createdAt": "2025-07-02T12:25:42Z",
+              "updatedAt": "2025-07-02T12:25:42Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJubJxM6xj00r",
+          "commit": {
+            "abbreviatedOid": "13f423f"
+          },
+          "author": "bc-pi",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2025-07-02T12:29:58Z",
+          "updatedAt": "2025-07-02T12:29:58Z",
+          "comments": [
+            {
+              "originalPosition": 5,
+              "body": "thank you",
+              "createdAt": "2025-07-02T12:29:58Z",
+              "updatedAt": "2025-07-02T12:29:58Z"
+            }
+          ]
+        }
+      ]
     },
     {
       "number": 159,
@@ -9036,52 +9182,486 @@
       "id": "PR_kwDOJubJxM6cxhsV",
       "title": "Simplify some text in the JWT Authorization Grant section (try 2)",
       "url": "https://github.com/oauth-wg/oauth-identity-chaining/pull/160",
-      "state": "OPEN",
+      "state": "MERGED",
       "author": "bc-pi",
       "authorAssociation": "CONTRIBUTOR",
       "assignees": [],
       "labels": [],
       "body": "attempt to copy and fixup the content from PR https://github.com/oauth-wg/oauth-identity-chaining/pull/154 into a new one to hopefully workaround tooling issues\r\n\r\nResolves https://github.com/oauth-wg/oauth-identity-chaining/issues/136",
       "createdAt": "2025-06-30T21:51:57Z",
-      "updatedAt": "2025-06-30T23:17:09Z",
+      "updatedAt": "2025-07-02T12:20:33Z",
       "baseRepository": "oauth-wg/oauth-identity-chaining",
       "baseRefName": "main",
-      "baseRefOid": "6190051e64459714d5c994b0ed37dd7c7e1e154b",
+      "baseRefOid": "9380dd170a275d7f474cbc493aed6e1503970447",
       "headRepository": "oauth-wg/oauth-identity-chaining",
       "headRefName": "simplify-authz-grant-text",
-      "headRefOid": "5109d6666121ed95e423abcb5b38efb2b0c2c5ef",
-      "closedAt": null,
-      "mergedAt": null,
-      "mergedBy": null,
-      "mergeCommit": null,
+      "headRefOid": "a9c0310d5b70a703e9708a6f2c136db3ddcecc48",
+      "closedAt": "2025-07-02T12:20:31Z",
+      "mergedAt": "2025-07-02T12:20:31Z",
+      "mergedBy": "arndt-s",
+      "mergeCommit": {
+        "oid": "ad5da9cc22c133af5d342e47984a02dba85473fd"
+      },
       "comments": [],
-      "reviews": []
+      "reviews": [
+        {
+          "id": "PRR_kwDOJubJxM6xTqvI",
+          "commit": {
+            "abbreviatedOid": "5109d66"
+          },
+          "author": "PieterKas",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "APPROVED",
+          "body": "Looks good to me, thanks for the changes",
+          "createdAt": "2025-07-01T10:22:26Z",
+          "updatedAt": "2025-07-01T10:22:26Z",
+          "comments": []
+        },
+        {
+          "id": "PRR_kwDOJubJxM6xjtqf",
+          "commit": {
+            "abbreviatedOid": "a9c0310"
+          },
+          "author": "arndt-s",
+          "authorAssociation": "MEMBER",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2025-07-02T12:20:25Z",
+          "updatedAt": "2025-07-02T12:20:25Z",
+          "comments": []
+        }
+      ]
     },
     {
       "number": 161,
       "id": "PR_kwDOJubJxM6cyLNx",
       "title": "Fix some toolchain complaints and other nitpicks",
       "url": "https://github.com/oauth-wg/oauth-identity-chaining/pull/161",
-      "state": "OPEN",
+      "state": "MERGED",
       "author": "bc-pi",
       "authorAssociation": "CONTRIBUTOR",
       "assignees": [],
       "labels": [],
       "body": "",
       "createdAt": "2025-06-30T23:16:35Z",
-      "updatedAt": "2025-06-30T23:16:35Z",
+      "updatedAt": "2025-07-01T15:34:12Z",
       "baseRepository": "oauth-wg/oauth-identity-chaining",
       "baseRefName": "main",
       "baseRefOid": "6190051e64459714d5c994b0ed37dd7c7e1e154b",
       "headRepository": "oauth-wg/oauth-identity-chaining",
       "headRefName": "more-housekeeping",
       "headRefOid": "44f14dff4c4ce34d0f3d6d779db6945faefe1c92",
+      "closedAt": "2025-07-01T15:34:11Z",
+      "mergedAt": "2025-07-01T15:34:11Z",
+      "mergedBy": "bc-pi",
+      "mergeCommit": {
+        "oid": "9380dd170a275d7f474cbc493aed6e1503970447"
+      },
+      "comments": [],
+      "reviews": [
+        {
+          "id": "PRR_kwDOJubJxM6xToVM",
+          "commit": {
+            "abbreviatedOid": "44f14df"
+          },
+          "author": "PieterKas",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "APPROVED",
+          "body": "Looks good to me.",
+          "createdAt": "2025-07-01T10:20:08Z",
+          "updatedAt": "2025-07-01T10:20:08Z",
+          "comments": []
+        }
+      ]
+    },
+    {
+      "number": 162,
+      "id": "PR_kwDOJubJxM6c8uNs",
+      "title": "Added some Privacy Considerations (try 2)",
+      "url": "https://github.com/oauth-wg/oauth-identity-chaining/pull/162",
+      "state": "OPEN",
+      "author": "bc-pi",
+      "authorAssociation": "CONTRIBUTOR",
+      "assignees": [],
+      "labels": [],
+      "body": "attempt to copy and fixup some of the content from PR #153 into a new one to hopefully workaround tooling issues\r\n\r\nResolves https://github.com/oauth-wg/oauth-identity-chaining/issues/126",
+      "createdAt": "2025-07-01T17:28:08Z",
+      "updatedAt": "2025-07-02T12:26:28Z",
+      "baseRepository": "oauth-wg/oauth-identity-chaining",
+      "baseRefName": "main",
+      "baseRefOid": "ad5da9cc22c133af5d342e47984a02dba85473fd",
+      "headRepository": "oauth-wg/oauth-identity-chaining",
+      "headRefName": "privacy-schmivacy",
+      "headRefOid": "88ff1e5acde844faec98d67c1eeb894f83dc70a6",
       "closedAt": null,
       "mergedAt": null,
       "mergedBy": null,
       "mergeCommit": null,
       "comments": [],
-      "reviews": []
+      "reviews": [
+        {
+          "id": "PRR_kwDOJubJxM6xi8jj",
+          "commit": {
+            "abbreviatedOid": "03fa385"
+          },
+          "author": "PieterKas",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "APPROVED",
+          "body": "Looks good to me.",
+          "createdAt": "2025-07-02T11:09:43Z",
+          "updatedAt": "2025-07-02T11:09:43Z",
+          "comments": []
+        },
+        {
+          "id": "PRR_kwDOJubJxM6xjs6p",
+          "commit": {
+            "abbreviatedOid": "03fa385"
+          },
+          "author": "arndt-s",
+          "authorAssociation": "MEMBER",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2025-07-02T12:19:22Z",
+          "updatedAt": "2025-07-02T12:19:22Z",
+          "comments": []
+        }
+      ]
+    },
+    {
+      "number": 163,
+      "id": "PR_kwDOJubJxM6c86AL",
+      "title": "Move Mr. Parecki from acknowledgements to contributors in acknowledgement of his contributions",
+      "url": "https://github.com/oauth-wg/oauth-identity-chaining/pull/163",
+      "state": "MERGED",
+      "author": "bc-pi",
+      "authorAssociation": "CONTRIBUTOR",
+      "assignees": [],
+      "labels": [],
+      "body": "Move @aaronpk from acknowledgements to contributors in acknowledgement of his contributions",
+      "createdAt": "2025-07-01T17:48:13Z",
+      "updatedAt": "2025-07-02T12:19:51Z",
+      "baseRepository": "oauth-wg/oauth-identity-chaining",
+      "baseRefName": "main",
+      "baseRefOid": "9380dd170a275d7f474cbc493aed6e1503970447",
+      "headRepository": "oauth-wg/oauth-identity-chaining",
+      "headRefName": "contribution-is-as-contribution-does",
+      "headRefOid": "0c7ab8e18fe737c891828141c4b52d59a8ed915b",
+      "closedAt": "2025-07-02T12:19:50Z",
+      "mergedAt": "2025-07-02T12:19:50Z",
+      "mergedBy": "arndt-s",
+      "mergeCommit": {
+        "oid": "764ac0fcd0a61e0305b7ddd1e26356e197838247"
+      },
+      "comments": [],
+      "reviews": [
+        {
+          "id": "PRR_kwDOJubJxM6xi_1c",
+          "commit": {
+            "abbreviatedOid": "0c7ab8e"
+          },
+          "author": "PieterKas",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2025-07-02T11:14:13Z",
+          "updatedAt": "2025-07-02T11:14:13Z",
+          "comments": []
+        },
+        {
+          "id": "PRR_kwDOJubJxM6xjtJ-",
+          "commit": {
+            "abbreviatedOid": "0c7ab8e"
+          },
+          "author": "arndt-s",
+          "authorAssociation": "MEMBER",
+          "state": "APPROVED",
+          "body": "\ud83d\udcaf ",
+          "createdAt": "2025-07-02T12:19:42Z",
+          "updatedAt": "2025-07-02T12:19:42Z",
+          "comments": []
+        }
+      ]
+    },
+    {
+      "number": 164,
+      "id": "PR_kwDOJubJxM6dF71N",
+      "title": "add authorization server metadata",
+      "url": "https://github.com/oauth-wg/oauth-identity-chaining/pull/164",
+      "state": "OPEN",
+      "author": "aaronpk",
+      "authorAssociation": "MEMBER",
+      "assignees": [],
+      "labels": [],
+      "body": "adds authorization server metadata property to indicate which token types are supported in a token exchange request. closes #147",
+      "createdAt": "2025-07-02T14:07:40Z",
+      "updatedAt": "2025-07-02T18:35:52Z",
+      "baseRepository": "oauth-wg/oauth-identity-chaining",
+      "baseRefName": "main",
+      "baseRefOid": "ad5da9cc22c133af5d342e47984a02dba85473fd",
+      "headRepository": "oauth-wg/oauth-identity-chaining",
+      "headRefName": "issue-147-as-metadata",
+      "headRefOid": "933e81692390469327e989477555abd2391c6af1",
+      "closedAt": null,
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [
+        {
+          "author": "aaronpk",
+          "authorAssociation": "MEMBER",
+          "body": "I went with the narrowly scoped name `identity_chaining_token_types_supported` so that it's clear this only applies to Identity Chaining, not general Token Exchange, as per Brian's request",
+          "createdAt": "2025-07-02T15:00:51Z",
+          "updatedAt": "2025-07-02T15:00:51Z"
+        },
+        {
+          "author": "aaronpk",
+          "authorAssociation": "MEMBER",
+          "body": "One more try, sorry! Apparently my brain hasn't woken up this morning.\r\n\r\n`identity_chaining_requested_token_types_supported` - clarifying that this is about what types of tokens can be requested in the Token Exchange request. Not the input token type.",
+          "createdAt": "2025-07-02T15:14:02Z",
+          "updatedAt": "2025-07-02T15:14:02Z"
+        }
+      ],
+      "reviews": [
+        {
+          "id": "PRR_kwDOJubJxM6xlR5O",
+          "commit": {
+            "abbreviatedOid": "d0322f6"
+          },
+          "author": "arndt-s",
+          "authorAssociation": "MEMBER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2025-07-02T14:13:17Z",
+          "updatedAt": "2025-07-02T14:13:47Z",
+          "comments": [
+            {
+              "originalPosition": 10,
+              "body": "I'm getting a bit confused by `set of protected resources` - my mental model is that this contains the list of supported token types, which is disconnected to the actual resources.  ",
+              "createdAt": "2025-07-02T14:13:17Z",
+              "updatedAt": "2025-07-02T14:13:47Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJubJxM6xlaOp",
+          "commit": {
+            "abbreviatedOid": "d0322f6"
+          },
+          "author": "aaronpk",
+          "authorAssociation": "MEMBER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2025-07-02T14:21:47Z",
+          "updatedAt": "2025-07-02T14:21:47Z",
+          "comments": [
+            {
+              "originalPosition": 10,
+              "body": "erm, wow my bad, this was copypasta from the Protected Resource Metadata document. I can't even blame AI for this... one moment please",
+              "createdAt": "2025-07-02T14:21:47Z",
+              "updatedAt": "2025-07-02T14:21:47Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJubJxM6xl_0V",
+          "commit": {
+            "abbreviatedOid": "d0322f6"
+          },
+          "author": "aaronpk",
+          "authorAssociation": "MEMBER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2025-07-02T15:00:09Z",
+          "updatedAt": "2025-07-02T15:00:09Z",
+          "comments": [
+            {
+              "originalPosition": 10,
+              "body": "Fixed, please see the updated text.",
+              "createdAt": "2025-07-02T15:00:09Z",
+              "updatedAt": "2025-07-02T15:00:09Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJubJxM6xmCZw",
+          "commit": {
+            "abbreviatedOid": "0d7e414"
+          },
+          "author": "arndt-s",
+          "authorAssociation": "MEMBER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2025-07-02T15:03:15Z",
+          "updatedAt": "2025-07-02T15:03:16Z",
+          "comments": [
+            {
+              "originalPosition": 7,
+              "body": "Without the description it'll be tough to tell whether it's the token type of the assertion or the subject token. \r\nMaybe this would make it more implicit and allow to specify supported assertion types in the future?\r\n```suggestion\r\nidentity_chaining_subject_token_types_supported\r\n```",
+              "createdAt": "2025-07-02T15:03:16Z",
+              "updatedAt": "2025-07-02T15:03:54Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJubJxM6xmD2M",
+          "commit": {
+            "abbreviatedOid": "0d7e414"
+          },
+          "author": "arndt-s",
+          "authorAssociation": "MEMBER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2025-07-02T15:04:47Z",
+          "updatedAt": "2025-07-02T15:04:47Z",
+          "comments": [
+            {
+              "originalPosition": 7,
+              "body": "The counter part would be `identity_chaining_requested_token_types_supported`",
+              "createdAt": "2025-07-02T15:04:47Z",
+              "updatedAt": "2025-07-02T15:04:47Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJubJxM6xmJhN",
+          "commit": {
+            "abbreviatedOid": "0d7e414"
+          },
+          "author": "aaronpk",
+          "authorAssociation": "MEMBER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2025-07-02T15:11:53Z",
+          "updatedAt": "2025-07-02T15:11:53Z",
+          "comments": [
+            {
+              "originalPosition": 7,
+              "body": "Yes you're right, and now I am also realizing the subject token isn't enough for me to know whether the specific profile is supported. Actually what I want is `identity_chaining_requested_token_types_supported`.",
+              "createdAt": "2025-07-02T15:11:53Z",
+              "updatedAt": "2025-07-02T15:11:53Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJubJxM6xmrae",
+          "commit": {
+            "abbreviatedOid": "670dfc6"
+          },
+          "author": "PieterKas",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2025-07-02T15:48:09Z",
+          "updatedAt": "2025-07-02T15:48:09Z",
+          "comments": [
+            {
+              "originalPosition": 11,
+              "body": "Identity and Authorization Chaining Token Exchange is not used elsewhere in the spec - I had to read it twice before it registered. It is also the first mention of the `requested_token_type`, which makes sense in the context of token exchange, but perhaps some additional wording along the lines of:\r\n\r\n\"JSON array containing a list of Token Types that can be requested as a `requested_token_type` in the Token Exchange request when performing Identity and Authorization Chaining Across Domains.\"",
+              "createdAt": "2025-07-02T15:48:09Z",
+              "updatedAt": "2025-07-02T15:48:09Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJubJxM6xmzO_",
+          "commit": {
+            "abbreviatedOid": "670dfc6"
+          },
+          "author": "aaronpk",
+          "authorAssociation": "MEMBER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2025-07-02T15:55:44Z",
+          "updatedAt": "2025-07-02T15:55:44Z",
+          "comments": [
+            {
+              "originalPosition": 11,
+              "body": "yes that is a tricky sentence. I just updated it to your suggestion.",
+              "createdAt": "2025-07-02T15:55:44Z",
+              "updatedAt": "2025-07-02T15:55:45Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJubJxM6xnasA",
+          "commit": {
+            "abbreviatedOid": "933e816"
+          },
+          "author": "arndt-s",
+          "authorAssociation": "MEMBER",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2025-07-02T16:42:15Z",
+          "updatedAt": "2025-07-02T16:42:15Z",
+          "comments": []
+        },
+        {
+          "id": "PRR_kwDOJubJxM6xow8i",
+          "commit": {
+            "abbreviatedOid": "933e816"
+          },
+          "author": "PieterKas",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2025-07-02T18:35:52Z",
+          "updatedAt": "2025-07-02T18:35:52Z",
+          "comments": []
+        }
+      ]
+    },
+    {
+      "number": 165,
+      "id": "PR_kwDOJubJxM6dHQ8E",
+      "title": "update references to RFC9700 and RFC9728",
+      "url": "https://github.com/oauth-wg/oauth-identity-chaining/pull/165",
+      "state": "OPEN",
+      "author": "aaronpk",
+      "authorAssociation": "MEMBER",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2025-07-02T16:14:24Z",
+      "updatedAt": "2025-07-02T16:29:51Z",
+      "baseRepository": "oauth-wg/oauth-identity-chaining",
+      "baseRefName": "main",
+      "baseRefOid": "ad5da9cc22c133af5d342e47984a02dba85473fd",
+      "headRepository": "oauth-wg/oauth-identity-chaining",
+      "headRefName": "update-refs",
+      "headRefOid": "f5259cd9fc2494e7d8062d804b4d61d7027aa751",
+      "closedAt": null,
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [],
+      "reviews": [
+        {
+          "id": "PRR_kwDOJubJxM6xnFk9",
+          "commit": {
+            "abbreviatedOid": "f5259cd"
+          },
+          "author": "copilot-pull-request-reviewer",
+          "authorAssociation": "NONE",
+          "state": "COMMENTED",
+          "body": "## Pull Request Overview\n\nThis PR updates references to the finalized RFCs for OAuth 2.0 security practices and resource metadata throughout the draft.\n\n- Adds informative references to RFC9700 and RFC9728\n- Replaces legacy draft IDs with the new RFC numbers in discovery and security sections\n- Updates flow text to point at the official RFCs\n\n\n<details>\n<summary>Comments suppressed due to low confidence (2)</summary>\n\n**draft-ietf-oauth-identity-chaining.md:61**\n* The reference title for RFC9700 should match the official RFC title 'OAuth 2.0 Security Best Current Practice' for consistency.\n```\n  RFC9700: # Best Current Practice for OAuth 2.0 Security\n```\n**draft-ietf-oauth-identity-chaining.md:390**\n* Correct spelling and grammar: change 'it's own authroization server' to 'its own authorization server'.\n```\n(B) Once the resource server (acting as a client) in trust domain A identified the authorization server for trust domain B, it requests a JWT authorization grant for the authorization server in trust domain B from the authorization server in trust domain A (it's own authroization server). This happens via the token exchange protocol (See [Token Exchange](#token-exchange)).\n```\n</details>\n\n",
+          "createdAt": "2025-07-02T16:15:23Z",
+          "updatedAt": "2025-07-02T16:15:23Z",
+          "comments": []
+        },
+        {
+          "id": "PRR_kwDOJubJxM6xnPzQ",
+          "commit": {
+            "abbreviatedOid": "f5259cd"
+          },
+          "author": "arndt-s",
+          "authorAssociation": "MEMBER",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2025-07-02T16:29:51Z",
+          "updatedAt": "2025-07-02T16:29:51Z",
+          "comments": []
+        }
+      ]
     }
   ]
 }
