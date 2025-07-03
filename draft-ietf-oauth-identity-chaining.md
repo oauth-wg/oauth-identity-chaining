@@ -55,11 +55,11 @@ normative:
 
 informative:
 
-  I-D.ietf-oauth-security-topics:
-  I-D.ietf-oauth-resource-metadata:
   I-D.draft-ietf-oauth-v2-1:
   RFC2046: # Multipurpose Internet Mail Extensions (MIME) Part Two: Media Types
   RFC6838: # Media Type Specifications and Registration Procedures
+  RFC9700: # Best Current Practice for OAuth 2.0 Security
+  RFC9728: # OAuth 2.0 Protected Resource Metadata
   IANA-MediaTypes:
    target: https://www.iana.org/assignments/media-types/
    title: IANA Media Types Registry
@@ -140,7 +140,7 @@ The flow illustrated in Figure 1 shows the steps the client in trust domain A ne
 * (F) The client in trust domain A uses the access token received from the authorization server in trust domain B to access the protected resource in trust domain B.
 
 ## Authorization Server Discovery
-This specification does not define authorization server discovery. A client MAY use the `authorization_servers` property as defined in {{I-D.ietf-oauth-resource-metadata}}, maintain a static mapping or use other means to identify the authorization server.
+This specification does not define authorization server discovery. A client MAY use the `authorization_servers` property as defined in OAuth 2.0 Protected Resource Metadata {{RFC9728}}, maintain a static mapping or use other means to identify the authorization server.
 
 ## Token Exchange
 
@@ -289,7 +289,7 @@ It is RECOMMENDED that any profile or deployment-specific implementation adopt e
 # Security Considerations {#Security}
 
 ## Client Authentication
-Authorization Servers SHOULD follow the OAuth 2.0 Security Best Current Practice {{I-D.ietf-oauth-security-topics}} for client authentication.
+Authorization Servers SHOULD follow the Best Current Practice for OAuth 2.0 Security {{RFC9700}} for client authentication.
 
 ## Sender Constraining Tokens {#sender-constraining}
 Authorization Servers SHOULD follow the The OAuth 2.1 Authorization Framework {{I-D.draft-ietf-oauth-v2-1}} for sender constraining tokens.
@@ -385,7 +385,7 @@ The flow contains the following steps:
 
 The resource server of trust domain A needs to access protected resource in trust domain B. It requires an access token to do so. In order to obtain the required access token, the resource server in trust domain A will act as a client.
 
-(A) The resource server (acting as a client) in trust domain A requests protected resource metadata from the resource server in trust domain B as described in {{I-D.ietf-oauth-resource-metadata}}. It uses the resource metadata to discover information about the authorization server for trust domain B. This step MAY be skipped if discovery is not needed and other means of discovery MAY be used. The protected resource in trust domain B returns its metadata along with the authorization server information in trust domain A.
+(A) The resource server (acting as a client) in trust domain A requests protected resource metadata from the resource server in trust domain B as described in {{RFC9728}}. It uses the resource metadata to discover information about the authorization server for trust domain B. This step MAY be skipped if discovery is not needed and other means of discovery MAY be used. The protected resource in trust domain B returns its metadata along with the authorization server information in trust domain A.
 
 (B) Once the resource server (acting as a client) in trust domain A identified the authorization server for trust domain B, it requests a JWT authorization grant for the authorization server in trust domain B from the authorization server in trust domain A (it's own authroization server). This happens via the token exchange protocol (See [Token Exchange](#token-exchange)).
 
