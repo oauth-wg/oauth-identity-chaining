@@ -5,13 +5,13 @@
 oauth                                                 A. Schwenkschuster
 Internet-Draft                                             P. Kasselmann
 Intended status: Informational                                     SPIRL
-Expires: 3 January 2026                                        K. Burgin
+Expires: 4 January 2026                                        K. Burgin
                                                                    MITRE
                                                               M. Jenkins
                                                                 NSA-CCSS
                                                              B. Campbell
                                                            Ping Identity
-                                                             2 July 2025
+                                                             3 July 2025
 
 
         OAuth Identity and Authorization Chaining Across Domains
@@ -49,7 +49,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 3 January 2026.
+   This Internet-Draft will expire on 4 January 2026.
 
 Copyright Notice
 
@@ -235,9 +235,9 @@ Table of Contents
 2.2.  Authorization Server Discovery
 
    This specification does not define authorization server discovery.  A
-   client MAY use the authorization_servers property as defined in
-   [I-D.ietf-oauth-resource-metadata], maintain a static mapping or use
-   other means to identify the authorization server.
+   client MAY use the authorization_servers property as defined in OAuth
+   2.0 Protected Resource Metadata [RFC9728], maintain a static mapping
+   or use other means to identify the authorization server.
 
 2.3.  Token Exchange
 
@@ -467,9 +467,8 @@ grant_type=urn%3Aietf%3Aparams%3Aoauth%3Agrant-type%3Atoken-exchange
 
 4.1.  Client Authentication
 
-   Authorization Servers SHOULD follow the OAuth 2.0 Security Best
-   Current Practice [I-D.ietf-oauth-security-topics] for client
-   authentication.
+   Authorization Servers SHOULD follow the Best Current Practice for
+   OAuth 2.0 Security [RFC9700] for client authentication.
 
 4.2.  Sender Constraining Tokens
 
@@ -575,21 +574,6 @@ grant_type=urn%3Aietf%3Aparams%3Aoauth%3Agrant-type%3Atoken-exchange
 
 5.2.  Informative References
 
-   [I-D.ietf-oauth-security-topics]
-              Lodderstedt, T., Bradley, J., Labunets, A., and D. Fett,
-              "OAuth 2.0 Security Best Current Practice", Work in
-              Progress, Internet-Draft, draft-ietf-oauth-security-
-              topics-29, 3 June 2024,
-              <https://datatracker.ietf.org/doc/html/draft-ietf-oauth-
-              security-topics-29>.
-
-   [I-D.ietf-oauth-resource-metadata]
-              Jones, M. B., Hunt, P., and A. Parecki, "OAuth 2.0
-              Protected Resource Metadata", Work in Progress, Internet-
-              Draft, draft-ietf-oauth-resource-metadata-13, 15 October
-              2024, <https://datatracker.ietf.org/doc/html/draft-ietf-
-              oauth-resource-metadata-13>.
-
    [I-D.draft-ietf-oauth-v2-1]
               Hardt, D., Parecki, A., and T. Lodderstedt, "The OAuth 2.1
               Authorization Framework", Work in Progress, Internet-
@@ -606,6 +590,16 @@ grant_type=urn%3Aietf%3Aparams%3Aoauth%3Agrant-type%3Atoken-exchange
               Specifications and Registration Procedures", BCP 13,
               RFC 6838, DOI 10.17487/RFC6838, January 2013,
               <https://www.rfc-editor.org/rfc/rfc6838>.
+
+   [RFC9700]  Lodderstedt, T., Bradley, J., Labunets, A., and D. Fett,
+              "Best Current Practice for OAuth 2.0 Security", BCP 240,
+              RFC 9700, DOI 10.17487/RFC9700, January 2025,
+              <https://www.rfc-editor.org/rfc/rfc9700>.
+
+   [RFC9728]  Jones, M.B., Hunt, P., and A. Parecki, "OAuth 2.0
+              Protected Resource Metadata", RFC 9728,
+              DOI 10.17487/RFC9728, April 2025,
+              <https://www.rfc-editor.org/rfc/rfc9728>.
 
    [IANA-MediaTypes]
               "IANA Media Types Registry", n.d.,
@@ -761,12 +755,12 @@ B.1.  Resource server acting as client
 
    (A) The resource server (acting as a client) in trust domain A
    requests protected resource metadata from the resource server in
-   trust domain B as described in [I-D.ietf-oauth-resource-metadata].
-   It uses the resource metadata to discover information about the
-   authorization server for trust domain B.  This step MAY be skipped if
-   discovery is not needed and other means of discovery MAY be used.
-   The protected resource in trust domain B returns its metadata along
-   with the authorization server information in trust domain A.
+   trust domain B as described in [RFC9728].  It uses the resource
+   metadata to discover information about the authorization server for
+   trust domain B.  This step MAY be skipped if discovery is not needed
+   and other means of discovery MAY be used.  The protected resource in
+   trust domain B returns its metadata along with the authorization
+   server information in trust domain A.
 
    (B) Once the resource server (acting as a client) in trust domain A
    identified the authorization server for trust domain B, it requests a
