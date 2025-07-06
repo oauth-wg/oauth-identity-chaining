@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2025-07-03T00:23:34.729853+00:00",
+  "timestamp": "2025-07-06T00:26:06.210310+00:00",
   "repo": "oauth-wg/oauth-identity-chaining",
   "labels": [
     {
@@ -1597,7 +1597,7 @@
       "id": "I_kwDOJubJxM6lu1OO",
       "title": "Privacy considerations",
       "url": "https://github.com/oauth-wg/oauth-identity-chaining/issues/126",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "PieterKas",
       "authorAssociation": "CONTRIBUTOR",
       "assignees": [
@@ -1606,8 +1606,8 @@
       "labels": [],
       "body": "Review draft for privacy considerations and suggest alternative text or an additional section to aggregate privacy considerations - @gffletch\r\n",
       "createdAt": "2025-01-10T16:00:48Z",
-      "updatedAt": "2025-04-28T09:20:39Z",
-      "closedAt": null,
+      "updatedAt": "2025-07-03T08:45:05Z",
+      "closedAt": "2025-07-03T08:45:05Z",
       "comments": []
     },
     {
@@ -1669,7 +1669,7 @@
       "id": "I_kwDOJubJxM6qGgJj",
       "title": "Claims transcription",
       "url": "https://github.com/oauth-wg/oauth-identity-chaining/issues/137",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "PieterKas",
       "authorAssociation": "CONTRIBUTOR",
       "assignees": [
@@ -1678,8 +1678,8 @@
       "labels": [],
       "body": "Consider re-workding and providing motivation for why claims transcription may be required.\n\n1. Should reference be made tot he different trust domains (for consistency)\n2. Should examples or reasons/use cases be provided to explain what this may be required.",
       "createdAt": "2025-02-14T14:12:49Z",
-      "updatedAt": "2025-05-23T12:26:38Z",
-      "closedAt": null,
+      "updatedAt": "2025-07-03T08:44:56Z",
+      "closedAt": "2025-07-03T08:44:56Z",
       "comments": [
         {
           "author": "kburgin3",
@@ -1805,7 +1805,7 @@
       "id": "I_kwDOJubJxM6zi5GU",
       "title": "Authorization server metadata to enable discovery of grant/token type",
       "url": "https://github.com/oauth-wg/oauth-identity-chaining/issues/147",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "aaronpk",
       "authorAssociation": "MEMBER",
       "assignees": [
@@ -1814,8 +1814,8 @@
       "labels": [],
       "body": "Please refer to this issue for the full context: https://github.com/aaronpk/draft-parecki-oauth-identity-assertion-authz-grant/issues/16\n\nShould this specification define Authorization Server Metadata for this purpose, or should it be left to profiles like the Identity Assertion Authorization Grant?",
       "createdAt": "2025-04-22T22:30:48Z",
-      "updatedAt": "2025-04-25T14:50:49Z",
-      "closedAt": null,
+      "updatedAt": "2025-07-03T08:45:16Z",
+      "closedAt": "2025-07-03T08:45:16Z",
       "comments": [
         {
           "author": "PieterKas",
@@ -1855,22 +1855,31 @@
       "id": "I_kwDOJubJxM6-kyhq",
       "title": "Publish new version for IETF 123",
       "url": "https://github.com/oauth-wg/oauth-identity-chaining/issues/166",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "aaronpk",
       "authorAssociation": "MEMBER",
-      "assignees": [],
+      "assignees": [
+        "arndt-s"
+      ],
       "labels": [],
       "body": "The publication deadline is Monday July 7th. We need to publish an updated version of this before then. Who is taking the lead on clicking the publish button after the pending PRs are merged?",
       "createdAt": "2025-07-02T22:11:03Z",
-      "updatedAt": "2025-07-02T22:29:47Z",
-      "closedAt": null,
+      "updatedAt": "2025-07-03T15:10:13Z",
+      "closedAt": "2025-07-03T15:10:13Z",
       "comments": [
         {
           "author": "arndt-s",
           "authorAssociation": "MEMBER",
-          "body": "I can take care of that - are we all ok with merging the remaining PRs?On 2. Jul 2025, at 23:11, Aaron Parecki ***@***.***> wrote:\ufeffaaronpk created an issue (oauth-wg/oauth-identity-chaining#166)\r\nThe publication deadline is Monday July 7th. We need to publish an updated version of this before then. Who is taking the lead on clicking the publish button after the pending PRs are merged?\r\n\r\n\u2014Reply to this email directly, view it on GitHub, or unsubscribe.You are receiving this because you are subscribed to this thread.Message ID: ***@***.***>",
+          "body": "I can take care of that - are we all ok with merging the remaining PRs?",
           "createdAt": "2025-07-02T22:29:47Z",
-          "updatedAt": "2025-07-02T22:29:47Z"
+          "updatedAt": "2025-07-03T08:23:58Z"
+        },
+        {
+          "author": "aaronpk",
+          "authorAssociation": "MEMBER",
+          "body": "Thanks Arndt!\n\nhttps://www.ietf.org/archive/id/draft-ietf-oauth-identity-chaining-05.html",
+          "createdAt": "2025-07-03T15:10:13Z",
+          "updatedAt": "2025-07-03T15:10:13Z"
         }
       ]
     }
@@ -9014,24 +9023,26 @@
       "id": "PR_kwDOJubJxM6cxNEq",
       "title": "add claims transcription examples (attempt 2)",
       "url": "https://github.com/oauth-wg/oauth-identity-chaining/pull/158",
-      "state": "OPEN",
+      "state": "MERGED",
       "author": "bc-pi",
       "authorAssociation": "CONTRIBUTOR",
       "assignees": [],
       "labels": [],
       "body": "attempt to copy and fixup the content from PR #155 into a new one to hopefully workaround tooling issues\r\n\r\nResolves https://github.com/oauth-wg/oauth-identity-chaining/issues/137",
       "createdAt": "2025-06-30T21:09:09Z",
-      "updatedAt": "2025-07-02T12:29:58Z",
+      "updatedAt": "2025-07-03T08:44:57Z",
       "baseRepository": "oauth-wg/oauth-identity-chaining",
       "baseRefName": "main",
       "baseRefOid": "ad5da9cc22c133af5d342e47984a02dba85473fd",
       "headRepository": "oauth-wg/oauth-identity-chaining",
       "headRefName": "transcription-of-the-transcription-examples-pr",
       "headRefOid": "ba780b14b42c7a0ccc4f448cb62e3b9cc8e750cb",
-      "closedAt": null,
-      "mergedAt": null,
-      "mergedBy": null,
-      "mergeCommit": null,
+      "closedAt": "2025-07-03T08:44:55Z",
+      "mergedAt": "2025-07-03T08:44:55Z",
+      "mergedBy": "arndt-s",
+      "mergeCommit": {
+        "oid": "ba4e9cc415472f124920c8170de4dc2b5debdfa3"
+      },
       "comments": [],
       "reviews": [
         {
@@ -9279,24 +9290,26 @@
       "id": "PR_kwDOJubJxM6c8uNs",
       "title": "Added some Privacy Considerations (try 2)",
       "url": "https://github.com/oauth-wg/oauth-identity-chaining/pull/162",
-      "state": "OPEN",
+      "state": "MERGED",
       "author": "bc-pi",
       "authorAssociation": "CONTRIBUTOR",
       "assignees": [],
       "labels": [],
       "body": "attempt to copy and fixup some of the content from PR #153 into a new one to hopefully workaround tooling issues\r\n\r\nResolves https://github.com/oauth-wg/oauth-identity-chaining/issues/126",
       "createdAt": "2025-07-01T17:28:08Z",
-      "updatedAt": "2025-07-02T12:26:28Z",
+      "updatedAt": "2025-07-03T08:45:06Z",
       "baseRepository": "oauth-wg/oauth-identity-chaining",
       "baseRefName": "main",
       "baseRefOid": "ad5da9cc22c133af5d342e47984a02dba85473fd",
       "headRepository": "oauth-wg/oauth-identity-chaining",
       "headRefName": "privacy-schmivacy",
       "headRefOid": "88ff1e5acde844faec98d67c1eeb894f83dc70a6",
-      "closedAt": null,
-      "mergedAt": null,
-      "mergedBy": null,
-      "mergeCommit": null,
+      "closedAt": "2025-07-03T08:45:04Z",
+      "mergedAt": "2025-07-03T08:45:04Z",
+      "mergedBy": "arndt-s",
+      "mergeCommit": {
+        "oid": "d6b8a51580bc26cfd3584feea84c73752f41c5d6"
+      },
       "comments": [],
       "reviews": [
         {
@@ -9387,24 +9400,26 @@
       "id": "PR_kwDOJubJxM6dF71N",
       "title": "add authorization server metadata",
       "url": "https://github.com/oauth-wg/oauth-identity-chaining/pull/164",
-      "state": "OPEN",
+      "state": "MERGED",
       "author": "aaronpk",
       "authorAssociation": "MEMBER",
       "assignees": [],
       "labels": [],
       "body": "adds authorization server metadata property to indicate which token types are supported in a token exchange request. closes #147",
       "createdAt": "2025-07-02T14:07:40Z",
-      "updatedAt": "2025-07-02T18:35:52Z",
+      "updatedAt": "2025-07-03T12:58:39Z",
       "baseRepository": "oauth-wg/oauth-identity-chaining",
       "baseRefName": "main",
       "baseRefOid": "ad5da9cc22c133af5d342e47984a02dba85473fd",
       "headRepository": "oauth-wg/oauth-identity-chaining",
       "headRefName": "issue-147-as-metadata",
       "headRefOid": "933e81692390469327e989477555abd2391c6af1",
-      "closedAt": null,
-      "mergedAt": null,
-      "mergedBy": null,
-      "mergeCommit": null,
+      "closedAt": "2025-07-03T08:45:15Z",
+      "mergedAt": "2025-07-03T08:45:15Z",
+      "mergedBy": "arndt-s",
+      "mergeCommit": {
+        "oid": "229be32818a040ad5606519dc95354f74a06a916"
+      },
       "comments": [
         {
           "author": "aaronpk",
@@ -9419,6 +9434,20 @@
           "body": "One more try, sorry! Apparently my brain hasn't woken up this morning.\r\n\r\n`identity_chaining_requested_token_types_supported` - clarifying that this is about what types of tokens can be requested in the Token Exchange request. Not the input token type.",
           "createdAt": "2025-07-02T15:14:02Z",
           "updatedAt": "2025-07-02T15:14:02Z"
+        },
+        {
+          "author": "bc-pi",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "> I went with the narrowly scoped name `identity_chaining_token_types_supported` so that it's clear this only applies to Identity Chaining, not general Token Exchange, as per Brian's request\r\n\r\nI probably did say something like that but am somewhat less sure of the wisdom behind it now... (that it's too late)",
+          "createdAt": "2025-07-03T12:55:39Z",
+          "updatedAt": "2025-07-03T12:55:39Z"
+        },
+        {
+          "author": "aaronpk",
+          "authorAssociation": "MEMBER",
+          "body": "I agree it seems kind of weird for a specific profile of Token Exchange to define a general Token Exchange metadata parameter tho, so this seems fine",
+          "createdAt": "2025-07-03T12:58:39Z",
+          "updatedAt": "2025-07-03T12:58:39Z"
         }
       ],
       "reviews": [
@@ -9615,24 +9644,26 @@
       "id": "PR_kwDOJubJxM6dHQ8E",
       "title": "update references to RFC9700 and RFC9728",
       "url": "https://github.com/oauth-wg/oauth-identity-chaining/pull/165",
-      "state": "OPEN",
+      "state": "MERGED",
       "author": "aaronpk",
       "authorAssociation": "MEMBER",
       "assignees": [],
       "labels": [],
       "body": "",
       "createdAt": "2025-07-02T16:14:24Z",
-      "updatedAt": "2025-07-02T16:29:51Z",
+      "updatedAt": "2025-07-03T08:44:44Z",
       "baseRepository": "oauth-wg/oauth-identity-chaining",
       "baseRefName": "main",
       "baseRefOid": "ad5da9cc22c133af5d342e47984a02dba85473fd",
       "headRepository": "oauth-wg/oauth-identity-chaining",
       "headRefName": "update-refs",
       "headRefOid": "f5259cd9fc2494e7d8062d804b4d61d7027aa751",
-      "closedAt": null,
-      "mergedAt": null,
-      "mergedBy": null,
-      "mergeCommit": null,
+      "closedAt": "2025-07-03T08:44:42Z",
+      "mergedAt": "2025-07-03T08:44:42Z",
+      "mergedBy": "arndt-s",
+      "mergeCommit": {
+        "oid": "7544146c1d9338e9fddaa75358fbaba06034c214"
+      },
       "comments": [],
       "reviews": [
         {
