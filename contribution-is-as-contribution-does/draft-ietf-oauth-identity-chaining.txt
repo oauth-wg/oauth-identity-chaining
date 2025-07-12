@@ -5,13 +5,13 @@
 oauth                                                 A. Schwenkschuster
 Internet-Draft                                             P. Kasselmann
 Intended status: Informational                                     SPIRL
-Expires: 2 January 2026                                        K. Burgin
+Expires: 13 January 2026                                       K. Burgin
                                                                    MITRE
                                                               M. Jenkins
                                                                 NSA-CCSS
                                                              B. Campbell
                                                            Ping Identity
-                                                             1 July 2025
+                                                            12 July 2025
 
 
         OAuth Identity and Authorization Chaining Across Domains
@@ -49,7 +49,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 2 January 2026.
+   This Internet-Draft will expire on 13 January 2026.
 
 Copyright Notice
 
@@ -465,7 +465,7 @@ grant_type=urn%3Aietf%3Aparams%3Aoauth%3Agrant-type%3Atoken-exchange
    It is RECOMMENDED that any profile or deployment-specific
    implementation adopt explicit typing as defined in JSON Web Token
    Best Current Practices [RFC8725] and define a new media type
-   [RFC2046] in the "Media Types" registry [IANA-MediaTypes] in the
+   [RFC2046] in the "Media Types" registry [IANA.media-types] in the
    manner described in [RFC6838].
 
 4.  Security Considerations
@@ -612,9 +612,9 @@ grant_type=urn%3Aietf%3Aparams%3Aoauth%3Agrant-type%3Atoken-exchange
               RFC 6838, DOI 10.17487/RFC6838, January 2013,
               <https://www.rfc-editor.org/rfc/rfc6838>.
 
-   [IANA-MediaTypes]
-              "IANA Media Types Registry", n.d.,
-              <https://www.iana.org/assignments/media-types/>.
+   [IANA.media-types]
+              IANA, "Media Types",
+              <https://www.iana.org/assignments/media-types>.
 
 Appendix A.  Use cases
 
@@ -970,6 +970,11 @@ Appendix C.  Acknowledgements
 Appendix D.  Document History
 
    [[ To be removed from the final specification ]]
+
+   -06
+
+   *  Use IANA.media-types so the tooling can find the media types
+      registry without an explicit target
 
    -05
 
