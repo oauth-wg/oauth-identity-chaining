@@ -60,9 +60,7 @@ informative:
   RFC6838: # Media Type Specifications and Registration Procedures
   RFC9700: # Best Current Practice for OAuth 2.0 Security
   RFC9728: # OAuth 2.0 Protected Resource Metadata
-  IANA-MediaTypes:
-   target: https://www.iana.org/assignments/media-types/
-   title: IANA Media Types Registry
+  IANA.media-types:
 
 --- abstract
 
@@ -316,7 +314,7 @@ The registry records the supported token types that can be requested in an {{RFC
 ## Media Types
 This specification does not define any new media types.
 
-It is RECOMMENDED that any profile or deployment-specific implementation adopt explicit typing as defined in JSON Web Token Best Current Practices {{RFC8725}} and define a new media type {{RFC2046}} in the "Media Types" registry {{IANA-MediaTypes}} in the manner described in {{RFC6838}}.
+It is RECOMMENDED that any profile or deployment-specific implementation adopt explicit typing as defined in JSON Web Token Best Current Practices {{RFC8725}} and define a new media type {{RFC2046}} in the "Media Types" registry {{IANA.media-types}} in the manner described in {{RFC6838}}.
 
 # Security Considerations {#Security}
 
@@ -538,6 +536,10 @@ The editors would like to thank Joe Jubinski, Justin Richer, Dean H. Saxe, and o
 # Document History
 
 \[\[ To be removed from the final specification ]]
+
+-06
+
+* Use IANA.media-types so the tooling can find the media types registry without an explicit target
 
 -05
 
