@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2025-07-06T00:26:06.210310+00:00",
+  "timestamp": "2025-07-13T00:26:43.566795+00:00",
   "repo": "oauth-wg/oauth-identity-chaining",
   "labels": [
     {
@@ -9690,6 +9690,46 @@
           "body": "",
           "createdAt": "2025-07-02T16:29:51Z",
           "updatedAt": "2025-07-02T16:29:51Z",
+          "comments": []
+        }
+      ]
+    },
+    {
+      "number": 167,
+      "id": "PR_kwDOJubJxM6eol-L",
+      "title": "Use IANA.media-types so the tooling can find the media types registry without an explicit target",
+      "url": "https://github.com/oauth-wg/oauth-identity-chaining/pull/167",
+      "state": "OPEN",
+      "author": "bc-pi",
+      "authorAssociation": "CONTRIBUTOR",
+      "assignees": [],
+      "labels": [],
+      "body": "working on https://github.com/aaronpk/draft-parecki-oauth-identity-assertion-authz-grant/pull/32 and finally came to realize how the IANA. automagical stuff works ",
+      "createdAt": "2025-07-12T15:57:16Z",
+      "updatedAt": "2025-07-12T19:27:23Z",
+      "baseRepository": "oauth-wg/oauth-identity-chaining",
+      "baseRefName": "main",
+      "baseRefOid": "229be32818a040ad5606519dc95354f74a06a916",
+      "headRepository": "oauth-wg/oauth-identity-chaining",
+      "headRefName": "zero-six-and-iana",
+      "headRefOid": "8b4e44b2094fb4b23cfb0abd9932498346675a0b",
+      "closedAt": null,
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [],
+      "reviews": [
+        {
+          "id": "PRR_kwDOJubJxM6zniSU",
+          "commit": {
+            "abbreviatedOid": "8b4e44b"
+          },
+          "author": "PieterKas",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2025-07-12T19:27:23Z",
+          "updatedAt": "2025-07-12T19:27:23Z",
           "comments": []
         }
       ]
