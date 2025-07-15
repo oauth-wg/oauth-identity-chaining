@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2025-07-13T00:26:43.566795+00:00",
+  "timestamp": "2025-07-15T00:24:54.921634+00:00",
   "repo": "oauth-wg/oauth-identity-chaining",
   "labels": [
     {
@@ -9706,7 +9706,7 @@
       "labels": [],
       "body": "working on https://github.com/aaronpk/draft-parecki-oauth-identity-assertion-authz-grant/pull/32 and finally came to realize how the IANA. automagical stuff works ",
       "createdAt": "2025-07-12T15:57:16Z",
-      "updatedAt": "2025-07-12T19:27:23Z",
+      "updatedAt": "2025-07-13T14:27:26Z",
       "baseRepository": "oauth-wg/oauth-identity-chaining",
       "baseRefName": "main",
       "baseRefOid": "229be32818a040ad5606519dc95354f74a06a916",
@@ -9730,6 +9730,19 @@
           "body": "",
           "createdAt": "2025-07-12T19:27:23Z",
           "updatedAt": "2025-07-12T19:27:23Z",
+          "comments": []
+        },
+        {
+          "id": "PRR_kwDOJubJxM6zqL3Q",
+          "commit": {
+            "abbreviatedOid": "8b4e44b"
+          },
+          "author": "kburgin3",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "APPROVED",
+          "body": "Looks good",
+          "createdAt": "2025-07-13T14:27:26Z",
+          "updatedAt": "2025-07-13T14:27:26Z",
           "comments": []
         }
       ]
