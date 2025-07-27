@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2025-07-15T00:24:54.921634+00:00",
+  "timestamp": "2025-07-27T00:27:22.843623+00:00",
   "repo": "oauth-wg/oauth-identity-chaining",
   "labels": [
     {
@@ -1880,6 +1880,37 @@
           "body": "Thanks Arndt!\n\nhttps://www.ietf.org/archive/id/draft-ietf-oauth-identity-chaining-05.html",
           "createdAt": "2025-07-03T15:10:13Z",
           "updatedAt": "2025-07-03T15:10:13Z"
+        }
+      ]
+    },
+    {
+      "number": 168,
+      "id": "I_kwDOJubJxM7Cfqi6",
+      "title": "Consider making Authorization Grant JWTs single use and sender constrained",
+      "url": "https://github.com/oauth-wg/oauth-identity-chaining/issues/168",
+      "state": "OPEN",
+      "author": "yaron-zehavi",
+      "authorAssociation": "NONE",
+      "assignees": [],
+      "labels": [],
+      "body": "To prevent misuse of the Authorization Grant JWT, it should be (like an authorization code grant), only redeemable once.\nThis could be seen as a RFC7523 / 7521 issue but these don't include such guidance.\n\nIn addition the draft's security considerations recommends Sender Constraining Tokens.\nConsider applying this recommendation to Sender Constrain Authorization Grant JWTs as well",
+      "createdAt": "2025-07-25T12:37:00Z",
+      "updatedAt": "2025-07-26T21:10:36Z",
+      "closedAt": null,
+      "comments": [
+        {
+          "author": "mcguinness",
+          "authorAssociation": "NONE",
+          "body": "ID-JAG is a profile of Identity Chaining that also profiles JWT Assertion Grant.  I have open item to add support for DPoP to ID-JAG assertions https://github.com/aaronpk/draft-parecki-oauth-identity-assertion-authz-grant/issues/28#issue-3181396992\n\nWould be nice to have good layering of security recommendations so we don't need to repeat across documents.  ",
+          "createdAt": "2025-07-25T16:43:07Z",
+          "updatedAt": "2025-07-25T16:43:07Z"
+        },
+        {
+          "author": "yaron-zehavi",
+          "authorAssociation": "NONE",
+          "body": "I agree fully. I think the base security considerations should be discussed in the main chaining document, and then profiles can pick and choose, or add, as fits their use-case.\nHowever single use is a detached requirement than sender-constraining, which I think should have been actually part of RFC 7523 but it's never too late to repair",
+          "createdAt": "2025-07-26T21:10:36Z",
+          "updatedAt": "2025-07-26T21:10:36Z"
         }
       ]
     }
