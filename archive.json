@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2025-07-27T00:27:22.843623+00:00",
+  "timestamp": "2025-08-03T00:27:48.980044+00:00",
   "repo": "oauth-wg/oauth-identity-chaining",
   "labels": [
     {
@@ -1895,7 +1895,7 @@
       "labels": [],
       "body": "To prevent misuse of the Authorization Grant JWT, it should be (like an authorization code grant), only redeemable once.\nThis could be seen as a RFC7523 / 7521 issue but these don't include such guidance.\n\nIn addition the draft's security considerations recommends Sender Constraining Tokens.\nConsider applying this recommendation to Sender Constrain Authorization Grant JWTs as well",
       "createdAt": "2025-07-25T12:37:00Z",
-      "updatedAt": "2025-07-26T21:10:36Z",
+      "updatedAt": "2025-08-02T18:26:28Z",
       "closedAt": null,
       "comments": [
         {
@@ -1911,6 +1911,27 @@
           "body": "I agree fully. I think the base security considerations should be discussed in the main chaining document, and then profiles can pick and choose, or add, as fits their use-case.\nHowever single use is a detached requirement than sender-constraining, which I think should have been actually part of RFC 7523 but it's never too late to repair",
           "createdAt": "2025-07-26T21:10:36Z",
           "updatedAt": "2025-07-26T21:10:36Z"
+        },
+        {
+          "author": "bc-pi",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "please be aware that there's a a fair amount of prior effort around(ish) this topic, including but not limited to, the following presentation, issues, and PRs:\n\n[slides from 122](https://datatracker.ietf.org/meeting/122/materials/slides-122-oauth-sessb-oauth-identity-and-authorization-chaining-across-domains-01)\n\n[79: Should we allow identity chaining with DPoP tokens?](https://github.com/oauth-wg/oauth-identity-chaining/issues/79)\n[86: Add sender constraining mechanisms](https://github.com/oauth-wg/oauth-identity-chaining/issues/86)\n[105: Do we need additional clarification on re-using sender constraining mechanisms?](https://github.com/oauth-wg/oauth-identity-chaining/issues/105)\n[125: Add sender constraining of tokens to the security considerations](https://github.com/oauth-wg/oauth-identity-chaining/issues/125)\n\n\n[ [Kelley] add sender constraints #90 ](https://github.com/oauth-wg/oauth-identity-chaining/pull/90)\n [Add sender constrained tokens (redo) #95 ](https://github.com/oauth-wg/oauth-identity-chaining/pull/95)\n [Added delegated key binding #124](https://github.com/oauth-wg/oauth-identity-chaining/pull/124) \n",
+          "createdAt": "2025-08-02T12:50:16Z",
+          "updatedAt": "2025-08-02T12:50:16Z"
+        },
+        {
+          "author": "yaron-zehavi",
+          "authorAssociation": "NONE",
+          "body": "Thanks Brian, Roger that re sender-constraining.\nWhat about limiting the usage of the authorization grant to only once?",
+          "createdAt": "2025-08-02T14:14:22Z",
+          "updatedAt": "2025-08-02T14:14:22Z"
+        },
+        {
+          "author": "bc-pi",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "> Thanks Brian, Roger that re sender-constraining. What about limiting the usage of the authorization grant to only once?\n\nThere is some allowance for it in rfc7523 but not enough for reliable interop and in my own personal opinion isn't worth doing. ",
+          "createdAt": "2025-08-02T18:26:28Z",
+          "updatedAt": "2025-08-02T18:26:28Z"
         }
       ]
     }
