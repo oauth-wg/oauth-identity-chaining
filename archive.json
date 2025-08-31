@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2025-08-03T00:27:48.980044+00:00",
+  "timestamp": "2025-08-31T00:24:03.589491+00:00",
   "repo": "oauth-wg/oauth-identity-chaining",
   "labels": [
     {
@@ -1934,6 +1934,22 @@
           "updatedAt": "2025-08-02T18:26:28Z"
         }
       ]
+    },
+    {
+      "number": 169,
+      "id": "I_kwDOJubJxM7IxnM1",
+      "title": "WGLC (1 of ?): trust relationship realization",
+      "url": "https://github.com/oauth-wg/oauth-identity-chaining/issues/169",
+      "state": "OPEN",
+      "author": "bc-pi",
+      "authorAssociation": "CONTRIBUTOR",
+      "assignees": [],
+      "labels": [],
+      "body": "Had a discussion recently (during WGLC so considering it such) with Adam Rusbridge and Patrick Harding recently that suggested a bit more explanation of how the trust relationship typically manifests itself would be useful. A few relevant excerpts from the conversation follow:\n\n\n> but Patrick is basically right - it comes down to the OAUTH AS in trust domain B trusting some public key(s) of domain A\n\n> another way that can manifest is domain A having a metadata file at one of the well knowns endpoint that points to a listing of keys and the trust is established via config at domain B saying that the AS at A is trusted and then the metadata and keys are retrieved via dns hostname authenticated TLS/HTTPS\n\n---\n\n> This was the original sentence:\n\n> > The client has a\n> >   way to discover the authorization server in Domain B and a trust\n> > relationship exists between Domain A and Domain B (e.g., through\n> >  federation).\n\n> The link you referenced has a good clarification:\n\n> > Typically, such an\n> >   entity is known as a \"security token service\" (STS) or just \"token\n> >  service\", and a trust relationship (usually manifested in the\n> >   exchange of some kind of key material) exists between the token\n> >  service and the relying party.\n\n> Once I understood that the trust relationship is realised through the use of \"trusted\" public keys - eg. by registering them in some kind of trusted filestore or whatever - this all made perfect sense.  So you could clarify this further, but then perhaps you start getting into implementation details:  this trust relationship is usually manifested in the exchange of some kind of key material such as cryptographic public keys .",
+      "createdAt": "2025-08-29T23:11:34Z",
+      "updatedAt": "2025-08-29T23:44:09Z",
+      "closedAt": null,
+      "comments": []
     }
   ],
   "pulls": [
