@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2025-08-31T00:24:03.589491+00:00",
+  "timestamp": "2025-09-04T00:20:30.888342+00:00",
   "repo": "oauth-wg/oauth-identity-chaining",
   "labels": [
     {
@@ -1948,6 +1948,22 @@
       "body": "Had a discussion recently (during WGLC so considering it such) with Adam Rusbridge and Patrick Harding recently that suggested a bit more explanation of how the trust relationship typically manifests itself would be useful. A few relevant excerpts from the conversation follow:\n\n\n> but Patrick is basically right - it comes down to the OAUTH AS in trust domain B trusting some public key(s) of domain A\n\n> another way that can manifest is domain A having a metadata file at one of the well knowns endpoint that points to a listing of keys and the trust is established via config at domain B saying that the AS at A is trusted and then the metadata and keys are retrieved via dns hostname authenticated TLS/HTTPS\n\n---\n\n> This was the original sentence:\n\n> > The client has a\n> >   way to discover the authorization server in Domain B and a trust\n> > relationship exists between Domain A and Domain B (e.g., through\n> >  federation).\n\n> The link you referenced has a good clarification:\n\n> > Typically, such an\n> >   entity is known as a \"security token service\" (STS) or just \"token\n> >  service\", and a trust relationship (usually manifested in the\n> >   exchange of some kind of key material) exists between the token\n> >  service and the relying party.\n\n> Once I understood that the trust relationship is realised through the use of \"trusted\" public keys - eg. by registering them in some kind of trusted filestore or whatever - this all made perfect sense.  So you could clarify this further, but then perhaps you start getting into implementation details:  this trust relationship is usually manifested in the exchange of some kind of key material such as cryptographic public keys .",
       "createdAt": "2025-08-29T23:11:34Z",
       "updatedAt": "2025-08-29T23:44:09Z",
+      "closedAt": null,
+      "comments": []
+    },
+    {
+      "number": 170,
+      "id": "I_kwDOJubJxM7JT9we",
+      "title": "WGLC (2 of ?): claims/token transcription/rewrite security",
+      "url": "https://github.com/oauth-wg/oauth-identity-chaining/issues/170",
+      "state": "OPEN",
+      "author": "bc-pi",
+      "authorAssociation": "CONTRIBUTOR",
+      "assignees": [],
+      "labels": [],
+      "body": "per https://mailarchive.ietf.org/arch/msg/oauth/CICTkXxoIP6vFnaYSo2Sq81ErPM/\n\n**[OAUTH-WG] Re: Token rewrite security in draft-ietf-oauth-identity-chaining**\n\nWatson Ladd <watsonbladd@gmail.com> Sun, 31 August 2025 16:18 UTC[Show header](https://mailarchive.ietf.org/arch/msg/oauth/CICTkXxoIP6vFnaYSo2Sq81ErPM/#)\n\nOn Sun, Aug 31, 2025 at 9:07\u202fAM Brian Campbell [<bcampbell@pingidentity.com>](mailto:&lt;bcampbell@pingidentity.com&gt;)\nwrote:\n>\n> Can you say what you would have expected or liked to have seen in the\nsecurity considerations or elsewhere about it?\n\nI would like to see something in the security considerations addressing it.\nWhat those contents are that would be useful I don't really know: a lot\ndepends on what people expect around the usage of the mechanism. It's one\nthing to map e.g. email addresses that are unique across an organization to\nID numbers that are also unique. It's another to rewrite a number of\nattributes that might impact the abilities the tokens can be used for on\nthe other side, especially if the set of attributes is dynamic.\n\nI think something along the lines of \"When rewriting token attributes, it's\nimportant that both the place where the attributes are given and where they\nare interpreted agree on the semantics and that the access controls are\nconsistent\", but not sure what the exact words should be.\n\n>\n> Some form of claims transcription, sometimes by other names like mapping\nor linking, is extremely common in cross domain token swapping scenarios\nlike this and SSO type scenarios in general. I think it's a largely\nunwritten thing that some of the contributors thought would be worthwhile\nto give some treatment to in the draft. There's always opportunity to\nimprove that treatment though.\n\nIt is common, and in my experience terrible. The one time I've actually had\nto deal with it was with hooking up a github action to deposit the result\nin a Google Cloud Storage directory, and I just copy pasted examples and\nsettings and removed restrictions until it worked. Near zero debuggabilty\nwhen it wasn't working. My hope is that at worst, even if we can't can't\nsolve it, we can call attention to it.\n\n>\n> On Wed, Aug 27, 2025 at 8:44\u202fAM Watson Ladd [<watsonbladd@gmail.com>](mailto:&lt;watsonbladd@gmail.com&gt;) wrote:\n>>\n>> Dear oauth WG,\n>>\n>> I read the draft-ietf-oauth-identity-chaining, and have some concerns\n>> about the security considerations section. As it stands it seems to\n>> completely ignore the security issues associated with mapping and\n>> restricting attributes and assuming that this will work on the other\n>> side of the transition. Section 2.5 describes reasons this process\n>> might exist, but there's no guidance on what this looks like or the\n>> need for both domains A and B to agree on the meaning of the\n>> attributes that are being rewritten.\n>>\n>> Sincerely,\n>> Watson\n>>\n>> ---\n>> Astra mortemque praestare gradatim",
+      "createdAt": "2025-09-02T20:49:58Z",
+      "updatedAt": "2025-09-02T20:50:38Z",
       "closedAt": null,
       "comments": []
     }
