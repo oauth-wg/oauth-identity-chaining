@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2025-09-04T00:20:30.888342+00:00",
+  "timestamp": "2025-09-07T00:23:17.981883+00:00",
   "repo": "oauth-wg/oauth-identity-chaining",
   "labels": [
     {
@@ -1461,7 +1461,7 @@
       "labels": [],
       "body": "Issue to track email sent to the authors\r\n\r\n> Hello All,\r\nI would like to propose below suggestion for  https://datatracker.ietf.org/doc/html/draft-ietf-oauth-identity-chaining\r\nSection 2.3.1 Token Exchange Request\r\nAs per my understanding the Token exchange request in this proposed RFC will always expect JWT token (urn:ietf:params:oauth:token-type:jwt) as clearly mentioned in the \u2018section 2.3.4 Example\u2019 with Figure 3: Token exchange response with claim \u2018issued_token_type\u2019 and also mentioned in section 2.4.1 Access Token Request (where only JWT token/assertion is sent to Authorization Server in Domain B as Authorization grant) .\r\nHence my suggestion is to enforce it in the Token exchange request itself (as REQUIRED) parameter by using the \u2018requested_token_type\u2019 parameter of OAuth 2.0 Token Exchange RFC 8693 section 2.1 with value \u2018urn:ietf:params:oauth:token-type:jwt\u2019 as per section 3 of RFC 8693 (OAuth 2.0 Token Exchange). This could prevent the Authorization server in Domain A to respond with another other type of tokens/assertions (like access_token , refresh_token , id_token , saml1 , saml2 as other possible values as per section 3 of RFC 8693 OAuth 2.0 Token Exchange) by mistake or other reasons, which could break this (draft) specification inadvertently.\r\nBest Regards,\r\nRandip Malakar\r\nSTMicroelectronics",
       "createdAt": "2024-11-13T14:54:38Z",
-      "updatedAt": "2025-04-25T15:07:55Z",
+      "updatedAt": "2025-09-06T12:32:04Z",
       "closedAt": null,
       "comments": [
         {
@@ -1498,6 +1498,13 @@
           "body": "requested_token_type can be used now but making it required is IMHO a non starter ",
           "createdAt": "2024-12-19T17:05:40Z",
           "updatedAt": "2024-12-19T17:05:40Z"
+        },
+        {
+          "author": "bc-pi",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "\"urn:ietf:params:oauth:grant-type:jwt-bearer\" is the URI for the grant type, yes, but I've always thought it'd be prefectly reasonable to use as the value of a *token_type parameter to indicate intended usage. \n\nNote that https://datatracker.ietf.org/doc/html/draft-parecki-oauth-identity-assertion-authz-grant-05#name-token-exchange elected to define it's own more specific URI.\n\nAt this layer, however, I don't believe requested_token_type should be made to be required nor a particular value mandated for it. \n\n",
+          "createdAt": "2025-09-06T12:32:04Z",
+          "updatedAt": "2025-09-06T12:32:04Z"
         }
       ]
     },
@@ -1702,7 +1709,7 @@
       "labels": [],
       "body": "Remove reference to token endpoint in JWT authorization grant section to protect against malicious authorization servers (see https://github.com/selfissued/draft-jones-oauth-rfc7523bis )",
       "createdAt": "2025-02-14T15:57:08Z",
-      "updatedAt": "2025-04-21T03:32:05Z",
+      "updatedAt": "2025-09-06T13:06:22Z",
       "closedAt": null,
       "comments": [
         {
@@ -1746,6 +1753,20 @@
           "body": "mti",
           "createdAt": "2025-04-21T03:32:04Z",
           "updatedAt": "2025-04-21T03:32:04Z"
+        },
+        {
+          "author": "bc-pi",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "> mti\n\nhuh?",
+          "createdAt": "2025-09-06T12:41:10Z",
+          "updatedAt": "2025-09-06T12:41:10Z"
+        },
+        {
+          "author": "bc-pi",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "the changes to are rationalizing https://datatracker.ietf.org/doc/draft-ietf-oauth-rfc7523bis/ (currently at -2) somewhat and continuing to move in that direction hhttps://github.com/oauth-wg/draft-ietf-oauth-rfc7523bis/pull/15  ",
+          "createdAt": "2025-09-06T13:06:22Z",
+          "updatedAt": "2025-09-06T13:06:22Z"
         }
       ]
     },
@@ -9783,24 +9804,26 @@
       "id": "PR_kwDOJubJxM6eol-L",
       "title": "Use IANA.media-types so the tooling can find the media types registry without an explicit target",
       "url": "https://github.com/oauth-wg/oauth-identity-chaining/pull/167",
-      "state": "OPEN",
+      "state": "MERGED",
       "author": "bc-pi",
       "authorAssociation": "CONTRIBUTOR",
       "assignees": [],
       "labels": [],
       "body": "working on https://github.com/aaronpk/draft-parecki-oauth-identity-assertion-authz-grant/pull/32 and finally came to realize how the IANA. automagical stuff works ",
       "createdAt": "2025-07-12T15:57:16Z",
-      "updatedAt": "2025-07-13T14:27:26Z",
+      "updatedAt": "2025-09-05T20:03:08Z",
       "baseRepository": "oauth-wg/oauth-identity-chaining",
       "baseRefName": "main",
       "baseRefOid": "229be32818a040ad5606519dc95354f74a06a916",
       "headRepository": "oauth-wg/oauth-identity-chaining",
       "headRefName": "zero-six-and-iana",
       "headRefOid": "8b4e44b2094fb4b23cfb0abd9932498346675a0b",
-      "closedAt": null,
-      "mergedAt": null,
-      "mergedBy": null,
-      "mergeCommit": null,
+      "closedAt": "2025-09-05T20:03:06Z",
+      "mergedAt": "2025-09-05T20:03:06Z",
+      "mergedBy": "bc-pi",
+      "mergeCommit": {
+        "oid": "8365e36e5e0fb0108bcc71c0a5685b262e605bab"
+      },
       "comments": [],
       "reviews": [
         {
@@ -9827,6 +9850,46 @@
           "body": "Looks good",
           "createdAt": "2025-07-13T14:27:26Z",
           "updatedAt": "2025-07-13T14:27:26Z",
+          "comments": []
+        }
+      ]
+    },
+    {
+      "number": 171,
+      "id": "PR_kwDOJubJxM6nHXZi",
+      "title": "DRAFT prospective changes from WGLC review ",
+      "url": "https://github.com/oauth-wg/oauth-identity-chaining/pull/171",
+      "state": "OPEN",
+      "author": "bc-pi",
+      "authorAssociation": "CONTRIBUTOR",
+      "assignees": [],
+      "labels": [],
+      "body": "currently just a work in progress",
+      "createdAt": "2025-09-05T21:45:25Z",
+      "updatedAt": "2025-09-06T14:29:16Z",
+      "baseRepository": "oauth-wg/oauth-identity-chaining",
+      "baseRefName": "main",
+      "baseRefOid": "8365e36e5e0fb0108bcc71c0a5685b262e605bab",
+      "headRepository": "oauth-wg/oauth-identity-chaining",
+      "headRefName": "bcwglc",
+      "headRefOid": "c33b63a93ca35d236c3e5ef017d89a66bc9b88a0",
+      "closedAt": null,
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [],
+      "reviews": [
+        {
+          "id": "PRR_kwDOJubJxM6-T6fR",
+          "commit": {
+            "abbreviatedOid": "c33b63a"
+          },
+          "author": "kburgin3",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "APPROVED",
+          "body": "Looks good",
+          "createdAt": "2025-09-06T14:29:16Z",
+          "updatedAt": "2025-09-06T14:29:16Z",
           "comments": []
         }
       ]
