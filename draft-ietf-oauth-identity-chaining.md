@@ -223,7 +223,7 @@ assertion
 scope
 : OPTIONAL.
 
-The client in trust domain A MAY indicate the audience it is trying to access through the `scope` parameter or the `resource` parameter defined in {{RFC8707}}.
+The client in trust domain A MAY indicate the protected resource it is trying to access through the `scope` parameter or the `resource` parameter defined in {{RFC8707}}.
 
 ### Processing rules
 
