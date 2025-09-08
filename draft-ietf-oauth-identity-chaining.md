@@ -239,7 +239,7 @@ The authorization server in trust domain B responds with an access token as desc
 
 ### Example
 
-The example belows shows how the client in trust domain A presents an authorization grant to the authorization server in trust domain B (https://as.b.org/auth) to receive an access token for a protected resource in trust domain B.
+The examples below shows how the client in trust domain A presents an authorization grant to the authorization server in trust domain B (https://as.b.org/auth) to receive an access token for a protected resource in trust domain B.
 
 ~~~
 POST /auth/token HTTP/1.1
