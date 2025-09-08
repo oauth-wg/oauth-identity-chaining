@@ -375,9 +375,9 @@ grant_type=urn%3Aietf%3Aparams%3Aoauth%3Agrant-type%3Atoken-exchange
    scope
       OPTIONAL.
 
-   The client in trust domain A MAY indicate the audience it is trying
-   to access through the scope parameter or the resource parameter
-   defined in [RFC8707].
+   The client in trust domain A MAY indicate the protected resource it
+   is trying to access through the scope parameter or the resource
+   parameter defined in [RFC8707].
 
 2.4.2.  Processing rules
 
