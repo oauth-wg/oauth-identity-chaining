@@ -101,7 +101,6 @@ The identity and authorization chaining flow outlined below describes how a comb
        |      Server        |                     |             |
        |      Trust Domain B|                     |             |
        |                    |                     |             |
-       |                    |                     |             |
        | (B) exchange token |                     |             |
        |   [RFC 8693]       |                     |             |
        |<-------------------|                     |             |
@@ -120,7 +119,6 @@ The identity and authorization chaining flow outlined below describes how a comb
        |                    |                     |             |
        |                    |               (F) access          |
        |                    | --------------------------------->|
-       |                    |                     |             |
        |                    |                     |             |
 ~~~~
 {: title='Identity and Authorization Chaining Flow'}
@@ -422,7 +420,6 @@ The flow would look like this:
        |                     |               (F) access          |
        |                     | --------------------------------->|
        |                     |                     |             |
-       |                     |                     |             |
 ~~~
 {: title='Resource server acting as client'}
 
@@ -494,7 +491,6 @@ The authorization server in trust domain A may use the flows described in this s
     |                      |                       |             |
     |                      |           (G) access  |             |
     | ---------------------------------------------------------->|
-    |                      |                       |             |
     |                      |                       |             |
 ~~~
 {: title='Authorization server acting as client'}
