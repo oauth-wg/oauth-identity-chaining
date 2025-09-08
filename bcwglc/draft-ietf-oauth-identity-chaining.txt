@@ -5,13 +5,13 @@
 oauth                                                 A. Schwenkschuster
 Internet-Draft                                             P. Kasselmann
 Intended status: Informational                                     SPIRL
-Expires: 9 March 2026                                          K. Burgin
+Expires: 12 March 2026                                         K. Burgin
                                                                    MITRE
                                                               M. Jenkins
                                                                 NSA-CCSS
                                                              B. Campbell
                                                            Ping Identity
-                                                        5 September 2025
+                                                        8 September 2025
 
 
         OAuth Identity and Authorization Chaining Across Domains
@@ -49,7 +49,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 9 March 2026.
+   This Internet-Draft will expire on 12 March 2026.
 
 Copyright Notice
 
@@ -155,6 +155,13 @@ Table of Contents
    trust domain B, using the JWT Authorization Grant feature of
    [RFC7523], to obtain an access token for the protected resource in
    trust domain B.
+
+   In some deployments, the platform in trust domain A may be
+   sufficiently integrated to directly produce a JWT authorization grant
+   for presentation to the authorization server in trust domain B.  In
+   such cases, use of the OAuth 2.0 Token Exchange protocol [RFC8693] is
+   not required, as the JWT authorization grant can be obtained without
+   a separate token exchange step.
 
 2.1.  Overview
 
@@ -929,11 +936,9 @@ B.2.  Authorization server acting as client
      |                      |      domain B         |             |
      |                      |                       |             |
      |                      |----+                  |             |
-     |                      |    | (C) issue        |             |
+     |                      |    | (C) generates    |             |
      |                      |<---+ authorization    |             |
-     |                      |      grant ("internal |             |
-     |                      |      token exchange") |             |
-     |                      |                       |             |
+     |                      |      grant            |             |
      |                      |                       |             |
      |                      | (D) present           |             |
      |                      |   authorization grant |             |
@@ -965,9 +970,9 @@ B.2.  Authorization server acting as client
    by the client, is statically maintained or dynamically resolved.
 
    (C) Once the authorization server in trust domain B is determined,
-   the authorization server in domain A issues a JWT authorization grant
-   to itself.  This reflects Token Exchange (Section 2.3) of this
-   specification and can be seen as an "internal token exchange".
+   the authorization server in domain A generates a JWT authorization
+   grant suitable for presentations to the authorization server in trust
+   domain B.
 
    (D) The authorization server in trust domain A acts as a client and
    presents the JWT authorization grant to the authorization server for
@@ -1051,6 +1056,10 @@ Appendix D.  Document History
 
    *  Use IANA.media-types so the tooling can find the media types
       registry without an explicit target
+
+   *  Mention that the RFC8693 token exchange is not strictly necessary,
+      if trust domain A's platform provides other means to obtain a JWT
+      authorization grant
 
    -05
 
