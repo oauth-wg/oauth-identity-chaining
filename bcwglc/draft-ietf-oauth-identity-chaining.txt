@@ -183,7 +183,6 @@ Table of Contents
          |      Server        |                     |             |
          |      Trust Domain B|                     |             |
          |                    |                     |             |
-         |                    |                     |             |
          | (B) exchange token |                     |             |
          |   [RFC 8693]       |                     |             |
          |<-------------------|                     |             |
@@ -202,7 +201,6 @@ Table of Contents
          |                    |                     |             |
          |                    |               (F) access          |
          |                    | --------------------------------->|
-         |                    |                     |             |
          |                    |                     |             |
 
             Figure 1: Identity and Authorization Chaining Flow
@@ -836,7 +834,6 @@ B.1.  Resource server acting as client
         |                     |               (F) access          |
         |                     | --------------------------------->|
         |                     |                     |             |
-        |                     |                     |             |
 
                Figure 6: Resource server acting as client
 
@@ -953,7 +950,6 @@ B.2.  Authorization server acting as client
      |                      |                       |             |
      |                      |           (G) access  |             |
      | ---------------------------------------------------------->|
-     |                      |                       |             |
      |                      |                       |             |
 
             Figure 7: Authorization server acting as client
