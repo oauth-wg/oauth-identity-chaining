@@ -286,6 +286,11 @@ The authorization server in domain A transcribes the claims in the JWT authoriza
 
 The representation of transcribed claims and their format is not defined in this specification.
 
+When transcribing claims, it's
+important that both the place where the claims are given and where they
+are interpreted agree on the semantics and that the access controls are
+consistent.
+
 # Authorization Server Metadata {#authorization-server-metadata}
 
 The following authorization server metadata parameter is defined by this specification and is registered in the "OAuth Authorization Server Metadata" registry established in "OAuth 2.0 Authorization Server Metadata" {{RFC8414}}.
@@ -528,7 +533,7 @@ However, the trust relationship between the authorization server in trust domain
 * The client in trust domain A that presents the access token must use the key matching the "cnf" claim to generate a DPoP proof or setup a MTLS session when presenting the access token to a resource server in in trust domain B.
 
 # Acknowledgements {#Acknowledgements}
-The editors would like to thank Patrick Harding, Joe Jubinski, Justin Richer, Adam Rusbridge, Dean H. Saxe, and others (please let us know, if you've been mistakenly omitted) for their valuable input, feedback and general support of this work.
+The editors would like to thank Patrick Harding, Joe Jubinski, Watson Ladd, Justin Richer, Adam Rusbridge, Dean H. Saxe, and others (please let us know, if you've been mistakenly omitted) for their valuable input, feedback and general support of this work.
 
 # Document History
 
@@ -539,6 +544,7 @@ The editors would like to thank Patrick Harding, Joe Jubinski, Justin Richer, Ad
 * Use IANA.media-types so the tooling can find the media types registry without an explicit target
 * Mention that the RFC8693 token exchange is not strictly necessary, if trust domain A's platform provides other means to obtain a JWT authorization grant
 * Better describe the trust relationship necessary (domain B has to trusts domain A to issue JWT authz grants and trust its signing key(s)) and mention that AS Metadata's `jwks_uri` can be used to obtain the verification keys for trust domain A
+* add a note about agreeing on semantics etc. when transcribing claims
 * Editorial fixes
 
 -05
