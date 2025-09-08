@@ -81,6 +81,8 @@ This specification describes a combination of OAuth 2.0 Token Exchange {{RFC8693
 
 A client in trust domain A that needs to access a resource server in trust domain B requests a JWT authorization grant from the authorization server for trust domain A using a profile of OAuth 2.0 Token Exchange {{RFC8693}}. The client in trust domain A then presents the received grant as an assertion to the authorization server in trust domain B, using the JWT Authorization Grant feature of {{RFC7523}}, to obtain an access token for the protected resource in trust domain B.
 
+In some deployments, the platform in trust domain A may be sufficiently integrated to directly produce a JWT authorization grant for presentation to the authorization server in trust domain B. In such cases, use of the OAuth 2.0 Token Exchange protocol {{RFC8693}} is not required, as the JWT authorization grant can be obtained without a separate token exchange step.
+
 ## Overview
 
 The identity and authorization chaining flow outlined below describes how a combination of OAuth 2.0 Token Exchange {{RFC8693}} and JWT Profile for OAuth 2.0 Client Authentication and Authorization Grants {{RFC7523}} are used to address the use cases identified.
@@ -475,11 +477,9 @@ The authorization server in trust domain A may use the flows described in this s
     |                      |      domain B         |             |
     |                      |                       |             |
     |                      |----+                  |             |
-    |                      |    | (C) issue        |             |
+    |                      |    | (C) generates    |             |
     |                      |<---+ authorization    |             |
-    |                      |      grant ("internal |             |
-    |                      |      token exchange") |             |
-    |                      |                       |             |
+    |                      |      grant            |             |
     |                      |                       |             |
     |                      | (D) present           |             |
     |                      |   authorization grant |             |
@@ -505,7 +505,7 @@ The flow contains the following steps:
 
 (B) The authorization server for trust domain A determines the authorization server for trust domain B. This could have been passed by the client, is statically maintained or dynamically resolved.
 
-(C) Once the authorization server in trust domain B is determined, the authorization server in domain A issues a JWT authorization grant to itself. This reflects [Token Exchange](#token-exchange) of this specification and can be seen as an "internal token exchange".
+(C) Once the authorization server in trust domain B is determined, the authorization server in domain A generates a JWT authorization grant suitable for presentations to the authorization server in trust domain B.
 
 (D) The authorization server in trust domain A acts as a client and presents the JWT authorization grant to the authorization server for trust domain B. This presentation happens between the authorization servers. The authorization server in trust domain A may be required to perform client authentication while doing so. This reflects the [Access Token Request](#atr) in this specification.
 
@@ -540,6 +540,7 @@ The editors would like to thank Joe Jubinski, Justin Richer, Dean H. Saxe, and o
 -06
 
 * Use IANA.media-types so the tooling can find the media types registry without an explicit target
+* Mention that the RFC8693 token exchange is not strictly necessary, if trust domain A's platform provides other means to obtain a JWT authorization grant
 
 -05
 
