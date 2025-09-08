@@ -493,6 +493,10 @@ grant_type=urn%3Aietf%3Aparams%3Aoauth%3Agrant-type%3Atoken-exchange
    The representation of transcribed claims and their format is not
    defined in this specification.
 
+   When transcribing claims, it's important that both the place where
+   the claims are given and where they are interpreted agree on the
+   semantics and that the access controls are consistent.
+
 3.  Authorization Server Metadata
 
    The following authorization server metadata parameter is defined by
@@ -1048,10 +1052,10 @@ B.3.  Delegated Key Binding
 
 Appendix C.  Acknowledgements
 
-   The editors would like to thank Patrick Harding, Joe Jubinski, Justin
-   Richer, Adam Rusbridge, Dean H.  Saxe, and others (please let us
-   know, if you've been mistakenly omitted) for their valuable input,
-   feedback and general support of this work.
+   The editors would like to thank Patrick Harding, Joe Jubinski, Watson
+   Ladd, Justin Richer, Adam Rusbridge, Dean H.  Saxe, and others
+   (please let us know, if you've been mistakenly omitted) for their
+   valuable input, feedback and general support of this work.
 
 Appendix D.  Document History
 
@@ -1070,6 +1074,9 @@ Appendix D.  Document History
       trusts domain A to issue JWT authz grants and trust its signing
       key(s)) and mention that AS Metadata's jwks_uri can be used to
       obtain the verification keys for trust domain A
+
+   *  add a note about agreeing on semantics etc. when transcribing
+      claims
 
    *  Editorial fixes
 

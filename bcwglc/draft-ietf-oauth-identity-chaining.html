@@ -1663,6 +1663,10 @@ The authorization server in domain A transcribes the claims in the JWT authoriza
 </li>
         </ul>
 <p id="section-2.5-4">The representation of transcribed claims and their format is not defined in this specification.<a href="#section-2.5-4" class="pilcrow">¶</a></p>
+<p id="section-2.5-5">When transcribing claims, it's
+important that both the place where the claims are given and where they
+are interpreted agree on the semantics and that the access controls are
+consistent.<a href="#section-2.5-5" class="pilcrow">¶</a></p>
 </section>
 </div>
 </section>
@@ -2113,7 +2117,7 @@ This includes verifying that privacy policies are aligned across trust domains a
       <h2 id="name-acknowledgements">
 <a href="#appendix-C" class="section-number selfRef">Appendix C. </a><a href="#name-acknowledgements" class="section-name selfRef">Acknowledgements</a>
       </h2>
-<p id="appendix-C-1">The editors would like to thank Patrick Harding, Joe Jubinski, Justin Richer, Adam Rusbridge, Dean H. Saxe, and others (please let us know, if you've been mistakenly omitted) for their valuable input, feedback and general support of this work.<a href="#appendix-C-1" class="pilcrow">¶</a></p>
+<p id="appendix-C-1">The editors would like to thank Patrick Harding, Joe Jubinski, Watson Ladd, Justin Richer, Adam Rusbridge, Dean H. Saxe, and others (please let us know, if you've been mistakenly omitted) for their valuable input, feedback and general support of this work.<a href="#appendix-C-1" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="document-history">
@@ -2134,7 +2138,10 @@ This includes verifying that privacy policies are aligned across trust domains a
           <p id="appendix-D-3.3.1">Better describe the trust relationship necessary (domain B has to trusts domain A to issue JWT authz grants and trust its signing key(s)) and mention that AS Metadata's <code>jwks_uri</code> can be used to obtain the verification keys for trust domain A<a href="#appendix-D-3.3.1" class="pilcrow">¶</a></p>
 </li>
         <li class="normal" id="appendix-D-3.4">
-          <p id="appendix-D-3.4.1">Editorial fixes<a href="#appendix-D-3.4.1" class="pilcrow">¶</a></p>
+          <p id="appendix-D-3.4.1">add a note about agreeing on semantics etc. when transcribing claims<a href="#appendix-D-3.4.1" class="pilcrow">¶</a></p>
+</li>
+        <li class="normal" id="appendix-D-3.5">
+          <p id="appendix-D-3.5.1">Editorial fixes<a href="#appendix-D-3.5.1" class="pilcrow">¶</a></p>
 </li>
       </ul>
 <p id="appendix-D-4">-05<a href="#appendix-D-4" class="pilcrow">¶</a></p>
