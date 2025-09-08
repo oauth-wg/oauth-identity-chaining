@@ -403,7 +403,7 @@ grant_type=urn%3Aietf%3Aparams%3Aoauth%3Agrant-type%3Atoken-exchange
 
 2.4.4.  Example
 
-   The example belows shows how the client in trust domain A presents an
+   The examples below shows how the client in trust domain A presents an
    authorization grant to the authorization server in trust domain B
    (https://as.b.org/auth) to receive an access token for a protected
    resource in trust domain B.
