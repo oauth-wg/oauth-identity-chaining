@@ -1895,7 +1895,7 @@ This includes verifying that privacy policies are aligned across trust domains a
         <h3 id="name-preserve-user-context-acros">
 <a href="#appendix-A.1" class="section-number selfRef">A.1. </a><a href="#name-preserve-user-context-acros" class="section-name selfRef">Preserve User Context across Multi-cloud, Multi-Hybrid environments</a>
         </h3>
-<p id="appendix-A.1-1">A user attempts to access a service that is implemented as a number of on-premise and cloud-based microservices. Both the on-premise and cloud-based services are segmented by multiple trust boundaries that span one or more on-premise or cloud service environments. Every microservice can apply an authorization policy that takes the context of the original user, as well as intermediary microservices into account, irrespective of where the microservices are running and even when a microservice in one trust domain calls another service in another trust domain.<a href="#appendix-A.1-1" class="pilcrow">¶</a></p>
+<p id="appendix-A.1-1">A user attempts to access a service that is implemented as a number of on-premise and cloud-based workloads. Both the on-premise and cloud-based services are segmented by multiple trust boundaries that span one or more on-premise or cloud service environments. Each workload can apply an authorization policy that takes the context of the original user, as well as intermediary services into account, irrespective of where the workloads are running and even when a workload in one trust domain calls another service in another trust domain.<a href="#appendix-A.1-1" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="continuous-integration-accessing-external-resources">
@@ -1919,7 +1919,7 @@ This includes verifying that privacy policies are aligned across trust domains a
         <h3 id="name-extend-single-sign-on-to-ap">
 <a href="#appendix-A.4" class="section-number selfRef">A.4. </a><a href="#name-extend-single-sign-on-to-ap" class="section-name selfRef">Extend Single-Sign-On to API Access</a>
         </h3>
-<p id="appendix-A.4-1">A user that authenticated to an enterprise Identity Provider (IdP) does not have to sign-in to multiple SaaS applications if the SaaS applications are configured to trust the enteprise IdP. It is possible to extend this SSO relationship to API access by allowing the Client to contact the enterprise IdP and exchange the identity assertion (ID Token or SAML Token) that it previously received from the enteprise IdP for an authorization grant. The authorization grant can be used to obtain an access token from the SaaS application's authorization server, provided that a trust relationship has been established between the enterprise IdP which issues the authorization grant and the SaaS authorization server. As a result SaaS servers that trust the enterprise IdP do not require the user to complete an interactive delegated OAuth 2.0 flow to obtain an access token to access the SaaS provider's APIs.<a href="#appendix-A.4-1" class="pilcrow">¶</a></p>
+<p id="appendix-A.4-1">A user that authenticated to an enterprise Identity Provider (IdP) does not have to sign-in to multiple SaaS applications if the SaaS applications are configured to trust the enterprise IdP. It is possible to extend this SSO relationship to API access by allowing the Client to contact the enterprise IdP and exchange the identity assertion (ID Token or SAML Token) that it previously received from the enterprise IdP for an authorization grant. The authorization grant can be used to obtain an access token from the SaaS application's authorization server, provided that a trust relationship has been established between the enterprise IdP which issues the authorization grant and the SaaS authorization server. As a result SaaS servers that trust the enterprise IdP do not require the user to complete an interactive delegated OAuth 2.0 flow to obtain an access token to access the SaaS provider's APIs.<a href="#appendix-A.4-1" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="cross-domain-api-authorization">
@@ -2016,7 +2016,7 @@ This includes verifying that privacy policies are aligned across trust domains a
             <p id="appendix-B.2-2.2.1">Clients in trust domain A may not have network access to other authorization servers in trust domain B.<a href="#appendix-B.2-2.2.1" class="pilcrow">¶</a></p>
 </li>
           <li class="normal" id="appendix-B.2-2.3">
-            <p id="appendix-B.2-2.3.1">Strict access control on resources in trust domain B is required. This acccess control is enforced by authorization servers in trust domain B.<a href="#appendix-B.2-2.3.1" class="pilcrow">¶</a></p>
+            <p id="appendix-B.2-2.3.1">Strict access control on resources in trust domain B is required. This access control is enforced by authorization servers in trust domain B.<a href="#appendix-B.2-2.3.1" class="pilcrow">¶</a></p>
 </li>
           <li class="normal" id="appendix-B.2-2.4">
             <p id="appendix-B.2-2.4.1">Authorization servers in trust domain B require client authentication, but are unable to manage clients outside of trust domain B.<a href="#appendix-B.2-2.4.1" class="pilcrow">¶</a></p>

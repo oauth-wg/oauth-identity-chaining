@@ -718,14 +718,14 @@ A.1.  Preserve User Context across Multi-cloud, Multi-Hybrid
       environments
 
    A user attempts to access a service that is implemented as a number
-   of on-premise and cloud-based microservices.  Both the on-premise and
+   of on-premise and cloud-based workloads.  Both the on-premise and
    cloud-based services are segmented by multiple trust boundaries that
-   span one or more on-premise or cloud service environments.  Every
-   microservice can apply an authorization policy that takes the context
-   of the original user, as well as intermediary microservices into
-   account, irrespective of where the microservices are running and even
-   when a microservice in one trust domain calls another service in
-   another trust domain.
+   span one or more on-premise or cloud service environments.  Each
+   workload can apply an authorization policy that takes the context of
+   the original user, as well as intermediary services into account,
+   irrespective of where the workloads are running and even when a
+   workload in one trust domain calls another service in another trust
+   domain.
 
 A.2.  Continuous Integration Accessing External Resources
 
@@ -755,11 +755,11 @@ A.4.  Extend Single-Sign-On to API Access
 
    A user that authenticated to an enterprise Identity Provider (IdP)
    does not have to sign-in to multiple SaaS applications if the SaaS
-   applications are configured to trust the enteprise IdP.  It is
+   applications are configured to trust the enterprise IdP.  It is
    possible to extend this SSO relationship to API access by allowing
    the Client to contact the enterprise IdP and exchange the identity
    assertion (ID Token or SAML Token) that it previously received from
-   the enteprise IdP for an authorization grant.  The authorization
+   the enterprise IdP for an authorization grant.  The authorization
    grant can be used to obtain an access token from the SaaS
    application's authorization server, provided that a trust
    relationship has been established between the enterprise IdP which
@@ -897,7 +897,7 @@ B.2.  Authorization server acting as client
       authorization servers in trust domain B.
 
    *  Strict access control on resources in trust domain B is required.
-      This acccess control is enforced by authorization servers in trust
+      This access control is enforced by authorization servers in trust
       domain B.
 
    *  Authorization servers in trust domain B require client
