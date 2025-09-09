@@ -5,13 +5,13 @@
 oauth                                                 A. Schwenkschuster
 Internet-Draft                                             P. Kasselmann
 Intended status: Informational                                     SPIRL
-Expires: 12 March 2026                                         K. Burgin
+Expires: 13 March 2026                                         K. Burgin
                                                                    MITRE
                                                               M. Jenkins
                                                                 NSA-CCSS
                                                              B. Campbell
                                                            Ping Identity
-                                                        8 September 2025
+                                                        9 September 2025
 
 
         OAuth Identity and Authorization Chaining Across Domains
@@ -49,7 +49,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 12 March 2026.
+   This Internet-Draft will expire on 13 March 2026.
 
 Copyright Notice
 
@@ -103,7 +103,7 @@ Table of Contents
            environments
      A.2.  Continuous Integration Accessing External Resources
      A.3.  API Security Use Case
-     A.4.  Extend Single-Sign-On to API Access
+     A.4.  Extend Single Sign-On to API Access
      A.5.  Cross-domain API authorization
    Appendix B.  Examples
      B.1.  Resource server acting as client
@@ -755,7 +755,7 @@ A.3.  API Security Use Case
    by a user who is authorized to view the feed of the requested home
    camera.
 
-A.4.  Extend Single-Sign-On to API Access
+A.4.  Extend Single Sign-On to API Access
 
    A user that authenticated to an enterprise Identity Provider (IdP)
    does not have to sign-in to multiple SaaS applications if the SaaS
