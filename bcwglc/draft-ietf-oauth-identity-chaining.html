@@ -1650,7 +1650,7 @@ This enables the various entities involved to determine on whose behalf the requ
           <li class="normal" id="section-2.5-3.2">
             <p id="section-2.5-3.2.1"><strong>Data Minimization</strong>: Authorization servers <span class="bcp14">MAY</span> remove or hide certain claims due to privacy requirements or reduced trust towards the targeting trust domain.
 One example is a financial institution that integrates with a third-party payment gateway.
-domain A (the financial institution) includes detailed claims such as "account type: premium" and "transaction limit: $10,000" in the JWT authorization grant.
+Domain A (the financial institution) includes detailed claims such as "account type: premium" and "transaction limit: $10,000" in the JWT authorization grant.
 However, domain B (the payment gateway) only needs claims like "transaction limit" for its access control policies. Domain A transcribes the claims to exclude unnecessary information, ensuring that domain B receives only the claims relevant to its operations.<a href="#section-2.5-3.2.1" class="pilcrow">¶</a></p>
 </li>
           <li class="normal" id="section-2.5-3.3">
