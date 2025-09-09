@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2025-09-07T00:23:17.981883+00:00",
+  "timestamp": "2025-09-09T00:22:04.083546+00:00",
   "repo": "oauth-wg/oauth-identity-chaining",
   "labels": [
     {
@@ -9866,13 +9866,13 @@
       "labels": [],
       "body": "currently just a work in progress",
       "createdAt": "2025-09-05T21:45:25Z",
-      "updatedAt": "2025-09-06T14:29:16Z",
+      "updatedAt": "2025-09-08T20:54:02Z",
       "baseRepository": "oauth-wg/oauth-identity-chaining",
       "baseRefName": "main",
       "baseRefOid": "8365e36e5e0fb0108bcc71c0a5685b262e605bab",
       "headRepository": "oauth-wg/oauth-identity-chaining",
       "headRefName": "bcwglc",
-      "headRefOid": "c33b63a93ca35d236c3e5ef017d89a66bc9b88a0",
+      "headRefOid": "090cab4141edae57a39e2b0052dabaaa0c7ffd82",
       "closedAt": null,
       "mergedAt": null,
       "mergedBy": null,
