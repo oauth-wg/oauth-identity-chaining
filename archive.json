@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2025-09-09T00:22:04.083546+00:00",
+  "timestamp": "2025-09-11T00:21:11.804162+00:00",
   "repo": "oauth-wg/oauth-identity-chaining",
   "labels": [
     {
@@ -1513,7 +1513,7 @@
       "id": "I_kwDOJubJxM6ij78O",
       "title": "OAuth client acting as a client",
       "url": "https://github.com/oauth-wg/oauth-identity-chaining/issues/120",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "arndt-s",
       "authorAssociation": "MEMBER",
       "assignees": [
@@ -1522,9 +1522,31 @@
       "labels": [],
       "body": "@PieterKas mentioned that it may just be a non-defined OAuth client, not a resource server and not an authorization server. While the abstract flow stays the same we should maybe mention this somewhere in the text as a possible deployment.",
       "createdAt": "2024-12-09T15:00:08Z",
-      "updatedAt": "2025-04-25T15:07:37Z",
-      "closedAt": null,
-      "comments": []
+      "updatedAt": "2025-09-10T16:49:52Z",
+      "closedAt": "2025-09-10T16:49:52Z",
+      "comments": [
+        {
+          "author": "bc-pi",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "Any proposed change/addition here? 2024 was a while ago now. ",
+          "createdAt": "2025-09-09T20:39:30Z",
+          "updatedAt": "2025-09-09T20:39:30Z"
+        },
+        {
+          "author": "PieterKas",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "I think we can close this as we had the big terminology clean-up earlier this year.",
+          "createdAt": "2025-09-10T16:01:29Z",
+          "updatedAt": "2025-09-10T16:01:29Z"
+        },
+        {
+          "author": "bc-pi",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "> I think we can close this as we had the big terminology clean-up earlier this year.\n\n\u2764\ufe0f ",
+          "createdAt": "2025-09-10T16:49:52Z",
+          "updatedAt": "2025-09-10T16:49:52Z"
+        }
+      ]
     },
     {
       "number": 122,
@@ -1709,7 +1731,7 @@
       "labels": [],
       "body": "Remove reference to token endpoint in JWT authorization grant section to protect against malicious authorization servers (see https://github.com/selfissued/draft-jones-oauth-rfc7523bis )",
       "createdAt": "2025-02-14T15:57:08Z",
-      "updatedAt": "2025-09-06T13:06:22Z",
+      "updatedAt": "2025-09-09T20:47:13Z",
       "closedAt": null,
       "comments": [
         {
@@ -1764,9 +1786,16 @@
         {
           "author": "bc-pi",
           "authorAssociation": "CONTRIBUTOR",
-          "body": "the changes to are rationalizing https://datatracker.ietf.org/doc/draft-ietf-oauth-rfc7523bis/ (currently at -2) somewhat and continuing to move in that direction hhttps://github.com/oauth-wg/draft-ietf-oauth-rfc7523bis/pull/15  ",
+          "body": "the changes to are rationalizing https://datatracker.ietf.org/doc/draft-ietf-oauth-rfc7523bis/ (currently at -2) somewhat and continuing to move in that direction https://github.com/oauth-wg/draft-ietf-oauth-rfc7523bis/pull/15  ",
           "createdAt": "2025-09-06T13:06:22Z",
-          "updatedAt": "2025-09-06T13:06:22Z"
+          "updatedAt": "2025-09-09T20:44:55Z"
+        },
+        {
+          "author": "bc-pi",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "Having recently done a full read of the draft and having some familiarity with the content and direction of the draft-ietf-oauth-rfc7523bis work, I am not convinced there are changes needed here. ",
+          "createdAt": "2025-09-09T20:47:13Z",
+          "updatedAt": "2025-09-09T20:47:13Z"
         }
       ]
     },
@@ -1817,9 +1846,17 @@
       "labels": [],
       "body": "",
       "createdAt": "2025-04-04T14:47:43Z",
-      "updatedAt": "2025-04-04T14:47:43Z",
+      "updatedAt": "2025-09-09T20:38:00Z",
       "closedAt": null,
-      "comments": []
+      "comments": [
+        {
+          "author": "bc-pi",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "I'm sure the examples in the appendix could be improved but with WGLC and all I think the window for doing so might be closing. Are there any concrete changes or additions you'd like to see, and if so, can you propose some text? Otherwise we should consider closing this. ",
+          "createdAt": "2025-09-09T20:38:00Z",
+          "updatedAt": "2025-09-09T20:38:00Z"
+        }
+      ]
     },
     {
       "number": 147,
@@ -9857,22 +9894,22 @@
     {
       "number": 171,
       "id": "PR_kwDOJubJxM6nHXZi",
-      "title": "DRAFT prospective changes from WGLC review ",
+      "title": "prospective changes from WGLC reviews",
       "url": "https://github.com/oauth-wg/oauth-identity-chaining/pull/171",
       "state": "OPEN",
       "author": "bc-pi",
       "authorAssociation": "CONTRIBUTOR",
       "assignees": [],
       "labels": [],
-      "body": "currently just a work in progress",
+      "body": "This PR attempts to address WGLC feedback captured in #169 and #170 as well as some things that I encountered while looking at the work again and wanted to try and address. ",
       "createdAt": "2025-09-05T21:45:25Z",
-      "updatedAt": "2025-09-08T20:54:02Z",
+      "updatedAt": "2025-09-10T17:17:36Z",
       "baseRepository": "oauth-wg/oauth-identity-chaining",
       "baseRefName": "main",
       "baseRefOid": "8365e36e5e0fb0108bcc71c0a5685b262e605bab",
       "headRepository": "oauth-wg/oauth-identity-chaining",
       "headRefName": "bcwglc",
-      "headRefOid": "090cab4141edae57a39e2b0052dabaaa0c7ffd82",
+      "headRefOid": "85d6f8605bb652c8da3845ac743e116705bd06ba",
       "closedAt": null,
       "mergedAt": null,
       "mergedBy": null,
@@ -9891,6 +9928,286 @@
           "createdAt": "2025-09-06T14:29:16Z",
           "updatedAt": "2025-09-06T14:29:16Z",
           "comments": []
+        },
+        {
+          "id": "PRR_kwDOJubJxM6-wVqh",
+          "commit": {
+            "abbreviatedOid": "090cab4"
+          },
+          "author": "arndt-s",
+          "authorAssociation": "MEMBER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2025-09-09T09:20:10Z",
+          "updatedAt": "2025-09-09T09:20:10Z",
+          "comments": [
+            {
+              "originalPosition": 7,
+              "body": "> platform in trust domain A may be sufficiently integrated\n\nAFAIK we never talk about \"a platform\" in this draft. Also, while the platform can produce a JWT authorization grant, how does the client receive it?\n\nI think something along these lines are a bit better aligned with the environment of OAuth:\n```\nSome deployments MAY issue a JWT authorization grant for presentation to the authorization server in trust domain B to the client in a different way. In such cases, use of the OAuth 2.0 Token Exchange protocol {{RFC8693}} is not required, ....\n```",
+              "createdAt": "2025-09-09T09:20:10Z",
+              "updatedAt": "2025-09-09T09:20:18Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJubJxM6-2Ij1",
+          "commit": {
+            "abbreviatedOid": "090cab4"
+          },
+          "author": "PieterKas",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2025-09-09T14:16:23Z",
+          "updatedAt": "2025-09-09T14:16:23Z",
+          "comments": [
+            {
+              "originalPosition": 7,
+              "body": "Instead of \"platform\" how about just saying \"the authorization server\"?",
+              "createdAt": "2025-09-09T14:16:23Z",
+              "updatedAt": "2025-09-09T14:16:23Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJubJxM6-2M8z",
+          "commit": {
+            "abbreviatedOid": "090cab4"
+          },
+          "author": "PieterKas",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2025-09-09T14:20:41Z",
+          "updatedAt": "2025-09-09T14:20:41Z",
+          "comments": [
+            {
+              "originalPosition": 80,
+              "body": "It's abit confusing with the tooling, but it looks to me like this is the start of a new sentence, so perhaps we should keep Domain capitalised in this case?",
+              "createdAt": "2025-09-09T14:20:41Z",
+              "updatedAt": "2025-09-09T14:20:49Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJubJxM6-49xH",
+          "commit": {
+            "abbreviatedOid": "2cba924"
+          },
+          "author": "bc-pi",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2025-09-09T17:30:41Z",
+          "updatedAt": "2025-09-09T17:30:41Z",
+          "comments": [
+            {
+              "originalPosition": 80,
+              "body": "I think you are correct there. ",
+              "createdAt": "2025-09-09T17:30:41Z",
+              "updatedAt": "2025-09-09T17:30:41Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJubJxM6-496z",
+          "commit": {
+            "abbreviatedOid": "2cba924"
+          },
+          "author": "bc-pi",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2025-09-09T17:30:50Z",
+          "updatedAt": "2025-09-09T17:30:50Z",
+          "comments": [
+            {
+              "originalPosition": 80,
+              "body": "```suggestion\r\nDomain A (the financial institution) includes detailed claims such as \"account type: premium\" and \"transaction limit: $10,000\" in the JWT authorization grant.\r\n```",
+              "createdAt": "2025-09-09T17:30:50Z",
+              "updatedAt": "2025-09-09T17:30:50Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJubJxM6-7ASi",
+          "commit": {
+            "abbreviatedOid": "85d6f86"
+          },
+          "author": "bc-pi",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2025-09-09T20:15:59Z",
+          "updatedAt": "2025-09-09T20:15:59Z",
+          "comments": [
+            {
+              "originalPosition": 7,
+              "body": "The kind of situation I was trying to account for is like what's described in the unfortunately named but conceptually interesting Github OIDC for actions thing https://docs.github.com/en/actions/concepts/security/openid-connect where the Github platform has integrated APIs (like, again the unfortunately named getIDToken() methods) of getting the grant directly from the platform using the runtime context or session. \r\n\r\nIt doesn't seem like my words have captured this very well. But I'm not sure the suggestions you gentlemen have offered do either. Maybe.\r\n\r\nThoughts?\r\n\r\nDifferent suggestions after that attempt at explaining myself? \r\n\r\n",
+              "createdAt": "2025-09-09T20:15:59Z",
+              "updatedAt": "2025-09-09T20:15:59Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJubJxM6_HGvp",
+          "commit": {
+            "abbreviatedOid": "090cab4"
+          },
+          "author": "PieterKas",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2025-09-10T14:00:15Z",
+          "updatedAt": "2025-09-10T14:00:15Z",
+          "comments": [
+            {
+              "originalPosition": 7,
+              "body": "So the entities we have in this flow are the client, resource server and authorization server. I think your describing the case where the client gets the Authorization Grant, by calling a plaform API, instead of using the OAuth protocols?",
+              "createdAt": "2025-09-10T14:00:15Z",
+              "updatedAt": "2025-09-10T14:00:15Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJubJxM6_HX_B",
+          "commit": {
+            "abbreviatedOid": "090cab4"
+          },
+          "author": "bc-pi",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2025-09-10T14:13:13Z",
+          "updatedAt": "2025-09-10T14:13:13Z",
+          "comments": [
+            {
+              "originalPosition": 7,
+              "body": "Yes, I think that is what I'm trying to describe here. I don't want to try to spec it out or even describe it in detail but did want to have a brief mention of the possibility in the hopes that people don't think that kind of deployment is precluded by this and go off and build something else like github did. Not that a sentence or two will actually prevent that kind of thing but I wanted to at least try to have something. ",
+              "createdAt": "2025-09-10T14:13:13Z",
+              "updatedAt": "2025-09-10T14:13:13Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJubJxM6_H68r",
+          "commit": {
+            "abbreviatedOid": "090cab4"
+          },
+          "author": "arndt-s",
+          "authorAssociation": "MEMBER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2025-09-10T14:44:26Z",
+          "updatedAt": "2025-09-10T14:44:27Z",
+          "comments": [
+            {
+              "originalPosition": 7,
+              "body": "To me it seems like we want to open up the possibility to replace token exchange with something else when it's more convenient, is that correct?",
+              "createdAt": "2025-09-10T14:44:26Z",
+              "updatedAt": "2025-09-10T14:44:27Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJubJxM6_JTPI",
+          "commit": {
+            "abbreviatedOid": "85d6f86"
+          },
+          "author": "PieterKas",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2025-09-10T16:16:44Z",
+          "updatedAt": "2025-09-10T16:16:44Z",
+          "comments": [
+            {
+              "originalPosition": 7,
+              "body": "I am a bit unsure about calling it out - I think it is a pattern people use, but it raises the question on whether this will encourage more people to do somehting non standard and then claim \"I am am implementing the standard\".\r\n\r\nI tried to write sown what that might look like, which also feels... odd... basically saying, use the protocol,. unless your not using the protocol.\r\n\r\n```suggestion\r\nIn some deployments, the client in trust domain A may obtain a JWT authorization grant issued by the  authorization server in trust domain A using a proprietary API or interface other than the OAuth 2.0 Token Exchange protocol {{RFC8693}}.",
+              "createdAt": "2025-09-10T16:16:44Z",
+              "updatedAt": "2025-09-10T16:17:12Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJubJxM6_JYuB",
+          "commit": {
+            "abbreviatedOid": "090cab4"
+          },
+          "author": "bc-pi",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2025-09-10T16:24:20Z",
+          "updatedAt": "2025-09-10T16:24:20Z",
+          "comments": [
+            {
+              "originalPosition": 7,
+              "body": "> To me it seems like we want to open up the possibility to replace token exchange with something else when it's more convenient, is that correct?\r\n\r\nYeah, I think so, basically. The \"sufficiently integrated\" was meant to capture the \"when it's more convenient\" sentiment and the word \"platform\" was meant to describe all the stuff going on in trust domain A. I think the word \"platform\" is used once or twice elsewhere in the draft but you are right that it's not a central concept. It felt like a general enough term for the context here though. But I'm not attached to it.  ",
+              "createdAt": "2025-09-10T16:24:20Z",
+              "updatedAt": "2025-09-10T16:25:11Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJubJxM6_JjPk",
+          "commit": {
+            "abbreviatedOid": "090cab4"
+          },
+          "author": "bc-pi",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2025-09-10T16:38:08Z",
+          "updatedAt": "2025-09-10T16:38:08Z",
+          "comments": [
+            {
+              "originalPosition": 7,
+              "body": "> I am a bit unsure about calling it out - I think it is a pattern people use, but it raises the question on whether this will encourage more people to do somehting non standard and then claim \"I am am implementing the standard\".\r\n> \r\n> I tried to write sown what that might look like, which also feels... odd... basically saying, use the protocol,. unless your not using the protocol.\r\n\r\nYeah, I get that. But there are two parts of this protocol that are nice together but not required together. And I'd argue that the second part, the x-domain part, is the more important from a interoperability and health of the broader industry. And I'm tying to avoid people doing something non-standard there (as unfortunately has been done) because they misinterpret this doc as precluding them because they have a \"more convenient\" way to get the grant thing. \r\n",
+              "createdAt": "2025-09-10T16:38:08Z",
+              "updatedAt": "2025-09-10T16:38:08Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJubJxM6_J-sx",
+          "commit": {
+            "abbreviatedOid": "85d6f86"
+          },
+          "author": "bc-pi",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2025-09-10T17:07:40Z",
+          "updatedAt": "2025-09-10T17:07:40Z",
+          "comments": [
+            {
+              "originalPosition": 7,
+              "body": "With all that said, however, you text seems fine. Except there might not even be an authorization server in trust domain A. So maybe just: ... ?\r\n```suggestion\r\nIn some deployments, the client in trust domain A may obtain a JWT authorization grant using a proprietary API or interface other than the OAuth 2.0 Token Exchange protocol {{RFC8693}}.\r\n```",
+              "createdAt": "2025-09-10T17:07:40Z",
+              "updatedAt": "2025-09-10T17:07:40Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJubJxM6_KJax",
+          "commit": {
+            "abbreviatedOid": "85d6f86"
+          },
+          "author": "bc-pi",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2025-09-10T17:17:36Z",
+          "updatedAt": "2025-09-10T17:17:36Z",
+          "comments": [
+            {
+              "originalPosition": 7,
+              "body": "or with more words something like this:\r\n```suggestion\r\nIn some deployments, the client in trust domain A may obtain a JWT authorization grant using a proprietary API or interface other than the OAuth 2.0 Token Exchange protocol {{RFC8693}}. The details of such an interface are out of scope for this document but an alternative means of acquiring the JWT authorization grant is not precluded by this document and its other aspects are still useful.\r\n```",
+              "createdAt": "2025-09-10T17:17:36Z",
+              "updatedAt": "2025-09-10T17:17:36Z"
+            }
+          ]
         }
       ]
     }
