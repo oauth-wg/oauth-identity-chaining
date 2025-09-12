@@ -539,6 +539,9 @@ The editors would like to thank Patrick Harding, Joe Jubinski, Watson Ladd, Just
 
 \[\[ To be removed from the final specification ]]
 
+-07
+
+
 -06
 
 * Use IANA.media-types so the tooling can find the media types registry without an explicit target
