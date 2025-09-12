@@ -152,7 +152,7 @@ Table of Contents
    authorization server for trust domain A using a profile of OAuth 2.0
    Token Exchange [RFC8693].  The client in trust domain A then presents
    the received grant as an assertion to the authorization server in
-   trust domain B, using the JWT Authorization Grant feature of
+   trust domain B, using the JWT authorization grant feature of
    [RFC7523], to obtain an access token for the protected resource in
    trust domain B.
 
