@@ -79,7 +79,7 @@ Applications often require access to resources that are distributed across multi
 
 This specification describes a combination of OAuth 2.0 Token Exchange {{RFC8693}} and JWT Profile for OAuth 2.0 Client Authentication and Authorization Grants {{RFC7523}} to achieve identity and authorization chaining across domains.
 
-A client in trust domain A that needs to access a resource server in trust domain B requests a JWT authorization grant from the authorization server for trust domain A using a profile of OAuth 2.0 Token Exchange {{RFC8693}}. The client in trust domain A then presents the received grant as an assertion to the authorization server in trust domain B, using the JWT Authorization Grant feature of {{RFC7523}}, to obtain an access token for the protected resource in trust domain B.
+A client in trust domain A that needs to access a resource server in trust domain B requests a JWT authorization grant from the authorization server for trust domain A using a profile of OAuth 2.0 Token Exchange {{RFC8693}}. The client in trust domain A then presents the received grant as an assertion to the authorization server in trust domain B, using the JWT authorization grant feature of {{RFC7523}}, to obtain an access token for the protected resource in trust domain B.
 
 In some deployments, the platform in trust domain A may be sufficiently integrated to directly produce a JWT authorization grant for presentation to the authorization server in trust domain B. In such cases, use of the OAuth 2.0 Token Exchange protocol {{RFC8693}} is not required, as the JWT authorization grant can be obtained without a separate token exchange step.
 
