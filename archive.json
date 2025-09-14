@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2025-09-11T00:21:11.804162+00:00",
+  "timestamp": "2025-09-14T00:22:46.943419+00:00",
   "repo": "oauth-wg/oauth-identity-chaining",
   "labels": [
     {
@@ -1452,7 +1452,7 @@
       "id": "I_kwDOJubJxM6eTBWh",
       "title": "Required `requested_token_type` parameter",
       "url": "https://github.com/oauth-wg/oauth-identity-chaining/issues/111",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "arndt-s",
       "authorAssociation": "MEMBER",
       "assignees": [
@@ -1461,8 +1461,8 @@
       "labels": [],
       "body": "Issue to track email sent to the authors\r\n\r\n> Hello All,\r\nI would like to propose below suggestion for  https://datatracker.ietf.org/doc/html/draft-ietf-oauth-identity-chaining\r\nSection 2.3.1 Token Exchange Request\r\nAs per my understanding the Token exchange request in this proposed RFC will always expect JWT token (urn:ietf:params:oauth:token-type:jwt) as clearly mentioned in the \u2018section 2.3.4 Example\u2019 with Figure 3: Token exchange response with claim \u2018issued_token_type\u2019 and also mentioned in section 2.4.1 Access Token Request (where only JWT token/assertion is sent to Authorization Server in Domain B as Authorization grant) .\r\nHence my suggestion is to enforce it in the Token exchange request itself (as REQUIRED) parameter by using the \u2018requested_token_type\u2019 parameter of OAuth 2.0 Token Exchange RFC 8693 section 2.1 with value \u2018urn:ietf:params:oauth:token-type:jwt\u2019 as per section 3 of RFC 8693 (OAuth 2.0 Token Exchange). This could prevent the Authorization server in Domain A to respond with another other type of tokens/assertions (like access_token , refresh_token , id_token , saml1 , saml2 as other possible values as per section 3 of RFC 8693 OAuth 2.0 Token Exchange) by mistake or other reasons, which could break this (draft) specification inadvertently.\r\nBest Regards,\r\nRandip Malakar\r\nSTMicroelectronics",
       "createdAt": "2024-11-13T14:54:38Z",
-      "updatedAt": "2025-09-06T12:32:04Z",
-      "closedAt": null,
+      "updatedAt": "2025-09-12T16:03:31Z",
+      "closedAt": "2025-09-12T16:03:31Z",
       "comments": [
         {
           "author": "arndt-s",
@@ -1998,15 +1998,15 @@
       "id": "I_kwDOJubJxM7IxnM1",
       "title": "WGLC (1 of ?): trust relationship realization",
       "url": "https://github.com/oauth-wg/oauth-identity-chaining/issues/169",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "bc-pi",
       "authorAssociation": "CONTRIBUTOR",
       "assignees": [],
       "labels": [],
       "body": "Had a discussion recently (during WGLC so considering it such) with Adam Rusbridge and Patrick Harding recently that suggested a bit more explanation of how the trust relationship typically manifests itself would be useful. A few relevant excerpts from the conversation follow:\n\n\n> but Patrick is basically right - it comes down to the OAUTH AS in trust domain B trusting some public key(s) of domain A\n\n> another way that can manifest is domain A having a metadata file at one of the well knowns endpoint that points to a listing of keys and the trust is established via config at domain B saying that the AS at A is trusted and then the metadata and keys are retrieved via dns hostname authenticated TLS/HTTPS\n\n---\n\n> This was the original sentence:\n\n> > The client has a\n> >   way to discover the authorization server in Domain B and a trust\n> > relationship exists between Domain A and Domain B (e.g., through\n> >  federation).\n\n> The link you referenced has a good clarification:\n\n> > Typically, such an\n> >   entity is known as a \"security token service\" (STS) or just \"token\n> >  service\", and a trust relationship (usually manifested in the\n> >   exchange of some kind of key material) exists between the token\n> >  service and the relying party.\n\n> Once I understood that the trust relationship is realised through the use of \"trusted\" public keys - eg. by registering them in some kind of trusted filestore or whatever - this all made perfect sense.  So you could clarify this further, but then perhaps you start getting into implementation details:  this trust relationship is usually manifested in the exchange of some kind of key material such as cryptographic public keys .",
       "createdAt": "2025-08-29T23:11:34Z",
-      "updatedAt": "2025-08-29T23:44:09Z",
-      "closedAt": null,
+      "updatedAt": "2025-09-12T16:02:57Z",
+      "closedAt": "2025-09-12T16:02:57Z",
       "comments": []
     },
     {
@@ -2014,15 +2014,15 @@
       "id": "I_kwDOJubJxM7JT9we",
       "title": "WGLC (2 of ?): claims/token transcription/rewrite security",
       "url": "https://github.com/oauth-wg/oauth-identity-chaining/issues/170",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "bc-pi",
       "authorAssociation": "CONTRIBUTOR",
       "assignees": [],
       "labels": [],
       "body": "per https://mailarchive.ietf.org/arch/msg/oauth/CICTkXxoIP6vFnaYSo2Sq81ErPM/\n\n**[OAUTH-WG] Re: Token rewrite security in draft-ietf-oauth-identity-chaining**\n\nWatson Ladd <watsonbladd@gmail.com> Sun, 31 August 2025 16:18 UTC[Show header](https://mailarchive.ietf.org/arch/msg/oauth/CICTkXxoIP6vFnaYSo2Sq81ErPM/#)\n\nOn Sun, Aug 31, 2025 at 9:07\u202fAM Brian Campbell [<bcampbell@pingidentity.com>](mailto:&lt;bcampbell@pingidentity.com&gt;)\nwrote:\n>\n> Can you say what you would have expected or liked to have seen in the\nsecurity considerations or elsewhere about it?\n\nI would like to see something in the security considerations addressing it.\nWhat those contents are that would be useful I don't really know: a lot\ndepends on what people expect around the usage of the mechanism. It's one\nthing to map e.g. email addresses that are unique across an organization to\nID numbers that are also unique. It's another to rewrite a number of\nattributes that might impact the abilities the tokens can be used for on\nthe other side, especially if the set of attributes is dynamic.\n\nI think something along the lines of \"When rewriting token attributes, it's\nimportant that both the place where the attributes are given and where they\nare interpreted agree on the semantics and that the access controls are\nconsistent\", but not sure what the exact words should be.\n\n>\n> Some form of claims transcription, sometimes by other names like mapping\nor linking, is extremely common in cross domain token swapping scenarios\nlike this and SSO type scenarios in general. I think it's a largely\nunwritten thing that some of the contributors thought would be worthwhile\nto give some treatment to in the draft. There's always opportunity to\nimprove that treatment though.\n\nIt is common, and in my experience terrible. The one time I've actually had\nto deal with it was with hooking up a github action to deposit the result\nin a Google Cloud Storage directory, and I just copy pasted examples and\nsettings and removed restrictions until it worked. Near zero debuggabilty\nwhen it wasn't working. My hope is that at worst, even if we can't can't\nsolve it, we can call attention to it.\n\n>\n> On Wed, Aug 27, 2025 at 8:44\u202fAM Watson Ladd [<watsonbladd@gmail.com>](mailto:&lt;watsonbladd@gmail.com&gt;) wrote:\n>>\n>> Dear oauth WG,\n>>\n>> I read the draft-ietf-oauth-identity-chaining, and have some concerns\n>> about the security considerations section. As it stands it seems to\n>> completely ignore the security issues associated with mapping and\n>> restricting attributes and assuming that this will work on the other\n>> side of the transition. Section 2.5 describes reasons this process\n>> might exist, but there's no guidance on what this looks like or the\n>> need for both domains A and B to agree on the meaning of the\n>> attributes that are being rewritten.\n>>\n>> Sincerely,\n>> Watson\n>>\n>> ---\n>> Astra mortemque praestare gradatim",
       "createdAt": "2025-09-02T20:49:58Z",
-      "updatedAt": "2025-09-02T20:50:38Z",
-      "closedAt": null,
+      "updatedAt": "2025-09-12T16:02:57Z",
+      "closedAt": "2025-09-12T16:02:57Z",
       "comments": []
     }
   ],
@@ -9896,24 +9896,26 @@
       "id": "PR_kwDOJubJxM6nHXZi",
       "title": "prospective changes from WGLC reviews",
       "url": "https://github.com/oauth-wg/oauth-identity-chaining/pull/171",
-      "state": "OPEN",
+      "state": "MERGED",
       "author": "bc-pi",
       "authorAssociation": "CONTRIBUTOR",
       "assignees": [],
       "labels": [],
       "body": "This PR attempts to address WGLC feedback captured in #169 and #170 as well as some things that I encountered while looking at the work again and wanted to try and address. ",
       "createdAt": "2025-09-05T21:45:25Z",
-      "updatedAt": "2025-09-10T17:17:36Z",
+      "updatedAt": "2025-09-12T16:02:58Z",
       "baseRepository": "oauth-wg/oauth-identity-chaining",
       "baseRefName": "main",
       "baseRefOid": "8365e36e5e0fb0108bcc71c0a5685b262e605bab",
       "headRepository": "oauth-wg/oauth-identity-chaining",
       "headRefName": "bcwglc",
-      "headRefOid": "85d6f8605bb652c8da3845ac743e116705bd06ba",
-      "closedAt": null,
-      "mergedAt": null,
-      "mergedBy": null,
-      "mergeCommit": null,
+      "headRefOid": "f3fd23e58743bd555503d61cf74d4fddbf48f97d",
+      "closedAt": "2025-09-12T16:02:56Z",
+      "mergedAt": "2025-09-12T16:02:56Z",
+      "mergedBy": "bc-pi",
+      "mergeCommit": {
+        "oid": "60c4894d678ca5b44aa7c7ac16398f634921e01a"
+      },
       "comments": [],
       "reviews": [
         {
@@ -10208,8 +10210,160 @@
               "updatedAt": "2025-09-10T17:17:36Z"
             }
           ]
+        },
+        {
+          "id": "PRR_kwDOJubJxM6_vVHF",
+          "commit": {
+            "abbreviatedOid": "090cab4"
+          },
+          "author": "PieterKas",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2025-09-12T14:00:00Z",
+          "updatedAt": "2025-09-12T14:00:00Z",
+          "comments": [
+            {
+              "originalPosition": 7,
+              "body": "Perhaps drop the \"and its other aspects are still useful\", or if the intent was that the \"useful aspects\" are the cross domain authorization request, perhaps something like this:\r\n\r\n```suggestion\r\nIn some deployments, the client in trust domain A may obtain a JWT authorization grant using a proprietary API or interface other than the OAuth 2.0 Token Exchange protocol {{RFC8693}}. The details of such an interface are out of scope for this document but an alternative means of acquiring the JWT authorization grant is not precluded by this document. A JWT authorization grant obtained through other means may be used to request an access token from the authorization server in trust domain B as described in Section 2.4 in this document.",
+              "createdAt": "2025-09-12T14:00:00Z",
+              "updatedAt": "2025-09-12T14:00:01Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJubJxM6_wF9U",
+          "commit": {
+            "abbreviatedOid": "85d6f86"
+          },
+          "author": "aaronpk",
+          "authorAssociation": "MEMBER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2025-09-12T14:45:15Z",
+          "updatedAt": "2025-09-12T14:45:15Z",
+          "comments": [
+            {
+              "originalPosition": 68,
+              "body": "```suggestion\r\nThe examples below show how the client in trust domain A presents an authorization grant to the authorization server in trust domain B (https://as.b.org/auth) to receive an access token for a protected resource in trust domain B.\r\n```",
+              "createdAt": "2025-09-12T14:45:15Z",
+              "updatedAt": "2025-09-12T14:45:15Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJubJxM6_wKxP",
+          "commit": {
+            "abbreviatedOid": "85d6f86"
+          },
+          "author": "PieterKas",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2025-09-12T14:51:07Z",
+          "updatedAt": "2025-09-12T14:51:07Z",
+          "comments": [
+            {
+              "originalPosition": 7,
+              "body": "```suggestion\r\n\r\nIn some deployments, the client in trust domain A may obtain a JWT authorization grant using a proprietary API or interface other than the OAuth 2.0 Token Exchange protocol {{RFC8693}}. The details of such an interface are out of scope for this document but an alternative means of acquiring the JWT authorization grant is not precluded by this document. A JWT authorization grant, regardless of how it was obtained, MUST be used to request an access token from the authorization server in trust domain B as described in Section 2.4 in this document.",
+              "createdAt": "2025-09-12T14:51:07Z",
+              "updatedAt": "2025-09-12T14:51:07Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJubJxM6_wNAH",
+          "commit": {
+            "abbreviatedOid": "92b82d6"
+          },
+          "author": "bc-pi",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2025-09-12T14:53:47Z",
+          "updatedAt": "2025-09-12T14:53:47Z",
+          "comments": [
+            {
+              "originalPosition": 5,
+              "body": "```suggestion\r\nA client in trust domain A that needs to access a resource server in trust domain B requests a JWT authorization grant from the authorization server for trust domain A using a profile of OAuth 2.0 Token Exchange {{RFC8693}}. The client in trust domain A then presents the received grant as an assertion to the authorization server in trust domain B, using the JWT authorization grant feature of {{RFC7523}}, to obtain an access token for the protected resource in trust domain B.\r\n```",
+              "createdAt": "2025-09-12T14:53:47Z",
+              "updatedAt": "2025-09-12T14:53:47Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJubJxM6_xxmF",
+          "commit": {
+            "abbreviatedOid": "ba1dd3d"
+          },
+          "author": "bc-pi",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2025-09-12T15:59:56Z",
+          "updatedAt": "2025-09-12T15:59:57Z",
+          "comments": [
+            {
+              "originalPosition": 7,
+              "body": "```suggestion\r\n```",
+              "createdAt": "2025-09-12T15:59:57Z",
+              "updatedAt": "2025-09-12T15:59:57Z"
+            }
+          ]
         }
       ]
+    },
+    {
+      "number": 172,
+      "id": "PR_kwDOJubJxM6oTwD1",
+      "title": "six seven",
+      "url": "https://github.com/oauth-wg/oauth-identity-chaining/pull/172",
+      "state": "CLOSED",
+      "author": "bc-pi",
+      "authorAssociation": "CONTRIBUTOR",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2025-09-12T18:58:56Z",
+      "updatedAt": "2025-09-12T18:59:25Z",
+      "baseRepository": "oauth-wg/oauth-identity-chaining",
+      "baseRefName": "main",
+      "baseRefOid": "60c4894d678ca5b44aa7c7ac16398f634921e01a",
+      "headRepository": "oauth-wg/oauth-identity-chaining",
+      "headRefName": "six-seven",
+      "headRefOid": "77bddfdb8c4c28d82178d6c96b2f799950095877",
+      "closedAt": "2025-09-12T18:59:25Z",
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [],
+      "reviews": []
+    },
+    {
+      "number": 173,
+      "id": "PR_kwDOJubJxM6oTyB4",
+      "title": "six seven",
+      "url": "https://github.com/oauth-wg/oauth-identity-chaining/pull/173",
+      "state": "OPEN",
+      "author": "bc-pi",
+      "authorAssociation": "CONTRIBUTOR",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2025-09-12T19:01:57Z",
+      "updatedAt": "2025-09-12T19:01:58Z",
+      "baseRepository": "oauth-wg/oauth-identity-chaining",
+      "baseRefName": "main",
+      "baseRefOid": "60c4894d678ca5b44aa7c7ac16398f634921e01a",
+      "headRepository": "oauth-wg/oauth-identity-chaining",
+      "headRefName": "06-07",
+      "headRefOid": "23bc12b83d9310595d0723c292bd6c1bbf2954f2",
+      "closedAt": null,
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [],
+      "reviews": []
     }
   ]
 }
