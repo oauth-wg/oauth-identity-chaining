@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2025-09-16T00:20:51.094126+00:00",
+  "timestamp": "2025-09-18T00:20:54.269009+00:00",
   "repo": "oauth-wg/oauth-identity-chaining",
   "labels": [
     {
@@ -10344,24 +10344,26 @@
       "id": "PR_kwDOJubJxM6oTyB4",
       "title": "six seven",
       "url": "https://github.com/oauth-wg/oauth-identity-chaining/pull/173",
-      "state": "OPEN",
+      "state": "MERGED",
       "author": "bc-pi",
       "authorAssociation": "CONTRIBUTOR",
       "assignees": [],
       "labels": [],
       "body": "",
       "createdAt": "2025-09-12T19:01:57Z",
-      "updatedAt": "2025-09-14T16:08:22Z",
+      "updatedAt": "2025-09-16T15:55:29Z",
       "baseRepository": "oauth-wg/oauth-identity-chaining",
       "baseRefName": "main",
       "baseRefOid": "60c4894d678ca5b44aa7c7ac16398f634921e01a",
       "headRepository": "oauth-wg/oauth-identity-chaining",
       "headRefName": "06-07",
       "headRefOid": "23bc12b83d9310595d0723c292bd6c1bbf2954f2",
-      "closedAt": null,
-      "mergedAt": null,
-      "mergedBy": null,
-      "mergeCommit": null,
+      "closedAt": "2025-09-16T15:55:27Z",
+      "mergedAt": "2025-09-16T15:55:27Z",
+      "mergedBy": "arndt-s",
+      "mergeCommit": {
+        "oid": "094ea021443d08b95048f6e472b7a1603ede07f5"
+      },
       "comments": [
         {
           "author": "WhippsP",
