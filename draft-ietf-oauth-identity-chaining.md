@@ -15,11 +15,11 @@ kw: []
 # date: 2022-02-02 -- date is filled in automatically by xml2rfc if not given
 author:
 - name: Arndt Schwenkschuster
-  org: SPIRL
+  org: Defakto Security
   email: arndts.ietf@gmail.com
 - name: Pieter Kasselmann
-  org: SPIRL
-  email: pieter@spirl.com
+  org: Defakto Security
+  email: pieter@defakto.security
 - name: Kelley Burgin
   org: MITRE
   email: kburgin@mitre.org
