@@ -4,14 +4,14 @@
 
 oauth                                                 A. Schwenkschuster
 Internet-Draft                                             P. Kasselmann
-Intended status: Informational                                     SPIRL
-Expires: 16 March 2026                                         K. Burgin
+Intended status: Informational                          Defakto Security
+Expires: 18 April 2026                                         K. Burgin
                                                                    MITRE
                                                               M. Jenkins
                                                                 NSA-CCSS
                                                              B. Campbell
                                                            Ping Identity
-                                                       12 September 2025
+                                                         15 October 2025
 
 
         OAuth Identity and Authorization Chaining Across Domains
@@ -49,7 +49,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 16 March 2026.
+   This Internet-Draft will expire on 18 April 2026.
 
 Copyright Notice
 
@@ -152,16 +152,19 @@ Table of Contents
    authorization server for trust domain A using a profile of OAuth 2.0
    Token Exchange [RFC8693].  The client in trust domain A then presents
    the received grant as an assertion to the authorization server in
-   trust domain B, using the JWT Authorization Grant feature of
+   trust domain B, using the JWT authorization grant feature of
    [RFC7523], to obtain an access token for the protected resource in
    trust domain B.
 
-   In some deployments, the platform in trust domain A may be
-   sufficiently integrated to directly produce a JWT authorization grant
-   for presentation to the authorization server in trust domain B.  In
-   such cases, use of the OAuth 2.0 Token Exchange protocol [RFC8693] is
-   not required, as the JWT authorization grant can be obtained without
-   a separate token exchange step.
+   In some deployments, the client in trust domain A may obtain a JWT
+   authorization grant using a proprietary API or interface other than
+   the OAuth 2.0 Token Exchange protocol [RFC8693].  The details of such
+   an interface are out of scope for this document but an alternative
+   means of acquiring the JWT authorization grant is not precluded by
+   this document.  A JWT authorization grant, regardless of how it was
+   obtained, MUST be used to request an access token from the
+   authorization server in trust domain B as described in Section 2.4 in
+   this document.
 
 2.1.  Overview
 
@@ -403,7 +406,7 @@ grant_type=urn%3Aietf%3Aparams%3Aoauth%3Agrant-type%3Atoken-exchange
 
 2.4.4.  Example
 
-   The examples below shows how the client in trust domain A presents an
+   The examples below show how the client in trust domain A presents an
    authorization grant to the authorization server in trust domain B
    (https://as.b.org/auth) to receive an access token for a protected
    resource in trust domain B.
@@ -461,7 +464,7 @@ grant_type=urn%3Aietf%3Aparams%3Aoauth%3Agrant-type%3Atoken-exchange
       certain claims due to privacy requirements or reduced trust
       towards the targeting trust domain.  One example is a financial
       institution that integrates with a third-party payment gateway.
-      domain A (the financial institution) includes detailed claims such
+      Domain A (the financial institution) includes detailed claims such
       as "account type: premium" and "transaction limit: $10,000" in the
       JWT authorization grant.  However, domain B (the payment gateway)
       only needs claims like "transaction limit" for its access control
@@ -1187,13 +1190,13 @@ Contributors
 Authors' Addresses
 
    Arndt Schwenkschuster
-   SPIRL
+   Defakto Security
    Email: arndts.ietf@gmail.com
 
 
    Pieter Kasselmann
-   SPIRL
-   Email: pieter@spirl.com
+   Defakto Security
+   Email: pieter@defakto.security
 
 
    Kelley Burgin
