@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2025-09-18T00:20:54.269009+00:00",
+  "timestamp": "2025-10-16T00:22:17.078443+00:00",
   "repo": "oauth-wg/oauth-identity-chaining",
   "labels": [
     {
@@ -10385,6 +10385,59 @@
           "body": "Thanks Brian",
           "createdAt": "2025-09-14T16:08:22Z",
           "updatedAt": "2025-09-14T16:08:22Z",
+          "comments": []
+        }
+      ]
+    },
+    {
+      "number": 174,
+      "id": "PR_kwDOJubJxM6t5ipa",
+      "title": "Affiliation changes",
+      "url": "https://github.com/oauth-wg/oauth-identity-chaining/pull/174",
+      "state": "OPEN",
+      "author": "arndt-s",
+      "authorAssociation": "MEMBER",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2025-10-15T14:21:39Z",
+      "updatedAt": "2025-10-15T14:33:05Z",
+      "baseRepository": "oauth-wg/oauth-identity-chaining",
+      "baseRefName": "main",
+      "baseRefOid": "094ea021443d08b95048f6e472b7a1603ede07f5",
+      "headRepository": "oauth-wg/oauth-identity-chaining",
+      "headRefName": "arndt/affiliation_changes",
+      "headRefOid": "ad7fcad6ba45a211e6525c269e3b61ca1e8751bf",
+      "closedAt": null,
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [],
+      "reviews": [
+        {
+          "id": "PRR_kwDOJubJxM7HHt3X",
+          "commit": {
+            "abbreviatedOid": "ad7fcad"
+          },
+          "author": "copilot-pull-request-reviewer",
+          "authorAssociation": "NONE",
+          "state": "COMMENTED",
+          "body": "## Pull Request Overview\n\nThis PR updates the author affiliation information in the document metadata. Both Arndt Schwenkschuster and Pieter Kasselmann have moved from SPIRL to Defakto Security, and Pieter's email address has been updated to reflect this organizational change.\n\n- Updated organizational affiliation from SPIRL to Defakto Security for two authors\n- Updated email address for Pieter Kasselmann to match new organization\n\n\n\n\n\n---\n\n<sub>**Tip:** Customize your code reviews with copilot-instructions.md. <a href=\"/oauth-wg/oauth-identity-chaining/new/main/.github?filename=copilot-instructions.md\" class=\"Link--inTextBlock\" target=\"_blank\" rel=\"noopener noreferrer\">Create the file</a> or <a href=\"https://docs.github.com/en/copilot/customizing-copilot/adding-repository-custom-instructions-for-github-copilot\" class=\"Link--inTextBlock\" target=\"_blank\" rel=\"noopener noreferrer\">learn how to get started</a>.</sub>",
+          "createdAt": "2025-10-15T14:21:48Z",
+          "updatedAt": "2025-10-15T14:21:48Z",
+          "comments": []
+        },
+        {
+          "id": "PRR_kwDOJubJxM7HH9_Z",
+          "commit": {
+            "abbreviatedOid": "ad7fcad"
+          },
+          "author": "kburgin3",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2025-10-15T14:33:05Z",
+          "updatedAt": "2025-10-15T14:33:05Z",
           "comments": []
         }
       ]
