@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2025-10-16T00:22:17.078443+00:00",
+  "timestamp": "2025-10-19T00:24:40.358474+00:00",
   "repo": "oauth-wg/oauth-identity-chaining",
   "labels": [
     {
@@ -10394,24 +10394,26 @@
       "id": "PR_kwDOJubJxM6t5ipa",
       "title": "Affiliation changes",
       "url": "https://github.com/oauth-wg/oauth-identity-chaining/pull/174",
-      "state": "OPEN",
+      "state": "MERGED",
       "author": "arndt-s",
       "authorAssociation": "MEMBER",
       "assignees": [],
       "labels": [],
       "body": "",
       "createdAt": "2025-10-15T14:21:39Z",
-      "updatedAt": "2025-10-15T14:33:05Z",
+      "updatedAt": "2025-10-16T13:53:54Z",
       "baseRepository": "oauth-wg/oauth-identity-chaining",
       "baseRefName": "main",
       "baseRefOid": "094ea021443d08b95048f6e472b7a1603ede07f5",
       "headRepository": "oauth-wg/oauth-identity-chaining",
       "headRefName": "arndt/affiliation_changes",
       "headRefOid": "ad7fcad6ba45a211e6525c269e3b61ca1e8751bf",
-      "closedAt": null,
-      "mergedAt": null,
-      "mergedBy": null,
-      "mergeCommit": null,
+      "closedAt": "2025-10-16T13:53:52Z",
+      "mergedAt": "2025-10-16T13:53:52Z",
+      "mergedBy": "arndt-s",
+      "mergeCommit": {
+        "oid": "c82d597e49aa2c3e6952b23908a8fbb6cc1cbdbc"
+      },
       "comments": [],
       "reviews": [
         {
