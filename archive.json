@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2025-10-19T00:24:40.358474+00:00",
+  "timestamp": "2025-10-23T00:22:03.534423+00:00",
   "repo": "oauth-wg/oauth-identity-chaining",
   "labels": [
     {
@@ -1946,15 +1946,15 @@
       "id": "I_kwDOJubJxM7Cfqi6",
       "title": "Consider making Authorization Grant JWTs single use and sender constrained",
       "url": "https://github.com/oauth-wg/oauth-identity-chaining/issues/168",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "yaron-zehavi",
       "authorAssociation": "NONE",
       "assignees": [],
       "labels": [],
       "body": "To prevent misuse of the Authorization Grant JWT, it should be (like an authorization code grant), only redeemable once.\nThis could be seen as a RFC7523 / 7521 issue but these don't include such guidance.\n\nIn addition the draft's security considerations recommends Sender Constraining Tokens.\nConsider applying this recommendation to Sender Constrain Authorization Grant JWTs as well",
       "createdAt": "2025-07-25T12:37:00Z",
-      "updatedAt": "2025-08-02T18:26:28Z",
-      "closedAt": null,
+      "updatedAt": "2025-10-22T22:14:44Z",
+      "closedAt": "2025-10-22T22:14:44Z",
       "comments": [
         {
           "author": "mcguinness",
@@ -1990,6 +1990,20 @@
           "body": "> Thanks Brian, Roger that re sender-constraining. What about limiting the usage of the authorization grant to only once?\n\nThere is some allowance for it in rfc7523 but not enough for reliable interop and in my own personal opinion isn't worth doing. ",
           "createdAt": "2025-08-02T18:26:28Z",
           "updatedAt": "2025-08-02T18:26:28Z"
+        },
+        {
+          "author": "bc-pi",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "@aaronpk has written up this (at first glance IMHO very reasonable) proposal around sender constraining the JWT authz grant via DPoP https://datatracker.ietf.org/doc/draft-parecki-oauth-jwt-dpop-grant/",
+          "createdAt": "2025-10-22T20:43:59Z",
+          "updatedAt": "2025-10-22T20:43:59Z"
+        },
+        {
+          "author": "bc-pi",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "Having said that https://github.com/oauth-wg/oauth-identity-chaining/issues/168#issuecomment-3434146163 and mentioned this on the mailing list https://mailarchive.ietf.org/arch/msg/oauth/teCtQputdKH9pmZKjNiBOTQ-Jpo/ I think it's ready to be closed. ",
+          "createdAt": "2025-10-22T22:14:44Z",
+          "updatedAt": "2025-10-22T22:14:44Z"
         }
       ]
     },
