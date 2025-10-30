@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2025-10-23T00:22:03.534423+00:00",
+  "timestamp": "2025-10-30T00:23:05.100743+00:00",
   "repo": "oauth-wg/oauth-identity-chaining",
   "labels": [
     {
@@ -2037,6 +2037,22 @@
       "createdAt": "2025-09-02T20:49:58Z",
       "updatedAt": "2025-09-12T16:02:57Z",
       "closedAt": "2025-09-12T16:02:57Z",
+      "comments": []
+    },
+    {
+      "number": 175,
+      "id": "I_kwDOJubJxM7UWgys",
+      "title": "Standards Track vs. Informational",
+      "url": "https://github.com/oauth-wg/oauth-identity-chaining/issues/175",
+      "state": "OPEN",
+      "author": "bc-pi",
+      "authorAssociation": "CONTRIBUTOR",
+      "assignees": [],
+      "labels": [],
+      "body": "The draft currently has Informational as the Intended Status, which I suspect is due to accident but does seem maybe appropriate as a document that is largely just describing the use of some existing RFCs. \n\nAn Informational status could be problematic with respect to downrefs, however, for drafts like https://datatracker.ietf.org/doc/draft-ietf-oauth-identity-assertion-authz-grant/ that currently have Standards Track Intended Status and a normative reference to this. ",
+      "createdAt": "2025-10-28T17:41:03Z",
+      "updatedAt": "2025-10-28T17:41:03Z",
+      "closedAt": null,
       "comments": []
     }
   ],
