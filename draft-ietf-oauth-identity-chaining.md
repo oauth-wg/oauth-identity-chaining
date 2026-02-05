@@ -282,7 +282,7 @@ However, domain B (the payment gateway) only needs claims like "transaction limi
 * **Controlling scope**: Clients MAY use the scope parameter to control transcribed claims (e.g. downscoping). Authorization Servers SHOULD verify that the requested scopes are not higher privileged than the scopes of the presented subject_token.
 For example, a cloud-based development platform that allows developers to access APIs across multiple trust domains where a developer in domain A requests access to an API in domain B but only needs limited permissions, such as "read-only" access.
 The authorization server in domain A transcribes the claims in the JWT authorization grant to reflect the downscoped permissions, removing higher-privileged claims like "write" or "admin." This ensures that the access token issued by domain B aligns with the developer's intended scope of access.
-* **Including JWT authorization grant claims**: The authorization server in trust domain B which is performing the assertion flow MAY leverage claims from the JWT authorization grant presented by the client in trust domain A and include them in the returned access token. The populated claims SHOULD be namespaced or validated to prevent the injection of invalid claims.
+* **Including JWT authorization grant claims**: The authorization server in trust domain B which is performing the assertion flow MAY leverage claims from the JWT authorization grant presented by the client in trust domain A and include them in the returned access token.
 
 The representation of transcribed claims and their format is not defined in this specification.
 
@@ -546,6 +546,7 @@ The editors would like to thank Patrick Harding, Joe Jubinski, Watson Ladd, Just
 * Explicitly reference RFC8693 Section 2.2.2 for token exchange error
 * Try and better explain that the access token request content is more desricption of Sec 2.1 RFC7523 and delete the empty scope parameter
 * Explicitly reference RFC7523 Section 3.1 for authorization grant error
+* Remove a seemingly nonsensical sentence about preventing injection of invalid claims
 
 -06
 
