@@ -231,6 +231,8 @@ The authorization server in trust domain B MUST validate the JWT authorization g
 * The authorization server in trust domain B SHOULD deny the request if it is not able to identify the subject.
 * Due to policy the request MAY be denied (for instance if federation with trust domain A is not established).
 
+Section 3.1 of {{RFC7523}} describes the error response used in request denial cases.
+
 ### Access Token Response
 
 The authorization server in trust domain B responds with an access token as described in section 5.1 of {{RFC6749}}.
@@ -541,8 +543,9 @@ The editors would like to thank Patrick Harding, Joe Jubinski, Watson Ladd, Just
 
 * Add a (hopefully helpful) sentence to the end of the first paragraph of the Overview
 * Reword bullet (C) of the Overview (because you cannot use public keys to sign)
-* Explicitly reference RFC8693 Section 2.2.2 of for token exchange error
+* Explicitly reference RFC8693 Section 2.2.2 for token exchange error
 * Try and better explain that the access token request content is more desricption of Sec 2.1 RFC7523 and delete the empty scope parameter
+* Explicitly reference RFC7523 Section 3.1 for authorization grant error
 
 -06
 
