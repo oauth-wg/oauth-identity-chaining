@@ -1656,7 +1656,7 @@ For example, a cloud-based development platform that allows developers to access
 The authorization server in domain A transcribes the claims in the JWT authorization grant to reflect the downscoped permissions, removing higher-privileged claims like "write" or "admin." This ensures that the access token issued by domain B aligns with the developer's intended scope of access.<a href="#section-2.5-3.3.1" class="pilcrow">¶</a></p>
 </li>
           <li class="normal" id="section-2.5-3.4">
-            <p id="section-2.5-3.4.1"><strong>Including JWT authorization grant claims</strong>: The authorization server in trust domain B which is performing the assertion flow <span class="bcp14">MAY</span> leverage claims from the JWT authorization grant presented by the client in trust domain A and include them in the returned access token. The populated claims <span class="bcp14">SHOULD</span> be namespaced or validated to prevent the injection of invalid claims.<a href="#section-2.5-3.4.1" class="pilcrow">¶</a></p>
+            <p id="section-2.5-3.4.1"><strong>Including JWT authorization grant claims</strong>: The authorization server in trust domain B which is performing the assertion flow <span class="bcp14">MAY</span> leverage claims from the JWT authorization grant presented by the client in trust domain A and include them in the returned access token.<a href="#section-2.5-3.4.1" class="pilcrow">¶</a></p>
 </li>
         </ul>
 <p id="section-2.5-4">The representation of transcribed claims and their format is not defined in this specification.<a href="#section-2.5-4" class="pilcrow">¶</a></p>
@@ -2139,6 +2139,9 @@ This includes verifying that privacy policies are aligned across trust domains a
 </li>
         <li class="normal" id="appendix-D-3.5">
           <p id="appendix-D-3.5.1">Explicitly reference RFC7523 Section 3.1 for authorization grant error<a href="#appendix-D-3.5.1" class="pilcrow">¶</a></p>
+</li>
+        <li class="normal" id="appendix-D-3.6">
+          <p id="appendix-D-3.6.1">Remove a seemingly nonsensical sentence about preventing injection of invalid claims<a href="#appendix-D-3.6.1" class="pilcrow">¶</a></p>
 </li>
       </ul>
 <p id="appendix-D-4">-06<a href="#appendix-D-4" class="pilcrow">¶</a></p>

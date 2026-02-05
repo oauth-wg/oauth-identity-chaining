@@ -496,8 +496,7 @@ grant_type=urn%3Aietf%3Aparams%3Aoauth%3Agrant-type%3Atoken-exchange
       server in trust domain B which is performing the assertion flow
       MAY leverage claims from the JWT authorization grant presented by
       the client in trust domain A and include them in the returned
-      access token.  The populated claims SHOULD be namespaced or
-      validated to prevent the injection of invalid claims.
+      access token.
 
    The representation of transcribed claims and their format is not
    defined in this specification.
@@ -1087,6 +1086,9 @@ Appendix D.  Document History
 
    *  Explicitly reference RFC7523 Section 3.1 for authorization grant
       error
+
+   *  Remove a seemingly nonsensical sentence about preventing injection
+      of invalid claims
 
    -06
 
