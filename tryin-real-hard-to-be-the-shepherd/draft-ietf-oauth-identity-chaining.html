@@ -1462,7 +1462,7 @@ Conceptually, this is an exchange within the first domain that produces a JWT au
           </h4>
 <ul class="normal">
 <li class="normal" id="section-2.3.2-1.1">
-              <p id="section-2.3.2-1.1.1">If the request itself is not valid or if the given resource or audience are unknown, or are unacceptable based on policy, the authorization server in trust domain A <span class="bcp14">MUST</span> deny the request.<a href="#section-2.3.2-1.1.1" class="pilcrow">¶</a></p>
+              <p id="section-2.3.2-1.1.1">If the request itself is not valid or if the given resource or audience are unknown, or are unacceptable based on policy, the authorization server in trust domain A <span class="bcp14">MUST</span> deny the request as defined in Section 2.2.2 of <span>[<a href="#RFC8693" class="cite xref">RFC8693</a>]</span>.<a href="#section-2.3.2-1.1.1" class="pilcrow">¶</a></p>
 </li>
             <li class="normal" id="section-2.3.2-1.2">
               <p id="section-2.3.2-1.2.1">The authorization server in trust domain A <span class="bcp14">MAY</span> add, remove or change claims. See <span><a href="#claims-transcription" class="internal xref">Claims transcription</a> (<a href="#claims-transcription" class="auto internal xref">Section 2.5</a>)</span>.<a href="#section-2.3.2-1.2.1" class="pilcrow">¶</a></p>
@@ -2134,6 +2134,9 @@ This includes verifying that privacy policies are aligned across trust domains a
 </li>
         <li class="normal" id="appendix-D-3.2">
           <p id="appendix-D-3.2.1">Reword bullet (C) of the Overview (because you cannot use public keys to sign)<a href="#appendix-D-3.2.1" class="pilcrow">¶</a></p>
+</li>
+        <li class="normal" id="appendix-D-3.3">
+          <p id="appendix-D-3.3.1">Explicitly reference RFC8693 Section 2.2.2 of for token exchange error<a href="#appendix-D-3.3.1" class="pilcrow">¶</a></p>
 </li>
       </ul>
 <p id="appendix-D-4">-06<a href="#appendix-D-4" class="pilcrow">¶</a></p>
