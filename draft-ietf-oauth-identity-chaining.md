@@ -130,7 +130,7 @@ The flow illustrated in Figure 1 shows the steps the client in trust domain A ne
 
 * (B) The client in trust domain A exchanges a token it has in its possession with the authorization server in trust domain A for a JWT authorization grant that can be used at the authorization server in trust domain B. See [Token Exchange](#token-exchange).
 
-* (C) The authorization server of trust domain A processes the request and returns a JWT authorization grant that the client can use with the authorization server of trust domain B. This requires a trust relationship between the authorization servers in trust domain A and trust domain B (sometimes called federation, such a trust relationship typically manifests in the exchange of key material where domain B's authorization server trusts the public key(s) of domain A to sign JWT authorization grants).
+* (C) The authorization server of trust domain A processes the request and returns a JWT authorization grant that the client can use with the authorization server of trust domain B. This requires a trust relationship between the authorization servers in trust domain A and trust domain B (sometimes referred to as federation). Such a trust relationship typically manifests as the exchange of key material, whereby the authorization server in domain B trusts the public key(s) of domain A, which are used to verify JWT authorization grants signed with the corresponding private key(s).
 
 * (D) The client in trust domain A presents the authorization grant to the authorization server of trust domain B. See [Access Token Request](#atr).
 
@@ -543,6 +543,7 @@ The editors would like to thank Patrick Harding, Joe Jubinski, Watson Ladd, Just
 -07
 
 * Add a (hopefully helpful) sentence to the end of the first paragraph of the Overview
+* Reword bullet (C) of the Overview (because you cannot use public keys to sign)
 
 -06
 
