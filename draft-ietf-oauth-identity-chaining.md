@@ -212,7 +212,7 @@ The client in trust domain A uses the JWT authorization grant obtained from the 
 
 ### Access Token Request {#atr}
 
-In the context of this specification the following descriptions apply:
+The access token request is per Section 2.1 of {{RFC7523}}, described additionally here:
 
 {:vspace}
 grant_type
@@ -220,9 +220,6 @@ grant_type
 
 assertion
 : REQUIRED. Authorization grant returned by the authorization server for domain A (see [Token Exchange](#token-exchange) response).
-
-scope
-: OPTIONAL.
 
 The client in trust domain A MAY indicate the protected resource it is trying to access through the `scope` parameter or the `resource` parameter defined in {{RFC8707}}.
 
@@ -545,6 +542,7 @@ The editors would like to thank Patrick Harding, Joe Jubinski, Watson Ladd, Just
 * Add a (hopefully helpful) sentence to the end of the first paragraph of the Overview
 * Reword bullet (C) of the Overview (because you cannot use public keys to sign)
 * Explicitly reference RFC8693 Section 2.2.2 of for token exchange error
+* Try and better explain that the access token request content is more desricption of Sec 2.1 RFC7523 and delete the empty scope parameter
 
 -06
 
