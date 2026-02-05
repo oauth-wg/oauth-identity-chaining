@@ -162,7 +162,7 @@ audience
 
 ### Processing rules
 
-* If the request itself is not valid or if the given resource or audience are unknown, or are unacceptable based on policy, the authorization server in trust domain A MUST deny the request.
+* If the request itself is not valid or if the given resource or audience are unknown, or are unacceptable based on policy, the authorization server in trust domain A MUST deny the request as defined in Section 2.2.2 of {{RFC8693}}.
 * The authorization server in trust domain A MAY add, remove or change claims. See [Claims transcription](#claims-transcription).
 
 ### Token Exchange Response
@@ -544,6 +544,7 @@ The editors would like to thank Patrick Harding, Joe Jubinski, Watson Ladd, Just
 
 * Add a (hopefully helpful) sentence to the end of the first paragraph of the Overview
 * Reword bullet (C) of the Overview (because you cannot use public keys to sign)
+* Explicitly reference RFC8693 Section 2.2.2 of for token exchange error
 
 -06
 
