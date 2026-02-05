@@ -1544,7 +1544,7 @@ Cache-Control: no-cache, no-store
           <h4 id="name-access-token-request">
 <a href="#section-2.4.1" class="section-number selfRef">2.4.1. </a><a href="#name-access-token-request" class="section-name selfRef">Access Token Request</a>
           </h4>
-<p id="section-2.4.1-1">In the context of this specification the following descriptions apply:<a href="#section-2.4.1-1" class="pilcrow">¶</a></p>
+<p id="section-2.4.1-1">The access token request is per Section 2.1 of <span>[<a href="#RFC7523" class="cite xref">RFC7523</a>]</span>, described additionally here:<a href="#section-2.4.1-1" class="pilcrow">¶</a></p>
 <span class="break"></span><dl class="dlNewline" id="section-2.4.1-2">
             <dt id="section-2.4.1-2.1">grant_type</dt>
             <dd style="margin-left: 1.5em" id="section-2.4.1-2.2">
@@ -1554,11 +1554,6 @@ Cache-Control: no-cache, no-store
 <dt id="section-2.4.1-2.3">assertion</dt>
             <dd style="margin-left: 1.5em" id="section-2.4.1-2.4">
               <p id="section-2.4.1-2.4.1"><span class="bcp14">REQUIRED</span>. Authorization grant returned by the authorization server for domain A (see <span><a href="#token-exchange" class="internal xref">Token Exchange</a> (<a href="#token-exchange" class="auto internal xref">Section 2.3</a>)</span> response).<a href="#section-2.4.1-2.4.1" class="pilcrow">¶</a></p>
-</dd>
-            <dd class="break"></dd>
-<dt id="section-2.4.1-2.5">scope</dt>
-            <dd style="margin-left: 1.5em" id="section-2.4.1-2.6">
-              <p id="section-2.4.1-2.6.1"><span class="bcp14">OPTIONAL</span>.<a href="#section-2.4.1-2.6.1" class="pilcrow">¶</a></p>
 </dd>
           <dd class="break"></dd>
 </dl>
@@ -2137,6 +2132,9 @@ This includes verifying that privacy policies are aligned across trust domains a
 </li>
         <li class="normal" id="appendix-D-3.3">
           <p id="appendix-D-3.3.1">Explicitly reference RFC8693 Section 2.2.2 of for token exchange error<a href="#appendix-D-3.3.1" class="pilcrow">¶</a></p>
+</li>
+        <li class="normal" id="appendix-D-3.4">
+          <p id="appendix-D-3.4.1">Try and better explain that the access token request content is more desricption of Sec 2.1 RFC7523 and delete the empty scope parameter<a href="#appendix-D-3.4.1" class="pilcrow">¶</a></p>
 </li>
       </ul>
 <p id="appendix-D-4">-06<a href="#appendix-D-4" class="pilcrow">¶</a></p>
