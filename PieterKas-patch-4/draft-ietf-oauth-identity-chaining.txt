@@ -1066,6 +1066,8 @@ Appendix D.  Document History
 
    -07
 
+   *  Change Intended Status to Standards Track from Informational
+
    -06
 
    *  Use IANA.media-types so the tooling can find the media types
