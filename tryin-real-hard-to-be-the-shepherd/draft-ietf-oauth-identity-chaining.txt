@@ -488,8 +488,8 @@ grant_type=urn%3Aietf%3Aparams%3Aoauth%3Agrant-type%3Atoken-exchange
       to access APIs across multiple trust domains where a developer in
       domain A requests access to an API in domain B but only needs
       limited permissions, such as "read-only" access.  The
-      authorization server in domain A transcribes the claims in the JWT
-      authorization grant to reflect the downscoped permissions,
+      authorization server in domain A transcribes the claims into the
+      JWT authorization grant to reflect the downscoped permissions,
       removing higher-privileged claims like "write" or "admin."  This
       ensures that the access token issued by domain B aligns with the
       developer's intended scope of access.
