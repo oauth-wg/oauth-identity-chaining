@@ -4,7 +4,7 @@
 
 oauth                                                 A. Schwenkschuster
 Internet-Draft                                             P. Kasselmann
-Intended status: Informational                          Defakto Security
+Intended status: Standards Track                        Defakto Security
 Expires: 10 August 2026                                        K. Burgin
                                                                    MITRE
                                                               M. Jenkins
@@ -1119,6 +1119,8 @@ Appendix D.  Document History
    *  Quality the Authorized use of Subject Token security
       recommendations a bit
 
+   *  Change Intended Status to Standards Track from Informational
+
    -06
 
    *  Use IANA.media-types so the tooling can find the media types
@@ -1223,7 +1225,7 @@ Contributors
 
    George Fletcher
    Practical Identity LLC
-   Email: gffletch@gmail.com
+   Email: george@practicalidentity.com
 
 
    Rifaat Shekh-Yusef
