@@ -541,7 +541,7 @@ The editors would like to thank Patrick Harding, Joe Jubinski, Watson Ladd, Just
 
 -07
 
-* Change Intended Status to Standards Track from Informational 
+* Change Intended Status to Standards Track from Informational
 
 -06
 
