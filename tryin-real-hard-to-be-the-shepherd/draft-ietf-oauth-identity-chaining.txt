@@ -596,9 +596,12 @@ grant_type=urn%3Aietf%3Aparams%3Aoauth%3Agrant-type%3Atoken-exchange
    security measures, and creating unnecessary security risks.  It also
    allows the client to obtain access tokens within trust domain B, even
    if the initial session in trust domain A has finished (e.g. the user
-   has logged out or access has been revoked).  This paragraph does not
-   relate to the issuance of refresh tokens by the authorization server
-   in trust domain A.
+   has logged out or access has been revoked).  This is consitent with
+   Section 4.1 of [RFC7521] which discourages but does not prohibit the
+   issuance of refresh tokens in the context of assertion grants.
+
+   This paragraph does not relate to the issuance of refresh tokens by
+   the authorization server in trust domain A.
 
 5.5.  Replay of Authorization Grant
 
@@ -661,6 +664,11 @@ grant_type=urn%3Aietf%3Aparams%3Aoauth%3Agrant-type%3Atoken-exchange
               and C. Mortimore, "OAuth 2.0 Token Exchange", RFC 8693,
               DOI 10.17487/RFC8693, January 2020,
               <https://www.rfc-editor.org/rfc/rfc8693>.
+
+   [RFC7521]  Campbell, B., Mortimore, C., Jones, M., and Y. Goland,
+              "Assertion Framework for OAuth 2.0 Client Authentication
+              and Authorization Grants", RFC 7521, DOI 10.17487/RFC7521,
+              May 2015, <https://www.rfc-editor.org/rfc/rfc7521>.
 
    [RFC7523]  Jones, M., Campbell, B., and C. Mortimore, "JSON Web Token
               (JWT) Profile for OAuth 2.0 Client Authentication and
@@ -1100,6 +1108,9 @@ Appendix D.  Document History
 
    *  Endeavor to qualify the SHOULDs on client auth and sender
       constrained tokens
+
+   *  Qualify the only SHOULD NOT on RTs from assertion grants being
+      inline with historical decisions in RFC7521
 
    -06
 

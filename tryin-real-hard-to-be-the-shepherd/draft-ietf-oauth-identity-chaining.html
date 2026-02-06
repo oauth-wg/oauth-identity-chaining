@@ -1765,7 +1765,9 @@ acknowledging, however, that bearer tokens remain the predominantly deployed acc
         <h3 id="name-refresh-tokens">
 <a href="#section-5.4" class="section-number selfRef">5.4. </a><a href="#name-refresh-tokens" class="section-name selfRef">Refresh Tokens</a>
         </h3>
-<p id="section-5.4-1">The authorization server in trust domain B <span class="bcp14">SHOULD NOT</span> issue refresh tokens to the client within the scope of this specification. When the access token has expired, clients <span class="bcp14">SHOULD</span> re-submit the original JWT Authorization Grant to obtain a new Access Token. If the JWT Authorization Grant has expired, the client <span class="bcp14">SHOULD</span> request a new grant from the authorization server in trust domain A before presenting it to the authorization server in trust domain B. The issuance of Refresh Tokens by the authorization server in trust domain B introduces a redundant credential requiring additional security measures, and creating unnecessary security risks. It also allows the client to obtain access tokens within trust domain B, even if the initial session in trust domain A has finished (e.g. the user has logged out or access has been revoked). This paragraph does not relate to the issuance of refresh tokens by the authorization server in trust domain A.<a href="#section-5.4-1" class="pilcrow">¶</a></p>
+<p id="section-5.4-1">The authorization server in trust domain B <span class="bcp14">SHOULD NOT</span> issue refresh tokens to the client within the scope of this specification. When the access token has expired, clients <span class="bcp14">SHOULD</span> re-submit the original JWT Authorization Grant to obtain a new Access Token. If the JWT Authorization Grant has expired, the client <span class="bcp14">SHOULD</span> request a new grant from the authorization server in trust domain A before presenting it to the authorization server in trust domain B. The issuance of Refresh Tokens by the authorization server in trust domain B introduces a redundant credential requiring additional security measures, and creating unnecessary security risks. It also allows the client to obtain access tokens within trust domain B, even if the initial session in trust domain A has finished (e.g. the user has logged out or access has been revoked).
+This is consitent with Section 4.1 of <span>[<a href="#RFC7521" class="cite xref">RFC7521</a>]</span> which discourages but does not prohibit the issuance of refresh tokens in the context of assertion grants.<a href="#section-5.4-1" class="pilcrow">¶</a></p>
+<p id="section-5.4-2">This paragraph does not relate to the issuance of refresh tokens by the authorization server in trust domain A.<a href="#section-5.4-2" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="replay-of-authorization-grant">
@@ -1824,6 +1826,10 @@ This includes verifying that privacy policies are aligned across trust domains a
 <dt id="RFC8693">[RFC8693]</dt>
         <dd>
 <span class="refAuthor">Jones, M.</span>, <span class="refAuthor">Nadalin, A.</span>, <span class="refAuthor">Campbell, B., Ed.</span>, <span class="refAuthor">Bradley, J.</span>, and <span class="refAuthor">C. Mortimore</span>, <span class="refTitle">"OAuth 2.0 Token Exchange"</span>, <span class="seriesInfo">RFC 8693</span>, <span class="seriesInfo">DOI 10.17487/RFC8693</span>, <time datetime="2020-01" class="refDate">January 2020</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc8693">https://www.rfc-editor.org/rfc/rfc8693</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="RFC7521">[RFC7521]</dt>
+        <dd>
+<span class="refAuthor">Campbell, B.</span>, <span class="refAuthor">Mortimore, C.</span>, <span class="refAuthor">Jones, M.</span>, and <span class="refAuthor">Y. Goland</span>, <span class="refTitle">"Assertion Framework for OAuth 2.0 Client Authentication and Authorization Grants"</span>, <span class="seriesInfo">RFC 7521</span>, <span class="seriesInfo">DOI 10.17487/RFC7521</span>, <time datetime="2015-05" class="refDate">May 2015</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc7521">https://www.rfc-editor.org/rfc/rfc7521</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="RFC7523">[RFC7523]</dt>
         <dd>
@@ -2150,6 +2156,9 @@ This includes verifying that privacy policies are aligned across trust domains a
 </li>
         <li class="normal" id="appendix-D-3.8">
           <p id="appendix-D-3.8.1">Endeavor to qualify the SHOULDs on client auth and sender constrained tokens<a href="#appendix-D-3.8.1" class="pilcrow">¶</a></p>
+</li>
+        <li class="normal" id="appendix-D-3.9">
+          <p id="appendix-D-3.9.1">Qualify the only <span class="bcp14">SHOULD NOT</span> on RTs from assertion grants being inline with historical decisions in RFC7521<a href="#appendix-D-3.9.1" class="pilcrow">¶</a></p>
 </li>
       </ul>
 <p id="appendix-D-4">-06<a href="#appendix-D-4" class="pilcrow">¶</a></p>
