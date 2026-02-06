@@ -335,6 +335,7 @@ acknowledging, however, that bearer tokens remain the predominantly deployed acc
 
 ## Authorized use of Subject Token
 The authorization server in trust domain A SHOULD perform client authentication and verify that the client in trust domain A is authorized to present the token used as a subject_token in the token exchange flow before issuing an authorization grant. By doing so, it minimizes the risk of an attacker making a lateral move by using a stolen token from trust domain A to obtain an authorization grant with which to authenticate to an authorization server in trust domain B and request an access token for a resource server in trust domain B.
+Such authorization policy might not be present in all deployments, and is of reduced utility for public clients, but it is a recommended security measure for deployments that can support it.
 
 ## Refresh Tokens
 The authorization server in trust domain B SHOULD NOT issue refresh tokens to the client within the scope of this specification. When the access token has expired, clients SHOULD re-submit the original JWT Authorization Grant to obtain a new Access Token. If the JWT Authorization Grant has expired, the client SHOULD request a new grant from the authorization server in trust domain A before presenting it to the authorization server in trust domain B. The issuance of Refresh Tokens by the authorization server in trust domain B introduces a redundant credential requiring additional security measures, and creating unnecessary security risks. It also allows the client to obtain access tokens within trust domain B, even if the initial session in trust domain A has finished (e.g. the user has logged out or access has been revoked).
@@ -556,6 +557,7 @@ The editors would like to thank Patrick Harding, Joe Jubinski, Watson Ladd, Just
 * Try and explain why ASs might not want to advertise some supported requested token types
 * Endeavor to qualify the SHOULDs on client auth and sender constrained tokens
 * Qualify the only SHOULD NOT on RTs from assertion grants being inline with historical decisions in RFC7521
+* Quality the Authorized use of Subject Token security recommendations a bit
 
 -06
 
