@@ -1350,7 +1350,8 @@ appear in all capitals, as shown here.<a href="#section-1.1-1" class="pilcrow">�
         <h3 id="name-overview">
 <a href="#section-2.1" class="section-number selfRef">2.1. </a><a href="#name-overview" class="section-name selfRef">Overview</a>
         </h3>
-<p id="section-2.1-1">The identity and authorization chaining flow outlined below describes how a combination of OAuth 2.0 Token Exchange <span>[<a href="#RFC8693" class="cite xref">RFC8693</a>]</span> and JWT Profile for OAuth 2.0 Client Authentication and Authorization Grants <span>[<a href="#RFC7523" class="cite xref">RFC7523</a>]</span> are used to address the use cases identified.<a href="#section-2.1-1" class="pilcrow">¶</a></p>
+<p id="section-2.1-1">The identity and authorization chaining flow outlined below describes how a combination of OAuth 2.0 Token Exchange <span>[<a href="#RFC8693" class="cite xref">RFC8693</a>]</span> and JWT Profile for OAuth 2.0 Client Authentication and Authorization Grants <span>[<a href="#RFC7523" class="cite xref">RFC7523</a>]</span> are used to address the use cases identified.
+Conceptually, this is an exchange within the first domain that produces a JWT authorization grant intended for use in acquiring an access token from the second domain.<a href="#section-2.1-1" class="pilcrow">¶</a></p>
 <span id="name-identity-and-authorization-c"></span><figure id="figure-1">
           <div class="alignLeft art-text artwork" id="section-2.1-2.1">
 <pre>
@@ -1400,7 +1401,7 @@ appear in all capitals, as shown here.<a href="#section-1.1-1" class="pilcrow">�
             <p id="section-2.1-4.2.1">(B) The client in trust domain A exchanges a token it has in its possession with the authorization server in trust domain A for a JWT authorization grant that can be used at the authorization server in trust domain B. See <span><a href="#token-exchange" class="internal xref">Token Exchange</a> (<a href="#token-exchange" class="auto internal xref">Section 2.3</a>)</span>.<a href="#section-2.1-4.2.1" class="pilcrow">¶</a></p>
 </li>
           <li class="normal" id="section-2.1-4.3">
-            <p id="section-2.1-4.3.1">(C) The authorization server of trust domain A processes the request and returns a JWT authorization grant that the client can use with the authorization server of trust domain B. This requires a trust relationship between the authorization servers in trust domain A and trust domain B (sometimes called federation, such a trust relationship typically manifests in the exchange of key material where domain B's authorization server trusts the public key(s) of domain A to sign JWT authorization grants).<a href="#section-2.1-4.3.1" class="pilcrow">¶</a></p>
+            <p id="section-2.1-4.3.1">(C) The authorization server of trust domain A processes the request and returns a JWT authorization grant that the client can use with the authorization server of trust domain B. This requires a trust relationship between the authorization servers in trust domain A and trust domain B (sometimes referred to as federation). Such a trust relationship typically manifests as the exchange of key material, whereby the authorization server in domain B trusts the public key(s) of domain A, which are used to verify JWT authorization grants signed with the corresponding private key(s).<a href="#section-2.1-4.3.1" class="pilcrow">¶</a></p>
 </li>
           <li class="normal" id="section-2.1-4.4">
             <p id="section-2.1-4.4.1">(D) The client in trust domain A presents the authorization grant to the authorization server of trust domain B. See <span><a href="#atr" class="internal xref">Access Token Request</a> (<a href="#atr" class="auto internal xref">Section 2.4.1</a>)</span>.<a href="#section-2.1-4.4.1" class="pilcrow">¶</a></p>
@@ -1461,7 +1462,7 @@ appear in all capitals, as shown here.<a href="#section-1.1-1" class="pilcrow">�
           </h4>
 <ul class="normal">
 <li class="normal" id="section-2.3.2-1.1">
-              <p id="section-2.3.2-1.1.1">If the request itself is not valid or if the given resource or audience are unknown, or are unacceptable based on policy, the authorization server in trust domain A <span class="bcp14">MUST</span> deny the request.<a href="#section-2.3.2-1.1.1" class="pilcrow">¶</a></p>
+              <p id="section-2.3.2-1.1.1">If the request itself is not valid or if the given resource or audience are unknown, or are unacceptable based on policy, the authorization server in trust domain A <span class="bcp14">MUST</span> deny the request as defined in Section 2.2.2 of <span>[<a href="#RFC8693" class="cite xref">RFC8693</a>]</span>.<a href="#section-2.3.2-1.1.1" class="pilcrow">¶</a></p>
 </li>
             <li class="normal" id="section-2.3.2-1.2">
               <p id="section-2.3.2-1.2.1">The authorization server in trust domain A <span class="bcp14">MAY</span> add, remove or change claims. See <span><a href="#claims-transcription" class="internal xref">Claims transcription</a> (<a href="#claims-transcription" class="auto internal xref">Section 2.5</a>)</span>.<a href="#section-2.3.2-1.2.1" class="pilcrow">¶</a></p>
@@ -1543,7 +1544,7 @@ Cache-Control: no-cache, no-store
           <h4 id="name-access-token-request">
 <a href="#section-2.4.1" class="section-number selfRef">2.4.1. </a><a href="#name-access-token-request" class="section-name selfRef">Access Token Request</a>
           </h4>
-<p id="section-2.4.1-1">In the context of this specification the following descriptions apply:<a href="#section-2.4.1-1" class="pilcrow">¶</a></p>
+<p id="section-2.4.1-1">The JWT authorization grant is used to request an access token as defined in Section 2.1 of <span>[<a href="#RFC7523" class="cite xref">RFC7523</a>]</span>. The following parameters are required and described additionally here:<a href="#section-2.4.1-1" class="pilcrow">¶</a></p>
 <span class="break"></span><dl class="dlNewline" id="section-2.4.1-2">
             <dt id="section-2.4.1-2.1">grant_type</dt>
             <dd style="margin-left: 1.5em" id="section-2.4.1-2.2">
@@ -1552,12 +1553,7 @@ Cache-Control: no-cache, no-store
             <dd class="break"></dd>
 <dt id="section-2.4.1-2.3">assertion</dt>
             <dd style="margin-left: 1.5em" id="section-2.4.1-2.4">
-              <p id="section-2.4.1-2.4.1"><span class="bcp14">REQUIRED</span>. Authorization grant returned by the authorization server for domain A (see <span><a href="#token-exchange" class="internal xref">Token Exchange</a> (<a href="#token-exchange" class="auto internal xref">Section 2.3</a>)</span> response).<a href="#section-2.4.1-2.4.1" class="pilcrow">¶</a></p>
-</dd>
-            <dd class="break"></dd>
-<dt id="section-2.4.1-2.5">scope</dt>
-            <dd style="margin-left: 1.5em" id="section-2.4.1-2.6">
-              <p id="section-2.4.1-2.6.1"><span class="bcp14">OPTIONAL</span>.<a href="#section-2.4.1-2.6.1" class="pilcrow">¶</a></p>
+              <p id="section-2.4.1-2.4.1"><span class="bcp14">REQUIRED</span>. The JWT authorization grant returned by the authorization server for domain A (see <span><a href="#token-exchange" class="internal xref">Token Exchange</a> (<a href="#token-exchange" class="auto internal xref">Section 2.3</a>)</span> response).<a href="#section-2.4.1-2.4.1" class="pilcrow">¶</a></p>
 </dd>
           <dd class="break"></dd>
 </dl>
@@ -1581,6 +1577,7 @@ Cache-Control: no-cache, no-store
               <p id="section-2.4.2-2.3.1">Due to policy the request <span class="bcp14">MAY</span> be denied (for instance if federation with trust domain A is not established).<a href="#section-2.4.2-2.3.1" class="pilcrow">¶</a></p>
 </li>
           </ul>
+<p id="section-2.4.2-3">Section 3.1 of <span>[<a href="#RFC7523" class="cite xref">RFC7523</a>]</span> describes the error response used in request denial cases.<a href="#section-2.4.2-3" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="access-token-response">
@@ -1656,10 +1653,10 @@ However, domain B (the payment gateway) only needs claims like "transaction limi
           <li class="normal" id="section-2.5-3.3">
             <p id="section-2.5-3.3.1"><strong>Controlling scope</strong>: Clients <span class="bcp14">MAY</span> use the scope parameter to control transcribed claims (e.g. downscoping). Authorization Servers <span class="bcp14">SHOULD</span> verify that the requested scopes are not higher privileged than the scopes of the presented subject_token.
 For example, a cloud-based development platform that allows developers to access APIs across multiple trust domains where a developer in domain A requests access to an API in domain B but only needs limited permissions, such as "read-only" access.
-The authorization server in domain A transcribes the claims in the JWT authorization grant to reflect the downscoped permissions, removing higher-privileged claims like "write" or "admin." This ensures that the access token issued by domain B aligns with the developer's intended scope of access.<a href="#section-2.5-3.3.1" class="pilcrow">¶</a></p>
+The authorization server in domain A transcribes the claims into the JWT authorization grant to reflect the downscoped permissions, removing higher-privileged claims like "write" or "admin." This ensures that the access token issued by domain B aligns with the developer's intended scope of access.<a href="#section-2.5-3.3.1" class="pilcrow">¶</a></p>
 </li>
           <li class="normal" id="section-2.5-3.4">
-            <p id="section-2.5-3.4.1"><strong>Including JWT authorization grant claims</strong>: The authorization server in trust domain B which is performing the assertion flow <span class="bcp14">MAY</span> leverage claims from the JWT authorization grant presented by the client in trust domain A and include them in the returned access token. The populated claims <span class="bcp14">SHOULD</span> be namespaced or validated to prevent the injection of invalid claims.<a href="#section-2.5-3.4.1" class="pilcrow">¶</a></p>
+            <p id="section-2.5-3.4.1"><strong>Including JWT authorization grant claims</strong>: The authorization server in trust domain B which is performing the assertion flow <span class="bcp14">MAY</span> leverage claims from the JWT authorization grant presented by the client in trust domain A and include them in the returned access token.<a href="#section-2.5-3.4.1" class="pilcrow">¶</a></p>
 </li>
         </ul>
 <p id="section-2.5-4">The representation of transcribed claims and their format is not defined in this specification.<a href="#section-2.5-4" class="pilcrow">¶</a></p>
@@ -1680,7 +1677,7 @@ consistent.<a href="#section-2.5-5" class="pilcrow">¶</a></p>
 <span class="break"></span><dl class="dlNewline" id="section-3-2">
         <dt id="section-3-2.1">identity_chaining_requested_token_types_supported</dt>
         <dd style="margin-left: 1.5em" id="section-3-2.2">
-          <p id="section-3-2.2.1"><span class="bcp14">OPTIONAL</span>. JSON array containing a list of Token Types that can be requested as a <code>requested_token_type</code> in the Token Exchange request when performing Identity and Authorization Chaining Across Domains. Authorization servers <span class="bcp14">MAY</span> choose not to advertise some supported requested token types even when this parameter is used, and lack of a value does not necessarily mean that the token type is unsupported.<a href="#section-3-2.2.1" class="pilcrow">¶</a></p>
+          <p id="section-3-2.2.1"><span class="bcp14">OPTIONAL</span>. JSON array containing a list of Token Types that can be requested as a <code>requested_token_type</code> in the Token Exchange request when performing Identity and Authorization Chaining Across Domains. In situations where it might be an information disclosure concern, authorization servers <span class="bcp14">MAY</span> choose not to advertise some supported requested token types even when this parameter is used, and lack of a value does not necessarily mean that the token type is unsupported.<a href="#section-3-2.2.1" class="pilcrow">¶</a></p>
 </dd>
       <dd class="break"></dd>
 </dl>
@@ -1742,7 +1739,8 @@ consistent.<a href="#section-2.5-5" class="pilcrow">¶</a></p>
         <h3 id="name-client-authentication">
 <a href="#section-5.1" class="section-number selfRef">5.1. </a><a href="#name-client-authentication" class="section-name selfRef">Client Authentication</a>
         </h3>
-<p id="section-5.1-1">Authorization Servers <span class="bcp14">SHOULD</span> follow the Best Current Practice for OAuth 2.0 Security <span>[<a href="#RFC9700" class="cite xref">RFC9700</a>]</span> for client authentication.<a href="#section-5.1-1" class="pilcrow">¶</a></p>
+<p id="section-5.1-1">Authorization Servers <span class="bcp14">SHOULD</span> follow the Best Current Practice for OAuth 2.0 Security <span>[<a href="#RFC9700" class="cite xref">RFC9700</a>]</span> for client authentication.
+Client secrets remain widely deployed, and support for public clients may be necessary in some deployments.<a href="#section-5.1-1" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="sender-constraining">
@@ -1750,7 +1748,8 @@ consistent.<a href="#section-2.5-5" class="pilcrow">¶</a></p>
         <h3 id="name-sender-constraining-tokens">
 <a href="#section-5.2" class="section-number selfRef">5.2. </a><a href="#name-sender-constraining-tokens" class="section-name selfRef">Sender Constraining Tokens</a>
         </h3>
-<p id="section-5.2-1">Authorization Servers <span class="bcp14">SHOULD</span> follow the The OAuth 2.1 Authorization Framework <span>[<a href="#I-D.draft-ietf-oauth-v2-1" class="cite xref">I-D.draft-ietf-oauth-v2-1</a>]</span> for sender constraining tokens.<a href="#section-5.2-1" class="pilcrow">¶</a></p>
+<p id="section-5.2-1">Authorization Servers <span class="bcp14">SHOULD</span> follow the Best Current Practice for OAuth 2.0 Security <span>[<a href="#RFC9700" class="cite xref">RFC9700</a>]</span> for sender constraining tokens,
+acknowledging, however, that bearer tokens remain the predominantly deployed access token type.<a href="#section-5.2-1" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="authorized-use-of-subject-token">
@@ -1758,7 +1757,8 @@ consistent.<a href="#section-2.5-5" class="pilcrow">¶</a></p>
         <h3 id="name-authorized-use-of-subject-t">
 <a href="#section-5.3" class="section-number selfRef">5.3. </a><a href="#name-authorized-use-of-subject-t" class="section-name selfRef">Authorized use of Subject Token</a>
         </h3>
-<p id="section-5.3-1">The authorization server in trust domain A <span class="bcp14">SHOULD</span> perform client authentication and verify that the client in trust domain A is authorized to present the token used as a subject_token in the token exchange flow before issuing an authorization grant. By doing so, it minimizes the risk of an attacker making a lateral move by using a stolen token from trust domain A to obtain an authorization grant with which to authenticate to an authorization server in trust domain B and request an access token for a resource server in trust domain B.<a href="#section-5.3-1" class="pilcrow">¶</a></p>
+<p id="section-5.3-1">The authorization server in trust domain A <span class="bcp14">SHOULD</span> perform client authentication and verify that the client in trust domain A is authorized to present the token used as a subject_token in the token exchange flow before issuing an authorization grant. By doing so, it minimizes the risk of an attacker making a lateral move by using a stolen token from trust domain A to obtain an authorization grant with which to authenticate to an authorization server in trust domain B and request an access token for a resource server in trust domain B.
+Such authorization policy might not be present in all deployments, and is of reduced utility for public clients, but it is a recommended security measure for deployments that can support it.<a href="#section-5.3-1" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="refresh-tokens">
@@ -1766,7 +1766,9 @@ consistent.<a href="#section-2.5-5" class="pilcrow">¶</a></p>
         <h3 id="name-refresh-tokens">
 <a href="#section-5.4" class="section-number selfRef">5.4. </a><a href="#name-refresh-tokens" class="section-name selfRef">Refresh Tokens</a>
         </h3>
-<p id="section-5.4-1">The authorization server in trust domain B <span class="bcp14">SHOULD NOT</span> issue refresh tokens to the client within the scope of this specification. When the access token has expired, clients <span class="bcp14">SHOULD</span> re-submit the original JWT Authorization Grant to obtain a new Access Token. If the JWT Authorization Grant has expired, the client <span class="bcp14">SHOULD</span> request a new grant from the authorization server in trust domain A before presenting it to the authorization server in trust domain B. The issuance of Refresh Tokens by the authorization server in trust domain B introduces a redundant credential requiring additional security measures, and creating unnecessary security risks. It also allows the client to obtain access tokens within trust domain B, even if the initial session in trust domain A has finished (e.g. the user has logged out or access has been revoked). This paragraph does not relate to the issuance of refresh tokens by the authorization server in trust domain A.<a href="#section-5.4-1" class="pilcrow">¶</a></p>
+<p id="section-5.4-1">The authorization server in trust domain B <span class="bcp14">SHOULD NOT</span> issue refresh tokens to the client within the scope of this specification. When the access token has expired, clients <span class="bcp14">SHOULD</span> re-submit the original JWT Authorization Grant to obtain a new Access Token. If the JWT Authorization Grant has expired, the client <span class="bcp14">SHOULD</span> request a new grant from the authorization server in trust domain A before presenting it to the authorization server in trust domain B. The issuance of Refresh Tokens by the authorization server in trust domain B introduces a redundant credential requiring additional security measures, and creating unnecessary security risks. It also allows the client to obtain access tokens within trust domain B, even if the initial session in trust domain A has finished (e.g. the user has logged out or access has been revoked).
+This is consitent with Section 4.1 of <span>[<a href="#RFC7521" class="cite xref">RFC7521</a>]</span> which discourages but does not prohibit the issuance of refresh tokens in the context of assertion grants.<a href="#section-5.4-1" class="pilcrow">¶</a></p>
+<p id="section-5.4-2">This paragraph does not relate to the issuance of refresh tokens by the authorization server in trust domain A.<a href="#section-5.4-2" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="replay-of-authorization-grant">
@@ -1825,6 +1827,10 @@ This includes verifying that privacy policies are aligned across trust domains a
 <dt id="RFC8693">[RFC8693]</dt>
         <dd>
 <span class="refAuthor">Jones, M.</span>, <span class="refAuthor">Nadalin, A.</span>, <span class="refAuthor">Campbell, B., Ed.</span>, <span class="refAuthor">Bradley, J.</span>, and <span class="refAuthor">C. Mortimore</span>, <span class="refTitle">"OAuth 2.0 Token Exchange"</span>, <span class="seriesInfo">RFC 8693</span>, <span class="seriesInfo">DOI 10.17487/RFC8693</span>, <time datetime="2020-01" class="refDate">January 2020</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc8693">https://www.rfc-editor.org/rfc/rfc8693</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="RFC7521">[RFC7521]</dt>
+        <dd>
+<span class="refAuthor">Campbell, B.</span>, <span class="refAuthor">Mortimore, C.</span>, <span class="refAuthor">Jones, M.</span>, and <span class="refAuthor">Y. Goland</span>, <span class="refTitle">"Assertion Framework for OAuth 2.0 Client Authentication and Authorization Grants"</span>, <span class="seriesInfo">RFC 7521</span>, <span class="seriesInfo">DOI 10.17487/RFC7521</span>, <time datetime="2015-05" class="refDate">May 2015</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc7521">https://www.rfc-editor.org/rfc/rfc7521</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="RFC7523">[RFC7523]</dt>
         <dd>
@@ -2129,7 +2135,37 @@ This includes verifying that privacy policies are aligned across trust domains a
 <p id="appendix-D-2">-07<a href="#appendix-D-2" class="pilcrow">¶</a></p>
 <ul class="normal">
 <li class="normal" id="appendix-D-3.1">
-          <p id="appendix-D-3.1.1">Change Intended Status to Standards Track from Informational<a href="#appendix-D-3.1.1" class="pilcrow">¶</a></p>
+          <p id="appendix-D-3.1.1">Add a (hopefully helpful) sentence to the end of the first paragraph of the Overview<a href="#appendix-D-3.1.1" class="pilcrow">¶</a></p>
+</li>
+        <li class="normal" id="appendix-D-3.2">
+          <p id="appendix-D-3.2.1">Reword bullet (C) of the Overview (because you cannot use public keys to sign)<a href="#appendix-D-3.2.1" class="pilcrow">¶</a></p>
+</li>
+        <li class="normal" id="appendix-D-3.3">
+          <p id="appendix-D-3.3.1">Explicitly reference RFC8693 Section 2.2.2 for token exchange error<a href="#appendix-D-3.3.1" class="pilcrow">¶</a></p>
+</li>
+        <li class="normal" id="appendix-D-3.4">
+          <p id="appendix-D-3.4.1">Try and better explain that the access token request content is more desricption of Sec 2.1 RFC7523 and delete the empty scope parameter<a href="#appendix-D-3.4.1" class="pilcrow">¶</a></p>
+</li>
+        <li class="normal" id="appendix-D-3.5">
+          <p id="appendix-D-3.5.1">Explicitly reference RFC7523 Section 3.1 for authorization grant error<a href="#appendix-D-3.5.1" class="pilcrow">¶</a></p>
+</li>
+        <li class="normal" id="appendix-D-3.6">
+          <p id="appendix-D-3.6.1">Remove a seemingly nonsensical sentence about preventing injection of invalid claims<a href="#appendix-D-3.6.1" class="pilcrow">¶</a></p>
+</li>
+        <li class="normal" id="appendix-D-3.7">
+          <p id="appendix-D-3.7.1">Try and explain why ASs might not want to advertise some supported requested token types<a href="#appendix-D-3.7.1" class="pilcrow">¶</a></p>
+</li>
+        <li class="normal" id="appendix-D-3.8">
+          <p id="appendix-D-3.8.1">Endeavor to qualify the SHOULDs on client auth and sender constrained tokens<a href="#appendix-D-3.8.1" class="pilcrow">¶</a></p>
+</li>
+        <li class="normal" id="appendix-D-3.9">
+          <p id="appendix-D-3.9.1">Qualify the only <span class="bcp14">SHOULD NOT</span> on RTs from assertion grants being inline with historical decisions in RFC7521<a href="#appendix-D-3.9.1" class="pilcrow">¶</a></p>
+</li>
+        <li class="normal" id="appendix-D-3.10">
+          <p id="appendix-D-3.10.1">Quality the Authorized use of Subject Token security recommendations a bit<a href="#appendix-D-3.10.1" class="pilcrow">¶</a></p>
+</li>
+        <li class="normal" id="appendix-D-3.11">
+          <p id="appendix-D-3.11.1">Change Intended Status to Standards Track from Informational<a href="#appendix-D-3.11.1" class="pilcrow">¶</a></p>
 </li>
       </ul>
 <p id="appendix-D-4">-06<a href="#appendix-D-4" class="pilcrow">¶</a></p>
