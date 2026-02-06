@@ -48,6 +48,7 @@ contributor:
 normative:
   RFC6749: # OAuth 2.0 Authorization Framework
   RFC8693: # OAuth 2.0 Token Exchange
+  RFC7521: # Assertion Framework for OAuth 2.0 Client Authentication and Authorization Grants
   RFC7523: # JSON Web Token (JWT) Profile for OAuth 2.0 Client Authentication and Authorization Grants
   RFC8707: # Resource Indicators for OAuth 2.0
   RFC8414: # OAuth 2.0 Authorization Server Metadata
@@ -86,6 +87,7 @@ In some deployments, the client in trust domain A may obtain a JWT authorization
 ## Overview
 
 The identity and authorization chaining flow outlined below describes how a combination of OAuth 2.0 Token Exchange {{RFC8693}} and JWT Profile for OAuth 2.0 Client Authentication and Authorization Grants {{RFC7523}} are used to address the use cases identified.
+Conceptually, this is an exchange within the first domain that produces a JWT authorization grant intended for use in acquiring an access token from the second domain.
 
 ~~~~
 +-------------+         +--------+         +-------------+ +---------+
@@ -129,7 +131,7 @@ The flow illustrated in Figure 1 shows the steps the client in trust domain A ne
 
 * (B) The client in trust domain A exchanges a token it has in its possession with the authorization server in trust domain A for a JWT authorization grant that can be used at the authorization server in trust domain B. See [Token Exchange](#token-exchange).
 
-* (C) The authorization server of trust domain A processes the request and returns a JWT authorization grant that the client can use with the authorization server of trust domain B. This requires a trust relationship between the authorization servers in trust domain A and trust domain B (sometimes called federation, such a trust relationship typically manifests in the exchange of key material where domain B's authorization server trusts the public key(s) of domain A to sign JWT authorization grants).
+* (C) The authorization server of trust domain A processes the request and returns a JWT authorization grant that the client can use with the authorization server of trust domain B. This requires a trust relationship between the authorization servers in trust domain A and trust domain B (sometimes referred to as federation). Such a trust relationship typically manifests as the exchange of key material, whereby the authorization server in domain B trusts the public key(s) of domain A, which are used to verify JWT authorization grants signed with the corresponding private key(s).
 
 * (D) The client in trust domain A presents the authorization grant to the authorization server of trust domain B. See [Access Token Request](#atr).
 
@@ -161,7 +163,7 @@ audience
 
 ### Processing rules
 
-* If the request itself is not valid or if the given resource or audience are unknown, or are unacceptable based on policy, the authorization server in trust domain A MUST deny the request.
+* If the request itself is not valid or if the given resource or audience are unknown, or are unacceptable based on policy, the authorization server in trust domain A MUST deny the request as defined in Section 2.2.2 of {{RFC8693}}.
 * The authorization server in trust domain A MAY add, remove or change claims. See [Claims transcription](#claims-transcription).
 
 ### Token Exchange Response
@@ -211,17 +213,14 @@ The client in trust domain A uses the JWT authorization grant obtained from the 
 
 ### Access Token Request {#atr}
 
-In the context of this specification the following descriptions apply:
+The JWT authorization grant is used to request an access token as defined in Section 2.1 of {{RFC7523}}. The following parameters are required and described additionally here:
 
 {:vspace}
 grant_type
 : REQUIRED. As defined in Section 2.1 of {{RFC7523}} the value `urn:ietf:params:oauth:grant-type:jwt-bearer` indicates the request is a JWT bearer assertion authorization grant.
 
 assertion
-: REQUIRED. Authorization grant returned by the authorization server for domain A (see [Token Exchange](#token-exchange) response).
-
-scope
-: OPTIONAL.
+: REQUIRED. The JWT authorization grant returned by the authorization server for domain A (see [Token Exchange](#token-exchange) response).
 
 The client in trust domain A MAY indicate the protected resource it is trying to access through the `scope` parameter or the `resource` parameter defined in {{RFC8707}}.
 
@@ -232,6 +231,8 @@ The authorization server in trust domain B MUST validate the JWT authorization g
 * The "aud" claim MUST identify the authorization server in trust domain B as a valid intended audience of the assertion using either the token endpoint as described Section 3 {{RFC7523}} or the issuer identifier as defined in Section 2 of {{RFC8414}}.
 * The authorization server in trust domain B SHOULD deny the request if it is not able to identify the subject.
 * Due to policy the request MAY be denied (for instance if federation with trust domain A is not established).
+
+Section 3.1 of {{RFC7523}} describes the error response used in request denial cases.
 
 ### Access Token Response
 
@@ -281,8 +282,8 @@ Domain A (the financial institution) includes detailed claims such as "account t
 However, domain B (the payment gateway) only needs claims like "transaction limit" for its access control policies. Domain A transcribes the claims to exclude unnecessary information, ensuring that domain B receives only the claims relevant to its operations.
 * **Controlling scope**: Clients MAY use the scope parameter to control transcribed claims (e.g. downscoping). Authorization Servers SHOULD verify that the requested scopes are not higher privileged than the scopes of the presented subject_token.
 For example, a cloud-based development platform that allows developers to access APIs across multiple trust domains where a developer in domain A requests access to an API in domain B but only needs limited permissions, such as "read-only" access.
-The authorization server in domain A transcribes the claims in the JWT authorization grant to reflect the downscoped permissions, removing higher-privileged claims like "write" or "admin." This ensures that the access token issued by domain B aligns with the developer's intended scope of access.
-* **Including JWT authorization grant claims**: The authorization server in trust domain B which is performing the assertion flow MAY leverage claims from the JWT authorization grant presented by the client in trust domain A and include them in the returned access token. The populated claims SHOULD be namespaced or validated to prevent the injection of invalid claims.
+The authorization server in domain A transcribes the claims into the JWT authorization grant to reflect the downscoped permissions, removing higher-privileged claims like "write" or "admin." This ensures that the access token issued by domain B aligns with the developer's intended scope of access.
+* **Including JWT authorization grant claims**: The authorization server in trust domain B which is performing the assertion flow MAY leverage claims from the JWT authorization grant presented by the client in trust domain A and include them in the returned access token.
 
 The representation of transcribed claims and their format is not defined in this specification.
 
@@ -297,7 +298,7 @@ The following authorization server metadata parameter is defined by this specifi
 
 {:vspace}
 identity_chaining_requested_token_types_supported
-: OPTIONAL. JSON array containing a list of Token Types that can be requested as a `requested_token_type` in the Token Exchange request when performing Identity and Authorization Chaining Across Domains. Authorization servers MAY choose not to advertise some supported requested token types even when this parameter is used, and lack of a value does not necessarily mean that the token type is unsupported.
+: OPTIONAL. JSON array containing a list of Token Types that can be requested as a `requested_token_type` in the Token Exchange request when performing Identity and Authorization Chaining Across Domains. In situations where it might be an information disclosure concern, authorization servers MAY choose not to advertise some supported requested token types even when this parameter is used, and lack of a value does not necessarily mean that the token type is unsupported.
 
 
 # IANA Considerations {#IANA}
@@ -326,15 +327,21 @@ It is RECOMMENDED that any profile or deployment-specific implementation adopt e
 
 ## Client Authentication
 Authorization Servers SHOULD follow the Best Current Practice for OAuth 2.0 Security {{RFC9700}} for client authentication.
+Client secrets remain widely deployed, and support for public clients may be necessary in some deployments.
 
 ## Sender Constraining Tokens {#sender-constraining}
-Authorization Servers SHOULD follow the The OAuth 2.1 Authorization Framework {{I-D.draft-ietf-oauth-v2-1}} for sender constraining tokens.
+Authorization Servers SHOULD follow the Best Current Practice for OAuth 2.0 Security {{RFC9700}} for sender constraining tokens,
+acknowledging, however, that bearer tokens remain the predominantly deployed access token type.
 
 ## Authorized use of Subject Token
 The authorization server in trust domain A SHOULD perform client authentication and verify that the client in trust domain A is authorized to present the token used as a subject_token in the token exchange flow before issuing an authorization grant. By doing so, it minimizes the risk of an attacker making a lateral move by using a stolen token from trust domain A to obtain an authorization grant with which to authenticate to an authorization server in trust domain B and request an access token for a resource server in trust domain B.
+Such authorization policy might not be present in all deployments, and is of reduced utility for public clients, but it is a recommended security measure for deployments that can support it.
 
 ## Refresh Tokens
-The authorization server in trust domain B SHOULD NOT issue refresh tokens to the client within the scope of this specification. When the access token has expired, clients SHOULD re-submit the original JWT Authorization Grant to obtain a new Access Token. If the JWT Authorization Grant has expired, the client SHOULD request a new grant from the authorization server in trust domain A before presenting it to the authorization server in trust domain B. The issuance of Refresh Tokens by the authorization server in trust domain B introduces a redundant credential requiring additional security measures, and creating unnecessary security risks. It also allows the client to obtain access tokens within trust domain B, even if the initial session in trust domain A has finished (e.g. the user has logged out or access has been revoked). This paragraph does not relate to the issuance of refresh tokens by the authorization server in trust domain A.
+The authorization server in trust domain B SHOULD NOT issue refresh tokens to the client within the scope of this specification. When the access token has expired, clients SHOULD re-submit the original JWT Authorization Grant to obtain a new Access Token. If the JWT Authorization Grant has expired, the client SHOULD request a new grant from the authorization server in trust domain A before presenting it to the authorization server in trust domain B. The issuance of Refresh Tokens by the authorization server in trust domain B introduces a redundant credential requiring additional security measures, and creating unnecessary security risks. It also allows the client to obtain access tokens within trust domain B, even if the initial session in trust domain A has finished (e.g. the user has logged out or access has been revoked).
+This is consitent with Section 4.1 of {{RFC7521}} which discourages but does not prohibit the issuance of refresh tokens in the context of assertion grants.
+
+This paragraph does not relate to the issuance of refresh tokens by the authorization server in trust domain A.
 
 ## Replay of Authorization Grant
 The authorization grant obtained from the Token Exchange process is a bearer token. If an attacker obtains an authorization grant issued to a client in trust domain A, it could replay it to an authorization server in trust domain B to obtain an access token. Implementations SHOULD evaluate this risk and deploy appropriate mitigations based on their threat model and deployment environment. Mitigations include, but are not limited to:
@@ -541,6 +548,16 @@ The editors would like to thank Patrick Harding, Joe Jubinski, Watson Ladd, Just
 
 -07
 
+* Add a (hopefully helpful) sentence to the end of the first paragraph of the Overview
+* Reword bullet (C) of the Overview (because you cannot use public keys to sign)
+* Explicitly reference RFC8693 Section 2.2.2 for token exchange error
+* Try and better explain that the access token request content is more desricption of Sec 2.1 RFC7523 and delete the empty scope parameter
+* Explicitly reference RFC7523 Section 3.1 for authorization grant error
+* Remove a seemingly nonsensical sentence about preventing injection of invalid claims
+* Try and explain why ASs might not want to advertise some supported requested token types
+* Endeavor to qualify the SHOULDs on client auth and sender constrained tokens
+* Qualify the only SHOULD NOT on RTs from assertion grants being inline with historical decisions in RFC7521
+* Quality the Authorized use of Subject Token security recommendations a bit
 * Change Intended Status to Standards Track from Informational
 
 -06
