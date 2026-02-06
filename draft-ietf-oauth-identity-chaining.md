@@ -550,7 +550,7 @@ The editors would like to thank Patrick Harding, Joe Jubinski, Watson Ladd, Just
 * Explicitly reference RFC7523 Section 3.1 for authorization grant error
 * Remove a seemingly nonsensical sentence about preventing injection of invalid claims
 * Try and explain why ASs might not want to advertise some supported requested token types
-* Endevor to qualify the SHOULDs on client auth and sender constrained tokens
+* Endeavor to qualify the SHOULDs on client auth and sender constrained tokens
 
 -06
 
