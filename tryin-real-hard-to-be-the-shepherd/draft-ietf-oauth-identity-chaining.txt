@@ -580,7 +580,9 @@ grant_type=urn%3Aietf%3Aparams%3Aoauth%3Agrant-type%3Atoken-exchange
    stolen token from trust domain A to obtain an authorization grant
    with which to authenticate to an authorization server in trust domain
    B and request an access token for a resource server in trust domain
-   B.
+   B.  Such authorization policy might not be present in all
+   deployments, and is of reduced utility for public clients, but it is
+   a recommended security measure for deployments that can support it.
 
 5.4.  Refresh Tokens
 
@@ -1111,6 +1113,9 @@ Appendix D.  Document History
 
    *  Qualify the only SHOULD NOT on RTs from assertion grants being
       inline with historical decisions in RFC7521
+
+   *  Quality the Authorized use of Subject Token security
+      recommendations a bit
 
    -06
 

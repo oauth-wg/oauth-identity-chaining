@@ -1757,7 +1757,8 @@ acknowledging, however, that bearer tokens remain the predominantly deployed acc
         <h3 id="name-authorized-use-of-subject-t">
 <a href="#section-5.3" class="section-number selfRef">5.3. </a><a href="#name-authorized-use-of-subject-t" class="section-name selfRef">Authorized use of Subject Token</a>
         </h3>
-<p id="section-5.3-1">The authorization server in trust domain A <span class="bcp14">SHOULD</span> perform client authentication and verify that the client in trust domain A is authorized to present the token used as a subject_token in the token exchange flow before issuing an authorization grant. By doing so, it minimizes the risk of an attacker making a lateral move by using a stolen token from trust domain A to obtain an authorization grant with which to authenticate to an authorization server in trust domain B and request an access token for a resource server in trust domain B.<a href="#section-5.3-1" class="pilcrow">¶</a></p>
+<p id="section-5.3-1">The authorization server in trust domain A <span class="bcp14">SHOULD</span> perform client authentication and verify that the client in trust domain A is authorized to present the token used as a subject_token in the token exchange flow before issuing an authorization grant. By doing so, it minimizes the risk of an attacker making a lateral move by using a stolen token from trust domain A to obtain an authorization grant with which to authenticate to an authorization server in trust domain B and request an access token for a resource server in trust domain B.
+Such authorization policy might not be present in all deployments, and is of reduced utility for public clients, but it is a recommended security measure for deployments that can support it.<a href="#section-5.3-1" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="refresh-tokens">
@@ -2159,6 +2160,9 @@ This includes verifying that privacy policies are aligned across trust domains a
 </li>
         <li class="normal" id="appendix-D-3.9">
           <p id="appendix-D-3.9.1">Qualify the only <span class="bcp14">SHOULD NOT</span> on RTs from assertion grants being inline with historical decisions in RFC7521<a href="#appendix-D-3.9.1" class="pilcrow">¶</a></p>
+</li>
+        <li class="normal" id="appendix-D-3.10">
+          <p id="appendix-D-3.10.1">Quality the Authorized use of Subject Token security recommendations a bit<a href="#appendix-D-3.10.1" class="pilcrow">¶</a></p>
 </li>
       </ul>
 <p id="appendix-D-4">-06<a href="#appendix-D-4" class="pilcrow">¶</a></p>
