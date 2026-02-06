@@ -213,7 +213,7 @@ The client in trust domain A uses the JWT authorization grant obtained from the 
 
 ### Access Token Request {#atr}
 
-The access token request is per Section 2.1 of {{RFC7523}}, described additionally here:
+The JWT authorization grant is used to request an access token as defined in Section 2.1 of {{RFC7523}}. The following parameters are required and described additionally here:
 
 {:vspace}
 grant_type
