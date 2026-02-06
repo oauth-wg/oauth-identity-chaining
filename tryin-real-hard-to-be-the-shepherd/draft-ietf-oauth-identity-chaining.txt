@@ -369,8 +369,9 @@ grant_type=urn%3Aietf%3Aparams%3Aoauth%3Agrant-type%3Atoken-exchange
 
 2.4.1.  Access Token Request
 
-   The access token request is per Section 2.1 of [RFC7523], described
-   additionally here:
+   The JWT authorization grant is used to request an access token as
+   defined in Section 2.1 of [RFC7523].  The following parameters are
+   required and described additionally here:
 
    grant_type
       REQUIRED.  As defined in Section 2.1 of [RFC7523] the value
