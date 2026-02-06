@@ -1,7 +1,7 @@
 ---
 stand_alone: true
 ipr: trust200902
-cat: info
+cat: std
 submissiontype: IETF
 area: sec
 wg: oauth
@@ -35,7 +35,7 @@ contributor:
   email: atuls@sgnl.ai
 - name: George Fletcher
   org: Practical Identity LLC
-  email: gffletch@gmail.com
+  email: george@practicalidentity.com
 - name: Rifaat Shekh-Yusef
   org: Ciena
   email: rifaat.s.ietf@gmail.com
@@ -558,6 +558,7 @@ The editors would like to thank Patrick Harding, Joe Jubinski, Watson Ladd, Just
 * Endeavor to qualify the SHOULDs on client auth and sender constrained tokens
 * Qualify the only SHOULD NOT on RTs from assertion grants being inline with historical decisions in RFC7521
 * Quality the Authorized use of Subject Token security recommendations a bit
+* Change Intended Status to Standards Track from Informational
 
 -06
 
