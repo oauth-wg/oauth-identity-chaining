@@ -297,7 +297,7 @@ The following authorization server metadata parameter is defined by this specifi
 
 {:vspace}
 identity_chaining_requested_token_types_supported
-: OPTIONAL. JSON array containing a list of Token Types that can be requested as a `requested_token_type` in the Token Exchange request when performing Identity and Authorization Chaining Across Domains. Authorization servers MAY choose not to advertise some supported requested token types even when this parameter is used, and lack of a value does not necessarily mean that the token type is unsupported.
+: OPTIONAL. JSON array containing a list of Token Types that can be requested as a `requested_token_type` in the Token Exchange request when performing Identity and Authorization Chaining Across Domains. In situations where it might be an information disclosure concern, authorization servers MAY choose not to advertise some supported requested token types even when this parameter is used, and lack of a value does not necessarily mean that the token type is unsupported.
 
 
 # IANA Considerations {#IANA}
@@ -547,6 +547,7 @@ The editors would like to thank Patrick Harding, Joe Jubinski, Watson Ladd, Just
 * Try and better explain that the access token request content is more desricption of Sec 2.1 RFC7523 and delete the empty scope parameter
 * Explicitly reference RFC7523 Section 3.1 for authorization grant error
 * Remove a seemingly nonsensical sentence about preventing injection of invalid claims
+* Try and explain why ASs might not want to advertise some supported requested token types
 
 -06
 
