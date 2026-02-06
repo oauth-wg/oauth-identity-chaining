@@ -5,13 +5,13 @@
 oauth                                                 A. Schwenkschuster
 Internet-Draft                                             P. Kasselmann
 Intended status: Informational                          Defakto Security
-Expires: 19 April 2026                                         K. Burgin
+Expires: 10 August 2026                                        K. Burgin
                                                                    MITRE
                                                               M. Jenkins
                                                                 NSA-CCSS
                                                              B. Campbell
                                                            Ping Identity
-                                                         16 October 2025
+                                                         6 February 2026
 
 
         OAuth Identity and Authorization Chaining Across Domains
@@ -49,11 +49,11 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 19 April 2026.
+   This Internet-Draft will expire on 10 August 2026.
 
 Copyright Notice
 
-   Copyright (c) 2025 IETF Trust and the persons identified as the
+   Copyright (c) 2026 IETF Trust and the persons identified as the
    document authors.  All rights reserved.
 
    This document is subject to BCP 78 and the IETF Trust's Legal
@@ -685,9 +685,9 @@ grant_type=urn%3Aietf%3Aparams%3Aoauth%3Agrant-type%3Atoken-exchange
    [I-D.draft-ietf-oauth-v2-1]
               Hardt, D., Parecki, A., and T. Lodderstedt, "The OAuth 2.1
               Authorization Framework", Work in Progress, Internet-
-              Draft, draft-ietf-oauth-v2-1-13, 28 May 2025,
+              Draft, draft-ietf-oauth-v2-1-14, 19 October 2025,
               <https://datatracker.ietf.org/doc/html/draft-ietf-oauth-
-              v2-1-13>.
+              v2-1-14>.
 
    [RFC2046]  Freed, N. and N. Borenstein, "Multipurpose Internet Mail
               Extensions (MIME) Part Two: Media Types", RFC 2046,
@@ -1170,7 +1170,7 @@ Contributors
 
    George Fletcher
    Practical Identity LLC
-   Email: gffletch@gmail.com
+   Email: george@practicalidentity.com
 
 
    Rifaat Shekh-Yusef
