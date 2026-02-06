@@ -220,7 +220,7 @@ grant_type
 : REQUIRED. As defined in Section 2.1 of {{RFC7523}} the value `urn:ietf:params:oauth:grant-type:jwt-bearer` indicates the request is a JWT bearer assertion authorization grant.
 
 assertion
-: REQUIRED. Authorization grant returned by the authorization server for domain A (see [Token Exchange](#token-exchange) response).
+: REQUIRED. The JWT authorization grant returned by the authorization server for domain A (see [Token Exchange](#token-exchange) response).
 
 The client in trust domain A MAY indicate the protected resource it is trying to access through the `scope` parameter or the `resource` parameter defined in {{RFC8707}}.
 
