@@ -1,7 +1,7 @@
 ---
 stand_alone: true
 ipr: trust200902
-cat: info
+cat: std
 submissiontype: IETF
 area: sec
 wg: oauth
@@ -541,6 +541,7 @@ The editors would like to thank Patrick Harding, Joe Jubinski, Watson Ladd, Just
 
 -07
 
+* Change Intended Status to Standards Track from Informational
 
 -06
 
