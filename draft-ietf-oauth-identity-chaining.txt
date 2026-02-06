@@ -4,7 +4,7 @@
 
 oauth                                                 A. Schwenkschuster
 Internet-Draft                                             P. Kasselmann
-Intended status: Informational                          Defakto Security
+Intended status: Standards Track                        Defakto Security
 Expires: 10 August 2026                                        K. Burgin
                                                                    MITRE
                                                               M. Jenkins
@@ -1065,6 +1065,8 @@ Appendix D.  Document History
    [[ To be removed from the final specification ]]
 
    -07
+
+   *  Change Intended Status to Standards Track from Informational
 
    -06
 
