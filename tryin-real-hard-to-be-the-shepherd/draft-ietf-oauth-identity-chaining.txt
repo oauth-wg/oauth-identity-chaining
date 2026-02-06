@@ -378,8 +378,9 @@ grant_type=urn%3Aietf%3Aparams%3Aoauth%3Agrant-type%3Atoken-exchange
       is a JWT bearer assertion authorization grant.
 
    assertion
-      REQUIRED.  Authorization grant returned by the authorization
-      server for domain A (see Token Exchange (Section 2.3) response).
+      REQUIRED.  The JWT authorization grant returned by the
+      authorization server for domain A (see Token Exchange
+      (Section 2.3) response).
 
    The client in trust domain A MAY indicate the protected resource it
    is trying to access through the scope parameter or the resource
