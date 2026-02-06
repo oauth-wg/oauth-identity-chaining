@@ -35,7 +35,7 @@ contributor:
   email: atuls@sgnl.ai
 - name: George Fletcher
   org: Practical Identity LLC
-  email: gffletch@gmail.com
+  email: george@practicalidentity.com
 - name: Rifaat Shekh-Yusef
   org: Ciena
   email: rifaat.s.ietf@gmail.com
