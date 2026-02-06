@@ -326,9 +326,11 @@ It is RECOMMENDED that any profile or deployment-specific implementation adopt e
 
 ## Client Authentication
 Authorization Servers SHOULD follow the Best Current Practice for OAuth 2.0 Security {{RFC9700}} for client authentication.
+Client secrets remain widely deployed, and support for public clients may be necessary in some deployments.
 
 ## Sender Constraining Tokens {#sender-constraining}
-Authorization Servers SHOULD follow the The OAuth 2.1 Authorization Framework {{I-D.draft-ietf-oauth-v2-1}} for sender constraining tokens.
+Authorization Servers SHOULD follow the The OAuth 2.1 Authorization Framework {{I-D.draft-ietf-oauth-v2-1}} for sender constraining tokens,
+acknowledging, however, that bearer tokens remain the predominantly deployed access token type.
 
 ## Authorized use of Subject Token
 The authorization server in trust domain A SHOULD perform client authentication and verify that the client in trust domain A is authorized to present the token used as a subject_token in the token exchange flow before issuing an authorization grant. By doing so, it minimizes the risk of an attacker making a lateral move by using a stolen token from trust domain A to obtain an authorization grant with which to authenticate to an authorization server in trust domain B and request an access token for a resource server in trust domain B.
@@ -548,6 +550,7 @@ The editors would like to thank Patrick Harding, Joe Jubinski, Watson Ladd, Just
 * Explicitly reference RFC7523 Section 3.1 for authorization grant error
 * Remove a seemingly nonsensical sentence about preventing injection of invalid claims
 * Try and explain why ASs might not want to advertise some supported requested token types
+* Endevor to qualify the SHOULDs on client auth and sender constrained tokens
 
 -06
 
