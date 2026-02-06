@@ -1,7 +1,7 @@
 ---
 stand_alone: true
 ipr: trust200902
-cat: info
+cat: std
 submissiontype: IETF
 area: sec
 wg: oauth
