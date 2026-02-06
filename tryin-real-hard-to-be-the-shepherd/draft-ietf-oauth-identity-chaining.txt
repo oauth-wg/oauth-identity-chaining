@@ -1098,7 +1098,7 @@ Appendix D.  Document History
    *  Try and explain why ASs might not want to advertise some supported
       requested token types
 
-   *  Endevor to qualify the SHOULDs on client auth and sender
+   *  Endeavor to qualify the SHOULDs on client auth and sender
       constrained tokens
 
    -06
