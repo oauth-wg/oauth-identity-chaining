@@ -1739,7 +1739,8 @@ consistent.<a href="#section-2.5-5" class="pilcrow">¶</a></p>
         <h3 id="name-client-authentication">
 <a href="#section-5.1" class="section-number selfRef">5.1. </a><a href="#name-client-authentication" class="section-name selfRef">Client Authentication</a>
         </h3>
-<p id="section-5.1-1">Authorization Servers <span class="bcp14">SHOULD</span> follow the Best Current Practice for OAuth 2.0 Security <span>[<a href="#RFC9700" class="cite xref">RFC9700</a>]</span> for client authentication.<a href="#section-5.1-1" class="pilcrow">¶</a></p>
+<p id="section-5.1-1">Authorization Servers <span class="bcp14">SHOULD</span> follow the Best Current Practice for OAuth 2.0 Security <span>[<a href="#RFC9700" class="cite xref">RFC9700</a>]</span> for client authentication.
+Client secrets remain widely deployed, and support for public clients may be necessary in some deployments.<a href="#section-5.1-1" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="sender-constraining">
@@ -1747,7 +1748,8 @@ consistent.<a href="#section-2.5-5" class="pilcrow">¶</a></p>
         <h3 id="name-sender-constraining-tokens">
 <a href="#section-5.2" class="section-number selfRef">5.2. </a><a href="#name-sender-constraining-tokens" class="section-name selfRef">Sender Constraining Tokens</a>
         </h3>
-<p id="section-5.2-1">Authorization Servers <span class="bcp14">SHOULD</span> follow the The OAuth 2.1 Authorization Framework <span>[<a href="#I-D.draft-ietf-oauth-v2-1" class="cite xref">I-D.draft-ietf-oauth-v2-1</a>]</span> for sender constraining tokens.<a href="#section-5.2-1" class="pilcrow">¶</a></p>
+<p id="section-5.2-1">Authorization Servers <span class="bcp14">SHOULD</span> follow the The OAuth 2.1 Authorization Framework <span>[<a href="#I-D.draft-ietf-oauth-v2-1" class="cite xref">I-D.draft-ietf-oauth-v2-1</a>]</span> for sender constraining tokens,
+acknowledging, however, that bearer tokens remain the predominantly deployed access token type.<a href="#section-5.2-1" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="authorized-use-of-subject-token">
@@ -2145,6 +2147,9 @@ This includes verifying that privacy policies are aligned across trust domains a
 </li>
         <li class="normal" id="appendix-D-3.7">
           <p id="appendix-D-3.7.1">Try and explain why ASs might not want to advertise some supported requested token types<a href="#appendix-D-3.7.1" class="pilcrow">¶</a></p>
+</li>
+        <li class="normal" id="appendix-D-3.8">
+          <p id="appendix-D-3.8.1">Endevor to qualify the SHOULDs on client auth and sender constrained tokens<a href="#appendix-D-3.8.1" class="pilcrow">¶</a></p>
 </li>
       </ul>
 <p id="appendix-D-4">-06<a href="#appendix-D-4" class="pilcrow">¶</a></p>
