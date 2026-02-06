@@ -330,7 +330,7 @@ Authorization Servers SHOULD follow the Best Current Practice for OAuth 2.0 Secu
 Client secrets remain widely deployed, and support for public clients may be necessary in some deployments.
 
 ## Sender Constraining Tokens {#sender-constraining}
-Authorization Servers SHOULD follow the The OAuth 2.1 Authorization Framework {{I-D.draft-ietf-oauth-v2-1}} for sender constraining tokens,
+Authorization Servers SHOULD follow the Best Current Practice for OAuth 2.0 Security {{RFC9700}} for sender constraining tokens,
 acknowledging, however, that bearer tokens remain the predominantly deployed access token type.
 
 ## Authorized use of Subject Token
