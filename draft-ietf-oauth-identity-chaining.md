@@ -53,14 +53,12 @@ normative:
   RFC8707: # Resource Indicators for OAuth 2.0
   RFC8414: # OAuth 2.0 Authorization Server Metadata
   RFC8725: # JSON Web Token Best Current Practices
-
-informative:
-
-  I-D.draft-ietf-oauth-v2-1:
   RFC2046: # Multipurpose Internet Mail Extensions (MIME) Part Two: Media Types
   RFC6838: # Media Type Specifications and Registration Procedures
   RFC9700: # Best Current Practice for OAuth 2.0 Security
   RFC9728: # OAuth 2.0 Protected Resource Metadata
+
+informative:
   IANA.media-types:
 
 --- abstract
@@ -545,6 +543,10 @@ The editors would like to thank Patrick Harding, Joe Jubinski, Watson Ladd, Just
 # Document History
 
 \[\[ To be removed from the final specification ]]
+
+-08
+
+* Change some references from informative to normative and remove the unused OAuth 2.1 one
 
 -07
 
