@@ -5,13 +5,13 @@
 oauth                                                 A. Schwenkschuster
 Internet-Draft                                             P. Kasselmann
 Intended status: Standards Track                        Defakto Security
-Expires: 10 August 2026                                        K. Burgin
+Expires: 13 August 2026                                        K. Burgin
                                                                    MITRE
                                                               M. Jenkins
                                                                 NSA-CCSS
                                                              B. Campbell
                                                            Ping Identity
-                                                         6 February 2026
+                                                         9 February 2026
 
 
         OAuth Identity and Authorization Chaining Across Domains
@@ -49,7 +49,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 10 August 2026.
+   This Internet-Draft will expire on 13 August 2026.
 
 Copyright Notice
 
@@ -693,24 +693,6 @@ grant_type=urn%3Aietf%3Aparams%3Aoauth%3Agrant-type%3Atoken-exchange
               DOI 10.17487/RFC8725, February 2020,
               <https://www.rfc-editor.org/rfc/rfc8725>.
 
-   [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
-              Requirement Levels", BCP 14, RFC 2119,
-              DOI 10.17487/RFC2119, March 1997,
-              <https://www.rfc-editor.org/rfc/rfc2119>.
-
-   [RFC8174]  Leiba, B., "Ambiguity of Uppercase vs Lowercase in RFC
-              2119 Key Words", BCP 14, RFC 8174, DOI 10.17487/RFC8174,
-              May 2017, <https://www.rfc-editor.org/rfc/rfc8174>.
-
-7.2.  Informative References
-
-   [I-D.draft-ietf-oauth-v2-1]
-              Hardt, D., Parecki, A., and T. Lodderstedt, "The OAuth 2.1
-              Authorization Framework", Work in Progress, Internet-
-              Draft, draft-ietf-oauth-v2-1-14, 19 October 2025,
-              <https://datatracker.ietf.org/doc/html/draft-ietf-oauth-
-              v2-1-14>.
-
    [RFC2046]  Freed, N. and N. Borenstein, "Multipurpose Internet Mail
               Extensions (MIME) Part Two: Media Types", RFC 2046,
               DOI 10.17487/RFC2046, November 1996,
@@ -730,6 +712,17 @@ grant_type=urn%3Aietf%3Aparams%3Aoauth%3Agrant-type%3Atoken-exchange
               Protected Resource Metadata", RFC 9728,
               DOI 10.17487/RFC9728, April 2025,
               <https://www.rfc-editor.org/rfc/rfc9728>.
+
+   [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
+              Requirement Levels", BCP 14, RFC 2119,
+              DOI 10.17487/RFC2119, March 1997,
+              <https://www.rfc-editor.org/rfc/rfc2119>.
+
+   [RFC8174]  Leiba, B., "Ambiguity of Uppercase vs Lowercase in RFC
+              2119 Key Words", BCP 14, RFC 8174, DOI 10.17487/RFC8174,
+              May 2017, <https://www.rfc-editor.org/rfc/rfc8174>.
+
+7.2.  Informative References
 
    [IANA.media-types]
               IANA, "Media Types",
@@ -1085,6 +1078,11 @@ Appendix C.  Acknowledgements
 Appendix D.  Document History
 
    [[ To be removed from the final specification ]]
+
+   -08
+
+   *  Change some references from informative to normative and remove
+      the unused OAuth 2.1 one
 
    -07
 
