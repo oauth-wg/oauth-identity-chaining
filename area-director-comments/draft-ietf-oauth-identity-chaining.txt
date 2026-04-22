@@ -459,7 +459,7 @@ grant_type=urn%3Aietf%3Aparams%3Aoauth%3Agrant-type%3Atoken-exchange
 
    *  *Transcribing the subject identifier*: The subject identifier can
       differ between the parties involved.  For example, a user is
-      identified in trust domain A as "johndoe@aexample" but in trust
+      identified in trust domain A as "johndoe@a.example" but in trust
       domain B they are identified as "doe.john@b.example".  The mapping
       from one identifier to the other MAY either happen in the token
       exchange step and the updated identifier is reflected in the
