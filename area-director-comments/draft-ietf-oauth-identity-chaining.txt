@@ -792,18 +792,18 @@ A.4.  Extend Single Sign-On to API Access
 
 A.5.  Cross-domain API authorization
 
-   An e-mail client can be used with arbitrary email servers, without
+   An email client can be used with arbitrary email servers, without
    requiring pre-established relationships between each email client and
-   each email server.  An e-mail client obtains an identity assertion
-   (ID Token or SAML token) from an IdP.  When the e-mail client needs
-   access to a separate API, such as a third-party calendaring
-   application, the email client exchanges the identity assertion for an
-   authorization grant and uses this authorization grant to obtain an
-   access token for the third-party calendaring application from the
-   authorization server trusted by the third-party calendaring
-   application.  If the authorization server trusts the issuer of the
-   authorization grant, the e-mail client obtains an access token
-   without any additional user interaction.
+   each email server.  An email client obtains an identity assertion (ID
+   Token or SAML token) from an IdP.  When the email client needs access
+   to a separate API, such as a third-party calendaring application, the
+   email client exchanges the identity assertion for an authorization
+   grant and uses this authorization grant to obtain an access token for
+   the third-party calendaring application from the authorization server
+   trusted by the third-party calendaring application.  If the
+   authorization server trusts the issuer of the authorization grant,
+   the email client obtains an access token without any additional user
+   interaction.
 
 Appendix B.  Examples
 
