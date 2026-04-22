@@ -174,15 +174,15 @@ All of section 2.2 of {{RFC8693}} applies. In addition, the following applies to
 
 ### Example
 
-The example below shows the message invoked by the client in trust domain A to perform token exchange with the authorization server in trust domain A (https://as.a.org/auth) to receive a JWT authorization grant for the authorization server in trust domain B (https://as.b.org/auth).
+The example below shows the message invoked by the client in trust domain A to perform token exchange with the authorization server in trust domain A (https://as.a.example/auth) to receive a JWT authorization grant for the authorization server in trust domain B (https://as.b.example/auth).
 
 ~~~
 POST /auth/token HTTP/1.1
-Host: as.a.org
+Host: as.a.example
 Content-Type: application/x-www-form-urlencoded
 
 grant_type=urn%3Aietf%3Aparams%3Aoauth%3Agrant-type%3Atoken-exchange
-&resource=https%3A%2F%2Fas.b.org%2Fauth
+&resource=https%3A%2F%2Fas.b.example%2Fauth
 &subject_token=ey...
 &subject_token_type=urn%3Aietf%3Aparams%3Aoauth%3Atoken-type%3Aaccess_token
 ~~~
@@ -238,11 +238,11 @@ The authorization server in trust domain B responds with an access token as desc
 
 ### Example
 
-The examples below show how the client in trust domain A presents an authorization grant to the authorization server in trust domain B (https://as.b.org/auth) to receive an access token for a protected resource in trust domain B.
+The examples below show how the client in trust domain A presents an authorization grant to the authorization server in trust domain B (https://as.b.example/auth) to receive an access token for a protected resource in trust domain B.
 
 ~~~
 POST /auth/token HTTP/1.1
-Host: as.b.org
+Host: as.b.example
 Content-Type: application/x-www-form-urlencoded
 
 grant_type=urn%3Aietf%3Aparams%3Aoauth%3Agrant-type%3Ajwt-bearer
@@ -273,7 +273,7 @@ This enables the various entities involved to determine on whose behalf the requ
 
 Authorization servers MAY transcribe claims when either producing JWT authorization grants in the token exchange flow or access tokens in the assertion flow. Transcription of claims may be required for the following reasons:
 
-* **Transcribing the subject identifier**: The subject identifier can differ between the parties involved. For example, a user is identified in trust domain A as "johndoe@a.org" but in trust domain B they are identified as "doe.john@b.org". The mapping from one identifier to the other MAY either happen in the token exchange step and the updated identifier is reflected in the returned JWT authorization grant or in the assertion step where the updated identifier would be reflected in the access token. To support this both authorization servers MAY add, change or remove claims as described above.
+* **Transcribing the subject identifier**: The subject identifier can differ between the parties involved. For example, a user is identified in trust domain A as "johndoe@aexample" but in trust domain B they are identified as "doe.john@b.example". The mapping from one identifier to the other MAY either happen in the token exchange step and the updated identifier is reflected in the returned JWT authorization grant or in the assertion step where the updated identifier would be reflected in the access token. To support this both authorization servers MAY add, change or remove claims as described above.
 * **Data Minimization**: Authorization servers MAY remove or hide certain claims due to privacy requirements or reduced trust towards the targeting trust domain.
 One example is a financial institution that integrates with a third-party payment gateway.
 Domain A (the financial institution) includes detailed claims such as "account type: premium" and "transaction limit: $10,000" in the JWT authorization grant.
