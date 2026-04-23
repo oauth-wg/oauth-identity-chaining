@@ -96,28 +96,28 @@ Conceptually, this is an exchange within the first domain that produces a JWT au
 +-------------+         +--------+         +-------------+ +---------+
        |                    |                     |             |
        |                    |----+                |             |
-       |      (A) discover  |    |                |             |
+       |      (1) discover  |    |                |             |
        |      Authorization |<---+                |             |
        |      Server        |                     |             |
        |      Trust Domain B|                     |             |
        |                    |                     |             |
-       | (B) exchange token |                     |             |
+       | (2) exchange token |                     |             |
        |   [RFC 8693]       |                     |             |
        |<-------------------|                     |             |
        |                    |                     |             |
-       | (C) <authorization |                     |             |
+       | (3) <authorization |                     |             |
        |       grant JWT>   |                     |             |
        | - - - - - - - - - >|                     |             |
        |                    |                     |             |
-       |                    | (D) present         |             |
+       |                    | (4) present         |             |
        |                    | authorization grant |             |
        |                    | [RFC 7523]          |             |
        |                    | ------------------->|             |
        |                    |                     |             |
-       |                    | (E) <access token>  |             |
+       |                    | (5) <access token>  |             |
        |                    | <- - - - - - - - - -|             |
        |                    |                     |             |
-       |                    |               (F) access          |
+       |                    |               (6) access          |
        |                    | --------------------------------->|
        |                    |                     |             |
 ~~~~
@@ -125,18 +125,18 @@ Conceptually, this is an exchange within the first domain that produces a JWT au
 
 The flow illustrated in Figure 1 shows the steps the client in trust domain A needs to perform to access a protected resource in trust domain B. In this flow, the client is in possession of a token that an authorization server will accept as part of a token exchange flow as defined in [Token Exchange](#token-exchange). How the client obtained this token is out of scope of this specification. The client has a way to discover the authorization server in domain B and a trust relationship exists between domain A and domain B. It includes the following:
 
-* (A) The client in trust domain A discovers the location of the authorization server of trust domain B. See [Authorization Server Discovery](#authorization-server-discovery).
+1. The client in trust domain A discovers the location of the authorization server of trust domain B. See [Authorization Server Discovery](#authorization-server-discovery).
 
-* (B) The client in trust domain A exchanges a token it has in its possession with the authorization server in trust domain A for a JWT authorization grant that can be used at the authorization server in trust domain B. See [Token Exchange](#token-exchange).
+1. The client in trust domain A exchanges a token it has in its possession with the authorization server in trust domain A for a JWT authorization grant that can be used at the authorization server in trust domain B. See [Token Exchange](#token-exchange).
 
-* (C) The authorization server of trust domain A processes the request and returns a JWT authorization grant that the client can use with the authorization server of trust domain B. This requires a trust relationship between the authorization servers in trust domain A and trust domain B (sometimes referred to as federation). Such a trust relationship typically manifests as the exchange of key material, whereby the authorization server in domain B trusts the public key(s) of domain A, which are used to verify JWT authorization grants signed with the corresponding private key(s).
+1. The authorization server of trust domain A processes the request and returns a JWT authorization grant that the client can use with the authorization server of trust domain B. This requires a trust relationship between the authorization servers in trust domain A and trust domain B (sometimes referred to as federation). Such a trust relationship typically manifests as the exchange of key material, whereby the authorization server in domain B trusts the public key(s) of domain A, which are used to verify JWT authorization grants signed with the corresponding private key(s).
 
-* (D) The client in trust domain A presents the authorization grant to the authorization server of trust domain B. See [Access Token Request](#atr).
+1. The client in trust domain A presents the authorization grant to the authorization server of trust domain B. See [Access Token Request](#atr).
 
-* (E) Authorization server of trust domain B validates the JWT authorization grant and returns an access token.
+1. Authorization server of trust domain B validates the JWT authorization grant and returns an access token.
  Validating the JWT authorization grant requires trusting the public key(s) of domain A and its authority to issue authorization grants. This might take the form of configuration and policy in domain B that associates a set of public keys with domain A. Or might rely on the keys published at domain A's `jwks_uri` as listed in it's Authorization Server Metadata {{RFC8414}}.
 
-* (F) The client in trust domain A uses the access token received from the authorization server in trust domain B to access the protected resource in trust domain B.
+1. The client in trust domain A uses the access token received from the authorization server in trust domain B to access the protected resource in trust domain B.
 
 ## Authorization Server Discovery
 This specification does not define authorization server discovery. A client MAY use the `authorization_servers` property as defined in OAuth 2.0 Protected Resource Metadata {{RFC9728}}, maintain a static mapping or use other means to identify the authorization server.
@@ -408,28 +408,28 @@ The flow would look like this:
 |Domain A     |       | a client)     |     |Domain B     | |Domain B |
 +-------------+       +---------------+     +-------------+ +---------+
        |                     |                     |             |
-       |                     |   (A) request protected resource  |
+       |                     |   (1) request protected resource  |
        |                     |      metadata                     |
        |                     | --------------------------------->|
        |                     | <- - - - - - - - - - - - - - - - -|
        |                     |                     |             |
-       | (B) exchange token  |                     |             |
+       | (2) exchange token  |                     |             |
        |   [RFC 8693]        |                     |             |
        |<--------------------|                     |             |
        |                     |                     |             |
-       | (C) <authorization  |                     |             |
+       | (3) <authorization  |                     |             |
        |        grant>       |                     |             |
        | - - - - - - - - -  >|                     |             |
        |                     |                     |             |
-       |                     | (D) present         |             |
+       |                     | (4) present         |             |
        |                     |  authorization      |             |
        |                     |  grant [RFC 7523]   |             |
        |                     |-------------------->|             |
        |                     |                     |             |
-       |                     | (E) <access token>  |             |
+       |                     | (5) <access token>  |             |
        |                     |<- - - - - - - - - - |             |
        |                     |                     |             |
-       |                     |               (F) access          |
+       |                     |               (6) access          |
        |                     | --------------------------------->|
        |                     |                     |             |
 ~~~
@@ -439,17 +439,17 @@ The flow contains the following steps:
 
 The resource server of trust domain A needs to access protected resource in trust domain B. It requires an access token to do so. In order to obtain the required access token, the resource server in trust domain A will act as a client.
 
-(A) The resource server (acting as a client) in trust domain A requests protected resource metadata from the resource server in trust domain B as described in {{RFC9728}}. It uses the resource metadata to discover information about the authorization server for trust domain B. This step MAY be skipped if discovery is not needed and other means of discovery MAY be used. The protected resource in trust domain B returns its metadata along with the authorization server information in trust domain A.
+1. The resource server (acting as a client) in trust domain A requests protected resource metadata from the resource server in trust domain B as described in {{RFC9728}}. It uses the resource metadata to discover information about the authorization server for trust domain B. This step MAY be skipped if discovery is not needed and other means of discovery MAY be used. The protected resource in trust domain B returns its metadata along with the authorization server information in trust domain A.
 
-(B) Once the resource server (acting as a client) in trust domain A identified the authorization server for trust domain B, it requests a JWT authorization grant for the authorization server in trust domain B from the authorization server in trust domain A (it's own authorization server). This happens via the token exchange protocol (See [Token Exchange](#token-exchange)).
+1. Once the resource server (acting as a client) in trust domain A identified the authorization server for trust domain B, it requests a JWT authorization grant for the authorization server in trust domain B from the authorization server in trust domain A (it's own authorization server). This happens via the token exchange protocol (See [Token Exchange](#token-exchange)).
 
-(C) If successful, the authorization server in trust domain A returns a JWT authorization grant to the resource server (acting as client) in trust domain A.
+1. If successful, the authorization server in trust domain A returns a JWT authorization grant to the resource server (acting as client) in trust domain A.
 
-(D) The resource server (acting as client) in trust domain A presents the JWT authorization grant to the authorization server in trust domain B.
+1. The resource server (acting as client) in trust domain A presents the JWT authorization grant to the authorization server in trust domain B.
 
-(E) The authorization server in trust domain B uses claims from the JWT authorization grant to identify the user and establish additional authorization context. If access is granted, the authorization server in trust domain B returns an access token.
+1. The authorization server in trust domain B uses claims from the JWT authorization grant to identify the user and establish additional authorization context. If access is granted, the authorization server in trust domain B returns an access token.
 
-(F) The resource server (acting as a client) in trust domain A uses the access token to access the protected resource in trust domain B.
+1. The resource server (acting as a client) in trust domain A uses the access token to access the protected resource in trust domain B.
 
 ## Authorization server acting as client
 
@@ -473,35 +473,35 @@ The authorization server in trust domain A may use the flows described in this s
 |        |          |client)       |       |              | |         |
 +--------+          +--------------+       +--------------+ +---------+
     |                      |                       |             |
-    | (A) request          |                       |             |
+    | (1) request          |                       |             |
     | token for            |                       |             |
     | protected resource   |                       |             |
     | in trust domain B.   |                       |             |
     | -------------------->|                       |             |
     |                      |                       |             |
     |                      |----+                  |             |
-    |                      |    | (B) determine    |             |
+    |                      |    | (2) determine    |             |
     |                      |<---+ authorization    |             |
     |                      |      server trust     |             |
     |                      |      domain B         |             |
     |                      |                       |             |
     |                      |----+                  |             |
-    |                      |    | (C) generates    |             |
+    |                      |    | (3) generates    |             |
     |                      |<---+ authorization    |             |
     |                      |      grant            |             |
     |                      |                       |             |
-    |                      | (D) present           |             |
+    |                      | (4) present           |             |
     |                      |   authorization grant |             |
     |                      |   [RFC 7523]          |             |
     |                      | --------------------->|             |
     |                      |                       |             |
-    |                      | (E) <access token>    |             |
+    |                      | (5) <access token>    |             |
     |                      | <- - - - - - - - - - -|             |
     |                      |                       |             |
-    |  (F) <access token>  |                       |             |
+    |  (6) <access token>  |                       |             |
     | <- - - - - - - - - - |                       |             |
     |                      |                       |             |
-    |                      |           (G) access  |             |
+    |                      |           (7) access  |             |
     | ---------------------------------------------------------->|
     |                      |                       |             |
 ~~~
@@ -509,19 +509,19 @@ The authorization server in trust domain A may use the flows described in this s
 
 The flow contains the following steps:
 
-(A) The client in trust domain A requests a token for the protected resource in trust domain B from the authorization server in trust domain A. This specification does not define this step. A profile of Token Exchange {{RFC8693}} may be used.
+1. The client in trust domain A requests a token for the protected resource in trust domain B from the authorization server in trust domain A. This specification does not define this step. A profile of Token Exchange {{RFC8693}} may be used.
 
-(B) The authorization server for trust domain A determines the authorization server for trust domain B. This could have been passed by the client, is statically maintained or dynamically resolved.
+1. The authorization server for trust domain A determines the authorization server for trust domain B. This could have been passed by the client, is statically maintained or dynamically resolved.
 
-(C) Once the authorization server in trust domain B is determined, the authorization server in domain A generates a JWT authorization grant suitable for presentations to the authorization server in trust domain B.
+1. Once the authorization server in trust domain B is determined, the authorization server in domain A generates a JWT authorization grant suitable for presentations to the authorization server in trust domain B.
 
-(D) The authorization server in trust domain A acts as a client and presents the JWT authorization grant to the authorization server for trust domain B. This presentation happens between the authorization servers. The authorization server in trust domain A may be required to perform client authentication while doing so. This reflects the [Access Token Request](#atr) in this specification.
+1. The authorization server in trust domain A acts as a client and presents the JWT authorization grant to the authorization server for trust domain B. This presentation happens between the authorization servers. The authorization server in trust domain A may be required to perform client authentication while doing so. This reflects the [Access Token Request](#atr) in this specification.
 
-(E) The authorization server of trust domain B returns an access token for the protected resource in trust domain B to the authorization server (acting as a client) in trust domain A.
+1. The authorization server of trust domain B returns an access token for the protected resource in trust domain B to the authorization server (acting as a client) in trust domain A.
 
-(F) The authorization server of trust domain A returns the access token to the client in trust domain A.
+1. The authorization server of trust domain A returns the access token to the client in trust domain A.
 
-(G) The client in trust domain A uses the received access token to access the protected resource in trust domain B.
+1. The client in trust domain A uses the received access token to access the protected resource in trust domain B.
 
 ## Delegated Key Binding
 
