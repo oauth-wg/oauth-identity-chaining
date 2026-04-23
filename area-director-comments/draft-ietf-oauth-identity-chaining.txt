@@ -564,8 +564,6 @@ Table of Contents
 
    Authorization Servers should follow Section 2.5 of the Best Current
    Practice for OAuth 2.0 Security [RFC9700] for client authentication.
-   Client secrets remain widely deployed, and support for public clients
-   may be necessary in some deployments.
 
 5.2.  Sender Constraining Tokens
 
