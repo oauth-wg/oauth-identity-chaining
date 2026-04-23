@@ -1741,7 +1741,7 @@ consistent.<a href="#section-2.5-5" class="pilcrow">¶</a></p>
         <h3 id="name-client-authentication">
 <a href="#section-5.1" class="section-number selfRef">5.1. </a><a href="#name-client-authentication" class="section-name selfRef">Client Authentication</a>
         </h3>
-<p id="section-5.1-1">Authorization Servers <span class="bcp14">SHOULD</span> follow the Best Current Practice for OAuth 2.0 Security <span>[<a href="#RFC9700" class="cite xref">RFC9700</a>]</span> for client authentication.
+<p id="section-5.1-1">Authorization Servers should follow the Best Current Practice for OAuth 2.0 Security <span>[<a href="#RFC9700" class="cite xref">RFC9700</a>]</span> for client authentication.
 Client secrets remain widely deployed, and support for public clients may be necessary in some deployments.<a href="#section-5.1-1" class="pilcrow">¶</a></p>
 </section>
 </div>
@@ -1750,7 +1750,7 @@ Client secrets remain widely deployed, and support for public clients may be nec
         <h3 id="name-sender-constraining-tokens">
 <a href="#section-5.2" class="section-number selfRef">5.2. </a><a href="#name-sender-constraining-tokens" class="section-name selfRef">Sender Constraining Tokens</a>
         </h3>
-<p id="section-5.2-1">Authorization Servers <span class="bcp14">SHOULD</span> follow the Best Current Practice for OAuth 2.0 Security <span>[<a href="#RFC9700" class="cite xref">RFC9700</a>]</span> for sender constraining tokens,
+<p id="section-5.2-1">Authorization Servers should follow the Best Current Practice for OAuth 2.0 Security <span>[<a href="#RFC9700" class="cite xref">RFC9700</a>]</span> for sender constraining tokens,
 acknowledging, however, that bearer tokens remain the predominantly deployed access token type.<a href="#section-5.2-1" class="pilcrow">¶</a></p>
 </section>
 </div>
@@ -1759,7 +1759,7 @@ acknowledging, however, that bearer tokens remain the predominantly deployed acc
         <h3 id="name-authorized-use-of-subject-t">
 <a href="#section-5.3" class="section-number selfRef">5.3. </a><a href="#name-authorized-use-of-subject-t" class="section-name selfRef">Authorized use of Subject Token</a>
         </h3>
-<p id="section-5.3-1">The authorization server in trust domain A <span class="bcp14">SHOULD</span> perform client authentication and verify that the client in trust domain A is authorized to present the token used as a subject_token in the token exchange flow before issuing an authorization grant. By doing so, it minimizes the risk of an attacker making a lateral move by using a stolen token from trust domain A to obtain an authorization grant with which to authenticate to an authorization server in trust domain B and request an access token for a resource server in trust domain B.
+<p id="section-5.3-1">The authorization server in trust domain A can perform client authentication and verify that the client in trust domain A is authorized to present the token used as a subject_token in the token exchange flow before issuing an authorization grant. By doing so, it minimizes the risk of an attacker making a lateral move by using a stolen token from trust domain A to obtain an authorization grant with which to authenticate to an authorization server in trust domain B and request an access token for a resource server in trust domain B.
 Such authorization policy might not be present in all deployments, and is of reduced utility for public clients, but it is a recommended security measure for deployments that can support it.<a href="#section-5.3-1" class="pilcrow">¶</a></p>
 </section>
 </div>
@@ -1768,9 +1768,9 @@ Such authorization policy might not be present in all deployments, and is of red
         <h3 id="name-refresh-tokens">
 <a href="#section-5.4" class="section-number selfRef">5.4. </a><a href="#name-refresh-tokens" class="section-name selfRef">Refresh Tokens</a>
         </h3>
-<p id="section-5.4-1">The authorization server in trust domain B <span class="bcp14">SHOULD NOT</span> issue refresh tokens to the client within the scope of this specification. When the access token has expired, clients <span class="bcp14">SHOULD</span> re-submit the original JWT Authorization Grant to obtain a new Access Token. If the JWT Authorization Grant has expired, the client <span class="bcp14">SHOULD</span> request a new grant from the authorization server in trust domain A before presenting it to the authorization server in trust domain B. The issuance of Refresh Tokens by the authorization server in trust domain B introduces a redundant credential requiring additional security measures, and creating unnecessary security risks. It also allows the client to obtain access tokens within trust domain B, even if the initial session in trust domain A has finished (e.g. the user has logged out or access has been revoked).
-This is consitent with Section 4.1 of <span>[<a href="#RFC7521" class="cite xref">RFC7521</a>]</span> which discourages but does not prohibit the issuance of refresh tokens in the context of assertion grants.<a href="#section-5.4-1" class="pilcrow">¶</a></p>
-<p id="section-5.4-2">This paragraph does not relate to the issuance of refresh tokens by the authorization server in trust domain A.<a href="#section-5.4-2" class="pilcrow">¶</a></p>
+<p id="section-5.4-1">The authorization server in trust domain B <span class="bcp14">SHOULD NOT</span> issue refresh tokens to the client in trust domain A within the scope of this specification. When the access token has expired, clients can re-submit the original JWT Authorization Grant (if not expired and reuse is allowed) to obtain a new Access Token. If the JWT Authorization Grant is unusable, the client can request a new grant from the authorization server in trust domain A before presenting it to the authorization server in trust domain B. The issuance of Refresh Tokens by the authorization server in trust domain B introduces a redundant credential requiring additional security measures, and creating unnecessary security risks. It also allows the client to obtain access tokens within trust domain B, even if the initial session in trust domain A has finished (e.g. the user has logged out or access has been revoked).
+This is consistent with Section 4.1 of <span>[<a href="#RFC7521" class="cite xref">RFC7521</a>]</span> which discourages but does not prohibit the issuance of refresh tokens in the context of assertion grants.<a href="#section-5.4-1" class="pilcrow">¶</a></p>
+<p id="section-5.4-2">The advice of this section is only applicable to refresh token issuance across domains in the context of a assertion grant. It does not relate to the issuance of refresh tokens by the authorization server in trust domain A to the client in trust domain A.<a href="#section-5.4-2" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="replay-of-authorization-grant">
@@ -1778,7 +1778,7 @@ This is consitent with Section 4.1 of <span>[<a href="#RFC7521" class="cite xref
         <h3 id="name-replay-of-authorization-gra">
 <a href="#section-5.5" class="section-number selfRef">5.5. </a><a href="#name-replay-of-authorization-gra" class="section-name selfRef">Replay of Authorization Grant</a>
         </h3>
-<p id="section-5.5-1">The authorization grant obtained from the Token Exchange process is a bearer token. If an attacker obtains an authorization grant issued to a client in trust domain A, it could replay it to an authorization server in trust domain B to obtain an access token. Implementations <span class="bcp14">SHOULD</span> evaluate this risk and deploy appropriate mitigations based on their threat model and deployment environment. Mitigations include, but are not limited to:<a href="#section-5.5-1" class="pilcrow">¶</a></p>
+<p id="section-5.5-1">The authorization grant obtained from the Token Exchange process is a bearer token. If an attacker obtains an authorization grant issued to a client in trust domain A, it could replay it to an authorization server in trust domain B to obtain an access token. Implementations must evaluate this risk and deploy appropriate mitigations based on their threat model and deployment environment. Mitigations include, but are not limited to:<a href="#section-5.5-1" class="pilcrow">¶</a></p>
 <ul class="normal">
 <li class="normal" id="section-5.5-2.1">
             <p id="section-5.5-2.1.1">Issuing short-lived authorization grants to minimize the window of exposure.<a href="#section-5.5-2.1.1" class="pilcrow">¶</a></p>

@@ -562,21 +562,21 @@ Table of Contents
 
 5.1.  Client Authentication
 
-   Authorization Servers SHOULD follow the Best Current Practice for
+   Authorization Servers should follow the Best Current Practice for
    OAuth 2.0 Security [RFC9700] for client authentication.  Client
    secrets remain widely deployed, and support for public clients may be
    necessary in some deployments.
 
 5.2.  Sender Constraining Tokens
 
-   Authorization Servers SHOULD follow the Best Current Practice for
+   Authorization Servers should follow the Best Current Practice for
    OAuth 2.0 Security [RFC9700] for sender constraining tokens,
    acknowledging, however, that bearer tokens remain the predominantly
    deployed access token type.
 
 5.3.  Authorized use of Subject Token
 
-   The authorization server in trust domain A SHOULD perform client
+   The authorization server in trust domain A can perform client
    authentication and verify that the client in trust domain A is
    authorized to present the token used as a subject_token in the token
    exchange flow before issuing an authorization grant.  By doing so, it
@@ -591,23 +591,26 @@ Table of Contents
 5.4.  Refresh Tokens
 
    The authorization server in trust domain B SHOULD NOT issue refresh
-   tokens to the client within the scope of this specification.  When
-   the access token has expired, clients SHOULD re-submit the original
-   JWT Authorization Grant to obtain a new Access Token.  If the JWT
-   Authorization Grant has expired, the client SHOULD request a new
-   grant from the authorization server in trust domain A before
-   presenting it to the authorization server in trust domain B.  The
-   issuance of Refresh Tokens by the authorization server in trust
-   domain B introduces a redundant credential requiring additional
-   security measures, and creating unnecessary security risks.  It also
-   allows the client to obtain access tokens within trust domain B, even
-   if the initial session in trust domain A has finished (e.g. the user
-   has logged out or access has been revoked).  This is consitent with
-   Section 4.1 of [RFC7521] which discourages but does not prohibit the
-   issuance of refresh tokens in the context of assertion grants.
+   tokens to the client in trust domain A within the scope of this
+   specification.  When the access token has expired, clients can re-
+   submit the original JWT Authorization Grant (if not expired and reuse
+   is allowed) to obtain a new Access Token.  If the JWT Authorization
+   Grant is unusable, the client can request a new grant from the
+   authorization server in trust domain A before presenting it to the
+   authorization server in trust domain B.  The issuance of Refresh
+   Tokens by the authorization server in trust domain B introduces a
+   redundant credential requiring additional security measures, and
+   creating unnecessary security risks.  It also allows the client to
+   obtain access tokens within trust domain B, even if the initial
+   session in trust domain A has finished (e.g. the user has logged out
+   or access has been revoked).  This is consistent with Section 4.1 of
+   [RFC7521] which discourages but does not prohibit the issuance of
+   refresh tokens in the context of assertion grants.
 
-   This paragraph does not relate to the issuance of refresh tokens by
-   the authorization server in trust domain A.
+   The advice of this section is only applicable to refresh token
+   issuance across domains in the context of a assertion grant.  It does
+   not relate to the issuance of refresh tokens by the authorization
+   server in trust domain A to the client in trust domain A.
 
 5.5.  Replay of Authorization Grant
 
@@ -615,7 +618,7 @@ Table of Contents
    bearer token.  If an attacker obtains an authorization grant issued
    to a client in trust domain A, it could replay it to an authorization
    server in trust domain B to obtain an access token.  Implementations
-   SHOULD evaluate this risk and deploy appropriate mitigations based on
+   must evaluate this risk and deploy appropriate mitigations based on
    their threat model and deployment environment.  Mitigations include,
    but are not limited to:
 
