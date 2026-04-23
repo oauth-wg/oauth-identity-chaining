@@ -261,7 +261,7 @@ Table of Contents
 2.2.  Authorization Server Discovery
 
    This specification does not define authorization server discovery.  A
-   client MAY use the authorization_servers property as defined in OAuth
+   client may use the authorization_servers property as defined in OAuth
    2.0 Protected Resource Metadata [RFC9728], maintain a static mapping
    or use other means to identify the authorization server.
 
