@@ -326,7 +326,6 @@ Profiles or deployment-specific implementations can adopt explicit typing as def
 
 ## Client Authentication
 Authorization Servers should follow Section 2.5 of the Best Current Practice for OAuth 2.0 Security {{RFC9700}} for client authentication.
-Client secrets remain widely deployed, and support for public clients may be necessary in some deployments.
 
 ## Sender Constraining Tokens {#sender-constraining}
 Authorization Servers should follow the Best Current Practice for OAuth 2.0 Security {{RFC9700}} for sender constraining tokens,
