@@ -1079,9 +1079,8 @@ B.3.  Delegated Key Binding
 Appendix C.  Acknowledgements
 
    The editors would like to thank Deb Cooley, Patrick Harding, Joe
-   Jubinski, Watson Ladd, Justin Richer, Adam Rusbridge, Dean H.  Saxe,
-   and others (please let us know, if you've been mistakenly omitted)
-   for their valuable input, feedback and general support of this work.
+   Jubinski, Watson Ladd, Justin Richer, Adam Rusbridge, and Dean H.
+   Saxe for their valuable input and general support of this work.
 
 Appendix D.  Document History
 
