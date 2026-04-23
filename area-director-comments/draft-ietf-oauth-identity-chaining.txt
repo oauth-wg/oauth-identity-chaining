@@ -530,8 +530,9 @@ Table of Contents
 
 4.1.  OAuth Authorization Server Metadata Registry
 
-   This specification defines the following parameter in the "OAuth
-   Authorization Server Metadata" registry established in [RFC8414].
+   This specification requests registration the following parameter in
+   the "OAuth Authorization Server Metadata" registry established in
+   [RFC8414].
 
 4.1.1.  Registry Contents
 
@@ -543,20 +544,19 @@ Table of Contents
 
    *  Change Controller: IETF
 
-   *  Specification Document(s): Section 3
+   *  Specification Document(s): Section 3 of [[this document]]
 
-   The registry records the supported token types that can be requested
-   in an [RFC8693] Token Exchange.
+   The parameter indicates the supported token types that can be
+   requested in an [RFC8693] Token Exchange.
 
 4.2.  Media Types
 
    This specification does not define any new media types.
 
-   It is RECOMMENDED that any profile or deployment-specific
-   implementation adopt explicit typing as defined in JSON Web Token
-   Best Current Practices [RFC8725] and define a new media type
-   [RFC2046] in the "Media Types" registry [IANA.media-types] in the
-   manner described in [RFC6838].
+   Profiles or deployment-specific implementations can adopt explicit
+   typing as defined in JSON Web Token Best Current Practices [RFC8725]
+   and define a new media type [RFC2046] in the "Media Types" registry
+   [IANA.media-types] in the manner described in [RFC6838].
 
 5.  Security Considerations
 
