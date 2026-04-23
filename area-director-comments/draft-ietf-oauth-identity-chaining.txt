@@ -530,8 +530,8 @@ Table of Contents
 
 4.1.  OAuth Authorization Server Metadata Registry
 
-   This specification requests registration the following parameter in
-   the "OAuth Authorization Server Metadata" registry established in
+   This specification requests registration of the following parameter
+   in the "OAuth Authorization Server Metadata" registry established in
    [RFC8414].
 
 4.1.1.  Registry Contents
