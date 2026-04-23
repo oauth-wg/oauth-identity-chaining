@@ -304,7 +304,7 @@ identity_chaining_requested_token_types_supported
 
 ## OAuth Authorization Server Metadata Registry
 
-This specification requests registration the following parameter in the "OAuth Authorization Server Metadata" registry established in {{RFC8414}}.
+This specification requests registration of the following parameter in the "OAuth Authorization Server Metadata" registry established in {{RFC8414}}.
 
 ### Registry Contents
 
