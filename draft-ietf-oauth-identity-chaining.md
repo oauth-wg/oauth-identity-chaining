@@ -235,7 +235,7 @@ Section 3.1 of {{RFC7523}} describes the error response used in request denial c
 
 ### Access Token Response
 
-The authorization server in trust domain B responds with an access token as described in section 5.1 of {{RFC6749}}.
+When the authorization grant has been validated, the authorization server in trust domain B responds with an access token as described in section 5.1 of {{RFC6749}}.
 
 ### Example
 
