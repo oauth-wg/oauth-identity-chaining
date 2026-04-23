@@ -325,25 +325,25 @@ It is RECOMMENDED that any profile or deployment-specific implementation adopt e
 # Security Considerations {#Security}
 
 ## Client Authentication
-Authorization Servers SHOULD follow the Best Current Practice for OAuth 2.0 Security {{RFC9700}} for client authentication.
+Authorization Servers should follow the Best Current Practice for OAuth 2.0 Security {{RFC9700}} for client authentication.
 Client secrets remain widely deployed, and support for public clients may be necessary in some deployments.
 
 ## Sender Constraining Tokens {#sender-constraining}
-Authorization Servers SHOULD follow the Best Current Practice for OAuth 2.0 Security {{RFC9700}} for sender constraining tokens,
+Authorization Servers should follow the Best Current Practice for OAuth 2.0 Security {{RFC9700}} for sender constraining tokens,
 acknowledging, however, that bearer tokens remain the predominantly deployed access token type.
 
 ## Authorized use of Subject Token
-The authorization server in trust domain A SHOULD perform client authentication and verify that the client in trust domain A is authorized to present the token used as a subject_token in the token exchange flow before issuing an authorization grant. By doing so, it minimizes the risk of an attacker making a lateral move by using a stolen token from trust domain A to obtain an authorization grant with which to authenticate to an authorization server in trust domain B and request an access token for a resource server in trust domain B.
+The authorization server in trust domain A can perform client authentication and verify that the client in trust domain A is authorized to present the token used as a subject_token in the token exchange flow before issuing an authorization grant. By doing so, it minimizes the risk of an attacker making a lateral move by using a stolen token from trust domain A to obtain an authorization grant with which to authenticate to an authorization server in trust domain B and request an access token for a resource server in trust domain B.
 Such authorization policy might not be present in all deployments, and is of reduced utility for public clients, but it is a recommended security measure for deployments that can support it.
 
 ## Refresh Tokens
-The authorization server in trust domain B SHOULD NOT issue refresh tokens to the client within the scope of this specification. When the access token has expired, clients SHOULD re-submit the original JWT Authorization Grant to obtain a new Access Token. If the JWT Authorization Grant has expired, the client SHOULD request a new grant from the authorization server in trust domain A before presenting it to the authorization server in trust domain B. The issuance of Refresh Tokens by the authorization server in trust domain B introduces a redundant credential requiring additional security measures, and creating unnecessary security risks. It also allows the client to obtain access tokens within trust domain B, even if the initial session in trust domain A has finished (e.g. the user has logged out or access has been revoked).
-This is consitent with Section 4.1 of {{RFC7521}} which discourages but does not prohibit the issuance of refresh tokens in the context of assertion grants.
+The authorization server in trust domain B SHOULD NOT issue refresh tokens to the client in trust domain A within the scope of this specification. When the access token has expired, clients can re-submit the original JWT Authorization Grant (if not expired and reuse is allowed) to obtain a new Access Token. If the JWT Authorization Grant is unusable, the client can request a new grant from the authorization server in trust domain A before presenting it to the authorization server in trust domain B. The issuance of Refresh Tokens by the authorization server in trust domain B introduces a redundant credential requiring additional security measures, and creating unnecessary security risks. It also allows the client to obtain access tokens within trust domain B, even if the initial session in trust domain A has finished (e.g. the user has logged out or access has been revoked).
+This is consistent with Section 4.1 of {{RFC7521}} which discourages but does not prohibit the issuance of refresh tokens in the context of assertion grants.
 
-This paragraph does not relate to the issuance of refresh tokens by the authorization server in trust domain A.
+The advice of this section is only applicable to refresh token issuance across domains in the context of a assertion grant. It does not relate to the issuance of refresh tokens by the authorization server in trust domain A to the client in trust domain A.
 
 ## Replay of Authorization Grant
-The authorization grant obtained from the Token Exchange process is a bearer token. If an attacker obtains an authorization grant issued to a client in trust domain A, it could replay it to an authorization server in trust domain B to obtain an access token. Implementations SHOULD evaluate this risk and deploy appropriate mitigations based on their threat model and deployment environment. Mitigations include, but are not limited to:
+The authorization grant obtained from the Token Exchange process is a bearer token. If an attacker obtains an authorization grant issued to a client in trust domain A, it could replay it to an authorization server in trust domain B to obtain an access token. Implementations must evaluate this risk and deploy appropriate mitigations based on their threat model and deployment environment. Mitigations include, but are not limited to:
 
 * Issuing short-lived authorization grants to minimize the window of exposure.
 * Limiting authorization grants to a single use to prevent repeated replay.
