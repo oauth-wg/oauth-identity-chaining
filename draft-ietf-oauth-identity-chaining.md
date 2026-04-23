@@ -304,23 +304,23 @@ identity_chaining_requested_token_types_supported
 
 ## OAuth Authorization Server Metadata Registry
 
-This specification defines the following parameter in the "OAuth Authorization Server Metadata" registry established in {{RFC8414}}.
+This specification requests registration the following parameter in the "OAuth Authorization Server Metadata" registry established in {{RFC8414}}.
 
 ### Registry Contents
 
 * Metadata Name: `identity_chaining_requested_token_types_supported`
 * Metadata Description: JSON array containing a list of Token Type Identifiers supported as a `requested_token_type` in an Identity and Authorization Chaining Token Exchange ({{RFC8693}}) request.
 * Change Controller: IETF
-* Specification Document(s): {{authorization-server-metadata}}
+* Specification Document(s): {{authorization-server-metadata}} of [[this document]]
 
 
-The registry records the supported token types that can be requested in an {{RFC8693}} Token Exchange.
+The parameter indicates the supported token types that can be requested in an {{RFC8693}} Token Exchange.
 
 
 ## Media Types
 This specification does not define any new media types.
 
-It is RECOMMENDED that any profile or deployment-specific implementation adopt explicit typing as defined in JSON Web Token Best Current Practices {{RFC8725}} and define a new media type {{RFC2046}} in the "Media Types" registry {{IANA.media-types}} in the manner described in {{RFC6838}}.
+Profiles or deployment-specific implementations can adopt explicit typing as defined in JSON Web Token Best Current Practices {{RFC8725}} and define a new media type {{RFC2046}} in the "Media Types" registry {{IANA.media-types}} in the manner described in {{RFC6838}}.
 
 # Security Considerations {#Security}
 
