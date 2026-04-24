@@ -544,6 +544,10 @@ The editors would like to thank Deb Cooley, Patrick Harding, Joe Jubinski, Watso
 
 \[\[ To be removed from the final specification ]]
 
+-10
+
+* Move Aaron Parecki from contributors to authors in acknowledgement of significant contributions
+
 -09
 
 * AD comments (hopefully) addressed
