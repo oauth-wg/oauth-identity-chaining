@@ -29,6 +29,9 @@ author:
 - name: Brian Campbell
   org: Ping Identity
   email: bcampbell@pingidentity.com
+- name: Aaron Parecki
+  org: Okta
+  email: aaron@parecki.com
 contributor:
 - name: Atul Tulshibagwale
   org: SGNL
@@ -41,9 +44,6 @@ contributor:
   email: rifaat.s.ietf@gmail.com
 - name: Hannes Tschofenig
   email: hannes.tschofenig@gmx.net
-- name: Aaron Parecki
-  org: Okta
-  email: aaron@parecki.com
 
 normative:
   RFC6749: # OAuth 2.0 Authorization Framework
