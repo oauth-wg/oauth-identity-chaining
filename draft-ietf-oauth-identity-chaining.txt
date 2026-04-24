@@ -11,6 +11,8 @@ Expires: 26 October 2026                                       K. Burgin
                                                                 NSA-CCSS
                                                              B. Campbell
                                                            Ping Identity
+                                                              A. Parecki
+                                                                    Okta
                                                            24 April 2026
 
 
@@ -1244,11 +1246,6 @@ Contributors
    Email: hannes.tschofenig@gmx.net
 
 
-   Aaron Parecki
-   Okta
-   Email: aaron@parecki.com
-
-
 Authors' Addresses
 
    Arndt Schwenkschuster
@@ -1274,3 +1271,8 @@ Authors' Addresses
    Brian Campbell
    Ping Identity
    Email: bcampbell@pingidentity.com
+
+
+   Aaron Parecki
+   Okta
+   Email: aaron@parecki.com
