@@ -1086,6 +1086,11 @@ Appendix D.  Document History
 
    [[ To be removed from the final specification ]]
 
+   -10
+
+   *  Move Aaron Parecki from contributors to authors in acknowledgement
+      of significant contributions
+
    -09
 
    *  AD comments (hopefully) addressed
