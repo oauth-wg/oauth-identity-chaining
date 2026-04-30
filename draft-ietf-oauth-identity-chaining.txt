@@ -5,7 +5,7 @@
 oauth                                                 A. Schwenkschuster
 Internet-Draft                                             P. Kasselmann
 Intended status: Standards Track                        Defakto Security
-Expires: 26 October 2026                                       K. Burgin
+Expires: 1 November 2026                                       K. Burgin
                                                                    MITRE
                                                               M. Jenkins
                                                                 NSA-CCSS
@@ -13,7 +13,7 @@ Expires: 26 October 2026                                       K. Burgin
                                                            Ping Identity
                                                               A. Parecki
                                                                     Okta
-                                                           24 April 2026
+                                                           30 April 2026
 
 
         OAuth Identity and Authorization Chaining Across Domains
@@ -51,7 +51,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 26 October 2026.
+   This Internet-Draft will expire on 1 November 2026.
 
 Copyright Notice
 
@@ -236,12 +236,11 @@ Table of Contents
        and returns a JWT authorization grant that the client can use
        with the authorization server of trust domain B.  This requires a
        trust relationship between the authorization servers in trust
-       domain A and trust domain B (sometimes referred to as
-       federation).  Such a trust relationship typically manifests as
-       the exchange of key material, whereby the authorization server in
-       domain B trusts the public key(s) of domain A, which are used to
-       verify JWT authorization grants signed with the corresponding
-       private key(s).
+       domain A and trust domain B.  Such a trust relationship typically
+       manifests as the exchange of key material, whereby the
+       authorization server in domain B trusts the public key(s) of
+       domain A, which are used to verify JWT authorization grants
+       signed with the corresponding private key(s).
 
    4.  The client in trust domain A presents the authorization grant to
        the authorization server of trust domain B.  See Access Token
@@ -318,14 +317,14 @@ Table of Contents
 
    *  The "aud" claim included in the returned JWT authorization grant
       MAY identify multiple authorization servers, provided that trust
-      relationships exist with them (e.g. through federation).  It is
-      RECOMMENDED that the "aud" claim is restricted to a single
-      authorization server in trust domain B to prevent an authorization
-      server from presenting the client's authorization grant to an
-      authorization server in a different trust domain.  For example,
-      this will prevent the authorization server in trust domain B from
-      presenting the authorization grant it received from the client in
-      trust domain A to the authorization server for trust domain C.
+      relationships exist with them.  It is RECOMMENDED that the "aud"
+      claim is restricted to a single authorization server in trust
+      domain B to prevent an authorization server from presenting the
+      client's authorization grant to an authorization server in a
+      different trust domain.  For example, this will prevent the
+      authorization server in trust domain B from presenting the
+      authorization grant it received from the client in trust domain A
+      to the authorization server for trust domain C.
 
 2.3.4.  Example
 
@@ -404,8 +403,8 @@ Table of Contents
    *  The authorization server in trust domain B SHOULD deny the request
       if it is not able to identify the subject.
 
-   *  Due to policy the request MAY be denied (for instance if
-      federation with trust domain A is not established).
+   *  Due to policy the request MAY be denied (for instance if a trust
+      relationship with trust domain A is not established).
 
    Section 3.1 of [RFC7523] describes the error response used in request
    denial cases.
@@ -641,9 +640,10 @@ Table of Contents
 6.  Privacy Considerations
 
    In addition to the privacy considerations outlined in [RFC8693] and
-   [RFC7523], the following items are relevant to this specification:
+   [RFC7523], additional privacy considerations apply to this
+   specification.
 
-   OAuth federation involves the exchange of tokens and claims between
+   This specifciation enables the exchange of tokens and claims between
    disparate trust domains.  If excessive or unnecessary user data is
    included in these tokens, it may lead to unintended privacy
    consequences.  As noted in [RFC8693] and [RFC7523], deployments
@@ -651,11 +651,11 @@ Table of Contents
    complete the exchange and ensure that only that information is
    included in the token.
 
-   Inconsistent user privacy practices within OAuth federation can
-   result from varying interpretations and implementations of the
-   protocol across different domains.  This inconsistency can lead to a
-   lack of transparency and user control over what data is shared and
-   with whom.  To mitigate this, federation trust relationships between
+   Inconsistent user privacy practices can result from varying
+   interpretations and implementations of the protocol across
+   authorization servers in different trust domains.  This inconsistency
+   can lead to a lack of transparency and user control over what data is
+   shared and with whom.  To mitigate this, trust relationships between
    domains must be carefully established and maintained with user
    privacy in mind.  This includes verifying that privacy policies are
    aligned across trust domains and clearly define how user data is
