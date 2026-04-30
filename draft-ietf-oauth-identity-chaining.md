@@ -129,7 +129,7 @@ The flow illustrated in Figure 1 shows the steps the client in trust domain A ne
 
 1. The client in trust domain A exchanges a token it has in its possession with the authorization server in trust domain A for a JWT authorization grant that can be used at the authorization server in trust domain B. See [Token Exchange](#token-exchange).
 
-1. The authorization server of trust domain A processes the request and returns a JWT authorization grant that the client can use with the authorization server of trust domain B. This requires a trust relationship between the authorization servers in trust domain A and trust domain B (sometimes referred to as federation). Such a trust relationship typically manifests as the exchange of key material, whereby the authorization server in domain B trusts the public key(s) of domain A, which are used to verify JWT authorization grants signed with the corresponding private key(s).
+1. The authorization server of trust domain A processes the request and returns a JWT authorization grant that the client can use with the authorization server of trust domain B. This requires a trust relationship between the authorization servers in trust domain A and trust domain B. Such a trust relationship typically manifests as the exchange of key material, whereby the authorization server in domain B trusts the public key(s) of domain A, which are used to verify JWT authorization grants signed with the corresponding private key(s).
 
 1. The client in trust domain A presents the authorization grant to the authorization server of trust domain B. See [Access Token Request](#atr).
 
@@ -170,7 +170,7 @@ All of section 2.2 of {{RFC8693}} applies. In addition, the following applies to
 
 * The "aud" claim in the returned JWT authorization grant MUST identify the requested authorization server in trust domain B. This corresponds with [RFC 7523 Section 3, Point 3](https://datatracker.ietf.org/doc/html/rfc7523#section-3) and is there to reduce misuse and to prevent clients from, among other things, presenting access tokens as an authorization grant to an authorization server in trust domain B.
 
-* The "aud" claim included in the returned JWT authorization grant MAY identify multiple authorization servers, provided that trust relationships exist with them (e.g. through federation). It is RECOMMENDED that the "aud" claim is restricted to a single authorization server in trust domain B to prevent an authorization server from presenting the client's authorization grant to an authorization server in a different trust domain. For example, this will prevent the authorization server in trust domain B from presenting the authorization grant it received from the client in trust domain A to the authorization server for trust domain C.
+* The "aud" claim included in the returned JWT authorization grant MAY identify multiple authorization servers, provided that trust relationships exist with them. It is RECOMMENDED that the "aud" claim is restricted to a single authorization server in trust domain B to prevent an authorization server from presenting the client's authorization grant to an authorization server in a different trust domain. For example, this will prevent the authorization server in trust domain B from presenting the authorization grant it received from the client in trust domain A to the authorization server for trust domain C.
 
 ### Example
 
@@ -229,7 +229,7 @@ The authorization server in trust domain B MUST validate the JWT authorization g
 
 * The "aud" claim MUST identify the authorization server in trust domain B as a valid intended audience of the assertion using either the token endpoint as described Section 3 {{RFC7523}} or the issuer identifier as defined in Section 2 of {{RFC8414}}.
 * The authorization server in trust domain B SHOULD deny the request if it is not able to identify the subject.
-* Due to policy the request MAY be denied (for instance if federation with trust domain A is not established).
+* Due to policy the request MAY be denied (for instance if a trust relationship with trust domain A is not established).
 
 Section 3.1 of {{RFC7523}} describes the error response used in request denial cases.
 
@@ -354,15 +354,15 @@ Implementations and profiles of this specification MAY define additional mitigat
 
 # Privacy Considerations
 
-In addition to the privacy considerations outlined in {{RFC8693}} and {{RFC7523}}, the following items are relevant to this specification:
+In addition to the privacy considerations outlined in {{RFC8693}} and {{RFC7523}}, additional privacy considerations apply to this specification.
 
-OAuth federation involves the exchange of tokens and claims between disparate trust domains.
+This specifciation enables the exchange of tokens and claims between disparate trust domains.
 If excessive or unnecessary user data is included in these tokens, it may lead to unintended privacy consequences.
 As noted in {{RFC8693}} and {{RFC7523}}, deployments should determine the minimum amount of information necessary to complete the exchange and ensure that only that information is included in the token.
 
-Inconsistent user privacy practices within OAuth federation can result from varying interpretations and implementations of the protocol across different domains.
+Inconsistent user privacy practices can result from varying interpretations and implementations of the protocol across authorization servers in different trust domains.
 This inconsistency can lead to a lack of transparency and user control over what data is shared and with whom.
-To mitigate this, federation trust relationships between domains must be carefully established and maintained with user privacy in mind.
+To mitigate this, trust relationships between domains must be carefully established and maintained with user privacy in mind.
 This includes verifying that privacy policies are aligned across trust domains and clearly define how user data is collected, used, and protected.
 
 --- back
