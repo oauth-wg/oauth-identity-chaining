@@ -468,7 +468,7 @@ Table of Contents
       exchange step and the updated identifier is reflected in the
       returned JWT authorization grant or in the assertion step where
       the updated identifier would be reflected in the access token.  To
-      support this both authorization servers MAY add, change or remove
+      support this, both authorization servers MAY add, change or remove
       claims as described above.
 
    *  *Data Minimization*: Authorization servers MAY remove or hide
