@@ -1078,13 +1078,18 @@ B.3.  Delegated Key Binding
 
 Appendix C.  Acknowledgements
 
-   The editors would like to thank Deb Cooley, Patrick Harding, Joe
-   Jubinski, Watson Ladd, Justin Richer, Adam Rusbridge, and Dean H.
-   Saxe for their valuable input and general support of this work.
+   The editors would like to thank Deb Cooley, Patrick Harding, Russ
+   Housley, Joe Jubinski, Watson Ladd, Justin Richer, Adam Rusbridge,
+   and Dean H.  Saxe for their valuable input and general support of
+   this work.
 
 Appendix D.  Document History
 
    [[ To be removed from the final specification ]]
+
+   -11
+
+   *  ARTART review comments addressed
 
    -10
 
