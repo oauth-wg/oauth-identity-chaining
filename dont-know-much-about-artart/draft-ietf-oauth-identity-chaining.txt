@@ -735,7 +735,7 @@ Table of Contents
 
 Appendix A.  Use cases
 
-   This sections outlines some use cases where the identity and
+   This appendix outlines some use cases where the identity and
    authorization chaining described in this document can be applied.
    The use cases described are not exhaustive, but are representative of
    the type of use cases enabled by this specification.  Other use cases
@@ -812,7 +812,7 @@ A.5.  Cross-domain API authorization
 
 Appendix B.  Examples
 
-   This section contains two examples, demonstrating how this
+   This appendix contains two examples, demonstrating how this
    specification may be used in different environments with specific
    requirements.  The first example shows the resource server acting as
    the client and the second example shows the authorization server
