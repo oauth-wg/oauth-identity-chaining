@@ -134,7 +134,7 @@ The flow illustrated in Figure 1 shows the steps the client in trust domain A ne
 1. The client in trust domain A presents the authorization grant to the authorization server of trust domain B. See [Access Token Request](#atr).
 
 1. Authorization server of trust domain B validates the JWT authorization grant and returns an access token.
- Validating the JWT authorization grant requires trusting the public key(s) of domain A and its authority to issue authorization grants. This might take the form of configuration and policy in domain B that associates a set of public keys with domain A. Or might rely on the keys published at domain A's `jwks_uri` as listed in it's Authorization Server Metadata {{RFC8414}}.
+ Validating the JWT authorization grant requires trusting the public key(s) of domain A and its authority to issue authorization grants. This might take the form of configuration and policy in domain B that associates a set of public keys with domain A. Or might rely on the keys published at domain A's `jwks_uri` as listed in its Authorization Server Metadata {{RFC8414}}.
 
 1. The client in trust domain A uses the access token received from the authorization server in trust domain B to access the protected resource in trust domain B.
 
@@ -440,7 +440,7 @@ The resource server of trust domain A needs to access protected resource in trus
 
 1. The resource server (acting as a client) in trust domain A requests protected resource metadata from the resource server in trust domain B as described in {{RFC9728}}. It uses the resource metadata to discover information about the authorization server for trust domain B. This step MAY be skipped if discovery is not needed and other means of discovery MAY be used. The protected resource in trust domain B returns its metadata along with the authorization server information in trust domain A.
 
-1. Once the resource server (acting as a client) in trust domain A identified the authorization server for trust domain B, it requests a JWT authorization grant for the authorization server in trust domain B from the authorization server in trust domain A (it's own authorization server). This happens via the token exchange protocol (See [Token Exchange](#token-exchange)).
+1. Once the resource server (acting as a client) in trust domain A identified the authorization server for trust domain B, it requests a JWT authorization grant for the authorization server in trust domain B from the authorization server in trust domain A (its own authorization server). This happens via the token exchange protocol (See [Token Exchange](#token-exchange)).
 
 1. If successful, the authorization server in trust domain A returns a JWT authorization grant to the resource server (acting as client) in trust domain A.
 
@@ -461,7 +461,7 @@ Authorization servers may act as clients too. This can be necessary because of f
 
 Under these conditions, an authorization server in trust domain A may obtain an access token from an authorization server in trust domain B on-behalf-of any client in trust domain A. This enables clients in trust domain A to access a protected resource server in trust domain B. Resource servers in trust domain A may act as a client to the authorization server in trust domain A in order to obtain an access token to access a protected resource in trust domain B in order to complete a request.
 
-The authorization server in trust domain A may use the flows described in this specification by acting first as a client to itself to obtain an assertion grant and then act as a client to the authorization server in trust domain B to request an access token for a protected resource in trust domain B. The flow when authorization servers act as a client on-behalf of another client in it's own trust domain is shown below:
+The authorization server in trust domain A may use the flows described in this specification by acting first as a client to itself to obtain an assertion grant and then act as a client to the authorization server in trust domain B to request an access token for a protected resource in trust domain B. The flow when authorization servers act as a client on-behalf of another client in its own trust domain is shown below:
 
 ~~~
 +--------+          +--------------+       +--------------+ +---------+
