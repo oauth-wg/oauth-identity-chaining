@@ -80,7 +80,7 @@ This specification describes a combination of OAuth 2.0 Token Exchange {{RFC8693
 
 A client in trust domain A that needs to access a resource server in trust domain B requests a JWT authorization grant from the authorization server for trust domain A using a profile of OAuth 2.0 Token Exchange {{RFC8693}}. The client in trust domain A then presents the received grant as an assertion to the authorization server in trust domain B, using the JWT authorization grant feature of {{RFC7523}}, to obtain an access token for the protected resource in trust domain B.
 
-In some deployments, the client in trust domain A may obtain a JWT authorization grant using a proprietary API or interface other than the OAuth 2.0 Token Exchange protocol {{RFC8693}}. The details of such an interface are out of scope for this document but an alternative means of acquiring the JWT authorization grant is not precluded by this document. A JWT authorization grant, regardless of how it was obtained, MUST be used to request an access token from the authorization server in trust domain B as described in Section 2.4 in this document.
+In some deployments, the client in trust domain A may obtain a JWT authorization grant using a proprietary API or interface other than the OAuth 2.0 Token Exchange protocol {{RFC8693}}. The details of such an interface are out of scope for this document but an alternative means of acquiring the JWT authorization grant is not precluded by this document. A JWT authorization grant, regardless of how it was obtained, MUST be used to request an access token from the authorization server in trust domain B as described in {{jwt-authorization-grant}} of this document.
 
 ## Overview
 
@@ -143,11 +143,11 @@ This specification does not define authorization server discovery. A client may 
 
 ## Token Exchange
 
-The client in trust domain A performs token exchange as defined in {{RFC8693}} with the authorization server in trust domain A in order to obtain a JWT authorization grant that can be used with the authorization server of trust domain B as specified in section 1.3 of {{RFC6749}}.
+The client in trust domain A performs token exchange as defined in {{RFC8693}} with the authorization server in trust domain A in order to obtain a JWT authorization grant that can be used with the authorization server of trust domain B as specified in Section 1.3 of {{RFC6749}}.
 
 ### Token Exchange Request
 
-The parameters described in section 2.1 of {{RFC8693}} apply here with the following restrictions:
+The parameters described in Section 2.1 of {{RFC8693}} apply here with the following restrictions:
 
 {:vspace}
 scope
@@ -166,7 +166,7 @@ audience
 
 ### Token Exchange Response
 
-All of section 2.2 of {{RFC8693}} applies. In addition, the following applies to implementations that conform to this specification.
+All of Section 2.2 of {{RFC8693}} applies. In addition, the following applies to implementations that conform to this specification.
 
 * The "aud" claim in the returned JWT authorization grant MUST identify the requested authorization server in trust domain B. This corresponds with [RFC 7523 Section 3, Point 3](https://datatracker.ietf.org/doc/html/rfc7523#section-3) and is there to reduce misuse and to prevent clients from, among other things, presenting access tokens as an authorization grant to an authorization server in trust domain B.
 
@@ -206,7 +206,7 @@ Cache-Control: no-cache, no-store
 ~~~
 {: title='Token exchange response'}
 
-## JWT Authorization Grant
+## JWT Authorization Grant {#jwt-authorization-grant}
 
 The client in trust domain A uses the JWT authorization grant obtained from the authorization server in trust domain A as an assertion to request an access token from the authorization server in trust domain B, as described in {{RFC7523}}.
 
@@ -227,7 +227,7 @@ The client in trust domain A MAY indicate the protected resource it is trying to
 
 The authorization server in trust domain B MUST validate the JWT authorization grant as specified in Sections 3 and 3.1 of {{RFC7523}}. The following processing rules also apply:
 
-* The "aud" claim MUST identify the authorization server in trust domain B as a valid intended audience of the assertion using either the token endpoint as described Section 3 {{RFC7523}} or the issuer identifier as defined in Section 2 of {{RFC8414}}.
+* The "aud" claim MUST identify the authorization server in trust domain B as a valid intended audience of the assertion using either the token endpoint as described Section 3 of {{RFC7523}} or the issuer identifier as defined in Section 2 of {{RFC8414}}.
 * The authorization server in trust domain B SHOULD deny the request if it is not able to identify the subject.
 * Due to policy the request MAY be denied (for instance if a trust relationship with trust domain A is not established).
 
@@ -235,7 +235,7 @@ Section 3.1 of {{RFC7523}} describes the error response used in request denial c
 
 ### Access Token Response
 
-When the authorization grant has been validated, the authorization server in trust domain B responds with an access token as described in section 5.1 of {{RFC6749}}.
+When the authorization grant has been validated, the authorization server in trust domain B responds with an access token as described in Section 5.1 of {{RFC6749}}.
 
 ### Example
 
