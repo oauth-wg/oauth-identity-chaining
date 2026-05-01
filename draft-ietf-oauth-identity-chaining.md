@@ -356,7 +356,7 @@ Implementations and profiles of this specification MAY define additional mitigat
 
 In addition to the privacy considerations outlined in {{RFC8693}} and {{RFC7523}}, additional privacy considerations apply to this specification.
 
-This specifciation enables the exchange of tokens and claims between disparate trust domains.
+This specification enables the exchange of tokens and claims between disparate trust domains.
 If excessive or unnecessary user data is included in these tokens, it may lead to unintended privacy consequences.
 As noted in {{RFC8693}} and {{RFC7523}}, deployments should determine the minimum amount of information necessary to complete the exchange and ensure that only that information is included in the token.
 
