@@ -5,7 +5,7 @@
 oauth                                                 A. Schwenkschuster
 Internet-Draft                                             P. Kasselmann
 Intended status: Standards Track                        Defakto Security
-Expires: 1 November 2026                                       K. Burgin
+Expires: 2 November 2026                                       K. Burgin
                                                                    MITRE
                                                               M. Jenkins
                                                                 NSA-CCSS
@@ -13,7 +13,7 @@ Expires: 1 November 2026                                       K. Burgin
                                                            Ping Identity
                                                               A. Parecki
                                                                     Okta
-                                                           30 April 2026
+                                                              1 May 2026
 
 
         OAuth Identity and Authorization Chaining Across Domains
@@ -51,7 +51,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 1 November 2026.
+   This Internet-Draft will expire on 2 November 2026.
 
 Copyright Notice
 
@@ -165,7 +165,7 @@ Table of Contents
    means of acquiring the JWT authorization grant is not precluded by
    this document.  A JWT authorization grant, regardless of how it was
    obtained, MUST be used to request an access token from the
-   authorization server in trust domain B as described in Section 2.4 in
+   authorization server in trust domain B as described in Section 2.4 of
    this document.
 
 2.1.  Overview
@@ -252,7 +252,7 @@ Table of Contents
        domain A and its authority to issue authorization grants.  This
        might take the form of configuration and policy in domain B that
        associates a set of public keys with domain A.  Or might rely on
-       the keys published at domain A's jwks_uri as listed in it's
+       the keys published at domain A's jwks_uri as listed in its
        Authorization Server Metadata [RFC8414].
 
    6.  The client in trust domain A uses the access token received from
@@ -271,12 +271,12 @@ Table of Contents
    The client in trust domain A performs token exchange as defined in
    [RFC8693] with the authorization server in trust domain A in order to
    obtain a JWT authorization grant that can be used with the
-   authorization server of trust domain B as specified in section 1.3 of
+   authorization server of trust domain B as specified in Section 1.3 of
    [RFC6749].
 
 2.3.1.  Token Exchange Request
 
-   The parameters described in section 2.1 of [RFC8693] apply here with
+   The parameters described in Section 2.1 of [RFC8693] apply here with
    the following restrictions:
 
    scope
@@ -304,7 +304,7 @@ Table of Contents
 
 2.3.3.  Token Exchange Response
 
-   All of section 2.2 of [RFC8693] applies.  In addition, the following
+   All of Section 2.2 of [RFC8693] applies.  In addition, the following
    applies to implementations that conform to this specification.
 
    *  The "aud" claim in the returned JWT authorization grant MUST
@@ -397,8 +397,8 @@ Table of Contents
 
    *  The "aud" claim MUST identify the authorization server in trust
       domain B as a valid intended audience of the assertion using
-      either the token endpoint as described Section 3 [RFC7523] or the
-      issuer identifier as defined in Section 2 of [RFC8414].
+      either the token endpoint as described Section 3 of [RFC7523] or
+      the issuer identifier as defined in Section 2 of [RFC8414].
 
    *  The authorization server in trust domain B SHOULD deny the request
       if it is not able to identify the subject.
@@ -413,7 +413,7 @@ Table of Contents
 
    When the authorization grant has been validated, the authorization
    server in trust domain B responds with an access token as described
-   in section 5.1 of [RFC6749].
+   in Section 5.1 of [RFC6749].
 
 2.4.4.  Example
 
@@ -468,7 +468,7 @@ Table of Contents
       exchange step and the updated identifier is reflected in the
       returned JWT authorization grant or in the assertion step where
       the updated identifier would be reflected in the access token.  To
-      support this both authorization servers MAY add, change or remove
+      support this, both authorization servers MAY add, change or remove
       claims as described above.
 
    *  *Data Minimization*: Authorization servers MAY remove or hide
@@ -643,7 +643,7 @@ Table of Contents
    [RFC7523], additional privacy considerations apply to this
    specification.
 
-   This specifciation enables the exchange of tokens and claims between
+   This specification enables the exchange of tokens and claims between
    disparate trust domains.  If excessive or unnecessary user data is
    included in these tokens, it may lead to unintended privacy
    consequences.  As noted in [RFC8693] and [RFC7523], deployments
@@ -735,7 +735,7 @@ Table of Contents
 
 Appendix A.  Use cases
 
-   This sections outlines some use cases where the identity and
+   This appendix outlines some use cases where the identity and
    authorization chaining described in this document can be applied.
    The use cases described are not exhaustive, but are representative of
    the type of use cases enabled by this specification.  Other use cases
@@ -812,7 +812,7 @@ A.5.  Cross-domain API authorization
 
 Appendix B.  Examples
 
-   This section contains two examples, demonstrating how this
+   This appendix contains two examples, demonstrating how this
    specification may be used in different environments with specific
    requirements.  The first example shows the resource server acting as
    the client and the second example shows the authorization server
@@ -893,7 +893,7 @@ B.1.  Resource server acting as client
        identified the authorization server for trust domain B, it
        requests a JWT authorization grant for the authorization server
        in trust domain B from the authorization server in trust domain A
-       (it's own authorization server).  This happens via the token
+       (its own authorization server).  This happens via the token
        exchange protocol (See Token Exchange (Section 2.3)).
 
    3.  If successful, the authorization server in trust domain A returns
@@ -946,7 +946,7 @@ B.2.  Authorization server acting as client
    to obtain an assertion grant and then act as a client to the
    authorization server in trust domain B to request an access token for
    a protected resource in trust domain B.  The flow when authorization
-   servers act as a client on-behalf of another client in it's own trust
+   servers act as a client on-behalf of another client in its own trust
    domain is shown below:
 
  +--------+          +--------------+       +--------------+ +---------+
@@ -1078,13 +1078,18 @@ B.3.  Delegated Key Binding
 
 Appendix C.  Acknowledgements
 
-   The editors would like to thank Deb Cooley, Patrick Harding, Joe
-   Jubinski, Watson Ladd, Justin Richer, Adam Rusbridge, and Dean H.
-   Saxe for their valuable input and general support of this work.
+   The editors would like to thank Deb Cooley, Patrick Harding, Russ
+   Housley, Joe Jubinski, Watson Ladd, Justin Richer, Adam Rusbridge,
+   and Dean H.  Saxe for their valuable input and general support of
+   this work.
 
 Appendix D.  Document History
 
    [[ To be removed from the final specification ]]
+
+   -11
+
+   *  ARTART review comments addressed
 
    -10
 
