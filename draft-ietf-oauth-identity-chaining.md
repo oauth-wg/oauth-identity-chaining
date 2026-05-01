@@ -369,7 +369,7 @@ This includes verifying that privacy policies are aligned across trust domains a
 
 # Use cases
 
-This sections outlines some use cases where the identity and authorization chaining described in this document can be applied. The use cases described are not exhaustive, but are representative of the type of use cases enabled by this specification. Other use cases may also be supported by this specification.
+This appendix outlines some use cases where the identity and authorization chaining described in this document can be applied. The use cases described are not exhaustive, but are representative of the type of use cases enabled by this specification. Other use cases may also be supported by this specification.
 
 ## Preserve User Context across Multi-cloud, Multi-Hybrid environments
 A user attempts to access a service that is implemented as a number of on-premise and cloud-based workloads. Both the on-premise and cloud-based services are segmented by multiple trust boundaries that span one or more on-premise or cloud service environments. Each workload can apply an authorization policy that takes the context of the original user, as well as intermediary services into account, irrespective of where the workloads are running and even when a workload in one trust domain calls another service in another trust domain.
@@ -388,7 +388,7 @@ An email client can be used with arbitrary email servers, without requiring pre-
 
 # Examples {#Examples}
 
-This section contains two examples, demonstrating how this specification may be used in different environments with specific requirements. The first example shows the resource server acting as the client and the second example shows the authorization server acting as the client.
+This appendix contains two examples, demonstrating how this specification may be used in different environments with specific requirements. The first example shows the resource server acting as the client and the second example shows the authorization server acting as the client.
 
 ## Resource server acting as client
 
