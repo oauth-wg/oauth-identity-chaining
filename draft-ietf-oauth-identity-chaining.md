@@ -151,18 +151,20 @@ The parameters described in Section 2.1 of {{RFC8693}} apply here with the follo
 
 {:vspace}
 scope
-: OPTIONAL. Additional scopes to indicate scopes included in the returned JWT authorization grant. See [Claims transcription](#claims-transcription).
+: Additional scopes to indicate scopes included in the returned JWT authorization grant. See [Claims transcription](#claims-transcription).
 
 resource
-: REQUIRED if audience is not set. URI of authorization server for trust domain B.
+: URI of authorization server for trust domain B.
 
 audience
-: REQUIRED if resource is not set. Well known/logical name of authorization server for trust domain B.
+: Well known/logical name of authorization server for trust domain B.
+
+One of `resource` or `audience` is REQUIRED to indicate the intended authorization server in trust domain B.
 
 ### Processing rules
 
 * If the request itself is not valid or if the given resource or audience are unknown, or are unacceptable based on policy, the authorization server in trust domain A MUST deny the request as defined in Section 2.2.2 of {{RFC8693}}.
-* The authorization server in trust domain A MAY add, remove or change claims. See [Claims transcription](#claims-transcription).
+* The authorization server in trust domain A can add, remove or change claims. See [Claims transcription](#claims-transcription).
 
 ### Token Exchange Response
 
@@ -170,7 +172,7 @@ All of Section 2.2 of {{RFC8693}} applies. In addition, the following applies to
 
 * The "aud" claim in the returned JWT authorization grant MUST identify the requested authorization server in trust domain B. This corresponds with [RFC 7523 Section 3, Point 3](https://datatracker.ietf.org/doc/html/rfc7523#section-3) and is there to reduce misuse and to prevent clients from, among other things, presenting access tokens as an authorization grant to an authorization server in trust domain B.
 
-* The "aud" claim included in the returned JWT authorization grant MAY identify multiple authorization servers, provided that trust relationships exist with them. It is RECOMMENDED that the "aud" claim is restricted to a single authorization server in trust domain B to prevent an authorization server from presenting the client's authorization grant to an authorization server in a different trust domain. For example, this will prevent the authorization server in trust domain B from presenting the authorization grant it received from the client in trust domain A to the authorization server for trust domain C.
+* The "aud" claim included in the returned JWT authorization grant can identify multiple authorization servers, provided that trust relationships exist with them. However, it is RECOMMENDED that the "aud" claim is restricted to a single authorization server in trust domain B to prevent an authorization server from presenting the client's authorization grant to an authorization server in a different trust domain. For example, this will prevent the authorization server in trust domain B from presenting the authorization grant it received from the client in trust domain A to the authorization server for trust domain C.
 
 ### Example
 
@@ -212,23 +214,23 @@ The client in trust domain A uses the JWT authorization grant obtained from the 
 
 ### Access Token Request {#atr}
 
-The JWT authorization grant is used to request an access token as defined in Section 2.1 of {{RFC7523}}. The following parameters are required and described additionally here:
+The JWT authorization grant is used to request an access token as defined in Section 2.1 of {{RFC7523}}. The following required parameters are described additionally here:
 
 {:vspace}
 grant_type
-: REQUIRED. As defined in Section 2.1 of {{RFC7523}} the value `urn:ietf:params:oauth:grant-type:jwt-bearer` indicates the request is a JWT bearer assertion authorization grant.
+: As defined in Section 2.1 of {{RFC7523}} the value `urn:ietf:params:oauth:grant-type:jwt-bearer` indicates the request is a JWT bearer assertion authorization grant.
 
 assertion
-: REQUIRED. The JWT authorization grant returned by the authorization server for domain A (see [Token Exchange](#token-exchange) response).
+: The JWT authorization grant returned by the authorization server for domain A (see [Token Exchange](#token-exchange) response).
 
-The client in trust domain A MAY indicate the protected resource it is trying to access through the `scope` parameter or the `resource` parameter defined in {{RFC8707}}.
+The client in trust domain A can indicate the protected resource it is trying to access through the `scope` parameter or the `resource` parameter defined in {{RFC8707}}.
 
 ### Processing rules
 
 The authorization server in trust domain B MUST validate the JWT authorization grant as specified in Sections 3 and 3.1 of {{RFC7523}}. The following processing rules also apply:
 
 * The "aud" claim MUST identify the authorization server in trust domain B as a valid intended audience of the assertion using either the token endpoint as described Section 3 of {{RFC7523}} or the issuer identifier as defined in Section 2 of {{RFC8414}}.
-* The authorization server in trust domain B SHOULD deny the request if it is not able to identify the subject.
+* The authorization server in trust domain B MUST deny the request if it is not able to identify the subject.
 * Due to policy the request MAY be denied (for instance if a trust relationship with trust domain A is not established).
 
 Section 3.1 of {{RFC7523}} describes the error response used in request denial cases.
@@ -272,17 +274,17 @@ Cache-Control: no-cache, no-store
 Claims transcription is motivated by the need to propagate user and client identifiers, authorization context, and other relevant information across trust boundaries.
 This enables the various entities involved to determine on whose behalf the request is being made, what authorization has been granted, and, potentially, which other resource servers were previously involved.
 
-Authorization servers MAY transcribe claims when either producing JWT authorization grants in the token exchange flow or access tokens in the assertion flow. Transcription of claims may be required for the following reasons:
+Authorization servers may transcribe claims when either producing JWT authorization grants in the token exchange flow or access tokens in the assertion flow. Transcription of claims may be required for the following reasons:
 
-* **Transcribing the subject identifier**: The subject identifier can differ between the parties involved. For example, a user is identified in trust domain A as "johndoe@a.example" but in trust domain B they are identified as "doe.john@b.example". The mapping from one identifier to the other MAY either happen in the token exchange step and the updated identifier is reflected in the returned JWT authorization grant or in the assertion step where the updated identifier would be reflected in the access token. To support this, both authorization servers MAY add, change or remove claims as described above.
-* **Data Minimization**: Authorization servers MAY remove or hide certain claims due to privacy requirements or reduced trust towards the targeting trust domain.
+* **Transcribing the subject identifier**: The subject identifier can differ between the parties involved. For example, a user is identified in trust domain A as "johndoe@a.example" but in trust domain B they are identified as "doe.john@b.example". The mapping from one identifier to the other can either happen in the token exchange step and the updated identifier is reflected in the returned JWT authorization grant or in the assertion step where the updated identifier would be reflected in the access token. To support this, both authorization servers can add, change or remove claims as described above.
+* **Data Minimization**: Authorization servers can remove or hide certain claims due to privacy requirements or reduced trust towards the targeting trust domain.
 One example is a financial institution that integrates with a third-party payment gateway.
 Domain A (the financial institution) includes detailed claims such as "account type: premium" and "transaction limit: $10,000" in the JWT authorization grant.
 However, domain B (the payment gateway) only needs claims like "transaction limit" for its access control policies. Domain A transcribes the claims to exclude unnecessary information, ensuring that domain B receives only the claims relevant to its operations.
-* **Controlling scope**: Clients MAY use the scope parameter to control transcribed claims (e.g. downscoping). Authorization Servers SHOULD verify that the requested scopes are not higher privileged than the scopes of the presented subject_token.
+* **Controlling scope**: Clients can use the scope parameter to control transcribed claims (e.g. downscoping). Authorization Servers SHOULD verify that the requested scopes are not higher privileged than the scopes of the presented subject_token.
 For example, a cloud-based development platform that allows developers to access APIs across multiple trust domains where a developer in domain A requests access to an API in domain B but only needs limited permissions, such as "read-only" access.
 The authorization server in domain A transcribes the claims into the JWT authorization grant to reflect the downscoped permissions, removing higher-privileged claims like "write" or "admin." This ensures that the access token issued by domain B aligns with the developer's intended scope of access.
-* **Including JWT authorization grant claims**: The authorization server in trust domain B which is performing the assertion flow MAY leverage claims from the JWT authorization grant presented by the client in trust domain A and include them in the returned access token.
+* **Including JWT authorization grant claims**: The authorization server in trust domain B which is performing the assertion flow can leverage claims from the JWT authorization grant presented by the client in trust domain A and include them in the returned access token.
 
 The representation of transcribed claims and their format is not defined in this specification.
 
@@ -348,7 +350,7 @@ The authorization grant obtained from the Token Exchange process is a bearer tok
 * Limiting authorization grants to a single use to prevent repeated replay.
 * Requiring client authentication to ensure the client presenting the grant is known to the authorization server in trust domain B.
 
-Authorization servers in trust domain B MAY enforce these mitigations.
+Authorization servers in trust domain B can enforce these mitigations.
 
 Implementations and profiles of this specification MAY define additional mitigations tailored to specific use cases and operational contexts.
 
