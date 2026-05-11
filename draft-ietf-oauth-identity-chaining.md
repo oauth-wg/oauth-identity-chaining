@@ -151,7 +151,7 @@ The parameters described in Section 2.1 of {{RFC8693}} apply here with the follo
 
 {:vspace}
 scope
-: Additional scopes to indicate scopes included in the returned JWT authorization grant. See [Claims transcription](#claims-transcription).
+: Additional scopes to indicate scopes included in the returned JWT authorization grant, if required. See [Claims transcription](#claims-transcription).
 
 resource
 : URI of authorization server for trust domain B.
