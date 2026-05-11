@@ -5,7 +5,7 @@
 oauth                                                 A. Schwenkschuster
 Internet-Draft                                             P. Kasselmann
 Intended status: Standards Track                        Defakto Security
-Expires: 8 November 2026                                       K. Burgin
+Expires: 12 November 2026                                      K. Burgin
                                                                    MITRE
                                                               M. Jenkins
                                                                 NSA-CCSS
@@ -13,7 +13,7 @@ Expires: 8 November 2026                                       K. Burgin
                                                            Ping Identity
                                                               A. Parecki
                                                                     Okta
-                                                              7 May 2026
+                                                             11 May 2026
 
 
         OAuth Identity and Authorization Chaining Across Domains
@@ -51,7 +51,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 8 November 2026.
+   This Internet-Draft will expire on 12 November 2026.
 
 Copyright Notice
 
@@ -281,7 +281,8 @@ Table of Contents
 
    scope
       Additional scopes to indicate scopes included in the returned JWT
-      authorization grant.  See Claims transcription (Section 2.5).
+      authorization grant, if required.  See Claims transcription
+      (Section 2.5).
 
    resource
       URI of authorization server for trust domain B.
