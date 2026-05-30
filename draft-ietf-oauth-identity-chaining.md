@@ -63,7 +63,9 @@ informative:
 
 --- abstract
 
-This specification defines a mechanism to preserve identity and authorization information across trust domains that use the OAuth 2.0 Framework.
+This specification describes a mechanism for preserving identity and authorization information across trust domains that use the OAuth 2.0 Framework.
+A JSON Web Token (JWT) authorization grant, obtained through an intra-domain OAuth 2.0 Token Exchange, facilitates the cross-domain acquisition of an access token.
+The relevant identity and authorization information is chained throughout the flow by being conveyed in the respective artifacts exchanged at each step of the process.
 
 --- middle
 
@@ -545,6 +547,10 @@ The editors would like to thank Deb Cooley, Lars Eggert, Patrick Harding, Russ H
 # Document History
 
 \[\[ To be removed from the final specification ]]
+
+-13
+
+* Expand the abstract somewhat to (hopefully) make it more informative
 
 -12
 
