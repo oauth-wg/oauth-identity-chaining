@@ -5,7 +5,7 @@
 oauth                                                 A. Schwenkschuster
 Internet-Draft                                             P. Kasselmann
 Intended status: Standards Track                        Defakto Security
-Expires: 12 November 2026                                      K. Burgin
+Expires: 3 December 2026                                       K. Burgin
                                                                    MITRE
                                                               M. Jenkins
                                                                 NSA-CCSS
@@ -13,7 +13,7 @@ Expires: 12 November 2026                                      K. Burgin
                                                            Ping Identity
                                                               A. Parecki
                                                                     Okta
-                                                             11 May 2026
+                                                             1 June 2026
 
 
         OAuth Identity and Authorization Chaining Across Domains
@@ -21,9 +21,15 @@ Expires: 12 November 2026                                      K. Burgin
 
 Abstract
 
-   This specification defines a mechanism to preserve identity and
+   This specification describes a mechanism for preserving identity and
    authorization information across trust domains that use the OAuth 2.0
-   Framework.
+   Framework.  A JSON Web Token (JWT) authorization grant, obtained
+   through an intra-domain OAuth 2.0 Token Exchange, facilitates the
+   cross-domain acquisition of an access token.  The relevant identity
+   and authorization information is chained throughout the flow by being
+   conveyed in the respective artifacts exchanged at each step of the
+   process.  Chaining across multiple domains is achieved by using the
+   same protocol every time a trust domain boundary is crossed.
 
 Discussion Venues
 
@@ -51,7 +57,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 12 November 2026.
+   This Internet-Draft will expire on 3 December 2026.
 
 Copyright Notice
 
@@ -1088,6 +1094,11 @@ Appendix C.  Acknowledgements
 Appendix D.  Document History
 
    [[ To be removed from the final specification ]]
+
+   -13
+
+   *  Expand the abstract somewhat to (hopefully) make it more
+      informative
 
    -12
 
