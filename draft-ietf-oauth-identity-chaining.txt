@@ -5,7 +5,7 @@
 oauth                                                 A. Schwenkschuster
 Internet-Draft                                             P. Kasselmann
 Intended status: Standards Track                        Defakto Security
-Expires: 4 December 2026                                       K. Burgin
+Expires: 18 December 2026                                      K. Burgin
                                                                    MITRE
                                                               M. Jenkins
                                                                 NSA-CCSS
@@ -13,7 +13,7 @@ Expires: 4 December 2026                                       K. Burgin
                                                            Ping Identity
                                                               A. Parecki
                                                                     Okta
-                                                             2 June 2026
+                                                            16 June 2026
 
 
         OAuth Identity and Authorization Chaining Across Domains
@@ -57,7 +57,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 4 December 2026.
+   This Internet-Draft will expire on 18 December 2026.
 
 Copyright Notice
 
@@ -489,7 +489,7 @@ Table of Contents
 
    *  *Controlling scope*: Clients can use the scope parameter to
       control transcribed claims (e.g. downscoping).  Authorization
-      Servers SHOULD verify that the requested scopes are not higher
+      Servers need to verify that the requested scopes are not higher
       privileged than the scopes of the presented subject_token.  For
       example, a cloud-based development platform that allows developers
       to access APIs across multiple trust domains where a developer in
@@ -854,8 +854,8 @@ B.1.  Resource server acting as client
        requests protected resource metadata from the resource server in
        trust domain B as described in [RFC9728].  It uses the resource
        metadata to discover information about the authorization server
-       for trust domain B.  This step MAY be skipped if discovery is not
-       needed and other means of discovery MAY be used.  The protected
+       for trust domain B.  This step can be skipped if discovery is not
+       needed and other means of discovery can be used.  The protected
        resource in trust domain B returns its metadata along with the
        authorization server information in trust domain A.
 
