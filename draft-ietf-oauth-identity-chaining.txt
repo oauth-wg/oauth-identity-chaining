@@ -5,7 +5,7 @@
 oauth                                                 A. Schwenkschuster
 Internet-Draft                                             P. Kasselmann
 Intended status: Standards Track                        Defakto Security
-Expires: 19 December 2026                                      K. Burgin
+Expires: 21 December 2026                                      K. Burgin
                                                                    MITRE
                                                               M. Jenkins
                                                                 NSA-CCSS
@@ -13,7 +13,7 @@ Expires: 19 December 2026                                      K. Burgin
                                                            Ping Identity
                                                               A. Parecki
                                                                     Okta
-                                                            17 June 2026
+                                                            19 June 2026
 
 
         OAuth Identity and Authorization Chaining Across Domains
@@ -57,7 +57,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 19 December 2026.
+   This Internet-Draft will expire on 21 December 2026.
 
 Copyright Notice
 
@@ -179,7 +179,7 @@ Table of Contents
    The identity and authorization chaining flow outlined below describes
    how a combination of OAuth 2.0 Token Exchange [RFC8693] and JWT
    Profile for OAuth 2.0 Client Authentication and Authorization Grants
-   [RFC7523] are used to address the use cases identified.
+   [RFC7523] are used to address the use cases identified in Appendix A.
    Conceptually, this is an exchange within the first domain that
    produces a JWT authorization grant intended for use in acquiring an
    access token from the second domain.
@@ -267,10 +267,9 @@ Table of Contents
 
 2.2.  Authorization Server Discovery
 
-   This specification does not define authorization server discovery.  A
-   client may use the authorization_servers property as defined in OAuth
-   2.0 Protected Resource Metadata [RFC9728], maintain a static mapping
-   or use other means to identify the authorization server.
+   A client may use the authorization_servers property as defined in
+   OAuth 2.0 Protected Resource Metadata [RFC9728], maintain a static
+   mapping or use other means to identify the authorization server.
 
 2.3.  Token Exchange
 
@@ -1060,6 +1059,11 @@ Appendix C.  Acknowledgements
 Appendix D.  Document History
 
    [[ To be removed from the final specification ]]
+
+   -15
+
+   *  Include suggestions from Mohamed Boucadair (see
+      https://github.com/oauth-wg/oauth-identity-chaining/issues/195)
 
    -14
 
