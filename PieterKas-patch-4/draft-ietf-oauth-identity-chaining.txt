@@ -5,7 +5,7 @@
 oauth                                                 A. Schwenkschuster
 Internet-Draft                                             P. Kasselmann
 Intended status: Standards Track                        Defakto Security
-Expires: 1 November 2026                                       K. Burgin
+Expires: 21 December 2026                                      K. Burgin
                                                                    MITRE
                                                               M. Jenkins
                                                                 NSA-CCSS
@@ -13,7 +13,7 @@ Expires: 1 November 2026                                       K. Burgin
                                                            Ping Identity
                                                               A. Parecki
                                                                     Okta
-                                                           30 April 2026
+                                                            19 June 2026
 
 
         OAuth Identity and Authorization Chaining Across Domains
@@ -21,9 +21,15 @@ Expires: 1 November 2026                                       K. Burgin
 
 Abstract
 
-   This specification defines a mechanism to preserve identity and
+   This specification describes a mechanism for preserving identity and
    authorization information across trust domains that use the OAuth 2.0
-   Framework.
+   Framework.  A JSON Web Token (JWT) authorization grant, obtained
+   through an intra-domain OAuth 2.0 Token Exchange, facilitates the
+   cross-domain acquisition of an access token.  The relevant identity
+   and authorization information is chained throughout the flow by being
+   conveyed in the respective artifacts exchanged at each step of the
+   process.  Chaining across multiple domains is achieved by using the
+   same protocol every time a trust domain boundary is crossed.
 
 Discussion Venues
 
@@ -51,7 +57,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 1 November 2026.
+   This Internet-Draft will expire on 21 December 2026.
 
 Copyright Notice
 
@@ -76,7 +82,7 @@ Table of Contents
      2.2.  Authorization Server Discovery
      2.3.  Token Exchange
        2.3.1.  Token Exchange Request
-       2.3.2.  Processing rules
+       2.3.2.  Processing Rules
        2.3.3.  Token Exchange Response
        2.3.4.  Example
      2.4.  JWT Authorization Grant
@@ -84,12 +90,11 @@ Table of Contents
        2.4.2.  Processing rules
        2.4.3.  Access Token Response
        2.4.4.  Example
-     2.5.  Claims transcription
+     2.5.  Claims Transcription
    3.  Authorization Server Metadata
    4.  IANA Considerations
      4.1.  OAuth Authorization Server Metadata Registry
        4.1.1.  Registry Contents
-     4.2.  Media Types
    5.  Security Considerations
      5.1.  Client Authentication
      5.2.  Sender Constraining Tokens
@@ -97,10 +102,8 @@ Table of Contents
      5.4.  Refresh Tokens
      5.5.  Replay of Authorization Grant
    6.  Privacy Considerations
-   7.  References
-     7.1.  Normative References
-     7.2.  Informative References
-   Appendix A.  Use cases
+   7.  Normative References
+   Appendix A.  Use Cases
      A.1.  Preserve User Context across Multi-cloud, Multi-Hybrid
            environments
      A.2.  Continuous Integration Accessing External Resources
@@ -108,8 +111,8 @@ Table of Contents
      A.4.  Extend Single Sign-On to API Access
      A.5.  Cross-domain API authorization
    Appendix B.  Examples
-     B.1.  Resource server acting as client
-     B.2.  Authorization server acting as client
+     B.1.  Resource Server Acting as Client
+     B.2.  Authorization Server Acting as Client
      B.3.  Delegated Key Binding
    Appendix C.  Acknowledgements
    Appendix D.  Document History
@@ -123,7 +126,7 @@ Table of Contents
    OAuth 2.0 authorization server.  A request may transverse multiple
    resource servers in multiple trust domains before completing.  All
    protected resources involved in such a request need to know on whose
-   behalf the request was originally initiated (i.e. the user), what
+   behalf the request was originally initiated (i.e., the user), what
    authorization was granted and optionally which other resource servers
    were called prior to making an authorization decision.  This
    information needs to be preserved, even when a request crosses one or
@@ -133,6 +136,9 @@ Table of Contents
    Authentication and Authorization Grants [RFC7523] to access resources
    across multiple trust domains while preserving identity and
    authorization information.
+
+   Appendix A provides sample use cases that may make use of the cross-
+   domain framework defined in this document.
 
 1.1.  Requirements Language
 
@@ -165,7 +171,7 @@ Table of Contents
    means of acquiring the JWT authorization grant is not precluded by
    this document.  A JWT authorization grant, regardless of how it was
    obtained, MUST be used to request an access token from the
-   authorization server in trust domain B as described in Section 2.4 in
+   authorization server in trust domain B as described in Section 2.4 of
    this document.
 
 2.1.  Overview
@@ -173,7 +179,7 @@ Table of Contents
    The identity and authorization chaining flow outlined below describes
    how a combination of OAuth 2.0 Token Exchange [RFC8693] and JWT
    Profile for OAuth 2.0 Client Authentication and Authorization Grants
-   [RFC7523] are used to address the use cases identified.
+   [RFC7523] are used to address the use cases identified in Appendix A.
    Conceptually, this is an exchange within the first domain that
    produces a JWT authorization grant intended for use in acquiring an
    access token from the second domain.
@@ -211,7 +217,7 @@ Table of Contents
          |                    | --------------------------------->|
          |                    |                     |             |
 
-            Figure 1: Identity and Authorization Chaining Flow
+      Figure 1: Identity and Authorization Chaining Successful Flow
 
    The flow illustrated in Figure 1 shows the steps the client in trust
    domain A needs to perform to access a protected resource in trust
@@ -252,7 +258,7 @@ Table of Contents
        domain A and its authority to issue authorization grants.  This
        might take the form of configuration and policy in domain B that
        associates a set of public keys with domain A.  Or might rely on
-       the keys published at domain A's jwks_uri as listed in it's
+       the keys published at domain A's jwks_uri as listed in its
        Authorization Server Metadata [RFC8414].
 
    6.  The client in trust domain A uses the access token received from
@@ -261,66 +267,68 @@ Table of Contents
 
 2.2.  Authorization Server Discovery
 
-   This specification does not define authorization server discovery.  A
-   client may use the authorization_servers property as defined in OAuth
-   2.0 Protected Resource Metadata [RFC9728], maintain a static mapping
-   or use other means to identify the authorization server.
+   A client may use the authorization_servers property as defined in
+   OAuth 2.0 Protected Resource Metadata [RFC9728], maintain a static
+   mapping or use other means to identify the authorization server.
 
 2.3.  Token Exchange
 
    The client in trust domain A performs token exchange as defined in
    [RFC8693] with the authorization server in trust domain A in order to
    obtain a JWT authorization grant that can be used with the
-   authorization server of trust domain B as specified in section 1.3 of
+   authorization server of trust domain B as specified in Section 1.3 of
    [RFC6749].
 
 2.3.1.  Token Exchange Request
 
-   The parameters described in section 2.1 of [RFC8693] apply here with
+   The parameters described in Section 2.1 of [RFC8693] apply here with
    the following restrictions:
 
    scope
-      OPTIONAL.  Additional scopes to indicate scopes included in the
-      returned JWT authorization grant.  See Claims transcription
+      Additional scopes to indicate scopes included in the returned JWT
+      authorization grant, if required.  See Claims transcription
       (Section 2.5).
 
    resource
-      REQUIRED if audience is not set.  URI of authorization server for
-      trust domain B.
+      URI of authorization server for trust domain B.
 
    audience
-      REQUIRED if resource is not set.  Well known/logical name of
-      authorization server for trust domain B.
+      Well known/logical name of authorization server for trust domain
+      B.
 
-2.3.2.  Processing rules
+   One of resource or audience is REQUIRED to indicate the intended
+   authorization server in trust domain B.
+
+2.3.2.  Processing Rules
+
+   The following processing rules also apply:
 
    *  If the request itself is not valid or if the given resource or
       audience are unknown, or are unacceptable based on policy, the
       authorization server in trust domain A MUST deny the request as
       defined in Section 2.2.2 of [RFC8693].
 
-   *  The authorization server in trust domain A MAY add, remove or
+   *  The authorization server in trust domain A can add, remove or
       change claims.  See Claims transcription (Section 2.5).
 
 2.3.3.  Token Exchange Response
 
-   All of section 2.2 of [RFC8693] applies.  In addition, the following
-   applies to implementations that conform to this specification.
+   All of Section 2.2 of [RFC8693] applies.  In addition, the following
+   applies to implementations that conform to this specification:
 
    *  The "aud" claim in the returned JWT authorization grant MUST
       identify the requested authorization server in trust domain B.
-      This corresponds with RFC 7523 Section 3, Point 3
-      (https://datatracker.ietf.org/doc/html/rfc7523#section-3) and is
+      This corresponds with Point 3 in Section 3 of [RFC7523] and is
       there to reduce misuse and to prevent clients from, among other
       things, presenting access tokens as an authorization grant to an
       authorization server in trust domain B.
 
    *  The "aud" claim included in the returned JWT authorization grant
-      MAY identify multiple authorization servers, provided that trust
-      relationships exist with them.  It is RECOMMENDED that the "aud"
-      claim is restricted to a single authorization server in trust
-      domain B to prevent an authorization server from presenting the
-      client's authorization grant to an authorization server in a
+      can identify multiple authorization servers, provided that trust
+      relationships exist with them.  However, it is RECOMMENDED that
+      the "aud" claim is restricted to a single authorization server in
+      trust domain B to prevent an authorization server from presenting
+      the client's authorization grant to an authorization server in a
       different trust domain.  For example, this will prevent the
       authorization server in trust domain B from presenting the
       authorization grant it received from the client in trust domain A
@@ -328,10 +336,10 @@ Table of Contents
 
 2.3.4.  Example
 
-   The example below shows the message invoked by the client in trust
-   domain A to perform token exchange with the authorization server in
-   trust domain A (https://as.a.example/auth) to receive a JWT
-   authorization grant for the authorization server in trust domain B
+   The example below shows a message invoked by a client in trust domain
+   A to perform token exchange with the authorization server in trust
+   domain A (https://as.a.example/auth) to receive a JWT authorization
+   grant for an authorization server in trust domain B
    (https://as.b.example/auth).
 
    POST /auth/token HTTP/1.1
@@ -344,7 +352,7 @@ Table of Contents
    &subject_token_type=
     urn%3Aietf%3Aparams%3Aoauth%3Atoken-type%3Aaccess_token
 
-                      Figure 2: Token exchange request
+                Figure 2: Example of Token Exchange Request
 
    HTTP/1.1 200 OK
    Content-Type: application/json
@@ -360,7 +368,7 @@ Table of Contents
      "expires_in":60
    }
 
-                     Figure 3: Token exchange response
+                Figure 3: Example of Token Exchange Response
 
 2.4.  JWT Authorization Grant
 
@@ -372,20 +380,19 @@ Table of Contents
 2.4.1.  Access Token Request
 
    The JWT authorization grant is used to request an access token as
-   defined in Section 2.1 of [RFC7523].  The following parameters are
-   required and described additionally here:
+   defined in Section 2.1 of [RFC7523].  The following required
+   parameters are described additionally here:
 
    grant_type
-      REQUIRED.  As defined in Section 2.1 of [RFC7523] the value
-      urn:ietf:params:oauth:grant-type:jwt-bearer indicates the request
-      is a JWT bearer assertion authorization grant.
+      As defined in Section 2.1 of [RFC7523] the value
+      urn:ietf:params:oauth:grant-type:jwt-bearer indicates that the
+      request is a JWT bearer assertion authorization grant.
 
    assertion
-      REQUIRED.  The JWT authorization grant returned by the
-      authorization server for domain A (see Token Exchange
-      (Section 2.3) response).
+      The JWT authorization grant returned by the authorization server
+      for domain A (see Token Exchange (Section 2.3) response).
 
-   The client in trust domain A MAY indicate the protected resource it
+   The client in trust domain A can indicate the protected resource it
    is trying to access through the scope parameter or the resource
    parameter defined in [RFC8707].
 
@@ -397,10 +404,10 @@ Table of Contents
 
    *  The "aud" claim MUST identify the authorization server in trust
       domain B as a valid intended audience of the assertion using
-      either the token endpoint as described Section 3 [RFC7523] or the
-      issuer identifier as defined in Section 2 of [RFC8414].
+      either the token endpoint as described Section 3 of [RFC7523] or
+      the issuer identifier as defined in Section 2 of [RFC8414].
 
-   *  The authorization server in trust domain B SHOULD deny the request
+   *  The authorization server in trust domain B MUST deny the request
       if it is not able to identify the subject.
 
    *  Due to policy the request MAY be denied (for instance if a trust
@@ -413,11 +420,11 @@ Table of Contents
 
    When the authorization grant has been validated, the authorization
    server in trust domain B responds with an access token as described
-   in section 5.1 of [RFC6749].
+   in Section 5.1 of [RFC6749].
 
 2.4.4.  Example
 
-   The examples below show how the client in trust domain A presents an
+   The examples below show how a client in trust domain A presents an
    authorization grant to the authorization server in trust domain B
    (https://as.b.example/auth) to receive an access token for a
    protected resource in trust domain B.
@@ -446,7 +453,7 @@ Table of Contents
 
                         Figure 5: Assertion response
 
-2.5.  Claims transcription
+2.5.  Claims Transcription
 
    Claims transcription is motivated by the need to propagate user and
    client identifiers, authorization context, and other relevant
@@ -455,7 +462,7 @@ Table of Contents
    made, what authorization has been granted, and, potentially, which
    other resource servers were previously involved.
 
-   Authorization servers MAY transcribe claims when either producing JWT
+   Authorization servers may transcribe claims when either producing JWT
    authorization grants in the token exchange flow or access tokens in
    the assertion flow.  Transcription of claims may be required for the
    following reasons:
@@ -464,14 +471,14 @@ Table of Contents
       differ between the parties involved.  For example, a user is
       identified in trust domain A as "johndoe@a.example" but in trust
       domain B they are identified as "doe.john@b.example".  The mapping
-      from one identifier to the other MAY either happen in the token
+      from one identifier to the other can either happen in the token
       exchange step and the updated identifier is reflected in the
       returned JWT authorization grant or in the assertion step where
       the updated identifier would be reflected in the access token.  To
-      support this both authorization servers MAY add, change or remove
+      support this, both authorization servers can add, change or remove
       claims as described above.
 
-   *  *Data Minimization*: Authorization servers MAY remove or hide
+   *  *Data Minimization*: Authorization servers can remove or hide
       certain claims due to privacy requirements or reduced trust
       towards the targeting trust domain.  One example is a financial
       institution that integrates with a third-party payment gateway.
@@ -483,9 +490,9 @@ Table of Contents
       information, ensuring that domain B receives only the claims
       relevant to its operations.
 
-   *  *Controlling scope*: Clients MAY use the scope parameter to
-      control transcribed claims (e.g. downscoping).  Authorization
-      Servers SHOULD verify that the requested scopes are not higher
+   *  *Controlling scope*: Clients can use the scope parameter to
+      control transcribed claims (e.g., downscoping).  Authorization
+      Servers need to verify that the requested scopes are not higher
       privileged than the scopes of the presented subject_token.  For
       example, a cloud-based development platform that allows developers
       to access APIs across multiple trust domains where a developer in
@@ -499,14 +506,14 @@ Table of Contents
 
    *  *Including JWT authorization grant claims*: The authorization
       server in trust domain B which is performing the assertion flow
-      MAY leverage claims from the JWT authorization grant presented by
+      can leverage claims from the JWT authorization grant presented by
       the client in trust domain A and include them in the returned
       access token.
 
    The representation of transcribed claims and their format is not
    defined in this specification.
 
-   When transcribing claims, it's important that both the place where
+   When transcribing claims, it is important that both the place where
    the claims are given and where they are interpreted agree on the
    semantics and that the access controls are consistent.
 
@@ -515,7 +522,7 @@ Table of Contents
    The following authorization server metadata parameter is defined by
    this specification and is registered in the "OAuth Authorization
    Server Metadata" registry established in "OAuth 2.0 Authorization
-   Server Metadata" [RFC8414].
+   Server Metadata" [RFC8414].  See Section 4.1.
 
    identity_chaining_requested_token_types_supported
       OPTIONAL.  JSON array containing a list of Token Types that can be
@@ -531,7 +538,7 @@ Table of Contents
 
 4.1.  OAuth Authorization Server Metadata Registry
 
-   This specification requests registration of the following parameter
+   This specification requests IANA to register the following parameter
    in the "OAuth Authorization Server Metadata" registry established in
    [RFC8414].
 
@@ -546,18 +553,6 @@ Table of Contents
    *  Change Controller: IETF
 
    *  Specification Document(s): Section 3 of [[this document]]
-
-   The parameter indicates the supported token types that can be
-   requested in an [RFC8693] Token Exchange.
-
-4.2.  Media Types
-
-   This specification does not define any new media types.
-
-   Profiles or deployment-specific implementations can adopt explicit
-   typing as defined in JSON Web Token Best Current Practices [RFC8725]
-   and define a new media type [RFC2046] in the "Media Types" registry
-   [IANA.media-types] in the manner described in [RFC6838].
 
 5.  Security Considerations
 
@@ -601,15 +596,16 @@ Table of Contents
    redundant credential requiring additional security measures, and
    creating unnecessary security risks.  It also allows the client to
    obtain access tokens within trust domain B, even if the initial
-   session in trust domain A has finished (e.g. the user has logged out
+   session in trust domain A has finished (e.g., the user has logged out
    or access has been revoked).  This is consistent with Section 4.1 of
    [RFC7521] which discourages but does not prohibit the issuance of
    refresh tokens in the context of assertion grants.
 
    The advice of this section is only applicable to refresh token
-   issuance across domains in the context of a assertion grant.  It does
-   not relate to the issuance of refresh tokens by the authorization
-   server in trust domain A to the client in trust domain A.
+   issuance across domains in the context of an assertion grant.  It
+   does not relate to the issuance of refresh tokens by the
+   authorization server in trust domain A to the client in trust domain
+   A.
 
 5.5.  Replay of Authorization Grant
 
@@ -630,7 +626,7 @@ Table of Contents
    *  Requiring client authentication to ensure the client presenting
       the grant is known to the authorization server in trust domain B.
 
-   Authorization servers in trust domain B MAY enforce these
+   Authorization servers in trust domain B can enforce these
    mitigations.
 
    Implementations and profiles of this specification MAY define
@@ -643,7 +639,7 @@ Table of Contents
    [RFC7523], additional privacy considerations apply to this
    specification.
 
-   This specifciation enables the exchange of tokens and claims between
+   This specification enables the exchange of tokens and claims between
    disparate trust domains.  If excessive or unnecessary user data is
    included in these tokens, it may lead to unintended privacy
    consequences.  As noted in [RFC8693] and [RFC7523], deployments
@@ -661,9 +657,7 @@ Table of Contents
    aligned across trust domains and clearly define how user data is
    collected, used, and protected.
 
-7.  References
-
-7.1.  Normative References
+7.  Normative References
 
    [RFC6749]  Hardt, D., Ed., "The OAuth 2.0 Authorization Framework",
               RFC 6749, DOI 10.17487/RFC6749, October 2012,
@@ -693,21 +687,6 @@ Table of Contents
               DOI 10.17487/RFC8414, June 2018,
               <https://www.rfc-editor.org/rfc/rfc8414>.
 
-   [RFC8725]  Sheffer, Y., Hardt, D., and M. Jones, "JSON Web Token Best
-              Current Practices", BCP 225, RFC 8725,
-              DOI 10.17487/RFC8725, February 2020,
-              <https://www.rfc-editor.org/rfc/rfc8725>.
-
-   [RFC2046]  Freed, N. and N. Borenstein, "Multipurpose Internet Mail
-              Extensions (MIME) Part Two: Media Types", RFC 2046,
-              DOI 10.17487/RFC2046, November 1996,
-              <https://www.rfc-editor.org/rfc/rfc2046>.
-
-   [RFC6838]  Freed, N., Klensin, J., and T. Hansen, "Media Type
-              Specifications and Registration Procedures", BCP 13,
-              RFC 6838, DOI 10.17487/RFC6838, January 2013,
-              <https://www.rfc-editor.org/rfc/rfc6838>.
-
    [RFC9700]  Lodderstedt, T., Bradley, J., Labunets, A., and D. Fett,
               "Best Current Practice for OAuth 2.0 Security", BCP 240,
               RFC 9700, DOI 10.17487/RFC9700, January 2025,
@@ -727,15 +706,9 @@ Table of Contents
               2119 Key Words", BCP 14, RFC 8174, DOI 10.17487/RFC8174,
               May 2017, <https://www.rfc-editor.org/rfc/rfc8174>.
 
-7.2.  Informative References
+Appendix A.  Use Cases
 
-   [IANA.media-types]
-              IANA, "Media Types",
-              <https://www.iana.org/assignments/media-types>.
-
-Appendix A.  Use cases
-
-   This sections outlines some use cases where the identity and
+   This appendix outlines some use cases where the identity and
    authorization chaining described in this document can be applied.
    The use cases described are not exhaustive, but are representative of
    the type of use cases enabled by this specification.  Other use cases
@@ -762,7 +735,7 @@ A.2.  Continuous Integration Accessing External Resources
    information of the build, for example metadata such as commit hashes
    or repository, should be preserved and carried across the domain
    boundary.  This not just prevents maintaining credentials it also
-   allows fine grained access control at the resource.
+   allows fine-grained access control at the resource.
 
 A.3.  API Security Use Case
 
@@ -781,7 +754,7 @@ A.3.  API Security Use Case
 A.4.  Extend Single Sign-On to API Access
 
    A user that authenticated to an enterprise Identity Provider (IdP)
-   does not have to sign-in to multiple SaaS applications if the SaaS
+   does not have to sign in to multiple SaaS applications if the SaaS
    applications are configured to trust the enterprise IdP.  It is
    possible to extend this SSO relationship to API access by allowing
    the Client to contact the enterprise IdP and exchange the identity
@@ -812,20 +785,20 @@ A.5.  Cross-domain API authorization
 
 Appendix B.  Examples
 
-   This section contains two examples, demonstrating how this
+   This appendix contains two examples, demonstrating how this
    specification may be used in different environments with specific
    requirements.  The first example shows the resource server acting as
    the client and the second example shows the authorization server
    acting as the client.
 
-B.1.  Resource server acting as client
+B.1.  Resource Server Acting as Client
 
    As part of completing a request, a resource server in trust domain A
    may need to access a resource server in trust domain B.  This
    requires the resource server in trust domain A to obtain an Access
    Token from an authorization server in trust domain B, which it may
-   then present to the resource server in trust domain B.  A resource
-   server in trust domain A may use the flows described in this
+   then present to a resource server in trust domain B.  A resource
+   server in trust domain A may use the flow exchanges described in this
    specification by assuming the role of a client when attempting to
    access the resource server in trust domain B.  Resource servers may
    act as clients if the following is true:
@@ -837,7 +810,7 @@ B.1.  Resource server acting as client
       resource server in trust domain A and is able to perform the
       appropriate client authentication (if required).
 
-   The flow would look like this:
+   The flow exchange would look like this:
 
  +-------------+       +---------------+     +-------------+ +---------+
  |Authorization|       |Resource Server|     |Authorization| |Protected|
@@ -871,7 +844,7 @@ B.1.  Resource server acting as client
         |                     | --------------------------------->|
         |                     |                     |             |
 
-               Figure 6: Resource server acting as client
+    Figure 6: Resource Server Acting as Client (Successful Exchange)
 
    The flow contains the following steps:
 
@@ -884,8 +857,8 @@ B.1.  Resource server acting as client
        requests protected resource metadata from the resource server in
        trust domain B as described in [RFC9728].  It uses the resource
        metadata to discover information about the authorization server
-       for trust domain B.  This step MAY be skipped if discovery is not
-       needed and other means of discovery MAY be used.  The protected
+       for trust domain B.  This step can be skipped if discovery is not
+       needed and other means of discovery can be used.  The protected
        resource in trust domain B returns its metadata along with the
        authorization server information in trust domain A.
 
@@ -893,7 +866,7 @@ B.1.  Resource server acting as client
        identified the authorization server for trust domain B, it
        requests a JWT authorization grant for the authorization server
        in trust domain B from the authorization server in trust domain A
-       (it's own authorization server).  This happens via the token
+       (its own authorization server).  This happens via the token
        exchange protocol (See Token Exchange (Section 2.3)).
 
    3.  If successful, the authorization server in trust domain A returns
@@ -913,7 +886,7 @@ B.1.  Resource server acting as client
        the access token to access the protected resource in trust domain
        B.
 
-B.2.  Authorization server acting as client
+B.2.  Authorization Server Acting as Client
 
    Authorization servers may act as clients too.  This can be necessary
    because of following reasons:
@@ -946,7 +919,7 @@ B.2.  Authorization server acting as client
    to obtain an assertion grant and then act as a client to the
    authorization server in trust domain B to request an access token for
    a protected resource in trust domain B.  The flow when authorization
-   servers act as a client on-behalf of another client in it's own trust
+   servers act as a client on-behalf of another client in its own trust
    domain is shown below:
 
  +--------+          +--------------+       +--------------+ +---------+
@@ -989,7 +962,7 @@ B.2.  Authorization server acting as client
      | ---------------------------------------------------------->|
      |                      |                       |             |
 
-            Figure 7: Authorization server acting as client
+ Figure 7: Authorization Server Acting as Client (Successful Exchange)
 
    The flow contains the following steps:
 
@@ -1073,18 +1046,41 @@ B.3.  Delegated Key Binding
 
    *  The client in trust domain A that presents the access token must
       use the key matching the "cnf" claim to generate a DPoP proof or
-      setup a MTLS session when presenting the access token to a
-      resource server in in trust domain B.
+      set up a MTLS session when presenting the access token to a
+      resource server in trust domain B.
 
 Appendix C.  Acknowledgements
 
-   The editors would like to thank Deb Cooley, Patrick Harding, Joe
-   Jubinski, Watson Ladd, Justin Richer, Adam Rusbridge, and Dean H.
-   Saxe for their valuable input and general support of this work.
+   The editors would like to thank Deb Cooley, Lars Eggert, Patrick
+   Harding, Russ Housley, Joe Jubinski, Watson Ladd, Justin Richer, Adam
+   Rusbridge, and Dean H.  Saxe for their valuable input and general
+   support of this work.
 
 Appendix D.  Document History
 
    [[ To be removed from the final specification ]]
+
+   -15
+
+   *  Include suggestions from Mohamed Boucadair (see
+      https://github.com/oauth-wg/oauth-identity-chaining/issues/195)
+
+   -14
+
+   *  Remove some extraneous text from IANA Considerations
+
+   -13
+
+   *  Expand the abstract somewhat to (hopefully) make it more
+      informative
+
+   -12
+
+   *  GENART review comments addressed
+
+   -11
+
+   *  ARTART review comments addressed
 
    -10
 
