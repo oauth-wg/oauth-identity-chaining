@@ -138,7 +138,7 @@ The flow illustrated in Figure 1 shows the steps the client in trust domain A ne
 
 1. The client in trust domain A uses the access token received from the authorization server in trust domain B to access the protected resource in trust domain B.
 
-## Authorization Server Discovery {#authorization_server_discovery}
+## Authorization Server Discovery
 A client may use the `authorization_servers` property as defined in OAuth 2.0 Protected Resource Metadata {{RFC9728}}, maintain a static mapping or use other means to identify the authorization server.
 
 ## Token Exchange
