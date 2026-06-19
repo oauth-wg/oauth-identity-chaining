@@ -539,6 +539,10 @@ The editors would like to thank Deb Cooley, Lars Eggert, Patrick Harding, Russ H
 
 \[\[ To be removed from the final specification ]]
 
+
+-14
+
+* Include suggestions from Mohamed Boucadair (see https://github.com/oauth-wg/oauth-identity-chaining/issues/195)
 -14
 
 * Remove some extraneous text from IANA Considerations
