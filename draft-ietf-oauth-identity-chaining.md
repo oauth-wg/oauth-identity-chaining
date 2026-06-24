@@ -17,7 +17,7 @@ author:
 - name: Arndt Schwenkschuster
   org: Defakto Security
   email: arndts.ietf@gmail.com
-- name: Pieter Kasselmann
+- name: Pieter Kasselman
   org: Defakto Security
   email: pieter@defakto.security
 - name: Kelley Burgin
