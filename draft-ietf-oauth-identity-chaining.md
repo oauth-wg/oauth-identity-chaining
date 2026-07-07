@@ -102,7 +102,7 @@ Conceptually, this is an exchange within the first domain that produces a JWT au
        |      Trust Domain B|                     |             |
        |                    |                     |             |
        | (2) exchange token |                     |             |
-       |   [RFC 8693]       |                     |             |
+       |   [RFC8693]        |                     |             |
        |<-------------------|                     |             |
        |                    |                     |             |
        | (3) <authorization |                     |             |
@@ -111,7 +111,7 @@ Conceptually, this is an exchange within the first domain that produces a JWT au
        |                    |                     |             |
        |                    | (4) present         |             |
        |                    | authorization grant |             |
-       |                    | [RFC 7523]          |             |
+       |                    | [RFC7523]           |             |
        |                    | ------------------->|             |
        |                    |                     |             |
        |                    | (5) <access token>  |             |
@@ -408,7 +408,7 @@ The flow exchange would look like this:
        |                     | <- - - - - - - - - - - - - - - - -|
        |                     |                     |             |
        | (2) exchange token  |                     |             |
-       |   [RFC 8693]        |                     |             |
+       |   [RFC8693]         |                     |             |
        |<--------------------|                     |             |
        |                     |                     |             |
        | (3) <authorization  |                     |             |
@@ -417,7 +417,7 @@ The flow exchange would look like this:
        |                     |                     |             |
        |                     | (4) present         |             |
        |                     |  authorization      |             |
-       |                     |  grant [RFC 7523]   |             |
+       |                     |  grant [RFC7523]    |             |
        |                     |-------------------->|             |
        |                     |                     |             |
        |                     | (5) <access token>  |             |
@@ -486,7 +486,7 @@ The authorization server in trust domain A may use the flows described in this s
     |                      |                       |             |
     |                      | (4) present           |             |
     |                      |   authorization grant |             |
-    |                      |   [RFC 7523]          |             |
+    |                      |   [RFC7523]           |             |
     |                      | --------------------->|             |
     |                      |                       |             |
     |                      | (5) <access token>    |             |
