@@ -5,7 +5,7 @@
 oauth                                                 A. Schwenkschuster
 Internet-Draft                                              P. Kasselman
 Intended status: Standards Track                        Defakto Security
-Expires: 8 January 2027                                        K. Burgin
+Expires: 9 January 2027                                        K. Burgin
                                                                    MITRE
                                                               M. Jenkins
                                                                 NSA-CCSS
@@ -13,7 +13,7 @@ Expires: 8 January 2027                                        K. Burgin
                                                            Ping Identity
                                                               A. Parecki
                                                                     Okta
-                                                             7 July 2026
+                                                             8 July 2026
 
 
         OAuth Identity and Authorization Chaining Across Domains
@@ -57,7 +57,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 8 January 2027.
+   This Internet-Draft will expire on 9 January 2027.
 
 Copyright Notice
 
@@ -340,7 +340,9 @@ Table of Contents
    A to perform token exchange with the authorization server in trust
    domain A (https://as.a.example/auth) to receive a JWT authorization
    grant for an authorization server in trust domain B
-   (https://as.b.example/auth).
+   (https://as.b.example/auth).  Extra line breaks and indentation in
+   the examples are for display purposes only.  The JWT signatures are
+   for illustration only and are not verifiable
 
    POST /auth/token HTTP/1.1
    Host: as.a.example
@@ -350,25 +352,26 @@ Table of Contents
    &resource=https%3A%2F%2Fas.b.example%2Fauth
    &subject_token=ey...
    &subject_token_type=
-    urn%3Aietf%3Aparams%3Aoauth%3Atoken-type%3Aaccess_token
+   urn%3Aietf%3Aparams%3Aoauth%3Atoken-type%3Aaccess_token
 
                 Figure 2: Example of Token Exchange Request
 
-   HTTP/1.1 200 OK
-   Content-Type: application/json
-   Cache-Control: no-cache, no-store
+HTTP/1.1 200 OK
+Content-Type: application/json
+Cache-Control: no-cache, no-store
 
-   {
-     "access_token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJo
-     dHRwczovL2FzLmEub3JnL2F1dGgiLCJleHAiOjE2OTUyODQwOTIsImlhdCI6MTY5N
-     TI4NzY5Miwic3ViIjoiam9obl9kb2VAYS5vcmciLCJhdWQiOiJodHRwczovL2FzLm
-     Iub3JnL2F1dGgifQ.304Pv9e6PnzcQPzz14z-k2ZyZvDtP5WIRkYPScwdHW4",
-     "token_type":"N_A",
-     "issued_token_type":"urn:ietf:params:oauth:token-type:jwt",
-     "expires_in":60
-   }
+{
+  "access_token":"eyJhbGciOiJFUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJodHRwc
+  zovL2FzLmEuZXhhbXBsZS9hdXRoIiwiZXhwIjoxNjk1Mjg3NzUyLCJpYXQiOjE2OTUyODc
+  2OTIsInN1YiI6ImpvaG5kb2VAYS5leGFtcGxlIiwiYXVkIjoiaHR0cHM6Ly9hcy5iLmV4Y
+  W1wbGUvYXV0aCJ9.ajdodNb-_WRUD03_Ns1_0F12ksSclHO6WfIh8YHliRq4oJY038kKqr
+  J-EugSk_h6ehJ_A7h8UVK40edpkERCiQ",
+  "token_type":"N_A",
+  "issued_token_type":"urn:ietf:params:oauth:token-type:jwt",
+  "expires_in":60
+}
 
-                Figure 3: Example of Token Exchange Response
+             Figure 3: Example of Token Exchange Response
 
 2.4.  JWT Authorization Grant
 
@@ -427,7 +430,9 @@ Table of Contents
    The examples below show how a client in trust domain A presents an
    authorization grant to the authorization server in trust domain B
    (https://as.b.example/auth) to receive an access token for a
-   protected resource in trust domain B.
+   protected resource in trust domain B.  Extra line breaks and
+   indentation in the examples are for display purposes only.  The JWT
+   signatures are for illustration only and are not verifiable
 
    POST /auth/token HTTP/1.1
    Host: as.b.example
@@ -438,20 +443,21 @@ Table of Contents
 
                         Figure 4: Assertion request
 
-   HTTP/1.1 200 OK
-   Content-Type: application/json
-   Cache-Control: no-cache, no-store
+HTTP/1.1 200 OK
+Content-Type: application/json
+Cache-Control: no-cache, no-store
 
-   {
-     "access_token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJo
-     dHRwczovL2FzLmIub3JnL2F1dGgiLCJleHAiOjE2OTUyODQwOTIsImlhdCI6MTY5N
-     TI4NzY5Miwic3ViIjoiam9obi5kb2UuMTIzIiwiYXVkIjoiaHR0cHM6Ly9iLm9yZy
-     9hcGkifQ.CJBuv6sr6Snj9in5T8f7g1uB61Ql8btJiR0IXv5oeJg",
-     "token_type":"Bearer",
-     "expires_in":60
-   }
+{
+  "access_token":"eyJhbGciOiJFUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJodHRwc
+  zovL2FzLmIuZXhhbXBsZS9hdXRoIiwiZXhwIjoxNjk1Mjg3NzUyLCJpYXQiOjE2OTUyODc
+  2OTIsInN1YiI6ImRvZS5qb2huQGIuZXhhbXBsZSIsImF1ZCI6Imh0dHBzOi8vYi5leGFtc
+  GxlL2FwaSJ9.kyd4-h3ZoV2sH212kLKbcOnCBajStKQ38Ae_bfT-PFIAUgB4-VGEvTfObt
+  Z_NipCtCY-1Mi6bXd7AWb5r4eYlw",
+  "token_type":"Bearer",
+  "expires_in":60
+}
 
-                        Figure 5: Assertion response
+                     Figure 5: Assertion response
 
 2.5.  Claims Transcription
 

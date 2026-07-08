@@ -1054,7 +1054,7 @@ svg {
 </tr></thead>
 <tfoot><tr>
 <td class="left">Schwenkschuster, et al.</td>
-<td class="center">Expires 8 January 2027</td>
+<td class="center">Expires 9 January 2027</td>
 <td class="right">[Page]</td>
 </tr></tfoot>
 </table>
@@ -1067,12 +1067,12 @@ svg {
 <dd class="internet-draft">draft-ietf-oauth-identity-chaining-latest</dd>
 <dt class="label-published">Published:</dt>
 <dd class="published">
-<time datetime="2026-07-07" class="published">7 July 2026</time>
+<time datetime="2026-07-08" class="published">8 July 2026</time>
     </dd>
 <dt class="label-intended-status">Intended Status:</dt>
 <dd class="intended-status">Standards Track</dd>
 <dt class="label-expires">Expires:</dt>
-<dd class="expires"><time datetime="2027-01-08">8 January 2027</time></dd>
+<dd class="expires"><time datetime="2027-01-09">9 January 2027</time></dd>
 <dt class="label-authors">Authors:</dt>
 <dd class="authors">
 <div class="author">
@@ -1139,7 +1139,7 @@ The relevant identity and authorization information is chained throughout the fl
         time. It is inappropriate to use Internet-Drafts as reference
         material or to cite them other than as "work in progress."<a href="#section-boilerplate.1-3" class="pilcrow">¶</a></p>
 <p id="section-boilerplate.1-4">
-        This Internet-Draft will expire on 8 January 2027.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
+        This Internet-Draft will expire on 9 January 2027.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="copyright">
@@ -1492,7 +1492,7 @@ Conceptually, this is an exchange within the first domain that produces a JWT au
           <h4 id="name-example">
 <a href="#section-2.3.4" class="section-number selfRef">2.3.4. </a><a href="#name-example" class="section-name selfRef">Example</a>
           </h4>
-<p id="section-2.3.4-1">The example below shows a message invoked by a client in trust domain A to perform token exchange with the authorization server in trust domain A (https://as.a.example/auth) to receive a JWT authorization grant for an authorization server in trust domain B (https://as.b.example/auth).<a href="#section-2.3.4-1" class="pilcrow">¶</a></p>
+<p id="section-2.3.4-1">The example below shows a message invoked by a client in trust domain A to perform token exchange with the authorization server in trust domain A (https://as.a.example/auth) to receive a JWT authorization grant for an authorization server in trust domain B (https://as.b.example/auth). Extra line breaks and indentation in the examples are for display purposes only. The JWT signatures are for illustration only and are not verifiable<a href="#section-2.3.4-1" class="pilcrow">¶</a></p>
 <span id="name-example-of-token-exchange-r"></span><figure id="figure-2">
             <div class="alignLeft art-text artwork" id="section-2.3.4-2.1">
 <pre>
@@ -1504,7 +1504,7 @@ grant_type=urn%3Aietf%3Aparams%3Aoauth%3Agrant-type%3Atoken-exchange
 &amp;resource=https%3A%2F%2Fas.b.example%2Fauth
 &amp;subject_token=ey...
 &amp;subject_token_type=
- urn%3Aietf%3Aparams%3Aoauth%3Atoken-type%3Aaccess_token
+urn%3Aietf%3Aparams%3Aoauth%3Atoken-type%3Aaccess_token
 </pre>
 </div>
 <figcaption><a href="#figure-2" class="selfRef">Figure 2</a>:
@@ -1518,10 +1518,11 @@ Content-Type: application/json
 Cache-Control: no-cache, no-store
 
 {
-  "access_token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJo
-  dHRwczovL2FzLmEub3JnL2F1dGgiLCJleHAiOjE2OTUyODQwOTIsImlhdCI6MTY5N
-  TI4NzY5Miwic3ViIjoiam9obl9kb2VAYS5vcmciLCJhdWQiOiJodHRwczovL2FzLm
-  Iub3JnL2F1dGgifQ.304Pv9e6PnzcQPzz14z-k2ZyZvDtP5WIRkYPScwdHW4",
+  "access_token":"eyJhbGciOiJFUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJodHRwc
+  zovL2FzLmEuZXhhbXBsZS9hdXRoIiwiZXhwIjoxNjk1Mjg3NzUyLCJpYXQiOjE2OTUyODc
+  2OTIsInN1YiI6ImpvaG5kb2VAYS5leGFtcGxlIiwiYXVkIjoiaHR0cHM6Ly9hcy5iLmV4Y
+  W1wbGUvYXV0aCJ9.ajdodNb-_WRUD03_Ns1_0F12ksSclHO6WfIh8YHliRq4oJY038kKqr
+  J-EugSk_h6ehJ_A7h8UVK40edpkERCiQ",
   "token_type":"N_A",
   "issued_token_type":"urn:ietf:params:oauth:token-type:jwt",
   "expires_in":60
@@ -1595,7 +1596,7 @@ Cache-Control: no-cache, no-store
           <h4 id="name-example-2">
 <a href="#section-2.4.4" class="section-number selfRef">2.4.4. </a><a href="#name-example-2" class="section-name selfRef">Example</a>
           </h4>
-<p id="section-2.4.4-1">The examples below show how a client in trust domain A presents an authorization grant to the authorization server in trust domain B (https://as.b.example/auth) to receive an access token for a protected resource in trust domain B.<a href="#section-2.4.4-1" class="pilcrow">¶</a></p>
+<p id="section-2.4.4-1">The examples below show how a client in trust domain A presents an authorization grant to the authorization server in trust domain B (https://as.b.example/auth) to receive an access token for a protected resource in trust domain B. Extra line breaks and indentation in the examples are for display purposes only. The JWT signatures are for illustration only and are not verifiable<a href="#section-2.4.4-1" class="pilcrow">¶</a></p>
 <span id="name-assertion-request"></span><figure id="figure-4">
             <div class="alignLeft art-text artwork" id="section-2.4.4-2.1">
 <pre>
@@ -1618,10 +1619,11 @@ Content-Type: application/json
 Cache-Control: no-cache, no-store
 
 {
-  "access_token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJo
-  dHRwczovL2FzLmIub3JnL2F1dGgiLCJleHAiOjE2OTUyODQwOTIsImlhdCI6MTY5N
-  TI4NzY5Miwic3ViIjoiam9obi5kb2UuMTIzIiwiYXVkIjoiaHR0cHM6Ly9iLm9yZy
-  9hcGkifQ.CJBuv6sr6Snj9in5T8f7g1uB61Ql8btJiR0IXv5oeJg",
+  "access_token":"eyJhbGciOiJFUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJodHRwc
+  zovL2FzLmIuZXhhbXBsZS9hdXRoIiwiZXhwIjoxNjk1Mjg3NzUyLCJpYXQiOjE2OTUyODc
+  2OTIsInN1YiI6ImRvZS5qb2huQGIuZXhhbXBsZSIsImF1ZCI6Imh0dHBzOi8vYi5leGFtc
+  GxlL2FwaSJ9.kyd4-h3ZoV2sH212kLKbcOnCBajStKQ38Ae_bfT-PFIAUgB4-VGEvTfObt
+  Z_NipCtCY-1Mi6bXd7AWb5r4eYlw",
   "token_type":"Bearer",
   "expires_in":60
 }
