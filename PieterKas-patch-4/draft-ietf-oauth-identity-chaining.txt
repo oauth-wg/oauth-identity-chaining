@@ -432,7 +432,7 @@ Cache-Control: no-cache, no-store
    (https://as.b.example/auth) to receive an access token for a
    protected resource in trust domain B.  Extra line breaks and
    indentation in the examples are for display purposes only.  The JWT
-   signatures are for illustration only and are not verifiable
+   signatures are for illustration only and are not verifiable.
 
    POST /auth/token HTTP/1.1
    Host: as.b.example
