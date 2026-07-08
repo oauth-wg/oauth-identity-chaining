@@ -1054,7 +1054,7 @@ svg {
 </tr></thead>
 <tfoot><tr>
 <td class="left">Schwenkschuster, et al.</td>
-<td class="center">Expires 8 January 2027</td>
+<td class="center">Expires 9 January 2027</td>
 <td class="right">[Page]</td>
 </tr></tfoot>
 </table>
@@ -1067,12 +1067,12 @@ svg {
 <dd class="internet-draft">draft-ietf-oauth-identity-chaining-latest</dd>
 <dt class="label-published">Published:</dt>
 <dd class="published">
-<time datetime="2026-07-07" class="published">7 July 2026</time>
+<time datetime="2026-07-08" class="published">8 July 2026</time>
     </dd>
 <dt class="label-intended-status">Intended Status:</dt>
 <dd class="intended-status">Standards Track</dd>
 <dt class="label-expires">Expires:</dt>
-<dd class="expires"><time datetime="2027-01-08">8 January 2027</time></dd>
+<dd class="expires"><time datetime="2027-01-09">9 January 2027</time></dd>
 <dt class="label-authors">Authors:</dt>
 <dd class="authors">
 <div class="author">
@@ -1139,7 +1139,7 @@ The relevant identity and authorization information is chained throughout the fl
         time. It is inappropriate to use Internet-Drafts as reference
         material or to cite them other than as "work in progress."<a href="#section-boilerplate.1-3" class="pilcrow">¶</a></p>
 <p id="section-boilerplate.1-4">
-        This Internet-Draft will expire on 8 January 2027.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
+        This Internet-Draft will expire on 9 January 2027.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="copyright">
@@ -1436,17 +1436,17 @@ Conceptually, this is an exchange within the first domain that produces a JWT au
           </h4>
 <p id="section-2.3.1-1">The parameters described in <span><a href="https://rfc-editor.org/rfc/rfc8693#section-2.1" class="relref">Section 2.1</a> of [<a href="#RFC8693" class="cite xref">RFC8693</a>]</span> apply here with the following restrictions:<a href="#section-2.3.1-1" class="pilcrow">¶</a></p>
 <span class="break"></span><dl class="dlNewline" id="section-2.3.1-2">
-            <dt id="section-2.3.1-2.1">scope</dt>
+            <dt id="section-2.3.1-2.1"><code>scope</code></dt>
             <dd style="margin-left: 1.5em" id="section-2.3.1-2.2">
               <p id="section-2.3.1-2.2.1">Additional scopes to indicate scopes included in the returned JWT authorization grant, if required. See <span><a href="#claims-transcription" class="internal xref">Claims transcription</a> (<a href="#claims-transcription" class="auto internal xref">Section 2.5</a>)</span>.<a href="#section-2.3.1-2.2.1" class="pilcrow">¶</a></p>
 </dd>
             <dd class="break"></dd>
-<dt id="section-2.3.1-2.3">resource</dt>
+<dt id="section-2.3.1-2.3"><code>resource</code></dt>
             <dd style="margin-left: 1.5em" id="section-2.3.1-2.4">
               <p id="section-2.3.1-2.4.1">URI of authorization server for trust domain B.<a href="#section-2.3.1-2.4.1" class="pilcrow">¶</a></p>
 </dd>
             <dd class="break"></dd>
-<dt id="section-2.3.1-2.5">audience</dt>
+<dt id="section-2.3.1-2.5"><code>audience</code></dt>
             <dd style="margin-left: 1.5em" id="section-2.3.1-2.6">
               <p id="section-2.3.1-2.6.1">Well known/logical name of authorization server for trust domain B.<a href="#section-2.3.1-2.6.1" class="pilcrow">¶</a></p>
 </dd>
@@ -1463,7 +1463,7 @@ Conceptually, this is an exchange within the first domain that produces a JWT au
 <p id="section-2.3.2-1">The following processing rules also apply:<a href="#section-2.3.2-1" class="pilcrow">¶</a></p>
 <ul class="normal">
 <li class="normal" id="section-2.3.2-2.1">
-              <p id="section-2.3.2-2.1.1">If the request itself is not valid or if the given resource or audience are unknown, or are unacceptable based on policy, the authorization server in trust domain A <span class="bcp14">MUST</span> deny the request as defined in <span><a href="https://rfc-editor.org/rfc/rfc8693#section-2.2.2" class="relref">Section 2.2.2</a> of [<a href="#RFC8693" class="cite xref">RFC8693</a>]</span>.<a href="#section-2.3.2-2.1.1" class="pilcrow">¶</a></p>
+              <p id="section-2.3.2-2.1.1">If the request itself is not valid or if the given <code>resource</code> or <code>audience</code> are unknown, or are unacceptable based on policy, the authorization server in trust domain A <span class="bcp14">MUST</span> deny the request as defined in <span><a href="https://rfc-editor.org/rfc/rfc8693#section-2.2.2" class="relref">Section 2.2.2</a> of [<a href="#RFC8693" class="cite xref">RFC8693</a>]</span>.<a href="#section-2.3.2-2.1.1" class="pilcrow">¶</a></p>
 </li>
             <li class="normal" id="section-2.3.2-2.2">
               <p id="section-2.3.2-2.2.1">The authorization server in trust domain A can add, remove or change claims. See <span><a href="#claims-transcription" class="internal xref">Claims transcription</a> (<a href="#claims-transcription" class="auto internal xref">Section 2.5</a>)</span>.<a href="#section-2.3.2-2.2.1" class="pilcrow">¶</a></p>
@@ -1479,10 +1479,10 @@ Conceptually, this is an exchange within the first domain that produces a JWT au
 <p id="section-2.3.3-1">All of <span><a href="https://rfc-editor.org/rfc/rfc8693#section-2.2" class="relref">Section 2.2</a> of [<a href="#RFC8693" class="cite xref">RFC8693</a>]</span> applies. In addition, the following applies to implementations that conform to this specification:<a href="#section-2.3.3-1" class="pilcrow">¶</a></p>
 <ul class="normal">
 <li class="normal" id="section-2.3.3-2.1">
-              <p id="section-2.3.3-2.1.1">The "aud" claim in the returned JWT authorization grant <span class="bcp14">MUST</span> identify the requested authorization server in trust domain B. This corresponds with Point 3 in <span><a href="https://rfc-editor.org/rfc/rfc7523#section-3" class="relref">Section 3</a> of [<a href="#RFC7523" class="cite xref">RFC7523</a>]</span> and is there to reduce misuse and to prevent clients from, among other things, presenting access tokens as an authorization grant to an authorization server in trust domain B.<a href="#section-2.3.3-2.1.1" class="pilcrow">¶</a></p>
+              <p id="section-2.3.3-2.1.1">The <code>aud</code> claim in the returned JWT authorization grant <span class="bcp14">MUST</span> identify the requested authorization server in trust domain B. This corresponds with Point 3 in <span><a href="https://rfc-editor.org/rfc/rfc7523#section-3" class="relref">Section 3</a> of [<a href="#RFC7523" class="cite xref">RFC7523</a>]</span> and is there to reduce misuse and to prevent clients from, among other things, presenting access tokens as an authorization grant to an authorization server in trust domain B.<a href="#section-2.3.3-2.1.1" class="pilcrow">¶</a></p>
 </li>
             <li class="normal" id="section-2.3.3-2.2">
-              <p id="section-2.3.3-2.2.1">The "aud" claim included in the returned JWT authorization grant can identify multiple authorization servers, provided that trust relationships exist with them. However, it is <span class="bcp14">RECOMMENDED</span> that the "aud" claim is restricted to a single authorization server in trust domain B to prevent an authorization server from presenting the client's authorization grant to an authorization server in a different trust domain. For example, this will prevent the authorization server in trust domain B from presenting the authorization grant it received from the client in trust domain A to the authorization server for trust domain C.<a href="#section-2.3.3-2.2.1" class="pilcrow">¶</a></p>
+              <p id="section-2.3.3-2.2.1">The <code>aud</code> claim included in the returned JWT authorization grant can identify multiple authorization servers, provided that trust relationships exist with them. However, it is <span class="bcp14">RECOMMENDED</span> that the <code>aud</code> claim is restricted to a single authorization server in trust domain B to prevent an authorization server from presenting the client's authorization grant to an authorization server in a different trust domain. For example, this will prevent the authorization server in trust domain B from presenting the authorization grant it received from the client in trust domain A to the authorization server for trust domain C.<a href="#section-2.3.3-2.2.1" class="pilcrow">¶</a></p>
 </li>
           </ul>
 </section>
@@ -1548,12 +1548,12 @@ Cache-Control: no-cache, no-store
           </h4>
 <p id="section-2.4.1-1">The JWT authorization grant is used to request an access token as defined in <span><a href="https://rfc-editor.org/rfc/rfc7523#section-2.1" class="relref">Section 2.1</a> of [<a href="#RFC7523" class="cite xref">RFC7523</a>]</span>. The following required parameters are described additionally here:<a href="#section-2.4.1-1" class="pilcrow">¶</a></p>
 <span class="break"></span><dl class="dlNewline" id="section-2.4.1-2">
-            <dt id="section-2.4.1-2.1">grant_type</dt>
+            <dt id="section-2.4.1-2.1"><code>grant_type</code></dt>
             <dd style="margin-left: 1.5em" id="section-2.4.1-2.2">
               <p id="section-2.4.1-2.2.1">As defined in <span><a href="https://rfc-editor.org/rfc/rfc7523#section-2.1" class="relref">Section 2.1</a> of [<a href="#RFC7523" class="cite xref">RFC7523</a>]</span> the value <code>urn:ietf:params:oauth:grant-type:jwt-bearer</code> indicates that the request is a JWT bearer assertion authorization grant.<a href="#section-2.4.1-2.2.1" class="pilcrow">¶</a></p>
 </dd>
             <dd class="break"></dd>
-<dt id="section-2.4.1-2.3">assertion</dt>
+<dt id="section-2.4.1-2.3"><code>assertion</code></dt>
             <dd style="margin-left: 1.5em" id="section-2.4.1-2.4">
               <p id="section-2.4.1-2.4.1">The JWT authorization grant returned by the authorization server for domain A (see <span><a href="#token-exchange" class="internal xref">Token Exchange</a> (<a href="#token-exchange" class="auto internal xref">Section 2.3</a>)</span> response).<a href="#section-2.4.1-2.4.1" class="pilcrow">¶</a></p>
 </dd>
@@ -1570,7 +1570,7 @@ Cache-Control: no-cache, no-store
 <p id="section-2.4.2-1">The authorization server in trust domain B <span class="bcp14">MUST</span> validate the JWT authorization grant as specified in Sections <a href="https://rfc-editor.org/rfc/rfc7523#section-3" class="relref">3</a> and <a href="https://rfc-editor.org/rfc/rfc7523#section-3.1" class="relref">3.1</a> of <span>[<a href="#RFC7523" class="cite xref">RFC7523</a>]</span>. The following processing rules also apply:<a href="#section-2.4.2-1" class="pilcrow">¶</a></p>
 <ul class="normal">
 <li class="normal" id="section-2.4.2-2.1">
-              <p id="section-2.4.2-2.1.1">The "aud" claim <span class="bcp14">MUST</span> identify the authorization server in trust domain B as a valid intended audience of the assertion using either the token endpoint as described  <span><a href="https://rfc-editor.org/rfc/rfc7523#section-3" class="relref">Section 3</a> of [<a href="#RFC7523" class="cite xref">RFC7523</a>]</span> or the issuer identifier as defined in <span><a href="https://rfc-editor.org/rfc/rfc8414#section-2" class="relref">Section 2</a> of [<a href="#RFC8414" class="cite xref">RFC8414</a>]</span>.<a href="#section-2.4.2-2.1.1" class="pilcrow">¶</a></p>
+              <p id="section-2.4.2-2.1.1">The <code>aud</code> claim <span class="bcp14">MUST</span> identify the authorization server in trust domain B as a valid intended audience of the assertion using either the token endpoint as described  <span><a href="https://rfc-editor.org/rfc/rfc7523#section-3" class="relref">Section 3</a> of [<a href="#RFC7523" class="cite xref">RFC7523</a>]</span> or the issuer identifier as defined in <span><a href="https://rfc-editor.org/rfc/rfc8414#section-2" class="relref">Section 2</a> of [<a href="#RFC8414" class="cite xref">RFC8414</a>]</span>.<a href="#section-2.4.2-2.1.1" class="pilcrow">¶</a></p>
 </li>
             <li class="normal" id="section-2.4.2-2.2">
               <p id="section-2.4.2-2.2.1">The authorization server in trust domain B <span class="bcp14">MUST</span> deny the request if it is not able to identify the subject.<a href="#section-2.4.2-2.2.1" class="pilcrow">¶</a></p>
@@ -1653,7 +1653,7 @@ Domain A (the financial institution) includes detailed claims such as "account t
 However, domain B (the payment gateway) only needs claims like "transaction limit" for its access control policies. Domain A transcribes the claims to exclude unnecessary information, ensuring that domain B receives only the claims relevant to its operations.<a href="#section-2.5-3.2.1" class="pilcrow">¶</a></p>
 </li>
           <li class="normal" id="section-2.5-3.3">
-            <p id="section-2.5-3.3.1"><strong>Controlling scope</strong>: Clients can use the scope parameter to control transcribed claims (e.g., downscoping). Authorization Servers need to verify that the requested scopes are not higher privileged than the scopes of the presented subject_token.
+            <p id="section-2.5-3.3.1"><strong>Controlling scope</strong>: Clients can use the <code>scope</code> parameter to control transcribed claims (e.g., downscoping). Authorization Servers need to verify that the requested scopes are not higher privileged than the scopes of the presented <code>subject_token</code>.
 For example, a cloud-based development platform that allows developers to access APIs across multiple trust domains where a developer in domain A requests access to an API in domain B but only needs limited permissions, such as "read-only" access.
 The authorization server in domain A transcribes the claims into the JWT authorization grant to reflect the downscoped permissions, removing higher-privileged claims like "write" or "admin." This ensures that the access token issued by domain B aligns with the developer's intended scope of access.<a href="#section-2.5-3.3.1" class="pilcrow">¶</a></p>
 </li>
@@ -1677,7 +1677,7 @@ consistent.<a href="#section-2.5-5" class="pilcrow">¶</a></p>
       </h2>
 <p id="section-3-1">The following authorization server metadata parameter is defined by this specification and is registered in the "OAuth Authorization Server Metadata" registry established in "OAuth 2.0 Authorization Server Metadata" <span>[<a href="#RFC8414" class="cite xref">RFC8414</a>]</span>. See <a href="#sec-meta-reg" class="auto internal xref">Section 4.1</a>.<a href="#section-3-1" class="pilcrow">¶</a></p>
 <span class="break"></span><dl class="dlNewline" id="section-3-2">
-        <dt id="section-3-2.1">identity_chaining_requested_token_types_supported</dt>
+        <dt id="section-3-2.1"><code>identity_chaining_requested_token_types_supported</code></dt>
         <dd style="margin-left: 1.5em" id="section-3-2.2">
           <p id="section-3-2.2.1"><span class="bcp14">OPTIONAL</span>. JSON array containing a list of Token Types that can be requested as a <code>requested_token_type</code> in the Token Exchange request when performing Identity and Authorization Chaining Across Domains. In situations where it might be an information disclosure concern, authorization servers <span class="bcp14">MAY</span> choose not to advertise some supported requested token types even when this parameter is used, and lack of a value does not necessarily mean that the token type is unsupported.<a href="#section-3-2.2.1" class="pilcrow">¶</a></p>
 </dd>
@@ -1748,7 +1748,7 @@ acknowledging, however, that bearer tokens remain the predominantly deployed acc
         <h3 id="name-authorized-use-of-subject-t">
 <a href="#section-5.3" class="section-number selfRef">5.3. </a><a href="#name-authorized-use-of-subject-t" class="section-name selfRef">Authorized use of Subject Token</a>
         </h3>
-<p id="section-5.3-1">The authorization server in trust domain A can perform client authentication and verify that the client in trust domain A is authorized to present the token used as a subject_token in the token exchange flow before issuing an authorization grant. By doing so, it minimizes the risk of an attacker making a lateral move by using a stolen token from trust domain A to obtain an authorization grant with which to authenticate to an authorization server in trust domain B and request an access token for a resource server in trust domain B.
+<p id="section-5.3-1">The authorization server in trust domain A can perform client authentication and verify that the client in trust domain A is authorized to present the token used as a <code>subject_token</code> in the token exchange flow before issuing an authorization grant. By doing so, it minimizes the risk of an attacker making a lateral move by using a stolen token from trust domain A to obtain an authorization grant with which to authenticate to an authorization server in trust domain B and request an access token for a resource server in trust domain B.
 Such authorization policy might not be present in all deployments, and is of reduced utility for public clients, but it is a recommended security measure for deployments that can support it.<a href="#section-5.3-1" class="pilcrow">¶</a></p>
 </section>
 </div>
@@ -2090,13 +2090,13 @@ This includes verifying that privacy policies are aligned across trust domains a
             <p id="appendix-B.3-5.1.1">The authorization server in trust domain A verifies proof of possession of the key presented by the client.<a href="#appendix-B.3-5.1.1" class="pilcrow">¶</a></p>
 </li>
           <li class="normal" id="appendix-B.3-5.2">
-            <p id="appendix-B.3-5.2.1">The authorization server in trust domain A then conveys the key of the client in trust domain A in the token request sent to the authorization server in trust domain B. This can, for example, be accomplished by including a "requested_cnf" claim that contains the "cnf" claim of the client in trust domain A, in the assertion authorization grant sent to the authorization server in trust domain B.<a href="#appendix-B.3-5.2.1" class="pilcrow">¶</a></p>
+            <p id="appendix-B.3-5.2.1">The authorization server in trust domain A then conveys the key of the client in trust domain A in the token request sent to the authorization server in trust domain B. This can, for example, be accomplished by including a <code>requested_cnf</code> claim that contains the <code>cnf</code> claim of the client in trust domain A, in the assertion authorization grant sent to the authorization server in trust domain B.<a href="#appendix-B.3-5.2.1" class="pilcrow">¶</a></p>
 </li>
           <li class="normal" id="appendix-B.3-5.3">
-            <p id="appendix-B.3-5.3.1">The authorization server in trust domain B then includes a "cnf" claim that matches the value of the "requested_cnf" claim included in the authorization grant in the returned access token.<a href="#appendix-B.3-5.3.1" class="pilcrow">¶</a></p>
+            <p id="appendix-B.3-5.3.1">The authorization server in trust domain B then includes a "cnf" claim that matches the value of the <code>requested_cnf</code> claim included in the authorization grant in the returned access token.<a href="#appendix-B.3-5.3.1" class="pilcrow">¶</a></p>
 </li>
           <li class="normal" id="appendix-B.3-5.4">
-            <p id="appendix-B.3-5.4.1">The client in trust domain A that presents the access token must use the key matching the "cnf" claim to generate a DPoP proof or set up a MTLS session when presenting the access token to a resource server in trust domain B.<a href="#appendix-B.3-5.4.1" class="pilcrow">¶</a></p>
+            <p id="appendix-B.3-5.4.1">The client in trust domain A that presents the access token must use the key matching the <code>cnf</code> claim to generate a DPoP proof or set up a MTLS session when presenting the access token to a resource server in trust domain B.<a href="#appendix-B.3-5.4.1" class="pilcrow">¶</a></p>
 </li>
         </ul>
 </section>
@@ -2177,7 +2177,7 @@ This includes verifying that privacy policies are aligned across trust domains a
           <p id="appendix-D-19.3.1">Explicitly reference RFC8693 Section 2.2.2 for token exchange error<a href="#appendix-D-19.3.1" class="pilcrow">¶</a></p>
 </li>
         <li class="normal" id="appendix-D-19.4">
-          <p id="appendix-D-19.4.1">Try and better explain that the access token request content is more desricption of Sec 2.1 RFC7523 and delete the empty scope parameter<a href="#appendix-D-19.4.1" class="pilcrow">¶</a></p>
+          <p id="appendix-D-19.4.1">Try and better explain that the access token request content is more desricption of Sec 2.1 RFC7523 and delete the empty <code>scope</code> parameter<a href="#appendix-D-19.4.1" class="pilcrow">¶</a></p>
 </li>
         <li class="normal" id="appendix-D-19.5">
           <p id="appendix-D-19.5.1">Explicitly reference RFC7523 Section 3.1 for authorization grant error<a href="#appendix-D-19.5.1" class="pilcrow">¶</a></p>
@@ -2282,7 +2282,7 @@ This includes verifying that privacy policies are aligned across trust domains a
 <p id="appendix-D-28">-02<a href="#appendix-D-28" class="pilcrow">¶</a></p>
 <ul class="normal">
 <li class="normal" id="appendix-D-29.1">
-          <p id="appendix-D-29.1.1">remove recommendation to not use RFC8693's requested_token_type<a href="#appendix-D-29.1.1" class="pilcrow">¶</a></p>
+          <p id="appendix-D-29.1.1">remove recommendation to not use RFC8693's <code>requested_token_type</code><a href="#appendix-D-29.1.1" class="pilcrow">¶</a></p>
 </li>
         <li class="normal" id="appendix-D-29.2">
           <p id="appendix-D-29.2.1">Corrected discrepancy between alphabetic numbering of the diagram and text in the resource acting as client example<a href="#appendix-D-29.2.1" class="pilcrow">¶</a></p>

@@ -5,7 +5,7 @@
 oauth                                                 A. Schwenkschuster
 Internet-Draft                                              P. Kasselman
 Intended status: Standards Track                        Defakto Security
-Expires: 8 January 2027                                        K. Burgin
+Expires: 9 January 2027                                        K. Burgin
                                                                    MITRE
                                                               M. Jenkins
                                                                 NSA-CCSS
@@ -13,7 +13,7 @@ Expires: 8 January 2027                                        K. Burgin
                                                            Ping Identity
                                                               A. Parecki
                                                                     Okta
-                                                             7 July 2026
+                                                             8 July 2026
 
 
         OAuth Identity and Authorization Chaining Across Domains
@@ -57,7 +57,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 8 January 2027.
+   This Internet-Draft will expire on 9 January 2027.
 
 Copyright Notice
 
@@ -316,17 +316,17 @@ Table of Contents
    All of Section 2.2 of [RFC8693] applies.  In addition, the following
    applies to implementations that conform to this specification:
 
-   *  The "aud" claim in the returned JWT authorization grant MUST
+   *  The aud claim in the returned JWT authorization grant MUST
       identify the requested authorization server in trust domain B.
       This corresponds with Point 3 in Section 3 of [RFC7523] and is
       there to reduce misuse and to prevent clients from, among other
       things, presenting access tokens as an authorization grant to an
       authorization server in trust domain B.
 
-   *  The "aud" claim included in the returned JWT authorization grant
-      can identify multiple authorization servers, provided that trust
+   *  The aud claim included in the returned JWT authorization grant can
+      identify multiple authorization servers, provided that trust
       relationships exist with them.  However, it is RECOMMENDED that
-      the "aud" claim is restricted to a single authorization server in
+      the aud claim is restricted to a single authorization server in
       trust domain B to prevent an authorization server from presenting
       the client's authorization grant to an authorization server in a
       different trust domain.  For example, this will prevent the
@@ -402,7 +402,7 @@ Table of Contents
    authorization grant as specified in Sections 3 and 3.1 of [RFC7523].
    The following processing rules also apply:
 
-   *  The "aud" claim MUST identify the authorization server in trust
+   *  The aud claim MUST identify the authorization server in trust
       domain B as a valid intended audience of the assertion using
       either the token endpoint as described Section 3 of [RFC7523] or
       the issuer identifier as defined in Section 2 of [RFC8414].
@@ -1035,19 +1035,19 @@ B.3.  Delegated Key Binding
    *  The authorization server in trust domain A then conveys the key of
       the client in trust domain A in the token request sent to the
       authorization server in trust domain B.  This can, for example, be
-      accomplished by including a "requested_cnf" claim that contains
-      the "cnf" claim of the client in trust domain A, in the assertion
+      accomplished by including a requested_cnf claim that contains the
+      cnf claim of the client in trust domain A, in the assertion
       authorization grant sent to the authorization server in trust
       domain B.
 
    *  The authorization server in trust domain B then includes a "cnf"
-      claim that matches the value of the "requested_cnf" claim included
+      claim that matches the value of the requested_cnf claim included
       in the authorization grant in the returned access token.
 
    *  The client in trust domain A that presents the access token must
-      use the key matching the "cnf" claim to generate a DPoP proof or
-      set up a MTLS session when presenting the access token to a
-      resource server in trust domain B.
+      use the key matching the cnf claim to generate a DPoP proof or set
+      up a MTLS session when presenting the access token to a resource
+      server in trust domain B.
 
 Appendix C.  Acknowledgements
 
