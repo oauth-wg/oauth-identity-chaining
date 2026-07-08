@@ -244,7 +244,7 @@ When the authorization grant has been validated, the authorization server in tru
 
 ### Example
 
-The examples below show how a client in trust domain A presents an authorization grant to the authorization server in trust domain B (https://as.b.example/auth) to receive an access token for a protected resource in trust domain B. Extra line breaks and indentation in the examples are for display purposes only. The JWT signatures are for illustration only and are not verifiable.
+The examples below show how a client in trust domain A presents an authorization grant to the authorization server in trust domain B (https://as.b.example/auth) to receive an access token for a protected resource in trust domain B. Extra line breaks and indentation in the examples are for display purposes only. The JWT signature is for illustration only and is not verifiable.
 
 ~~~
 POST /auth/token HTTP/1.1
