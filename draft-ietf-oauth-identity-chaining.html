@@ -1054,7 +1054,7 @@ svg {
 </tr></thead>
 <tfoot><tr>
 <td class="left">Schwenkschuster, et al.</td>
-<td class="center">Expires 9 January 2027</td>
+<td class="center">Expires 10 January 2027</td>
 <td class="right">[Page]</td>
 </tr></tfoot>
 </table>
@@ -1067,12 +1067,12 @@ svg {
 <dd class="internet-draft">draft-ietf-oauth-identity-chaining-latest</dd>
 <dt class="label-published">Published:</dt>
 <dd class="published">
-<time datetime="2026-07-08" class="published">8 July 2026</time>
+<time datetime="2026-07-09" class="published">9 July 2026</time>
     </dd>
 <dt class="label-intended-status">Intended Status:</dt>
 <dd class="intended-status">Standards Track</dd>
 <dt class="label-expires">Expires:</dt>
-<dd class="expires"><time datetime="2027-01-09">9 January 2027</time></dd>
+<dd class="expires"><time datetime="2027-01-10">10 January 2027</time></dd>
 <dt class="label-authors">Authors:</dt>
 <dd class="authors">
 <div class="author">
@@ -1139,7 +1139,7 @@ The relevant identity and authorization information is chained throughout the fl
         time. It is inappropriate to use Internet-Drafts as reference
         material or to cite them other than as "work in progress."<a href="#section-boilerplate.1-3" class="pilcrow">¶</a></p>
 <p id="section-boilerplate.1-4">
-        This Internet-Draft will expire on 9 January 2027.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
+        This Internet-Draft will expire on 10 January 2027.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="copyright">
@@ -1492,7 +1492,7 @@ Conceptually, this is an exchange within the first domain that produces a JWT au
           <h4 id="name-example">
 <a href="#section-2.3.4" class="section-number selfRef">2.3.4. </a><a href="#name-example" class="section-name selfRef">Example</a>
           </h4>
-<p id="section-2.3.4-1">The example below shows a message invoked by a client in trust domain A to perform token exchange with the authorization server in trust domain A (https://as.a.example/auth) to receive a JWT authorization grant for an authorization server in trust domain B (https://as.b.example/auth).<a href="#section-2.3.4-1" class="pilcrow">¶</a></p>
+<p id="section-2.3.4-1">The example below shows a message invoked by a client in trust domain A to perform token exchange with the authorization server in trust domain A (https://as.a.example/auth) to receive a JWT authorization grant for an authorization server in trust domain B (https://as.b.example/auth). Extra line breaks and indentation in the examples are for display purposes only. The JWT signature is for illustration only and is not verifiable.<a href="#section-2.3.4-1" class="pilcrow">¶</a></p>
 <span id="name-example-of-token-exchange-r"></span><figure id="figure-2">
             <div class="alignLeft art-text artwork" id="section-2.3.4-2.1">
 <pre>
@@ -1504,7 +1504,7 @@ grant_type=urn%3Aietf%3Aparams%3Aoauth%3Agrant-type%3Atoken-exchange
 &amp;resource=https%3A%2F%2Fas.b.example%2Fauth
 &amp;subject_token=ey...
 &amp;subject_token_type=
- urn%3Aietf%3Aparams%3Aoauth%3Atoken-type%3Aaccess_token
+urn%3Aietf%3Aparams%3Aoauth%3Atoken-type%3Aaccess_token
 </pre>
 </div>
 <figcaption><a href="#figure-2" class="selfRef">Figure 2</a>:
@@ -1518,10 +1518,11 @@ Content-Type: application/json
 Cache-Control: no-cache, no-store
 
 {
-  "access_token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJo
-  dHRwczovL2FzLmEub3JnL2F1dGgiLCJleHAiOjE2OTUyODQwOTIsImlhdCI6MTY5N
-  TI4NzY5Miwic3ViIjoiam9obl9kb2VAYS5vcmciLCJhdWQiOiJodHRwczovL2FzLm
-  Iub3JnL2F1dGgifQ.304Pv9e6PnzcQPzz14z-k2ZyZvDtP5WIRkYPScwdHW4",
+  "access_token":"eyJhbGciOiJFUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJodHRwc
+  zovL2FzLmEuZXhhbXBsZS9hdXRoIiwiZXhwIjoxNjk1Mjg3NzUyLCJpYXQiOjE2OTUyODc
+  2OTIsInN1YiI6ImpvaG5kb2VAYS5leGFtcGxlIiwiYXVkIjoiaHR0cHM6Ly9hcy5iLmV4Y
+  W1wbGUvYXV0aCJ9.ajdodNb-_WRUD03_Ns1_0F12ksSclHO6WfIh8YHliRq4oJY038kKqr
+  J-EugSk_h6ehJ_A7h8UVK40edpkERCiQ",
   "token_type":"N_A",
   "issued_token_type":"urn:ietf:params:oauth:token-type:jwt",
   "expires_in":60
@@ -1595,7 +1596,7 @@ Cache-Control: no-cache, no-store
           <h4 id="name-example-2">
 <a href="#section-2.4.4" class="section-number selfRef">2.4.4. </a><a href="#name-example-2" class="section-name selfRef">Example</a>
           </h4>
-<p id="section-2.4.4-1">The examples below show how a client in trust domain A presents an authorization grant to the authorization server in trust domain B (https://as.b.example/auth) to receive an access token for a protected resource in trust domain B.<a href="#section-2.4.4-1" class="pilcrow">¶</a></p>
+<p id="section-2.4.4-1">The examples below show how a client in trust domain A presents an authorization grant to the authorization server in trust domain B (https://as.b.example/auth) to receive an access token for a protected resource in trust domain B. Extra line breaks and indentation in the examples are for display purposes only. The JWT signature is for illustration only and is not verifiable.<a href="#section-2.4.4-1" class="pilcrow">¶</a></p>
 <span id="name-assertion-request"></span><figure id="figure-4">
             <div class="alignLeft art-text artwork" id="section-2.4.4-2.1">
 <pre>
@@ -1604,7 +1605,11 @@ Host: as.b.example
 Content-Type: application/x-www-form-urlencoded
 
 grant_type=urn%3Aietf%3Aparams%3Aoauth%3Agrant-type%3Ajwt-bearer
-&amp;assertion=ey...
+&amp;assertion=eyJhbGciOiJFUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJodHRwczovL2Fz
+LmEuZXhhbXBsZS9hdXRoIiwiZXhwIjoxNjk1Mjg3NzUyLCJpYXQiOjE2OTUyODc2OTIsInN1
+YiI6ImpvaG5kb2VAYS5leGFtcGxlIiwiYXVkIjoiaHR0cHM6Ly9hcy5iLmV4YW1wbGUvYXV0
+aCJ9.ajdodNb-_WRUD03_Ns1_0F12ksSclHO6WfIh8YHliRq4oJY038kKqrJ-EugSk_h6ehJ
+_A7h8UVK40edpkERCiQ
 </pre>
 </div>
 <figcaption><a href="#figure-4" class="selfRef">Figure 4</a>:
@@ -1618,10 +1623,7 @@ Content-Type: application/json
 Cache-Control: no-cache, no-store
 
 {
-  "access_token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJo
-  dHRwczovL2FzLmIub3JnL2F1dGgiLCJleHAiOjE2OTUyODQwOTIsImlhdCI6MTY5N
-  TI4NzY5Miwic3ViIjoiam9obi5kb2UuMTIzIiwiYXVkIjoiaHR0cHM6Ly9iLm9yZy
-  9hcGkifQ.CJBuv6sr6Snj9in5T8f7g1uB61Ql8btJiR0IXv5oeJg",
+  "access_token":"b./77-.ehs96cFAx~ac00~qG+z8N_x/4.RpL-2Ykc4~",
   "token_type":"Bearer",
   "expires_in":60
 }
@@ -2117,208 +2119,223 @@ This includes verifying that privacy policies are aligned across trust domains a
 <a href="#appendix-D" class="section-number selfRef">Appendix D. </a><a href="#name-document-history" class="section-name selfRef">Document History</a>
       </h2>
 <p id="appendix-D-1">[[ To be removed from the final specification ]]<a href="#appendix-D-1" class="pilcrow">¶</a></p>
-<p id="appendix-D-2">-15<a href="#appendix-D-2" class="pilcrow">¶</a></p>
+<p id="appendix-D-2">-17<a href="#appendix-D-2" class="pilcrow">¶</a></p>
 <ul class="normal">
 <li class="normal" id="appendix-D-3.1">
-          <p id="appendix-D-3.1.1">Include suggestions from Mohamed Boucadair (see https://github.com/oauth-wg/oauth-identity-chaining/issues/195)<a href="#appendix-D-3.1.1" class="pilcrow">¶</a></p>
+          <p id="appendix-D-3.1.1">Formatting changes to use bacticks consistently<a href="#appendix-D-3.1.1" class="pilcrow">¶</a></p>
+</li>
+        <li class="normal" id="appendix-D-3.2">
+          <p id="appendix-D-3.2.1">Example consistency updates<a href="#appendix-D-3.2.1" class="pilcrow">¶</a></p>
 </li>
       </ul>
-<p id="appendix-D-4">-14<a href="#appendix-D-4" class="pilcrow">¶</a></p>
+<p id="appendix-D-4">-16<a href="#appendix-D-4" class="pilcrow">¶</a></p>
 <ul class="normal">
 <li class="normal" id="appendix-D-5.1">
-          <p id="appendix-D-5.1.1">Remove some extraneous text from IANA Considerations<a href="#appendix-D-5.1.1" class="pilcrow">¶</a></p>
+          <p id="appendix-D-5.1.1">Corrected author's name<a href="#appendix-D-5.1.1" class="pilcrow">¶</a></p>
 </li>
       </ul>
-<p id="appendix-D-6">-13<a href="#appendix-D-6" class="pilcrow">¶</a></p>
+<p id="appendix-D-6">-15<a href="#appendix-D-6" class="pilcrow">¶</a></p>
 <ul class="normal">
 <li class="normal" id="appendix-D-7.1">
-          <p id="appendix-D-7.1.1">Expand the abstract somewhat to (hopefully) make it more informative<a href="#appendix-D-7.1.1" class="pilcrow">¶</a></p>
+          <p id="appendix-D-7.1.1">Include suggestions from Mohamed Boucadair (see https://github.com/oauth-wg/oauth-identity-chaining/issues/195)<a href="#appendix-D-7.1.1" class="pilcrow">¶</a></p>
 </li>
       </ul>
-<p id="appendix-D-8">-12<a href="#appendix-D-8" class="pilcrow">¶</a></p>
+<p id="appendix-D-8">-14<a href="#appendix-D-8" class="pilcrow">¶</a></p>
 <ul class="normal">
 <li class="normal" id="appendix-D-9.1">
-          <p id="appendix-D-9.1.1">GENART review comments addressed<a href="#appendix-D-9.1.1" class="pilcrow">¶</a></p>
+          <p id="appendix-D-9.1.1">Remove some extraneous text from IANA Considerations<a href="#appendix-D-9.1.1" class="pilcrow">¶</a></p>
 </li>
       </ul>
-<p id="appendix-D-10">-11<a href="#appendix-D-10" class="pilcrow">¶</a></p>
+<p id="appendix-D-10">-13<a href="#appendix-D-10" class="pilcrow">¶</a></p>
 <ul class="normal">
 <li class="normal" id="appendix-D-11.1">
-          <p id="appendix-D-11.1.1">ARTART review comments addressed<a href="#appendix-D-11.1.1" class="pilcrow">¶</a></p>
+          <p id="appendix-D-11.1.1">Expand the abstract somewhat to (hopefully) make it more informative<a href="#appendix-D-11.1.1" class="pilcrow">¶</a></p>
 </li>
       </ul>
-<p id="appendix-D-12">-10<a href="#appendix-D-12" class="pilcrow">¶</a></p>
+<p id="appendix-D-12">-12<a href="#appendix-D-12" class="pilcrow">¶</a></p>
 <ul class="normal">
 <li class="normal" id="appendix-D-13.1">
-          <p id="appendix-D-13.1.1">Move Aaron Parecki from contributors to authors in acknowledgement of significant contributions<a href="#appendix-D-13.1.1" class="pilcrow">¶</a></p>
+          <p id="appendix-D-13.1.1">GENART review comments addressed<a href="#appendix-D-13.1.1" class="pilcrow">¶</a></p>
 </li>
       </ul>
-<p id="appendix-D-14">-09<a href="#appendix-D-14" class="pilcrow">¶</a></p>
+<p id="appendix-D-14">-11<a href="#appendix-D-14" class="pilcrow">¶</a></p>
 <ul class="normal">
 <li class="normal" id="appendix-D-15.1">
-          <p id="appendix-D-15.1.1">AD comments (hopefully) addressed<a href="#appendix-D-15.1.1" class="pilcrow">¶</a></p>
+          <p id="appendix-D-15.1.1">ARTART review comments addressed<a href="#appendix-D-15.1.1" class="pilcrow">¶</a></p>
 </li>
       </ul>
-<p id="appendix-D-16">-08<a href="#appendix-D-16" class="pilcrow">¶</a></p>
+<p id="appendix-D-16">-10<a href="#appendix-D-16" class="pilcrow">¶</a></p>
 <ul class="normal">
 <li class="normal" id="appendix-D-17.1">
-          <p id="appendix-D-17.1.1">Change some references from informative to normative and remove the unused OAuth 2.1 one<a href="#appendix-D-17.1.1" class="pilcrow">¶</a></p>
+          <p id="appendix-D-17.1.1">Move Aaron Parecki from contributors to authors in acknowledgement of significant contributions<a href="#appendix-D-17.1.1" class="pilcrow">¶</a></p>
 </li>
       </ul>
-<p id="appendix-D-18">-07<a href="#appendix-D-18" class="pilcrow">¶</a></p>
+<p id="appendix-D-18">-09<a href="#appendix-D-18" class="pilcrow">¶</a></p>
 <ul class="normal">
 <li class="normal" id="appendix-D-19.1">
-          <p id="appendix-D-19.1.1">Add a (hopefully helpful) sentence to the end of the first paragraph of the Overview<a href="#appendix-D-19.1.1" class="pilcrow">¶</a></p>
-</li>
-        <li class="normal" id="appendix-D-19.2">
-          <p id="appendix-D-19.2.1">Reword bullet (C) of the Overview (because you cannot use public keys to sign)<a href="#appendix-D-19.2.1" class="pilcrow">¶</a></p>
-</li>
-        <li class="normal" id="appendix-D-19.3">
-          <p id="appendix-D-19.3.1">Explicitly reference RFC8693 Section 2.2.2 for token exchange error<a href="#appendix-D-19.3.1" class="pilcrow">¶</a></p>
-</li>
-        <li class="normal" id="appendix-D-19.4">
-          <p id="appendix-D-19.4.1">Try and better explain that the access token request content is more desricption of Sec 2.1 RFC7523 and delete the empty <code>scope</code> parameter<a href="#appendix-D-19.4.1" class="pilcrow">¶</a></p>
-</li>
-        <li class="normal" id="appendix-D-19.5">
-          <p id="appendix-D-19.5.1">Explicitly reference RFC7523 Section 3.1 for authorization grant error<a href="#appendix-D-19.5.1" class="pilcrow">¶</a></p>
-</li>
-        <li class="normal" id="appendix-D-19.6">
-          <p id="appendix-D-19.6.1">Remove a seemingly nonsensical sentence about preventing injection of invalid claims<a href="#appendix-D-19.6.1" class="pilcrow">¶</a></p>
-</li>
-        <li class="normal" id="appendix-D-19.7">
-          <p id="appendix-D-19.7.1">Try and explain why ASs might not want to advertise some supported requested token types<a href="#appendix-D-19.7.1" class="pilcrow">¶</a></p>
-</li>
-        <li class="normal" id="appendix-D-19.8">
-          <p id="appendix-D-19.8.1">Endeavor to qualify the SHOULDs on client auth and sender constrained tokens<a href="#appendix-D-19.8.1" class="pilcrow">¶</a></p>
-</li>
-        <li class="normal" id="appendix-D-19.9">
-          <p id="appendix-D-19.9.1">Qualify the only <span class="bcp14">SHOULD NOT</span> on RTs from assertion grants being inline with historical decisions in RFC7521<a href="#appendix-D-19.9.1" class="pilcrow">¶</a></p>
-</li>
-        <li class="normal" id="appendix-D-19.10">
-          <p id="appendix-D-19.10.1">Quality the Authorized use of Subject Token security recommendations a bit<a href="#appendix-D-19.10.1" class="pilcrow">¶</a></p>
-</li>
-        <li class="normal" id="appendix-D-19.11">
-          <p id="appendix-D-19.11.1">Change Intended Status to Standards Track from Informational<a href="#appendix-D-19.11.1" class="pilcrow">¶</a></p>
+          <p id="appendix-D-19.1.1">AD comments (hopefully) addressed<a href="#appendix-D-19.1.1" class="pilcrow">¶</a></p>
 </li>
       </ul>
-<p id="appendix-D-20">-06<a href="#appendix-D-20" class="pilcrow">¶</a></p>
+<p id="appendix-D-20">-08<a href="#appendix-D-20" class="pilcrow">¶</a></p>
 <ul class="normal">
 <li class="normal" id="appendix-D-21.1">
-          <p id="appendix-D-21.1.1">Use IANA.media-types so the tooling can find the media types registry without an explicit target<a href="#appendix-D-21.1.1" class="pilcrow">¶</a></p>
-</li>
-        <li class="normal" id="appendix-D-21.2">
-          <p id="appendix-D-21.2.1">Mention that the RFC8693 token exchange is not strictly necessary, if trust domain A's platform provides other means to obtain a JWT authorization grant<a href="#appendix-D-21.2.1" class="pilcrow">¶</a></p>
-</li>
-        <li class="normal" id="appendix-D-21.3">
-          <p id="appendix-D-21.3.1">Better describe the trust relationship necessary (domain B has to trusts domain A to issue JWT authz grants and trust its signing key(s)) and mention that AS Metadata's <code>jwks_uri</code> can be used to obtain the verification keys for trust domain A<a href="#appendix-D-21.3.1" class="pilcrow">¶</a></p>
-</li>
-        <li class="normal" id="appendix-D-21.4">
-          <p id="appendix-D-21.4.1">add a note about agreeing on semantics etc. when transcribing claims<a href="#appendix-D-21.4.1" class="pilcrow">¶</a></p>
-</li>
-        <li class="normal" id="appendix-D-21.5">
-          <p id="appendix-D-21.5.1">Editorial fixes<a href="#appendix-D-21.5.1" class="pilcrow">¶</a></p>
+          <p id="appendix-D-21.1.1">Change some references from informative to normative and remove the unused OAuth 2.1 one<a href="#appendix-D-21.1.1" class="pilcrow">¶</a></p>
 </li>
       </ul>
-<p id="appendix-D-22">-05<a href="#appendix-D-22" class="pilcrow">¶</a></p>
+<p id="appendix-D-22">-07<a href="#appendix-D-22" class="pilcrow">¶</a></p>
 <ul class="normal">
 <li class="normal" id="appendix-D-23.1">
-          <p id="appendix-D-23.1.1">Editorial pass on Appendix for consistency<a href="#appendix-D-23.1.1" class="pilcrow">¶</a></p>
+          <p id="appendix-D-23.1.1">Add a (hopefully helpful) sentence to the end of the first paragraph of the Overview<a href="#appendix-D-23.1.1" class="pilcrow">¶</a></p>
 </li>
         <li class="normal" id="appendix-D-23.2">
-          <p id="appendix-D-23.2.1">Clarified introduction<a href="#appendix-D-23.2.1" class="pilcrow">¶</a></p>
+          <p id="appendix-D-23.2.1">Reword bullet (C) of the Overview (because you cannot use public keys to sign)<a href="#appendix-D-23.2.1" class="pilcrow">¶</a></p>
 </li>
         <li class="normal" id="appendix-D-23.3">
-          <p id="appendix-D-23.3.1">Added security considerations for unconstrained authorization grants.<a href="#appendix-D-23.3.1" class="pilcrow">¶</a></p>
+          <p id="appendix-D-23.3.1">Explicitly reference RFC8693 Section 2.2.2 for token exchange error<a href="#appendix-D-23.3.1" class="pilcrow">¶</a></p>
 </li>
         <li class="normal" id="appendix-D-23.4">
-          <p id="appendix-D-23.4.1">Updated some contributors' affiliation and contact information<a href="#appendix-D-23.4.1" class="pilcrow">¶</a></p>
+          <p id="appendix-D-23.4.1">Try and better explain that the access token request content is more desricption of Sec 2.1 RFC7523 and delete the empty <code>scope</code> parameter<a href="#appendix-D-23.4.1" class="pilcrow">¶</a></p>
 </li>
         <li class="normal" id="appendix-D-23.5">
-          <p id="appendix-D-23.5.1">Added examples in claims transcription text<a href="#appendix-D-23.5.1" class="pilcrow">¶</a></p>
+          <p id="appendix-D-23.5.1">Explicitly reference RFC7523 Section 3.1 for authorization grant error<a href="#appendix-D-23.5.1" class="pilcrow">¶</a></p>
 </li>
         <li class="normal" id="appendix-D-23.6">
-          <p id="appendix-D-23.6.1">Simplify some text in the JWT Authorization Grant section<a href="#appendix-D-23.6.1" class="pilcrow">¶</a></p>
+          <p id="appendix-D-23.6.1">Remove a seemingly nonsensical sentence about preventing injection of invalid claims<a href="#appendix-D-23.6.1" class="pilcrow">¶</a></p>
 </li>
         <li class="normal" id="appendix-D-23.7">
-          <p id="appendix-D-23.7.1">Fix some toolchain complaints and other nitpicks<a href="#appendix-D-23.7.1" class="pilcrow">¶</a></p>
+          <p id="appendix-D-23.7.1">Try and explain why ASs might not want to advertise some supported requested token types<a href="#appendix-D-23.7.1" class="pilcrow">¶</a></p>
 </li>
         <li class="normal" id="appendix-D-23.8">
-          <p id="appendix-D-23.8.1">Added some Privacy Considerations<a href="#appendix-D-23.8.1" class="pilcrow">¶</a></p>
+          <p id="appendix-D-23.8.1">Endeavor to qualify the SHOULDs on client auth and sender constrained tokens<a href="#appendix-D-23.8.1" class="pilcrow">¶</a></p>
 </li>
         <li class="normal" id="appendix-D-23.9">
-          <p id="appendix-D-23.9.1">Move Mr. Parecki from acknowledgements to contributors in acknowledgement of his contributions<a href="#appendix-D-23.9.1" class="pilcrow">¶</a></p>
+          <p id="appendix-D-23.9.1">Qualify the only <span class="bcp14">SHOULD NOT</span> on RTs from assertion grants being inline with historical decisions in RFC7521<a href="#appendix-D-23.9.1" class="pilcrow">¶</a></p>
 </li>
         <li class="normal" id="appendix-D-23.10">
-          <p id="appendix-D-23.10.1">Added Authorization Server Metadata registry to publish supported Token Exchange requested token types<a href="#appendix-D-23.10.1" class="pilcrow">¶</a></p>
+          <p id="appendix-D-23.10.1">Quality the Authorized use of Subject Token security recommendations a bit<a href="#appendix-D-23.10.1" class="pilcrow">¶</a></p>
+</li>
+        <li class="normal" id="appendix-D-23.11">
+          <p id="appendix-D-23.11.1">Change Intended Status to Standards Track from Informational<a href="#appendix-D-23.11.1" class="pilcrow">¶</a></p>
 </li>
       </ul>
-<p id="appendix-D-24">-04<a href="#appendix-D-24" class="pilcrow">¶</a></p>
+<p id="appendix-D-24">-06<a href="#appendix-D-24" class="pilcrow">¶</a></p>
 <ul class="normal">
 <li class="normal" id="appendix-D-25.1">
-          <p id="appendix-D-25.1.1">Clarified diagrams and description of authorization server acting as a client.<a href="#appendix-D-25.1.1" class="pilcrow">¶</a></p>
+          <p id="appendix-D-25.1.1">Use IANA.media-types so the tooling can find the media types registry without an explicit target<a href="#appendix-D-25.1.1" class="pilcrow">¶</a></p>
 </li>
         <li class="normal" id="appendix-D-25.2">
-          <p id="appendix-D-25.2.1">Remove references to sd-jwt.<a href="#appendix-D-25.2.1" class="pilcrow">¶</a></p>
+          <p id="appendix-D-25.2.1">Mention that the RFC8693 token exchange is not strictly necessary, if trust domain A's platform provides other means to obtain a JWT authorization grant<a href="#appendix-D-25.2.1" class="pilcrow">¶</a></p>
 </li>
         <li class="normal" id="appendix-D-25.3">
-          <p id="appendix-D-25.3.1">Added text to recommend use of explicit typing.<a href="#appendix-D-25.3.1" class="pilcrow">¶</a></p>
+          <p id="appendix-D-25.3.1">Better describe the trust relationship necessary (domain B has to trusts domain A to issue JWT authz grants and trust its signing key(s)) and mention that AS Metadata's <code>jwks_uri</code> can be used to obtain the verification keys for trust domain A<a href="#appendix-D-25.3.1" class="pilcrow">¶</a></p>
 </li>
         <li class="normal" id="appendix-D-25.4">
-          <p id="appendix-D-25.4.1">Added security consideration on preventing lateral moves.<a href="#appendix-D-25.4.1" class="pilcrow">¶</a></p>
+          <p id="appendix-D-25.4.1">add a note about agreeing on semantics etc. when transcribing claims<a href="#appendix-D-25.4.1" class="pilcrow">¶</a></p>
 </li>
         <li class="normal" id="appendix-D-25.5">
-          <p id="appendix-D-25.5.1">Editorial updates to be consistent about the trust domain for a client, authorization server or resource server.<a href="#appendix-D-25.5.1" class="pilcrow">¶</a></p>
-</li>
-        <li class="normal" id="appendix-D-25.6">
-          <p id="appendix-D-25.6.1">Added sender constraining of tokens to security considerations<a href="#appendix-D-25.6.1" class="pilcrow">¶</a></p>
+          <p id="appendix-D-25.5.1">Editorial fixes<a href="#appendix-D-25.5.1" class="pilcrow">¶</a></p>
 </li>
       </ul>
-<p id="appendix-D-26">-03<a href="#appendix-D-26" class="pilcrow">¶</a></p>
+<p id="appendix-D-26">-05<a href="#appendix-D-26" class="pilcrow">¶</a></p>
 <ul class="normal">
 <li class="normal" id="appendix-D-27.1">
-          <p id="appendix-D-27.1.1">Editorial updates<a href="#appendix-D-27.1.1" class="pilcrow">¶</a></p>
+          <p id="appendix-D-27.1.1">Editorial pass on Appendix for consistency<a href="#appendix-D-27.1.1" class="pilcrow">¶</a></p>
+</li>
+        <li class="normal" id="appendix-D-27.2">
+          <p id="appendix-D-27.2.1">Clarified introduction<a href="#appendix-D-27.2.1" class="pilcrow">¶</a></p>
+</li>
+        <li class="normal" id="appendix-D-27.3">
+          <p id="appendix-D-27.3.1">Added security considerations for unconstrained authorization grants.<a href="#appendix-D-27.3.1" class="pilcrow">¶</a></p>
+</li>
+        <li class="normal" id="appendix-D-27.4">
+          <p id="appendix-D-27.4.1">Updated some contributors' affiliation and contact information<a href="#appendix-D-27.4.1" class="pilcrow">¶</a></p>
+</li>
+        <li class="normal" id="appendix-D-27.5">
+          <p id="appendix-D-27.5.1">Added examples in claims transcription text<a href="#appendix-D-27.5.1" class="pilcrow">¶</a></p>
+</li>
+        <li class="normal" id="appendix-D-27.6">
+          <p id="appendix-D-27.6.1">Simplify some text in the JWT Authorization Grant section<a href="#appendix-D-27.6.1" class="pilcrow">¶</a></p>
+</li>
+        <li class="normal" id="appendix-D-27.7">
+          <p id="appendix-D-27.7.1">Fix some toolchain complaints and other nitpicks<a href="#appendix-D-27.7.1" class="pilcrow">¶</a></p>
+</li>
+        <li class="normal" id="appendix-D-27.8">
+          <p id="appendix-D-27.8.1">Added some Privacy Considerations<a href="#appendix-D-27.8.1" class="pilcrow">¶</a></p>
+</li>
+        <li class="normal" id="appendix-D-27.9">
+          <p id="appendix-D-27.9.1">Move Mr. Parecki from acknowledgements to contributors in acknowledgement of his contributions<a href="#appendix-D-27.9.1" class="pilcrow">¶</a></p>
+</li>
+        <li class="normal" id="appendix-D-27.10">
+          <p id="appendix-D-27.10.1">Added Authorization Server Metadata registry to publish supported Token Exchange requested token types<a href="#appendix-D-27.10.1" class="pilcrow">¶</a></p>
 </li>
       </ul>
-<p id="appendix-D-28">-02<a href="#appendix-D-28" class="pilcrow">¶</a></p>
+<p id="appendix-D-28">-04<a href="#appendix-D-28" class="pilcrow">¶</a></p>
 <ul class="normal">
 <li class="normal" id="appendix-D-29.1">
-          <p id="appendix-D-29.1.1">remove recommendation to not use RFC8693's <code>requested_token_type</code><a href="#appendix-D-29.1.1" class="pilcrow">¶</a></p>
+          <p id="appendix-D-29.1.1">Clarified diagrams and description of authorization server acting as a client.<a href="#appendix-D-29.1.1" class="pilcrow">¶</a></p>
 </li>
         <li class="normal" id="appendix-D-29.2">
-          <p id="appendix-D-29.2.1">Corrected discrepancy between alphabetic numbering of the diagram and text in the resource acting as client example<a href="#appendix-D-29.2.1" class="pilcrow">¶</a></p>
+          <p id="appendix-D-29.2.1">Remove references to sd-jwt.<a href="#appendix-D-29.2.1" class="pilcrow">¶</a></p>
+</li>
+        <li class="normal" id="appendix-D-29.3">
+          <p id="appendix-D-29.3.1">Added text to recommend use of explicit typing.<a href="#appendix-D-29.3.1" class="pilcrow">¶</a></p>
+</li>
+        <li class="normal" id="appendix-D-29.4">
+          <p id="appendix-D-29.4.1">Added security consideration on preventing lateral moves.<a href="#appendix-D-29.4.1" class="pilcrow">¶</a></p>
+</li>
+        <li class="normal" id="appendix-D-29.5">
+          <p id="appendix-D-29.5.1">Editorial updates to be consistent about the trust domain for a client, authorization server or resource server.<a href="#appendix-D-29.5.1" class="pilcrow">¶</a></p>
+</li>
+        <li class="normal" id="appendix-D-29.6">
+          <p id="appendix-D-29.6.1">Added sender constraining of tokens to security considerations<a href="#appendix-D-29.6.1" class="pilcrow">¶</a></p>
 </li>
       </ul>
-<p id="appendix-D-30">-01<a href="#appendix-D-30" class="pilcrow">¶</a></p>
+<p id="appendix-D-30">-03<a href="#appendix-D-30" class="pilcrow">¶</a></p>
 <ul class="normal">
 <li class="normal" id="appendix-D-31.1">
-          <p id="appendix-D-31.1.1">limit the authorization grant format to RFC7523 JWT<a href="#appendix-D-31.1.1" class="pilcrow">¶</a></p>
-</li>
-        <li class="normal" id="appendix-D-31.2">
-          <p id="appendix-D-31.2.1">minor example fixes<a href="#appendix-D-31.2.1" class="pilcrow">¶</a></p>
-</li>
-        <li class="normal" id="appendix-D-31.3">
-          <p id="appendix-D-31.3.1">editorial fixes<a href="#appendix-D-31.3.1" class="pilcrow">¶</a></p>
-</li>
-        <li class="normal" id="appendix-D-31.4">
-          <p id="appendix-D-31.4.1">added Aaron Parecki to acknowledgements<a href="#appendix-D-31.4.1" class="pilcrow">¶</a></p>
-</li>
-        <li class="normal" id="appendix-D-31.5">
-          <p id="appendix-D-31.5.1">renamed section headers to be more explicit<a href="#appendix-D-31.5.1" class="pilcrow">¶</a></p>
-</li>
-        <li class="normal" id="appendix-D-31.6">
-          <p id="appendix-D-31.6.1">use more specific term "JWT authorization grant"<a href="#appendix-D-31.6.1" class="pilcrow">¶</a></p>
-</li>
-        <li class="normal" id="appendix-D-31.7">
-          <p id="appendix-D-31.7.1">changed name to "OAuth Identity and Authorization Chaining Across Domains"<a href="#appendix-D-31.7.1" class="pilcrow">¶</a></p>
-</li>
-        <li class="normal" id="appendix-D-31.8">
-          <p id="appendix-D-31.8.1">move use cases to appendix and add continuous integration use case<a href="#appendix-D-31.8.1" class="pilcrow">¶</a></p>
+          <p id="appendix-D-31.1.1">Editorial updates<a href="#appendix-D-31.1.1" class="pilcrow">¶</a></p>
 </li>
       </ul>
-<p id="appendix-D-32">-00<a href="#appendix-D-32" class="pilcrow">¶</a></p>
+<p id="appendix-D-32">-02<a href="#appendix-D-32" class="pilcrow">¶</a></p>
 <ul class="normal">
 <li class="normal" id="appendix-D-33.1">
-          <p id="appendix-D-33.1.1">initial working group version (previously draft-schwenkschuster-oauth-identity-chaining)<a href="#appendix-D-33.1.1" class="pilcrow">¶</a></p>
+          <p id="appendix-D-33.1.1">remove recommendation to not use RFC8693's <code>requested_token_type</code><a href="#appendix-D-33.1.1" class="pilcrow">¶</a></p>
+</li>
+        <li class="normal" id="appendix-D-33.2">
+          <p id="appendix-D-33.2.1">Corrected discrepancy between alphabetic numbering of the diagram and text in the resource acting as client example<a href="#appendix-D-33.2.1" class="pilcrow">¶</a></p>
+</li>
+      </ul>
+<p id="appendix-D-34">-01<a href="#appendix-D-34" class="pilcrow">¶</a></p>
+<ul class="normal">
+<li class="normal" id="appendix-D-35.1">
+          <p id="appendix-D-35.1.1">limit the authorization grant format to RFC7523 JWT<a href="#appendix-D-35.1.1" class="pilcrow">¶</a></p>
+</li>
+        <li class="normal" id="appendix-D-35.2">
+          <p id="appendix-D-35.2.1">minor example fixes<a href="#appendix-D-35.2.1" class="pilcrow">¶</a></p>
+</li>
+        <li class="normal" id="appendix-D-35.3">
+          <p id="appendix-D-35.3.1">editorial fixes<a href="#appendix-D-35.3.1" class="pilcrow">¶</a></p>
+</li>
+        <li class="normal" id="appendix-D-35.4">
+          <p id="appendix-D-35.4.1">added Aaron Parecki to acknowledgements<a href="#appendix-D-35.4.1" class="pilcrow">¶</a></p>
+</li>
+        <li class="normal" id="appendix-D-35.5">
+          <p id="appendix-D-35.5.1">renamed section headers to be more explicit<a href="#appendix-D-35.5.1" class="pilcrow">¶</a></p>
+</li>
+        <li class="normal" id="appendix-D-35.6">
+          <p id="appendix-D-35.6.1">use more specific term "JWT authorization grant"<a href="#appendix-D-35.6.1" class="pilcrow">¶</a></p>
+</li>
+        <li class="normal" id="appendix-D-35.7">
+          <p id="appendix-D-35.7.1">changed name to "OAuth Identity and Authorization Chaining Across Domains"<a href="#appendix-D-35.7.1" class="pilcrow">¶</a></p>
+</li>
+        <li class="normal" id="appendix-D-35.8">
+          <p id="appendix-D-35.8.1">move use cases to appendix and add continuous integration use case<a href="#appendix-D-35.8.1" class="pilcrow">¶</a></p>
+</li>
+      </ul>
+<p id="appendix-D-36">-00<a href="#appendix-D-36" class="pilcrow">¶</a></p>
+<ul class="normal">
+<li class="normal" id="appendix-D-37.1">
+          <p id="appendix-D-37.1.1">initial working group version (previously draft-schwenkschuster-oauth-identity-chaining)<a href="#appendix-D-37.1.1" class="pilcrow">¶</a></p>
 </li>
       </ul>
 </section>
