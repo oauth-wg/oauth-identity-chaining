@@ -266,11 +266,7 @@ Content-Type: application/json
 Cache-Control: no-cache, no-store
 
 {
-  "access_token":"eyJhbGciOiJFUzI1NiIsInR5cCI6ImF0K2p3dCJ9.eyJpc3MiOiJod
-  HRwczovL2FzLmIuZXhhbXBsZS9hdXRoIiwiZXhwIjoxNjk1Mjg3NzUyLCJpYXQiOjE2OTU
-  yODc2OTIsInN1YiI6ImRvZS5qb2huQGIuZXhhbXBsZSIsImF1ZCI6Imh0dHBzOi8vYi5le
-  GFtcGxlL2FwaSJ9.Fd0SMTM_Ylv9RM-Y65g4Fn5X6Lk8A8t8ndZ39zaEykvJpLp4-cwcsb
-  4018gZBHHG8AI5IDcu_hoLs0jdhwrJtA",
+  "access_token":"b./77-.ehs96cFAx~ac00~qG+z8N_x/4.RpL-2Ykc4~",
   "token_type":"Bearer",
   "expires_in":60
 }
