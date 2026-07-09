@@ -178,7 +178,7 @@ All of {{Section 2.2 of RFC8693}} applies. In addition, the following applies to
 
 ### Example
 
-The example below shows a message invoked by a client in trust domain A to perform token exchange with the authorization server in trust domain A (https://as.a.example/auth) to receive a JWT authorization grant for an authorization server in trust domain B (https://as.b.example/auth). Extra line breaks and indentation in the examples are for display purposes only. The JWT signature is for illustration only and is not verifiable.
+The following examples show a token exchange request sent by a client in trust domain A to the authorization server in trust domain A (https://as.a.example/auth) and the response containing a JWT authorization grant for an authorization server in trust domain B (https://as.b.example/auth). The public key of the authorization server in trust domain A, which can be used to validate the signature on the JWT authorization grant, is also shown. Extra line breaks and indentation in the examples are for display purposes only.
 
 ~~~
 POST /auth/token HTTP/1.1
@@ -187,9 +187,9 @@ Content-Type: application/x-www-form-urlencoded
 
 grant_type=urn%3Aietf%3Aparams%3Aoauth%3Agrant-type%3Atoken-exchange
 &resource=https%3A%2F%2Fas.b.example%2Fauth
-&subject_token=ey...
+&subject_token=_RU..D03_Nsfw1_0F7den-SLO6WfIh8YHl.iRq4oJY038Kqr
 &subject_token_type=
-urn%3Aietf%3Aparams%3Aoauth%3Atoken-type%3Aaccess_token
+ urn%3Aietf%3Aparams%3Aoauth%3Atoken-type%3Aaccess_token
 ~~~
 {: title='Example of Token Exchange Request'}
 
@@ -199,17 +199,30 @@ Content-Type: application/json
 Cache-Control: no-cache, no-store
 
 {
-  "access_token":"eyJhbGciOiJFUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJodHRwc
-  zovL2FzLmEuZXhhbXBsZS9hdXRoIiwiZXhwIjoxNjk1Mjg3NzUyLCJpYXQiOjE2OTUyODc
-  2OTIsInN1YiI6ImpvaG5kb2VAYS5leGFtcGxlIiwiYXVkIjoiaHR0cHM6Ly9hcy5iLmV4Y
-  W1wbGUvYXV0aCJ9.ajdodNb-_WRUD03_Ns1_0F12ksSclHO6WfIh8YHliRq4oJY038kKqr
-  J-EugSk_h6ehJ_A7h8UVK40edpkERCiQ",
+  "access_token":"eyJhbGciOiJFUzI1NiIsImtpZCI6IjI4MTMzMDgwMDQifQ.
+    eyJpc3MiOiJodHRwczovL2FzLmEuZXhhbXBsZS9hdXRoIiwiZXhwIjoxNjk1M
+    jg3NzUyLCJpYXQiOjE2OTUyODc2OTIsInN1YiI6ImpvaG5kb2VAYS5leGFtcG
+    xlIiwiYXVkIjoiaHR0cHM6Ly9hcy5iLmV4YW1wbGUvYXV0aCJ9.Li8Rh-c-R0
+    xirbuXlX8x6sQkZRqJIms9U8Rk8cL7uh1Mm232O6mwz1osPEMNef4OFUW-qTf
+    A0C9QdeIl-e0KsA",
   "token_type":"N_A",
   "issued_token_type":"urn:ietf:params:oauth:token-type:jwt",
   "expires_in":60
 }
 ~~~
 {: title='Example of Token Exchange Response'}
+
+~~~
+{
+ "kty":"EC",
+ "crv":"P-256",
+ "kid": "2813308004",
+ "use":"sig",
+ "x":"MXfMrj_tgPJHxkfmDAx0m74E-T-DuLYCNdmuqtpfP_E",
+ "y":"YX82bI52OPBED1h_1HpsxAyWzrQ7DChAAVX9Q9E8uYQ"
+}
+~~~
+{: title='Example JWK for the Authorization Server in Trust Domain A'}
 
 ## JWT Authorization Grant {#jwt-authorization-grant}
 
@@ -244,7 +257,7 @@ When the authorization grant has been validated, the authorization server in tru
 
 ### Example
 
-The examples below show how a client in trust domain A presents an authorization grant to the authorization server in trust domain B (https://as.b.example/auth) to receive an access token for a protected resource in trust domain B. Extra line breaks and indentation in the examples are for display purposes only. The JWT signature is for illustration only and is not verifiable.
+The examples below show how a client in trust domain A presents an authorization grant to the authorization server in trust domain B (https://as.b.example/auth) to receive an access token for a protected resource in trust domain B. Extra line breaks and indentation in the examples are for display purposes only.
 
 ~~~
 POST /auth/token HTTP/1.1
@@ -252,11 +265,11 @@ Host: as.b.example
 Content-Type: application/x-www-form-urlencoded
 
 grant_type=urn%3Aietf%3Aparams%3Aoauth%3Agrant-type%3Ajwt-bearer
-&assertion=eyJhbGciOiJFUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJodHRwczovL2Fz
-LmEuZXhhbXBsZS9hdXRoIiwiZXhwIjoxNjk1Mjg3NzUyLCJpYXQiOjE2OTUyODc2OTIsInN1
-YiI6ImpvaG5kb2VAYS5leGFtcGxlIiwiYXVkIjoiaHR0cHM6Ly9hcy5iLmV4YW1wbGUvYXV0
-aCJ9.ajdodNb-_WRUD03_Ns1_0F12ksSclHO6WfIh8YHliRq4oJY038kKqrJ-EugSk_h6ehJ
-_A7h8UVK40edpkERCiQ
+&assertion=eyJhbGciOiJFUzI1NiIsImtpZCI6IjI4MTMzMDgwMDQifQ.eyJpc3Mi
+ OiJodHRwczovL2FzLmEuZXhhbXBsZS9hdXRoIiwiZXhwIjoxNjk1Mjg3NzUyLCJpY
+ XQiOjE2OTUyODc2OTIsInN1YiI6ImpvaG5kb2VAYS5leGFtcGxlIiwiYXVkIjoiaH
+ R0cHM6Ly9hcy5iLmV4YW1wbGUvYXV0aCJ9.Li8Rh-c-R0xirbuXlX8x6sQkZRqJIm
+ s9U8Rk8cL7uh1Mm232O6mwz1osPEMNef4OFUW-qTfA0C9QdeIl-e0KsA
 ~~~
 {: title='Assertion request'}
 
