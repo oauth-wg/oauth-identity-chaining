@@ -541,6 +541,14 @@ The editors would like to thank Deb Cooley, Lars Eggert, Patrick Harding, Russ H
 
 \[\[ To be removed from the final specification ]]
 
+-17
+
+* Formatting changes to use bacticks consistently
+* Example consistency updates
+
+-16
+
+* Corrected author's name
 
 -15
 
