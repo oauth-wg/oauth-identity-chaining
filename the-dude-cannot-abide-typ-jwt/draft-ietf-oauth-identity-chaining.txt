@@ -336,10 +336,10 @@ Table of Contents
 
 2.3.4.  Example
 
-   The examples below show a message sent by a client in trust domain A
-   to perform token exchange with the authorization server in trust
-   domain A (https://as.a.example/auth) to receive a JWT authorization
-   grant for an authorization server in trust domain B
+   The following examples show a token exchange request sent by a client
+   in trust domain A to the authorization server in trust domain A
+   (https://as.a.example/auth) and the response containing a JWT
+   authorization grant for an authorization server in trust domain B
    (https://as.b.example/auth).  The public key of the authorization
    server in trust domain A, which can be used to validate the signature
    on the JWT authorization grant, is also shown.  Extra line breaks and
