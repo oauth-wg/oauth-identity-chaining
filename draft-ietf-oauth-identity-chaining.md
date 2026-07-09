@@ -178,7 +178,7 @@ All of {{Section 2.2 of RFC8693}} applies. In addition, the following applies to
 
 ### Example
 
-The examples below show a message sent by a client in trust domain A to perform token exchange with the authorization server in trust domain A (https://as.a.example/auth) to receive a JWT authorization grant for an authorization server in trust domain B (https://as.b.example/auth). The public key of the authorization server in trust domain A, which can be used to validate the signature on the JWT authorization grant, is also shown. Extra line breaks and indentation in the examples are for display purposes only.
+The following examples show a token exchange request sent by a client in trust domain A to the authorization server in trust domain A (https://as.a.example/auth) and the response containing a JWT authorization grant for an authorization server in trust domain B (https://as.b.example/auth). The public key of the authorization server in trust domain A, which can be used to validate the signature on the JWT authorization grant, is also shown. Extra line breaks and indentation in the examples are for display purposes only.
 
 ~~~
 POST /auth/token HTTP/1.1
