@@ -180,7 +180,7 @@ All of {{Section 2.2 of RFC8693}} applies. In addition, the following applies to
 
 The following examples show a token exchange request sent by a client in trust domain A to the authorization server in trust domain A (https://as.a.example/auth) and the response containing a JWT authorization grant for an authorization server in trust domain B (https://as.b.example/auth). The public key of the authorization server in trust domain A, which can be used to validate the signature on the JWT authorization grant, is also shown. Extra line breaks and indentation in the examples are for display purposes only.
 
-~~~
+~~~ http-message
 POST /auth/token HTTP/1.1
 Host: as.a.example
 Content-Type: application/x-www-form-urlencoded
@@ -193,7 +193,7 @@ grant_type=urn%3Aietf%3Aparams%3Aoauth%3Agrant-type%3Atoken-exchange
 ~~~
 {: title='Example of Token Exchange Request'}
 
-~~~
+~~~ http-message
 HTTP/1.1 200 OK
 Content-Type: application/json
 Cache-Control: no-cache, no-store
@@ -212,7 +212,7 @@ Cache-Control: no-cache, no-store
 ~~~
 {: title='Example of Token Exchange Response'}
 
-~~~
+~~~ json
 {
  "kty":"EC",
  "crv":"P-256",
@@ -259,7 +259,7 @@ When the authorization grant has been validated, the authorization server in tru
 
 The examples below show how a client in trust domain A presents an authorization grant to the authorization server in trust domain B (https://as.b.example/auth) to receive an access token for a protected resource in trust domain B. Extra line breaks and indentation in the examples are for display purposes only.
 
-~~~
+~~~ http-message
 POST /auth/token HTTP/1.1
 Host: as.b.example
 Content-Type: application/x-www-form-urlencoded
@@ -273,7 +273,7 @@ grant_type=urn%3Aietf%3Aparams%3Aoauth%3Agrant-type%3Ajwt-bearer
 ~~~
 {: title='Assertion request'}
 
-~~~
+~~~ http-message
 HTTP/1.1 200 OK
 Content-Type: application/json
 Cache-Control: no-cache, no-store
@@ -558,6 +558,7 @@ The editors would like to thank Deb Cooley, Lars Eggert, Patrick Harding, Russ H
 
 * Formatting changes to use bacticks consistently
 * Example consistency updates
+* Use the `<sourcecode>` element rather then `<artwork>` for http and json examples
 
 -16
 
