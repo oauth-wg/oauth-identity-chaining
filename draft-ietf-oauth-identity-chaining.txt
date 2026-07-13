@@ -5,7 +5,7 @@
 oauth                                                 A. Schwenkschuster
 Internet-Draft                                              P. Kasselman
 Intended status: Standards Track                        Defakto Security
-Expires: 10 January 2027                                       K. Burgin
+Expires: 14 January 2027                                       K. Burgin
                                                                    MITRE
                                                               M. Jenkins
                                                                 NSA-CCSS
@@ -13,7 +13,7 @@ Expires: 10 January 2027                                       K. Burgin
                                                            Ping Identity
                                                               A. Parecki
                                                                     Okta
-                                                             9 July 2026
+                                                            13 July 2026
 
 
         OAuth Identity and Authorization Chaining Across Domains
@@ -57,7 +57,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 10 January 2027.
+   This Internet-Draft will expire on 14 January 2027.
 
 Copyright Notice
 
@@ -1083,6 +1083,9 @@ Appendix D.  Document History
    *  Formatting changes to use bacticks consistently
 
    *  Example consistency updates
+
+   *  Use the <sourcecode> element rather then <artwork> for http and
+      json examples
 
    -16
 
